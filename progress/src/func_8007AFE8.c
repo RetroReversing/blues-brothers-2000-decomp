@@ -47,7 +47,7 @@ Obj *func_8007B880(s32);
 void initSpline(s32, s32);
 void debugPrintf(char *);
 extern char D_800094D0[];
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 D_800B396C;
 extern s32 D_800B3970;
 extern s32 D_800B3974;
@@ -93,19 +93,19 @@ void func_8007AFE8(Obj *arg0) {
         dy = func_8002DD60(gCameraTarget->y - p->y);
         if (dx * dx + dz * dz < 1960000.0f && dy < 500.0f) {
             func_8003CAD4(gCameraTarget, gCameraTarget->unk10);
-            D_800B3960->unk9C = updateCameraView;
-            D_800B3960->unkA8 = 0;
+            gCameraRig->unk9C = updateCameraView;
+            gCameraRig->unkA8 = 0;
             pts = gSplineSrcPoints[1];
             if (pts == NULL) {
                 debugPrintf(D_800094D0);
             }
             pts += 3;
-            D_800B3960->x = pts->x;
-            D_800B3960->y = pts->y;
-            D_800B3960->z = pts->z;
-            syncActorPrevPos(D_800B3960);
-            D_800B3960->unk9C = func_80034F50;
-            D_800B3960->unkA8 = 0;
+            gCameraRig->x = pts->x;
+            gCameraRig->y = pts->y;
+            gCameraRig->z = pts->z;
+            syncActorPrevPos(gCameraRig);
+            gCameraRig->unk9C = func_80034F50;
+            gCameraRig->unkA8 = 0;
             arg0->unk9C = func_8007ACD4;
             arg0->unk64 = 200;
             arg0->unkC0 = 0;

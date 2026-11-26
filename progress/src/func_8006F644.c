@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 M2C_UNK func_80023C10(s32);                         /* extern */
 s32 func_80023D58(M2C_UNK);                         /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *D_800B3964;
 extern M2C_UNK D_800B81F4;
 extern M2C_UNK D_8014ADE0;
@@ -41,7 +41,7 @@ void func_8006F644(void *arg0) {
     if (M2C_FIELD(D_800B3964, s32 *, 0xBC) != M2C_FIELD(arg0, s32 *, 0xBC)) {
         M2C_FIELD(arg0, s32 *, 0x68) = -1;
     }
-    if (M2C_FIELD(D_800B3960, s32 *, 0x74) != M2C_FIELD(arg0, s32 *, 0x74)) {
+    if (M2C_FIELD(gCameraRig, s32 *, 0x74) != M2C_FIELD(arg0, s32 *, 0x74)) {
         M2C_FIELD(arg0, s32 *, 0x68) = -1;
     }
 }

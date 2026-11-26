@@ -37,7 +37,7 @@ s32 func_80052B24(s32, void *, Obj *);
 void initSpline(s32, s32);
 Obj *func_80087FE4(s32);
 extern u8 D_80009BD8[];
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 D_800B5DD4;
 extern Obj *gCameraTarget;
 extern s32 D_80171988[];
@@ -66,7 +66,7 @@ void func_80082EF8(void);
 void func_800877C8(Obj *arg0) {
     Obj *o;
 
-    D_800B3960->unk70 = 1;
+    gCameraRig->unk70 = 1;
     initSpline(1, 0);
     initSpline(2, 1);
     initSpline(3, 1);
@@ -123,7 +123,7 @@ void func_800877C8(Obj *arg0) {
     arg0->unk94 = 0x24;
     func_8002A360(0xE, 0x83);
     func_80033BC0();
-    D_800B3960->unk9C = updateFollowCamera;
+    gCameraRig->unk9C = updateFollowCamera;
     if (D_80171994 == 0) {
         func_80052A5C(0x56B);
         func_80052B24(func_80023DBC(0xE81), D_80009BD8, arg0);

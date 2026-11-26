@@ -2,7 +2,7 @@ s16 coss(s32);
 s16 sins(s32);
 s32 cameraGetMode(void);
 void func_80034F1C(void *);
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 cameraDistTable[];
 extern void *gCameraTarget;
 extern s32 D_8013FFA4;
@@ -19,7 +19,7 @@ void func_80033BDC(s32 arg0) {
     void *q;
 
     D_80140030 = 0;
-    p = D_800B3960;
+    p = gCameraRig;
     D_8014002C = 0;
     F(p, s32, 0x6C) = arg0;
     F(p, s32, 0xC0) = 0;

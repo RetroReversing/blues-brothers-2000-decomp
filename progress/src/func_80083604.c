@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 extern s32 D_800B9094;
 extern s32 D_800B87E4;
 extern s32 gComboSlots[];
-extern void *D_800B3960;
+extern void *gCameraRig;
 
 void func_80083604(void) {
     s32 counter;
@@ -28,10 +28,10 @@ void func_80083604(void) {
         hi = gComboSlots[11];
         if (hi < lo) {
             D_800B87E4 += 0x1F4;
-            M2C_FIELD(D_800B3960, s32 *, 0x94) = 1;
+            M2C_FIELD(gCameraRig, s32 *, 0x94) = 1;
         } else if (lo < hi) {
             D_800B87E4 -= 0x1F4;
-            M2C_FIELD(D_800B3960, s32 *, 0x94) = counter;
+            M2C_FIELD(gCameraRig, s32 *, 0x94) = counter;
         }
         D_800B9094 = 0;
     }
@@ -41,5 +41,5 @@ void func_80083604(void) {
     if (D_800B87E4 >= 0xBB9) {
         D_800B87E4 = 0xBB8;
     }
-    M2C_FIELD(D_800B3960, s32 *, 0x74) = D_800B87E4;
+    M2C_FIELD(gCameraRig, s32 *, 0x74) = D_800B87E4;
 }

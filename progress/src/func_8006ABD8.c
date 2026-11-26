@@ -30,7 +30,7 @@ void func_8001B990(s32, s32);
 void func_8006AB80(void *);
 void func_80034F50(void *);
 void func_8006B0C8(void *);
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 D_800B4C28;
 
 void func_8006ABD8(Obj *arg0)
@@ -44,7 +44,7 @@ void func_8006ABD8(Obj *arg0)
         arg0->unk70 = 0;
         arg0->y = 900.0f;
         c = func_8002E374(0x82);
-        p = D_800B3960;
+        p = gCameraRig;
         c->unk68 = -1;
         c->x = arg0->x;
         c->y = arg0->y;

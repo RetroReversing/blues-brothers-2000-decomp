@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_8006E964();                            /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *D_800B3964;
 extern s32 D_800B82D8;
 extern s32 D_800B82E4;
@@ -22,7 +22,7 @@ void func_8006EF70(void *arg0) {
     f32 var_fv0;
     s32 *var_v0;
 
-    if ((M2C_FIELD(D_800B3964, s32 *, 0xBC) == 0) && (M2C_FIELD(D_800B3960, s32 *, 0x74) != 0)) {
+    if ((M2C_FIELD(D_800B3964, s32 *, 0xBC) == 0) && (M2C_FIELD(gCameraRig, s32 *, 0x74) != 0)) {
         if (M2C_FIELD(D_800B3964, s32 *, 0x88) == 0) {
             var_fv0 = (f32) D_800B82D8;
             var_v0 = &D_800B82D8;

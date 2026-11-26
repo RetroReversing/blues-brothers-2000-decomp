@@ -27,7 +27,7 @@ typedef struct ObjK {
     f32 fDC;
 } ObjK;
 
-extern ObjK *D_800B3960;
+extern ObjK *gCameraRig;
 extern ObjK *D_800B3964;
 
 void func_8005BB3C(ObjK *arg0) {
@@ -51,13 +51,13 @@ void func_8005BB3C(ObjK *arg0) {
         if (cam == NULL) {
             debugPrintf(D_800085EC);
         }
-        D_800B3960->x = cam->x;
-        D_800B3960->y = cam->y;
-        D_800B3960->z = cam->z;
+        gCameraRig->x = cam->x;
+        gCameraRig->y = cam->y;
+        gCameraRig->z = cam->z;
         pos[0] = arg0->x;
         pos[1] = arg0->y + 225.0f;
         pos[2] = arg0->z;
-        func_80034FEC(D_800B3960, pos);
+        func_80034FEC(gCameraRig, pos);
     }
     t = findActor(0x101F, NULL);
     if (t != NULL) {

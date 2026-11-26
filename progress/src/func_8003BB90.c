@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern M2C_UNK func_800340B4;
 extern M2C_UNK func_8003B670;
 extern M2C_UNK func_8003C264;
@@ -27,11 +27,11 @@ void func_8003BB90(void *arg0) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x19);
         func_8002D124();
-        if (M2C_FIELD(D_800B3960, M2C_UNK **, 0xD8) == NULL) {
-            temp_a0 = M2C_FIELD(D_800B3960, M2C_UNK **, 0x9C);
+        if (M2C_FIELD(gCameraRig, M2C_UNK **, 0xD8) == NULL) {
+            temp_a0 = M2C_FIELD(gCameraRig, M2C_UNK **, 0x9C);
             if (temp_a0 == &func_800340B4) {
-                M2C_FIELD(D_800B3960, M2C_UNK **, 0xD8) = temp_a0;
-                M2C_FIELD(D_800B3960, M2C_UNK **, 0x9C) = &func_8003B670;
+                M2C_FIELD(gCameraRig, M2C_UNK **, 0xD8) = temp_a0;
+                M2C_FIELD(gCameraRig, M2C_UNK **, 0x9C) = &func_8003B670;
             }
         }
         M2C_FIELD(arg0, M2C_UNK **, 0xD8) = (M2C_UNK *) M2C_FIELD(arg0, M2C_UNK **, 0x9C);

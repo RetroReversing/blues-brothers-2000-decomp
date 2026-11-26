@@ -4,7 +4,7 @@ s32 func_8003C9AC(void *, s32, s32, s32);
 void actorSetAnim(void *, s32, s32, void *);
 void debugPrintf(char *);
 extern char D_80000BEC[];
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 D_800B5DD4;
 extern void *gCameraTarget;
 extern s32 func_8001AC3C;
@@ -30,16 +30,16 @@ void func_8001AD84(void *arg0) {
         }
         o = findActor(0x11F, 0);
         if (o != NULL) {
-            ((Vec *)D_800B3960)->x = ((Vec *)o)->x;
-            ((Vec *)D_800B3960)->y = ((Vec *)o)->y;
-            ((Vec *)D_800B3960)->z = ((Vec *)o)->z;
-            *(void **)((s8 *)D_800B3960 + 0xD8) = *(void **)((s8 *)D_800B3960 + 0x9C);
-            *(void **)((s8 *)D_800B3960 + 0x9C) = &func_80034F50;
+            ((Vec *)gCameraRig)->x = ((Vec *)o)->x;
+            ((Vec *)gCameraRig)->y = ((Vec *)o)->y;
+            ((Vec *)gCameraRig)->z = ((Vec *)o)->z;
+            *(void **)((s8 *)gCameraRig + 0xD8) = *(void **)((s8 *)gCameraRig + 0x9C);
+            *(void **)((s8 *)gCameraRig + 0x9C) = &func_80034F50;
             p = findActor(0x1002, 0);
 D_800B5DD4 = 0;
 q = gCameraTarget;
-*(void **)((s8 *)D_800B3960 + 0xA8) = p;
-r = D_800B3960;
+*(void **)((s8 *)gCameraRig + 0xA8) = p;
+r = gCameraRig;
             actorSetAnim(q, 1, 0x100, r);
             *(void **)((s8 *)gCameraTarget + 0x9C) = &animStepKeys;
             *(s32 *)((s8 *)findActor(6, 0) + 0x68) = -1;

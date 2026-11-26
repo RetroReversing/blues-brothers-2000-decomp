@@ -6,7 +6,7 @@ void func_8003BF98(void *);
 void actorSetAnim(void *, s32, s32);
 void func_800664A8(void *, s32);
 s16 sins(u16);
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 D_800B4CE0;
 extern s32 D_800B5DD4;
 extern void *gCameraTarget;
@@ -30,7 +30,7 @@ void func_80066B44(void *arg0) {
         M2C_FIELD(gCameraTarget, s32 *, 0x10) = temp_a1;
         func_800664A8(arg0, temp_a1);
         D_800B4CE0 = 1;
-        M2C_FIELD(D_800B3960, void **, 0x9C) = func_800340B4;
+        M2C_FIELD(gCameraRig, void **, 0x9C) = func_800340B4;
         M2C_FIELD(arg0, s32 *, 0xC0) = 0;
         func_8003BF98(gCameraTarget);
         D_800B4CE0 = 0;

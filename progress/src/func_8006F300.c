@@ -14,7 +14,7 @@ void func_8006DBB8(void);
 void func_8006EFF8(void);
 void func_8006ED34(void);
 typedef struct { s32 f0; s32 f4; s32 f8; } Rec81F4;
-extern u8 *D_800B3960;
+extern u8 *gCameraRig;
 extern u8 *D_800B3964;
 extern Rec81F4 D_800B81F4[];
 typedef struct { u8 pad[0x10]; s32 f10; s32 f14; } S14ADE0;
@@ -42,7 +42,7 @@ s32 func_8006F300(u8 *arg0) {
         }
         if (res != 0) {
             if (res & 0x28) {
-                *(void **)(D_800B3960 + 0x9C) = func_8006FEEC;
+                *(void **)(gCameraRig + 0x9C) = func_8006FEEC;
                 func_8002A360(0xC, 0x80);
                 func_8002A360(8, 0xA1);
             } else if (res & 0x10) {
@@ -84,7 +84,7 @@ s32 func_8006F300(u8 *arg0) {
         if (*(s32 *)(arg0 + 0x88) == 0) {
             obj = func_800232B4(0x103, 0, 0, 0);
             obj->f9C = func_8006ED34;
-            return ++*(s32 *)(D_800B3960 + 0x74);
+            return ++*(s32 *)(gCameraRig + 0x74);
         }
         if (func_80026188(0) != 0 && func_80026188(1) != 0) {
             *(s32 *)(D_800B3964 + 0x90) = 0x2000;

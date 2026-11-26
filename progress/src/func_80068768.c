@@ -20,7 +20,7 @@ s32 func_80052B24();
 extern s32 D_80008D80;
 extern s32 D_80008D8C;
 extern s32 D_80008D98;
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 D_800B5DD4;
 extern void *gCameraTarget;
 extern s32 func_800393F4;
@@ -46,8 +46,8 @@ void func_80068768(void *arg0) {
             (*(s32 *)((s8 *)arg0 + 0x7C)) = (s32) ((*(s32 *)((s8 *)arg0 + 0x7C)) + 1);
             return;
         case 1:
-            (*(s32 **)((s8 *)D_800B3960 + 0x9C)) = &func_80064808;
-            (*(s32 *)((s8 *)D_800B3960 + 0xA8)) = 0;
+            (*(s32 **)((s8 *)gCameraRig + 0x9C)) = &func_80064808;
+            (*(s32 *)((s8 *)gCameraRig + 0xA8)) = 0;
             func_80052A5C(0x564);
             var_a1 = &D_80008D8C;
             {

@@ -17,7 +17,7 @@ void animStepKeys(void);
 extern char D_800080F0[];
 extern char D_8000811C[];
 extern u8 *gCameraTarget;
-extern u8 *D_800B3960;
+extern u8 *gCameraRig;
 extern s32 D_800AE010;
 extern s32 D_8014AA90;
 extern f32 *D_8014AA94;
@@ -64,7 +64,7 @@ s32 func_80052B24(s32 arg0, char *arg1, f32 *arg2) {
     D_800AE010 = 0x12345678;
     func_80027030(2, D_8014AA90);
     D_80140228 = 0;
-    do { func_8000C5E4(); pl = D_800B3960; FLD(pl, s32, 0xC0) = 2; lvl = getImageAsset(arg0); } while (0);
+    do { func_8000C5E4(); pl = gCameraRig; FLD(pl, s32, 0xC0) = 2; lvl = getImageAsset(arg0); } while (0);
     if (lvl == NULL) {
         debugPrintf(D_800080F0);
     }
@@ -99,7 +99,7 @@ s32 func_80052B24(s32 arg0, char *arg1, f32 *arg2) {
                         FLD(obj, f32, 0xC) = arg2[3];
                         FLD(obj, f32 *, 0xA4) = arg2;
                     }
-                    pl = D_800B3960;
+                    pl = gCameraRig;
                     FLD(pl, s32, 0xD8) = FLD(pl, s32, 0x9C);
                     p = gCameraTarget;
                     FLD(obj, u8 *, 0x70) = lvl;

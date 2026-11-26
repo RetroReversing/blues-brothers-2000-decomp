@@ -10,7 +10,7 @@ extern f32 approachF32(f32, f32, f32);
 extern s32 approachAngle(s32, s32, s32);
 extern void func_8002D604(G *);
 extern void func_80069768(G *);
-extern G *D_800B3960;
+extern G *gCameraRig;
 extern H *D_800B3964;
 
 void func_8006958C(G *arg0) {
@@ -25,7 +25,7 @@ void func_8006958C(G *arg0) {
     if (temp_v0 == NULL) {
         debugPrintf("DropPoint not defined!!!!!");
     }
-    D_800B3960->fA8 = temp_v0;
+    gCameraRig->fA8 = temp_v0;
     D_800B3964->f74 = 1;
     temp_fs0 = 50.0f;
     arg0->f4 = approachF32(temp_v0->f4, arg0->f4, temp_fs0);

@@ -49,7 +49,7 @@ extern s32 gIntroSpriteAssets[2];
 extern Obj87 *gIntroActors[4];
 extern Obj87 *gIntroSprites[2];
 extern Cam87 *gCameraTarget;
-extern Obj87 *D_800B3960;
+extern Obj87 *gCameraRig;
 extern s32 D_800B5DD4;
 
 /* Sets up the intro scene: loads its assets, spawns the four intro actors and two sprites, and points the camera at the scene. */ void setupIntroScene(Obj87 *introSprite) {
@@ -140,10 +140,10 @@ extern s32 D_800B5DD4;
     camera->xC = -567.0f;
     camera->x0 = 1;
     camera->xF8 |= 0x40;
-    D_800B3960->x10 = 0;
-    func_80033BC0(D_800B3960);
+    gCameraRig->x10 = 0;
+    func_80033BC0(gCameraRig);
     D_800B5DD4 = 0;
-    D_800B3960->x9C = updateFollowCamera;
+    gCameraRig->x9C = updateFollowCamera;
     introSprite->x9C = func_8008756C;
     sprite0 = func_80087F10(0);
     gIntroSprites[0] = sprite0;

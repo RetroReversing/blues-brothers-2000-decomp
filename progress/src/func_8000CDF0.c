@@ -30,7 +30,7 @@ typedef struct {
     s32 unkE4;
 } Obj;
 
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern Obj *D_800B3964;
 extern Obj *gCameraTarget;
 
@@ -42,8 +42,8 @@ void func_8000CDF0(void) {
     D_801700D8 = 0x1F40;
     D_800B3964->unk9C = (void *)((s8 *)&func_80023078 + 8);
     D_800B3964->unk98 = (void *)((s8 *)&func_80023078 + 8);
-    D_800B3960->unk9C = updateCameraView;
-    D_800B3960->unk98 = (void *)((s8 *)&func_80023078 + 8);
+    gCameraRig->unk9C = updateCameraView;
+    gCameraRig->unk98 = (void *)((s8 *)&func_80023078 + 8);
     gCameraTarget->unk9C = (void *)((s8 *)&func_80023078 + 8);
     gCameraTarget->unk68 = -1;
     func_80024348();

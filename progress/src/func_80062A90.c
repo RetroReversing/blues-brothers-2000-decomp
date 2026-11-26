@@ -16,7 +16,7 @@ M2C_UNK func_8004BDCC();
 M2C_UNK func_8004C004();
 M2C_UNK func_8004DE9C();
 f32 sqrtf(f32);
-extern s32 D_800B3960;
+extern s32 gCameraRig;
 
 typedef struct Part {
     char pad0[4];
@@ -82,7 +82,7 @@ s32 func_80062A90(void) {
     func_8004C004(D_800B7FE0->m30, a);
     func_8004C004(D_800B7FE0->m70, b);
     func_8004BDCC(m, a, b);
-    func_8004DE9C(D_800B3960, m);
+    func_8004DE9C(gCameraRig, m);
     D_800B7FE0->f3F8 = D_800B7FE0->f3F8 + 1;
     if (D_800B7FE0->f3F8 >= 0x5E6) {
         func_8002A360(0x1D, 0);

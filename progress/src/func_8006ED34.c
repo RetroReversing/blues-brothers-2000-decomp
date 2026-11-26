@@ -4,7 +4,7 @@ s32 approachS32(s32, s32, s32);
 void func_8002A360(s32, s32);
 void func_80023C10(s32);
 void func_8006DDD4(void *);
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *D_800B3964;
 extern s32 D_800B82C0[];
 extern s32 D_800B82CC[];
@@ -23,7 +23,7 @@ void func_8006ED34(void *arg0) {
 
     var_s1 = 0;
     if (F(arg0, s32, 0x7C) == 0) {
-        F(D_800B3960, s32, 0x74) = 2;
+        F(gCameraRig, s32, 0x74) = 2;
         F(arg0, s32, 0x84) = 1;
         F(arg0, void *, 0x98) = func_8006CEF8;
         F(arg0, s32, 0x7C) += 1;
@@ -62,14 +62,14 @@ void func_8006ED34(void *arg0) {
     }
     {
         void *q = D_800B3964;
-        void *p = D_800B3960;
+        void *p = gCameraRig;
         F(q, s32, 0x84) = F(arg0, s32, 0x84);
-        F(D_800B3960, s32, 0x8C) = approachS32(D_800B82CC[F(arg0, s32, 0x84)], F(p, s32, 0x8C), 0x200);
+        F(gCameraRig, s32, 0x8C) = approachS32(D_800B82CC[F(arg0, s32, 0x84)], F(p, s32, 0x8C), 0x200);
     }
     if (F(arg0, s32, 0x8C) != 0) {
         F(arg0, s32, 0x90) = 0x1001;
         func_8006DDD4(arg0);
-        F(D_800B3960, void *, 0x9C) = func_8006FD58;
+        F(gCameraRig, void *, 0x9C) = func_8006FD58;
         F(arg0, s32, 0x64) = 0x64;
         F(arg0, void *, 0x9C) = func_800768E8;
         F(arg0, void *, 0xD8) = func_80023848;

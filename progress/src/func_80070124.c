@@ -28,7 +28,7 @@ typedef struct {
     s32 f20;
 } StateE;
 
-extern ObjE *D_800B3960;
+extern ObjE *gCameraRig;
 extern s32 D_800B4A84;
 extern s32 D_800B81E0[];
 extern s32 D_800B81F4;
@@ -50,16 +50,16 @@ void func_80070124(ObjE *arg0) {
         arg0->f90 = 0;
         if (D_800B4A84 == 2) {
             arg0->fBC = D_800BD100 + 1;
-            D_800B3960->f9C = func_8006FD58;
-            D_800B3960->f70 = 1;
+            gCameraRig->f9C = func_8006FD58;
+            gCameraRig->f70 = 1;
         } else {
             arg0->fBC = 0;
-            D_800B3960->f9C = func_8006FABC;
-            D_800B3960->f6C = 1;
+            gCameraRig->f9C = func_8006FABC;
+            gCameraRig->f6C = 1;
         }
         D_800B4A84 = 0;
-        D_800B3960->f7C = 0;
-        D_800B3960->f74 = 0;
+        gCameraRig->f7C = 0;
+        gCameraRig->f74 = 0;
     }
     if (arg0->f90 & 0x2000) {
         if (arg0->fBC != 0) {
@@ -72,11 +72,11 @@ void func_80070124(ObjE *arg0) {
         D_8013FB74->f78 = 1;
         arg0->f64 = 0x32;
         arg0->f90 = 0;
-        D_800B3960->f74 = 0x32;
+        gCameraRig->f74 = 0x32;
         return;
     }
     if (arg0->f90 & 0x1000) {
-        p = D_800B3960;
+        p = gCameraRig;
         p->f74 = 0;
         if (arg0->f90 & 0x10) {
             arg0->fBC = 0;
@@ -99,7 +99,7 @@ void func_80070124(ObjE *arg0) {
         }
         arg0->f64 = 0x32;
         arg0->f90 = 0;
-        D_800B3960->f7C = 0;
+        gCameraRig->f7C = 0;
         D_80107040[0] = 0;
     }
 }

@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 tickActorTimer();                                /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *D_800B3964;
 extern M2C_UNK func_800340B4;
 extern M2C_UNK func_80075888;
@@ -23,6 +23,6 @@ void func_8007563C(void *arg0) {
         M2C_FIELD(D_800B3964, s32 *, 0x8C) = 1;
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80075888;
         M2C_FIELD(arg0, s32 *, 0x64) = 0xBB8;
-        M2C_FIELD(D_800B3960, M2C_UNK **, 0x9C) = &func_800340B4;
+        M2C_FIELD(gCameraRig, M2C_UNK **, 0x9C) = &func_800340B4;
     }
 }

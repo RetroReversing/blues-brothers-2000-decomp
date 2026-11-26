@@ -8,7 +8,7 @@ void func_800340B4();
 void func_800393F4();
 typedef struct { s32 f0; s32 pad[4]; s32 f14; } S0E0;
 extern S0E0 D_800BD0E0;
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 D_800B4CE0;
 extern s32 D_800B4D2C;
 extern void *gCameraTarget;
@@ -28,8 +28,8 @@ s32 func_8003BF98(void) {
         return D_800BD0E0.f14;
     }
     func_8000C5B4();
-    if (F(D_800B3960, void *, 0x9C) == func_800340B4) {
-        F(D_800B3960, s32, 0xC0) = 0;
+    if (F(gCameraRig, void *, 0x9C) == func_800340B4) {
+        F(gCameraRig, s32, 0xC0) = 0;
     }
     D_800BD0E0.f14--;
     F(gCameraTarget, s32, 0x68) = 4;

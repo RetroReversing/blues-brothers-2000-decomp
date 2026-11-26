@@ -19,7 +19,7 @@ void func_80052B24(s32, void *, void *);
 void func_80034F50(void);
 extern Triple D_80000A40;
 extern s32 D_80000A4C;
-extern Actor *D_800B3960;
+extern Actor *gCameraRig;
 extern s32 *gCameraTarget;
 extern u8 D_800F4A00[];
 
@@ -41,11 +41,11 @@ s32 func_80018048(s32 *arg0) {
     } else {
         gCameraTarget[4] = 0x4000;
 
-D_800B3960->pos.x = v->pos.x;
-D_800B3960->pos.y = v->pos.y;
-D_800B3960->pos.z = v->pos.z;
-D_800B3960->update = func_80034F50;
-D_800B3960->xA8 = 0;
+gCameraRig->pos.x = v->pos.x;
+gCameraRig->pos.y = v->pos.y;
+gCameraRig->pos.z = v->pos.z;
+gCameraRig->update = func_80034F50;
+gCameraRig->xA8 = 0;
         func_80052B24(func_80023DBC(0xE27, v), &D_80000A4C, gCameraTarget);
         func_80017ECC(10, 1286.0f, 537.0f, 2028.0f, 0x5840, -0x1C00, 0);
         func_80017ECC(11, 1331.0f, -248.0f, 2715.0f, 0x7200, -0x1840, 0);

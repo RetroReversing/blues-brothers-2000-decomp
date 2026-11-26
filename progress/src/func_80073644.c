@@ -41,7 +41,7 @@ void func_800743F8(void);
 extern f64 D_80009138;
 extern f64 D_80009140;
 extern f32 D_80009148;
-extern Obj73644 *D_800B3960;
+extern Obj73644 *gCameraRig;
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
@@ -65,7 +65,7 @@ void func_80073644(Obj73644 *arg0) {
         D_800B3974 = 0;
         arg0->unk90 = 0;
         D_800B3970 = 0;
-        D_800B3960->unkC0 = 0;
+        gCameraRig->unkC0 = 0;
         arg0->unk6C = id + 470;
         id++;
         D_800B83B0 = id;
@@ -104,17 +104,17 @@ void func_80073644(Obj73644 *arg0) {
         syncActorPrevPos(gCameraTarget);
         func_8003CAD4(gCameraTarget, gCameraTarget->unk10);
         D_800B5DD4 = 0;
-        D_800B3960->y = D_800BD68C - 500;
-        D_800B3960->z = D_800BD280;
-        D_800B3960->unk9C = func_80073478;
+        gCameraRig->y = D_800BD68C - 500;
+        gCameraRig->z = D_800BD280;
+        gCameraRig->unk9C = func_80073478;
         return;
     }
     func_80052A30();
     if (arg0->unk7C == 3) {
         arg0->unk9C = func_80073B7C;
         gCameraTarget->unk9C = func_800393F4;
-        D_800B3960->unk9C = func_800340B4;
-        D_800B3960->unkC0 = 0;
+        gCameraRig->unk9C = func_800340B4;
+        gCameraRig->unkC0 = 0;
         D_800B5DD4 = 1;
         arg0->unk7C++;
     }

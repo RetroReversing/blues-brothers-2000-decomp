@@ -48,7 +48,7 @@ extern s32 D_8014AA88;
 extern s32 D_8014AA90;
 extern s32 D_8014AA9C;
 extern s32 D_800AE010;
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 D_800B5DD4;
 extern Obj *gCameraTarget;
 
@@ -90,8 +90,8 @@ void func_80052EC0(Obj *o) {
         } else {
             gCameraTarget->x9C = gCameraTarget->xD8;
         }
-        D_800B3960->xC0 = 0;
-        D_800B3960->x9C = D_800B3960->xD8;
+        gCameraRig->xC0 = 0;
+        gCameraRig->x9C = gCameraRig->xD8;
         func_800232B4(1, 0, 0, 0)->x9C = func_80054140;
         D_800B5DD4 = 1;
         D_800AE010 = D_8014AA90;

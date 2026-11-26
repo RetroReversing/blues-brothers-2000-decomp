@@ -31,7 +31,7 @@ s32 atan2S16(s32, s32);
 void func_8002A360(s32, void *);
 s16 sins(u16);
 void func_8002AFC0(void *);
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern Obj *gCameraTarget;
 extern s32 D_800B2B60[];
 
@@ -47,14 +47,14 @@ void func_8002AFFC(Snd *o)
 
     o->unk68 = -1;
     o->cb = (void *)func_8002AFC0;
-    ang = atan2S16(D_800B3960->x - o->x, D_800B3960->z - o->z);
+    ang = atan2S16(gCameraRig->x - o->x, gCameraRig->z - o->z);
     dx = gCameraTarget->x - o->x;
     dy = gCameraTarget->y - o->y;
     dz = gCameraTarget->z - o->z;
     dist = isqrtS32(dx * dx + dy * dy + dz * dz);
     if (dist < o->range) {
         o->active = 1;
-        pan = 0x80 - (sins(D_800B3960->unk12 - ang) >> 8);
+        pan = 0x80 - (sins(gCameraRig->unk12 - ang) >> 8);
         if (pan < 0) {
             pan = 0;
         }

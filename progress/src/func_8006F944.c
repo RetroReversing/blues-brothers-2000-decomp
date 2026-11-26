@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 s32 func_8006DAA0(s32);                             /* extern */
 void *func_8006F828();                        /* extern */
 void *func_8006F88C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *D_800B3964;
 extern M2C_UNK func_80032E40;
 extern M2C_UNK func_8006EF70;
@@ -32,7 +32,7 @@ void func_8006F944(void) {
     
 
     if (M2C_FIELD(D_800B3964, s32 *, 0xBC) == 0) {
-        if (M2C_FIELD(D_800B3960, s32 *, 0x74) != 0) {
+        if (M2C_FIELD(gCameraRig, s32 *, 0x74) != 0) {
             M2C_FIELD(func_8006F828(), M2C_UNK **, 0x98) = &func_8006F300;
             if (func_8006DAA0(M2C_FIELD(D_800B3964, s32 *, 0xBC)) != 0) {
                 M2C_FIELD(func_8006F88C(0x87, 0, -0x78, 0x19C, 0x20), M2C_UNK **, 0x98) = &func_8006EF70;
@@ -48,7 +48,7 @@ void func_8006F944(void) {
             goto block_8;
         }
     } else {
-        if (M2C_FIELD(D_800B3960, s32 *, 0x74) != 0) {
+        if (M2C_FIELD(gCameraRig, s32 *, 0x74) != 0) {
             temp_v0 = func_8006F828();
             M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_8006F73C;
             M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_80032E40;

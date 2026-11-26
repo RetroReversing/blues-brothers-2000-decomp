@@ -15,7 +15,7 @@ extern void func_80069858(void);
 extern void func_80069998(void);
 extern void func_80069934(void);
 extern void func_80064808(void);
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern Obj *D_800B3964;
 
 void func_80069768(Obj *o) {
@@ -34,8 +34,8 @@ void func_80069768(Obj *o) {
         break;
     default:
         o->xA0(o);
-        D_800B3960->xA8 = 0;
-        D_800B3960->x9C = func_80064808;
+        gCameraRig->xA8 = 0;
+        gCameraRig->x9C = func_80064808;
         return;
     }
     D_800B3964->x74 = 0;

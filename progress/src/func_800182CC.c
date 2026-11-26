@@ -13,15 +13,15 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80033DC4(void *);                      /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *gCameraTarget;
 extern M2C_UNK func_800340B4;
 extern M2C_UNK func_800393F4;
 
 s32 func_800182CC(void) {
     if ((M2C_FIELD(gCameraTarget, s32 *, 0x9C) == &func_800393F4) && (M2C_FIELD(gCameraTarget, f32 *, 8) < -997.0f) && (M2C_FIELD(gCameraTarget, f32 *, 0xC) < 3100.0f)) {
-        func_80033DC4(D_800B3960);
-        M2C_FIELD(D_800B3960, M2C_UNK **, 0x9C) = &func_800340B4;
+        func_80033DC4(gCameraRig);
+        M2C_FIELD(gCameraRig, M2C_UNK **, 0x9C) = &func_800340B4;
         return 1;
     }
     return 0;

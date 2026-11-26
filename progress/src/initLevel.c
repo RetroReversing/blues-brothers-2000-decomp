@@ -104,7 +104,7 @@ extern char D_80000484[];
 extern World_C874 D_800AA134[];
 extern s32 D_800AB408;
 extern s32 D_800AB9C8;
-extern s32 D_800B3960;
+extern s32 gCameraRig;
 extern Actor_C874 *D_800B3964;
 extern s32 D_800B396C;
 extern s32 D_800B3970;
@@ -240,7 +240,7 @@ void func_800414D0(void);
     }
     D_800B5DD4 = 1;
     gFrameScale = 0;
-    func_80034E40(D_800B3960);
+    func_80034E40(gCameraRig);
     D_8013FFBC = 0;
     D_800B3964->unkC0 = 0;
     D_800B3964->unk9C = (void *)level->unk28;

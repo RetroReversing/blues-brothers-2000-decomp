@@ -19,7 +19,7 @@ void func_80052A5C(s32);
 s32 func_80052A68(s32, char *);
 void func_80052B24(s32, char *, void *);
 void func_800723EC(void);
-extern Obj800724CC *D_800B3960;
+extern Obj800724CC *gCameraRig;
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
@@ -63,8 +63,8 @@ void func_800724CC(Obj800724CC *arg0) {
     if (1000.0f < ((f32 *)gCameraTarget)[2]) {
         if (arg0->f6C == 0) {
             arg0->f6C = 1;
-            D_800B3960->f6C = 2;
-            func_80034F1C(D_800B3960);
+            gCameraRig->f6C = 2;
+            func_80034F1C(gCameraRig);
         }
     } else {
         arg0->f6C = 0;

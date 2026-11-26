@@ -9,7 +9,7 @@ void func_8004BB18(f32 mf[4][4], f32 r, f32 p, f32 h);
 void func_80022EDC(Blk40 *out, s32 *rot, s32 n, f32 *v);
 extern f32 D_80007DF4;
 extern f64 D_80007DF8;
-extern f32 *D_800B3960;
+extern f32 *gCameraRig;
 extern char D_800CD148[];
 
 s32 func_8004CEF0(s32 arg0, Blk40 *arg1) {
@@ -22,9 +22,9 @@ s32 func_8004CEF0(s32 arg0, Blk40 *arg1) {
     f32 lim;
 
     func_8004C78C(arg0, &a, &b, &c, &p, &q, &r, &x, &y, &z);
-    d[0] = x - D_800B3960[1];
-    d[1] = y - D_800B3960[2];
-    d[2] = z - D_800B3960[3];
+    d[0] = x - gCameraRig[1];
+    d[1] = y - gCameraRig[2];
+    d[2] = z - gCameraRig[3];
     mtxTransformVec3(v, D_800CD148, d);
     lim = 8000.0f;
     if (lim < func_8002DD60(v[0])) {

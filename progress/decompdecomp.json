@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699392.735739,
- "revision": 5553,
+ "saved_at": 1795699403.086467,
+ "revision": 5555,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14617,8 +14617,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "329168:2147809744": {
    "vram": 2147809744,
@@ -15199,7 +15198,7 @@
   },
   "558952:2148039528": {
    "vram": 2148039528,
-   "function": "func_80087B68",
+   "function": "updateCharacterSelect",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17060,8 +17059,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   }
  },
  "instructions": "",
@@ -26498,10 +26496,10 @@
    "matched_by": "manual-83d32b880ea94c1c",
    "readable": false
   },
-  "func_80087B68": {
+  "updateCharacterSelect": {
    "vram": 2148039528,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_80087F10": {
    "vram": 2148040464,
@@ -29538,7 +29536,7 @@
   "setupIntroScene": "local_source_158913792199",
   "func_8008756C": "local_source_158913791636",
   "func_800877C8": "local_source_158913791639",
-  "func_80087B68": "local_source_158913791640",
+  "updateCharacterSelect": "local_source_158913791640",
   "func_80087FE4": "local_source_158913791642",
   "func_80088658": "local_source_158913791645",
   "func_800886E8": "local_source_158913791646",
@@ -39996,7 +39994,7 @@
    "status": "open"
   },
   {
-   "name": "func_80087B68",
+   "name": "updateCharacterSelect",
    "vram": 2148039528,
    "size": 936,
    "status": "open"
@@ -43790,6 +43788,12 @@
    "kind": "func"
   },
   {
+   "name": "updateCharacterSelect",
+   "address": 2148039528,
+   "size": 936,
+   "kind": "func"
+  },
+  {
    "name": "loadSlotAssetSet",
    "address": 2148040956,
    "size": 1372,
@@ -45488,6 +45492,12 @@
    "kind": "data"
   },
   {
+   "name": "gSelectPositions",
+   "address": 2148244320,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "gScreenWidth",
    "address": 2148244596,
    "size": 4,
@@ -46420,6 +46430,16 @@
    "source": "match"
   },
   {
+   "address": 2147522356,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2147522388,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
    "address": 2147522516,
    "type": "char[]",
    "source": "match"
@@ -46680,6 +46700,11 @@
    "source": "match"
   },
   {
+   "address": 2148219232,
+   "type": "Actor *",
+   "source": "match"
+  },
+  {
    "address": 2148223624,
    "type": "s32",
    "source": "match"
@@ -46697,6 +46722,11 @@
   {
    "address": 2148241408,
    "type": "Pair[]",
+   "source": "match"
+  },
+  {
+   "address": 2148244320,
+   "type": "Vec3[]",
    "source": "match"
   },
   {
@@ -46721,12 +46751,12 @@
   },
   {
    "address": 2148245196,
-   "type": "u8[]",
+   "type": "s32",
    "source": "match"
   },
   {
    "address": 2148257900,
-   "type": "Cam87 *",
+   "type": "Actor *",
    "source": "match"
   },
   {
@@ -46871,7 +46901,7 @@
   },
   {
    "address": 2148997760,
-   "type": "Obj87 *[4]",
+   "type": "Obj87B68 *[]",
    "source": "match"
   }
  ],

@@ -32,7 +32,7 @@ Obj *func_800232B4(s32, s32, s32, s32);
 void func_8002D4E0(Obj *, s32);
 void syncActorPrevPos(Obj *);
 extern f32 D_80009598;
-extern char D_800B3960[];
+extern char gCameraRig[];
 extern char gCameraTarget[];
 extern s32 D_801700F0[];
 void func_8002FBC0(void);
@@ -65,7 +65,7 @@ Obj *func_8007C310(void) {
     obj->f7C = one;
     obj->f80 = 0;
     obj->f10 = pl->f10;
-    g = *(Obj **)D_800B3960;
+    g = *(Obj **)gCameraRig;
     obj->f14 = g->f14 + 0xC00;
     obj->f18 = 0x8000;
     obj->f9C = func_8007C1C8;

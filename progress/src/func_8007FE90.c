@@ -35,7 +35,7 @@ void func_8007FE5C(Obj *);
 void debugPrintf(char *);
 float sqrtf(float);
 extern char D_80009700[];
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern Obj *D_800B3964;
 extern s32 D_80107040;
 void func_8001F26C(void);
@@ -47,7 +47,7 @@ void func_8007FE90(Obj *arg0) {
 
     if (arg0->unk7C == 0) {
         arg0->unk98 = func_8001F26C;
-        src = D_800B3960;
+        src = gCameraRig;
         arg0->x = src->x;
         arg0->y = src->y;
         arg0->z = src->z;

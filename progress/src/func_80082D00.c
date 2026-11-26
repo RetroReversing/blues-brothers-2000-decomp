@@ -23,7 +23,7 @@ typedef struct Obj {
     f32 xB4;
 } Obj;
 
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 D_800B87E4;
 extern s32 D_800B87EC;
 extern s32 gSplinePointCount[];
@@ -60,11 +60,11 @@ void func_80082D00(Obj *arg0) {
     actorSetAnim(D_801719A8, 0x18A, 0x100);
     actorSetAnim(D_801719AC, 0x19A, 0x100);
     func_80033BC0();
-    D_800B3960->fn9C = func_800836E4;
-    D_800B3960->x74 = 0;
-    D_800B3960->x70 = 1;
-    D_800B3960->xB4 = gSplinePointCount[1] / 2;
-    D_800B3960->xB0 = gSplinePointCount[D_800B3960->x70] / 2;
-    D_800B3960->xAC = gSplinePointCount[D_800B3960->x70] / 2;
-    func_80026C04(gComboSlots, 0, 0x50, D_800B3960);
+    gCameraRig->fn9C = func_800836E4;
+    gCameraRig->x74 = 0;
+    gCameraRig->x70 = 1;
+    gCameraRig->xB4 = gSplinePointCount[1] / 2;
+    gCameraRig->xB0 = gSplinePointCount[gCameraRig->x70] / 2;
+    gCameraRig->xAC = gSplinePointCount[gCameraRig->x70] / 2;
+    func_80026C04(gComboSlots, 0, 0x50, gCameraRig);
 }

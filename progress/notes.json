@@ -11191,6 +11191,15 @@
   "score_after": 20501
  },
  {
+  "function": "setupIntroScene",
+  "text": "Not matched, 9 non-relocation rows left (profile -mfp32 needed: f2 not f1). The submitted attempt (score 4385 under the default fp64 profile; most of that is 150-per-row relocation noise, the real diff is 9 rows) is the saved best; structure: D_80171994=1; t=func_80023874(6,0); if(t) t->x68=-1; func_80023A74 x3, func_80023A98 x11 (ids 0xB3.. 0x1BC), D_80171A68[0..1]=func_80023D58(0x223/0x224); FOUR objects each with its OWN local (o1..o4; one shared local made obj the 5th-priority pseudo and gave wrong s regs): o=func_80042F00(a0,x,0x125,-0x237) for (1,-0x12C),(0x19,-0x64),(0x30,0x64),(0x2F,0x12C); D_80171A80[i]=o; func_800433A8(o,{1,0x80,0xBA,0xB3},0x100); o->x10=0x8000; o->x9C=func_800880B4; o->x70=i; func_8002D620(o); o->x0=0x101 (for the LAST object x0 is stored BEFORE func_8002D620, matching the delay slot); o->xE8=func_80047898(); x84/x88=(0x1B5,0x1B6),(0x1B7,0x1B8),(0x1BB,0x1BC),(0x1B9,0x1BA). Then cam=D_800BD06C: x9C=func_80023080,x68=-1,x4=0,x8=*(f32*)0x80009BD0 (293),xC=*(f32*)0x80009BD4 (-567),x0=1,xF8|=0x40; D_800B3960->x10=0; func_80033BC0(D_800B3960); D_800B5DD4=0; D_800B3960->x9C=func_800349E4; arg0->x9C=func_8008756C; p=func_80087F10(0); D_80171A78[0]=p; q=func_80087F10(1); D_80171A78[1]=q; p->xA8=q; q->xA8=p. Remaining diffs: (1) target keeps the %hi of D_800B3960 in s0 (lui s0,0x800B after the last use of the 4th object) so the delay slot of the jal func_80047898 is a nop; mine puts it in s1 and fills the slot; (2) target loads cam->xF8 into v0 right after 'sw v0,0x68' (mine loads it early into a1); (3) the final func_80087F10(1) result is copied move v1,v0 in the target and kept in v0 in mine. Tried: local for D_800B3960, reordering the cam stores, one-statement stores for the array, separate p/q: no change. Saved source: /tmp/dd-ap24/w/best_800871C0.c (this session only); app attempt 158913859289 holds it.",
+  "by": "manual-461c95cc9a664e58",
+  "created_at": 1795645365.304565,
+  "score_before": 4385,
+  "score_after": 4385,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
+ },
+ {
   "function": "updateLogicBomb",
   "text": "Not matched, not attempted beyond reading (346 insns with a 5-entry jump table, FPU, loops; no compiling draft exists: m2c fails on the branch syntax, so a full hand write is needed). Read-through only, no judge runs: profile likely -mfp32 (uses f20/f22/f24, never odd regs besides f1? check). Structure: obj in s3 (a0); v0=func_8004303C() -> a0; switch(obj->x90) via table at 0x80008440 (lui 0x8001, -0x7BC0), cases 0..4: case0: func_800433A8(obj,0x77,0x100); obj->x84=0;x80=0;xC0=0;x90=1;x8C=0; case1 (sets x90=2,x8C=0, D_8014AAC0 = s2 [s2 loaded in a loop]); case2 computes dx,dz from cam (D_800BD06C) with trunc.w.s, calls func_80025100(-dx,-dz), func_8002D260 -> obj->x88, obj->x10=func_8002D204(obj->x10,..,0x1000), then loops over D_800B... entries (stride 0x108, entries starting at D_800B-0x4644, tag 0x1008) with squared-distance test via func_80024B0C < 0xC8 -> func_8002A360(0xC,0x80)/(8,0x15), < 0x190 flags |=2; case3: x8C sub-state machine (0..2) calling func_80043328/func_800433A8 with 0x7E/0x77/0x7B and func_8002A360(0xC,0x80),(8,0x3A), sets D_8014AAC0->xC0 |= 1 and obj->x84=1; case4: x5C -= 0x18 until <0 then x90=4... else obj->x A0 fn pointer call obj->xA0(obj). Common tail (label func_80058504): table at 0x800F4A00 stride 12 indexed by obj->xB8, adds an f32 and a constant 0x80009454?? (-0x7BAC) compares with cam->x8; uses func_8002DD60 on trunc'd distances, sqrt (with the c.eq.s NaN check calling func_80094350), pushes cam->x4/xC away from obj by (limit - dist)*d/dist (a camera push-out). Full source needs hand decoding from get_assembly (348 lines); rows were not judged.",
   "by": "manual-461c95cc9a664e58",
@@ -11309,6 +11318,15 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
  },
  {
+  "function": "setupIntroScene",
+  "text": "op92: 180 with the target's data relocations restored (the app still shows 4385/4655: this function lost its relocations in the automatic boundary fix trim_start 0x800871B4; decompdecomp PR #3608, merged, restores them at the app's next check). Profile needed: -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32. Steps from ap24's saved best (1240 relocs restored, -mfp32): 293.0f/-567.0f literals instead of *(f32 *)0x80009BD0 casts (640; SN li.s pool words); the last func_80087F10(1) result written into the reused local t (the func_80023874 result) instead of a fresh q, which makes it a multi-set pseudo and gives the target's move $v1,$v0 (525); cam->x68 = -1 written as a raw word store *(s32 *)((u8 *)c + 0x68) = -1, which keeps the xF8 load after it and frees $s0 for the D_800B3960 high part (180). Remaining 4 reordered rows: the target loads D_800B3960 (lw $a0) before the x9C store with lui $s0 earlier; with the raw x68 store the load cannot pass it (scalar global vs scalar store), with a struct x68 store both loads hoist and the xF8 value takes $a1 (525). Tried without effect (180 or worse): g = D_800B3960 local at every position, w = c->xF8 local at every position (126-variant grid), raw/struct o4->x84/x88, volatile x68, raw xF8 load, comma/pointer forms, t reused as cam. Rows:\nmarkers: r=regalloc s=stack-offset i=operand |=different insn <=missing (target only) >=extra (yours only) o=reordered\n   TARGET                              | YOURS\n   sw $v0, 0x88($s0)                   | sw $v0, 0x88($s0)\n   lui $v0, %hi(func_80023080)         | lui $v0, %hi(func_80023080)\n o lui $s0, %hi(D_800B3960)            | addiu $v0, $v0, %lo(func_80023080)\n   lw $v1, %lo(D_800BD06C)($v1)        | lw $v1, %lo(D_800BD06C)($v1)\n   lui $at, %hi(D_80009BD0)            | lui $at, %hi(D_80009BD0)\n   lui $at, %hi(D_80009BD4)            | lui $at, %hi(D_80009BD4)\n   lwc1 $f2, %lo(D_80009BD4)($at)      | lwc1 $f2, %lo(D_80009BD4)($at)\n o lw $a0, %lo(D_800B3960)($s0)        | lui $s0, %hi(D_800B3960)\n o addiu $v0, $v0, %lo(func_80023080)  | \n   sw $v0, 0x9c($v1)                   | sw $v0, 0x9c($v1)\n   addiu $v0, $zero, -1                | addiu $v0, $zero, -1\n   sw $v0, 0x68($v1)                   | sw $v0, 0x68($v1)\n o                                     | lw $a0, %lo(D_800B3960)($s0)\n   lw $v0, 0xf8($v1)                   | lw $v0, 0xf8($v1)\n   sw $zero, 4($v1)                    | sw $zero, 4($v1)\n\nSource:\ntypedef struct Obj87 {\n    s32 x0;\n    u8 pad4[0xC];\n    s32 x10;\n    u8 pad14[0x54];\n    s32 x68;\n    u8 pad6C[4];\n    s32 x70;\n    u8 pad74[0x10];\n    s32 x84;\n    s32 x88;\n    u8 pad8C[0x10];\n    void *x9C;\n    u8 padA0[8];\n    struct Obj87 *xA8;\n    u8 padAC[0x3C];\n    s32 xE8;\n    u8 padEC[0xC];\n    s32 xF8;\n} Obj87;\ntypedef struct Cam87 {\n    s32 x0;\n    s32 x4;\n    f32 x8;\n    f32 xC;\n    u8 pad10[0x58];\n    s32 x68;\n    u8 pad6C[0x30];\n    void *x9C;\n    u8 padA0[0x58];\n    s32 xF8;\n} Cam87;\nObj87 *func_80023874(s32, s32);\nvoid func_80023A74(s32, s32);\nvoid func_80023A98(s32, s32, s32);\ns32 func_80023D58(s32);\nObj87 *func_80042F00(s32, s32, s32, s32);\nvoid func_800433A8(Obj87 *, s32, s32);\nvoid func_8002D620(Obj87 *);\ns32 func_80047898(void);\nvoid func_80033BC0(Obj87 *);\nObj87 *func_80087F10(s32);\nvoid func_800880B4(void);\nvoid func_80023080(void);\nvoid func_800349E4(void);\nvoid func_8008756C(void);\nextern s32 D_80171994;\nextern s32 D_80171A68[2];\nextern Obj87 *D_80171A80[4];\nextern Obj87 *D_80171A78[2];\nextern Cam87 *D_800BD06C;\nextern Obj87 *D_800B3960;\nextern s32 D_800B5DD4;\n\nvoid func_800871C0(Obj87 *arg0) {\n    Obj87 *p;\n    Obj87 *o1;\n    Obj87 *o2;\n    Obj87 *o3;\n    Obj87 *o4;\n    Obj87 *q;\n    Obj87 *t;\n    Cam87 *c;\n\n    D_80171994 = 1;\n    t = func_80023874(6, 0);\n    if (t != NULL) {\n        t->x68 = -1;\n    }\n    func_80023A74(0x30, 0x2B6);\n    func_80023A74(0x19, 0x112);\n    func_80023A74(0x2F, 0x2A8);\n    func_80023A98(0xB3, 0x2AF, 0);\n    func_80023A98(0xBA, 0x2BD, 0);\n    func_80023A98(0x80, 0x10D, 0);\n    func_8",
+  "by": "manual-42d41175a42143a3",
+  "created_at": 1795646604.2243578,
+  "score_before": 4385,
+  "score_after": 4385,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
+ },
+ {
   "function": "func_80070750",
   "text": "op93 (no score change, best stays 4960): the two extra rows are loop.c move_movables decisions, read from passes.py: the loop has 55 real insns at loop time; threshold starts at 61 and drops 3 per moved register: insn 61 (%hi D_8016AEC8, life 1) moved at 61, the switch constants 2 (insn 220) at 58 and 1 (226) at 55 also pass threshold*savings*life >= 55; 3 (232) fails at 52. The target moves the %hi (it uses s3 in the loop) but not 2 and 1, so its loop had 59-61 real insns at loop time (4-6 more than ours) with the same final code. Every spelling tried stays at 55 or fewer and scores 4960: s16/s32 dispatch locals, u16*/void*/s32* message pointers with casts, dead osRecvMesg result, D_800B833C in a local, x = x +/- 1 spellings, nested if (!= 10) / && forms (53), if-chain inner dispatch (54), one switch with case 10 (51, 6526), default: arms, dead self-incrementing counters (deleted before loop). A goto loop stops all hoisting (7447: the %hi pairs must be hoisted). Profiles (compiler_experiments): -mfp32 4960, -O1 8400, sn-n64-272-0004/0006 5760, 272-0001 11135, -fno-strength-reduce 4960. Next idea: find source whose expansion leaves 4-6 insns that cse1 keeps but combine/cse2/flow later remove (e.g. hi insns of D_800B8340 that cse1 cannot share because the load and the store sit in different extended blocks, or narrowing conversions combine folds).",
   "by": "manual-b48230ac293245d0",
@@ -11323,6 +11341,15 @@
   "created_at": 1795646835.0627358,
   "score_before": 4960,
   "score_after": 4960
+ },
+ {
+  "function": "setupIntroScene",
+  "text": "180 with relocations restored (PR #3608/#3610) under -mfp32; source, steps and remaining rows in my note.",
+  "by": "manual-42d41175a42143a3",
+  "created_at": 1795647033.972407,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
  },
  {
   "function": "updateLogicBomb",
@@ -11476,6 +11503,15 @@
   "score_before": 225,
   "score_after": 220,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:ca31cc4864a8d6edb6faa062f38b88899a2b4d0afd2576c9a5e45243f23ca1c8"
+ },
+ {
+  "function": "setupIntroScene",
+  "text": "op97 (library 0.6.48): 4385 -> 4025 recorded (prove_chain --families all --children 40: stray_global_call_argument). The target still has no data relocations (rows read `lui $v0, 0x8017 | lui $v0, %hi(D_80171994)`): the boundary fix trim_start 0x800871B4 dropped them and decompdecomp PR #3608 restores them only when the running app re-checks the function (the user's app has not yet). Until then every address is a 150-point row and op92's 180 source (note above; -mfp32, literals 293.0f/-567.0f, last func_80087F10(1) result into the reused t, raw x68 store) cannot be scored or submitted. Blocked on the app, not on C: re-check this function's relocations in the app (Review function boundaries / reimport), then resume from op92's steps.",
+  "by": "manual-c49166d3e00442aa",
+  "created_at": 1795652586.425332,
+  "score_before": 4385,
+  "score_after": 4025,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
  },
  {
   "function": "func_80070750",
@@ -12060,6 +12096,14 @@
   "score_after": 9846
  },
  {
+  "function": "setupIntroScene",
+  "text": "[Released without compiling it once; notes not checked by a compile.] claude-0e891a: still blocked on the app at 07:50: the target still has no data relocations (rows read lui $v0, 0x8017 vs %hi(D_80171994)), so op92's 180 source cannot be scored. Needs the app to re-check this function's relocations (PR #3608) first.",
+  "by": "manual-a57f45738d2c42cb",
+  "created_at": 1795679235.574836,
+  "score_before": 4025,
+  "score_after": 4025
+ },
+ {
   "function": "func_80062A90",
   "text": "claude-0e891a: matched (0) under sn-n64-281 -mfp32 applied from an exact trial. prove_chain --fp-flip --families all --children 300 --combine 8 found it as one combined step: identical_statement_comove (b[2] -= a[2] after the x and y differences) + local_web_split (len_1/len_2, one per normalised vector). Neither alone improved 334.",
   "by": "manual-a57f45738d2c42cb",
@@ -12620,49 +12664,5 @@
   "created_at": 1795699301.6797109,
   "score_before": 0,
   "score_after": 0
- },
- {
-  "function": "setupIntroScene",
-  "text": "Not matched, 9 non-relocation rows left (profile -mfp32 needed: f2 not f1). The submitted attempt (score 4385 under the default fp64 profile; most of that is 150-per-row relocation noise, the real diff is 9 rows) is the saved best; structure: D_80171994=1; t=func_80023874(6,0); if(t) t->x68=-1; func_80023A74 x3, func_80023A98 x11 (ids 0xB3.. 0x1BC), D_80171A68[0..1]=func_80023D58(0x223/0x224); FOUR objects each with its OWN local (o1..o4; one shared local made obj the 5th-priority pseudo and gave wrong s regs): o=func_80042F00(a0,x,0x125,-0x237) for (1,-0x12C),(0x19,-0x64),(0x30,0x64),(0x2F,0x12C); D_80171A80[i]=o; func_800433A8(o,{1,0x80,0xBA,0xB3},0x100); o->x10=0x8000; o->x9C=func_800880B4; o->x70=i; func_8002D620(o); o->x0=0x101 (for the LAST object x0 is stored BEFORE func_8002D620, matching the delay slot); o->xE8=func_80047898(); x84/x88=(0x1B5,0x1B6),(0x1B7,0x1B8),(0x1BB,0x1BC),(0x1B9,0x1BA). Then cam=D_800BD06C: x9C=func_80023080,x68=-1,x4=0,x8=*(f32*)0x80009BD0 (293),xC=*(f32*)0x80009BD4 (-567),x0=1,xF8|=0x40; D_800B3960->x10=0; func_80033BC0(D_800B3960); D_800B5DD4=0; D_800B3960->x9C=func_800349E4; arg0->x9C=func_8008756C; p=func_80087F10(0); D_80171A78[0]=p; q=func_80087F10(1); D_80171A78[1]=q; p->xA8=q; q->xA8=p. Remaining diffs: (1) target keeps the %hi of D_800B3960 in s0 (lui s0,0x800B after the last use of the 4th object) so the delay slot of the jal func_80047898 is a nop; mine puts it in s1 and fills the slot; (2) target loads cam->xF8 into v0 right after 'sw v0,0x68' (mine loads it early into a1); (3) the final func_80087F10(1) result is copied move v1,v0 in the target and kept in v0 in mine. Tried: local for D_800B3960, reordering the cam stores, one-statement stores for the array, separate p/q: no change. Saved source: /tmp/dd-ap24/w/best_800871C0.c (this session only); app attempt 158913859289 holds it.",
-  "by": "manual-461c95cc9a664e58",
-  "created_at": 1795645365.304565,
-  "score_before": 4385,
-  "score_after": 4385,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
- },
- {
-  "function": "setupIntroScene",
-  "text": "op92: 180 with the target's data relocations restored (the app still shows 4385/4655: this function lost its relocations in the automatic boundary fix trim_start 0x800871B4; decompdecomp PR #3608, merged, restores them at the app's next check). Profile needed: -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32. Steps from ap24's saved best (1240 relocs restored, -mfp32): 293.0f/-567.0f literals instead of *(f32 *)0x80009BD0 casts (640; SN li.s pool words); the last func_80087F10(1) result written into the reused local t (the func_80023874 result) instead of a fresh q, which makes it a multi-set pseudo and gives the target's move $v1,$v0 (525); cam->x68 = -1 written as a raw word store *(s32 *)((u8 *)c + 0x68) = -1, which keeps the xF8 load after it and frees $s0 for the D_800B3960 high part (180). Remaining 4 reordered rows: the target loads D_800B3960 (lw $a0) before the x9C store with lui $s0 earlier; with the raw x68 store the load cannot pass it (scalar global vs scalar store), with a struct x68 store both loads hoist and the xF8 value takes $a1 (525). Tried without effect (180 or worse): g = D_800B3960 local at every position, w = c->xF8 local at every position (126-variant grid), raw/struct o4->x84/x88, volatile x68, raw xF8 load, comma/pointer forms, t reused as cam. Rows:\nmarkers: r=regalloc s=stack-offset i=operand |=different insn <=missing (target only) >=extra (yours only) o=reordered\n   TARGET                              | YOURS\n   sw $v0, 0x88($s0)                   | sw $v0, 0x88($s0)\n   lui $v0, %hi(func_80023080)         | lui $v0, %hi(func_80023080)\n o lui $s0, %hi(D_800B3960)            | addiu $v0, $v0, %lo(func_80023080)\n   lw $v1, %lo(D_800BD06C)($v1)        | lw $v1, %lo(D_800BD06C)($v1)\n   lui $at, %hi(D_80009BD0)            | lui $at, %hi(D_80009BD0)\n   lui $at, %hi(D_80009BD4)            | lui $at, %hi(D_80009BD4)\n   lwc1 $f2, %lo(D_80009BD4)($at)      | lwc1 $f2, %lo(D_80009BD4)($at)\n o lw $a0, %lo(D_800B3960)($s0)        | lui $s0, %hi(D_800B3960)\n o addiu $v0, $v0, %lo(func_80023080)  | \n   sw $v0, 0x9c($v1)                   | sw $v0, 0x9c($v1)\n   addiu $v0, $zero, -1                | addiu $v0, $zero, -1\n   sw $v0, 0x68($v1)                   | sw $v0, 0x68($v1)\n o                                     | lw $a0, %lo(D_800B3960)($s0)\n   lw $v0, 0xf8($v1)                   | lw $v0, 0xf8($v1)\n   sw $zero, 4($v1)                    | sw $zero, 4($v1)\n\nSource:\ntypedef struct Obj87 {\n    s32 x0;\n    u8 pad4[0xC];\n    s32 x10;\n    u8 pad14[0x54];\n    s32 x68;\n    u8 pad6C[4];\n    s32 x70;\n    u8 pad74[0x10];\n    s32 x84;\n    s32 x88;\n    u8 pad8C[0x10];\n    void *x9C;\n    u8 padA0[8];\n    struct Obj87 *xA8;\n    u8 padAC[0x3C];\n    s32 xE8;\n    u8 padEC[0xC];\n    s32 xF8;\n} Obj87;\ntypedef struct Cam87 {\n    s32 x0;\n    s32 x4;\n    f32 x8;\n    f32 xC;\n    u8 pad10[0x58];\n    s32 x68;\n    u8 pad6C[0x30];\n    void *x9C;\n    u8 padA0[0x58];\n    s32 xF8;\n} Cam87;\nObj87 *func_80023874(s32, s32);\nvoid func_80023A74(s32, s32);\nvoid func_80023A98(s32, s32, s32);\ns32 func_80023D58(s32);\nObj87 *func_80042F00(s32, s32, s32, s32);\nvoid func_800433A8(Obj87 *, s32, s32);\nvoid func_8002D620(Obj87 *);\ns32 func_80047898(void);\nvoid func_80033BC0(Obj87 *);\nObj87 *func_80087F10(s32);\nvoid func_800880B4(void);\nvoid func_80023080(void);\nvoid func_800349E4(void);\nvoid func_8008756C(void);\nextern s32 D_80171994;\nextern s32 D_80171A68[2];\nextern Obj87 *D_80171A80[4];\nextern Obj87 *D_80171A78[2];\nextern Cam87 *D_800BD06C;\nextern Obj87 *D_800B3960;\nextern s32 D_800B5DD4;\n\nvoid func_800871C0(Obj87 *arg0) {\n    Obj87 *p;\n    Obj87 *o1;\n    Obj87 *o2;\n    Obj87 *o3;\n    Obj87 *o4;\n    Obj87 *q;\n    Obj87 *t;\n    Cam87 *c;\n\n    D_80171994 = 1;\n    t = func_80023874(6, 0);\n    if (t != NULL) {\n        t->x68 = -1;\n    }\n    func_80023A74(0x30, 0x2B6);\n    func_80023A74(0x19, 0x112);\n    func_80023A74(0x2F, 0x2A8);\n    func_80023A98(0xB3, 0x2AF, 0);\n    func_80023A98(0xBA, 0x2BD, 0);\n    func_80023A98(0x80, 0x10D, 0);\n    func_8",
-  "by": "manual-42d41175a42143a3",
-  "created_at": 1795646604.2243578,
-  "score_before": 4385,
-  "score_after": 4385,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
- },
- {
-  "function": "setupIntroScene",
-  "text": "180 with relocations restored (PR #3608/#3610) under -mfp32; source, steps and remaining rows in my note.",
-  "by": "manual-42d41175a42143a3",
-  "created_at": 1795647033.972407,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
- },
- {
-  "function": "setupIntroScene",
-  "text": "op97 (library 0.6.48): 4385 -> 4025 recorded (prove_chain --families all --children 40: stray_global_call_argument). The target still has no data relocations (rows read `lui $v0, 0x8017 | lui $v0, %hi(D_80171994)`): the boundary fix trim_start 0x800871B4 dropped them and decompdecomp PR #3608 restores them only when the running app re-checks the function (the user's app has not yet). Until then every address is a 150-point row and op92's 180 source (note above; -mfp32, literals 293.0f/-567.0f, last func_80087F10(1) result into the reused t, raw x68 store) cannot be scored or submitted. Blocked on the app, not on C: re-check this function's relocations in the app (Review function boundaries / reimport), then resume from op92's steps.",
-  "by": "manual-c49166d3e00442aa",
-  "created_at": 1795652586.425332,
-  "score_before": 4385,
-  "score_after": 4025,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
- },
- {
-  "function": "setupIntroScene",
-  "text": "[Released without compiling it once; notes not checked by a compile.] claude-0e891a: still blocked on the app at 07:50: the target still has no data relocations (rows read lui $v0, 0x8017 vs %hi(D_80171994)), so op92's 180 source cannot be scored. Needs the app to re-check this function's relocations (PR #3608) first.",
-  "by": "manual-a57f45738d2c42cb",
-  "created_at": 1795679235.574836,
-  "score_before": 4025,
-  "score_after": 4025
  }
 ]

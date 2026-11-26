@@ -16,7 +16,7 @@ s32 tickActorTimer(void *);                          /* extern */
 f32 getCameraTargetDist(void *, M2C_UNK, M2C_UNK);        /* extern */
 M2C_UNK func_8003BF98(s32 *);                       /* extern */
 extern f32 D_80000788;
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 gFrameScale;
 extern s32 *gCameraTarget;
 extern M2C_UNK D_800BD218;
@@ -42,5 +42,5 @@ void func_80012228(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0x80) = temp_v0;
         M2C_FIELD(arg0, s32 *, 0x60) = (s32) (&D_800BD218)[temp_v0];
     }
-    M2C_FIELD(arg0, s32 *, 0x10) = (s32) M2C_FIELD(D_800B3960, s32 *, 0x10);
+    M2C_FIELD(arg0, s32 *, 0x10) = (s32) M2C_FIELD(gCameraRig, s32 *, 0x10);
 }

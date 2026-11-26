@@ -8,7 +8,7 @@ void func_80043328(void *, s32, s32);
 void func_80034F50();
 void func_80023078();
 void func_8007569C();
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *gCameraTarget;
 
 void func_80075748(void *arg0) {
@@ -31,7 +31,7 @@ void func_80075748(void *arg0) {
             a = findActor(0x121, NULL);
             if (a != NULL) {
                 f32 z;
-                q = D_800B3960;
+                q = gCameraRig;
                 F(q, f32 *, 4) = F(a, f32 *, 4);
                 F(q, f32 *, 8) = F(a, f32 *, 8);
                 z = F(a, f32 *, 0xC);

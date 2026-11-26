@@ -22,7 +22,7 @@ s32 randomRange(s32, s32);
 void func_80034F1C(Obj *);
 void func_800723EC(void);
 Obj *func_800730E0(Obj *);
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
@@ -62,8 +62,8 @@ void func_80072B58(Obj *o) {
     if (1000.0f < gCameraTarget->f8) {
         if (o->f6C == 0) {
             o->f6C = 1;
-            D_800B3960->f6C = 2;
-            func_80034F1C(D_800B3960);
+            gCameraRig->f6C = 2;
+            func_80034F1C(gCameraRig);
         }
     } else {
         o->f6C = 0;

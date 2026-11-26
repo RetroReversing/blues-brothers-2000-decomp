@@ -27,7 +27,7 @@ void actorSetAnim(Actor71B08 *, s32, s32);
 Actor71B08 *func_800232B4(s32, s32, s32, s32);
 void func_80071ACC(Actor71B08 *);
 void func_80080AF0(Actor71B08 *);
-extern Actor71B08 *D_800B3960;
+extern Actor71B08 *gCameraRig;
 extern Actor71B08 *gCameraTarget;
 
 /* Checks whether the player's car crosses this wall segment; if so, bounces the player off it and spawns a hit effect. */ void collidePlayerWithWall(Actor71B08 *wall) {
@@ -78,7 +78,7 @@ extern Actor71B08 *gCameraTarget;
         func_8002E1CC(rel, rel, crossT);
         func_8002E234(hit, rel, gCameraTarget->unk40);
         if (wallMin <= hit[0] && hit[0] <= wallMax && wall->y - 50.0f <= hit[1] && hit[1] < hit[1] + 400.0f) {
-            D_800B3960->unk10 = wall->unk10;
+            gCameraRig->unk10 = wall->unk10;
             func_80033BDC(2);
             gCameraTarget->x = wall->x + ((sins(wall->unk10 - 0x8000) * 75) >> 14);
             gCameraTarget->z = wall->z + ((coss(wall->unk10 - 0x8000) * 75) >> 14);
@@ -98,7 +98,7 @@ extern Actor71B08 *gCameraTarget;
         func_8002E1CC(rel, rel, crossT);
         func_8002E234(hit, rel, gCameraTarget->unk40);
         if (wallMin <= hit[0] && hit[0] <= wallMax && wall->y - 50.0f <= hit[1] && hit[1] < hit[1] + 400.0f) {
-            D_800B3960->unk10 = wall->unk10 + 0x8000;
+            gCameraRig->unk10 = wall->unk10 + 0x8000;
             func_80033BDC(0);
             gCameraTarget->x = wall->x + ((sins(wall->unk10) * 75) >> 14);
             gCameraTarget->z = wall->z + ((coss(wall->unk10) * 75) >> 14);

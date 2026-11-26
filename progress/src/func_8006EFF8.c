@@ -16,21 +16,21 @@ s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8006D8E0(s32);                         /* extern */
 M2C_UNK func_8006DDD4(void *);                      /* extern */
 M2C_UNK func_8006F944();                            /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 D_80107040;
 extern M2C_UNK func_80023848;
 extern M2C_UNK func_800768E8;
 
 void func_8006EFF8(void *arg0) {
-    if (M2C_FIELD(D_800B3960, s32 *, 0x74) == 0) {
-        M2C_FIELD(D_800B3960, s32 *, 0x74) = 1;
+    if (M2C_FIELD(gCameraRig, s32 *, 0x74) == 0) {
+        M2C_FIELD(gCameraRig, s32 *, 0x74) = 1;
         return;
     }
     func_8006D8E0(arg0 + 0x70);
     M2C_FIELD(arg0, s32 *, 0x68) = 5;
     if (tickActorTimer(arg0) != 0) {
         if (D_80107040 & 0x4000) {
-            M2C_FIELD(D_800B3960, s32 *, 0x74) = 0;
+            M2C_FIELD(gCameraRig, s32 *, 0x74) = 0;
             func_8006F944();
             M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
             return;

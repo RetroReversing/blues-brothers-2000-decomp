@@ -46,7 +46,7 @@ extern const f32 D_800096AC;
 extern const f32 D_800096B0;
 extern const f32 D_800096B4;
 extern u8 D_8000966C[];
-extern u8 D_800B3960[];
+extern u8 gCameraRig[];
 extern u8 D_800B396C[];
 extern u8 D_800B3970[];
 extern u8 D_800B3974[];
@@ -55,7 +55,7 @@ extern u8 D_800B5DD4[];
 extern u8 D_800B83B0[];
 extern u8 gCameraTarget[];
 
-#define PLAYER (*(Act364 **) D_800B3960)
+#define PLAYER (*(Act364 **) gCameraRig)
 #define CAM (*(Act364 **) gCameraTarget)
 #define GS32(x) (*(s32 *) (x))
 

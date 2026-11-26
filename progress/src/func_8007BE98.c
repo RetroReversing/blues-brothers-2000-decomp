@@ -36,14 +36,14 @@ extern f64 D_80009578;
 extern f64 D_80009580;
 extern f32 D_80009588;
 extern f32 D_8000958C;
-extern Obj *D_800B3960[];
+extern Obj *gCameraRig[];
 extern u8 D_800B3964[];
 extern u8 gCamSpeedScale[];
 extern u8 gCameraTarget[];
 extern u8 D_801700E0[];
 extern u8 D_801700E4[];
 #define BD (*(Obj **)gCameraTarget)
-#define P60 (D_800B3960[0])
+#define P60 (gCameraRig[0])
 #define P64 (*(Obj **)D_800B3964)
 
 void func_8007BE98(Obj *arg0) {

@@ -29,7 +29,7 @@ void updateCameraView(ObjE *);
 void func_8002A360(s32, s32);
 f32 approachF32(f32, f32, f32);
 void syncActorPrevPos(ObjE *);
-extern ObjE *D_800B3960;
+extern ObjE *gCameraRig;
 extern s32 gCamSpeedScale;
 
 void func_8001D54C(ObjE *arg0) {
@@ -86,9 +86,9 @@ void func_8001D54C(ObjE *arg0) {
             arg0->f74 = 0;
             if (arg0->f90 != 0) {
                 arg0->fA0(arg0);
-                D_800B3960->fC0 = 0;
-                D_800B3960->f9C = D_800B3960->fA4;
-                updateCameraView(D_800B3960);
+                gCameraRig->fC0 = 0;
+                gCameraRig->f9C = gCameraRig->fA4;
+                updateCameraView(gCameraRig);
             }
         }
     }

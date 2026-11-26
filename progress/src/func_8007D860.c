@@ -21,7 +21,7 @@ void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_8007DB44();                            /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *gCameraTarget;
 extern void *D_801705EC;
 extern void *D_801705F0;
@@ -41,14 +41,14 @@ s32 func_8007D860(void) {
         M2C_FIELD(var_s0, f32 *, 0xC) = (f32) M2C_FIELD(gCameraTarget, const f32 *, 0xC);
         actorSetAnim(var_s0, 4, 0x100);
         M2C_FIELD(var_s0, s32 *, 0x8C) = randomRange(1, 4);
-        M2C_FIELD(var_s0, s32 *, 0x10) = (s32) (M2C_FIELD(D_800B3960, const s32 *, 0x10) + 0x4000);
+        M2C_FIELD(var_s0, s32 *, 0x10) = (s32) (M2C_FIELD(gCameraRig, const s32 *, 0x10) + 0x4000);
     } else {
         var_s0 = D_801705F0;
     }
     if (D_801705F6 != 0) {
         actorSetAnim(var_s0, 4, 0x100);
         M2C_FIELD(var_s0, s32 *, 0x90) = 8;
-        M2C_FIELD(var_s0, s32 *, 0x10) = (s32) (M2C_FIELD(D_800B3960, const s32 *, 0x10) + 0x4000);
+        M2C_FIELD(var_s0, s32 *, 0x10) = (s32) (M2C_FIELD(gCameraRig, const s32 *, 0x10) + 0x4000);
         func_8002D3E4(var_s0, 0x190);
         D_801705F4 = 0;
     }

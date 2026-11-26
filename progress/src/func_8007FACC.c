@@ -38,7 +38,7 @@ void func_8004C020(Mtx *, s32, s32, s32, s32, s32, s32, f32 *, f32 *, f32 *);
 void func_8004DF94(Mtx *, s32, f32, f32);
 void func_8004E008(Mtx *, f32);
 void func_8007F990(Obj *);
-extern Cam *D_800B3960;
+extern Cam *gCameraRig;
 extern Ctl *D_800B3964;
 extern Mtx D_800B76E0;
 extern f32 D_800B8708[];
@@ -83,7 +83,7 @@ void func_8007FACC(Obj *arg0) {
     arg0->y = pos[1];
     arg0->z = pos[2];
     func_80034F50(arg0);
-    D_800B3960->unkA8 = 0;
+    gCameraRig->unkA8 = 0;
     if (D_800B3964->unk90 != 0) {
         if (gPadPressed & 8) {
             arg0->unk9C = func_8007F990;

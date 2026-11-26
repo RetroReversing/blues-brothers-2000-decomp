@@ -14,15 +14,15 @@ typedef s32 M2C_UNK32;
 
 f32 func_8002DD60(f32);                             /* extern */
 M2C_UNK mtxTransformVec3(void *, M2C_UNK *, f32 *);    /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern M2C_UNK D_800CD148;
 
 s32 func_8001EF80(void *arg0, s32 arg1) {
     f32 sp10[3];
 
-    sp10[0] = M2C_FIELD(arg0, f32 *, 4) - M2C_FIELD(D_800B3960, f32 *, 4);
-    sp10[1] = M2C_FIELD(arg0, f32 *, 8) - M2C_FIELD(D_800B3960, f32 *, 8);
-    sp10[2] = M2C_FIELD(arg0, f32 *, 0xC) - M2C_FIELD(D_800B3960, f32 *, 0xC);
+    sp10[0] = M2C_FIELD(arg0, f32 *, 4) - M2C_FIELD(gCameraRig, f32 *, 4);
+    sp10[1] = M2C_FIELD(arg0, f32 *, 8) - M2C_FIELD(gCameraRig, f32 *, 8);
+    sp10[2] = M2C_FIELD(arg0, f32 *, 0xC) - M2C_FIELD(gCameraRig, f32 *, 0xC);
     if (func_8002DD60(sp10[0]) > (f32) arg1) {
         return 0;
     }

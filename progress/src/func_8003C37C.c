@@ -37,7 +37,7 @@ struct Obj {
     /* 0xC0 */ u32 fC0;
 };
 extern s32 D_800A9540;
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 D_800B4D2C;
 extern s32 D_800B5DD4;
 extern s32 D_800B764C;
@@ -105,7 +105,7 @@ void func_8003C37C(Obj *arg0) {
         o->f68 = 0xE;
         o->f64 = 300;
         D_800A9540 = 2;
-        D_800B3960->f9C = updateCameraView;
+        gCameraRig->f9C = updateCameraView;
         D_80140244 = func_80023D58(0xD9E);
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x13);

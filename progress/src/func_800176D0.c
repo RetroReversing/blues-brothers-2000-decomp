@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern void *D_800B3960;
+extern void *gCameraRig;
 
 void func_800176D0(void *arg0) {
-    M2C_FIELD(D_800B3960, f32 *, 4) = (f32) M2C_FIELD(arg0, f32 *, 4);
-    M2C_FIELD(D_800B3960, f32 *, 8) = (f32) M2C_FIELD(arg0, f32 *, 8);
-    M2C_FIELD(D_800B3960, f32 *, 0xC) = (f32) M2C_FIELD(arg0, f32 *, 0xC);
+    M2C_FIELD(gCameraRig, f32 *, 4) = (f32) M2C_FIELD(arg0, f32 *, 4);
+    M2C_FIELD(gCameraRig, f32 *, 8) = (f32) M2C_FIELD(arg0, f32 *, 8);
+    M2C_FIELD(gCameraRig, f32 *, 0xC) = (f32) M2C_FIELD(arg0, f32 *, 0xC);
     M2C_FIELD(arg0, M2C_UNK (**)(), 0xA0)();
 }

@@ -25,7 +25,7 @@ s32 debugPrintf();
 extern char D_800080F0[];
 extern char D_8000811C[];
 extern s32 D_800AE010;
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 D_800B5DD4;
 extern void *gCameraTarget;
 extern s32 D_80107040;
@@ -68,7 +68,7 @@ s32 func_80052BD4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s3
     func_80027030(2, temp_a1, temp_a2);
     D_80140228 = 0;
     func_8000C5E4();
-    M2C_FIELD(D_800B3960, s32 *, 0xC0) = 2;
+    M2C_FIELD(gCameraRig, s32 *, 0xC0) = 2;
     temp_v0 = getImageAsset(saved_reg_s1);
     if (temp_v0 == NULL) {
         debugPrintf(D_800080F0);
@@ -110,7 +110,7 @@ loop_17:
                     M2C_FIELD(temp_a3, s32 **, 0xA4) = (void *) saved_reg_s3;
                     M2C_FIELD(temp_a3, f32 *, 0xC) = (f32) M2C_FIELD(saved_reg_s3, f32 *, 0xC);
                 }
-                M2C_FIELD(D_800B3960, s32 *, 0xD8) = (s32) M2C_FIELD(D_800B3960, s32 *, 0x9C);
+                M2C_FIELD(gCameraRig, s32 *, 0xD8) = (s32) M2C_FIELD(gCameraRig, s32 *, 0x9C);
                 M2C_FIELD(temp_a3, s32 **, 0x70) = temp_v0;
                 M2C_FIELD(temp_a3, s32 **, 0x74) = var_s1;
                 M2C_FIELD(temp_a3, s32 **, 0x9C) = &func_80052EC0;

@@ -13,7 +13,7 @@ typedef struct Obj {
 void func_8001B990(s32, s32);
 void func_80033DC4(Obj *);
 void animStepKeys(Obj *);
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern Obj *D_800B3964;
 extern char func_80023078[];
 void func_800340B4(void);
@@ -26,10 +26,10 @@ void func_8007E0B4(Obj *o) {
         animStepKeys(o->fA8);
         return;
     }
-    if (D_800B3960->f9C != func_800340B4) {
-        func_80033DC4(D_800B3960);
-        D_800B3960->f9C = func_800340B4;
-        D_800B3960->fC0 = 0;
+    if (gCameraRig->f9C != func_800340B4) {
+        func_80033DC4(gCameraRig);
+        gCameraRig->f9C = func_800340B4;
+        gCameraRig->fC0 = 0;
         D_800B3964->f9C = func_80023078 + 8;
         D_800B3964->fA8 = 0;
         func_8001B990(0x200, 0x26);

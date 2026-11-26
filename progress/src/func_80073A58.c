@@ -23,7 +23,7 @@ extern void debugPrintf(void *, ...);
 extern void func_80023848(void);
 extern void func_8006B244(void);
 extern s32 D_8000914C;
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 
 void func_80073A58(Obj *o) {
     Obj *c;
@@ -33,9 +33,9 @@ void func_80073A58(Obj *o) {
         if (c != NULL) {
 c->x68 = 4;
 c->xD8 = 0;
-c->x10 = D_800B3960->x10 + 0x8000;
+c->x10 = gCameraRig->x10 + 0x8000;
 c->x9C = func_80023848;
-            D_800B3960->xA8 = func_800232B4(1, c->x4, c->x8, c->xC);
+            gCameraRig->xA8 = func_800232B4(1, c->x4, c->x8, c->xC);
         } else {
             debugPrintf(&D_8000914C);
         }

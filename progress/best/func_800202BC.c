@@ -64,7 +64,7 @@ s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void buildObjectMatrix(Obj *, f32 (*)[3], s32);
 void func_80024C68(Vec3i *, void *, s32 *);
 void func_80024FE8(f32 (*)[3]);
-extern Cam *D_800B3960;
+extern Cam *gCameraRig;
 extern Vtx D_800BD6C8[];
 extern Vec3i D_800CD170[];
 extern Vec3i D_800CD350[];
@@ -94,9 +94,9 @@ s32 func_800202BC(Obj *arg0) {
     }
     count = arg0->count;
     for (i = 0; i < count; p++, i++) {
-        d[0] = p->x - (s32)D_800B3960->pos[0];
-        d[1] = p->y - (s32)D_800B3960->pos[1];
-        d[2] = p->z - (s32)D_800B3960->pos[2];
+        d[0] = p->x - (s32)gCameraRig->pos[0];
+        d[1] = p->y - (s32)gCameraRig->pos[1];
+        d[2] = p->z - (s32)gCameraRig->pos[2];
         if (abs(d[0]) > 10000 || abs(d[1]) > 10000 || abs(d[2]) > 10000) {
             return;
         }

@@ -4,7 +4,7 @@ void func_80034FEC(void *, s32 *);
 void func_800414D0(u8 *);
 void guMtxL2F(MtxF_ *, Mtx_ *);
 void updateCameraView(void);
-extern u8 *D_800B3960;
+extern u8 *gCameraRig;
 extern s32 D_800B74E4;
 extern s32 D_80140260[];
 extern Mtx_ *D_80140310[];
@@ -25,12 +25,12 @@ void func_800522C0(u8 *arg0) {
     guMtxL2F(p++, &a);
     guMtxL2F(p++, &b);
     p -= 2;
-    *(f32 *)(D_800B3960 + 4) = p->m[3][0];
-    *(f32 *)(D_800B3960 + 8) = p->m[3][1];
-    *(f32 *)(D_800B3960 + 0xC) = p->m[3][2];
-    *(f32 *)(D_800B3960 + 4) += *(f32 *)(arg0 + 4);
-    *(f32 *)(D_800B3960 + 8) += *(f32 *)(arg0 + 8);
-    *(f32 *)(D_800B3960 + 0xC) += *(f32 *)(arg0 + 0xC);
+    *(f32 *)(gCameraRig + 4) = p->m[3][0];
+    *(f32 *)(gCameraRig + 8) = p->m[3][1];
+    *(f32 *)(gCameraRig + 0xC) = p->m[3][2];
+    *(f32 *)(gCameraRig + 4) += *(f32 *)(arg0 + 4);
+    *(f32 *)(gCameraRig + 8) += *(f32 *)(arg0 + 8);
+    *(f32 *)(gCameraRig + 0xC) += *(f32 *)(arg0 + 0xC);
     p++;
     pos[0] = p->m[3][0];
     pos[1] = p->m[3][1];
@@ -38,6 +38,6 @@ void func_800522C0(u8 *arg0) {
     pos[0] += *(f32 *)(arg0 + 4);
     pos[1] += *(f32 *)(arg0 + 8);
     pos[2] += *(f32 *)(arg0 + 0xC);
-    func_80034FEC(D_800B3960, pos);
-    *(void **)(D_800B3960 + 0x9C) = updateCameraView;
+    func_80034FEC(gCameraRig, pos);
+    *(void **)(gCameraRig + 0x9C) = updateCameraView;
 }

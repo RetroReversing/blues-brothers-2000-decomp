@@ -50,7 +50,7 @@ typedef struct {
 } Emitter;
 
 extern Gfx *D_80177E18;
-extern Camera *volatile D_800B3960;
+extern Camera *volatile gCameraRig;
 extern Vtx D_800BD6C8[];
 
 void func_8001F230(Emitter *);
@@ -146,10 +146,10 @@ void func_80021818(Emitter *obj) {
     v = &D_800BD6C8[func_8001EAD0()];
     r = obj->size;
     y1 = -r;
-    x1 = ((y1 * coss(D_800B3960->yaw)) >> 15) + ((y1 * sins(D_800B3960->yaw)) >> 15);
-    z1 = -((y1 * sins(D_800B3960->yaw)) >> 15) + ((y1 * coss(D_800B3960->yaw)) >> 15);
-    x2 = ((r * coss(D_800B3960->yaw)) >> 15) + ((r * sins(D_800B3960->yaw)) >> 15);
-    bpp = -((r * sins(D_800B3960->yaw)) >> 15) + ((r * coss(D_800B3960->yaw)) >> 15);
+    x1 = ((y1 * coss(gCameraRig->yaw)) >> 15) + ((y1 * sins(gCameraRig->yaw)) >> 15);
+    z1 = -((y1 * sins(gCameraRig->yaw)) >> 15) + ((y1 * coss(gCameraRig->yaw)) >> 15);
+    x2 = ((r * coss(gCameraRig->yaw)) >> 15) + ((r * sins(gCameraRig->yaw)) >> 15);
+    bpp = -((r * sins(gCameraRig->yaw)) >> 15) + ((r * coss(gCameraRig->yaw)) >> 15);
     y2 = r;
     p = obj->parts;
     if (p == NULL) {

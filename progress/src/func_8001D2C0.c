@@ -14,14 +14,14 @@ typedef s32 M2C_UNK32;
 
 M2C_UNK updateCameraView(void *);                      /* extern */
 s32 tickActorTimer();                                /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern M2C_UNK func_80023078;
 
 void func_8001D2C0(void *arg0) {
     if (tickActorTimer() != 0) {
-        M2C_FIELD(D_800B3960, s32 *, 0xC0) = 0;
-        M2C_FIELD(D_800B3960, s32 *, 0x9C) = (s32) M2C_FIELD(D_800B3960, s32 *, 0xA4);
-        updateCameraView(D_800B3960);
+        M2C_FIELD(gCameraRig, s32 *, 0xC0) = 0;
+        M2C_FIELD(gCameraRig, s32 *, 0x9C) = (s32) M2C_FIELD(gCameraRig, s32 *, 0xA4);
+        updateCameraView(gCameraRig);
         M2C_FIELD(arg0, void **, 0x9C) = (void *) (&func_80023078 + 2);
     }
 }

@@ -20,7 +20,7 @@ M2C_UNK func_80036DB4(void *);                      /* extern */
 s32 func_80075338(M2C_UNK);                         /* extern */
 f32 func_800812B4(M2C_UNK, s32, void *, M2C_UNK);   /* extern */
 s32 func_80081990(void *, M2C_UNK, f32);            /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 gCameraTarget;
 extern s32 D_80107040;
 extern s32 gPadPressed;
@@ -38,8 +38,8 @@ void func_80074DDC(void *arg0) {
         ((__repair_record_arg0*)arg0)->field_DC = 0.0f;
         ((__repair_record_arg0*)arg0)->field_AC = (f32) 0.05f;
         ((__repair_record_arg0*)arg0)->field_B0 = 0;
-        if (M2C_FIELD(D_800B3960, M2C_UNK (**)(void *), 0x9C) != func_80036DB4) {
-            M2C_FIELD(D_800B3960, M2C_UNK (**)(void *), 0x9C) = func_80036DB4;
+        if (M2C_FIELD(gCameraRig, M2C_UNK (**)(void *), 0x9C) != func_80036DB4) {
+            M2C_FIELD(gCameraRig, M2C_UNK (**)(void *), 0x9C) = func_80036DB4;
         }
         if (tickActorTimer(arg0) != 0) {
             temp_v0 = func_80075338(0);
@@ -62,12 +62,12 @@ void func_80074DDC(void *arg0) {
     if (((__repair_record_arg0*)arg0)->field_DC < 0.0f) {
         ((__repair_record_arg0*)arg0)->field_DC = 0.0f;
     }
-    if (func_80081990(D_800B3960 + 4, 1, ((__repair_record_arg0*)arg0)->field_DC) != 0) {
+    if (func_80081990(gCameraRig + 4, 1, ((__repair_record_arg0*)arg0)->field_DC) != 0) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80074F74;
-        M2C_FIELD(D_800B3960, M2C_UNK (**)(void *), 0x9C) = func_800340B4;
-        syncActorPrevPos(D_800B3960);
-        func_80033DC4(D_800B3960);
-        func_800340B4(D_800B3960);
+        M2C_FIELD(gCameraRig, M2C_UNK (**)(void *), 0x9C) = func_800340B4;
+        syncActorPrevPos(gCameraRig);
+        func_80033DC4(gCameraRig);
+        func_800340B4(gCameraRig);
         ((__repair_record_arg0*)arg0)->field_8C = 0;
         ((__repair_record_arg0*)arg0)->field_98 = (void *) (&func_80023078 + 2);
     }

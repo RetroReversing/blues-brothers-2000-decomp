@@ -23,7 +23,7 @@ M2C_UNK func_8007404C(void *);                      /* extern */
 M2C_UNK debugPrintf(M2C_UNK *);                   /* extern */
 extern M2C_UNK D_8000915C;
 extern M2C_UNK D_80009168;
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *D_800B3964;
 extern void *gCameraTarget;
 extern s32 gPadPressed;
@@ -55,7 +55,7 @@ void func_80073B7C(void *arg0) {
     if ((M2C_FIELD(arg0, s32 *, 0x8C) != 0) || (M2C_FIELD(gCameraTarget, s32 *, 0) != 3)) {
         D_8014002C = 0;
         M2C_FIELD(arg0, s32 *, 0x8C) = 0;
-        M2C_FIELD(D_800B3960, s32 *, 0xC0) = 0;
+        M2C_FIELD(gCameraRig, s32 *, 0xC0) = 0;
         M2C_FIELD(gCameraTarget, s32 *, 0x68) = 4;
     }
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0x10) {
@@ -82,13 +82,13 @@ void func_80073B7C(void *arg0) {
             M2C_FIELD(sub, M2C_UNK (**)(void *), 0xA0)(sub);
             M2C_FIELD(mac, void **, 0xA8) = NULL;
         }
-        M2C_FIELD(D_800B3960, M2C_UNK (**)(void *), 0x9C) = func_80034F50;
-        M2C_FIELD(D_800B3960, void **, 0xA8) = obj;
-        M2C_FIELD(D_800B3960, f32 *, 4) = M2C_FIELD(D_800B3964, f32 *, 4);
-        M2C_FIELD(D_800B3960, f32 *, 8) = M2C_FIELD(D_800B3964, f32 *, 8);
-        M2C_FIELD(D_800B3960, f32 *, 0xC) = M2C_FIELD(D_800B3964, f32 *, 0xC) - 500.0f;
-        M2C_FIELD(D_800B3960, M2C_UNK (**)(void *), 0x9C)(D_800B3960);
-        M2C_FIELD(obj, s32 *, 0x10) = func_8002D260(M2C_FIELD(D_800B3960, s32 *, 0x10) + 0x8000);
+        M2C_FIELD(gCameraRig, M2C_UNK (**)(void *), 0x9C) = func_80034F50;
+        M2C_FIELD(gCameraRig, void **, 0xA8) = obj;
+        M2C_FIELD(gCameraRig, f32 *, 4) = M2C_FIELD(D_800B3964, f32 *, 4);
+        M2C_FIELD(gCameraRig, f32 *, 8) = M2C_FIELD(D_800B3964, f32 *, 8);
+        M2C_FIELD(gCameraRig, f32 *, 0xC) = M2C_FIELD(D_800B3964, f32 *, 0xC) - 500.0f;
+        M2C_FIELD(gCameraRig, M2C_UNK (**)(void *), 0x9C)(gCameraRig);
+        M2C_FIELD(obj, s32 *, 0x10) = func_8002D260(M2C_FIELD(gCameraRig, s32 *, 0x10) + 0x8000);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80023078 + 2;
     }
 }

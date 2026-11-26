@@ -22,7 +22,7 @@ s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 O87F10 *func_800232B4(s32, s32, s32, s32);
 extern s32 gIntroSpriteAssets[];
 void func_8002F2C0(void);
-void func_80087B68(void);
+void updateCharacterSelect(void);
 
 O87F10 *func_80087F10(s32 arg0) {
     O87F10 *o;
@@ -38,7 +38,7 @@ o->f78 = 0xFFFFFF;
     o->f5C = 0xFF;
     o->f58 = packDrawFlags(0, 1, 0, 2, 0, 0, 1, 0);
     o->f68 = 14;
-    o->f9C = func_80087B68;
+    o->f9C = updateCharacterSelect;
     o->f84 = arg0;
     return o;
 }

@@ -5,7 +5,7 @@ s32 func_80023D58(s32);
 s32 actorSetAnim(void *, s32, s32);
 s32 debugPrintf(s32 *);
 extern s32 D_80000D18;
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 D_800BD040;
 extern void *gCameraTarget;
 extern s32 func_80018610;
@@ -30,11 +30,11 @@ void func_8001D788(void *arg0)
       *((s32 **) (((s8 *) gCameraTarget) + 0x9C)) = &func_8003930C;
       *((s32 *) (((s8 *) gCameraTarget) + 0x64)) = 0xC8;
       actorSetAnim(gCameraTarget, 2, 0x100);
-      *((f32 *) (((s8 *) D_800B3960) + 4)) = *((f32 *) (((s8 *) temp_v0_2) + 4));
-      *((f32 *) (((s8 *) D_800B3960) + 8)) = *((f32 *) (((s8 *) temp_v0_2) + 8));
-      *((f32 *) (((s8 *) D_800B3960) + 0xC)) = *((f32 *) (((s8 *) temp_v0_2) + 0xC));
-      *((s32 **) (((s8 *) D_800B3960) + 0x9C)) = &func_80034F50;
-      *((s32 *) (((s8 *) D_800B3960) + 0xA8)) = 0;
+      *((f32 *) (((s8 *) gCameraRig) + 4)) = *((f32 *) (((s8 *) temp_v0_2) + 4));
+      *((f32 *) (((s8 *) gCameraRig) + 8)) = *((f32 *) (((s8 *) temp_v0_2) + 8));
+      *((f32 *) (((s8 *) gCameraRig) + 0xC)) = *((f32 *) (((s8 *) temp_v0_2) + 0xC));
+      *((s32 **) (((s8 *) gCameraRig) + 0x9C)) = &func_80034F50;
+      *((s32 *) (((s8 *) gCameraRig) + 0xA8)) = 0;
     }
     else
     {

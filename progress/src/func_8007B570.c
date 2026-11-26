@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
 s32 func_8002D260(s32);                             /* extern */
 s32 func_8003C140(gCameraTarget);                      /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *gCameraTarget;
 extern M2C_UNK cameraUpdateByMode;
 
@@ -30,8 +30,8 @@ void func_8007B570(void *arg0) {
     case 1:
         if (findActor(0x11E, 0) != 0) {
             if (M2C_FIELD(gCameraTarget, s32 *, 0) == 3) {
-                M2C_FIELD(D_800B3960, M2C_UNK **, 0x9C) = &cameraUpdateByMode;
-                M2C_FIELD(D_800B3960, s32 *, 0xA8) = 0;
+                M2C_FIELD(gCameraRig, M2C_UNK **, 0x9C) = &cameraUpdateByMode;
+                M2C_FIELD(gCameraRig, s32 *, 0xA8) = 0;
                 M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) + 1);
             }
         }
@@ -40,14 +40,14 @@ void func_8007B570(void *arg0) {
         if (M2C_FIELD(gCameraTarget, s32 *, 0) == temp_v1) {
             M2C_FIELD(arg0, s32 *, 0x7C) = 2;
         }
-        M2C_FIELD(D_800B3960, f32 *, 8) = (f32) (M2C_FIELD(gCameraTarget, f32 *, 8) + 250.0f);
+        M2C_FIELD(gCameraRig, f32 *, 8) = (f32) (M2C_FIELD(gCameraTarget, f32 *, 8) + 250.0f);
         break;
     }
     if ((M2C_FIELD(gCameraTarget, f32 *, 4) < 150000.0f) && (M2C_FIELD(gCameraTarget, f32 *, 8) < -13000.0f) && (M2C_FIELD(gCameraTarget, s32 *, 0) == 3)) {
         func_8003C140(gCameraTarget);
         M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) + 1);
     }
-    if (((M2C_FIELD(gCameraTarget, f32 *, 8) < -35000.0f) || (func_8002D260(M2C_FIELD(D_800B3960, s32 *, 0x14)) < -0x2CEC)) && (M2C_FIELD(gCameraTarget, s32 *, 0) == 3)) {
+    if (((M2C_FIELD(gCameraTarget, f32 *, 8) < -35000.0f) || (func_8002D260(M2C_FIELD(gCameraRig, s32 *, 0x14)) < -0x2CEC)) && (M2C_FIELD(gCameraTarget, s32 *, 0) == 3)) {
         func_8003C140(gCameraTarget);
         M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) + 1);
     }

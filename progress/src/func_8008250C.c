@@ -16,7 +16,7 @@ s32 func_80023620();
 void *findActor();
 s32 tickActorTimer();
 s32 func_8002E7B8();
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *gCameraTarget;
 extern s32 D_80171994;
 extern void *D_801719A8;
@@ -60,8 +60,8 @@ void func_8008250C(void *arg0) {
         if ((var_s1 < 3)) {
             if ((var_s0 < 3)) {
                 M2C_FIELD(arg0, s32 **, 0x9C) = &func_80082EF8;
-                M2C_FIELD(D_800B3960, s32 **, 0x9C) = &func_80083830;
-                M2C_FIELD(D_800B3960, s32 *, 0x70) = 1;
+                M2C_FIELD(gCameraRig, s32 **, 0x9C) = &func_80083830;
+                M2C_FIELD(gCameraRig, s32 *, 0x70) = 1;
                 return;
             }
         }

@@ -61,7 +61,7 @@ void func_800690B0(void);
 void func_8006982C(void);
 extern Obj68378 *D_800AB9BC;
 extern Obj68378 *D_800AB9C0;
-extern Obj68378 *D_800B3960;
+extern Obj68378 *gCameraRig;
 extern s32 D_800B5DD4;
 extern Entry68378 D_800B8000[];
 extern s32 D_800B83B0;
@@ -162,6 +162,6 @@ extern Player68378 *gCameraTarget;
         scene->unk7C = 0;
         scene->unk70 = 0;
     }
-    D_800B3960->unkA8 = keepActor;
-    D_800B3960->unk9C = func_80064730;
+    gCameraRig->unkA8 = keepActor;
+    gCameraRig->unk9C = func_80064730;
 }

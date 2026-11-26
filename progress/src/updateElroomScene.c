@@ -52,7 +52,7 @@ void func_80064024(Actor64130 *);
 extern u8 D_80023080[];
 extern s32 D_800B4988;
 extern s32 D_800B5DD4;
-extern Actor64130 *D_800B3960;
+extern Actor64130 *gCameraRig;
 extern u8 D_800BCFB8[];
 extern Actor64130 *gCameraTarget;
 extern s32 gPadPressed;
@@ -71,19 +71,19 @@ extern s32 gPadPressed;
             actor->unk9C = (void *)D_80023080;
             actor->unk68 = -1;
         }
-        D_800B3960->unk9C = func_80036DB4;
+        gCameraRig->unk9C = func_80036DB4;
         actor = findActor(0x11E, 0);
         if (actor == NULL) {
             break;
         }
-        D_800B3960->unk9C = func_80036DB4;
-        D_800B3960->x = actor->x;
-        D_800B3960->y = actor->y;
-        D_800B3960->z = actor->z;
-        D_800B3960->unkC0 = 0;
-        syncActorPrevPos(D_800B3960);
-        D_800B3960->unk9C(D_800B3960);
-        gCameraTarget->unk10 = func_8002D260(D_800B3960->unk10 + 0x8000);
+        gCameraRig->unk9C = func_80036DB4;
+        gCameraRig->x = actor->x;
+        gCameraRig->y = actor->y;
+        gCameraRig->z = actor->z;
+        gCameraRig->unkC0 = 0;
+        syncActorPrevPos(gCameraRig);
+        gCameraRig->unk9C(gCameraRig);
+        gCameraTarget->unk10 = func_8002D260(gCameraRig->unk10 + 0x8000);
         scene->unk7C++;
         if (func_8001B990(0x100, 0x3E) == 0) {
             break;
@@ -206,12 +206,12 @@ extern s32 gPadPressed;
         gCameraTarget->unk10 = 0x8000;
         func_8001B990(0x200, 0x3E);
         D_800B5DD4 = 1;
-        D_800B3960->unk9C = func_80064024;
-        D_800B3960->x = -881.0f;
-        D_800B3960->z = 58.0f;
-        D_800B3960->y = 684.0f;
-        syncActorPrevPos(D_800B3960);
-        syncActorPrevPos(D_800B3960);
+        gCameraRig->unk9C = func_80064024;
+        gCameraRig->x = -881.0f;
+        gCameraRig->z = 58.0f;
+        gCameraRig->y = 684.0f;
+        syncActorPrevPos(gCameraRig);
+        syncActorPrevPos(gCameraRig);
         break;
     }
 }

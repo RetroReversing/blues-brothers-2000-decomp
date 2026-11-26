@@ -46,7 +46,7 @@ M2C_UNK func_80043328(); /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 s16 sins(u16);                                      /* extern */
 extern s32 D_800B3838;
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern M2C_UNK D_800B4C1C;
 extern void *D_800B4CE4;
 extern s32 D_800B4CE8;
@@ -199,7 +199,7 @@ void func_800393F4(Actor *arg0) {
         arg0->f14 = 0;
         arg0->f18 = 0;
     }
-    if (!(M2C_FIELD(D_800B3960, s32 *, 0xC0) & 1)) {
+    if (!(M2C_FIELD(gCameraRig, s32 *, 0xC0) & 1)) {
         if (arg0->fE0 == 0) {
             actorSetAnim(arg0, 1, 0x100);
         }
@@ -269,7 +269,7 @@ void func_800393F4(Actor *arg0) {
                 }
             }
         }
-        if (!(M2C_FIELD(D_800B3960, s32 *, 0xC0) & 1)) {
+        if (!(M2C_FIELD(gCameraRig, s32 *, 0xC0) & 1)) {
             temp_v1_6 = arg0->fBC;
             temp_a0_2 = gStickX[temp_v1_6];
             temp_v0_2 = gStickY[temp_v1_6];
@@ -295,14 +295,14 @@ void func_800393F4(Actor *arg0) {
             if ((temp_v1_7 != 0x14) && (temp_v1_7 != 0x12) && (temp_v1_7 != 0xD) && (temp_v1_7 != 0x13) && (temp_v1_7 != 0xE) && (temp_v1_7 != 0xF) && (temp_v1_7 != 0x1A)) {
                 temp_v1_8 = arg0->fBC;
                 var_s0_2 = atan2S16(gStickX[temp_v1_8], gStickY[temp_v1_8]);
-                D_801401E0 = M2C_FIELD(D_800B3960, s32 *, 0x10) + var_s0_2;
+                D_801401E0 = M2C_FIELD(gCameraRig, s32 *, 0x10) + var_s0_2;
             }
             arg0->f10 = func_8002D1C4(D_801401E0, arg0->f10, 1);
         }
         temp_lo = arg0->f74 * arg0->f88;
         temp_s0_2 = temp_lo * gFrameScale;
         arg0->f88 = temp_lo;
-        M2C_FIELD(D_800B3960, s32 *, 0x74) = (s32) (M2C_FIELD(D_800B3960, s32 *, 0x74) + ((s32) (temp_s0_2 * sins(var_s0_2 & 0xFFFF)) >> 0xF));
+        M2C_FIELD(gCameraRig, s32 *, 0x74) = (s32) (M2C_FIELD(gCameraRig, s32 *, 0x74) + ((s32) (temp_s0_2 * sins(var_s0_2 & 0xFFFF)) >> 0xF));
         temp_v0_4 = arg0->f88 - 8;
         D_80140224 = temp_v0_4;
         if (temp_v0_4 < 6) {

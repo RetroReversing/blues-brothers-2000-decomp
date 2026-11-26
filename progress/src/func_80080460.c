@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 
 s32 tickActorTimer(void *);
-extern void *D_800B3960;
+extern void *gCameraRig;
 #define F(o,t) M2C_FIELD(arg0, t *, o)
 
 void func_80080460(void *arg0) {
@@ -26,7 +26,7 @@ void func_80080460(void *arg0) {
         F(4,f32) = M2C_FIELD(temp_v0, f32 *, 4);
         F(0xC,f32) = M2C_FIELD(temp_v0, f32 *, 0xC);
     }
-    F(0x10,s32) = M2C_FIELD(D_800B3960, s32 *, 0x10);
+    F(0x10,s32) = M2C_FIELD(gCameraRig, s32 *, 0x10);
     if (tickActorTimer(arg0) != 0) {
         do { a = F(0x7C,s32); t = F(0x80,s32); } while (0);
         F(0x7C,s32) = a + 1;

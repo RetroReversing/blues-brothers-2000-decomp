@@ -36,7 +36,7 @@ void getCameraTargetDist(Obj *, f32, s32);
 void func_8001D2C0(Obj *);
 extern s32 func_80023078;
 extern s32 D_800A954C;
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern f32 D_800B9EC4;
 extern Obj *D_800BD060;
 extern s32 D_80140228;
@@ -77,7 +77,7 @@ void func_8001D30C(Obj *o)
         if (cameraGetMode() == 7) {
             func_8001B990(0x200, o->id);
             if (D_800A954C == 0) {
-                p = D_800B3960;
+                p = gCameraRig;
                 temp = p->cb;
                 p->cb = (void *)(&func_80023078 + 2);
                 p->flags |= 1;

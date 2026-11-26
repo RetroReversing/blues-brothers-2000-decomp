@@ -51,7 +51,7 @@ typedef struct {
 } Scene;
 
 extern Scene *D_800B7FE0;
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 D_800B9C70;
 extern s32 D_800FB038[];
 extern char D_800089D0[];
@@ -114,13 +114,13 @@ void func_80062280(void) {
     func_80023A74(0x63, 0x86B);
     setSlotAsset(0x16A, 0x86C, 1);
     func_800242A8(0xA9, 0x86D, 0x10);
-    D_800B3960->x = 0.0f;
-    D_800B3960->y = 400.0f;
-    D_800B3960->z = -2700.0f;
-    D_800B3960->rot = 0;
-    D_800B3960->unk14 = 0;
-    D_800B3960->unk18 = 0;
-    D_800B3960->cb9C = updateCameraView;
+    gCameraRig->x = 0.0f;
+    gCameraRig->y = 400.0f;
+    gCameraRig->z = -2700.0f;
+    gCameraRig->rot = 0;
+    gCameraRig->unk14 = 0;
+    gCameraRig->unk18 = 0;
+    gCameraRig->cb9C = updateCameraView;
     p = func_8002E374(0xA9);
     D_800B7FE0->unk0 = p;
     *p = 0x102;

@@ -18,7 +18,7 @@ Obj *findActor(s32, Obj *);
 s32 animStepKeys(Obj *);
 s32 func_8007DDB8(Obj *, Vec3i *, Vec3i *);
 s32 func_8007E1AC(Obj *);
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 typedef struct { u8 pad[0x7C]; s32 mode; } Game;
 extern Game *D_800B3964;
 extern s32 D_800B4988;
@@ -35,14 +35,14 @@ s32 func_8007E280(Obj *obj) {
     }
     D_800B5DD4 = 0;
     D_800B4988 = 30;
-    obj->ang = D_800B3960->ang;
+    obj->ang = gCameraRig->ang;
     if (findActor(0x801, 0) != 0) {
         return 0;
     }
     if (D_800B3964->mode != 4) {
         return 0;
     }
-    p = D_800B3960;
+    p = gCameraRig;
     p->y = obj->y - 4500.0f;
     p->link = obj;
     obj->ang = p->ang + 0x8000;

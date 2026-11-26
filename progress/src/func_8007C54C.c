@@ -40,9 +40,9 @@ extern f32 D_800095A4;
 extern f32 D_800095A8;
 extern f32 D_800095AC;
 extern f32 D_800095B0;
-extern u8 D_800B3960[];
+extern u8 gCameraRig[];
 extern u8 gCameraTarget[];
-#define B60 (*(Obj **)D_800B3960)
+#define B60 (*(Obj **)gCameraRig)
 #define BD (*(Obj **)gCameraTarget)
 extern s32 D_801700F8[];
 

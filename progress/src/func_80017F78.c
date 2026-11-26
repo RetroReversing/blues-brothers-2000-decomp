@@ -12,7 +12,7 @@ typedef struct {
 } Obj80017F78;
 
 Obj80017F78 *func_80017DEC(void);
-extern Obj80017F78 *D_800B3960;
+extern Obj80017F78 *gCameraRig;
 extern void *D_800BCFB0;
 extern void *D_800BCFFC;
 extern s32 D_800BD05C;
@@ -31,22 +31,22 @@ void func_80017F78(void) {
 
     src = func_80017DEC();
     if (src != NULL) {
-        x = D_800B3960->unk4;
-        D_800B3960->unk4 = src->unk4;
+        x = gCameraRig->unk4;
+        gCameraRig->unk4 = src->unk4;
         D_800BD070 = x;
-        D_800BD074 = D_800B3960->unk8;
-        D_800BD078 = D_800B3960->unkC;
-        D_800B3960->unk8 = src->unk8;
-        D_800BD05C = D_800B3960->unk10;
-        D_800B3960->unkC = src->unkC;
-        D_800BD068 = D_800B3960->unk14;
-        D_800BCFB0 = D_800B3960->unk9C;
-        D_800B3960->unk10 = src->unk10;
-        D_800B3960->unk14 = src->unk14;
+        D_800BD074 = gCameraRig->unk8;
+        D_800BD078 = gCameraRig->unkC;
+        gCameraRig->unk8 = src->unk8;
+        D_800BD05C = gCameraRig->unk10;
+        gCameraRig->unkC = src->unkC;
+        D_800BD068 = gCameraRig->unk14;
+        D_800BCFB0 = gCameraRig->unk9C;
+        gCameraRig->unk10 = src->unk10;
+        gCameraRig->unk14 = src->unk14;
         saved = gCameraTarget->unk9C;
-        D_800B3960->unk9C = func_80017E34;
+        gCameraRig->unk9C = func_80017E34;
         gCameraTarget->unk9C = (void *)((s8 *)func_80023078 + 8);
-        D_800B3960->unk64 = 0xC8;
+        gCameraRig->unk64 = 0xC8;
         D_800BCFFC = saved;
     }
 }

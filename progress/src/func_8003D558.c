@@ -18,7 +18,7 @@ M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_80088F40();                            /* extern */
 extern s32 D_800AB9B4;
 extern s32 D_800B3838;
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern s32 D_800B4A84;
 extern s32 D_800B5DD0;
 extern s32 D_800BD0FC;
@@ -53,7 +53,7 @@ void func_8003D558(void *arg0) {
             D_800B4A84 = 1;
         }
         M2C_FIELD(D_8013FB74, s32 *, 0x90) = 2;
-        M2C_FIELD(D_800B3960, M2C_UNK **, 0x9C) = &updateCameraView;
+        M2C_FIELD(gCameraRig, M2C_UNK **, 0x9C) = &updateCameraView;
         D_800BD0FC = 0;
     }
 }

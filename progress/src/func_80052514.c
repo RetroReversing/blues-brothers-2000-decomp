@@ -21,7 +21,7 @@ void updateCameraView(ObjT *);
 extern s32 D_80140260[];
 extern Mtx4 *D_80140310[];
 extern s32 D_800B74E4;
-extern ObjT *D_800B3960;
+extern ObjT *gCameraRig;
 
 void func_80052514(ObjT *arg0) {
     Mtx4 m0;
@@ -49,9 +49,9 @@ void func_80052514(ObjT *arg0) {
     v[1] = p[0][3][1];
     v[2] = p[0][3][2];
     mtxTransformVec3(out, q1, v);
-    D_800B3960->x = arg0->x + out[0];
-    D_800B3960->y = arg0->y + out[1];
-    D_800B3960->z = arg0->z + out[2];
+    gCameraRig->x = arg0->x + out[0];
+    gCameraRig->y = arg0->y + out[1];
+    gCameraRig->z = arg0->z + out[2];
     p++;
     v[0] = p[0][3][0];
     v[1] = p[0][3][1];
@@ -63,6 +63,6 @@ void func_80052514(ObjT *arg0) {
     pos[0] = out[0];
     pos[1] = out[1];
     pos[2] = out[2];
-    func_80034FEC(D_800B3960, pos);
-    D_800B3960->f9C = updateCameraView;
+    func_80034FEC(gCameraRig, pos);
+    gCameraRig->f9C = updateCameraView;
 }

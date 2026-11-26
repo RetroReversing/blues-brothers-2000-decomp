@@ -17,7 +17,7 @@ extern void actorSetAnim(G *, s32, s32);
 extern void func_80080AF0(G *);
 extern void func_8003930C(G *);
 extern void debugPrintf();
-extern G *D_800B3960;
+extern G *gCameraRig;
 extern s32 gCamSpeedScale;
 extern G *gCameraTarget;
 
@@ -47,23 +47,23 @@ void func_80080BAC(G *arg0) {
         gCameraTarget->f4 = temp_v0_2->f4;
         gCameraTarget->f8 = temp_v0_2->f8;
         gCameraTarget->fC = temp_v0_2->fC;
-        D_800B3960->f9C = func_800340B4;
+        gCameraRig->f9C = func_800340B4;
         temp_v0_2 = func_80017DEC(arg0->f70);
         if (temp_v0_2 != NULL) {
-            D_800B3960->f4 = temp_v0_2->f4;
-            D_800B3960->f8 = temp_v0_2->f8;
-            D_800B3960->fC = temp_v0_2->fC;
-            D_800B3960->f10 = temp_v0_2->f10;
-            D_800B3960->f14 = temp_v0_2->f14;
-            func_80033DC4(D_800B3960);
-            func_800340B4(D_800B3960);
+            gCameraRig->f4 = temp_v0_2->f4;
+            gCameraRig->f8 = temp_v0_2->f8;
+            gCameraRig->fC = temp_v0_2->fC;
+            gCameraRig->f10 = temp_v0_2->f10;
+            gCameraRig->f14 = temp_v0_2->f14;
+            func_80033DC4(gCameraRig);
+            func_800340B4(gCameraRig);
         } else {
             debugPrintf("Can't find quickcut camera #%d", arg0->f70);
         }
         gCameraTarget->f9C = func_8003930C;
         gCameraTarget->f64 = gCamSpeedScale * 0x19;
         gCameraTarget->f8 = func_800385AC(gCameraTarget);
-        gCameraTarget->f10 = func_8002D260(D_800B3960->f10 + 0x8000);
+        gCameraTarget->f10 = func_8002D260(gCameraRig->f10 + 0x8000);
         actorSetAnim(gCameraTarget, 2, 0x100);
         temp_v0_2 = func_800232B4(1, 0, 0, 0);
         temp_v0_2->f9C = func_80080AF0;

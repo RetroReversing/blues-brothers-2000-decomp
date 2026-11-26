@@ -44,7 +44,7 @@ struct Obj {
     /* 0xF0 */ s32 fF0;
 };
 extern f32 D_800AA1EC[3];
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 gTextWaveTime;
 extern Obj *gCameraTarget;
 extern s32 D_800BD100;
@@ -77,7 +77,7 @@ void func_80011420(Obj *arg0) {
         func_8002ADFC(6, 1000, arg0);
         if (gCameraTarget->f90 == 1) {
             gCameraTarget->fF0 = 0xFF;
-            gCameraTarget->ang = D_800B3960->ang + 0x8000;
+            gCameraTarget->ang = gCameraRig->ang + 0x8000;
             actorSetAnim(gCameraTarget, 0x1A, 0x100);
             gCameraTarget->f9C = func_8003BC40;
             gCameraTarget->fF0 = 0xFF;

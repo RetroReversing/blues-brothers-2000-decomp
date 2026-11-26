@@ -76,7 +76,7 @@ void debugPrintf(char *, s32);
 void guMtxCatL(Mtx *, Mtx *, Mtx *);
 
 extern char D_800078C4[];
-extern f32 *D_800B3960;
+extern f32 *gCameraRig;
 extern s32 D_800B74E4;
 extern s32 D_800B74E8;
 extern s32 D_800B9EB8;
@@ -111,9 +111,9 @@ void func_800414D0(Obj *arg0) {
 
     model = getImageAsset(D_800FB038[arg0->type]);
     n = model->count;
-    d[0] = arg0->pos[0] - D_800B3960[1];
-    d[1] = arg0->pos[1] - D_800B3960[2];
-    d[2] = arg0->pos[2] - D_800B3960[3];
+    d[0] = arg0->pos[0] - gCameraRig[1];
+    d[1] = arg0->pos[1] - gCameraRig[2];
+    d[2] = arg0->pos[2] - gCameraRig[3];
     fdist = dist;
     if (fdist < func_8002DD60(d[0]) || fdist < func_8002DD60(d[1]) || fdist < func_8002DD60(d[2])) {
         goto hide;

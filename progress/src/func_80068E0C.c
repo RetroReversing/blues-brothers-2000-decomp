@@ -25,7 +25,7 @@ s32 func_80068BF8(Obj68E0C *);
 s32 func_80068DE0(Obj68E0C *);
 void debugPrintf(char *);
 extern char D_80008DCC[];
-extern u8 *D_800B3960;
+extern u8 *gCameraRig;
 extern u8 *D_800B3964;
 
 void func_80068E0C(Obj68E0C *arg0) {
@@ -97,7 +97,7 @@ void func_80068E0C(Obj68E0C *arg0) {
         case 5:
             return;
         }
-        *(s32 *)(D_800B3960 + 0xA8) = 0;
+        *(s32 *)(gCameraRig + 0xA8) = 0;
         func_80043328(arg0, arg0->state + 0x112, 0x100);
     }
 }

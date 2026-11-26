@@ -31,7 +31,7 @@ s32 tickActorTimer();
 s32 func_8007C310();
 s32 func_8007C54C();
 s32 func_8007C780();
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern Obj *gCameraTarget;
 extern s32 D_800BD0E0[];
 extern s32 gPadPressed;
@@ -64,7 +64,7 @@ void func_8007CB84(Obj *self) {
         }
         gCameraTarget->x = self->fA8->x;
         gCameraTarget->z = self->fA8->z;
-        D_800B3960->fC0 = 1;
+        gCameraRig->fC0 = 1;
         gCameraTarget->f68 = -1;
         e = &D_800BD0E0[D_800BD0E0[8]];
         D_8014002C = 1;
@@ -100,7 +100,7 @@ void func_8007CB84(Obj *self) {
             p = findActor(0x100B, p);
         }
         D_8014002C = 0;
-        D_800B3960->fC0 = 0;
+        gCameraRig->fC0 = 0;
         gCameraTarget->f68 = 4;
         self->f9C = (char *)&func_8007BE88 + 8;
         self->f98 = (char *)&func_80023078 + 8;

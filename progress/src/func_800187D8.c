@@ -13,7 +13,7 @@ typedef struct O187D8 {
 O187D8 *func_80017DEC(s32);
 O187D8 *findActor(s32, s32);
 f32 getCameraTargetDist(O187D8 *, f32, s32);
-extern O187D8 *D_800B3960;
+extern O187D8 *gCameraRig;
 extern O187D8 *gCameraTarget;
 void updateCameraView(void);
 void func_80036DB4(void);
@@ -35,7 +35,7 @@ void func_800187D8(O187D8 *arg0) {
             }
             q = func_80017DEC(1);
             if (q != NULL) {
-                o = D_800B3960;
+                o = gCameraRig;
                 o->f4 = q->f4;
                 o->f8 = q->f8;
 

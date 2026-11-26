@@ -25,7 +25,7 @@ void func_800393F4(Obj *);
 void animStepKeys(Obj *);
 void func_800743F8(Obj *);
 void func_8007452C(Obj *);
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern Obj *D_800B3964;
 extern s32 D_800B5DD4;
 extern Obj *gCameraTarget;
@@ -74,7 +74,7 @@ void func_80074600(Obj *arg0) {
             o->unkA0(o);
         }
         n = findActor(0x1023, 0);
-        c = D_800B3960;
+        c = gCameraRig;
         if (c->handler != func_80034F50) {
             if (n == NULL) {
                 n = arg0;

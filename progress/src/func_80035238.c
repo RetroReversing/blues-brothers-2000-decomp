@@ -17,7 +17,7 @@ typedef struct {
     s32 unk14;
 } Other35238;
 
-extern State35238 *D_800B3960;
+extern State35238 *gCameraRig;
 extern Other35238 *gCameraTarget;
 s32 cameraGetMode(void);
 void func_80034E40(State35238 *);
@@ -30,41 +30,41 @@ void cameraUpdateByMode(void);
 void func_8007FACC(void);
 
 void func_80035238(void) {
-    D_800B3960->unk7C = 1000;
-    D_800B3960->unk6C = 0;
-    D_800B3960->unk80 = -0x800;
-    D_800B3960->unkC0 = 0;
+    gCameraRig->unk7C = 1000;
+    gCameraRig->unk6C = 0;
+    gCameraRig->unk80 = -0x800;
+    gCameraRig->unkC0 = 0;
     gCameraTarget->unk14 = 0;
-    D_800B3960->unkD8 = 0;
-    func_80034E40(D_800B3960);
+    gCameraRig->unkD8 = 0;
+    func_80034E40(gCameraRig);
     switch (cameraGetMode()) {
     case 0x21:
-        D_800B3960->unk9C = cameraUpdateByMode;
+        gCameraRig->unk9C = cameraUpdateByMode;
         break;
     case 0x1:
-        D_800B3960->unk9C = (u8 *)func_80047558 + 8;
+        gCameraRig->unk9C = (u8 *)func_80047558 + 8;
         break;
     case 0x24:
-        D_800B3960->unk9C = updateCamera;
+        gCameraRig->unk9C = updateCamera;
         break;
     case 0x5:
-        D_800B3960->unk9C = cameraUpdateByMode;
+        gCameraRig->unk9C = cameraUpdateByMode;
         break;
     case 0x37:
-        D_800B3960->unk9C = cameraUpdateByMode;
+        gCameraRig->unk9C = cameraUpdateByMode;
         break;
     case 0x25:
-        D_800B3960->unk9C = func_8007FACC;
+        gCameraRig->unk9C = func_8007FACC;
         break;
     case 0x23:
     case 0x30:
-        D_800B3960->unk9C = func_800350F4;
+        gCameraRig->unk9C = func_800350F4;
         break;
     case 0x36:
-        D_800B3960->unk9C = func_80035164;
+        gCameraRig->unk9C = func_80035164;
         break;
     default:
-        D_800B3960->unk9C = func_800340B4;
+        gCameraRig->unk9C = func_800340B4;
         break;
     }
 }

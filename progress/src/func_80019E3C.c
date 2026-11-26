@@ -36,7 +36,7 @@ extern s32 D_800BD084;
 extern s32 D_800BD050;
 extern s32 D_800BCFF8;
 extern Obj *gCameraTarget;
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern s32 gCamSpeedScale;
 extern s32 gFrameScale;
 extern char D_80000B40[];
@@ -113,11 +113,11 @@ void func_80019E3C(Obj *obj) {
             gCameraTarget->cb9C = func_8003930C;
             gCameraTarget->timer = 200;
             actorSetAnim(gCameraTarget, 2, 0x100);
-            D_800B3960->x = found->x;
-            D_800B3960->y = found->y;
-            D_800B3960->z = found->z;
-            D_800B3960->cb9C = func_80034F50;
-            D_800B3960->child = NULL;
+            gCameraRig->x = found->x;
+            gCameraRig->y = found->y;
+            gCameraRig->z = found->z;
+            gCameraRig->cb9C = func_80034F50;
+            gCameraRig->child = NULL;
         } else {
             debugPrintf(D_80000B40);
         }
@@ -151,18 +151,18 @@ void func_80019E3C(Obj *obj) {
             if (o == NULL) {
                 debugPrintf(D_80000B54);
             }
-            D_800B3960->x = o->x;
-            D_800B3960->y = o->y;
-            D_800B3960->z = o->z;
-            D_800B3960->rot = o->rot;
-            D_800B3960->unk14 = o->unk14;
-            D_800B3960->rot = -0x4000;
-            D_800B3960->unk18 = 0;
-            D_800B3960->x = 2835.0f;
-            D_800B3960->y = 500.0f;
-            D_800B3960->z = -6.0f;
-            D_800B3960->cb9C = updateCameraView;
-            D_800B3960->unk14 = 0;
+            gCameraRig->x = o->x;
+            gCameraRig->y = o->y;
+            gCameraRig->z = o->z;
+            gCameraRig->rot = o->rot;
+            gCameraRig->unk14 = o->unk14;
+            gCameraRig->rot = -0x4000;
+            gCameraRig->unk18 = 0;
+            gCameraRig->x = 2835.0f;
+            gCameraRig->y = 500.0f;
+            gCameraRig->z = -6.0f;
+            gCameraRig->cb9C = updateCameraView;
+            gCameraRig->unk14 = 0;
             obj->child->unk68 = 13;
             obj->timer = -1;
         }
@@ -171,16 +171,16 @@ void func_80019E3C(Obj *obj) {
         found = findActor(0x1013, 0);
         if (found != NULL) {
             obj->timer = 500;
-            D_800B3960->cb9C = func_80019D6C;
-            D_800B3960->child = found;
+            gCameraRig->cb9C = func_80019D6C;
+            gCameraRig->child = found;
         } else {
-            D_800B3960->rot = -0x4000;
-            D_800B3960->unk18 = 0;
-            D_800B3960->unk14 = 0;
-            D_800B3960->x = 2835.0f;
-            D_800B3960->y = 500.0f;
-            D_800B3960->z = -6.0f;
-            D_800B3960->cb9C = updateCameraView;
+            gCameraRig->rot = -0x4000;
+            gCameraRig->unk18 = 0;
+            gCameraRig->unk14 = 0;
+            gCameraRig->x = 2835.0f;
+            gCameraRig->y = 500.0f;
+            gCameraRig->z = -6.0f;
+            gCameraRig->cb9C = updateCameraView;
         }
         if (found == NULL) {
             if (obj->timer <= 0) {
@@ -188,16 +188,16 @@ void func_80019E3C(Obj *obj) {
                 if (o == NULL) {
                     debugPrintf(D_80000B54);
                 }
-                D_800B3960->x = o->x;
-                D_800B3960->y = o->y;
-                D_800B3960->z = o->z;
-                D_800B3960->rot = -0x4000;
-                D_800B3960->x = 2835.0f;
-                D_800B3960->unk18 = 0;
-                D_800B3960->unk14 = 0;
-                D_800B3960->y = 500.0f;
-                D_800B3960->cb9C = updateCameraView;
-                D_800B3960->z = -6.0f;
+                gCameraRig->x = o->x;
+                gCameraRig->y = o->y;
+                gCameraRig->z = o->z;
+                gCameraRig->rot = -0x4000;
+                gCameraRig->x = 2835.0f;
+                gCameraRig->unk18 = 0;
+                gCameraRig->unk14 = 0;
+                gCameraRig->y = 500.0f;
+                gCameraRig->cb9C = updateCameraView;
+                gCameraRig->z = -6.0f;
                 found = findActor(0x134, 0);
                 if (found != NULL) {
                     gCameraTarget->x = found->x;
@@ -252,12 +252,12 @@ void func_80019E3C(Obj *obj) {
             found->destroy(found);
             obj->child = NULL;
         }
-        D_800B3960->cb9C = func_800340B4;
+        gCameraRig->cb9C = func_800340B4;
         func_80052B24(func_80023DBC(0xE21), &D_80000B68, obj);
         obj->state++;
         break;
     case 5:
-        D_800B3960->cb9C = func_800340B4;
+        gCameraRig->cb9C = func_800340B4;
         obj->state = 99;
         break;
     case 6:

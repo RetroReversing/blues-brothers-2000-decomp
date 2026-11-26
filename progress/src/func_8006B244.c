@@ -32,11 +32,11 @@ f32 sqrtf(f32);
 void func_8006B1D8();
 extern char D_80008EE8[];
 extern char D_80008EEC[];
-extern char D_800B3960[];
+extern char gCameraRig[];
 extern char D_800B3964[];
 extern char gCameraTarget[];
 extern f32 D_80008F00;
-#define P3960 (*(Obj **)D_800B3960)
+#define P3960 (*(Obj **)gCameraRig)
 #define P3964 (*(Obj **)D_800B3964)
 #define PBD06C (*(Obj **)gCameraTarget)
 

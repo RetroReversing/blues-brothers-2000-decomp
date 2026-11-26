@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 void *findActor(M2C_UNK, M2C_UNK);              /* extern */
 M2C_UNK syncActorPrevPos(void *);                      /* extern */
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern M2C_UNK func_80023078;
 extern M2C_UNK func_80064024;
 
@@ -22,7 +22,7 @@ void func_8007AB4C(void *arg0) {
     void *temp_s0;
     void *temp_v0;
 
-    temp_s0 = D_800B3960;
+    temp_s0 = gCameraRig;
     M2C_FIELD(temp_s0, M2C_UNK **, 0x9C) = &func_80064024;
     temp_v0 = findActor(0x11E, 0);
     if (temp_v0 != NULL) {

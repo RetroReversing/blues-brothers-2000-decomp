@@ -19,7 +19,7 @@ s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_80034FEC(void *, s32 *);               /* extern */
 M2C_UNK collectCollisionCells(f32 *, f32 *, M2C_UNK);       /* extern */
 s32 func_80048CD8(f32, f32, f32, f32, f32, f32, s32); /* extern */
-extern void *D_800B3960[];
+extern void *gCameraRig[];
 extern s32 gCamSpeedScale;
 extern void *gCameraTarget;
 
@@ -50,7 +50,7 @@ s32 func_80073DC8(void *arg0, s32 arg1) {
             pos[2] = M2C_FIELD(gCameraTarget, f32 *, 0xC);
             func_80034FEC(arg0, pos);
         } else {
-            src = D_800B3960[0];
+            src = gCameraRig[0];
             M2C_FIELD(arg0, f32 *, 4) = M2C_FIELD(src, f32 *, 4);
             M2C_FIELD(arg0, f32 *, 8) = M2C_FIELD(src, f32 *, 8);
             M2C_FIELD(arg0, f32 *, 0xC) = M2C_FIELD(src, f32 *, 0xC);

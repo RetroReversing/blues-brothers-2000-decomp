@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_800232B4(s32, s32, s32, s32);
-extern void *D_800B3960;
+extern void *gCameraRig;
 extern void *D_800B3964;
 extern s32 func_8006F644;
 
@@ -25,7 +25,7 @@ void func_8006F828(void)
     temp_v0 = func_800232B4(1, 0, 0, 0);
     M2C_FIELD(temp_v0, s32 *, 0x68) = 0xA;
     M2C_FIELD(temp_v0, s32 *, 0xBC) = M2C_FIELD(D_800B3964, s32 *, 0xBC);
-    var_a0 = M2C_FIELD(D_800B3960, s32 *, 0x74);
+    var_a0 = M2C_FIELD(gCameraRig, s32 *, 0x74);
     M2C_FIELD(temp_v0, s32 *, 0x64) = 0x32;
     M2C_FIELD(temp_v0, s32 **, 0x9C) = &func_8006F644;
     M2C_FIELD(temp_v0, s32 *, 0x74) = var_a0;

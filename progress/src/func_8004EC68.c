@@ -82,7 +82,7 @@ Obj *func_80071970(Obj *);
 extern ObjFn D_800B79A4[];
 extern s32 D_800B7DE0[];
 extern s32 D_800B81D0;
-extern Obj *D_800B3960;
+extern Obj *gCameraRig;
 extern Obj *gCameraTarget;
 extern s32 D_800BD104;
 extern s32 gSplinePointCount[];
@@ -369,14 +369,14 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
     gCameraTarget->f18 = 0;
     if (D_800B81D0 == 0) {
         t = func_8001DD94(cameraGetMode(), D_800BD104 & 0xF);
-        D_800B3960->f4 = gCameraTarget->f4;
-        D_800B3960->f8 = gCameraTarget->f8 + 500.0f;
-        D_800B3960->fC = gCameraTarget->fC;
-        D_800B3960->f10 = gCameraTarget->f10 + t;
+        gCameraRig->f4 = gCameraTarget->f4;
+        gCameraRig->f8 = gCameraTarget->f8 + 500.0f;
+        gCameraRig->fC = gCameraTarget->fC;
+        gCameraRig->f10 = gCameraTarget->f10 + t;
         syncActorPrevPos(gCameraTarget);
-        syncActorPrevPos(D_800B3960);
+        syncActorPrevPos(gCameraRig);
         func_80088F40();
-        if (D_800B3960->f9C == func_800340B4 || D_800B3960->f9C == func_80033F50) {
+        if (gCameraRig->f9C == func_800340B4 || gCameraRig->f9C == func_80033F50) {
             func_80033BC0();
         }
         if (cameraGetMode() == 0x24) {
