@@ -2186,7 +2186,7 @@
 <g><title>clipCameraToTrack: {&#x27;matched&#x27;: 1}</title>
 <rect x="40.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80035D04: {&#x27;matched&#x27;: 1}</title>
+<g><title>cameraPushFromWalls: {&#x27;matched&#x27;: 1}</title>
 <rect x="50.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>cameraAvoidWalls: {&#x27;matched&#x27;: 1}</title>
@@ -2363,7 +2363,7 @@
 <g><title>drawMessage: {&#x27;matched&#x27;: 1}</title>
 <rect x="630.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8003CE48: {&#x27;matched&#x27;: 1}</title>
+<g><title>selectMenuUpdate: {&#x27;matched&#x27;: 1}</title>
 <rect x="640.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8003D1B4: {&#x27;matched&#x27;: 1}</title>

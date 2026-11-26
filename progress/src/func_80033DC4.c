@@ -17,8 +17,8 @@ M2C_UNK func_80034F1C(void *);                      /* extern */
 s16 sins();                                 /* extern */
 extern f32 D_800012B4;
 extern void *gCameraRig;
-extern s32 D_8013FFA4;
-extern s32 D_8013FFA8;
+extern s32 gCameraOffsetZ;
+extern s32 gCameraOffsetX;
 extern s32 D_8014002C;
 extern s32 D_80140030;
 
@@ -52,9 +52,9 @@ void func_80033DC4(void *arg0) {
     temp_lo_2 = ((s32) (-M2C_FIELD(temp_s1, s32 *, 0x78) * temp_s0_2) >> 0xF) * coss(M2C_FIELD(temp_s1, u16 *, 0x16));
     M2C_FIELD(temp_s1, f32 *, 0xC) = (f32) (M2C_FIELD(temp_s1, f32 *, 0x48) + (f32) (temp_lo_2 >> 0xF));
     temp_fv1 = M2C_FIELD(temp_s1, f32 *, 0x44) + (f32) ((s32) (-M2C_FIELD(temp_s1, s32 *, 0x78) * sins(M2C_FIELD(temp_s1, u16 *, 0x16))) >> 0xF) + 200.0f;
-    D_8013FFA8 = 0;
+    gCameraOffsetX = 0;
     M2C_FIELD(temp_s1, f32 *, 8) = temp_fv1;
-    D_8013FFA4 = 0;
+    gCameraOffsetZ = 0;
 }
 
 

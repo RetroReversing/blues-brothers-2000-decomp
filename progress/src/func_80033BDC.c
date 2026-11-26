@@ -5,8 +5,8 @@ void func_80034F1C(void *);
 extern void *gCameraRig;
 extern s32 cameraDistTable[];
 extern void *gCameraTarget;
-extern s32 D_8013FFA4;
-extern s32 D_8013FFA8;
+extern s32 gCameraOffsetZ;
+extern s32 gCameraOffsetX;
 extern s32 D_8014002C;
 extern s32 D_80140030;
 
@@ -49,7 +49,7 @@ void func_80033BDC(s32 arg0) {
     F(p, f32, 4) = F(p, f32, 0x40) + (f32)((((-F(p, s32, 0x78) * sins(F(p, u16, 0x12))) >> 15) * coss(F(p, u16, 0x16))) >> 15);
     F(p, f32, 0xC) = F(p, f32, 0x48) + (f32)((((-F(p, s32, 0x78) * coss(F(p, u16, 0x12))) >> 15) * coss(F(p, u16, 0x16))) >> 15);
     t = F(p, f32, 0x44) + (f32)((-F(p, s32, 0x78) * sins(F(p, u16, 0x16))) >> 15) + 200.0f;
-    D_8013FFA8 = 0;
+    gCameraOffsetX = 0;
     F(p, f32, 8) = t;
-    D_8013FFA4 = 0;
+    gCameraOffsetZ = 0;
 }

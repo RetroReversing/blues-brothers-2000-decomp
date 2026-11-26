@@ -48,7 +48,7 @@ extern s32 gStickX[];
 extern s32 gStickY[];
 extern s32 D_80140228;
 
-void func_8003CE48(Obj3CE48 *arg0) {
+void selectMenuUpdate(Obj3CE48 *arg0) {
     s32 flag;
     s32 v;
     Entry3CE48 *e;

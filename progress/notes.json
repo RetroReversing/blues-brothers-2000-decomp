@@ -1489,6 +1489,15 @@
   "score_after": 2200
  },
  {
+  "function": "gateActorUpdate",
+  "text": "Range check #213: is this part of the game built by GCC 2.8.1 + SN ASN64 2.56 -G0 -mips3 -mgp32 -mfp32 -O2? An agent's C for a function next to func_8001CC2C matches with it. Match func_8001CC2C as usual; then try_compiler(\"func_8001CC2C\", \"gcc-2.8.1-pm-sn-as\", \"-G0 -mips3 -mgp32 -mfp32 -O2\"). Matching with GCC 2.8.1 + SN ASN64 2.56 -G0 -mips3 -mgp32 -mfp32 -O2 and not with the project's compiler confirms the range; matching with the project's compiler only shows it was a quirk. Either answer helps.",
+  "by": "autopilot",
+  "created_at": 1795513811.883359,
+  "score_before": 3605,
+  "score_after": 3460,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
+ },
+ {
   "function": "func_800514EC",
   "text": "Matched at 0 by hk15. The only difference (lui $at vs lui $v0 on lwc1 of D_80008054) was an inline float literal: D_80008054 bytes 43 48 00 00 = 200.0f, used only here. Written as temp_fs0 = 200.0f; in place of the global read; no other edits.",
   "by": "manual-6dc9d05752834ca9",
@@ -1531,6 +1540,23 @@
   "score_before": 3760,
   "score_after": 2455,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:63ed05439500907a199c6a0b97ece9bacd954ba6e34cf39fb1b2ad1a96e1ed7c"
+ },
+ {
+  "function": "gateActorUpdate",
+  "text": "hk14 handover. Best recorded in app: 380 (default profile, revision 9e870329f3923bde21fb), from 1720 saved. Edits in order (score after each, isolated/app): (1) D_80000CB8/CBC/CC0/CC4/CC8 inlined as float literals 3100.0f, 300.0f, -1600.0f, 8000.0f, -600.0f (1720 -> 1720 alone, but the lui $at form now matches); (2) the temp_fs0/temp_fs2 literal temporaries inlined at their uses (1720 -> 1220); (3) func_8002DD60 is f32(f32) (fabs): prototype fixed and calls func_8002DD60(temp_fs0_2) and func_8002DD60(temp_fs1) (1220 -> 1165); (4) table index in a block-local, base pointer hoisted: temp_v1 = D_800F4A00; then temp_v1 = (char*)temp_v1 + temp_idx (1165 -> 1035 under -mfp32 only; with the index moved to a fresh temp it was 1045, so the base-before-index order matters); (5) two float subtractions as single expressions: temp_fs0_2 = (*(f32*)(D_800BD06C+4)) - field_4, temp_fs1 likewise with +0xC and field_C (default 1165 -> 380 after combined with (4); under -mfp32 1035 -> 230). PROFILE: the default compile is -mfp64 (sn-n64-281 flags); the target uses even FP registers for single loads ($f2,$f4,$f24,$f26), which is the -mfp32 fingerprint. compiler_experiments trial 40820bbc238933c8ad2d (-G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32) scored the earlier 1165 candidate at 1035 (diagnostic, not applied). Under -mfp32 the best (edits 1-5) is 230 in fast_judge (isolated, not app-verified). Left: 10 register rows in the table walk (target: base pointer in $v1, index in $a0; ours swapped) and 6 scheduling rows (the final 0x8000/field_4 store block: target loads field_4 after the ori/sw; swapping those two C lines was worse, 810/660). Tried and worse: index in a fresh temp before base (1045), base in a do-while (425), index in do-while (425), inline index expression (no), block-local base pointer (230 = same), swapping final stores (660-810). Scaffolding: inline_fn helper and __repair_* typedefs from the saved best (not new).",
+  "by": "manual-2e980e3fcc614831",
+  "created_at": 1795514177.21561,
+  "score_before": 3460,
+  "score_after": 380,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
+ },
+ {
+  "function": "gateActorUpdate",
+  "text": "[Released without compiling it once; notes not checked by a compile.] hk18: on the skip list (220 insns, needs -mfp32 profile; saved best 380). Released to take another function.",
+  "by": "manual-d3ca8a838c4047d4",
+  "created_at": 1795514233.103092,
+  "score_before": 380,
+  "score_after": 380
  },
  {
   "function": "func_8001C898",
@@ -2165,6 +2191,14 @@
   "created_at": 1795519451.1843898,
   "score_before": 30,
   "score_after": 30
+ },
+ {
+  "function": "gateActorUpdate",
+  "text": "[Released without compiling it once; notes not checked by a compile.] ap3 compiler-flag sweep (sched flags, O1/O3, fp32/64, G, mips2, pairs): no improvement over saved best.",
+  "by": "manual-f065f986deb14778",
+  "created_at": 1795519479.4726348,
+  "score_before": 380,
+  "score_after": 380
  },
  {
   "function": "func_8000F670",
@@ -7223,6 +7257,14 @@
   "score_after": null
  },
  {
+  "function": "gateActorUpdate",
+  "text": "[Released without compiling it once; notes not checked by a compile.] see note",
+  "by": "manual-d1f65424b73c4204",
+  "created_at": 1795553929.223126,
+  "score_before": 380,
+  "score_after": 380
+ },
+ {
   "function": "func_8007DA10",
   "text": "hk132 best 210 (630 saved; chain from the saved best via goto_backward_loop, biv_arm_increment). Pointer step is 8 bytes (var_a1 += 2 as s32 *), compare only when D_800B8670 < a2. Target sets var_a1 = &D_800B8674 after the guard branch: moving that inside the guard scored 315-320. Counter and pointer registers swapped. Not matched.",
   "by": "manual-052353db4a82424b",
@@ -8042,6 +8084,24 @@
   "created_at": 1795557348.850019,
   "score_before": 100,
   "score_after": 100
+ },
+ {
+  "function": "gateActorUpdate",
+  "text": "op46: plain struct rewrite (Bound {x,pad,z} tables, chained fB0 = f50 = 0.0f, flags = a & b in one expression, table base set before the byte offset: lo = D_800F4A00; off = fB8 * 12; lo += off bytes) saved at 200 (fp64 profile); trial 2e33351320cf6f18e1cb under sn-n64-281 -mfp32 = 50, only rows left: table base/offset registers swapped (target lui base into v1, index/offset in a0; ours idx v1, base a0). Native gcc-2.8.1-pm -mfp32 proxy reproduces ours: local-alloc gives idx (3 refs/8 insns) v1 before base hi (2 refs/6 insns). Tried in proxy without change: off spellings (*12, *3*4, sizeof, u32), fences around base or offset, base/offset order, embedded assignment. Next: make the base hi pseudo outrank idx (shorter life) or give idx fewer refs.",
+  "by": "manual-d815639955454bd3",
+  "created_at": 1795557746.619358,
+  "score_before": 380,
+  "score_after": 200,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
+ },
+ {
+  "function": "gateActorUpdate",
+  "text": "plain struct rewrite (Bound {x,pad,z} tables, chained fB0 = f50 = 0.0f, flags = a & b in one expression, table base set before the byte offset: lo = D_800F4A00; off = fB8 * 12; lo += off bytes) saved at 200 (fp64 profile); trial 2e33351320cf6f18e1cb under sn-n64-281 -mfp32 = 50, only rows left: table base/offset registers swapped (target lui base into v1, index/offset in a0; ours idx v1, base a0). Native gcc-2.8.1-pm -mfp32 proxy reproduces ours: local-alloc gives idx (3 refs/8 insns) v1 before base hi (2 refs/6 insns). Tried in proxy without change: off spellings (*12, *3*4, sizeof, u32), fences around base or offset, base/offset order, embedded assignment. Next: make the base hi pseudo outrank idx (shorter life) or give idx fewer refs.",
+  "by": "manual-d815639955454bd3",
+  "created_at": 1795557747.316687,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
  },
  {
   "function": "func_80066EA4",
@@ -12604,65 +12664,5 @@
   "created_at": 1795699301.6797109,
   "score_before": 0,
   "score_after": 0
- },
- {
-  "function": "gateActorUpdate",
-  "text": "Range check #213: is this part of the game built by GCC 2.8.1 + SN ASN64 2.56 -G0 -mips3 -mgp32 -mfp32 -O2? An agent's C for a function next to func_8001CC2C matches with it. Match func_8001CC2C as usual; then try_compiler(\"func_8001CC2C\", \"gcc-2.8.1-pm-sn-as\", \"-G0 -mips3 -mgp32 -mfp32 -O2\"). Matching with GCC 2.8.1 + SN ASN64 2.56 -G0 -mips3 -mgp32 -mfp32 -O2 and not with the project's compiler confirms the range; matching with the project's compiler only shows it was a quirk. Either answer helps.",
-  "by": "autopilot",
-  "created_at": 1795513811.883359,
-  "score_before": 3605,
-  "score_after": 3460,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
- },
- {
-  "function": "gateActorUpdate",
-  "text": "hk14 handover. Best recorded in app: 380 (default profile, revision 9e870329f3923bde21fb), from 1720 saved. Edits in order (score after each, isolated/app): (1) D_80000CB8/CBC/CC0/CC4/CC8 inlined as float literals 3100.0f, 300.0f, -1600.0f, 8000.0f, -600.0f (1720 -> 1720 alone, but the lui $at form now matches); (2) the temp_fs0/temp_fs2 literal temporaries inlined at their uses (1720 -> 1220); (3) func_8002DD60 is f32(f32) (fabs): prototype fixed and calls func_8002DD60(temp_fs0_2) and func_8002DD60(temp_fs1) (1220 -> 1165); (4) table index in a block-local, base pointer hoisted: temp_v1 = D_800F4A00; then temp_v1 = (char*)temp_v1 + temp_idx (1165 -> 1035 under -mfp32 only; with the index moved to a fresh temp it was 1045, so the base-before-index order matters); (5) two float subtractions as single expressions: temp_fs0_2 = (*(f32*)(D_800BD06C+4)) - field_4, temp_fs1 likewise with +0xC and field_C (default 1165 -> 380 after combined with (4); under -mfp32 1035 -> 230). PROFILE: the default compile is -mfp64 (sn-n64-281 flags); the target uses even FP registers for single loads ($f2,$f4,$f24,$f26), which is the -mfp32 fingerprint. compiler_experiments trial 40820bbc238933c8ad2d (-G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32) scored the earlier 1165 candidate at 1035 (diagnostic, not applied). Under -mfp32 the best (edits 1-5) is 230 in fast_judge (isolated, not app-verified). Left: 10 register rows in the table walk (target: base pointer in $v1, index in $a0; ours swapped) and 6 scheduling rows (the final 0x8000/field_4 store block: target loads field_4 after the ori/sw; swapping those two C lines was worse, 810/660). Tried and worse: index in a fresh temp before base (1045), base in a do-while (425), index in do-while (425), inline index expression (no), block-local base pointer (230 = same), swapping final stores (660-810). Scaffolding: inline_fn helper and __repair_* typedefs from the saved best (not new).",
-  "by": "manual-2e980e3fcc614831",
-  "created_at": 1795514177.21561,
-  "score_before": 3460,
-  "score_after": 380,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
- },
- {
-  "function": "gateActorUpdate",
-  "text": "[Released without compiling it once; notes not checked by a compile.] hk18: on the skip list (220 insns, needs -mfp32 profile; saved best 380). Released to take another function.",
-  "by": "manual-d3ca8a838c4047d4",
-  "created_at": 1795514233.103092,
-  "score_before": 380,
-  "score_after": 380
- },
- {
-  "function": "gateActorUpdate",
-  "text": "[Released without compiling it once; notes not checked by a compile.] ap3 compiler-flag sweep (sched flags, O1/O3, fp32/64, G, mips2, pairs): no improvement over saved best.",
-  "by": "manual-f065f986deb14778",
-  "created_at": 1795519479.4726348,
-  "score_before": 380,
-  "score_after": 380
- },
- {
-  "function": "gateActorUpdate",
-  "text": "[Released without compiling it once; notes not checked by a compile.] see note",
-  "by": "manual-d1f65424b73c4204",
-  "created_at": 1795553929.223126,
-  "score_before": 380,
-  "score_after": 380
- },
- {
-  "function": "gateActorUpdate",
-  "text": "op46: plain struct rewrite (Bound {x,pad,z} tables, chained fB0 = f50 = 0.0f, flags = a & b in one expression, table base set before the byte offset: lo = D_800F4A00; off = fB8 * 12; lo += off bytes) saved at 200 (fp64 profile); trial 2e33351320cf6f18e1cb under sn-n64-281 -mfp32 = 50, only rows left: table base/offset registers swapped (target lui base into v1, index/offset in a0; ours idx v1, base a0). Native gcc-2.8.1-pm -mfp32 proxy reproduces ours: local-alloc gives idx (3 refs/8 insns) v1 before base hi (2 refs/6 insns). Tried in proxy without change: off spellings (*12, *3*4, sizeof, u32), fences around base or offset, base/offset order, embedded assignment. Next: make the base hi pseudo outrank idx (shorter life) or give idx fewer refs.",
-  "by": "manual-d815639955454bd3",
-  "created_at": 1795557746.619358,
-  "score_before": 380,
-  "score_after": 200,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
- },
- {
-  "function": "gateActorUpdate",
-  "text": "plain struct rewrite (Bound {x,pad,z} tables, chained fB0 = f50 = 0.0f, flags = a & b in one expression, table base set before the byte offset: lo = D_800F4A00; off = fB8 * 12; lo += off bytes) saved at 200 (fp64 profile); trial 2e33351320cf6f18e1cb under sn-n64-281 -mfp32 = 50, only rows left: table base/offset registers swapped (target lui base into v1, index/offset in a0; ours idx v1, base a0). Native gcc-2.8.1-pm -mfp32 proxy reproduces ours: local-alloc gives idx (3 refs/8 insns) v1 before base hi (2 refs/6 insns). Tried in proxy without change: off spellings (*12, *3*4, sizeof, u32), fences around base or offset, base/offset order, embedded assignment. Next: make the base hi pseudo outrank idx (shorter life) or give idx fewer refs.",
-  "by": "manual-d815639955454bd3",
-  "created_at": 1795557747.316687,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
  }
 ]

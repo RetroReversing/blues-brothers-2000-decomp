@@ -52,7 +52,7 @@ s32 func_80024AE8(s32, s32);
 s32 func_8002D1C4(s32, s32, s32);
 s32 func_8002D260(s32);
 void func_80034F1C(Camera *);
-void func_80035D04(Camera *);
+void cameraPushFromWalls(Camera *);
 s32 cameraAvoidWalls(Camera *);
 s32 func_80036780(Camera *);
 void func_800393F4(void);
@@ -67,8 +67,8 @@ extern u32 gPadPressed;
 extern s32 gStickX;
 extern s32 gStickY[];
 extern s32 D_8013FFA0;
-extern s32 D_8013FFA4;
-extern s32 D_8013FFA8;
+extern s32 gCameraOffsetZ;
+extern s32 gCameraOffsetX;
 extern s32 D_8013FFCC;
 extern CamSave gCameraSnapshot;
 extern s32 D_80140028;
@@ -97,7 +97,7 @@ void func_800340B4(Camera *arg0) {
         gCameraSnapshot.yaw = arg0->yaw;
         gCameraSnapshot.pitch = arg0->pitch;
         gCameraSnapshot.yawTarget = arg0->yawTarget;
-        if (D_8013FFA8 == 0 && D_80140200 > 0) {
+        if (gCameraOffsetX == 0 && D_80140200 > 0) {
             arg0->distTarget += func_80024AC4(cameraDistTable[arg0->preset].dist - arg0->distTarget, arg0->distTarget, 3);
         }
         if (arg0->state != 2) {
@@ -164,27 +164,27 @@ void func_800340B4(Camera *arg0) {
         at[0] = gCameraTarget->pos[0];
         at[1] = gCameraTarget->pos[1] + 200.0f;
         at[2] = gCameraTarget->pos[2];
-        func_80035D04(arg0);
-        arg0->yaw += D_8013FFA4;
-        arg0->yawTarget += D_8013FFA4;
-        if (D_8013FFA8 == 0) {
+        cameraPushFromWalls(arg0);
+        arg0->yaw += gCameraOffsetZ;
+        arg0->yawTarget += gCameraOffsetZ;
+        if (gCameraOffsetX == 0) {
             arg0->pitch = func_8002D260(arg0->pitch);
             if (arg0->pitch < cameraDistTable[arg0->preset].pitch) {
-                D_8013FFA8 = 0x200;
+                gCameraOffsetX = 0x200;
             }
             if (cameraDistTable[arg0->preset].pitch + 0x400 < arg0->pitch) {
-                D_8013FFA8 = -0x200;
+                gCameraOffsetX = -0x200;
             }
-            arg0->pitch += D_8013FFA8;
-            arg0->pitchTarget += D_8013FFA8;
+            arg0->pitch += gCameraOffsetX;
+            arg0->pitchTarget += gCameraOffsetX;
             if (func_80036780(arg0) != 0) {
-                arg0->pitch -= D_8013FFA8;
-                arg0->pitchTarget -= D_8013FFA8;
+                arg0->pitch -= gCameraOffsetX;
+                arg0->pitchTarget -= gCameraOffsetX;
             }
-            D_8013FFA8 = 0;
+            gCameraOffsetX = 0;
         }
-        arg0->pitch += D_8013FFA8;
-        arg0->pitchTarget += D_8013FFA8;
+        arg0->pitch += gCameraOffsetX;
+        arg0->pitchTarget += gCameraOffsetX;
         arg0->pitch = func_8002D260(arg0->pitch);
         if (arg0->pitch < -0x4000) {
             arg0->pitch = -0x4000;
