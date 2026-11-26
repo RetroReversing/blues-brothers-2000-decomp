@@ -33378,10 +33378,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "17a15bdc7a6cfa4d0fce0f1b2a5566714c405d33c827b82c277389528f20c776",
-   "recorded_at": 1795571486.787406,
-   "attempt_id": 158913844973,
-   "source_sha256": "21b73f0cb55d6e539a681242a31b7d0a03d7cc5d5818d81690edd87fbe216cee",
+   "symbols_sha256": "a24d93bdde3d7eaf8b9eaa2d056058178661bb808cce98a392129be35c65a9b4",
+   "recorded_at": 1795700087.8448918,
+   "attempt_id": 158913862060,
+   "source_sha256": "5d6b6c8a5d2320cf88357023144f2afed3a8f3ecd5524a5e2426877368d7b066",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 812,
    "compiler": {
@@ -33400,7 +33400,7 @@
    },
    "compiler_identity": {
     "toolchain": "sn-n64-281",
-    "registry_sha256": "14e28e8f96d57fb28d493fc5d8ff869e8cf1dc291e1c8adaf0233952948aed40",
+    "registry_sha256": "8eb23176b1932cb664777fba69b2915c713b60c625fc11f9ad0c22d12f3e9115",
     "install_sha256": "d949422c5b7c39402c79d468bd890710d5bd3eb8ba3929116a8a5543a4a7191f",
     "executables": {
      "cc1n64.exe": "d90df1028c46d826e37146dbcc3e3385f78c59e05a9ddd952daa94c9ad379d9c"
@@ -33423,7 +33423,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -33432,32 +33432,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G8",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913790322",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -199743,7 +199717,8 @@
   "01f368f6107d9678a3186f5e99b4ac1f363f45568be461ab158372d5949ce31d": "void func_800899DC();\nextern s32 D_80007880;\nextern s32 D_80007898;\nextern s32 D_800078B0;\n\nvoid func_800413C0(s32 arg0) {\n    if (arg0 >= 0) {\n        func_800899DC(&D_80007880, arg0, &D_80007898);\n    }\n    if ((u32) arg0 > 0x80400000U) {\n        func_800899DC(&D_800078B0, arg0);\n    }\n}\n",
   "5d1a4d69c1868a3ebaebcbe66337fbc477b574810f9f84d218a11fa98372e9c0": "/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */\nM2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */\ns32 func_80023D58(M2C_UNK);                         /* extern */\nextern s32 D_8014AB3C;\nextern s32 D_8014AB44;\n\nvoid func_80054720(void) {\n    func_80023A74(0xE, 0x480);\n    func_80023A98(0x45, 0x47C, 0);\n    func_80023A98(0x46, 0x47D, 0);\n    func_80023A98(0x47, 0x47D, 0);\n    func_80023A98(0x48, 0x47E, 0);\n    func_80023A98(0x49, 0x47F, 0);\n    D_8014AB3C = func_80023D58(0x198);\n    D_8014AB44 = func_80023D58(0x199);\n}\n",
   "941e7a9fc706dfeb689913fd8ad42dc4d7371a10e26497455a7075d0dc657542": "typedef struct Actor {\n    u8 pad0[0x5C];\n    s32 unk5C;\n    u8 pad60[0x70 - 0x60];\n    s32 unk70;\n    s32 unk74;\n    u8 pad78[0x8C - 0x78];\n    s32 unk8C;\n    s32 unk90;\n    u8 pad94[0xA0 - 0x94];\n    void (*unkA0)(struct Actor *);\n    struct Actor *unkA4;\n    s32 unkA8;\n} Actor;\n\ns32 func_80043248(Actor *);\nextern s32 D_800B9ECC;\n\nvoid func_8005CAB0(Actor *arg0) {\n    s32 temp_v1;\n    Actor *temp_s1;\n\n    temp_s1 = arg0->unkA4;\n    if (arg0->unk70 == 0) {\n        if ((temp_s1 == NULL) || ((temp_s1->unk90 >= 2) && (temp_s1->unk8C >= 2))) {\n            arg0->unk70 = 1;\n        }\n        if (arg0->unk70 != 0) {\n            goto block_6;\n        }\n    } else {\nblock_6:\n        if (func_80043248(arg0) != 0) {\n            arg0->unk74 = 1;\n        }\n    }\n    if (arg0->unk74 != 0) {\n        temp_v1 = arg0->unk5C - (D_800B9ECC * 0xC);\n        arg0->unk5C = temp_v1;\n        if (temp_v1 < 0xA) {\n            if (temp_s1 != NULL) {\n                temp_s1->unkA8 = 0;\n            }\n            arg0->unkA0(arg0);\n        }\n    }\n}\n",
-  "2939e63b2ab06c87e2bf660dd057c5fedfaf3a19bbbfdb2f0dc47953e1e27b91": "#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\ns32 func_80023D58(s32);\ns32 func_80023E18(s32);\nvoid func_8002710C(s32, s32, s32, s32);\nvoid drawImage(s32, s32, s32, s32);\ns32 tickActorTimer(void *);\nextern s32 D_800B9ECC;\n\nvoid func_80063C40(void *arg0) {\n    s32 temp_v0;\n    s32 temp_v0_2;\n\n    temp_v0 = M2C_FIELD(arg0, s32 *, 0x5C) + (M2C_FIELD(arg0, s32 *, 0x70) * D_800B9ECC);\n    M2C_FIELD(arg0, s32 *, 0x5C) = temp_v0;\n    if (temp_v0 >= 0x100) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;\n    }\n    if (M2C_FIELD(arg0, s32 *, 0x5C) < 0) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0;\n    }\n    func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x5C));\n    temp_v0_2 = func_80023D58(0x218);\n    M2C_FIELD(arg0, s32 *, 0x60) = temp_v0_2;\n    drawImage(func_80023E18(temp_v0_2), 0, 0, 0);\n    if ((tickActorTimer(arg0) != 0) || (M2C_FIELD(arg0, s32 *, 0x5C) == 0)) {\n        M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);\n    }\n}\n"
+  "2939e63b2ab06c87e2bf660dd057c5fedfaf3a19bbbfdb2f0dc47953e1e27b91": "#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\ns32 func_80023D58(s32);\ns32 func_80023E18(s32);\nvoid func_8002710C(s32, s32, s32, s32);\nvoid drawImage(s32, s32, s32, s32);\ns32 tickActorTimer(void *);\nextern s32 D_800B9ECC;\n\nvoid func_80063C40(void *arg0) {\n    s32 temp_v0;\n    s32 temp_v0_2;\n\n    temp_v0 = M2C_FIELD(arg0, s32 *, 0x5C) + (M2C_FIELD(arg0, s32 *, 0x70) * D_800B9ECC);\n    M2C_FIELD(arg0, s32 *, 0x5C) = temp_v0;\n    if (temp_v0 >= 0x100) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;\n    }\n    if (M2C_FIELD(arg0, s32 *, 0x5C) < 0) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0;\n    }\n    func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x5C));\n    temp_v0_2 = func_80023D58(0x218);\n    M2C_FIELD(arg0, s32 *, 0x60) = temp_v0_2;\n    drawImage(func_80023E18(temp_v0_2), 0, 0, 0);\n    if ((tickActorTimer(arg0) != 0) || (M2C_FIELD(arg0, s32 *, 0x5C) == 0)) {\n        M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);\n    }\n}\n",
+  "5d6b6c8a5d2320cf88357023144f2afed3a8f3ecd5524a5e2426877368d7b066": "s32 func_8001EF80(void *, s32);\ns32 func_8001F0AC(void *, s32);\nvoid func_8001F230(void *);\ns32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);\nvoid setDrawMode(s32);\nvoid func_80022C2C(void *, f32 *, s32);\nvoid func_8002338C(void *);\nvoid func_80027060(s32, s32, s32, s32);\nvoid setRenderState(s32);\nvoid func_8002DAE0(f32 *, f32 *, f32);\nvoid func_8002DB6C(f32 *, f32 *, f32);\nvoid func_8002DBF8(f32 *, f32 *, f32);\nvoid mtxIdentity3(f32 *);\nf32 func_8002DD60(f32);\nvoid func_800479B0(s32);\nf32 sinApprox(f32);\n\ntypedef struct GfxW {\n    u32 w0;\n    u32 w1;\n} GfxW;\n\ntypedef struct Obj {\n    char pad0[0x10];\n    s32 x10;\n    s32 x14;\n    s32 x18;\n    char pad1C[0x28 - 0x1C];\n    f32 x28;\n    f32 x2C;\n    f32 x30;\n    char pad34[0x58 - 0x34];\n    s32 x58;\n    s32 x5C;\n    char pad60[0x68 - 0x60];\n    s32 x68;\n    char pad6C[0x94 - 0x6C];\n    s32 x94;\n    char pad98[0xB8 - 0x98];\n    s32 xB8;\n    char padBC[0xE4 - 0xBC];\n    u32 xE4;\n    s32 xE8;\n    char padEC[0xF0 - 0xEC];\n    s32 xF0;\n    char padF4[0xF8 - 0xF4];\n    s32 xF8;\n} Obj;\n\nextern f32 D_80000E50;\nextern f64 D_80000E58;\nextern s32 D_800AB408[];\nextern s32 gCamSpeedScale[];\nextern u8 D_800BD114[];\nextern s32 D_800F7910[];\nextern s32 gObjTriCounts[];\nextern u8 D_80177E18[];\n#define GP (*(GfxW **)D_80177E18)\n\n/* Draws one object if it is on screen: builds its rotation, sets draw mode and a fade or flash, emits the display-list commands, and counts its triangles. */\ns32 drawActorModel(Obj *obj) {\n    f32 rotA[10];\n    f32 rotB[10];\n    f32 cullRadius;\n    f32 angX;\n    f32 angY;\n    f32 angZ;\n    s32 visible;\n    s32 flashTimer;\n    s32 param;\n\n    obj->xF8 &= ~4;\n    param = obj->x94;\n    if (D_800AB408[0] == 0) {\n        visible = func_8001EF80(obj, param);\n    } else {\n        visible = func_8001F0AC(obj, 0x12C0);\n    }\n    if (visible == 0) {\n        return 0;\n    }\n    cullRadius = D_800F7910[obj->xB8];\n    cullRadius /= sinApprox(D_80000E50);\n    cullRadius += obj->x30;\n    if (cullRadius < 0.0f) {\n        return 0;\n    }\n    if (func_8002DD60(obj->x28) > cullRadius + cullRadius) {\n        return 0;\n    }\n    if (cullRadius < func_8002DD60(obj->x2C)) {\n        return 0;\n    }\n    func_8001F230(obj);\n    if (obj->x5C != 0xFF) {\n        s32 drawMode;\n        s32 fadeAlpha;\n        drawMode = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0);\n        fadeAlpha = obj->x5C;\n        obj->x68 = 13;\n        setDrawMode(drawMode);\n        func_80027060(0xFF, 0xFF, 0xFF, fadeAlpha);\n        {\n            GfxW *_g = GP++;\n            _g->w0 = 0xFCFFFFFF;\n            _g->w1 = 0xFFFCF67B;\n        }\n    } else if (obj->xF0 != 0) {\n        obj->x68 = 3;\n        setDrawMode(obj->x58);\n        func_80027060(0xFF, 0xFF, 0xFF, obj->xF0);\n        {\n            GfxW *_g = GP++;\n            _g->w0 = 0xFC35426A;\n            _g->w1 = 0x1184FE7F;\n        }\n    }\n    flashTimer = obj->xF0 - gCamSpeedScale[0] * 8;\n    obj->xF0 = flashTimer;\n    if (flashTimer <= 0) {\n        obj->xF0 = 0;\n    }\n    angX = obj->x10;\n    angX *= D_80000E58;\n    angY = obj->x14;\n    angY *= D_80000E58;\n    angZ = obj->x18;\n    angZ *= D_80000E58;\n    mtxIdentity3(rotA);\n    func_8002DB6C(rotB, rotA, angX);\n    func_8002DAE0(rotA, rotB, angY);\n    func_8002DBF8(rotB, rotA, angZ);\n    func_80022C2C(obj, rotB, 1);\n    if (obj->xE8 != 0) {\n        func_800479B0(obj->xE8);\n    }\n    {\n        GfxW *_g = GP++;\n        _g->w0 = 0xDE000000;\n        _g->w1 = obj->xE4;\n    }\n    {\n        GfxW *_g = GP++;\n        _g->w0 = 0xE7000000;\n        _g->w1 = 0;\n    }\n    setRenderState(-1);\n    *(s32 *)D_800BD114 += gObjTriCounts[obj->xB8];\n    if (obj->xF8 & 1) {\n        func_8002338C(obj);\n    }\n    obj->xF8 |= 4;\n    return 1;\n}"
  },
  "headers": {
   "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b": "/* context.h for BLUES BROTHERS 2000: shared by every function. Agents grow it with edit_context:\n * add a prototype or struct the moment you work one out, so the next function benefits. */\n\ntypedef signed char s8;\ntypedef unsigned char u8;\ntypedef signed short s16;\ntypedef unsigned short u16;\ntypedef signed int s32;\ntypedef unsigned int u32;\ntypedef signed long long s64;\ntypedef unsigned long long u64;\ntypedef float f32;\ntypedef double f64;\ntypedef volatile u8 vu8;\ntypedef volatile u16 vu16;\ntypedef volatile u32 vu32;\ntypedef volatile s32 vs32;\ntypedef int s32_bool;\n\n#define NULL ((void *)0)\n#define TRUE 1\n#define FALSE 0\n#define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))\n",

@@ -57,86 +57,87 @@ extern s32 gObjTriCounts[];
 extern u8 D_80177E18[];
 #define GP (*(GfxW **)D_80177E18)
 
-s32 drawActorModel(Obj *arg0) {
-    f32 m1[10];
-    f32 m2[10];
-    f32 f;
-    f32 rx;
-    f32 ry;
-    f32 rz;
-    s32 ok;
-    s32 t;
-    s32 v;
+/* Draws one object if it is on screen: builds its rotation, sets draw mode and a fade or flash, emits the display-list commands, and counts its triangles. */
+s32 drawActorModel(Obj *obj) {
+    f32 rotA[10];
+    f32 rotB[10];
+    f32 cullRadius;
+    f32 angX;
+    f32 angY;
+    f32 angZ;
+    s32 visible;
+    s32 flashTimer;
+    s32 param;
 
-    arg0->xF8 &= ~4;
-    v = arg0->x94;
+    obj->xF8 &= ~4;
+    param = obj->x94;
     if (D_800AB408[0] == 0) {
-        ok = func_8001EF80(arg0, v);
+        visible = func_8001EF80(obj, param);
     } else {
-        ok = func_8001F0AC(arg0, 0x12C0);
+        visible = func_8001F0AC(obj, 0x12C0);
     }
-    if (ok == 0) {
+    if (visible == 0) {
         return 0;
     }
-    f = D_800F7910[arg0->xB8];
-    f /= sinApprox(D_80000E50);
-    f += arg0->x30;
-    if (f < 0.0f) {
+    cullRadius = D_800F7910[obj->xB8];
+    cullRadius /= sinApprox(D_80000E50);
+    cullRadius += obj->x30;
+    if (cullRadius < 0.0f) {
         return 0;
     }
-    if (func_8002DD60(arg0->x28) > f + f) {
+    if (func_8002DD60(obj->x28) > cullRadius + cullRadius) {
         return 0;
     }
-    if (f < func_8002DD60(arg0->x2C)) {
+    if (cullRadius < func_8002DD60(obj->x2C)) {
         return 0;
     }
-    func_8001F230(arg0);
-    if (arg0->x5C != 0xFF) {
-        s32 a;
-        s32 c;
-        a = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0);
-        c = arg0->x5C;
-        arg0->x68 = 13;
-        setDrawMode(a);
-        func_80027060(0xFF, 0xFF, 0xFF, c);
+    func_8001F230(obj);
+    if (obj->x5C != 0xFF) {
+        s32 drawMode;
+        s32 fadeAlpha;
+        drawMode = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0);
+        fadeAlpha = obj->x5C;
+        obj->x68 = 13;
+        setDrawMode(drawMode);
+        func_80027060(0xFF, 0xFF, 0xFF, fadeAlpha);
         {
             GfxW *_g = GP++;
             _g->w0 = 0xFCFFFFFF;
             _g->w1 = 0xFFFCF67B;
         }
-    } else if (arg0->xF0 != 0) {
-        arg0->x68 = 3;
-        setDrawMode(arg0->x58);
-        func_80027060(0xFF, 0xFF, 0xFF, arg0->xF0);
+    } else if (obj->xF0 != 0) {
+        obj->x68 = 3;
+        setDrawMode(obj->x58);
+        func_80027060(0xFF, 0xFF, 0xFF, obj->xF0);
         {
             GfxW *_g = GP++;
             _g->w0 = 0xFC35426A;
             _g->w1 = 0x1184FE7F;
         }
     }
-    t = arg0->xF0 - gCamSpeedScale[0] * 8;
-    arg0->xF0 = t;
-    if (t <= 0) {
-        arg0->xF0 = 0;
+    flashTimer = obj->xF0 - gCamSpeedScale[0] * 8;
+    obj->xF0 = flashTimer;
+    if (flashTimer <= 0) {
+        obj->xF0 = 0;
     }
-    rx = arg0->x10;
-    rx *= D_80000E58;
-    ry = arg0->x14;
-    ry *= D_80000E58;
-    rz = arg0->x18;
-    rz *= D_80000E58;
-    mtxIdentity3(m1);
-    func_8002DB6C(m2, m1, rx);
-    func_8002DAE0(m1, m2, ry);
-    func_8002DBF8(m2, m1, rz);
-    func_80022C2C(arg0, m2, 1);
-    if (arg0->xE8 != 0) {
-        func_800479B0(arg0->xE8);
+    angX = obj->x10;
+    angX *= D_80000E58;
+    angY = obj->x14;
+    angY *= D_80000E58;
+    angZ = obj->x18;
+    angZ *= D_80000E58;
+    mtxIdentity3(rotA);
+    func_8002DB6C(rotB, rotA, angX);
+    func_8002DAE0(rotA, rotB, angY);
+    func_8002DBF8(rotB, rotA, angZ);
+    func_80022C2C(obj, rotB, 1);
+    if (obj->xE8 != 0) {
+        func_800479B0(obj->xE8);
     }
     {
         GfxW *_g = GP++;
         _g->w0 = 0xDE000000;
-        _g->w1 = arg0->xE4;
+        _g->w1 = obj->xE4;
     }
     {
         GfxW *_g = GP++;
@@ -144,10 +145,10 @@ s32 drawActorModel(Obj *arg0) {
         _g->w1 = 0;
     }
     setRenderState(-1);
-    *(s32 *)D_800BD114 += gObjTriCounts[arg0->xB8];
-    if (arg0->xF8 & 1) {
-        func_8002338C(arg0);
+    *(s32 *)D_800BD114 += gObjTriCounts[obj->xB8];
+    if (obj->xF8 & 1) {
+        func_8002338C(obj);
     }
-    arg0->xF8 |= 4;
+    obj->xF8 |= 4;
     return 1;
 }
