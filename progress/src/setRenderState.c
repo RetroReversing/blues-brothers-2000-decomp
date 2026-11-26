@@ -14,67 +14,70 @@ typedef struct RState {
     s32 x3C;
 } RState;
 
-extern RState D_800B2B20;
-extern s32 D_800BD6B0;
+extern RState gRdpStateCache;
+extern s32 gRenderStateChanges;
 extern GfxW *D_80177E18;
 
-void setRenderState(s32 mode) {
-    RState cur;
-    s32 sync;
+/* Updates the RDP render state from renderMode bits (-1 resets it). Compares the
+ * requested state with gRdpStateCache and appends display-list commands only for
+ * fields that changed, each preceded by a sync command when one is pending. */
+void setRenderState(s32 renderMode) {
+    RState want;
+    s32 needSync;
 
-    sync = 0;
-    cur.x2C = D_800B2B20.x2C;
-    cur.x3C = D_800B2B20.x3C;
-    cur.x30 = D_800B2B20.x30;
-    cur.x8 = D_800B2B20.x8;
-    if (mode == -1) {
-        D_800B2B20.x2C = mode;
-        D_800B2B20.x30 = mode;
-        D_800B2B20.x3C = mode;
-        D_800B2B20.x8 = 0;
+    needSync = 0;
+    want.x2C = gRdpStateCache.x2C;
+    want.x3C = gRdpStateCache.x3C;
+    want.x30 = gRdpStateCache.x30;
+    want.x8 = gRdpStateCache.x8;
+    if (renderMode == -1) {
+        gRdpStateCache.x2C = renderMode;
+        gRdpStateCache.x30 = renderMode;
+        gRdpStateCache.x3C = renderMode;
+        gRdpStateCache.x8 = 0;
         return;
     }
-    D_800BD6B0++;
-    cur.x8 = mode & 0xC0;
-    switch (mode & 3) {
+    gRenderStateChanges++;
+    want.x8 = renderMode & 0xC0;
+    switch (renderMode & 3) {
     case 1:
-        cur.x2C = 0;
+        want.x2C = 0;
         break;
     case 2:
-        cur.x2C = 0x3000;
+        want.x2C = 0x3000;
         break;
     case 3:
-        cur.x2C = 0x2000;
+        want.x2C = 0x2000;
         break;
     }
-    switch (mode & 0x30) {
+    switch (renderMode & 0x30) {
     case 0x10:
-        cur.x30 = 0;
+        want.x30 = 0;
         break;
     case 0x20:
-        cur.x30 = 0x8000;
+        want.x30 = 0x8000;
         break;
     case 0x30:
-        cur.x30 = 0xC000;
+        want.x30 = 0xC000;
         break;
     }
-    switch (mode & 0xC) {
+    switch (renderMode & 0xC) {
     case 4:
-        cur.x3C = 0x80000;
+        want.x3C = 0x80000;
         break;
     case 8:
-        cur.x3C = 0;
+        want.x3C = 0;
         break;
     }
-    if (cur.x8 != D_800B2B20.x8) {
-        if (sync) {
+    if (want.x8 != gRdpStateCache.x8) {
+        if (needSync) {
             GfxW *_g = D_80177E18++;
             _g->w0 = 0xE7000000;
             _g->w1 = 0;
-            sync = 0;
+            needSync = 0;
         }
-        D_800B2B20.x8 = cur.x8;
-        switch (cur.x8) {
+        gRdpStateCache.x8 = want.x8;
+        switch (want.x8) {
         case 0x40:
             {
                 GfxW *_g = D_80177E18++;
@@ -91,46 +94,46 @@ void setRenderState(s32 mode) {
             break;
         }
     }
-    if (cur.x2C != D_800B2B20.x2C) {
-        if (sync) {
+    if (want.x2C != gRdpStateCache.x2C) {
+        if (needSync) {
             GfxW *_g = D_80177E18++;
             _g->w0 = 0xE7000000;
             _g->w1 = 0;
-            sync = 0;
+            needSync = 0;
         }
-        D_800B2B20.x2C = cur.x2C;
+        gRdpStateCache.x2C = want.x2C;
         {
             GfxW *_g = D_80177E18++;
             _g->w0 = 0xE3001201;
-            _g->w1 = cur.x2C;
+            _g->w1 = want.x2C;
         }
     }
-    if (cur.x3C != D_800B2B20.x3C) {
-        if (sync) {
+    if (want.x3C != gRdpStateCache.x3C) {
+        if (needSync) {
             GfxW *_g = D_80177E18++;
             _g->w0 = 0xE7000000;
             _g->w1 = 0;
-            sync = 0;
+            needSync = 0;
         }
-        D_800B2B20.x3C = cur.x3C;
+        gRdpStateCache.x3C = want.x3C;
         {
             GfxW *_g = D_80177E18++;
             _g->w0 = 0xE3000C00;
-            _g->w1 = cur.x3C;
+            _g->w1 = want.x3C;
         }
     }
-    if (cur.x30 != D_800B2B20.x30) {
-        if (sync) {
+    if (want.x30 != gRdpStateCache.x30) {
+        if (needSync) {
             GfxW *_g = D_80177E18++;
             _g->w0 = 0xE7000000;
             _g->w1 = 0;
-            sync = 0;
+            needSync = 0;
         }
-        D_800B2B20.x30 = cur.x30;
+        gRdpStateCache.x30 = want.x30;
         {
             GfxW *_g = D_80177E18++;
             _g->w0 = 0xE3001001;
-            _g->w1 = cur.x30;
+            _g->w1 = want.x30;
         }
     }
 }

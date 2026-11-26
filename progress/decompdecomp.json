@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699824.216275,
- "revision": 5583,
+ "saved_at": 1795699868.728714,
+ "revision": 5586,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -17077,6 +17077,22 @@
    "timeout": 20,
    "function": "drawStatusScreen",
    "vram": 2147692096
+  },
+  "174988:2147655564": {
+   "toolchain": "sn-n64-281",
+   "flags": [
+    "-G0",
+    "-mips3",
+    "-O2",
+    "-mgas",
+    "-meb",
+    "-mcpu=VR4300",
+    "-mhard-float",
+    "-mfp64"
+   ],
+   "timeout": 20,
+   "function": "setRenderState",
+   "vram": 2147655564
   }
  },
  "instructions": "",
@@ -20727,7 +20743,7 @@
   "setRenderState": {
    "vram": 2147655564,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_8002A2DC": {
    "vram": 2147656412,
@@ -45552,6 +45568,12 @@
    "kind": "data"
   },
   {
+   "name": "gRdpStateCache",
+   "address": 2148215584,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "gCameraRig",
    "address": 2148219232,
    "size": 4,
@@ -45632,6 +45654,12 @@
   {
    "name": "gCameraTarget",
    "address": 2148257900,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gRenderStateChanges",
+   "address": 2148259504,
    "size": 4,
    "kind": "data"
   },
