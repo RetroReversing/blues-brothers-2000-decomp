@@ -34,76 +34,76 @@ extern s32 gFrameScale;
 extern s32 gCamSpeedScale;
 extern Obj142A0 *gCameraTarget;
 
-void func_800142A0(Obj142A0 *arg0) {
-    f32 sp20[3];
-    f32 sp30[3];
-    s32 sp40;
-    s32 d;
-    Obj142A0 *p;
-    Obj142A0 *end;
-    Obj142A0 *start;
+/* Per-frame update for a projectile: spins it, expires after 1500 frames or when it nears the camera target, and ends it on a collision hit or on a nearby flagged object. */ void updateProjectile(Obj142A0 *proj) {
+    f32 boxMin[3];
+    f32 boxMax[3];
+    s32 targetInfo;
+    s32 targetDist;
+    Obj142A0 *other;
+    Obj142A0 *poolEnd;
+    Obj142A0 *poolStart;
     f32 dx;
     f32 dy;
     f32 dz;
 
-    d = getCameraTargetDist(arg0, 8000.0f, &sp40);
-    arg0->unk10 += gCamSpeedScale << 10;
-    func_8002DA80(arg0);
-    if (arg0->unk90 != 0) {
-        func_80017CF0(arg0);
+    targetDist = getCameraTargetDist(proj, 8000.0f, &targetInfo);
+    proj->unk10 += gCamSpeedScale << 10;
+    func_8002DA80(proj);
+    if (proj->unk90 != 0) {
+        func_80017CF0(proj);
     }
-    arg0->unk90 ^= 1;
-    arg0->unk8C += gFrameScale;
-    if (arg0->unk8C >= 1501 || (d < 200 && arg0->unk74 != 0)) {
+    proj->unk90 ^= 1;
+    proj->unk8C += gFrameScale;
+    if (proj->unk8C >= 1501 || (targetDist < 200 && proj->unk74 != 0)) {
         gCameraTarget->unkB8 = 1;
         gCameraTarget->unkE4 = func_80023E3C(1);
         D_800B4CE4 = 0;
-        arg0->update(arg0);
+        proj->update(proj);
         return;
     }
-    sp20[0] = -50.0f;
-    sp20[1] = -75.0f;
-    sp20[2] = -50.0f;
-    sp30[0] = 50.0f;
-    sp30[1] = 75.0f;
-    sp30[2] = 50.0f;
-    sp20[0] = arg0->x + -50.0f;
-    sp30[0] = arg0->x + 50.0f;
-    sp20[1] = arg0->y + -75.0f;
-    sp30[1] = arg0->y + 75.0f;
-    sp20[2] = arg0->z + -50.0f;
-    sp30[2] = arg0->z + 50.0f;
-    collectCollisionCells(sp20, sp30, 0);
-    if (func_80048CD8(sp20[0], sp30[0], sp20[1], sp30[1], sp20[2], sp30[2], 0) != 0) {
+    boxMin[0] = -50.0f;
+    boxMin[1] = -75.0f;
+    boxMin[2] = -50.0f;
+    boxMax[0] = 50.0f;
+    boxMax[1] = 75.0f;
+    boxMax[2] = 50.0f;
+    boxMin[0] = proj->x + -50.0f;
+    boxMax[0] = proj->x + 50.0f;
+    boxMin[1] = proj->y + -75.0f;
+    boxMax[1] = proj->y + 75.0f;
+    boxMin[2] = proj->z + -50.0f;
+    boxMax[2] = proj->z + 50.0f;
+    collectCollisionCells(boxMin, boxMax, 0);
+    if (func_80048CD8(boxMin[0], boxMax[0], boxMin[1], boxMax[1], boxMin[2], boxMax[2], 0) != 0) {
         goto hit;
     found:
-        p->unkC0 |= 0x5E;
+        other->unkC0 |= 0x5E;
     hit:
-        arg0->update(arg0);
+        proj->update(proj);
         D_800B4CE4 = 0;
         gCameraTarget->unkB8 = 1;
         gCameraTarget->unkE4 = func_80023E3C(1);
         return;
     }
-    if (func_8000F7A0(arg0) != 0) {
-        arg0->update(arg0);
+    if (func_8000F7A0(proj) != 0) {
+        proj->update(proj);
         D_800B4CE4 = 0;
         gCameraTarget->unkB8 = 1;
         gCameraTarget->unkE4 = func_80023E3C(1);
     }
-    start = getObjPoolStart(0);
-    end = getObjPoolEnd(0);
-    for (p = start; p <= end; p++) {
-        if (p == arg0) {
+    poolStart = getObjPoolStart(0);
+    poolEnd = getObjPoolEnd(0);
+    for (other = poolStart; other <= poolEnd; other++) {
+        if (other == proj) {
             continue;
         }
-        if (!(p->flags & 0x1000)) {
+        if (!(other->flags & 0x1000)) {
             continue;
         }
-        func_800851D8(arg0);
-        dx = arg0->x - p->x;
-        dy = arg0->y - p->y;
-        dz = arg0->z - p->z;
+        func_800851D8(proj);
+        dx = proj->x - other->x;
+        dy = proj->y - other->y;
+        dz = proj->z - other->z;
         if (200.0f < func_8002DD60(dx)) {
             continue;
         }

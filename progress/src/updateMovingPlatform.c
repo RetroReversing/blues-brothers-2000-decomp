@@ -33,7 +33,7 @@ extern Obj72DA4 *gCameraTarget;
 extern Vec3i gPlatformMaxOffsets[];
 extern Vec3i gPlatformMinOffsets[];
 
-void func_80072DA4(Obj72DA4 *arg0) {
+void updateMovingPlatform(Obj72DA4 *arg0) {
     f32 sp10[10];
     f32 sp38[10];
     Vec3 sp60;

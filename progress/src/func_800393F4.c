@@ -80,7 +80,7 @@ extern s32 D_80140238;
 extern s32 D_8014023C;
 extern s32 D_80140240;
 extern f32 D_80140248;
-extern M2C_UNK func_800142A0;
+extern M2C_UNK updateProjectile;
 extern M2C_UNK func_8003C2A0;
 extern M2C_UNK func_800414D0;
 
@@ -507,7 +507,7 @@ block_102:
                 M2C_FIELD(temp_v0_9, s32 *, 0x10) = (s32) arg0->f10;
                 func_8002D3E4(temp_v0_9, 0x5DC);
                 temp_v0_9 = D_800B4CE4;
-                M2C_FIELD(temp_v0_9, M2C_UNK **, 0x9C) = &func_800142A0;
+                M2C_FIELD(temp_v0_9, M2C_UNK **, 0x9C) = &updateProjectile;
                 M2C_FIELD(temp_v0_9, s32 *, 0x64) = 0xC8;
                 M2C_FIELD(temp_v0_9, s32 *, 0) = 0x12C;
                 M2C_FIELD(temp_v0_9, f32 *, 4) = (f32) arg0->f4;

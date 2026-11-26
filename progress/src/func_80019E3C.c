@@ -60,7 +60,7 @@ s32 func_80023DBC(s32);
 void startStoryDialog(s32, void *, Obj *);
 void sendCommand(s32, s32);
 f32 sqrtf(f32);
-void func_80019A2C(Obj *);
+void drawHudCounters(Obj *);
 void func_80023078(Obj *);
 void func_8003930C(Obj *);
 void func_80034F50(Obj *);
@@ -128,7 +128,7 @@ void func_80019E3C(Obj *obj) {
             found = spawnEffectObj(0x101, 0, 0, 0);
             obj->child = found;
             found->unk68 = -1;
-            found->cb98 = func_80019A2C;
+            found->cb98 = drawHudCounters;
             found->cb9C = (void *)((u8 *)func_80023078 + 8);
             found->timer = 100;
             found->unk5C = 0;

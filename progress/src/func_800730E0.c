@@ -31,7 +31,7 @@ extern char D_800090D8[];
 extern s32 D_800B7B0C;
 extern s32 D_800B8380;
 extern s32 *D_801700B0;
-void func_80072DA4(void);
+void updateMovingPlatform(void);
 
 Obj *func_800730E0(Obj *parent) {
     s32 r;
@@ -42,7 +42,7 @@ Obj *func_800730E0(Obj *parent) {
     }
     r = randomRange(0, D_800B8380 - 1);
     o = func_8002E374(D_801700B0[r]);
-    o->f9C = func_80072DA4;
+    o->f9C = updateMovingPlatform;
     o->x = parent->x;
     o->y = parent->y;
     o->z = parent->z;

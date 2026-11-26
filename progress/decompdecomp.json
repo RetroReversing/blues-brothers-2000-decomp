@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700030.9566238,
- "revision": 5602,
+ "saved_at": 1795700051.659904,
+ "revision": 5605,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15083,7 +15083,7 @@
   },
   "473508:2147954084": {
    "vram": 2147954084,
-   "function": "func_80072DA4",
+   "function": "updateMovingPlatform",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15123,7 +15123,7 @@
   },
   "85664:2147566240": {
    "vram": 2147566240,
-   "function": "func_800142A0",
+   "function": "updateProjectile",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "458496:2147939072": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "updateOptionMenu",
-   "vram": 2147939072
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -18723,10 +18706,10 @@
    "matched_by": "manual-c182cbdee7f24184",
    "readable": false
   },
-  "func_800142A0": {
+  "updateProjectile": {
    "vram": 2147566240,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_800145DC": {
    "vram": 2147567068,
@@ -19283,10 +19266,10 @@
    "matched_by": "manual-aeeb5be5af9d41ed",
    "readable": true
   },
-  "func_80019A2C": {
+  "drawHudCounters": {
    "vram": 2147588652,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_80019D6C": {
    "vram": 2147589484,
@@ -24988,7 +24971,7 @@
    "matched_by": "manual-d0957fd9d5cf41f5",
    "readable": false
   },
-  "func_80072DA4": {
+  "updateMovingPlatform": {
    "vram": 2147954084,
    "matched_by": "manual-7740c92ed85f4923",
    "readable": false
@@ -28851,7 +28834,7 @@
   "func_80013B9C": "local_source_158913790096",
   "func_80013D5C": "local_source_158913790097",
   "func_800141B8": "local_source_158913790102",
-  "func_800142A0": "local_source_158913790104",
+  "updateProjectile": "local_source_158913790104",
   "func_80014614": "local_source_158913790106",
   "func_80014630": "local_source_158913790107",
   "func_8001466C": "local_source_158913790108",
@@ -29401,7 +29384,7 @@
   "func_80072640": "local_source_158913791332",
   "func_80072824": "local_source_158913791335",
   "func_80072B58": "local_source_158913791337",
-  "func_80072DA4": "local_source_158913791339",
+  "updateMovingPlatform": "local_source_158913791339",
   "func_80073394": "local_source_158913791343",
   "func_80073478": "local_source_158913791344",
   "cameraRigUpdate": "local_source_158913791345",
@@ -30615,7 +30598,7 @@
    "status": "open"
   },
   {
-   "name": "func_800142A0",
+   "name": "updateProjectile",
    "vram": 2147566240,
    "size": 828,
    "status": "open"
@@ -31287,7 +31270,7 @@
    "status": "open"
   },
   {
-   "name": "func_80019A2C",
+   "name": "drawHudCounters",
    "vram": 2147588652,
    "size": 832,
    "status": "open"
@@ -38169,7 +38152,7 @@
    "status": "open"
   },
   {
-   "name": "func_80072DA4",
+   "name": "updateMovingPlatform",
    "vram": 2147954084,
    "size": 828,
    "status": "open"
@@ -43211,6 +43194,12 @@
    "kind": "func"
   },
   {
+   "name": "updateProjectile",
+   "address": 2147566240,
+   "size": 828,
+   "kind": "func"
+  },
+  {
    "name": "collideActorWithPlatform",
    "address": 2147574552,
    "size": 932,
@@ -43226,6 +43215,12 @@
    "name": "drawDebugStats",
    "address": 2147587616,
    "size": 1036,
+   "kind": "func"
+  },
+  {
+   "name": "drawHudCounters",
+   "address": 2147588652,
+   "size": 832,
    "kind": "func"
   },
   {
@@ -43838,6 +43833,12 @@
    "name": "collidePlayerWithWall",
    "address": 2147949320,
    "size": 1428,
+   "kind": "func"
+  },
+  {
+   "name": "updateMovingPlatform",
+   "address": 2147954084,
+   "size": 828,
    "kind": "func"
   },
   {
@@ -47068,7 +47069,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Obj *",
+   "type": "Obj142A0 *",
    "source": "match"
   },
   {
