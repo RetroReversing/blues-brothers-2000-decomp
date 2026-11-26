@@ -32,7 +32,10 @@ extern s32 D_800B7E70[];
 extern s32 D_8014A920;
 extern s32 D_8014AA20;
 
-s32 *func_8004F63C(Obj *arg0, s32 flags, s32 *args) {
+/* Applies the argument words selected by the flags bitmask to an actor. Each set bit
+ * consumes its argument(s) and sets the matching field; bit 1 picks a state handler
+ * from D_800B7734. Returns the argument pointer advanced past the consumed words. */
+s32 *applyActorArgs(Obj *obj, s32 flags, s32 *argp) {
     s32 i;
     s32 bit;
 
@@ -41,79 +44,79 @@ s32 *func_8004F63C(Obj *arg0, s32 flags, s32 *args) {
         if (flags & bit) {
             switch (bit) {
             case 1:
-                if (args[0] > 0) {
-                    void (*fn)(void) = D_800B7734[args[0]];
-                    arg0->fn9C = fn;
-                    if (fn == func_800184B8) {
-                        arg0->x0 = 0x131;
+                if (argp[0] > 0) {
+                    void (*handler)(void) = D_800B7734[argp[0]];
+                    obj->fn9C = handler;
+                    if (handler == func_800184B8) {
+                        obj->x0 = 0x131;
                     }
-                    if (arg0->fn9C == func_800176D0) {
-                        arg0->x0 = 0x131;
-                        arg0->x70 = 0;
-                        arg0->fn9C = func_800184B8;
+                    if (obj->fn9C == func_800176D0) {
+                        obj->x0 = 0x131;
+                        obj->x70 = 0;
+                        obj->fn9C = func_800184B8;
                     }
-                    if (arg0->fn9C == func_800168F4) {
+                    if (obj->fn9C == func_800168F4) {
                         D_8014A920 |= 2;
                     }
-                    if (cameraGetMode() == 3 && arg0->fn9C == func_800168F4) {
+                    if (cameraGetMode() == 3 && obj->fn9C == func_800168F4) {
                         s32 v = D_800B7E70[D_8014AA20];
                         D_8014AA20++;
-                        arg0->x10 = v + 0x8000;
+                        obj->x10 = v + 0x8000;
                     }
                 }
                 break;
             case 2:
-                if (args[0] > 0) {
-                    func_8004E8B0(arg0, args[0]);
+                if (argp[0] > 0) {
+                    func_8004E8B0(obj, argp[0]);
                 }
                 break;
             case 4:
-                arg0->x10 = args[0];
-                arg0->x14 = 0;
-                arg0->x14 = args[1];
-                arg0->x18 = 0;
+                obj->x10 = argp[0];
+                obj->x14 = 0;
+                obj->x14 = argp[1];
+                obj->x18 = 0;
                 break;
             case 8:
-                arg0->x0 = args[0];
-                arg0->x70 = args[0];
+                obj->x0 = argp[0];
+                obj->x70 = argp[0];
                 break;
             case 0x10:
-                arg0->x6C = args[0];
+                obj->x6C = argp[0];
                 break;
             case 0x20:
-                arg0->x70 = args[0];
+                obj->x70 = argp[0];
                 break;
             case 0x40:
-                arg0->x74 = args[0];
+                obj->x74 = argp[0];
                 break;
             case 0x80:
-                arg0->x78 = args[0];
+                obj->x78 = argp[0];
                 break;
             case 0x100:
-                arg0->x7C = args[0];
+                obj->x7C = argp[0];
                 break;
             case 0x200:
-                arg0->x80 = args[0];
+                obj->x80 = argp[0];
                 break;
             case 0x400:
-                arg0->x84 = args[0];
+                obj->x84 = argp[0];
                 break;
             case 0x800:
-                arg0->x88 = args[0];
+                obj->x88 = argp[0];
                 break;
             case 0x1000:
-                arg0->x8C = args[0];
+                obj->x8C = argp[0];
                 break;
             case 0x2000:
-                arg0->x90 = args[0];
+                obj->x90 = argp[0];
                 break;
             case 0x4000:
-                arg0->x94 = args[0];
+                obj->x94 = argp[0];
                 break;
             }
-            args += D_800B7DE0[i];
+            argp += D_800B7DE0[i];
         }
         bit <<= 1;
     }
-    return args;
+    return argp;
 }

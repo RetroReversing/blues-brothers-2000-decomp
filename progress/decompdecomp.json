@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699889.702335,
- "revision": 5588,
+ "saved_at": 1795699900.818283,
+ "revision": 5589,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "138336:2147618912": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "updateParticleSpray",
-   "vram": 2147618912
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_B780": "common_main_text_B780.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -22473,10 +22456,10 @@
    "matched_by": "manual-44c31d661bd547a1",
    "readable": false
   },
-  "func_8004F63C": {
+  "applyActorArgs": {
    "vram": 2147808828,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_8004F984": {
    "vram": 2147809668,
@@ -35139,7 +35122,7 @@
    "status": "open"
   },
   {
-   "name": "func_8004F63C",
+   "name": "applyActorArgs",
    "vram": 2147808828,
    "size": 840,
    "status": "open"
@@ -43700,6 +43683,12 @@
    "name": "multiplyMatrix",
    "address": 2147799368,
    "size": 1028,
+   "kind": "func"
+  },
+  {
+   "name": "applyActorArgs",
+   "address": 2147808828,
+   "size": 840,
    "kind": "func"
   },
   {

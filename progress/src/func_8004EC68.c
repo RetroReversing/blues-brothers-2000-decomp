@@ -66,7 +66,7 @@ Obj *func_8004E888(Obj *);
 void func_8004E8B0(Obj *, s32);
 s32 func_8004EB18(s32);
 void func_8004EC20(void);
-s32 *func_8004F63C(Obj *, s32, s32 *);
+s32 *applyActorArgs(Obj *, s32, s32 *);
 s32 *func_8004F984(s32 *, s32);
 void func_80088F40(void);
 void debugPrintf(char *, s32);
@@ -300,7 +300,7 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
                 o->f8 = cur[3];
                 o->fC = cur[4];
                 syncActorPrevPos(o);
-                p = func_8004F63C(o, mask, p);
+                p = applyActorArgs(o, mask, p);
             }
         }
     }
@@ -354,7 +354,7 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
             o->f8 = cur[3];
             o->fC = cur[4];
             syncActorPrevPos(o);
-            p = func_8004F63C(o, mask, p);
+            p = applyActorArgs(o, mask, p);
             o->f14 = 0;
             o = fn(o);
             o->f10 = obj.f10;
