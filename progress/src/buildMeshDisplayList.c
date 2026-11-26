@@ -41,41 +41,45 @@ typedef struct {
     _g->w0 = _SHIFTL(0xDF, 24, 8); \
     _g->w1 = 0; }
 
-Gfx *buildMeshDisplayList(s16 *cmd, Vtx *vtx, Gfx *gfx) {
-    u8 alpha = 0x80;
-    s32 count = 0;
-    s32 n, i;
-    s32 a, b, c, d;
+/* Turns a compact mesh command stream into RDP display list commands. Opcodes:
+   0x7013 load n vertices, 0x7003 triangle, 0x7004 quad, 0x7012 skip one word,
+   0x7000 end. Loaded vertices get the stream's alpha. Returns the next free
+   display list slot. */
+Gfx *buildMeshDisplayList(s16 *cmdStream, Vtx *vtxBuf, Gfx *dl) {
+    u8 vtxAlpha = 0x80;
+    s32 vtxCount = 0;
+    s32 vtxN, i;
+    s32 idx0, idx1, idx2, idx3;
 
     for (;;) {
-        switch (*cmd++) {
+        switch (*cmdStream++) {
             case 0x7013:
-                n = *cmd++;
-                gSPVertex(gfx++, &vtx[count], n, 0);
-                for (i = 0; i < n; i++) {
-                    vtx[count + i].cn[3] = alpha;
+                vtxN = *cmdStream++;
+                gSPVertex(dl++, &vtxBuf[vtxCount], vtxN, 0);
+                for (i = 0; i < vtxN; i++) {
+                    vtxBuf[vtxCount + i].cn[3] = vtxAlpha;
                 }
-                count += n;
+                vtxCount += vtxN;
                 break;
             case 0x7003:
-                a = *cmd++;
-                b = *cmd++;
-                c = *cmd++;
-                gSP1Triangle(gfx++, a, b, c, a);
+                idx0 = *cmdStream++;
+                idx1 = *cmdStream++;
+                idx2 = *cmdStream++;
+                gSP1Triangle(dl++, idx0, idx1, idx2, idx0);
                 break;
             case 0x7004:
-                a = *cmd++;
-                b = *cmd++;
-                c = *cmd++;
-                d = *cmd++;
-                gSP1Quadrangle(gfx++, a, b, c, d, a);
+                idx0 = *cmdStream++;
+                idx1 = *cmdStream++;
+                idx2 = *cmdStream++;
+                idx3 = *cmdStream++;
+                gSP1Quadrangle(dl++, idx0, idx1, idx2, idx3, idx0);
                 break;
             case 0x7012:
-                cmd++;
+                cmdStream++;
                 break;
             case 0x7000:
-                gSPEndDisplayList(gfx++);
-                return gfx;
+                gSPEndDisplayList(dl++);
+                return dl;
         }
     }
 }
