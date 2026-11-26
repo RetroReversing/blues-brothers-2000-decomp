@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700102.510504,
- "revision": 5610,
+ "saved_at": 1795700117.2678232,
+ "revision": 5612,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15053,7 +15053,7 @@
   },
   "510616:2147991192": {
    "vram": 2147991192,
-   "function": "func_8007BE98",
+   "function": "updatePursuitActor",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15098,7 +15098,7 @@
   },
   "550952:2148031528": {
    "vram": 2148031528,
-   "function": "func_80085C28",
+   "function": "updateSplineActor",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "456192:2147936768": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "drawSaveSummary",
-   "vram": 2147936768
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -25748,10 +25731,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8007BE98": {
+  "updatePursuitActor": {
    "vram": 2147991192,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_8007C1C8": {
    "vram": 2147992008,
@@ -26408,10 +26391,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80085C28": {
+  "updateSplineActor": {
    "vram": 2148031528,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_80085F58": {
    "vram": 2148032344,
@@ -29487,7 +29470,7 @@
   "func_8007B880": "local_source_158913791485",
   "func_8007B94C": "local_source_158913791486",
   "func_8007BD08": "local_source_158913791488",
-  "func_8007BE98": "local_source_158913791490",
+  "updatePursuitActor": "local_source_158913791490",
   "func_8007C310": "local_source_158913791492",
   "func_8007C54C": "local_source_158913791495",
   "func_8007C780": "local_source_158913791496",
@@ -29544,7 +29527,7 @@
   "func_800858AC": "local_source_158913791617",
   "func_80085998": "local_source_158913791619",
   "func_80085A5C": "local_source_158913791620",
-  "func_80085C28": "local_source_158913791622",
+  "updateSplineActor": "local_source_158913791622",
   "func_800864B8": "local_source_158913791627",
   "updateComboRound": "local_source_158913791629",
   "func_80086B3C": "local_source_158913791631",
@@ -39087,7 +39070,7 @@
    "status": "open"
   },
   {
-   "name": "func_8007BE98",
+   "name": "updatePursuitActor",
    "vram": 2147991192,
    "size": 816,
    "status": "open"
@@ -39885,7 +39868,7 @@
    "status": "open"
   },
   {
-   "name": "func_80085C28",
+   "name": "updateSplineActor",
    "vram": 2148031528,
    "size": 816,
    "status": "open"
@@ -43895,6 +43878,12 @@
    "kind": "func"
   },
   {
+   "name": "updatePursuitActor",
+   "address": 2147991192,
+   "size": 816,
+   "kind": "func"
+  },
+  {
    "name": "drawMeterPips",
    "address": 2147993612,
    "size": 888,
@@ -43964,6 +43953,12 @@
    "name": "updateChaseAI",
    "address": 2148027596,
    "size": 1292,
+   "kind": "func"
+  },
+  {
+   "name": "updateSplineActor",
+   "address": 2148031528,
+   "size": 816,
    "kind": "func"
   },
   {
@@ -46723,6 +46718,26 @@
    "source": "match"
   },
   {
+   "address": 2147521912,
+   "type": "f64",
+   "source": "match"
+  },
+  {
+   "address": 2147521920,
+   "type": "f64",
+   "source": "match"
+  },
+  {
+   "address": 2147521928,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147521932,
+   "type": "f32",
+   "source": "match"
+  },
+  {
    "address": 2147522156,
    "type": "u8[]",
    "source": "match"
@@ -46850,6 +46865,31 @@
   {
    "address": 2147523152,
    "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523332,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147523356,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147523380,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523384,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523388,
+   "type": "f32",
    "source": "match"
   },
   {
@@ -47054,7 +47094,7 @@
   },
   {
    "address": 2148219232,
-   "type": "u8 *",
+   "type": "Obj *[]",
    "source": "match"
   },
   {
@@ -47109,12 +47149,12 @@
   },
   {
    "address": 2148245196,
-   "type": "s32[]",
+   "type": "u8[]",
    "source": "match"
   },
   {
    "address": 2148257900,
-   "type": "Obj72DA4 *",
+   "type": "u8[]",
    "source": "match"
   },
   {
@@ -47229,7 +47269,7 @@
   },
   {
    "address": 2148837800,
-   "type": "Pt *[]",
+   "type": "Ent *[]",
    "source": "match"
   },
   {

@@ -46,30 +46,30 @@ extern u8 D_801700E4[];
 #define P60 (gCameraRig[0])
 #define P64 (*(Obj **)D_800B3964)
 
-void func_8007BE98(Obj *arg0) {
+/* Per-frame update for an actor that waits until the camera is in place, then closes in on the camera target, stops, and backs off when the target moves away. */ void updatePursuitActor(Obj *pursuer) {
     f32 dx;
     f32 dz;
     f32 dy;
     f32 dist;
     f32 r;
-    Obj *bd;
+    Obj *target;
     s32 t;
 
-    dx = arg0->x4 - BD->x4;
-    dz = arg0->xC - BD->xC;
-    dy = arg0->x8 - BD->x8;
+    dx = pursuer->x4 - BD->x4;
+    dz = pursuer->xC - BD->xC;
+    dy = pursuer->x8 - BD->x8;
     dist = sqrtf(dx * dx + dz * dz);
-    if (arg0->x7C == 0) {
+    if (pursuer->x7C == 0) {
         if (cameraGetMode() == 0x3C) {
-            P64->xA8 = arg0;
-            arg0->x7C = 1;
-            arg0->x90 = 0;
-            syncActorPrevPos(arg0);
+            P64->xA8 = pursuer;
+            pursuer->x7C = 1;
+            pursuer->x90 = 0;
+            syncActorPrevPos(pursuer);
         }
         return;
     }
-    if (arg0->x90 != 0) {
-        switch (arg0->x90) {
+    if (pursuer->x90 != 0) {
+        switch (pursuer->x90) {
         case 1:
             if (dist < D_80009578) {
                 actorSetAnim(BD, 1, 0x100);
@@ -81,43 +81,43 @@ void func_8007BE98(Obj *arg0) {
                 b1->x90 = 1;
                 }
                 P60->fn9C = func_800351D4;
-                arg0->x90 = 2;
-                arg0->x8C = 0x898;
+                pursuer->x90 = 2;
+                pursuer->x8C = 0x898;
             }
             break;
         case 2:
-            arg0->x8 = approachF32(arg0->x44 + (f32)arg0->x8C, arg0->x8, (f32)(*(s32 *)gCamSpeedScale * 10));
-            BD->x8 = arg0->x8 + (f32)*(s32 *)D_801700E4;
-            if (arg0->x8 == arg0->x44 + (f32)arg0->x8C) {
+            pursuer->x8 = approachF32(pursuer->x44 + (f32)pursuer->x8C, pursuer->x8, (f32)(*(s32 *)gCamSpeedScale * 10));
+            BD->x8 = pursuer->x8 + (f32)*(s32 *)D_801700E4;
+            if (pursuer->x8 == pursuer->x44 + (f32)pursuer->x8C) {
                 BD->x74 = *(s32 *)D_801700E0;
                 BD->fn9C = func_800393F4;
-                arg0->x90 = 3;
+                pursuer->x90 = 3;
             }
             break;
         case 3:
             P60->fn9C = func_800340B4;
             if (D_80009580 < dist) {
-                arg0->x90 = 4;
+                pursuer->x90 = 4;
             }
             break;
         case 4:
-            arg0->x8 = approachF32(arg0->x44, arg0->x8, (f32)(*(s32 *)gCamSpeedScale * 10));
-            if (arg0->x8 == arg0->x44) {
-                arg0->x90 = 5;
+            pursuer->x8 = approachF32(pursuer->x44, pursuer->x8, (f32)(*(s32 *)gCamSpeedScale * 10));
+            if (pursuer->x8 == pursuer->x44) {
+                pursuer->x90 = 5;
             }
             break;
         case 5:
             if (func_8002DD60(dy) < D_80009588) {
-                arg0->x90 = 1;
+                pursuer->x90 = 1;
             }
             break;
         }
     } else if (P64->x7C == 2 && dist < D_8000958C) {
-        bd = BD;
-        if (bd->x90 != 0) {
-            *(s32 *)D_801700E0 = bd->x74;
-            bd->x74 = 0;
-            *(s32 *)D_801700E4 = bd->x8 - arg0->x8;
+        target = BD;
+        if (target->x90 != 0) {
+            *(s32 *)D_801700E0 = target->x74;
+            target->x74 = 0;
+            *(s32 *)D_801700E4 = target->x8 - pursuer->x8;
             P64->fn9C = func_8007CB84;
             P64->x7C = 0;
         }

@@ -4619,7 +4619,7 @@
 <g><title>func_8007BE90: {&#x27;matched&#x27;: 1}</title>
 <rect x="150.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8007BE98: {&#x27;matched&#x27;: 1}</title>
+<g><title>updatePursuitActor: {&#x27;matched&#x27;: 1}</title>
 <rect x="160.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8007C1C8: {&#x27;matched&#x27;: 1}</title>
@@ -5009,7 +5009,7 @@
 <g><title>func_80085B8C: {&#x27;matched&#x27;: 1}</title>
 <rect x="650.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80085C28: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateSplineActor: {&#x27;matched&#x27;: 1}</title>
 <rect x="660.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80085F60: {&#x27;matched&#x27;: 1}</title>

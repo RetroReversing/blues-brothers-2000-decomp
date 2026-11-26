@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 extern f32 D_80009A94;
 extern f64 D_80009A98;
 extern M2C_UNK func_80084000;
-extern M2C_UNK func_80085C28;
+extern M2C_UNK updateSplineActor;
 
 void func_80085244(void *arg0, void *arg1) {
     s32 temp_v1;
@@ -31,7 +31,7 @@ void func_80085244(void *arg0, void *arg1) {
             M2C_FIELD(arg0, f32 *, 0xAC) = (f32) ((f64) temp_v1_2 * D_80009A98);
         }
         if (M2C_FIELD(arg1, s32 *, 0x70) != 0) {
-            M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80085C28;
+            M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &updateSplineActor;
             return;
         }
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80084000;
