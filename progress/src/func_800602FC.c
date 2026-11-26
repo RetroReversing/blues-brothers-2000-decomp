@@ -14,7 +14,7 @@ typedef struct O602FC {
 s32 func_8002492C(f32, f32);
 void func_8002DA80(O602FC *);
 f32 func_8002DD60(f32);
-void func_8005FE74(O602FC *);
+void updateBlockerEnemy(O602FC *);
 void func_80060214(O602FC *);
 s32 func_80076080(void);
 
@@ -40,5 +40,5 @@ void func_800602FC(O602FC *arg0) {
         arg0->f54 = -func_8002DD60(arg0->f54);
     }
     arg0->f10 = func_8002492C(arg0->f4C, arg0->f54);
-    func_8005FE74(arg0);
+    updateBlockerEnemy(arg0);
 }

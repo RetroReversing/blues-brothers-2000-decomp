@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699426.5297651,
- "revision": 5558,
+ "saved_at": 1795699437.8954182,
+ "revision": 5560,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15253,7 +15253,7 @@
   },
   "395892:2147876468": {
    "vram": 2147876468,
-   "function": "func_8005FE74",
+   "function": "updateBlockerEnemy",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15279,8 +15279,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "484892:2147965468": {
    "vram": 2147965468,
@@ -23662,10 +23661,10 @@
    "matched_by": "permuter-158913791082",
    "readable": false
   },
-  "func_8005FE74": {
+  "updateBlockerEnemy": {
    "vram": 2147876468,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_80060214": {
    "vram": 2147877396,
@@ -29263,7 +29262,7 @@
   "func_8005FA30": "local_source_158913791076",
   "func_8005FBE4": "local_source_158913791077",
   "func_8005FD88": "local_source_158913791081",
-  "func_8005FE74": "local_source_158913791083",
+  "updateBlockerEnemy": "local_source_158913791083",
   "func_800602FC": "local_source_158913791085",
   "func_80060610": "local_source_158913791088",
   "func_800607B0": "local_source_158913791089",
@@ -36575,7 +36574,7 @@
    "status": "open"
   },
   {
-   "name": "func_8005FE74",
+   "name": "updateBlockerEnemy",
    "vram": 2147876468,
    "size": 928,
    "status": "open"
@@ -43171,6 +43170,12 @@
    "kind": "func"
   },
   {
+   "name": "gBumpRadius",
+   "address": 2147518684,
+   "size": 4,
+   "kind": "data"
+  },
+  {
    "name": "cameraGetMode",
    "address": 2147533884,
    "size": 28,
@@ -43666,6 +43671,12 @@
    "name": "updateChaserEnemy",
    "address": 2147874016,
    "size": 972,
+   "kind": "func"
+  },
+  {
+   "name": "updateBlockerEnemy",
+   "address": 2147876468,
+   "size": 928,
    "kind": "func"
   },
   {
@@ -46214,6 +46225,11 @@
    "source": "match"
   },
   {
+   "address": 2147518684,
+   "type": "f32",
+   "source": "match"
+  },
+  {
    "address": 2147518840,
    "type": "char[]",
    "source": "match"
@@ -46785,7 +46801,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Actor *",
+   "type": "u8[]",
    "source": "match"
   },
   {

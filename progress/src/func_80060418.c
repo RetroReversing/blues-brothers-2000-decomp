@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 s32 func_8002492C(f32, f32);                        /* extern */
 M2C_UNK func_8002DA80(void *);                      /* extern */
 f32 func_8002DD60(f32);                             /* extern */
-M2C_UNK func_8005FE74(void *);                      /* extern */
+M2C_UNK updateBlockerEnemy(void *);                      /* extern */
 M2C_UNK func_80060214(void *);                      /* extern */
 s32 func_80076080();                                /* extern */
 extern f32 D_800088F0;
@@ -60,7 +60,7 @@ void func_80060418(void *arg0) {
             if (var_v0 != 0) {
                 M2C_FIELD(arg0, s32 *, 0x10) = func_8002492C(M2C_FIELD(arg0, f32 *, 0x4C), M2C_FIELD(arg0, f32 *, 0x54));
             }
-            func_8005FE74(arg0);
+            updateBlockerEnemy(arg0);
         }
     }
 }
