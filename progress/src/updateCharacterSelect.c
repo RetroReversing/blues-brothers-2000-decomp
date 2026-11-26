@@ -28,7 +28,7 @@ extern s32 gPadPressed[];
 extern s32 gStickX[];
 extern Obj87B68 *gIntroActors[];
 
-/* Per-frame update for one player's character select: the stick (or L/R buttons) moves the highlight between the four intro actors, and A/Start confirms it and swaps the chosen actor into view. */ void updateCharacterSelect(Obj87B68 *selector) {
+/* Per-frame update for one player's character select: the stick or L/R moves the highlight between the four intro actors; A or Start confirms, tinting the chosen actor (red for player 1, blue for player 2), and a second press un-confirms it. */ /* Per-frame update for one player's character select: the stick (or L/R buttons) moves the highlight between the four intro actors, and A/Start confirms it and swaps the chosen actor into view. */ void updateCharacterSelect(Obj87B68 *selector) {
     s32 stickMag;
     s32 n;
     Obj87B68 *selectedActor;
