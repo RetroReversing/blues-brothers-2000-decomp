@@ -19,13 +19,13 @@ s32 func_80023E3C(s32);                             /* extern */
 M2C_UNK func_8002ADFC(M2C_UNK, M2C_UNK, void *);    /* extern */
 M2C_UNK func_8002D604(void *);                      /* extern */
 f32 getCameraTargetDist(void *, M2C_UNK, M2C_UNK);        /* extern */
-extern M2C_UNK func_8001F5A4;
+extern M2C_UNK drawRotatingActor;
 
 void func_8001C02C(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
         M2C_FIELD(arg0, s32 *, 0x74) = func_8001BF08(M2C_FIELD(arg0, s32 *, 0x70));
-        M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_8001F5A4;
+        M2C_FIELD(arg0, M2C_UNK **, 0x98) = &drawRotatingActor;
     }
     M2C_FIELD(arg0, s32 *, 0) = 0x140;
     M2C_FIELD(arg0, s32 *, 0xB8) = 0xA8;
