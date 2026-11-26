@@ -17,7 +17,7 @@ s32 func_80013654(s32);                             /* extern */
 s32 func_80013784(s32);                             /* extern */
 s32 func_800137E0(s32, s32);                        /* extern */
 s32 func_800137F8(s32);                             /* extern */
-s32 func_80083920(void *, s32);                     /* extern */
+s32 enemyTakeHit(void *, s32);                     /* extern */
 extern s32 gCameraTarget;
 extern s32 D_8014AB00;
 
@@ -51,7 +51,7 @@ s32 func_8005C990(void *arg0) {
     if (M2C_FIELD(arg0, const s32 *, 0x90) == 3) {
         var_a1 = M2C_FIELD(arg0, const s32 *, 0x8C) == 4;
     }
-    temp_v0_2 = func_80083920(arg0, var_a1);
+    temp_v0_2 = enemyTakeHit(arg0, var_a1);
     if (temp_v0_2 != 0) {
         M2C_FIELD(arg0, s32 *, 0xF0) = 0xC0;
     }

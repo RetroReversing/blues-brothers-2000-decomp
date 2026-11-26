@@ -38,7 +38,7 @@ s32 animStepKeys();
 s32 func_80043328();
 s32 actorSetAnim();
 s32 func_80076080();
-s32 func_80083920();
+s32 enemyTakeHit();
 s32 func_800853E8();
 extern f32 D_801700D0;
 extern s32 D_801700D4;
@@ -63,7 +63,7 @@ void func_80079580(Obj *self) {
     id = D_801700D4;
     dy = self->y - gCameraTarget->y;
     tickActorTimer(self);
-    switch (func_80083920(self, self->f64 > 0)) {
+    switch (enemyTakeHit(self, self->f64 > 0)) {
     case 1:
         actorSetAnim(o, 0x96, 0x100);
         self->f64 = 0x64;

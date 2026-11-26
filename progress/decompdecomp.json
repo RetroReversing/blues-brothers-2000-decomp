@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700376.6164238,
- "revision": 5639,
+ "saved_at": 1795700461.1341891,
+ "revision": 5646,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -9961,7 +9961,7 @@
   },
   "359924:2147840500": {
    "vram": 2147840500,
-   "function": "func_800571F4",
+   "function": "enemyAlert",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -13619,7 +13619,7 @@
   },
   "360664:2147841240": {
    "vram": 2147841240,
-   "function": "func_800574D8",
+   "function": "enemyChase",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -14231,7 +14231,7 @@
   },
   "360332:2147840908": {
    "vram": 2147840908,
-   "function": "func_8005738C",
+   "function": "enemyIdle",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -14771,7 +14771,7 @@
   },
   "361048:2147841624": {
    "vram": 2147841624,
-   "function": "func_80057658",
+   "function": "enemyLeashWander",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -14831,7 +14831,7 @@
   },
   "361560:2147842136": {
    "vram": 2147842136,
-   "function": "func_80057858",
+   "function": "enemyTurnAway",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16100,7 +16100,7 @@
   },
   "361952:2147842528": {
    "vram": 2147842528,
-   "function": "func_800579E0",
+   "function": "updateChaseEnemy",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "255060:2147735636": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "updateMainMenu",
-   "vram": 2147735636
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -23208,35 +23191,35 @@
    "matched_by": "manual-300e45cd3eb84e7b",
    "readable": false
   },
-  "func_800571F4": {
+  "enemyAlert": {
    "vram": 2147840500,
    "matched_by": "manual-9fd1e39de8e6486b",
    "readable": false
   },
-  "func_8005738C": {
+  "enemyIdle": {
    "vram": 2147840908,
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
   },
-  "func_800574D8": {
+  "enemyChase": {
    "vram": 2147841240,
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
   },
-  "func_80057658": {
+  "enemyLeashWander": {
    "vram": 2147841624,
    "matched_by": "manual-3572b8f795c14e2c",
    "readable": false
   },
-  "func_80057858": {
+  "enemyTurnAway": {
    "vram": 2147842136,
    "matched_by": "manual-83d32b880ea94c1c",
    "readable": false
   },
-  "func_800579E0": {
+  "updateChaseEnemy": {
    "vram": 2147842528,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "updateTargetPatrol": {
    "vram": 2147843276,
@@ -26278,7 +26261,7 @@
    "matched_by": "manual-a4cb312f2c3747b8",
    "readable": false
   },
-  "func_80083920": {
+  "enemyTakeHit": {
    "vram": 2148022560,
    "matched_by": "manual-3f0a68c1dcd84e99",
    "readable": false
@@ -29220,12 +29203,12 @@
   "func_80056E1C": "local_source_158913790990",
   "func_80056F04": "local_source_158913790991",
   "func_80057020": "local_source_158913792183",
-  "func_800571F4": "local_source_158913790994",
-  "func_8005738C": "local_source_158913790995",
-  "func_800574D8": "local_source_158913790996",
-  "func_80057658": "local_source_158913790997",
-  "func_80057858": "local_source_158913790998",
-  "func_800579E0": "local_source_158913790999",
+  "enemyAlert": "local_source_158913790994",
+  "enemyIdle": "local_source_158913790995",
+  "enemyChase": "local_source_158913790996",
+  "enemyLeashWander": "local_source_158913790997",
+  "enemyTurnAway": "local_source_158913790998",
+  "updateChaseEnemy": "local_source_158913790999",
   "updateTargetPatrol": "local_source_158913791000",
   "func_80057FC0": "local_source_158913791001",
   "func_80058040": "local_source_158913791002",
@@ -36021,37 +36004,37 @@
    "status": "open"
   },
   {
-   "name": "func_800571F4",
+   "name": "enemyAlert",
    "vram": 2147840500,
    "size": 408,
    "status": "open"
   },
   {
-   "name": "func_8005738C",
+   "name": "enemyIdle",
    "vram": 2147840908,
    "size": 332,
    "status": "open"
   },
   {
-   "name": "func_800574D8",
+   "name": "enemyChase",
    "vram": 2147841240,
    "size": 384,
    "status": "open"
   },
   {
-   "name": "func_80057658",
+   "name": "enemyLeashWander",
    "vram": 2147841624,
    "size": 512,
    "status": "open"
   },
   {
-   "name": "func_80057858",
+   "name": "enemyTurnAway",
    "vram": 2147842136,
    "size": 392,
    "status": "open"
   },
   {
-   "name": "func_800579E0",
+   "name": "updateChaseEnemy",
    "vram": 2147842528,
    "size": 748,
    "status": "open"
@@ -39729,7 +39712,7 @@
    "status": "asm"
   },
   {
-   "name": "func_80083920",
+   "name": "enemyTakeHit",
    "vram": 2148022560,
    "size": 264,
    "status": "open"
@@ -43829,6 +43812,42 @@
    "kind": "func"
   },
   {
+   "name": "enemyAlert",
+   "address": 2147840500,
+   "size": 408,
+   "kind": "func"
+  },
+  {
+   "name": "enemyIdle",
+   "address": 2147840908,
+   "size": 332,
+   "kind": "func"
+  },
+  {
+   "name": "enemyChase",
+   "address": 2147841240,
+   "size": 384,
+   "kind": "func"
+  },
+  {
+   "name": "enemyLeashWander",
+   "address": 2147841624,
+   "size": 512,
+   "kind": "func"
+  },
+  {
+   "name": "enemyTurnAway",
+   "address": 2147842136,
+   "size": 392,
+   "kind": "func"
+  },
+  {
+   "name": "updateChaseEnemy",
+   "address": 2147842528,
+   "size": 748,
+   "kind": "func"
+  },
+  {
    "name": "updateTargetPatrol",
    "address": 2147843276,
    "size": 756,
@@ -44036,6 +44055,12 @@
    "name": "checkComboWindow",
    "address": 2148021200,
    "size": 564,
+   "kind": "func"
+  },
+  {
+   "name": "enemyTakeHit",
+   "address": 2148022560,
+   "size": 264,
    "kind": "func"
   },
   {

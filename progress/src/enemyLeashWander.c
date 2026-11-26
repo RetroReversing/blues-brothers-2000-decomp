@@ -28,7 +28,7 @@ void func_80043328(Obj *, s32, s32);
 f32 sqrtf(f32);
 extern s32 gCamSpeedScale;
 
-s32 func_80057658(Obj *arg0) {
+s32 enemyLeashWander(Obj *arg0) {
     f32 rad;
     f32 dx;
     f32 dz;

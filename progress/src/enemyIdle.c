@@ -24,7 +24,7 @@ s32 randomRange(s32, s32);
 float sqrtf(float);
 extern Obj *gCameraTarget;
 
-s32 func_8005738C(Obj *o) {
+s32 enemyIdle(Obj *o) {
     f32 range;
     f32 dx;
     f32 dz;

@@ -22,7 +22,7 @@ float sqrtf(float);
 extern s32 gCamSpeedScale;
 extern Obj *gCameraTarget;
 
-s32 func_800574D8(Obj *o) {
+s32 enemyChase(Obj *o) {
     f32 range;
     f32 dx;
     f32 dz;

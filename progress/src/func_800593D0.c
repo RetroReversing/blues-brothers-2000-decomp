@@ -39,7 +39,7 @@ void func_80043328(Actor *, s32, s32);
 void actorSetAnim(Actor *, s32, s32);
 void func_8004EB60(Actor *);
 void func_80059CA8(Actor *);
-s32 func_80083920(Actor *, s32);
+s32 enemyTakeHit(Actor *, s32);
 void func_8007631C(void);
 extern s32 D_800B7FB0;
 extern Actor *gCameraTarget;
@@ -86,7 +86,7 @@ void func_800593D0(Actor *arg0)
     case 2:
         done = animStepKeys(a);
         a->unk10 = approachAngle(atan2S16(dx, dz), a->unk10, 0xC00);
-        r = func_80083920(a, a->unk90 == 3 && a->unk8C == 1);
+        r = enemyTakeHit(a, a->unk90 == 3 && a->unk8C == 1);
         switch (r) {
         case 1:
             sendCommand(12, 0x80);
@@ -149,7 +149,7 @@ void func_800593D0(Actor *arg0)
                 sendCommand(8, 0x2D);
                 D_800B7FB0 = 1;
             }
-            r = func_80083920(a, a->unk90 == 3 && a->unk8C == 1);
+            r = enemyTakeHit(a, a->unk90 == 3 && a->unk8C == 1);
             switch (r) {
             case 1:
                 sendCommand(12, 0x80);

@@ -18,7 +18,7 @@ M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80050460(M2C_UNK *, M2C_UNK *);        /* extern */
 M2C_UNK func_800852CC(void *, void *);              /* extern */
 extern M2C_UNK D_8014AA5B;
-extern M2C_UNK func_800579E0;
+extern M2C_UNK updateChaseEnemy;
 extern M2C_UNK updateTargetPatrol;
 extern M2C_UNK func_80057FC0;
 
@@ -29,7 +29,7 @@ void *func_80058040(void *arg0) {
     func_80050460(&func_80057FC0, &D_8014AA5B);
     temp_v0 = func_80042F00(0x33, 0, 0, 0);
     func_80043328(temp_v0, 0xC0, 0x100);
-    M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_800579E0;
+    M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &updateChaseEnemy;
     M2C_FIELD(temp_v0, s32 *, 0) = 0x100A;
     if (arg0 != NULL) {
         temp_v0_2 = M2C_FIELD(arg0, s32 *, 0x70);

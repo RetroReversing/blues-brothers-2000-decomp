@@ -26,10 +26,10 @@ void func_80080594(Obj *, s32);
 float sqrtf(float);
 extern s32 gCamSpeedScale;
 extern Obj *gCameraTarget;
-void func_8005738C(void);
-void func_80057658(void);
+void enemyIdle(void);
+void enemyLeashWander(void);
 
-s32 func_80057858(Obj *arg0) {
+s32 enemyTurnAway(Obj *arg0) {
     f32 range;
     f32 dist;
     f32 dx, dz;
@@ -46,7 +46,7 @@ s32 func_80057858(Obj *arg0) {
     func_8002D3E4(arg0, 100);
     func_8002DA80(arg0);
     if (tickActorTimer(arg0) != 0) {
-        arg0->unkD8 = func_8005738C;
+        arg0->unkD8 = enemyIdle;
         arg0->unk64 = randomRange(180, 400);
         func_80080594(arg0, 2);
         return 0;
@@ -57,7 +57,7 @@ s32 func_80057858(Obj *arg0) {
     dy = func_8002DD60(gCameraTarget->y - arg0->y);
     if (dist < range && dy < 400.0f) {
         func_80080594(arg0, 0);
-        arg0->unkD8 = func_80057658;
+        arg0->unkD8 = enemyLeashWander;
     }
     return 0;
 }

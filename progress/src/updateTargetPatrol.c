@@ -43,7 +43,7 @@ typedef struct Unk80057CCC {
 extern Unk800BD06C_579E0 *gCameraTarget;
 
 s32 animStepKeys(void *arg0_in);
-s32 func_80083920(void *o, s32 arg1);
+s32 enemyTakeHit(void *o, s32 arg1);
 s16 sins(u16);
 s16 coss(u16);
 void func_8002ADFC(s32 ch, s32 range, void *src);
@@ -54,13 +54,13 @@ s32 func_8002492C(f32, f32);
 void actorSetAnim(void *arg0, s32 arg1, s32 arg2);
 f32 getCameraTargetDist(void *o, f32 r, s32 *ang);
 s16 *func_800851D8(void *arg0);
-s32 func_800571F4(void *arg0);
+s32 enemyAlert(void *arg0);
 s32 randomRange(s32 arg0, s32 arg1);
-s32 func_8005738C(Unk80057CCC *);
+s32 enemyIdle(Unk80057CCC *);
 s32 func_800571B0(Unk80057CCC *);
-s32 func_80057858(Unk80057CCC *);
-s32 func_80057658(Unk80057CCC *);
-s32 func_800574D8(Unk80057CCC *);
+s32 enemyTurnAway(Unk80057CCC *);
+s32 enemyLeashWander(Unk80057CCC *);
+s32 enemyChase(Unk80057CCC *);
 
 void func_8002D3E4(void *arg0, s32 arg1);
 void func_8002DA80(void *arg0);
@@ -96,7 +96,7 @@ void updateTargetPatrol(Unk80057CCC *arg0) {
     flagBits = arg0->unkC0;
     arg0->unk100 = targetDist;
     arg0->unk90 = angle;
-    stepResult = func_80083920(arg0, arg0->unk74);
+    stepResult = enemyTakeHit(arg0, arg0->unk74);
     switch (stepResult) {
     case 1:
         arg0->unk74 = stepResult;
@@ -116,7 +116,7 @@ void updateTargetPatrol(Unk80057CCC *arg0) {
         return;
     }
     if (arg0->unk80 != 0) {
-        func_800571F4(arg0);
+        enemyAlert(arg0);
         return;
     }
     if (arg0->unk74 != 0) {

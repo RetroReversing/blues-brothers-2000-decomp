@@ -7,7 +7,7 @@ typedef struct Obj {
     s32 xF0;
 } Obj;
 
-extern s32 func_80083920(Obj *, s32);
+extern s32 enemyTakeHit(Obj *, s32);
 extern void func_80043328(Obj *, s32, s32);
 extern void actorSetAnim(Obj *, s32, s32);
 extern void func_8002ADFC(s32, s32, Obj *);
@@ -17,7 +17,7 @@ extern void func_8005FD0C(void);
 s32 func_80060214(Obj *o) {
     s32 r;
 
-    r = func_80083920(o, o->x80);
+    r = enemyTakeHit(o, o->x80);
     switch (r) {
     case 1:
         o->x80 = r;

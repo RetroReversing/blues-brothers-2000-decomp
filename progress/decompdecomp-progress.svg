@@ -3131,22 +3131,22 @@
 <g><title>func_800571B0: {&#x27;matched&#x27;: 1}</title>
 <rect x="790.000" y="280" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800571F4: {&#x27;matched&#x27;: 1}</title>
+<g><title>enemyAlert: {&#x27;matched&#x27;: 1}</title>
 <rect x="800.000" y="280" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8005738C: {&#x27;matched&#x27;: 1}</title>
+<g><title>enemyIdle: {&#x27;matched&#x27;: 1}</title>
 <rect x="810.000" y="280" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800574D8: {&#x27;matched&#x27;: 1}</title>
+<g><title>enemyChase: {&#x27;matched&#x27;: 1}</title>
 <rect x="20.000" y="290" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80057658: {&#x27;matched&#x27;: 1}</title>
+<g><title>enemyLeashWander: {&#x27;matched&#x27;: 1}</title>
 <rect x="30.000" y="290" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80057858: {&#x27;matched&#x27;: 1}</title>
+<g><title>enemyTurnAway: {&#x27;matched&#x27;: 1}</title>
 <rect x="40.000" y="290" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800579E0: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateChaseEnemy: {&#x27;matched&#x27;: 1}</title>
 <rect x="50.000" y="290" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>updateTargetPatrol: {&#x27;matched&#x27;: 1}</title>
@@ -4931,7 +4931,7 @@
 <g><title>func_80083870: {&#x27;matched&#x27;: 1}</title>
 <rect x="390.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80083920: {&#x27;matched&#x27;: 1}</title>
+<g><title>enemyTakeHit: {&#x27;matched&#x27;: 1}</title>
 <rect x="400.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80083A28: {&#x27;matched&#x27;: 1}</title>

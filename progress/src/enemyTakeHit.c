@@ -12,7 +12,7 @@ extern s32 randomRange(s32, s32);
 extern void func_8002D124(void);
 extern s16 D_800B9B1C[];
 
-s32 func_80083920(Obj *o, s32 arg1) {
+s32 enemyTakeHit(Obj *o, s32 arg1) {
     s32 flags;
     s32 dmg;
     s32 hit;

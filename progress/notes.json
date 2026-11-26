@@ -4153,7 +4153,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:24abf343f944662391506dfa8351e9ad57fcaebae1f7df836f133bd9c9c4f880"
  },
  {
-  "function": "func_800571F4",
+  "function": "enemyAlert",
   "text": "hk122: examined, not finished (saved best 250 re-judged 250). Rows: float registers only in the main body ($f1/$f2 where the target has $f2/$f0), plus the target loads D_80008414 through $at (lui $at; lwc1 $f0,lo($at)) where the draft uses a $v0 temporary. The float values in the target all sit in even registers ($f0, $f2), the same pattern as func_8000FA40 and func_8004318C, so a float-register parity question, not C shape. Not attempted further in this run: the draft still has the m2c temporaries (temp_s0_2, temp_v0_2) and sins/coss returns (s16).",
   "by": "manual-b0e2bd0ffe094005",
   "created_at": 1795549329.165654,
@@ -4161,7 +4161,7 @@
   "score_after": 250
  },
  {
-  "function": "func_800571F4",
+  "function": "enemyAlert",
   "text": "[Released without compiling it once; notes not checked by a compile.] Stuck at 250: float register parity (even / in the target) and the  global load. See note.",
   "by": "manual-b0e2bd0ffe094005",
   "created_at": 1795549329.312583,

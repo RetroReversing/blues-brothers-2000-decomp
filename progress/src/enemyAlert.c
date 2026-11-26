@@ -26,7 +26,7 @@ s16 sins();
 extern s32 gCamSpeedScale;
 extern s32 gCameraTarget;
 
-s32 func_800571F4(void *arg0) {
+s32 enemyAlert(void *arg0) {
     s32 temp_s0;
     s32 temp_s0_2;
     s32 temp_v0;

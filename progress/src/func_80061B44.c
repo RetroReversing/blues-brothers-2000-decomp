@@ -17,14 +17,14 @@ s32 sendCommand();
 s32 func_8002D124();
 s32 func_80043328();
 s32 actorSetAnim();
-s32 func_80083920();
+s32 enemyTakeHit();
 extern s32 func_80043248;
 extern s32 func_8007631C;
 
 void func_80061B44(void *arg0) {
     s32 temp_v0;
 
-    temp_v0 = func_80083920(arg0, M2C_FIELD(arg0, s32 *, 0x78) == 4);
+    temp_v0 = enemyTakeHit(arg0, M2C_FIELD(arg0, s32 *, 0x78) == 4);
     switch (temp_v0) {                              /* irregular */
     case 1:
         if (func_80023AE8(M2C_FIELD(arg0, s32 *, 0x74) + 4) == temp_v0) {
