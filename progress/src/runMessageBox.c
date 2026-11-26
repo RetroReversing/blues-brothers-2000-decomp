@@ -46,7 +46,7 @@ extern char D_8014AA98[];
 #define gMode (*(s32 *)D_8014AA98)
 extern f32 D_80008180;
 
-/* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ /* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ s32 runMessageBox(Obj *arg0, Msg *arg1) {
+/* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ /* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ /* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ s32 runMessageBox(Obj *box, Msg *msg) {
     u8 *text;
     s32 textLen;
     s32 indent;
@@ -55,22 +55,22 @@ extern f32 D_80008180;
     s32 xPos;
     s32 boxMode;
 
-    text = arg1->text;
+    text = msg->text;
     textLen = strlen(text);
-    if (arg0->f7C == 0) {
-        arg0->f7C = 1;
-        boxMode = arg1->mode;
-        arg0->f84 = boxMode;
+    if (box->f7C == 0) {
+        box->f7C = 1;
+        boxMode = msg->mode;
+        box->f84 = boxMode;
         if (boxMode == 1) {
             gMode = boxMode;
         } else {
             gMode = 0;
         }
         indent = 0;
-        arg0->f68 = 0xE;
-        arg0->f64 = textLen * 8;
-        arg0->f88 = text;
-        arg0->f98 = drawMessageText;
+        box->f68 = 0xE;
+        box->f64 = textLen * 8;
+        box->f88 = text;
+        box->f98 = drawMessageText;
         if (gFlag != 0) {
             indent = 20;
         }
@@ -100,19 +100,19 @@ extern f32 D_80008180;
         textObj->f30 = D_80008180;
         textObj->f58 = packDrawFlags(0, 1, 0, 3, 0, 0, 1, 0);
         textObj->f9C = updateMessageWave;
-        textObj->fA4 = arg0;
-        textObj->f78 = arg0->f78;
+        textObj->fA4 = box;
+        textObj->f78 = box->f78;
         textObj->f98 = func_8001FE50;
         textObj->f68 = 0xD;
         textObj->f90 = 1;
         textObj->f0 = 0x80F;
     }
-    if (arg0->f80 != 0) {
-        arg0->f80 = 0;
+    if (box->f80 != 0) {
+        box->f80 = 0;
         return 1;
     }
-    if (tickActorTimer(arg0) != 0) {
-        if (arg0->f64 < -1000) {
+    if (tickActorTimer(box) != 0) {
+        if (box->f64 < -1000) {
             return 0;
         }
         if (gPad & 0x8000) {
@@ -121,11 +121,11 @@ extern f32 D_80008180;
             return 0;
         }
     }
-    if (arg0->f64 < textLen * 14 - 50 && (gPad & 0x8000)) {
+    if (box->f64 < textLen * 14 - 50 && (gPad & 0x8000)) {
         sendCommand(0xC, 0x80);
         sendCommand(8, 0xA3);
-        arg0->f64 = -1;
-        arg0->f80 = 1;
+        box->f64 = -1;
+        box->f80 = 1;
     }
     return 1;
 }
