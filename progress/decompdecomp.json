@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699924.245662,
- "revision": 5591,
+ "saved_at": 1795699937.359193,
+ "revision": 5593,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14951,7 +14951,7 @@
   },
   "506856:2147987432": {
    "vram": 2147987432,
-   "function": "func_8007AFE8",
+   "function": "updateCameraSplineTrigger",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15149,8 +15149,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "196288:2147676864": {
    "vram": 2147676864,
@@ -25667,10 +25666,10 @@
    "matched_by": "manual-f95c49f22fff44f9",
    "readable": false
   },
-  "func_8007AFE8": {
+  "updateCameraSplineTrigger": {
    "vram": 2147987432,
    "matched_by": "manual-83d32b880ea94c1c",
-   "readable": false
+   "readable": true
   },
   "func_8007B330": {
    "vram": 2147988272,
@@ -29462,7 +29461,7 @@
   "func_8007ABE0": "local_source_158913791475",
   "func_8007ACD4": "local_source_158913791476",
   "func_8007AEBC": "local_source_158913791477",
-  "func_8007AFE8": "local_source_158913791478",
+  "updateCameraSplineTrigger": "local_source_158913791478",
   "func_8007B330": "local_source_158913791479",
   "func_8007B570": "local_source_158913791480",
   "func_8007B724": "local_source_158913791481",
@@ -38993,7 +38992,7 @@
    "status": "open"
   },
   {
-   "name": "func_8007AFE8",
+   "name": "updateCameraSplineTrigger",
    "vram": 2147987432,
    "size": 840,
    "status": "open"
@@ -43795,6 +43794,12 @@
    "kind": "func"
   },
   {
+   "name": "updateCameraSplineTrigger",
+   "address": 2147987432,
+   "size": 840,
+   "kind": "func"
+  },
+  {
    "name": "drawMeterPips",
    "address": 2147993612,
    "size": 888,
@@ -46602,6 +46607,11 @@
    "source": "match"
   },
   {
+   "address": 2147521744,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
    "address": 2147522156,
    "type": "u8[]",
    "source": "match"
@@ -46933,7 +46943,7 @@
   },
   {
    "address": 2148219232,
-   "type": "Obj73644 *",
+   "type": "Obj *",
    "source": "match"
   },
   {
@@ -46993,7 +47003,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Obj67C6C *",
+   "type": "Obj *",
    "source": "match"
   },
   {
@@ -47108,7 +47118,7 @@
   },
   {
    "address": 2148837800,
-   "type": "Vec3i *[]",
+   "type": "Pt *[]",
    "source": "match"
   },
   {

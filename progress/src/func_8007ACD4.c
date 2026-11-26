@@ -8,7 +8,7 @@ void func_80036F44(void);
 u8 *func_80055D10(s32);
 void func_80074F74(void);
 void func_8007ABE0(void);
-void func_8007AFE8(void);
+void updateCameraSplineTrigger(void);
 f32 func_800812B4(s32, void *, void *, s32);
 s32 func_80081990(void *, s32, f32);
 extern f32 D_800094B4;
@@ -29,7 +29,7 @@ void func_8007ACD4(u8 *arg0) {
         g = gCameraRig[0];
         *(void **)(g + 0x9C) = func_800340B4;
         syncActorPrevPos(g);
-        *(void **)(arg0 + 0x9C) = func_8007AFE8;
+        *(void **)(arg0 + 0x9C) = updateCameraSplineTrigger;
         *(void **)(arg0 + 0x98) = (u8 *)func_80023078 + 8;
     }
     if (*(u8 **)(arg0 + 0xA8) == NULL) {
