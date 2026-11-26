@@ -69,26 +69,26 @@ extern u8 D_80171A30[];
 extern u8 D_80171A34[];
 extern u8 D_80171A50[];
 
-void updateComboRound(Obj *arg0) {
+/* Per-frame controller for a combo round: runs combo input, plays the beat animation, and shows the win or fail text when the round ends. */ void updateComboRound(Obj *owner) {
     char buf[0x20];
-    s32 idx;
-    s32 font;
-    s32 t;
-    f64 a;
+    s32 stage;
+    s32 fontId;
+    s32 beatPhase;
+    f64 animTime;
 
-    idx = func_80082400();
-    font = func_80023DBC(0xE33);
+    stage = func_80082400();
+    fontId = func_80023DBC(0xE33);
     (*(Obj * *)D_80171A30)->x4 = approachF32(D_80009B5C, (*(Obj * *)D_80171A30)->x4, 4.0f);
     (*(s32 *)gComboBeat) += (*(s32 *)gCamSpeedScale);
-    t = (*(s32 *)gComboBeat) % 144;
+    beatPhase = (*(s32 *)gComboBeat) % 144;
     updateComboInput(0);
-    if (t / 2 == 18) {
+    if (beatPhase / 2 == 18) {
         (*(s32 *)D_80171A34)++;
         if ((*(s32 *)D_80171A34) != 1) {
             if (gComboSlots.xC != 0) {
                 (*(s32 *)D_80171A50)++;
                 actorSetAnim((*(Obj * *)D_801719A8), gComboDefs[gComboSlots.x0].x4, 0x100);
-                gComboSlots.x8 = gComboDefs[idx].x0;
+                gComboSlots.x8 = gComboDefs[stage].x0;
                 gComboSlots.xC = 0;
                 gComboSlots.x10[0] = 0;
                 gComboSlots.x10[1] = 0;
@@ -104,25 +104,25 @@ void updateComboRound(Obj *arg0) {
         }
     }
     if ((*(s32 *)D_80171A50) >= 3) {
-        if (D_800B9B40[idx] == 0) {
-            arg0->fn9C = func_80085F58 + 8;
+        if (D_800B9B40[stage] == 0) {
+            owner->fn9C = func_80085F58 + 8;
             func_80087160(func_80023D58(0x202));
-            sprintf(buf, D_80009B40, D_800B8720[idx].x8);
-            func_80052B24(font, buf, arg0);
+            sprintf(buf, D_80009B40, D_800B8720[stage].x8);
+            func_80052B24(fontId, buf, owner);
             (*(Obj * *)D_80171A30)->x68 = -1;
             actorSetAnim((*(Obj * *)D_801719A8), 0x178, 0x100);
             func_8002A360(12, 0x80);
             func_8002A360(8, 0x78);
             return;
         }
-        arg0->x64 = 100;
-        arg0->fn9C = func_80086550;
+        owner->x64 = 100;
+        owner->fn9C = func_80086550;
         return;
     }
     if ((*(s32 *)D_80171A34) >= 7) {
-        sprintf(buf, D_80009B54, D_800B8720[idx].x8);
-        func_80052B24(font, buf, arg0);
-        arg0->fn9C = func_80086B3C;
+        sprintf(buf, D_80009B54, D_800B8720[stage].x8);
+        func_80052B24(fontId, buf, owner);
+        owner->fn9C = func_80086B3C;
         actorSetAnim((*(Obj * *)D_801719A8), 1, 0x100);
         (*(Obj * *)D_801719AC)->x10 = -0x4000;
         actorSetAnim((*(Obj * *)D_801719AC), 0x18C, 0x100);
@@ -131,8 +131,8 @@ void updateComboRound(Obj *arg0) {
         return;
     }
     if ((*(Obj * *)D_801719AC)->xD0 == 0x18B) {
-        a = (*(Obj * *)D_801719AC)->xDC;
-        if ((D_80009B60 <= a && a < D_80009B68) || (D_80009B70 <= a && a < D_80009B78)) {
+        animTime = (*(Obj * *)D_801719AC)->xDC;
+        if ((D_80009B60 <= animTime && animTime < D_80009B68) || (D_80009B70 <= animTime && animTime < D_80009B78)) {
             func_80082400();
         }
     }
