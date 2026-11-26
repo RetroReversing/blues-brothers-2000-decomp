@@ -9,7 +9,7 @@ typedef struct Cfg220C {
 } Cfg220C;
 
 extern void func_80022100(Cfg220C *);
-extern s32 D_800BD6B0[];
+extern s32 gRenderStateChanges[];
 extern u8 D_800CD0E4[];
 extern GfxW220C *D_80177E18;
 extern u8 D_800AB99E[];
@@ -38,7 +38,7 @@ void setDrawMode(s32 flags) {
     *(s32 *) D_800CD0E4 = 0;
     cfg.mode = 0x205;
     cfg.mode2 = 0;
-    D_800BD6B0[1]++;
+    gRenderStateChanges[1]++;
     twoCycle = flags & 1;
     zCmp = (flags >> 1) & 1;
     cc2Bits = (flags >> 2) & 7;

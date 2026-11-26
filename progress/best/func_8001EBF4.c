@@ -1,6 +1,6 @@
 extern s32 D_800AB390;
 extern s32 D_800AB9A0;
-extern s32 D_800BD6B0[2];
+extern s32 gRenderStateChanges[2];
 extern s32 D_800BD6B8;
 extern s32 D_800BD6BC;
 extern s32 D_800BD6C0;
@@ -27,6 +27,6 @@ void func_8001EBF4(s32 arg0) {
     D_800CD108[0] = 0;
     D_800CD0F0 = 0;
     D_800BD6BC = 0;
-    D_800BD6B0[1] = 0;
-    D_800BD6B0[0] = 0;
+    gRenderStateChanges[1] = 0;
+    gRenderStateChanges[0] = 0;
 }

@@ -1163,7 +1163,7 @@
 <g><title>func_80020F50: {&#x27;matched&#x27;: 1}</title>
 <rect x="630.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80021060: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateParticleSpray: {&#x27;matched&#x27;: 1}</title>
 <rect x="640.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>updateParticleEmitter: {&#x27;matched&#x27;: 1}</title>

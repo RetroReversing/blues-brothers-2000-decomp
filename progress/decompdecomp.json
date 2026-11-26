@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699868.728714,
- "revision": 5586,
+ "saved_at": 1795699889.702335,
+ "revision": 5588,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14917,8 +14917,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "132520:2147613096": {
    "vram": 2147613096,
@@ -17061,38 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "211520:2147692096": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "drawStatusScreen",
-   "vram": 2147692096
-  },
-  "174988:2147655564": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "setRenderState",
-   "vram": 2147655564
   }
  },
  "instructions": "",
@@ -18031,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -19905,10 +19871,10 @@
    "matched_by": "manual-d815639955454bd3",
    "readable": false
   },
-  "func_80021060": {
+  "updateParticleSpray": {
    "vram": 2147618912,
    "matched_by": "manual-291cac6721ed4aac",
-   "readable": false
+   "readable": true
   },
   "updateParticleEmitter": {
    "vram": 2147619752,
@@ -32036,7 +32002,7 @@
    "status": "open"
   },
   {
-   "name": "func_80021060",
+   "name": "updateParticleSpray",
    "vram": 2147618912,
    "size": 840,
    "status": "open"
@@ -43270,6 +43236,12 @@
    "kind": "func"
   },
   {
+   "name": "updateParticleSpray",
+   "address": 2147618912,
+   "size": 840,
+   "kind": "func"
+  },
+  {
    "name": "updateParticleEmitter",
    "address": 2147619752,
    "size": 1136,
@@ -45714,7 +45686,7 @@
   {
    "name": "gStickY",
    "address": 2148561856,
-   "size": 0,
+   "size": 4,
    "kind": "data"
   },
   {
@@ -46502,6 +46474,46 @@
    "source": "match"
   },
   {
+   "address": 2147519504,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519508,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519512,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519516,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519520,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519524,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519528,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519532,
+   "type": "f32",
+   "source": "match"
+  },
+  {
    "address": 2147519692,
    "type": "u8[]",
    "source": "match"
@@ -46902,6 +46914,11 @@
    "source": "match"
   },
   {
+   "address": 2148215584,
+   "type": "RState",
+   "source": "match"
+  },
+  {
    "address": 2148219232,
    "type": "Obj73644 *",
    "source": "match"
@@ -46963,7 +46980,12 @@
   },
   {
    "address": 2148257900,
-   "type": "f32 *",
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2148259504,
+   "type": "s32",
    "source": "match"
   },
   {
@@ -47008,7 +47030,7 @@
   },
   {
    "address": 2148561856,
-   "type": "s32[]",
+   "type": "s32",
    "source": "match"
   },
   {
