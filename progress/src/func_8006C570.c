@@ -12,7 +12,7 @@ typedef struct {
     void *unk9C;
 } Menu;
 
-void func_8000F310(void);
+void updateCameraModeState(void);
 void func_80023078(void);
 s32 initControllerPaks(void);
 s32 refreshControllerPak(s32);
@@ -345,7 +345,7 @@ void func_8006C570(Menu *arg0) {
         } else {
             func_8002E79C();
             arg0->unk98 = (void *)((u8 *)func_80023078 + 8);
-            arg0->unk9C = func_8000F310;
+            arg0->unk9C = updateCameraModeState;
         }
         arg0->unk88 = 0;
         D_800B81C4 = 0;

@@ -42,8 +42,9 @@ extern u8 D_800BD120[];
 extern s32 gPadPressed;
 extern s32 D_8013FB20;
 
-void func_8000F310(Obj *arg0) {
-    Obj *o;
+/* Camera mode state machine: waits for the camera-idle signal, switches the target's animation and hands control to the camera path, then restores the saved callbacks on exit. */
+void updateCameraModeState(Obj *camActor) {
+    Obj *target;
 
     switch (D_800AA1B4) {
     case 0:
@@ -54,10 +55,10 @@ void func_8000F310(Obj *arg0) {
     case 1:
         if (D_8013FB20 == 0xFF) {
             func_80023620(1);
-            func_80023730(arg0, 0x100, 0x1031);
-            D_800BCFA4 = arg0->f78;
-            D_800BCFA0 = arg0->f98;
-            if (D_800BD120[cameraGetMode()] == 0 && func_8000F294(arg0) != 0) {
+            func_80023730(camActor, 0x100, 0x1031);
+            D_800BCFA4 = camActor->f78;
+            D_800BCFA0 = camActor->f98;
+            if (D_800BD120[cameraGetMode()] == 0 && func_8000F294(camActor) != 0) {
                 D_800BD120[cameraGetMode()] = 1;
                 D_800AB9C8 = 0x1000;
                 actorSetAnim(gCameraTarget, 1, 0x100);
@@ -66,11 +67,11 @@ void func_8000F310(Obj *arg0) {
                 gCameraTarget->f50 = 0;
                 gCameraTarget->f90 = 1;
                 func_8002E944();
-                arg0->f98 = func_8000F1FC;
+                camActor->f98 = func_8000F1FC;
                 D_800AA1B4 = 2;
-                o = findActor(6, 0);
-                if (o != 0) {
-                    o->f68 = -1;
+                target = findActor(6, 0);
+                if (target != 0) {
+                    target->f68 = -1;
                 }
             } else {
                 func_8002E79C();
@@ -88,17 +89,17 @@ void func_8000F310(Obj *arg0) {
         }
         break;
     case 3:
-        arg0->f94 = 1;
-        arg0->f98 = func_8006CEF8;
-        arg0->f9C = func_80023078 + 8;
+        camActor->f94 = 1;
+        camActor->f98 = func_8006CEF8;
+        camActor->f9C = func_80023078 + 8;
         D_800A9550 = 1;
-        arg0->f80 = 0;
+        camActor->f80 = 0;
         D_800AA1B4 = 4;
         break;
     case 4:
-        o = findActor(6, 0);
-        if (o != 0) {
-            o->f68 = 0xF;
+        target = findActor(6, 0);
+        if (target != 0) {
+            target->f68 = 0xF;
         }
         D_800AA1B4 = 5;
         break;
@@ -109,9 +110,9 @@ void func_8000F310(Obj *arg0) {
         sendCommand(0x1F, 0);
         sendCommand(2, 0);
         D_800AA1B4 = 0;
-        arg0->f78 = D_800BCFA4;
-        arg0->f98 = D_800BCFA0;
-        arg0->f9C = func_8000F178;
+        camActor->f78 = D_800BCFA4;
+        camActor->f98 = D_800BCFA0;
+        camActor->f9C = func_8000F178;
         gCameraTarget->f9C = func_800393F4;
         break;
     }

@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 f32 getCameraTargetDist();
 s32 animStepKeys();
 extern f32 D_800083FC;
-extern s32 func_8000F310;
+extern s32 updateCameraModeState;
 
 void func_80056B40(void *arg0) {
     f32 temp_fs0;
@@ -24,7 +24,7 @@ void func_80056B40(void *arg0) {
     animStepKeys(arg0);
     if (temp_fs0 < D_800083FC) {
         M2C_FIELD(arg0, s32 *, 0) = 0x101;
-        M2C_FIELD(arg0, s32 **, 0x9C) = &func_8000F310;
+        M2C_FIELD(arg0, s32 **, 0x9C) = &updateCameraModeState;
         M2C_FIELD(arg0, s32 *, 0x78) = 9;
     }
 }

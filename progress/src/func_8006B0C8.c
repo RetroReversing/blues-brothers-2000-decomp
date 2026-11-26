@@ -19,7 +19,7 @@ s32 animStepKeys();
 s32 debugPrintf();
 extern char D_80008ECC[];
 extern void *D_800B3964;
-extern s32 func_8000F310;
+extern s32 updateCameraModeState;
 extern s32 func_80023078;
 
 typedef struct { unsigned char pad_0[120]; int field_78; unsigned char pad_7C[32]; void * field_9C; } __repair_record_temp_v0;
@@ -31,7 +31,7 @@ void func_8006B0C8(void *arg0) {
     if ((cameraGetMode() == 5) && (findActor(0x800, 0) == NULL)) {
         temp_v0 = findActor(0x13C, 0);
         if (temp_v0 != NULL) {
-            ((__repair_record_temp_v0*)temp_v0)->field_9C = &func_8000F310;
+            ((__repair_record_temp_v0*)temp_v0)->field_9C = &updateCameraModeState;
             ((__repair_record_temp_v0*)temp_v0)->field_78 = 9;
             if (D_800B3964 != NULL) {
                 M2C_FIELD(D_800B3964, void **, 0x9C) = (void *) ((s8 *)&func_80023078 + 8);

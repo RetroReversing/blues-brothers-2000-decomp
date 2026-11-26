@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700782.3087099,
- "revision": 5670,
+ "saved_at": 1795700793.121205,
+ "revision": 5672,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16201,8 +16201,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "634340:2148114916": {
    "vram": 2148114916,
@@ -18407,10 +18406,10 @@
    "matched_by": "manual-3bd5752c75c04baf",
    "readable": false
   },
-  "func_8000F310": {
+  "updateCameraModeState": {
    "vram": 2147545872,
    "matched_by": "manual-3572b8f795c14e2c",
-   "readable": false
+   "readable": true
   },
   "func_8000F5E4": {
    "vram": 2147546596,
@@ -30239,7 +30238,7 @@
    "status": "open"
   },
   {
-   "name": "func_8000F310",
+   "name": "updateCameraModeState",
    "vram": 2147545872,
    "size": 724,
    "status": "open"
@@ -43255,6 +43254,12 @@
    "kind": "func"
   },
   {
+   "name": "updateCameraModeState",
+   "address": 2147545872,
+   "size": 724,
+   "kind": "func"
+  },
+  {
    "name": "updateProximityTrigger",
    "address": 2147554336,
    "size": 788,
@@ -47625,7 +47630,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Unk800BD06C *",
+   "type": "Obj *",
    "source": "match"
   },
   {
@@ -47665,7 +47670,7 @@
   },
   {
    "address": 2148561056,
-   "type": "Unk801070A0",
+   "type": "s32",
    "source": "match"
   },
   {

@@ -24,7 +24,7 @@ extern void *D_800B3964;
 extern s32 D_800B5DD4;
 extern void *gCameraTarget;
 extern s32 D_800BD274;
-extern s32 func_8000F310;
+extern s32 updateCameraModeState;
 extern s32 func_80023078;
 
 typedef struct { unsigned char pad[100]; int value; } __repair_field_64;
@@ -42,7 +42,7 @@ void func_8000F670(void *arg0) {
         if ((func_8002DD60((*(f32 *)((s8 *)arg0 + 4)) - (*(f32 *)((s8 *)gCameraTarget + 4))) < temp_fs1) && (func_8002DD60(temp_fs0) < temp_fs1) && (func_8002DD60(temp_fs2) < 400.0f)) {
             func_8000F5E4();
             (*(s32 *)((s8 *)arg0 + 0)) = 0x101;
-            (*(s32 **)((s8 *)arg0 + 0x9C)) = &func_8000F310;
+            (*(s32 **)((s8 *)arg0 + 0x9C)) = &updateCameraModeState;
             D_800BD274 = (*(s32 *)((s8 *)arg0 + 0xBC));
             if (D_800B3964 != NULL) {
                 (*(void **)((s8 *)D_800B3964 + 0x9C)) = (void *) ((&func_80023078) + 0x2);
