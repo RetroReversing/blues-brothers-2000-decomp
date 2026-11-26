@@ -12,12 +12,12 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_800AB9C0;
-extern s32 D_800F47E8;
+extern s32 D_800AB9BC;
+extern s32 D_800DA730;
 
-s32 func_800230B0(s32 arg0) {
+s32 getObjPoolStart(s32 arg0) {
     if (arg0 == -1) {
-        return D_800F47E8;
+        return D_800DA730;
     }
-    return D_800AB9C0;
+    return D_800AB9BC;
 }

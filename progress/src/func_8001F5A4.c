@@ -31,7 +31,7 @@ extern s32 D_800AB408;
 extern s32 gCamSpeedScale;
 extern s32 D_800BD114;
 extern s32 D_800F7910[];
-extern s32 D_800F90A0[];
+extern s32 gObjTriCounts[];
 extern Gfx *D_80177E18;
 
 typedef struct Act {
@@ -132,7 +132,7 @@ s32 func_8001F5A4(Act *self) {
         g3->w1 = 0;
     }
     setRenderState(-1);
-    D_800BD114 += D_800F90A0[self->fB8];
+    D_800BD114 += gObjTriCounts[self->fB8];
     if (self->fF8 & 1) {
         func_8002338C(self);
     }

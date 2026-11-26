@@ -39,8 +39,8 @@ typedef struct Rec {
     u8 padC4[0x44];
 } Rec;
 
-Rec *func_80023088(s32);
-Rec *func_800230B0(s32);
+Rec *getObjPoolStart(s32);
+Rec *getObjPoolEnd(s32);
 Rec *findActor(s32, Rec *);
 s32 cameraGetMode(void);
 s32 func_8000F8F4(Obj *, Rec *);
@@ -100,8 +100,8 @@ s32 func_8000FAC4(Obj *arg0) {
 
     savedY = arg0->y;
     ret = 0;
-    start = func_80023088(0);
-    end = func_800230B0(0);
+    start = getObjPoolStart(0);
+    end = getObjPoolEnd(0);
     p = findActor(0x12D, 0);
     if (p != 0 && p->key != -1) {
         dx = arg0->x - p->x;

@@ -84,7 +84,7 @@ extern s32 gCamSpeedScale;
 extern s32 D_800BD058;
 extern s32 D_800BD114;
 extern s32 D_800CD148;
-extern s32 D_800F90A0[];
+extern s32 gObjTriCounts[];
 extern s32 D_800FB038[];
 extern s32 D_80140260[];
 extern Mtx *D_80140310[];
@@ -263,7 +263,7 @@ void func_800414D0(Obj *arg0) {
     setRenderState(-1);
     D_800B74E4 = 0;
     D_800BD058++;
-    D_800BD114 += D_800F90A0[arg0->type];
+    D_800BD114 += gObjTriCounts[arg0->type];
     arg0->flags |= 4;
     return;
 hide:

@@ -23,8 +23,8 @@ void func_80037064(Vec3i *, Vec3i *, s32, s32, s32);
 void func_800370B4(Vec3i *, Vec3i *, Vec3i *);
 void collectCollisionCells(Vec3f *, Vec3f *, s32);
 extern s32 D_800B76A0;
-extern Tri *D_800F80E8[];
-extern Vtx16 *D_800FA860[];
+extern Tri *gObjTriLists[];
+extern Vtx16 *gObjVertBases[];
 extern Hit D_80140FF8[];
 
 f32 func_800385AC(Obj *a)
@@ -98,10 +98,10 @@ f32 func_800385AC(Obj *a)
     bestBelow = 1000000.0f;
     bestAbove = bestBelow;
     for (i = 0; i < D_800B76A0; i++) {
-        tt = D_800F80E8;
+        tt = gObjTriLists;
         o = D_80140FF8[i].obj;
         ts = &tt[o->model];
-        vs = &D_800FA860[o->model];
+        vs = &gObjVertBases[o->model];
         tri = &(*ts)[D_80140FF8[i].tri];
         vtx = *vs;
         v0.x = vtx[tri->v[0]].x + o->x;

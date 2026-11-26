@@ -12,15 +12,15 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-u32 func_80023088(M2C_UNK);                         /* extern */
-u32 func_800230B0(M2C_UNK);                         /* extern */
+u32 getObjPoolStart(M2C_UNK);                         /* extern */
+u32 getObjPoolEnd(M2C_UNK);                         /* extern */
 void func_800146CC(void) {
     u32 temp_v0;
     u32 temp_v1;
     u32 var_s0;
 
-    temp_v1 = func_80023088(0);
-    temp_v0 = func_800230B0(0);
+    temp_v1 = getObjPoolStart(0);
+    temp_v0 = getObjPoolEnd(0);
     var_s0 = temp_v1;
     if (temp_v0 >= var_s0) {
         do {

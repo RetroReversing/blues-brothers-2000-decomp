@@ -47,8 +47,8 @@ extern Gfx *D_80177E18;
 extern s32 D_800B74F8;
 extern s32 D_800B76A0;
 extern ShadowTri D_80140FF8[];
-extern ModelVtx *D_800FA860[];
-extern u16 *D_800F80E8[];
+extern ModelVtx *gObjVertBases[];
+extern u16 *gObjTriLists[];
 extern Vtx D_801403C0[][30];
 
 void func_80046310(f32 *pos, f32 size, s32 flags) {
@@ -218,14 +218,14 @@ void func_80046310(f32 *pos, f32 size, s32 flags) {
             d[2] = pos[2] - last->z;
             ylim = d[1] + 5.7;
             yfl = D_80148D14[0] - last->y;
-            verts = D_800FA860[last->model];
+            verts = gObjVertBases[last->model];
             {
                 Gfx *_g = D_80177E18++;
                 _g->w0 = 0xDA380003;
                 _g->w1 = last->dl + 0x80000000;
             }
         }
-        tri = D_800F80E8[last->model] + D_80140FF8[i].tri * 4;
+        tri = gObjTriLists[last->model] + D_80140FF8[i].tri * 4;
         a[0] = verts[tri[1]].x - verts[tri[0]].x;
         a[1] = verts[tri[1]].y - verts[tri[0]].y;
         a[2] = verts[tri[1]].z - verts[tri[0]].z;

@@ -20,8 +20,8 @@ typedef struct Obj {
     char padC4[0x108 - 0xC4];
 } Obj;
 
-Obj *func_80023088(s32);
-Obj *func_800230B0(s32);
+Obj *getObjPoolStart(s32);
+Obj *getObjPoolEnd(s32);
 s32 randomRange(s32, s32);
 s32 func_8002492C(f32, f32);
 s32 approachAngle(s32, s32, s32);
@@ -94,8 +94,8 @@ extern u8 D_8014AA1C[];
     }
     if (tickActorTimer(walker) != 0) {
         walker->x64 = 0;
-        firstActor = func_80023088(0);
-        lastActor = func_800230B0(0);
+        firstActor = getObjPoolStart(0);
+        lastActor = getObjPoolEnd(0);
         other = firstActor;
         if (other <= lastActor) {
             lim = D_80000C18;

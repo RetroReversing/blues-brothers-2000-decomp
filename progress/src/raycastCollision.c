@@ -29,8 +29,8 @@ typedef struct {
 
 extern f32 D_800B4AB4;
 extern s32 D_800B76A0;
-extern ModelTri *D_800F80E8[];
-extern ModelVtx *D_800FA860[];
+extern ModelTri *gObjTriLists[];
+extern ModelVtx *gObjVertBases[];
 extern CollRec D_80140FF8[];
 extern Vec3 D_8013FFC0;
 
@@ -116,8 +116,8 @@ s32 raycastCollision(Vec3 *start, Vec3 *end, Vec3 *out) {
     for (; i < D_800B76A0; i++) {
         obj = D_80140FF8[i].obj;
         if (!(obj->flagsF8 & 8) && !(obj->flags58 & 0x1C)) {
-            tris = D_800F80E8[obj->model];
-            verts = D_800FA860[obj->model];
+            tris = gObjTriLists[obj->model];
+            verts = gObjVertBases[obj->model];
             tri = &tris[D_80140FF8[i].tri];
             v0.x = verts[tri->v[0]].x + obj->x;
             v0.y = verts[tri->v[0]].y + obj->y;

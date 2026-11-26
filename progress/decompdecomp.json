@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699320.151846,
- "revision": 5545,
+ "saved_at": 1795699357.8277628,
+ "revision": 5549,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -6987,7 +6987,7 @@
   },
   "146568:2147627144": {
    "vram": 2147627144,
-   "function": "func_80023088",
+   "function": "getObjPoolStart",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -7002,7 +7002,7 @@
   },
   "146608:2147627184": {
    "vram": 2147627184,
-   "function": "func_800230B0",
+   "function": "getObjPoolEnd",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15309,8 +15309,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "218596:2147699172": {
    "vram": 2147699172,
@@ -17061,35 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "208988:2147689564": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "saveCurrentSlot",
-   "vram": 2147689564
-  },
-  "670000:2148150576": {
-   "toolchain": "gcc-2.7.2-kmc",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-mgp32",
-    "-mfp32",
-    "-O2"
-   ],
-   "timeout": 20,
-   "function": "__osDevMgrMain",
-   "vram": 2148150576
   }
  },
  "instructions": "",
@@ -18028,9 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h",
-  "code_8008C378": "common_code_8008C378.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -19978,12 +19946,12 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80023088": {
+  "getObjPoolStart": {
    "vram": 2147627144,
    "matched_by": "permuter-158913790351",
    "readable": false
   },
-  "func_800230B0": {
+  "getObjPoolEnd": {
    "vram": 2147627184,
    "matched_by": "permuter-158913790352",
    "readable": false
@@ -22318,10 +22286,10 @@
    "matched_by": "manual-570f411a6081481a",
    "readable": false
   },
-  "func_80048FF4": {
+  "drawFlaggedTriangles": {
    "vram": 2147782644,
    "matched_by": "manual-b6b12924c41b4c9e",
-   "readable": false
+   "readable": true
   },
   "func_800493A0": {
    "vram": 2147783584,
@@ -28959,8 +28927,8 @@
   "buildObjectMatrix": "local_source_158913790347",
   "func_80022C2C": "local_source_158913790348",
   "func_80022EDC": "local_source_158913790349",
-  "func_80023088": "local_source_158913790351",
-  "func_800230B0": "local_source_158913790352",
+  "getObjPoolStart": "local_source_158913790351",
+  "getObjPoolEnd": "local_source_158913790352",
   "func_80023620": "local_source_158913790360",
   "func_8002369C": "local_source_158913790361",
   "func_80023730": "local_source_158913790362",
@@ -32124,13 +32092,13 @@
    "status": "open"
   },
   {
-   "name": "func_80023088",
+   "name": "getObjPoolStart",
    "vram": 2147627144,
    "size": 40,
    "status": "open"
   },
   {
-   "name": "func_800230B0",
+   "name": "getObjPoolEnd",
    "vram": 2147627184,
    "size": 40,
    "status": "open"
@@ -34950,7 +34918,7 @@
    "status": "open"
   },
   {
-   "name": "func_80048FF4",
+   "name": "drawFlaggedTriangles",
    "vram": 2147782644,
    "size": 940,
    "status": "open"
@@ -43274,6 +43242,18 @@
    "kind": "func"
   },
   {
+   "name": "getObjPoolStart",
+   "address": 2147627144,
+   "size": 40,
+   "kind": "func"
+  },
+  {
+   "name": "getObjPoolEnd",
+   "address": 2147627184,
+   "size": 40,
+   "kind": "func"
+  },
+  {
    "name": "findActor",
    "address": 2147629172,
    "size": 88,
@@ -43637,6 +43617,12 @@
    "name": "probeCollision",
    "address": 2147781744,
    "size": 28,
+   "kind": "func"
+  },
+  {
+   "name": "drawFlaggedTriangles",
+   "address": 2147782644,
+   "size": 940,
    "kind": "func"
   },
   {
@@ -45518,6 +45504,24 @@
    "kind": "data"
   },
   {
+   "name": "gObjTriLists",
+   "address": 2148499688,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gObjTriCounts",
+   "address": 2148503712,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gObjVertBases",
+   "address": 2148509792,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "gPadPressed",
    "address": 2148561056,
    "size": 4,
@@ -46458,6 +46462,41 @@
    "source": "match"
   },
   {
+   "address": 2147523392,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147523412,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147523420,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523424,
+   "type": "f64",
+   "source": "match"
+  },
+  {
+   "address": 2147523432,
+   "type": "f64",
+   "source": "match"
+  },
+  {
+   "address": 2147523440,
+   "type": "f64",
+   "source": "match"
+  },
+  {
+   "address": 2147523448,
+   "type": "f64",
+   "source": "match"
+  },
+  {
    "address": 2147523588,
    "type": "char[]",
    "source": "match"
@@ -46619,7 +46658,7 @@
   },
   {
    "address": 2148241408,
-   "type": "ComboDef[]",
+   "type": "Pair[]",
    "source": "match"
   },
   {
@@ -46650,6 +46689,21 @@
   {
    "address": 2148257900,
    "type": "Obj86C98 *",
+   "source": "match"
+  },
+  {
+   "address": 2148499688,
+   "type": "Tri *[]",
+   "source": "match"
+  },
+  {
+   "address": 2148503712,
+   "type": "s32[]",
+   "source": "match"
+  },
+  {
+   "address": 2148509792,
+   "type": "u8 *[]",
    "source": "match"
   },
   {
@@ -46759,12 +46813,12 @@
   },
   {
    "address": 2148997504,
-   "type": "s32",
+   "type": "u8[]",
    "source": "match"
   },
   {
    "address": 2148997600,
-   "type": "s32",
+   "type": "Slot",
    "source": "match"
   }
  ],

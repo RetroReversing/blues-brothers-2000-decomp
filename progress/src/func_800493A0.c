@@ -39,8 +39,8 @@ typedef struct {
 extern s32 D_800B76A0;
 extern s32 D_800B76A4;
 extern s32 D_800B76A8;
-extern ModelTri *D_800F80E8[];
-extern ModelVtx *D_800FA860[];
+extern ModelTri *gObjTriLists[];
+extern ModelVtx *gObjVertBases[];
 extern CollRec D_80140FF8[];
 extern RayHit D_80148CF8[];
 extern Vec3 gCollideMin;
@@ -128,8 +128,8 @@ s32 func_800493A0(Vec3 *start, Vec3 *end, s32 flags) {
                 max.z = p0.z;
             }
             prev = obj;
-            tris = D_800F80E8[obj->model];
-            verts = D_800FA860[obj->model];
+            tris = gObjTriLists[obj->model];
+            verts = gObjVertBases[obj->model];
         }
         tri = &tris[D_80140FF8[i].tri];
         if ((flags & 4) && !(tri->flags & 1)) {

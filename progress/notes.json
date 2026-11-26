@@ -940,6 +940,15 @@
   "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:a0e2ebc1092c9aee10056169c59b92005bb9ecdd33bce0f102b5e102dc52d4ec"
  },
  {
+  "function": "__osDevMgrMain",
+  "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 952-byte function fingerprint 2851b5dcdc01ec081d4ffd0c95c76d924e8e87f6; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
+  "by": "autopilot",
+  "created_at": 1795274275.8628092,
+  "score_before": 0,
+  "score_after": 0,
+  "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:e781a1889f3357720872da94cbb0c1f2609b037d3e613595595f7541a20f3c08"
+ },
+ {
   "function": "__osResetGlobalIntMask",
   "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 72-byte function fingerprint 3238a0f8a3f8c7812678321a473bc58835d86e55; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
   "by": "autopilot",
@@ -8824,7 +8833,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
  },
  {
-  "function": "func_80048FF4",
+  "function": "drawFlaggedTriangles",
   "text": "op65: saved 105 (default profile) = instructions identical, only s0/s1 swapped between the object cursor o (target s0) and the %hi(D_80177E18) pseudo that lives from the first six Gfx commands to the loop preheader copy t2 (target s1). Source: debug collision-triangle drawer: 6 setup Gfx (E7/D9D0F9FA/D9FFFFFF,200205/E3000A01/E200001C,504E50/FCFFFFFF,FFFDF6FB), o = func_80023088(0); end = func_800230B0(0); for (; o <= end; o++) if (o->x0 == 0x102 && D_800F80E8[o->xB8]) { vtx = D_800FA860[o->xB8]; DA380003 matrix o->xEC + 0x80000000; for i < D_800F90A0[o->xB8]: Tri (u16 v[3], u8 flags) & mask -> FA000000 colour by flag 8/4/2/1/else, FA000000 0xFF3C, three 0x0100100x vertex loads vtx + v*16, 05000204 }; closing E7/FA 0/E3000A01. Each Gfx as { GfxW *_g = D_80177E18++; ... }. Tried: declaration order of o/end, register o, continue form, early return, char[] GP via (*(GfxW **)), prove_chain all (40 children): all 105.",
   "by": "manual-aeeb5be5af9d41ed",
   "created_at": 1795573123.23038,
@@ -8833,7 +8842,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:1e9f3d5f21b4cb7f5ab9647ddd98b11388e72b469f9a1e74a2b2d5957f93b328"
  },
  {
-  "function": "func_80048FF4",
+  "function": "drawFlaggedTriangles",
   "text": "105: s0/s1 swap between loop cursor and %hi(gfx pointer); see note",
   "by": "manual-aeeb5be5af9d41ed",
   "created_at": 1795573124.2510998,
@@ -12647,15 +12656,6 @@
   "created_at": 1795698627.8883462,
   "score_before": 0,
   "score_after": 0
- },
- {
-  "function": "__osDevMgrMain",
-  "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 952-byte function fingerprint 2851b5dcdc01ec081d4ffd0c95c76d924e8e87f6; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
-  "by": "autopilot",
-  "created_at": 1795274275.8628092,
-  "score_before": 0,
-  "score_after": 0,
-  "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:e781a1889f3357720872da94cbb0c1f2609b037d3e613595595f7541a20f3c08"
  },
  {
   "function": "__osDevMgrMain",

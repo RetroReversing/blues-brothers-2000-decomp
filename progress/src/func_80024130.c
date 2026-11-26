@@ -8,7 +8,7 @@ s32 func_80025AC4(s32);
 s32 func_800424FC(s32, s32, s32, s32);
 void debugPrintf(void *);
 extern u8 D_80000F34[];
-extern s32 D_800F80E8[];
+extern s32 gObjTriLists[];
 extern s32 D_800F9878[];
 extern s32 D_800FA050[];
 extern Heap D_800FA828;
@@ -46,7 +46,7 @@ s32 func_80024130(s32 idx, s32 key, s32 arg2) {
     D_800FA050[idx] = end = base + aligned;
     r = func_800424FC(arg2, idx, base, end);
     D_800F9878[idx] = 0;
-    D_800F80E8[idx] = 0;
+    gObjTriLists[idx] = 0;
     if (r - end > 0xC800) {
         debugPrintf(D_80000F34);
     }

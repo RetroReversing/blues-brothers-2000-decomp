@@ -11,8 +11,8 @@ typedef s32 M2C_UNK32;
 #define M2C_CARRY 0
 #define M2C_OVERFLOW(a) (0)
 #endif
-u32 func_80023088(s32);
-u32 func_800230B0(s32);
+u32 getObjPoolStart(s32);
+u32 getObjPoolEnd(s32);
 extern void *D_800B3960;
 extern void *gCameraTarget;
 extern s32 updateCameraView;
@@ -23,7 +23,7 @@ void func_8000F5E4(void) {
 
     M2C_FIELD(gCameraTarget, s32 **, 0x9C) = &func_80023078 + 2;
     M2C_FIELD(D_800B3960, s32 **, 0x9C) = &updateCameraView;
-    for (var_s0 = func_80023088(0); var_s0 < func_800230B0(0); var_s0 += 0x108) {
+    for (var_s0 = getObjPoolStart(0); var_s0 < getObjPoolEnd(0); var_s0 += 0x108) {
         if (M2C_FIELD(var_s0, s32 *, 0) & 0x1000) {
             M2C_FIELD(var_s0, s32 **, 0x9C) = &animStepKeys;
         }

@@ -1205,10 +1205,10 @@
 <g><title>func_80023080: {&#x27;matched&#x27;: 1}</title>
 <rect x="770.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80023088: {&#x27;matched&#x27;: 1}</title>
+<g><title>getObjPoolStart: {&#x27;matched&#x27;: 1}</title>
 <rect x="780.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800230B0: {&#x27;matched&#x27;: 1}</title>
+<g><title>getObjPoolEnd: {&#x27;matched&#x27;: 1}</title>
 <rect x="790.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800230D8: {&#x27;matched&#x27;: 1}</title>
@@ -2603,7 +2603,7 @@
 <g><title>func_80048F5C: {&#x27;matched&#x27;: 1}</title>
 <rect x="630.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80048FF4: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawFlaggedTriangles: {&#x27;matched&#x27;: 1}</title>
 <rect x="640.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800493A0: {&#x27;matched&#x27;: 1}</title>

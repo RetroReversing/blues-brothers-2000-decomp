@@ -58,9 +58,9 @@ extern s32 D_800B7B0C;
 extern Vec3i424 D_800F4A00[];
 extern Vec3i424 D_800F6188[];
 extern s32 D_800F7910[];
-extern s32 D_800F90A0[];
+extern s32 gObjTriCounts[];
 extern s32 D_800FA854;
-extern MdlVtx *D_800FA860[];
+extern MdlVtx *gObjVertBases[];
 extern s32 D_801402FC;
 extern s32 D_80140300;
 extern s32 D_80140304;
@@ -137,7 +137,7 @@ Gfx424 *func_800424FC(s32 flags, s32 index, MdlHdr *hdr_in, Gfx424 *gfx) {
     max[1] = 0x80000001;
     max[2] = 0x80000001;
     pv = hdr->verts;
-    D_800FA860[index] = pv;
+    gObjVertBases[index] = pv;
     radius = 0.0f;
     for (g = 0; g < hdr->nverts; g++) {
         v = &pv[g];
@@ -367,7 +367,7 @@ Gfx424 *func_800424FC(s32 flags, s32 index, MdlHdr *hdr_in, Gfx424 *gfx) {
                 _g->w0 = 0xDF000000;
                 _g->w1 = 0;
             }
-            D_800F90A0[index] = D_800FA854;
+            gObjTriCounts[index] = D_800FA854;
             return gfx;
         default:
             debugPrintf("BAD RSP COMMAND");

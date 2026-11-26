@@ -49,8 +49,8 @@ void func_80013870(s32, s32, s32, s32);
 void func_800170D8(Entry *, Obj *);
 s32 cameraGetMode(void);
 s32 func_8001DD94(s32, s32);
-Obj *func_80023088(s32);
-Obj *func_800230B0(s32);
+Obj *getObjPoolStart(s32);
+Obj *getObjPoolEnd(s32);
 s32 func_80023D58(s32);
 s32 *getImageAsset(s32);
 void func_800242A8(s32, s32, s32);
@@ -387,7 +387,7 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
             func_80046F30(r);
         }
         if (cameraGetMode() != 0x31 && cameraGetMode() != 0x18) {
-            for (o = func_80023088(0); o < func_800230B0(0); o++) {
+            for (o = getObjPoolStart(0); o < getObjPoolEnd(0); o++) {
                 if (o->f0 < 0x1000 || o->f0 > 0x1030) {
                     continue;
                 }

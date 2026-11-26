@@ -31,16 +31,16 @@ typedef struct Hit8820 {
     s16 idx;
 } Hit8820;
 
-extern Ent8820 *func_80023088(s32);
-extern Ent8820 *func_800230B0(s32);
+extern Ent8820 *getObjPoolStart(s32);
+extern Ent8820 *getObjPoolEnd(s32);
 extern void debugPrintf(u8 *, ...);
 extern f32 gCollideMin[3];
 extern f32 gCollideMax[3];
 extern u8 D_800B76A0[];
-extern Cell8820 *D_800F80E8[];
+extern Cell8820 *gObjTriLists[];
 extern Vec3i8820 D_800F4A00[];
 extern Vec3i8820 D_800F6188[];
-extern s32 D_800F90A0[];
+extern s32 gObjTriCounts[];
 extern s8 (*D_800F9878[])[4];
 extern Hit8820 D_80140FF8[];
 extern u8 D_80007CC0[];
@@ -93,8 +93,8 @@ void collectCollisionCells(Vec3f8820 *boxMin, Vec3f8820 *boxMax, s32 flags) {
     if (gCollideMax[2] < boxMax->z) {
         gCollideMax[2] = boxMax->z;
     }
-    start = func_80023088(0);
-    end = func_800230B0(0);
+    start = getObjPoolStart(0);
+    end = getObjPoolEnd(0);
     for (e = start; e <= end; e++) {
         ok = e->type == 0x102;
         if (e->type == 0x105) {
@@ -111,7 +111,7 @@ void collectCollisionCells(Vec3f8820 *boxMin, Vec3f8820 *boxMax, s32 flags) {
         if (ok == 0) {
             continue;
         }
-        if (D_800F80E8[e->room] == NULL) {
+        if (gObjTriLists[e->room] == NULL) {
             continue;
         }
         d1[0] = boxMin->x - e->x;
@@ -158,7 +158,7 @@ void collectCollisionCells(Vec3f8820 *boxMin, Vec3f8820 *boxMax, s32 flags) {
         x1 = mx[0] >> 7;
         z0 = mn[2] >> 7;
         z1 = mx[2] >> 7;
-        n = D_800F90A0[room];
+        n = gObjTriCounts[room];
         cell = D_800F9878[room];
         for (i = 0; i < n; i++) {
             if (cell[i][1] < x0) {
@@ -173,7 +173,7 @@ void collectCollisionCells(Vec3f8820 *boxMin, Vec3f8820 *boxMax, s32 flags) {
             if (z1 < cell[i][2]) {
                 continue;
             }
-            if (D_800F80E8[e->room][i].flags & 0x10) {
+            if (gObjTriLists[e->room][i].flags & 0x10) {
                 continue;
             }
             h = &D_80140FF8[COUNT];

@@ -25,8 +25,8 @@ s32 func_80023E3C(s32);
 void collectCollisionCells(f32 *, f32 *, s32);
 s32 func_80048CD8(f32, f32, f32, f32, f32, f32, s32);
 s32 func_8000F7A0(Obj142A0 *);
-Obj142A0 *func_80023088(s32);
-Obj142A0 *func_800230B0(s32);
+Obj142A0 *getObjPoolStart(s32);
+Obj142A0 *getObjPoolEnd(s32);
 void func_800851D8(Obj142A0 *);
 f32 func_8002DD60(f32);
 extern s32 D_800B4CE4;
@@ -91,8 +91,8 @@ void func_800142A0(Obj142A0 *arg0) {
         gCameraTarget->unkB8 = 1;
         gCameraTarget->unkE4 = func_80023E3C(1);
     }
-    start = func_80023088(0);
-    end = func_800230B0(0);
+    start = getObjPoolStart(0);
+    end = getObjPoolEnd(0);
     for (p = start; p <= end; p++) {
         if (p == arg0) {
             continue;

@@ -29,8 +29,8 @@ typedef struct {
     s32 angle;
 } Spawn;
 
-Obj *func_80023088(s32);
-Obj *func_800230B0(s32);
+Obj *getObjPoolStart(s32);
+Obj *getObjPoolEnd(s32);
 Obj *func_800232B4(s32, s32, s32, s32);
 void func_8000F670(Obj *);
 void func_80039240(Obj *);
@@ -54,8 +54,8 @@ s32 func_8001DD94(s32 arg0) {
     bestDist = 1000;
     best = r;
     dir = 0;
-    start = func_80023088(0);
-    end = func_800230B0(0);
+    start = getObjPoolStart(0);
+    end = getObjPoolEnd(0);
     for (o = start; o <= end; o++) {
         if (o->type == 0x13C) {
             o->unkA0(o);

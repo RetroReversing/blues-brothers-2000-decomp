@@ -20,8 +20,8 @@ typedef struct Obj {
     u8 padF4[0x108 - 0xF4];
 } Obj;
 
-Obj *func_80023088(s32);
-Obj *func_800230B0(s32);
+Obj *getObjPoolStart(s32);
+Obj *getObjPoolEnd(s32);
 void func_8002A360(s32, s32);
 void func_8002D124(void);
 void func_8002D3E4(Obj *, s32);
@@ -65,8 +65,8 @@ s32 func_8005B6F8(Obj *arg0) {
             func_80043328(arg0, 0xCC, 0x180);
         }
     }
-    start = func_80023088(0);
-    end = func_800230B0(0);
+    start = getObjPoolStart(0);
+    end = getObjPoolEnd(0);
     for (o = start; o <= end; o++) {
         flag = 0;
         if (o->type == 0x129) {

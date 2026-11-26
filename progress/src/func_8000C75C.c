@@ -1,8 +1,8 @@
 extern s32 D_800BD0E0[];
 extern u8 D_800BD1F0[];
 void *func_800232B4(s32, s32, s32, s32);
-s32 func_80023088(s32);
-s32 func_800230B0(s32);
+s32 getObjPoolStart(s32);
+s32 getObjPoolEnd(s32);
 void func_8000C614(void);
 void func_80011420(void);
 
@@ -25,8 +25,8 @@ void func_8000C75C(void) {
     *(void (**)(void))(o + 0x98) = func_8000C614;
     *(s32 *)(o + 0x68) = 0xF;
     *(s32 *)(o + 0x64) = 0x190;
-    start = (Ent *)func_80023088(0);
-    end = (Ent *)func_800230B0(0);
+    start = (Ent *)getObjPoolStart(0);
+    end = (Ent *)getObjPoolEnd(0);
     do { for (p = start; p <= end; p++) {
         if (p->active != 0 && p->update == func_80011420) {
             *(s32 *)(o + 0x70) += 1;

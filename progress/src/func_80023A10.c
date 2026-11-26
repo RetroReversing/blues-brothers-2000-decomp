@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80026C04(M2C_UNK *, M2C_UNK, M2C_UNK); /* extern */
-extern M2C_UNK D_800F80E8;
+extern M2C_UNK gObjTriLists;
 extern M2C_UNK D_800F9878;
 extern M2C_UNK D_800FA050;
 extern M2C_UNK D_800FB038;
@@ -22,5 +22,5 @@ void func_80023A10(void) {
     func_80026C04(&D_800FA050, 0, 0x7D8);
     func_80026C04(&D_800FB038, 0, 0x7D8);
     func_80026C04(&D_800F9878, 0, 0x7D8);
-    func_80026C04(&D_800F80E8, 0, 0x7D8);
+    func_80026C04(&gObjTriLists, 0, 0x7D8);
 }

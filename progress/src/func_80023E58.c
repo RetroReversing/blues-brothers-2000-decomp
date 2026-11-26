@@ -9,8 +9,8 @@ s32 func_800424FC(s32, s32, u8 *, u8 *);
 void func_80048D08(u8 *, s32, s32);
 void debugPrintf(void *, ...);
 extern s8 D_80000F34[];
-extern s32 D_800F80E8[];
-extern s32 D_800F90A0[];
+extern s32 gObjTriLists[];
+extern s32 gObjTriCounts[];
 extern s32 D_800F9878[];
 extern s32 D_800FA050[];
 typedef struct {
@@ -72,10 +72,10 @@ s32 func_80023E58(s32 arg0, s32 arg1_in, s32 arg2) {
     end = (end & 3) ? (end & ~3) + 4 : end;
     p9878 = &D_800F9878[arg0];
     *p9878 = end;
-    end += D_800F90A0[arg0] * 4;
-    p80E8 = &D_800F80E8[arg0];
+    end += gObjTriCounts[arg0] * 4;
+    p80E8 = &gObjTriLists[arg0];
     *p80E8 = end;
-    count = D_800F90A0[arg0];
+    count = gObjTriCounts[arg0];
     total = D_800FA828.unk28;
     total += count * 12;
     D_800FA828.unk28 = total;

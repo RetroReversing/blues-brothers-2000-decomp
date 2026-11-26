@@ -53,8 +53,8 @@ void collectCollisionCells(Vec3 *, Vec3 *, s32);
 
 extern Vec3 D_800B4C1C;
 extern s32 D_800B76A0;
-extern u16 *D_800F80E8[];
-extern MVtx16 *D_800FA860[];
+extern u16 *gObjTriLists[];
+extern MVtx16 *gObjVertBases[];
 extern s32 D_80140140;
 extern s32 D_80140148;
 extern MVtx16 D_80140790[3];
@@ -164,10 +164,10 @@ f32 func_800379C8(Probe *o) {
     ndir.z = -dir.z;
     for (i = 0; i < D_800B76A0; i++)
     {
-      tt = D_800F80E8;
+      tt = gObjTriLists;
       owner = D_80140FF8[i].owner;
       ts = &tt[owner->model];
-      vs = &D_800FA860[owner->model];
+      vs = &gObjVertBases[owner->model];
       tri = *ts + D_80140FF8[i].tri * 4;
       verts = *vs;
       c0.x = verts[tri[0]].x + owner->x;

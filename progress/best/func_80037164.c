@@ -37,8 +37,8 @@ void collectCollisionCells(f32 *, f32 *, s32);
 extern f32 D_800B4C10[3];
 extern f32 D_800B4C1C[3];
 extern s32 D_800B76A0;
-extern Tri *D_800F80E8[];
-extern Vert *D_800FA860[];
+extern Tri *gObjTriLists[];
+extern Vert *gObjVertBases[];
 extern f32 D_80140144;
 extern Contact D_80140FF8[];
 
@@ -130,8 +130,8 @@ void func_80037164(Actor *arg0, f32 *pos, f32 *vel) {
     {
         Actor *o = D_80140FF8[i].obj;
         s32 type = o->type;
-        Vert *verts = D_800FA860[type];
-        Tri *tri = &D_800F80E8[type][D_80140FF8[i].tri];
+        Vert *verts = gObjVertBases[type];
+        Tri *tri = &gObjTriLists[type][D_80140FF8[i].tri];
 
         v0[0] = verts[tri->v[0]].x + o->pos[0];
         v0[1] = verts[tri->v[0]].y + o->pos[1];

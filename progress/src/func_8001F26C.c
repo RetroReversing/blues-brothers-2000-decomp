@@ -53,7 +53,7 @@ extern s32 D_800AB408[];
 extern s32 gCamSpeedScale[];
 extern u8 D_800BD114[];
 extern s32 D_800F7910[];
-extern s32 D_800F90A0[];
+extern s32 gObjTriCounts[];
 extern u8 D_80177E18[];
 #define GP (*(GfxW **)D_80177E18)
 
@@ -144,7 +144,7 @@ s32 func_8001F26C(Obj *arg0) {
         _g->w1 = 0;
     }
     setRenderState(-1);
-    *(s32 *)D_800BD114 += D_800F90A0[arg0->xB8];
+    *(s32 *)D_800BD114 += gObjTriCounts[arg0->xB8];
     if (arg0->xF8 & 1) {
         func_8002338C(arg0);
     }
