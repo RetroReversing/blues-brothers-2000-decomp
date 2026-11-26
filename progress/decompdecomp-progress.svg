@@ -3431,7 +3431,7 @@
 <g><title>func_80061740: {&#x27;matched&#x27;: 1}</title>
 <rect x="190.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80061800: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateSpiderAi: {&#x27;matched&#x27;: 1}</title>
 <rect x="200.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80061B00: {&#x27;matched&#x27;: 1}</title>
@@ -4874,7 +4874,7 @@
 <g><title>func_8008203C: {&#x27;matched&#x27;: 1}</title>
 <rect x="200.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800820E8: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawComboMeter: {&#x27;matched&#x27;: 1}</title>
 <rect x="210.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800823F0: {&#x27;matched&#x27;: 1}</title>

@@ -55,7 +55,7 @@ s32 func_80061B00(Unk80061800 *);
 s32 func_8002D260(s32 arg0);
 void func_80061B44(void *arg0);
 
-void func_80061800(Unk80061800 *arg0) {
+void updateSpiderAi(Unk80061800 *arg0) {
     s32 result;
     s32 i;
 

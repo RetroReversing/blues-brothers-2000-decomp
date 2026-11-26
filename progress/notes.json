@@ -9375,7 +9375,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:786f2de8b649b6fe45e6a7ba99a4685bad10f64c2c20b27c40ec3586bdce7e1d"
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "op76: plain rewrite 4160 -> 2315 (saved; same score under -mfp32). Shape: locals scale = 1 and w = 24 the target keeps as variables (s0 = 1 makes the *6 shifts sllv by s0 and the E1C args mult s0; w is spilled and rematerialized li t1,24); one func_8002710C call after an if/else setting r,g,bl (r = 0x80 first); gDPPipeSync as a block-scoped Gfx pointer; the loop result reuses b (disjoint_scalar_merge: this spills x to 0x10 and fixes the frame 0x40); (w + x - 15) and scale * (...) order. Remaining: loop.c does not strength-reduce the s16 index i*2 (target has addiu s3,s3,2 and all four increments after the E78 call); our i++ and walk++ are scheduled before the call. Tried px as giv (x + i*w), pointer walk for fp->unk0, raw offset s16 access, ternary call argument (frame breaks), remainder orders.",
   "by": "manual-f86831e3bb304d6a",
   "created_at": 1795619668.403789,
@@ -9685,7 +9685,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:4dc72f1a5e609e5e3372f34e935b1a0c134daea1449e7ad2729ae4f58b68a64a"
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "Low progress after 24 scored trials: at most 1% score reduction over the recent window. Best source retained. Next evidence: Mismatch focus: constants / addresses; first differing row 27; 50 differing rows (40 register, 2 operand, 4 reordered, 2 inserted, 2 deleted; advisory).\nTarget: addiu $s0, $zero, 1\nCandidate: addiu $s1, $zero, 1\nAdvisory instruction window (normalized; exact-byte verdict unchanged):\n  = lw $a1, ($a1)\n  = jal func_80081BF0\nr T: addiu $s0, $zero, 1 | C: addiu $s1, $zero, 1\n  = move $fp, $v0\n  = lui $v0, %hi(D_800AB9B4)\nMore target instructions: get_assembly(focus=\"mismatch\"). Raw/paged diff: last_diff.",
   "by": "manual-d8adb74680f54138",
   "created_at": 1795628991.101075,
@@ -9694,7 +9694,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:ae139fd03f5706be342bfc94719006850e7eda9fcff98e25a697444b6f9bea65"
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "Low progress after 24 scored trials: at most 1% score reduction over the recent window. Best source retained. Next evidence: Mismatch focus: constants / addresses; first differing row 1; 80 differing rows (4 opcode, 48 register, 5 operand, 2 reordered, 11 inserted, 10 deleted; advisory).\nTarget: sw $s5, 0x2c($sp)\nCandidate: sw $s6, 0x30($sp)\nAdvisory instruction window (normalized; exact-byte verdict unchanged):\n  = addiu $sp, $sp, -0x40\ni T: sw $s5, 0x2c($sp) | C: sw $s6, 0x30($sp)\nr T: move $s5, $a0 | C: move $s6, $a0\n  = lui $v0, %hi(D_80171A54)\nMore target instructions: get_assembly(focus=\"mismatch\"). Raw/paged diff: last_diff.",
   "by": "manual-d8adb74680f54138",
   "created_at": 1795629022.392403,
@@ -9703,7 +9703,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:ae139fd03f5706be342bfc94719006850e7eda9fcff98e25a697444b6f9bea65"
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "ap13: 2315 -> 475 (450 under -mfp32). Edits: (1) the loop's two arms each call func_80081E78 (call copied into both arms; cross-jumping merges them, and i*2 gets two uses so loop.c makes it its own giv: addiu s3,s3,2 like the target) 2315 -> 1005; (2) leading statements in order scale, fp call, x, y, w (exhaustive 5!) 1005 -> 555; (3) loop results passed straight to func_80081E78(func_80081FA4/F0C(fp->unk0[i]), ...) instead of reusing b: b stops being the top-priority callee-saved pseudo, 555 -> 475. Left: 27 register rows from the D_80171980 % 144 / % 36 chains scheduling (target interleaves the 36 chain before a's final subu; v1 magic/a0 value) and x's trunc/swc1 order after lwc1 f2. Tried: p1 b before a 620, local r/g/bl for the moduli 680-1370, a = 255 - 4*(..) forms 475, declaration order (no effect).",
   "by": "manual-d8adb74680f54138",
   "created_at": 1795629022.771667,
@@ -10123,7 +10123,7 @@
   "score_after": 350
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '450 528c0c6a71bba0494a65 sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
   "by": "manual-fa253f9ceee84c1b",
   "created_at": 1795635564.463915,
@@ -10355,7 +10355,7 @@
   "score_after": 350
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "ap23: re-read the saved best under sn-n64-281 -mfp32 (450): 22 register, 4 reordered, 2 operand rows. The rows are three groups: (1) the D_80171980 % 144 and % 36 chains share ONE mult by 0x38E38E39 (hi>>5 for /144, hi>>3 for /36); the target keeps the 144 remainder in a2 and the magic in v1 (ours a1/a0), finishes the 36 remainder (a1) first and only then does `addiu v1,zero,0xff; sll v0,a2,2; subu s7,v1,v0` (the a value), ours does the a subu before the 36 chain; (2) the loop counters: target addiu s3,s3,2 (i*2 giv for the s16 table) and s2 (+0x18 stride), s1 (+4), ours has s2/s3 swapped and the +0x18 and +4 increments in the other order (each the allocator order of the three givs); (3) `move s3,a3 / move s2,t2` swapped. Nothing new compiled this round; the order of the a/b chain is the next lever (target puts the 0xFF constant and the a*4 after the second remainder, the usual sched1 non-boost placement seen in func_8001EBF4/func_8007E280). Not matched; profile stays 450 under -mfp32 (475 default), not applied.",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637351.7813241,
@@ -10363,7 +10363,7 @@
   "score_after": 475
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap23: see notes",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637354.4053152,
@@ -10751,7 +10751,7 @@
   "score_after": 250
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "op88: unchanged 475. Group (1) of ap23's rows (the target finishes the %36 remainder before `0xFF - m144 * 4` into s7): every staging of a tried was worse: b's statement before a's 620; `a = 0xFF; a -= m144 * 4;` 745; `a = m144 * 4; <b>; a = 0xFF - a;` 650; `a = D % 144; <b>; a = 0xFF - a * 4` (or `<< 2`) 850. decomp-repair arity_drop_store_step and constant_compare_temp_reuse checked on the saved best: the first offers one child (1100), the second none.",
   "by": "manual-f7f61c1765d84883",
   "created_at": 1795642105.5946639,
@@ -11634,7 +11634,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:08b0bc40b06171eb0d76dfdb91d5ca83eea168a8da3d14ca3346d9a1c8cc781a"
  },
  {
-  "function": "func_800820E8",
+  "function": "drawComboMeter",
   "text": "op97 (library 0.6.47-0.6.49): unchanged 475 (450 -mfp32). prove_chain --families all --children 40 default and --fp-flip: no child of 1196 improves; 0.6.48/0.6.49 families offer nothing. Blocker unchanged: the shared %144/%36 magic-multiply chains' order (target finishes the %36 remainder before 0xFF - m*4) and the three loop givs' register order (s2/s3).",
   "by": "manual-c49166d3e00442aa",
   "created_at": 1795653257.748208,

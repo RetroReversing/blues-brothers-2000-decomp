@@ -20,7 +20,7 @@ M2C_UNK func_800852CC(void *, s32);                 /* extern */
 extern s32 D_800B81D0;
 extern M2C_UNK D_8014AA4A;
 extern M2C_UNK func_80041D18;
-extern M2C_UNK func_80061800;
+extern M2C_UNK updateSpiderAi;
 extern M2C_UNK func_80061C40;
 extern M2C_UNK func_8006E250;
 
@@ -37,7 +37,7 @@ void *func_80061D40(s32 arg0) {
         M2C_FIELD(temp_v0, s32 *, 0xBC) = 4;
     } else {
         func_80085244(temp_v0, arg0);
-        M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80061800;
+        M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &updateSpiderAi;
         M2C_FIELD(temp_v0, s32 *, 0) = 0x101A;
         M2C_FIELD(temp_v0, s32 *, 0x74) = 0x97;
     }
