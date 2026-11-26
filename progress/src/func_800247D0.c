@@ -1,4 +1,4 @@
-f32 func_80024468(f32);
+f32 inverseSeriesApprox(f32);
 extern f32 D_800AE020;
 
 f32 func_800247D0(f32 y, f32 x) {
@@ -26,7 +26,7 @@ f32 func_800247D0(f32 y, f32 x) {
         q |= 2;
         x = -x;
     }
-    a = func_80024468(y / x);
+    a = inverseSeriesApprox(y / x);
     switch (q) {
     case 0:
         return a;

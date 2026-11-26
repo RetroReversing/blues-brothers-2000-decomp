@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699782.794396,
- "revision": 5578,
+ "saved_at": 1795699796.130532,
+ "revision": 5580,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15079,8 +15079,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "473508:2147954084": {
    "vram": 2147954084,
@@ -16218,7 +16217,7 @@
   },
   "151656:2147632232": {
    "vram": 2147632232,
-   "function": "func_80024468",
+   "function": "inverseSeriesApprox",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -17061,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "252488:2147733064": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "selectMenuUpdate",
-   "vram": 2147733064
   }
  },
  "instructions": "",
@@ -18015,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -20199,10 +20181,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80024468": {
+  "inverseSeriesApprox": {
    "vram": 2147632232,
    "matched_by": "manual-bad851f42f0c40e7",
-   "readable": false
+   "readable": true
   },
   "func_800247D0": {
    "vram": 2147633104,
@@ -28958,7 +28940,7 @@
   "func_80023D28": "local_source_158913790382",
   "func_80024324": "local_source_158913790392",
   "func_80024348": "local_source_158913790393",
-  "func_80024468": "local_source_158913790398",
+  "inverseSeriesApprox": "local_source_158913790398",
   "func_800247D0": "local_source_158913790399",
   "func_80024984": "local_source_158913790402",
   "isqrtS32": "local_source_158913790406",
@@ -32392,7 +32374,7 @@
    "status": "open"
   },
   {
-   "name": "func_80024468",
+   "name": "inverseSeriesApprox",
    "vram": 2147632232,
    "size": 872,
    "status": "open"
@@ -43320,6 +43302,12 @@
    "kind": "func"
   },
   {
+   "name": "inverseSeriesApprox",
+   "address": 2147632232,
+   "size": 872,
+   "kind": "func"
+  },
+  {
    "name": "isqrtS32",
    "address": 2147633932,
    "size": 76,
@@ -46877,7 +46865,7 @@
   },
   {
    "address": 2148237784,
-   "type": "s32[]",
+   "type": "s32",
    "source": "match"
   },
   {
@@ -46902,7 +46890,7 @@
   },
   {
    "address": 2148245152,
-   "type": "u8[]",
+   "type": "s32",
    "source": "match"
   },
   {

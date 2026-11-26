@@ -35,7 +35,8 @@ extern f32 D_800AE020[];
     ({ f32 x3, x5, x7, x9, x11; x2 = x * x; x3 = x * x2; x5 = x3 * x2; x7 = x5 * x2; x9 = x7 * x2; x11 = x9 * x2; \
      x - x3 / c3 + x5 / c5 - x7 / c7 + x9 / c9 - x11 / c11; })
 
-f32 func_80024468(f32 x) {
+/* Piecewise odd-series approximation of an inverse function of x (inverse-trig style; the exact function is not identified). Uses a reciprocal and square-root transform for large |x| and a direct series for small |x|. */
+f32 inverseSeriesApprox(f32 x) {
     f64 one;
     f64 d;
     f32 x2;
