@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700704.552682,
- "revision": 5665,
+ "saved_at": 1795700762.886545,
+ "revision": 5668,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16597,8 +16597,7 @@
     "-G0",
     "-mips3",
     "-O2"
-   ],
-   "timeout": 20
+   ]
   },
   "237556:2147718132": {
    "vram": 2147718132,
@@ -16659,7 +16658,7 @@
   },
   "509260:2147989836": {
    "vram": 2147989836,
-   "function": "func_8007B94C",
+   "function": "updateCamPathFollow",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -20132,10 +20131,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80023E58": {
+  "loadObjGeometry": {
    "vram": 2147630680,
    "matched_by": "manual-0ba4847045f74f50",
-   "readable": false
+   "readable": true
   },
   "func_80024130": {
    "vram": 2147631408,
@@ -25707,10 +25706,10 @@
    "matched_by": "permuter-158913791485",
    "readable": false
   },
-  "func_8007B94C": {
+  "updateCamPathFollow": {
    "vram": 2147989836,
    "matched_by": "manual-d52de911be6641da",
-   "readable": false
+   "readable": true
   },
   "func_8007BC24": {
    "vram": 2147990564,
@@ -29469,7 +29468,7 @@
   "func_8007B75C": "local_source_158913791483",
   "func_8007B7F0": "local_source_158913791484",
   "func_8007B880": "local_source_158913791485",
-  "func_8007B94C": "local_source_158913791486",
+  "updateCamPathFollow": "local_source_158913791486",
   "func_8007BD08": "local_source_158913791488",
   "updatePursuitActor": "local_source_158913791490",
   "func_8007C310": "local_source_158913791492",
@@ -32315,7 +32314,7 @@
    "status": "open"
   },
   {
-   "name": "func_80023E58",
+   "name": "loadObjGeometry",
    "vram": 2147630680,
    "size": 728,
    "status": "open"
@@ -39041,7 +39040,7 @@
    "status": "open"
   },
   {
-   "name": "func_8007B94C",
+   "name": "updateCamPathFollow",
    "vram": 2147989836,
    "size": 728,
    "status": "open"
@@ -43429,6 +43428,12 @@
    "kind": "func"
   },
   {
+   "name": "loadObjGeometry",
+   "address": 2147630680,
+   "size": 728,
+   "kind": "func"
+  },
+  {
    "name": "randomRange",
    "address": 2147632020,
    "size": 184,
@@ -44080,6 +44085,12 @@
    "name": "updateCameraSplineTrigger",
    "address": 2147987432,
    "size": 840,
+   "kind": "func"
+  },
+  {
+   "name": "updateCamPathFollow",
+   "address": 2147989836,
+   "size": 728,
    "kind": "func"
   },
   {
@@ -47607,7 +47618,7 @@
   },
   {
    "address": 2148257900,
-   "type": "u8[]",
+   "type": "Unk800BD06C *",
    "source": "match"
   },
   {
@@ -47632,7 +47643,7 @@
   },
   {
    "address": 2148499688,
-   "type": "Tri *[]",
+   "type": "s32[]",
    "source": "match"
   },
   {

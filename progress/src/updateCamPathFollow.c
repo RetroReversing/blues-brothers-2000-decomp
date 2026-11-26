@@ -52,7 +52,8 @@ f32 func_8002D8F4(void *arg0, s32 *arg1);
 void *func_8003B980(void *o);
 s32 func_8003BF98(void *o);
 
-void func_8007B94C(Unk8007B94C *arg0) {
+/* Per-frame update for a camera that rides a spline path: runs the ease-in, the constant-speed run along the path, and the hand-off to the camera target when it arrives. */
+void updateCamPathFollow(Unk8007B94C *cam) {
     s32 idx;
     s32 flag;
     f32 t;
@@ -61,56 +62,56 @@ void func_8007B94C(Unk8007B94C *arg0) {
     f32 dist;
     s32 mode;
 
-    idx = arg0->unk70;
+    idx = cam->unk70;
     flag = 0;
-    if (arg0->unk7C == 0) {
-        arg0->unk7C = D_800BD100;
+    if (cam->unk7C == 0) {
+        cam->unk7C = D_800BD100;
     }
-    arg0->unkF8 |= 1;
-    switch (arg0->unk6C) {
+    cam->unkF8 |= 1;
+    switch (cam->unk6C) {
     case 0:
-        func_80081990(&arg0->unk4, idx, arg0->unkB4);
-        syncActorPrevPos(arg0);
-        arg0->unk68 = -1;
-        arg0->unk64 = 200;
-        arg0->unk6C++;
-        arg0->unk8 += 2000.0f;
+        func_80081990(&cam->unk4, idx, cam->unkB4);
+        syncActorPrevPos(cam);
+        cam->unk68 = -1;
+        cam->unk64 = 200;
+        cam->unk6C++;
+        cam->unk8 += 2000.0f;
         break;
     case 1:
-        if (tickActorTimer(arg0) != 0) {
-            arg0->unk68 = 4;
-            arg0->unk6C++;
+        if (tickActorTimer(cam) != 0) {
+            cam->unk68 = 4;
+            cam->unk6C++;
         }
         break;
     case 2:
         t = D_800B9EC4;
-        arg0->unk50 += t * -2700.0f;
-        arg0->unk8 += arg0->unk50 * t;
-        if (arg0->unk8 <= arg0->unk44) {
-            arg0->unk8 = arg0->unk44;
-            arg0->unk6C++;
+        cam->unk50 += t * -2700.0f;
+        cam->unk8 += cam->unk50 * t;
+        if (cam->unk8 <= cam->unk44) {
+            cam->unk8 = cam->unk44;
+            cam->unk6C++;
         }
         break;
     default:
-        sum = arg0->unkB4 + arg0->unkAC;
-        arg0->unkB4 = sum;
+        sum = cam->unkB4 + cam->unkAC;
+        cam->unkB4 = sum;
         t = (f32)gSplinePointCount[idx] - 1.1f;
         if (t <= sum) {
-            arg0->unkA4->unkA8 = 0;
-            arg0->unkA0(arg0);
+            cam->unkA4->unkA8 = 0;
+            cam->unkA0(cam);
             break;
         }
-        func_80081990(&arg0->unk4, idx, sum);
-        if (arg0->unk7C == 4) {
-            func_80081AC0(vec, idx, arg0->unkB4);
-            arg0->unk10 = func_8002492C(vec[0], vec[2]);
-            arg0->unk14 += gCamSpeedScale << 10;
-        } else if (arg0->unk70 < 7) {
-            arg0->unk18 += gCamSpeedScale << 10;
+        func_80081990(&cam->unk4, idx, sum);
+        if (cam->unk7C == 4) {
+            func_80081AC0(vec, idx, cam->unkB4);
+            cam->unk10 = func_8002492C(vec[0], vec[2]);
+            cam->unk14 += gCamSpeedScale << 10;
+        } else if (cam->unk70 < 7) {
+            cam->unk18 += gCamSpeedScale << 10;
         } else {
-            arg0->unk14 -= gCamSpeedScale << 10;
+            cam->unk14 -= gCamSpeedScale << 10;
         }
-        dist = func_8002D8F4(arg0, NULL);
+        dist = func_8002D8F4(cam, NULL);
         do { do { mode = D_800BD100; } while (0); } while (0);
         if (mode == 1) {
             if (dist < 500.0) {
@@ -128,4 +129,3 @@ void func_8007B94C(Unk8007B94C *arg0) {
         break;
     }
 }
-

@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_80023E58();                            /* extern */
+M2C_UNK loadObjGeometry();                            /* extern */
 M2C_UNK func_80024130();                            /* extern */
 
 void func_800242A8(s32 arg0, s32 arg1, s32 arg2) {
@@ -20,5 +20,5 @@ void func_800242A8(s32 arg0, s32 arg1, s32 arg2) {
         func_80024130(arg0, arg1, arg2);
         return;
     }
-    func_80023E58(arg0, arg1, arg2);
+    loadObjGeometry(arg0, arg1, arg2);
 }

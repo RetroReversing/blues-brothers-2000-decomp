@@ -1316,7 +1316,7 @@
 <g><title>func_80023E3C: {&#x27;matched&#x27;: 1}</title>
 <rect x="340.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80023E58: {&#x27;matched&#x27;: 1}</title>
+<g><title>loadObjGeometry: {&#x27;matched&#x27;: 1}</title>
 <rect x="350.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80024130: {&#x27;matched&#x27;: 1}</title>
@@ -4607,7 +4607,7 @@
 <g><title>func_8007B880: {&#x27;matched&#x27;: 1}</title>
 <rect x="110.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8007B94C: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateCamPathFollow: {&#x27;matched&#x27;: 1}</title>
 <rect x="120.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8007BC24: {&#x27;matched&#x27;: 1}</title>

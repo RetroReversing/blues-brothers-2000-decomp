@@ -9357,7 +9357,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:21275527ecfd4b81abd75e708082998a001017fc015e5bf80a3a7f5c6b0402d6"
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "op76: 3647 -> 650 with a plain rewrite (saved). Keys found: frame 0x60 needs a 32-byte unused local (char sp10[32]) and `first` (ALIGN64 of buf->0x20) as a spilled scalar stored in each if/else arm; n3 = func_80025AC4(); n = n3; n3 *= 3 (both in callee-saved regs); n and size share one variable (size = n3 copy), total reuses arg1, count *= 8 for the 80048D08 call. 650 uses a do{}while(0) around `end += count` after the call (loop_weight_scope scaffolding). Remaining rows: prologue order (sw a0 0x60 before move s1,a2), lw a1 0x60/addu a3 order before 424FC, count should be in a3 (target computes count*8 into a3 after the *12 update and adds it in the jal delay slot, so end += count is before the call: sched1 hoists the sll in every spelling tried), final subu uses a0 copy of buf. Tried: count*8 inline/before/after call, fences at several places (do{count*=8;}while(0) gives 710), struct local for first (worse), pA050 pointer, total inline in call.",
   "by": "manual-f86831e3bb304d6a",
   "created_at": 1795617341.823147,
@@ -9366,7 +9366,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:2544f35a3cf25a94de6049504db8b87bc44c1dc3abb3f18cefdb785b95fc2040"
  },
  {
-  "function": "func_8007B94C",
+  "function": "updateCamPathFollow",
   "text": "op76: plain rewrite 3148 -> 135 (saved) under the default -mfp64. Under -mfp32 (compiler_experiments trial 20218820bea3202a6434 scored 45 on the saved source) the improved source (case 2 compare is if (arg0->unk8 <= arg0->unk44); default arm sum = unkB4 + unkAC; unkB4 = sum; t = (f32)D_8014A928[idx] - 1.1f; if (t <= sum), sum passed to func_80081990) scores 15: the only rows left are lw v0,D_800BD100; li v1,1; bne v0,v1 where ours allocates the load to v1 and the constant to v0 (local-alloc of the 3 quantities lui/lw/li in the block after func_8002D8F4). Tried: != with arms swapped, switch, 1 == x, u32 extern, a local copy, 1U, NULL vs 0, -mno-split-addresses and -G4 (worse). Not applied: the trial is not exact. Next: find the spelling that changes that block's quantity count or birth order.",
   "by": "manual-f86831e3bb304d6a",
   "created_at": 1795617915.458156,
@@ -9382,6 +9382,14 @@
   "score_before": 7925,
   "score_after": 2315,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:ae139fd03f5706be342bfc94719006850e7eda9fcff98e25a697444b6f9bea65"
+ },
+ {
+  "function": "setDelayFxParams",
+  "text": "op76: this is libultra alFxNew (drvrnew.c) adapted to preallocated pools: r = D_8017B260->unk34 (ALFx), r->delay = D_8017B270, r->base = r->input = D_8017B274, d->rs/state from D_8017B278[0..1], d->lp/fstate from D_8017B278[2..3] (s5 = s4 + 8), outputRate = D_8017B260->unk44, final call alFxFillDecay(d->lp) in place of _init_lpfilter; u16 i, j, k as in the reference. A reference-shaped source scores 2875 under sn-n64-272-0001 -G0 -mips2 -O2 (9505 under 0001 -G8, 15124 under 0004, 9345 under 0006, 9665 under the current sn-n64-281): blocked because 0001 writes lwc1 pairs where the target has ldc1 (CONVERT and 2^32 doubles), which needs the sn-n64-272-0001-as0004 pack that is merged but not installed in this app. Also left: the target addresses r's fields through s3 = r + 0x20 (lw 0x14/0x1c/0x20, lbu 0x24) and reads param words with lw then sb. Source kept in the session only; retry once the pack is installed.",
+  "by": "manual-f86831e3bb304d6a",
+  "created_at": 1795620913.159283,
+  "score_before": 5575,
+  "score_after": 5575
  },
  {
   "function": "func_800812B4",
@@ -9481,7 +9489,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:08b0bc40b06171eb0d76dfdb91d5ca83eea168a8da3d14ca3346d9a1c8cc781a"
  },
  {
-  "function": "func_8007B94C",
+  "function": "updateCamPathFollow",
   "text": "Moved on after 8 trials returning previously seen scored instruction diffs. Best source retained.",
   "by": "manual-d8adb74680f54138",
   "created_at": 1795624121.7802298,
@@ -9490,7 +9498,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:786f2de8b649b6fe45e6a7ba99a4685bad10f64c2c20b27c40ec3586bdce7e1d"
  },
  {
-  "function": "func_8007B94C",
+  "function": "updateCamPathFollow",
   "text": "ap13: source in /notes-form reproduced: 15 under -mfp32 (135 default): case 2 'if (arg0->unk8 <= arg0->unk44)', default arm sum = unkB4 + unkAC; unkB4 = sum; t = (f32)D_8014A928[idx] - 1.1f; if (t <= sum); func_80081990 gets sum, func_80081AC0 re-reads arg0->unkB4 (target reloads lw a2,0xB4). Remaining 3 rows: lw/li register swap (v0/v1) for D_800BD100 == 1. local-alloc reading: target needs the load L to outrank the constant C (C's li before the lw in sched1 order, or L longer-lived); tried flag=1 / idx=1 locals (2251/265), D_800BD100 - 1 == 0, local mode copy, !(x ^ 1): all 15 or worse.",
   "by": "manual-d8adb74680f54138",
   "created_at": 1795624133.578135,
@@ -9544,7 +9552,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "ap13: unchanged 650. Removed the do{}while(0) scaffolding and put end += count before the call (count *= 8; end += count; call(.., count)) 1175, with a separate total local 1175, call args as D_800F9878[arg0]/D_800F80E8[arg0] 1175: sched1 then hoists sll a3,v1,3 above the *12 chain and count is no longer the in-place lw a3 / sll a3,a3,3 the target has. Target: count lives only in a3 (lw a3; *12 chain from a3; sll a3,a3,3; call; addu s1,s1,a3 in the delay slot).",
   "by": "manual-d8adb74680f54138",
   "created_at": 1795626753.891045,
@@ -10149,7 +10157,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:911bddf4c343dfbc3621f31a668b85f83853f796f2f4dc0e601aa71a64d1ce52"
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '650 1ecafa36484764d1b547 sn-n64-281 -G8 -mips2 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
   "by": "manual-fa253f9ceee84c1b",
   "created_at": 1795635711.634271,
@@ -10165,7 +10173,7 @@
   "score_after": 680
  },
  {
-  "function": "func_8007B94C",
+  "function": "updateCamPathFollow",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '45 ee29d8642961ea126978 sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
   "by": "manual-fa253f9ceee84c1b",
   "created_at": 1795635785.246439,
@@ -10403,7 +10411,7 @@
   "score_after": 525
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "ap23: diff re-read under sn-n64-281 -G8 -mips2 -mfp32 (650, the best profile): rows = (a) prologue order `sw a0,0x60(sp); move a0,s0; sw s1,0x3c(sp); move s1,a2` (ours stores s1 first), (b) the pre-func_800424FC block: target keeps `move a2,s5; lui v0 hi(D_800FA050); addiu; lw a1,0x60(sp); addu a3,s5,s2; sll v1,a1,2; addu; jal` (a3 = buf+size computed after the hi/lo of the table, ours before and with v1/v0 swapped), (c) count: target has it ONLY in a3 (lw a3,(v1); *12 chain off a3; sll a3,a3,3; call; `addu s1,s1,a3` in the jal delay slot, so `end += count` runs before the call), ours holds count in callee-saved s0 across the call (the saved best keeps `end += count` after the call inside a do{}while(0) loop-weight fence, which is scaffolding), (d) the tail: target `move v0,s1 ... subu s0,v0,a0` after `move a0,s5` vs ours `subu s0,v0,s5` before the move; branch offset 0x280/0x284 follows from (c). The scaffolding (`__repair_loop_weight` fence, 32-byte sp10 frame filler, n/size sharing) is search-made, not the game`s: a faithful rewrite still has to reach (c) without it. No new compile gain; not applied.",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637596.737633,
@@ -10411,7 +10419,7 @@
   "score_after": 650
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap23: see notes",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637597.3193831,
@@ -10759,7 +10767,7 @@
   "score_after": 525
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "op88: unchanged 650. Tried removing the saved best's loop-weight fence around `end += count` (scaffolding) in the three plain forms: `end += count;` before the call with count as its argument, after the call, and `count * 8` passed and added inline: all 1175, so the fence's extra reference weight is what keeps count's allocation near the target; the target holds count only in $a3 and adds it in the jal delay slot. decomp-repair arity_drop_store_step / constant_compare_temp_reuse offer nothing here.",
   "by": "manual-f7f61c1765d84883",
   "created_at": 1795642686.21135,
@@ -11540,7 +11548,7 @@
   "score_after": 747
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "op97 (library 0.6.48): unchanged 650. prove_chain --families all --children 40, default and --fp-flip: no child of 1148 improves (38 judged each). No new hand edit judged; the open gap stays the earlier notes' (c): the target keeps count only in $a3 (lw $a3; the *12 chain off $a3; sll $a3,$a3,3; jal; addu $s1,$s1,$a3 in the delay slot), which needs `end += count` before the call without the saved best's loop-weight fence and 32-byte sp10 filler (both search scaffolding).",
   "by": "manual-c49166d3e00442aa",
   "created_at": 1795653099.541045,
@@ -11548,7 +11556,7 @@
   "score_after": 650
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "[Released without compiling it once; notes not checked by a compile.] op97 (library 0.6.48): unchanged 650. prove_chain --families all --children 40, default and --fp-flip: no child of 1148 improves (38 judged each). No new hand edit judged; the open gap stays the earlier notes' (c): the target keeps count only in $a3 (lw $a3; the *12 chain off $a3; sll $a3,$a3,3; jal; addu $s1,$s1,$a3 in the delay slot), which needs `end += count` before the call without the saved best's loop-weight fence and 32-byte sp10 filler (both search scaffolding).",
   "by": "manual-c49166d3e00442aa",
   "created_at": 1795653100.6777751,
@@ -12029,7 +12037,7 @@
   "score_after": 200
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "claude-a38abf (library 0.6.64-0.6.67): 650 -> 270 recorded (default profile; also 270 under -mfp32). prove_chain --families all --children 700 --fp-flip --combine 8: temporary_hoist 610, entry_parameter_copy 580 (arg1 copied from arg1_in at the top), reused_temp_split 375 (the final aligned - buf value in its own local arg1_b1), reload_temp_inline 270. The saved best still relies on the earlier do { end += count; } while (0) loop-weight fence after func_80048D08 (search scaffolding): without it 945. Two library bugs found on the way, both fixed and pinned: local_split_new made size2 = func_80025A00(..) while the rounding still read size (an unfaithful 600, decomp-repair 0.6.65), and statement_sink_past_call moved count *= 8 below the call and end += count (an unfaithful 245 from the fence-free form, 0.6.67). Open: the target keeps count only in $a3 and adds it in the jal delay slot; the fence-free spelling of that is still unknown.",
   "by": "manual-4342031a716741b0",
   "created_at": 1795676780.4790668,
@@ -12038,7 +12046,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:2544f35a3cf25a94de6049504db8b87bc44c1dc3abb3f18cefdb785b95fc2040"
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "650 -> 270 by a library chain; still relies on the older loop-weight fence; see note.",
   "by": "manual-4342031a716741b0",
   "created_at": 1795676782.2654731,
@@ -12104,7 +12112,7 @@
   "score_after": 0
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "o55bb (library 0.6.70): 270 -> 145 fence-free. The do { end += count; } while (0) fence is gone (plain form 945); the one edit is the header update through a two-set local: total = D_800FA828.unk28; total += count * 12; D_800FA828.unk28 = total; (sched.c birthing_insn_p launches the single-set add of the compound form, which left count<<3 ahead of the *12 chain). New decomp-repair family compound_update_local (0.6.70, pin #3660) reaches 145 from plain.c in one step. Left: the block before func_800424FC: target lui/addiu of D_800FA050 before lw a1 and addu a3 (base in v0, index in v1); ours computes buf+size first. sched1 launches the lo_sum (birthing) right after the index add, so the a3 copy lands before it; eight spellings of the store/argument (casts, &buf[size], size+buf, the stored word as the argument) all 145 (invariant), a base-pointer local 860-3103.",
   "by": "manual-f537e0884fc844f4",
   "created_at": 1795680729.24597,
@@ -12190,7 +12198,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:48ad4be740fbb861969579a271bf574b6ad9748e5e3e56d45a5c35d493e01258"
  },
  {
-  "function": "func_80023E58",
+  "function": "loadObjGeometry",
   "text": "o55bb: 145 -> 120 recorded. D_800FA050[arg0] = (s32)(buf + size) written (*(s32 *)((arg0 << 2) + (u8 *)D_800FA050)) = ...: the base takes $v0 and the index $v1 like the target (the arg0 * 4 product form stays 145). decomp-repair element_index_first (PR 1788) offers it. Left: 4 reordered rows, the target has lui/addiu of D_800FA050 before lw $a1,0x60($sp) and addu $a3,$s5,$s2; ours computes buf+size and reloads arg0 first. 36 spellings of the address/value/argument all 120 (invariant); prove_chain all --children 80 from the 120: nothing.",
   "by": "manual-f537e0884fc844f4",
   "created_at": 1795683203.962028,
@@ -12672,13 +12680,5 @@
   "created_at": 1795700653.0427551,
   "score_before": 200,
   "score_after": 200
- },
- {
-  "function": "setDelayFxParams",
-  "text": "op76: this is libultra alFxNew (drvrnew.c) adapted to preallocated pools: r = D_8017B260->unk34 (ALFx), r->delay = D_8017B270, r->base = r->input = D_8017B274, d->rs/state from D_8017B278[0..1], d->lp/fstate from D_8017B278[2..3] (s5 = s4 + 8), outputRate = D_8017B260->unk44, final call alFxFillDecay(d->lp) in place of _init_lpfilter; u16 i, j, k as in the reference. A reference-shaped source scores 2875 under sn-n64-272-0001 -G0 -mips2 -O2 (9505 under 0001 -G8, 15124 under 0004, 9345 under 0006, 9665 under the current sn-n64-281): blocked because 0001 writes lwc1 pairs where the target has ldc1 (CONVERT and 2^32 doubles), which needs the sn-n64-272-0001-as0004 pack that is merged but not installed in this app. Also left: the target addresses r's fields through s3 = r + 0x20 (lw 0x14/0x1c/0x20, lbu 0x24) and reads param words with lw then sb. Source kept in the session only; retry once the pack is installed.",
-  "by": "manual-f86831e3bb304d6a",
-  "created_at": 1795620913.159283,
-  "score_before": 5575,
-  "score_after": 5575
  }
 ]

@@ -20,7 +20,7 @@ typedef struct Obj {
 extern void initSpline(s32, s32);
 extern Obj *findActor(s32, Obj *);
 extern Obj *func_8002E374(s32);
-extern void func_8007B94C(void);
+extern void updateCamPathFollow(void);
 extern f32 D_80009534;
 
 void func_8007BC24(Obj *o) {
@@ -57,7 +57,7 @@ void func_8007BC24(Obj *o) {
         o->xA8 = n;
         n->x70 = o->x70;
         n->x74 = o->x74;
-        n->x9C = func_8007B94C;
+        n->x9C = updateCamPathFollow;
         n->xA4 = o;
         n->xAC = 0.142f;
         n->xB4 = 0;
