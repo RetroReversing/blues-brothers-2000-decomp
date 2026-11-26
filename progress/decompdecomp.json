@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699126.058806,
- "revision": 5530,
+ "saved_at": 1795699141.080493,
+ "revision": 5531,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15239,7 +15239,8 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ]
+   ],
+   "timeout": 20
   },
   "609072:2148089648": {
    "vram": 2148089648,
@@ -45452,6 +45453,12 @@
   {
    "name": "gSlotEmpty",
    "address": 2148561328,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gStickX",
+   "address": 2148561840,
    "size": 0,
    "kind": "data"
   },
