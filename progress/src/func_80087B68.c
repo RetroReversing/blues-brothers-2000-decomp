@@ -26,7 +26,7 @@ void func_80047864(s32, s32, s32, s32, s32);
 extern Vec3 D_800B9B60[];
 extern s32 gPadPressed[];
 extern s32 gStickX[];
-extern Obj87B68 *D_80171A80[];
+extern Obj87B68 *gIntroActors[];
 
 void func_80087B68(Obj87B68 *arg0) {
     s32 v;
@@ -74,7 +74,7 @@ void func_80087B68(Obj87B68 *arg0) {
         if (gPadPressed[arg0->unkBC] & 0x9000) {
             func_8002A360(12, 0x80);
             func_8002A360(8, 0xA5);
-            p = D_80171A80[arg0->unk84];
+            p = gIntroActors[arg0->unk84];
             arg0->unkC0 = 1;
             func_80047864(p->unkE8, 0, 0, 120, -100);
             func_80047864(p->unkE8, 0, 0, 120, -100);
@@ -93,7 +93,7 @@ void func_80087B68(Obj87B68 *arg0) {
         if (gPadPressed[arg0->unkBC] & 0x9000) {
             func_8002A360(12, 0x80);
             func_8002A360(8, 0x9C);
-            p = D_80171A80[arg0->unk84];
+            p = gIntroActors[arg0->unk84];
             func_80047864(p->unkE8, 0, 100, 0, -100);
             func_80047864(p->unkE8, 0, 100, 0, -100);
             func_80047824(p->unkE8, 0, 255, 255, 255);

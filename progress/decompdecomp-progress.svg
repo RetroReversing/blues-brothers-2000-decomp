@@ -4790,7 +4790,7 @@
 <g><title>func_80080594: {&#x27;matched&#x27;: 1}</title>
 <rect x="720.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80080620: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateCameraQuickcut: {&#x27;matched&#x27;: 1}</title>
 <rect x="730.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800809C8: {&#x27;matched&#x27;: 1}</title>
@@ -5051,7 +5051,7 @@
 <g><title>func_80087160: {&#x27;matched&#x27;: 1}</title>
 <rect x="790.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800871C0: {&#x27;matched&#x27;: 1}</title>
+<g><title>setupIntroScene: {&#x27;matched&#x27;: 1}</title>
 <rect x="800.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8008756C: {&#x27;matched&#x27;: 1}</title>

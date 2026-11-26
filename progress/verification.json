@@ -147757,7 +147757,7 @@
    "unit": "main_text_7E820",
    "mode": "rom"
   },
-  "func_80080620": {
+  "updateCameraQuickcut": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -197384,7 +197384,7 @@
    "unit": "main_text_7E820",
    "mode": "rom"
   },
-  "func_800871C0": {
+  "setupIntroScene": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -197394,10 +197394,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "8a9081ea015176e80e119e341a7ec60720069af43e251c21764aaa5d158a8b6b",
-   "recorded_at": 1795697230.985342,
-   "attempt_id": 158913861817,
-   "source_sha256": "c4fc220cd4c940c03d382de17efc0d1075164f00d45905b56c28095b2d708dfe",
+   "symbols_sha256": "e6180f85980cf3ec78aada84fb23fd73766ec916838942179b5ec21693a559ef",
+   "recorded_at": 1795699372.076304,
+   "attempt_id": 158913861994,
+   "source_sha256": "c1c4e2cea0c222e613cfed7669dc643ab6ced3cf1cfbef788d69a596c03fab5a",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 955,
    "compiler": {
@@ -197439,7 +197439,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -197448,32 +197448,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G0",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913792199",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -200446,7 +200420,7 @@
   "4071363dcfeacd999bd2b7d9ed2ed22e4e8864899f1b13ff826dd0881e37fc8c": "/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\nvoid func_8007BE90(void) {\n\n}\n",
   "54889aceb4958cf62e57597853919e7de51db75b1168a19a8d4b81e62b34c5f2": "/* identical to func_8007BE90 (matched), with its names changed by decompdecomp */\n/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\nvoid func_8007CE50(void) {\n\n}\n",
   "c1d825082189f67b1ae333689858c58199159a425211bba6b5580a86bbb92b72": "typedef struct Obj85 {\n    u8 pad0[0x64];\n    s32 x64;\n} Obj85;\nvoid *func_80023874(s32, s32);\ns32 func_8002D5CC(Obj85 *);\nvoid func_80082494(Obj85 *);\n\nvoid func_80085F60(Obj85 *o) {\n    if (o->x64 > 100) {\n        o->x64 = 100;\n    }\n    if (func_80023874(0x800, 0) == NULL) {\n        if (func_8002D5CC(o) != 0) {\n            func_80082494(o);\n        }\n    }\n}\n",
-  "c4fc220cd4c940c03d382de17efc0d1075164f00d45905b56c28095b2d708dfe": "typedef struct Obj87 {\n    s32 x0;\n    u8 pad4[0xC];\n    s32 x10;\n    u8 pad14[0x54];\n    s32 x68;\n    u8 pad6C[4];\n    s32 x70;\n    u8 pad74[0x10];\n    s32 x84;\n    s32 x88;\n    u8 pad8C[0x10];\n    void *x9C;\n    u8 padA0[8];\n    struct Obj87 *xA8;\n    u8 padAC[0x3C];\n    s32 xE8;\n    u8 padEC[0xC];\n    s32 xF8;\n} Obj87;\ntypedef struct Cam87 {\n    s32 x0;\n    s32 x4;\n    f32 x8;\n    f32 xC;\n    u8 pad10[0x58];\n    volatile s32 x68;\n    u8 pad6C[0x30];\n    void * volatile x9C;\n    u8 padA0[0x58];\n    volatile s32 xF8;\n} Cam87;\nObj87 *func_80023874(s32, s32);\nvoid func_80023A74(s32, s32);\nvoid func_80023A98(s32, s32, s32);\ns32 func_80023D58(s32);\nObj87 *func_80042F00(s32, s32, s32, s32);\nvoid func_800433A8(Obj87 *, s32, s32);\nvoid func_8002D620(Obj87 *);\ns32 func_80047898(void);\nvoid func_80033BC0(Obj87 *);\nObj87 *func_80087F10(s32);\nvoid func_800880B4(void);\nvoid func_80023080(void);\nvoid func_800349E4(void);\nvoid func_8008756C(void);\nextern s32 D_80171994;\nextern s32 D_80171A68[2];\nextern Obj87 *D_80171A80[4];\nextern Obj87 *D_80171A78[2];\nextern Cam87 *D_800BD06C;\nextern Obj87 *D_800B3960;\nextern s32 D_800B5DD4;\n\nvoid func_800871C0(Obj87 *arg0) {\n    Obj87 *p;\n    Obj87 *o1;\n    Obj87 *o2;\n    Obj87 *o3;\n    Obj87 *o4;\n    Obj87 *q;\n    Obj87 *t;\n    Cam87 *c;\n\n    D_80171994 = 1;\n    t = func_80023874(6, 0);\n    if (t != NULL) {\n        t->x68 = -1;\n    }\n    func_80023A74(0x30, 0x2B6);\n    func_80023A74(0x19, 0x112);\n    func_80023A74(0x2F, 0x2A8);\n    func_80023A98(0xB3, 0x2AF, 0);\n    func_80023A98(0xBA, 0x2BD, 0);\n    func_80023A98(0x80, 0x10D, 0);\n    func_80023A98(0x1B5, 0x676, 0);\n    func_80023A98(0x1B6, 0x674, 0);\n    func_80023A98(0x1B7, 0x111, 0);\n    func_80023A98(0x1B8, 0x110, 0);\n    func_80023A98(0x1B9, 0x2AD, 0);\n    func_80023A98(0x1BA, 0x2AC, 0);\n    func_80023A98(0x1BB, 0x2B8, 0);\n    func_80023A98(0x1BC, 0x2B7, 0);\n    D_80171A68[0] = func_80023D58(0x223);\n    D_80171A68[1] = func_80023D58(0x224);\n\n    o1 = func_80042F00(1, -0x12C, 0x125, -0x237);\n    D_80171A80[0] = o1;\n    func_800433A8(o1, 1, 0x100);\n    o1->x10 = 0x8000;\n    o1->x9C = func_800880B4;\n    o1->x70 = 0;\n    func_8002D620(o1);\n    o1->x0 = 0x101;\n    o1->xE8 = func_80047898();\n    o1->x84 = 0x1B5;\n    o1->x88 = 0x1B6;\n\n    o2 = func_80042F00(0x19, -0x64, 0x125, -0x237);\n    D_80171A80[1] = o2;\n    func_800433A8(o2, 0x80, 0x100);\n    o2->x10 = 0x8000;\n    o2->x9C = func_800880B4;\n    o2->x70 = 1;\n    func_8002D620(o2);\n    o2->x0 = 0x101;\n    o2->xE8 = func_80047898();\n    o2->x84 = 0x1B7;\n    o2->x88 = 0x1B8;\n\n    o3 = func_80042F00(0x30, 0x64, 0x125, -0x237);\n    D_80171A80[2] = o3;\n    func_800433A8(o3, 0xBA, 0x100);\n    o3->x10 = 0x8000;\n    o3->x9C = func_800880B4;\n    o3->x70 = 2;\n    func_8002D620(o3);\n    o3->x0 = 0x101;\n    o3->xE8 = func_80047898();\n    o3->x84 = 0x1BB;\n    o3->x88 = 0x1BC;\n\n    o4 = func_80042F00(0x2F, 0x12C, 0x125, -0x237);\n    D_80171A80[3] = o4;\n    func_800433A8(o4, 0xB3, 0x100);\n    o4->x10 = 0x8000;\n    o4->x9C = func_800880B4;\n    o4->x70 = 3;\n    o4->x0 = 0x101;\n    func_8002D620(o4);\n    o4->xE8 = func_80047898();\n    o4->x84 = 0x1B9;\n    o4->x88 = 0x1BA;\n\n    c = D_800BD06C;\n    c->x9C = func_80023080;\n    c->x68 = -1;\n    c->x4 = 0;\n    c->x8 = 293.0f;\n    c->xC = -567.0f;\n    c->x0 = 1;\n    c->xF8 |= 0x40;\n    D_800B3960->x10 = 0;\n    func_80033BC0(D_800B3960);\n    D_800B5DD4 = 0;\n    D_800B3960->x9C = func_800349E4;\n    arg0->x9C = func_8008756C;\n    p = func_80087F10(0);\n    D_80171A78[0] = p;\n    t = func_80087F10(1);\n    D_80171A78[1] = t;\n    p->xA8 = t;\n    t->xA8 = p;\n}\n\n",
+  "c1c4e2cea0c222e613cfed7669dc643ab6ced3cf1cfbef788d69a596c03fab5a": "typedef struct Obj87 {\n    s32 x0;\n    u8 pad4[0xC];\n    s32 x10;\n    u8 pad14[0x54];\n    s32 x68;\n    u8 pad6C[4];\n    s32 x70;\n    u8 pad74[0x10];\n    s32 x84;\n    s32 x88;\n    u8 pad8C[0x10];\n    void *x9C;\n    u8 padA0[8];\n    struct Obj87 *xA8;\n    u8 padAC[0x3C];\n    s32 xE8;\n    u8 padEC[0xC];\n    s32 xF8;\n} Obj87;\ntypedef struct Cam87 {\n    s32 x0;\n    s32 x4;\n    f32 x8;\n    f32 xC;\n    u8 pad10[0x58];\n    volatile s32 x68;\n    u8 pad6C[0x30];\n    void * volatile x9C;\n    u8 padA0[0x58];\n    volatile s32 xF8;\n} Cam87;\nObj87 *findActor(s32, s32);\nvoid func_80023A74(s32, s32);\nvoid setSlotAsset(s32, s32, s32);\ns32 func_80023D58(s32);\nObj87 *func_80042F00(s32, s32, s32, s32);\nvoid actorSetAnim(Obj87 *, s32, s32);\nvoid syncActorPrevPos(Obj87 *);\ns32 func_80047898(void);\nvoid func_80033BC0(Obj87 *);\nObj87 *func_80087F10(s32);\nvoid func_800880B4(void);\nvoid func_80023080(void);\nvoid updateFollowCamera(void);\nvoid func_8008756C(void);\nextern s32 D_80171994;\nextern s32 gIntroSpriteAssets[2];\nextern Obj87 *gIntroActors[4];\nextern Obj87 *gIntroSprites[2];\nextern Cam87 *gCameraTarget;\nextern Obj87 *D_800B3960;\nextern s32 D_800B5DD4;\n\n/* Sets up the intro scene: loads its assets, spawns the four intro actors and two sprites, and points the camera at the scene. */ void setupIntroScene(Obj87 *introSprite) {\n    Obj87 *sprite0;\n    Obj87 *actor0;\n    Obj87 *actor1;\n    Obj87 *actor2;\n    Obj87 *actor3;\n    Obj87 *q;\n    Obj87 *tmpObj;\n    Cam87 *camera;\n\n    D_80171994 = 1;\n    tmpObj = findActor(6, 0);\n    if (tmpObj != NULL) {\n        tmpObj->x68 = -1;\n    }\n    func_80023A74(0x30, 0x2B6);\n    func_80023A74(0x19, 0x112);\n    func_80023A74(0x2F, 0x2A8);\n    setSlotAsset(0xB3, 0x2AF, 0);\n    setSlotAsset(0xBA, 0x2BD, 0);\n    setSlotAsset(0x80, 0x10D, 0);\n    setSlotAsset(0x1B5, 0x676, 0);\n    setSlotAsset(0x1B6, 0x674, 0);\n    setSlotAsset(0x1B7, 0x111, 0);\n    setSlotAsset(0x1B8, 0x110, 0);\n    setSlotAsset(0x1B9, 0x2AD, 0);\n    setSlotAsset(0x1BA, 0x2AC, 0);\n    setSlotAsset(0x1BB, 0x2B8, 0);\n    setSlotAsset(0x1BC, 0x2B7, 0);\n    gIntroSpriteAssets[0] = func_80023D58(0x223);\n    gIntroSpriteAssets[1] = func_80023D58(0x224);\n\n    actor0 = func_80042F00(1, -0x12C, 0x125, -0x237);\n    gIntroActors[0] = actor0;\n    actorSetAnim(actor0, 1, 0x100);\n    actor0->x10 = 0x8000;\n    actor0->x9C = func_800880B4;\n    actor0->x70 = 0;\n    syncActorPrevPos(actor0);\n    actor0->x0 = 0x101;\n    actor0->xE8 = func_80047898();\n    actor0->x84 = 0x1B5;\n    actor0->x88 = 0x1B6;\n\n    actor1 = func_80042F00(0x19, -0x64, 0x125, -0x237);\n    gIntroActors[1] = actor1;\n    actorSetAnim(actor1, 0x80, 0x100);\n    actor1->x10 = 0x8000;\n    actor1->x9C = func_800880B4;\n    actor1->x70 = 1;\n    syncActorPrevPos(actor1);\n    actor1->x0 = 0x101;\n    actor1->xE8 = func_80047898();\n    actor1->x84 = 0x1B7;\n    actor1->x88 = 0x1B8;\n\n    actor2 = func_80042F00(0x30, 0x64, 0x125, -0x237);\n    gIntroActors[2] = actor2;\n    actorSetAnim(actor2, 0xBA, 0x100);\n    actor2->x10 = 0x8000;\n    actor2->x9C = func_800880B4;\n    actor2->x70 = 2;\n    syncActorPrevPos(actor2);\n    actor2->x0 = 0x101;\n    actor2->xE8 = func_80047898();\n    actor2->x84 = 0x1BB;\n    actor2->x88 = 0x1BC;\n\n    actor3 = func_80042F00(0x2F, 0x12C, 0x125, -0x237);\n    gIntroActors[3] = actor3;\n    actorSetAnim(actor3, 0xB3, 0x100);\n    actor3->x10 = 0x8000;\n    actor3->x9C = func_800880B4;\n    actor3->x70 = 3;\n    actor3->x0 = 0x101;\n    syncActorPrevPos(actor3);\n    actor3->xE8 = func_80047898();\n    actor3->x84 = 0x1B9;\n    actor3->x88 = 0x1BA;\n\n    camera = gCameraTarget;\n    camera->x9C = func_80023080;\n    camera->x68 = -1;\n    camera->x4 = 0;\n    camera->x8 = 293.0f;\n    camera->xC = -567.0f;\n    camera->x0 = 1;\n    camera->xF8 |= 0x40;\n    D_800B3960->x10 = 0;\n    func_80033BC0(D_800B3960);\n    D_800B5DD4 = 0;\n    D_800B3960->x9C = updateFollowCamera;\n    introSprite->x9C = func_8008756C;\n    sprite0 = func_80087F10(0);\n    gIntroSprites[0] = sprite0;\n    tmpObj = func_80087F10(1);\n    gIntroSprites[1] = tmpObj;\n    sprite0->xA8 = tmpObj;\n    tmpObj->xA8 = sprite0;\n}\n\n",
   "338b70f0af7f7a37b5ac8f63c35a16afe5fb1cbf9c863ce322f9ed996f4aee31": "typedef struct { u8 pad0[0x20]; s32 x20; u8 pad24[8]; s32 x2C; u8 pad30[0x20]; } ViModeB;\ntypedef struct { u32 a; u32 b; } FbPair;\nvoid func_800899C4(char *, ...);\nvoid func_800899DC(char *, ...);\nvoid osCreateMesgQueue(void *, void *, s32);\nvoid func_80089FA8(s32);\nvoid osViBlack(s32);\nvoid func_80070C60(void *, s32, s32);\nvoid osViSetSpecialFeatures(s32);\nvoid func_8002A2E0(void);\nvoid func_800706E0(void *);\nvoid func_80025F20(void);\nvoid func_8002CDB0(void);\nvoid func_800258E4(void);\nvoid func_8002E2F0(void);\nvoid func_8008914C(s32);\nvoid func_8002E46C(void);\nvoid func_80089130(s32, s32, s32);\nvoid func_8002CE84(s32, s32);\nvoid func_80088EE0(void);\ns32 func_8007CF64(void);\nvoid func_80089EF0(void);\nvoid func_80089F5C(void);\nextern char D_80009C04[];\nextern char D_80009C10[];\nextern char D_80009C28[];\nextern char D_80009C34[];\nextern char D_80009C40[];\nextern s32 D_800B9C74;\nextern s32 D_800B9C78;\nextern s32 D_800B9C7C;\nextern s32 D_800B9EBC;\nextern ViModeB D_800BB5E0[];\nextern u8 D_801771C8[];\nextern u8 D_80178150[];\nextern u8 D_80176730[];\nextern s32 D_801771B8;\nextern s32 D_801771BC;\nextern s32 D_801705E8;\nextern FbPair D_80178230;\nextern s32 D_80000300;\nextern u8 D_801858A0[];\n\nvoid func_80088CB0(void) {\n    s32 mode;\n\n    mode = (D_800B9C78 == 0x1E0) << 3;\n    func_800899C4(D_80009C04, D_80009C10, D_80009C28, D_80009C34);\n    D_80178230.a = 0x80200000;\n    D_80178230.b = 0x80200000 + D_800B9C74 * D_800B9C78 * 2;\n    osCreateMesgQueue(D_801771C8, D_80178150, 1);\n    D_801771B8 = D_800BB5E0[mode].x20;\n    D_801771BC = D_800BB5E0[mode].x2C;\n    func_80089FA8(0);\n    if (D_80000300 == 2) {\n        mode = 0x1C;\n    } else if (D_80000300 == 1) {\n        mode = 0;\n    } else {\n        for (;;) {\n            osViBlack(1);\n        }\n    }\n    func_80070C60(D_80176730, mode, 1);\n    osViSetSpecialFeatures(2);\n    osViSetSpecialFeatures(0x40);\n    func_8002A2E0();\n    func_800706E0(D_80176730);\n    func_80025F20();\n    func_8002CDB0();\n    if ((u8 *)(0x80200000 - D_800B9C74 * D_800B9C78 * 2) < D_801858A0) {\n        func_800899DC(D_80009C40);\n    }\n    func_800258E4();\n    func_8002E2F0();\n    func_8008914C(0);\n    func_8002E46C();\n    func_80089130(0, 0, 0);\n    func_8002CE84(6, 0);\n    for (;;) {\n        while (D_800B9EBC == 0) {\n            if (D_801705E8 == 0) {\n                func_80088EE0();\n            } else {\n                func_8007CF64();\n            }\n        }\n        D_800B9EBC = 0;\n        func_80089EF0();\n        func_80089F5C();\n        D_800B9C7C = 0;\n    }\n}\n",
   "ff84a03ec31898518371a1be20a284c25cc2b531c4d2f314cbd585f4e8cd4d92": "int abs(int);\ntypedef struct {\n    u16 a;\n    s8 b;\n    s8 c;\n} Pos2;\ntypedef struct {\n    u8 pad[0x9C];\n    void (*fn)(void);\n} Obj3;\nvoid func_80030FDC(void);\nextern Obj3 *D_8013FB74;\nextern s32 D_800AE17C;\nextern s32 D_80107070;\nextern s32 D_80107600;\nextern s32 D_80107610;\nextern Pos2 D_801704D0;\nextern s32 D_801705E8;\nextern u16 D_801705F8;\nextern u16 D_800B9EA2;\n\ns32 func_8007CE60(void) {\n    s32 n;\n\n    n = 0;\n    if (D_8013FB74->fn != func_80030FDC) {\n        return 0;\n    }\n    if (D_800AE17C != 0) {\n        return 0;\n    }\n    if (D_801704D0.a != D_80107070) {\n        n = 1;\n    }\n    if (abs(D_801704D0.b - D_80107600) >= 21) {\n        n++;\n    }\n    if (abs(D_801704D0.c - D_80107610) >= 21) {\n        n++;\n    }\n    D_801704D0.a = D_80107070;\n    D_801704D0.b = D_80107600;\n    D_801704D0.c = D_80107610;\n    if (n == 0) {\n        D_801705F8 += D_800B9EA2;\n        if ((s16)D_801705F8 >= 30000) {\n            D_801705E8 = 1;\n        }\n    } else {\n        D_801705F8 = 0;\n    }\n    return n;\n}\n",
   "b5baa854c97725b900752e54c3152876cb1492b02fff4fc2f116da7977407a09": "typedef struct Obj85b {\n    u8 pad0[0x68];\n    s32 x68;\n    u8 pad6C[0x30];\n    void *x9C;\n} Obj85b;\ns32 func_8002D5CC(Obj85b *);\nvoid func_8008626C(void);\nextern Obj85b *D_80171A30;\n\nvoid func_80085FC0(Obj85b *o) {\n    if (func_8002D5CC(o) != 0) {\n        o->x9C = func_8008626C;\n        D_80171A30->x68 = 0xE;\n    }\n}\n",

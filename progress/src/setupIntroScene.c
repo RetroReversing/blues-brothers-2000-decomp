@@ -1,0 +1,155 @@
+typedef struct Obj87 {
+    s32 x0;
+    u8 pad4[0xC];
+    s32 x10;
+    u8 pad14[0x54];
+    s32 x68;
+    u8 pad6C[4];
+    s32 x70;
+    u8 pad74[0x10];
+    s32 x84;
+    s32 x88;
+    u8 pad8C[0x10];
+    void *x9C;
+    u8 padA0[8];
+    struct Obj87 *xA8;
+    u8 padAC[0x3C];
+    s32 xE8;
+    u8 padEC[0xC];
+    s32 xF8;
+} Obj87;
+typedef struct Cam87 {
+    s32 x0;
+    s32 x4;
+    f32 x8;
+    f32 xC;
+    u8 pad10[0x58];
+    volatile s32 x68;
+    u8 pad6C[0x30];
+    void * volatile x9C;
+    u8 padA0[0x58];
+    volatile s32 xF8;
+} Cam87;
+Obj87 *findActor(s32, s32);
+void func_80023A74(s32, s32);
+void setSlotAsset(s32, s32, s32);
+s32 func_80023D58(s32);
+Obj87 *func_80042F00(s32, s32, s32, s32);
+void actorSetAnim(Obj87 *, s32, s32);
+void syncActorPrevPos(Obj87 *);
+s32 func_80047898(void);
+void func_80033BC0(Obj87 *);
+Obj87 *func_80087F10(s32);
+void func_800880B4(void);
+void func_80023080(void);
+void updateFollowCamera(void);
+void func_8008756C(void);
+extern s32 D_80171994;
+extern s32 gIntroSpriteAssets[2];
+extern Obj87 *gIntroActors[4];
+extern Obj87 *gIntroSprites[2];
+extern Cam87 *gCameraTarget;
+extern Obj87 *D_800B3960;
+extern s32 D_800B5DD4;
+
+/* Sets up the intro scene: loads its assets, spawns the four intro actors and two sprites, and points the camera at the scene. */ void setupIntroScene(Obj87 *introSprite) {
+    Obj87 *sprite0;
+    Obj87 *actor0;
+    Obj87 *actor1;
+    Obj87 *actor2;
+    Obj87 *actor3;
+    Obj87 *q;
+    Obj87 *tmpObj;
+    Cam87 *camera;
+
+    D_80171994 = 1;
+    tmpObj = findActor(6, 0);
+    if (tmpObj != NULL) {
+        tmpObj->x68 = -1;
+    }
+    func_80023A74(0x30, 0x2B6);
+    func_80023A74(0x19, 0x112);
+    func_80023A74(0x2F, 0x2A8);
+    setSlotAsset(0xB3, 0x2AF, 0);
+    setSlotAsset(0xBA, 0x2BD, 0);
+    setSlotAsset(0x80, 0x10D, 0);
+    setSlotAsset(0x1B5, 0x676, 0);
+    setSlotAsset(0x1B6, 0x674, 0);
+    setSlotAsset(0x1B7, 0x111, 0);
+    setSlotAsset(0x1B8, 0x110, 0);
+    setSlotAsset(0x1B9, 0x2AD, 0);
+    setSlotAsset(0x1BA, 0x2AC, 0);
+    setSlotAsset(0x1BB, 0x2B8, 0);
+    setSlotAsset(0x1BC, 0x2B7, 0);
+    gIntroSpriteAssets[0] = func_80023D58(0x223);
+    gIntroSpriteAssets[1] = func_80023D58(0x224);
+
+    actor0 = func_80042F00(1, -0x12C, 0x125, -0x237);
+    gIntroActors[0] = actor0;
+    actorSetAnim(actor0, 1, 0x100);
+    actor0->x10 = 0x8000;
+    actor0->x9C = func_800880B4;
+    actor0->x70 = 0;
+    syncActorPrevPos(actor0);
+    actor0->x0 = 0x101;
+    actor0->xE8 = func_80047898();
+    actor0->x84 = 0x1B5;
+    actor0->x88 = 0x1B6;
+
+    actor1 = func_80042F00(0x19, -0x64, 0x125, -0x237);
+    gIntroActors[1] = actor1;
+    actorSetAnim(actor1, 0x80, 0x100);
+    actor1->x10 = 0x8000;
+    actor1->x9C = func_800880B4;
+    actor1->x70 = 1;
+    syncActorPrevPos(actor1);
+    actor1->x0 = 0x101;
+    actor1->xE8 = func_80047898();
+    actor1->x84 = 0x1B7;
+    actor1->x88 = 0x1B8;
+
+    actor2 = func_80042F00(0x30, 0x64, 0x125, -0x237);
+    gIntroActors[2] = actor2;
+    actorSetAnim(actor2, 0xBA, 0x100);
+    actor2->x10 = 0x8000;
+    actor2->x9C = func_800880B4;
+    actor2->x70 = 2;
+    syncActorPrevPos(actor2);
+    actor2->x0 = 0x101;
+    actor2->xE8 = func_80047898();
+    actor2->x84 = 0x1BB;
+    actor2->x88 = 0x1BC;
+
+    actor3 = func_80042F00(0x2F, 0x12C, 0x125, -0x237);
+    gIntroActors[3] = actor3;
+    actorSetAnim(actor3, 0xB3, 0x100);
+    actor3->x10 = 0x8000;
+    actor3->x9C = func_800880B4;
+    actor3->x70 = 3;
+    actor3->x0 = 0x101;
+    syncActorPrevPos(actor3);
+    actor3->xE8 = func_80047898();
+    actor3->x84 = 0x1B9;
+    actor3->x88 = 0x1BA;
+
+    camera = gCameraTarget;
+    camera->x9C = func_80023080;
+    camera->x68 = -1;
+    camera->x4 = 0;
+    camera->x8 = 293.0f;
+    camera->xC = -567.0f;
+    camera->x0 = 1;
+    camera->xF8 |= 0x40;
+    D_800B3960->x10 = 0;
+    func_80033BC0(D_800B3960);
+    D_800B5DD4 = 0;
+    D_800B3960->x9C = updateFollowCamera;
+    introSprite->x9C = func_8008756C;
+    sprite0 = func_80087F10(0);
+    gIntroSprites[0] = sprite0;
+    tmpObj = func_80087F10(1);
+    gIntroSprites[1] = tmpObj;
+    sprite0->xA8 = tmpObj;
+    tmpObj->xA8 = sprite0;
+}
+

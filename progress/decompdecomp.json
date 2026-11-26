@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699357.8277628,
- "revision": 5549,
+ "saved_at": 1795699377.59141,
+ "revision": 5552,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14606,7 +14606,7 @@
   },
   "528928:2148009504": {
    "vram": 2148009504,
-   "function": "func_80080620",
+   "function": "updateCameraQuickcut",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17048,7 +17048,7 @@
   },
   "556480:2148037056": {
    "vram": 2148037056,
-   "function": "func_800871C0",
+   "function": "setupIntroScene",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "302068:2147782644": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "drawFlaggedTriangles",
-   "vram": 2147782644
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -26043,7 +26026,7 @@
    "matched_by": "permuter-158913791547",
    "readable": false
   },
-  "func_80080620": {
+  "updateCameraQuickcut": {
    "vram": 2148009504,
    "matched_by": "manual-3aa2b7a676f04507",
    "readable": false
@@ -26488,10 +26471,10 @@
    "best_score": 300,
    "best_by": "autopilot"
   },
-  "func_800871C0": {
+  "setupIntroScene": {
    "vram": 2148037056,
    "matched_by": "manual-55e2fba56d6145ca",
-   "readable": false
+   "readable": true
   },
   "func_8008756C": {
    "vram": 2148037996,
@@ -29511,7 +29494,7 @@
   "func_8007FD48": "local_source_158913791537",
   "func_8007FE90": "local_source_158913791541",
   "func_800802A4": "local_source_158913791544",
-  "func_80080620": "local_source_158913791548",
+  "updateCameraQuickcut": "local_source_158913791548",
   "func_80080BAC": "local_source_158913791553",
   "func_80080EEC": "local_source_158913791559",
   "func_80080F28": "local_source_158913791560",
@@ -29550,7 +29533,7 @@
   "func_80086B3C": "local_source_158913791631",
   "initStageScene": "local_source_158913791632",
   "func_80087160": "local_source_158913791634",
-  "func_800871C0": "local_source_158913792199",
+  "setupIntroScene": "local_source_158913792199",
   "func_8008756C": "local_source_158913791636",
   "func_800877C8": "local_source_158913791639",
   "func_80087B68": "local_source_158913791640",
@@ -39441,7 +39424,7 @@
    "status": "open"
   },
   {
-   "name": "func_80080620",
+   "name": "updateCameraQuickcut",
    "vram": 2148009504,
    "size": 936,
    "status": "open"
@@ -39981,7 +39964,7 @@
    "status": "open"
   },
   {
-   "name": "func_800871C0",
+   "name": "setupIntroScene",
    "vram": 2148037056,
    "size": 940,
    "status": "open"
@@ -43733,6 +43716,12 @@
    "kind": "func"
   },
   {
+   "name": "updateCameraQuickcut",
+   "address": 2148009504,
+   "size": 936,
+   "kind": "func"
+  },
+  {
    "name": "initSplineEndSegment",
    "address": 2148011876,
    "size": 272,
@@ -43790,6 +43779,12 @@
    "name": "initStageScene",
    "address": 2148035736,
    "size": 968,
+   "kind": "func"
+  },
+  {
+   "name": "setupIntroScene",
+   "address": 2148037056,
+   "size": 940,
    "kind": "func"
   },
   {
@@ -45675,6 +45670,24 @@
    "address": 2148997600,
    "size": 4,
    "kind": "data"
+  },
+  {
+   "name": "gIntroSpriteAssets",
+   "address": 2148997736,
+   "size": 8,
+   "kind": "data"
+  },
+  {
+   "name": "gIntroSprites",
+   "address": 2148997752,
+   "size": 8,
+   "kind": "data"
+  },
+  {
+   "name": "gIntroActors",
+   "address": 2148997760,
+   "size": 16,
+   "kind": "data"
   }
  ],
  "global_types": [
@@ -46705,7 +46718,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Obj86C98 *",
+   "type": "Cam87 *",
    "source": "match"
   },
   {
@@ -46836,6 +46849,21 @@
   {
    "address": 2148997600,
    "type": "Slot",
+   "source": "match"
+  },
+  {
+   "address": 2148997736,
+   "type": "s32[2]",
+   "source": "match"
+  },
+  {
+   "address": 2148997752,
+   "type": "Obj87 *[2]",
+   "source": "match"
+  },
+  {
+   "address": 2148997760,
+   "type": "Obj87 *[4]",
    "source": "match"
   }
  ],

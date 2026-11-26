@@ -41,7 +41,7 @@ extern Actor *D_800B3960;
 extern s32 gCamSpeedScale;
 extern Actor *gCameraTarget;
 
-void func_80080620(Actor *arg0) {
+void updateCameraQuickcut(Actor *arg0) {
     Actor *o;
 
     if (arg0->x7C == 0) {

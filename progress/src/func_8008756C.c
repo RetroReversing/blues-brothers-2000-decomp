@@ -20,8 +20,8 @@ M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 extern s32 D_800B5DD4;
 extern s32 gPadPressed;
 extern M2C_UNK D_80171A70;
-extern M2C_UNK D_80171A78;
-extern void *D_80171A80;
+extern M2C_UNK gIntroSprites;
+extern void *gIntroActors;
 extern M2C_UNK func_8003D558;
 extern M2C_UNK func_800876A4;
 
@@ -41,7 +41,7 @@ void func_8008756C(void *arg0) {
         return;
     }
     var_a0 = 0;
-    var_v1 = &D_80171A80;
+    var_v1 = &gIntroActors;
     do {
         if (M2C_FIELD(*var_v1, s32 *, 0xC0) != 0) {
             var_s0 += 1;
@@ -59,7 +59,7 @@ void func_8008756C(void *arg0) {
         func_80023620(0x101);
         func_8002E7B8(1, 0);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800876A4;
-        M2C_FIELD(&D_80171A70, s32 *, 0) = (s32) M2C_FIELD(M2C_FIELD(&D_80171A78, void **, 0), s32 *, 0x84);
-        M2C_FIELD(&D_80171A70, s32 *, 4) = (s32) M2C_FIELD(M2C_FIELD(&D_80171A78, void **, 4), s32 *, 0x84);
+        M2C_FIELD(&D_80171A70, s32 *, 0) = (s32) M2C_FIELD(M2C_FIELD(&gIntroSprites, void **, 0), s32 *, 0x84);
+        M2C_FIELD(&D_80171A70, s32 *, 4) = (s32) M2C_FIELD(M2C_FIELD(&gIntroSprites, void **, 4), s32 *, 0x84);
     }
 }

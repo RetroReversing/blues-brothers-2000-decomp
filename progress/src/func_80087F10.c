@@ -20,7 +20,7 @@ typedef struct O87F10 {
 } O87F10;
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 O87F10 *func_800232B4(s32, s32, s32, s32);
-extern s32 D_80171A68[];
+extern s32 gIntroSpriteAssets[];
 void func_8002F2C0(void);
 void func_80087B68(void);
 
@@ -29,7 +29,7 @@ O87F10 *func_80087F10(s32 arg0) {
 
     o = func_800232B4(0x101, 0, 0, 0);
 o->f98 = func_8002F2C0;
-o->f60 = D_80171A68[arg0];
+o->f60 = gIntroSpriteAssets[arg0];
 o->fBC = arg0;
 o->f70 = 100;
 o->f74 = 0;
