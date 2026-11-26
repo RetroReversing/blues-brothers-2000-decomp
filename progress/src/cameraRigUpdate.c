@@ -51,53 +51,54 @@ extern Obj73644 *gCameraTarget;
 extern s32 D_800BD280;
 extern s32 D_800BD68C;
 
-void func_80073644(Obj73644 *arg0) {
+/* Camera rig state machine: on the first call it spawns the camera target, the ring of eight markers around the start point and five trailing objects, then moves to state 3; state 3 hands the rig and target over to their follow update functions. */
+void cameraRigUpdate(Obj73644 *rig) {
     s32 i;
-    s32 a;
-    Obj73644 *o;
-    Obj73644 *p;
-    s32 id;
+    s32 angle;
+    Obj73644 *obj;
+    Obj73644 *marker;
+    s32 spawnId;
 
-    if (arg0->unk7C == 0) {
-        id = D_800B83B0;
-        arg0->unk7C = 1;
+    if (rig->unk7C == 0) {
+        spawnId = D_800B83B0;
+        rig->unk7C = 1;
         D_800B3978 = 0;
         D_800B3974 = 0;
-        arg0->unk90 = 0;
+        rig->unk90 = 0;
         D_800B3970 = 0;
         gCameraRig->unkC0 = 0;
-        arg0->unk6C = id + 470;
-        id++;
-        D_800B83B0 = id;
-        func_800242A8(arg0->unk6C, 0xDAA, 0);
-        arg0->unk60 = func_80023D58(0x210);
-        arg0->unk98 = func_800739D4;
-        arg0->unk68 = 14;
+        rig->unk6C = spawnId + 470;
+        spawnId++;
+        D_800B83B0 = spawnId;
+        func_800242A8(rig->unk6C, 0xDAA, 0);
+        rig->unk60 = func_80023D58(0x210);
+        rig->unk98 = func_800739D4;
+        rig->unk68 = 14;
         func_800232B4(1, 0, 0, 0)->unk9C = func_80073394;
-        o = func_8006B43C(0);
-        o->x = 20.0f;
-        o->y = 1281.0f;
-        o->z = -5818.0f;
-        o = func_80077C48(0);
-        o->x = 20.0f;
-        o->y = 181.0f;
-        o->z = -5818.0f;
-        syncActorPrevPos(o);
-        arg0->x = o->x;
-        arg0->y = o->y + 500.0f;
-        arg0->z = o->z - 2000.0f;
+        obj = func_8006B43C(0);
+        obj->x = 20.0f;
+        obj->y = 1281.0f;
+        obj->z = -5818.0f;
+        obj = func_80077C48(0);
+        obj->x = 20.0f;
+        obj->y = 181.0f;
+        obj->z = -5818.0f;
+        syncActorPrevPos(obj);
+        rig->x = obj->x;
+        rig->y = obj->y + 500.0f;
+        rig->z = obj->z - 2000.0f;
         for (i = 0; i < 8; i++) {
-            p = func_800232B4(1, o->x, o->y, o->z);
-            a = (s32)((f32)i * 45.0f * D_80009138 / D_80009140) & 0xFFFF;
-            p->x += (sins(a) * 75) >> 12;
-            p->z += (coss(a) * 75) >> 12;
-            p->unk9C = func_800740A8;
-            p->y = 365.0f;
+            marker = func_800232B4(1, obj->x, obj->y, obj->z);
+            angle = (s32)((f32)i * 45.0f * D_80009138 / D_80009140) & 0xFFFF;
+            marker->x += (sins(angle) * 75) >> 12;
+            marker->z += (coss(angle) * 75) >> 12;
+            marker->unk9C = func_800740A8;
+            marker->y = 365.0f;
         }
         for (i = 1; i < 6; i++) {
-            o = func_800232B4(1, 0, 0, 0);
-            o->unk70 = i;
-            o->unk9C = func_800743F8;
+            obj = func_800232B4(1, 0, 0, 0);
+            obj->unk70 = i;
+            obj->unk9C = func_800743F8;
         }
         func_80052A30();
         gCameraTarget->y = func_800385AC(gCameraTarget);
@@ -110,13 +111,12 @@ void func_80073644(Obj73644 *arg0) {
         return;
     }
     func_80052A30();
-    if (arg0->unk7C == 3) {
-        arg0->unk9C = func_80073B7C;
+    if (rig->unk7C == 3) {
+        rig->unk9C = func_80073B7C;
         gCameraTarget->unk9C = func_800393F4;
         gCameraRig->unk9C = func_800340B4;
         gCameraRig->unkC0 = 0;
         D_800B5DD4 = 1;
-        arg0->unk7C++;
+        rig->unk7C++;
     }
 }
-
