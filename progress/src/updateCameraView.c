@@ -18,7 +18,7 @@ s32 func_8002DAE0(s32 *, s32 *, f32);
 s32 func_8002DB6C(s32 *, s32 *, f32);
 s32 func_8002DBF8(s32 *, s32 *, f32);
 s32 mtxIdentity3();
-s32 func_80089C18(f64, f64, f64);
+s32 setupCameraViewMatrices(f64, f64, f64);
 extern f64 D_80000E70;
 extern s32 D_800CD120;
 extern s32 D_800CD148;
@@ -52,5 +52,5 @@ void updateCameraView(void *arg0)
   func_8002DBF8(sp90, sp68, -fs0);
   func_8002DAE0(sp68, sp90, -fs1);
   func_8002DB6C(&D_800CD120, sp68, fs2);
-  func_80089C18((f64) (*((f32 *) (((char *) arg0) + 4))), (f64) (*((f32 *) (((char *) arg0) + 8))), (f64) (*((f32 *) (((char *) arg0) + 0xC))));
+  setupCameraViewMatrices((f64) (*((f32 *) (((char *) arg0) + 4))), (f64) (*((f32 *) (((char *) arg0) + 8))), (f64) (*((f32 *) (((char *) arg0) + 0xC))));
 }

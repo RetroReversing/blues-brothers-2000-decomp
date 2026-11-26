@@ -157589,7 +157589,7 @@
    "unit": "local_source_158913791667",
    "mode": "rom"
   },
-  "func_80089C18": {
+  "setupCameraViewMatrices": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -157599,10 +157599,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "1cbac7047d15b97d436de6c32a3d4886b2af62a58ceaff50d0bca8dabe2259f4",
-   "recorded_at": 1795627744.942264,
-   "attempt_id": 158913851945,
-   "source_sha256": "47b714ec67ef91575006d255a5909fc2f2ce45cec0baa0a30bb4157062efa50f",
+   "symbols_sha256": "0174a7b354220e844e024970d5512ca43a9ecb24a0d6696fd408d42db5008a03",
+   "recorded_at": 1795700779.643609,
+   "attempt_id": 158913862111,
+   "source_sha256": "dd3d9d1509a39cc69b5ecb158e7dc41b532bb8ace4bb93cff55d1ca401c85615",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 889,
    "compiler": {
@@ -157621,7 +157621,7 @@
    },
    "compiler_identity": {
     "toolchain": "sn-n64-281",
-    "registry_sha256": "14e28e8f96d57fb28d493fc5d8ff869e8cf1dc291e1c8adaf0233952948aed40",
+    "registry_sha256": "8eb23176b1932cb664777fba69b2915c713b60c625fc11f9ad0c22d12f3e9115",
     "install_sha256": "d949422c5b7c39402c79d468bd890710d5bd3eb8ba3929116a8a5543a4a7191f",
     "executables": {
      "cc1n64.exe": "d90df1028c46d826e37146dbcc3e3385f78c59e05a9ddd952daa94c9ad379d9c"
@@ -157644,7 +157644,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -157653,32 +157653,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G0",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913791668",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -198643,7 +198617,7 @@
   "ecf7dbb0937ecf51ae728c501cb706adbdb3c2fd09436d6fb71b45311ff687fa": "void func_80026D6C(s32, char *, s32);\nvoid func_80027038(s32);\nvoid func_8002710C(s32, s32, s32, s32);\nvoid func_80027158(s32, s32);\nvoid func_80028900(char *);\nvoid func_8002E46C(void);\nvoid func_8002E944(void);\nvoid func_8008914C(s32);\nvoid func_800896D0(void);\nvoid func_80089814(s32);\nvoid func_800899C4(char *, char *);\nvoid func_80089C00(void);\nvoid func_80089C08(void);\nvoid *memcpy(void *, const void *, u32);\nu32 strlen(const char *);\nextern char D_80009C8C[];\nextern s32 D_800B9EB8;\nextern s32 D_80178238;\n\nvoid func_800899DC(u8 *fmt, ...) {\n    char buf[256];\n    char *p;\n    char *q;\n    s32 i;\n    s32 *ap;\n    s32 c;\n\n    p = buf;\n    for (i = 255, q = &buf[255]; i >= 0; i--) {\n        *q-- = 0;\n    }\n    ap = (s32 *)&fmt;\n    while (*fmt != 0) {\n        if (*fmt == '%') {\n            fmt++;\n            switch (*fmt) {\n            case 'C':\n            case 'c':\n                ap++;\n                c = *ap;\n                *p++ = c;\n                break;\n            case 's':\n                ap++;\n                memcpy(p, (char *)*ap, strlen((char *)*ap) + 1);\n                p += strlen(p);\n                break;\n            case 'd':\n                ap++;\n                func_80026D6C(*ap, p, 10);\n                p += strlen(p);\n                break;\n            case 'x':\n                ap++;\n                func_80026D6C(*ap, p, 16);\n                p += strlen(p);\n                break;\n            default:\n                ap++;\n                break;\n            }\n            fmt++;\n        } else {\n            c = *fmt++;\n            if (c == '\\n') {\n                c = ' ';\n            }\n            if (c == '\\r') {\n                c = ' ';\n            }\n            *p++ = c;\n        }\n    }\n    *p = 0;\n    func_800899C4(D_80009C8C, buf);\n    i = 0;\n    D_800B9EB8 ^= 1;\n    func_8002E944();\n    do {\n        func_8008914C(1);\n        i++;\n        func_80089814(D_80178238);\n        func_80089C00();\n        func_80089C08();\n        func_8002E46C();\n        func_80027038(0);\n        func_80027158(30, 20);\n        func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);\n        func_80028900(buf);\n        func_800896D0();\n    } while (i < 3);\n    for (;;) {\n    }\n}\n",
   "e4aea1239f472ea831a8bc552da9f2e2171760a61a6c12da12270a378b2f8789": "/* identical to func_8000C374 (matched), with its names changed by decompdecomp */\n/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nvoid func_80089C00(void) {\n\n}\n",
   "07a54854aad343a8994d7bb2bf7a7fce8fbcaacf44f9033238441bac8934c2a1": "/* machine-generated by m2c: a starting point, not a match */\nextern s32 D_80107684;\n\nvoid func_80089C08(void) {\n    D_80107684 = 1;\n}",
-  "47b714ec67ef91575006d255a5909fc2f2ce45cec0baa0a30bb4157062efa50f": "typedef struct { s32 m[4][4]; } MtxW;\ntypedef struct { u8 data[0x20]; } LookAtW;\ntypedef struct { u8 data[0x10]; } HiliteW;\ntypedef struct { u32 w0, w1; } GfxW;\n\ntypedef struct {\n    MtxW proj[2];\n    MtxW view[2];\n    u8 pad100[0x1C0 - 0x100];\n    LookAtW lookAt[2];\n    HiliteW hilite[2];\n    LookAtW reflLookAt[2];\n    MtxW refl[2];\n} DynW;\n\ntypedef struct {\n    u8 pad0[8];\n    s8 x;\n    s8 y;\n    s8 z;\n    u8 padB[5];\n} LightDirW;\n\nextern f32 D_800B9C80;\nextern s32 D_800B9EC0;\nextern DynW *D_80178238;\nextern u16 D_801771C4;\nextern LightDirW D_800B9F00[];\nextern s32 D_800B9E88;\nextern s32 D_80179A30;\nextern s32 D_800B9EA4;\nextern f32 D_800B9EAC;\nextern f32 D_800B9EB0;\nextern f32 D_800B9EB4;\nextern GfxW *D_80177E18;\n\nvoid guPerspective(MtxW *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);\nvoid guLookAtHilite(MtxW *m, LookAtW *l, HiliteW *h, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt,\n                    f32 xUp, f32 yUp, f32 zUp, f32 xl1, f32 yl1, f32 zl1, f32 xl2, f32 yl2, f32 zl2, s32 twidth,\n                    s32 theight);\nvoid guLookAtReflectMtx(MtxW *m, LookAtW *l, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp,\n                        f32 yUp, f32 zUp);\nf32 __cosf(f32);\nf32 func_80095DC0(f32);\n\nvoid func_80089C18(void) {\n    s32 lx;\n    s32 ly;\n    s32 lz;\n    f32 k;\n    u8 unused[0x58];\n\n    lx = D_800B9F00[D_800B9EC0].x;\n    ly = D_800B9F00[D_800B9EC0].y;\n    lz = D_800B9F00[D_800B9EC0].z;\n    guPerspective(&D_80178238->proj[D_800B9EC0], &D_801771C4, D_800B9C80, -1.3333334f, D_800B9E88, 25000.0f, 1.0f);\n    guLookAtHilite(&D_80178238->view[D_800B9EC0], &D_80178238->lookAt[D_800B9EC0], &D_80178238->hilite[D_800B9EC0],\n                   0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 100.0f, 0.0f, 1.0f, 0.0f, lx, ly, lz, 100.0f, 0.0f, 0.0f, 32, 32);\n    k = 0.0061359182f;\n    if (D_80179A30 != 0) {\n        D_800B9EB4 = 0.0f;\n        D_800B9EB0 = __cosf(D_800B9EA4 * k);\n        D_800B9EAC = func_80095DC0(D_800B9EA4 * k);\n    }\n    guLookAtReflectMtx(&D_80178238->refl[D_800B9EC0], &D_80178238->reflLookAt[D_800B9EC0], 0.0f, 0.0f, 0.0f, 0.0f,\n                       0.0f, 100.0f, D_800B9EAC, D_800B9EB0, D_800B9EB4);\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDC08000A;\n        g->w1 = (u32)&D_80178238->reflLookAt[D_800B9EC0];\n    }\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDC08030A;\n        g->w1 = (u32)&D_80178238->reflLookAt[D_800B9EC0] + 0x10;\n    }\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDB0E0000;\n        g->w1 = D_801771C4;\n    }\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDA380007;\n        g->w1 = (u32)&D_80178238->proj[D_800B9EC0] - 0x80000000;\n    }\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDA380005;\n        g->w1 = (u32)&D_80178238->view[D_800B9EC0] - 0x80000000;\n    }\n}\n",
+  "dd3d9d1509a39cc69b5ecb158e7dc41b532bb8ace4bb93cff55d1ca401c85615": "typedef struct { s32 m[4][4]; } MtxW;\ntypedef struct { u8 data[0x20]; } LookAtW;\ntypedef struct { u8 data[0x10]; } HiliteW;\ntypedef struct { u32 w0, w1; } GfxW;\n\ntypedef struct {\n    MtxW proj[2];\n    MtxW view[2];\n    u8 pad100[0x1C0 - 0x100];\n    LookAtW lookAt[2];\n    HiliteW hilite[2];\n    LookAtW reflLookAt[2];\n    MtxW refl[2];\n} DynW;\n\ntypedef struct {\n    u8 pad0[8];\n    s8 x;\n    s8 y;\n    s8 z;\n    u8 padB[5];\n} LightDirW;\n\nextern f32 D_800B9C80;\nextern s32 D_800B9EC0;\nextern DynW *D_80178238;\nextern u16 D_801771C4;\nextern LightDirW D_800B9F00[];\nextern s32 D_800B9E88;\nextern s32 D_80179A30;\nextern s32 gTextWaveTime;\nextern f32 D_800B9EAC;\nextern f32 D_800B9EB0;\nextern f32 D_800B9EB4;\nextern GfxW *D_80177E18;\n\nvoid guPerspective(MtxW *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);\nvoid guLookAtHilite(MtxW *m, LookAtW *l, HiliteW *h, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt,\n                    f32 xUp, f32 yUp, f32 zUp, f32 xl1, f32 yl1, f32 zl1, f32 xl2, f32 yl2, f32 zl2, s32 twidth,\n                    s32 theight);\nvoid guLookAtReflectMtx(MtxW *m, LookAtW *l, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp,\n                        f32 yUp, f32 zUp);\nf32 __cosf(f32);\nf32 sinApprox(f32);\n\n/* Builds the projection, view and reflection matrices for the current view, then queues the matching display-list commands. */\nvoid setupCameraViewMatrices(void) {\n    s32 lightX;\n    s32 lightY;\n    s32 lightZ;\n    f32 waveAngle;\n    u8 unused[0x58];\n\n    lightX = D_800B9F00[D_800B9EC0].x;\n    lightY = D_800B9F00[D_800B9EC0].y;\n    lightZ = D_800B9F00[D_800B9EC0].z;\n    guPerspective(&D_80178238->proj[D_800B9EC0], &D_801771C4, D_800B9C80, -1.3333334f, D_800B9E88, 25000.0f, 1.0f);\n    guLookAtHilite(&D_80178238->view[D_800B9EC0], &D_80178238->lookAt[D_800B9EC0], &D_80178238->hilite[D_800B9EC0],\n                   0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 100.0f, 0.0f, 1.0f, 0.0f, lightX, lightY, lightZ, 100.0f, 0.0f, 0.0f, 32, 32);\n    waveAngle = 0.0061359182f;\n    if (D_80179A30 != 0) {\n        D_800B9EB4 = 0.0f;\n        D_800B9EB0 = __cosf(gTextWaveTime * waveAngle);\n        D_800B9EAC = sinApprox(gTextWaveTime * waveAngle);\n    }\n    guLookAtReflectMtx(&D_80178238->refl[D_800B9EC0], &D_80178238->reflLookAt[D_800B9EC0], 0.0f, 0.0f, 0.0f, 0.0f,\n                       0.0f, 100.0f, D_800B9EAC, D_800B9EB0, D_800B9EB4);\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDC08000A;\n        g->w1 = (u32)&D_80178238->reflLookAt[D_800B9EC0];\n    }\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDC08030A;\n        g->w1 = (u32)&D_80178238->reflLookAt[D_800B9EC0] + 0x10;\n    }\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDB0E0000;\n        g->w1 = D_801771C4;\n    }\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDA380007;\n        g->w1 = (u32)&D_80178238->proj[D_800B9EC0] - 0x80000000;\n    }\n    {\n        GfxW *g = D_80177E18++;\n        g->w0 = 0xDA380005;\n        g->w1 = (u32)&D_80178238->view[D_800B9EC0] - 0x80000000;\n    }\n}",
   "8da8d53af05e7724bc77188844e87ff7fa0f6b20596d4feddb9bc12a044dc6b6": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_8000C458();                            /* extern */\nM2C_UNK func_800162E4();                            /* extern */\nM2C_UNK func_800230D8();                            /* extern */\nM2C_UNK func_800237D8();                            /* extern */\nM2C_UNK func_80023CD4();                            /* extern */\nM2C_UNK func_800256A4(s32);                         /* extern */\nM2C_UNK func_80089130(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */\n\nvoid func_80089EF0(void) {\n    s32 var_s0;\n\n    func_800237D8();\n    var_s0 = 0x100;\n    func_8000C458();\n    func_800230D8();\n    func_800162E4();\n    func_80023CD4();\n    func_800256A4(0x10C);\n    do {\n        func_800256A4(var_s0);\n        var_s0 += 1;\n    } while (var_s0 < 0x136);\n    func_80089130(0, 0, 0);\n}\n",
   "ac85aadc6d7589a5e053d9458ab16d6fcf2830609e2016751dbdbea842bd9a03": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_800230D8();                            /* extern */\nM2C_UNK func_80023A10();                            /* extern */\nM2C_UNK func_80023C58(M2C_UNK);                     /* extern */\nM2C_UNK func_80023CD4();                            /* extern */\nM2C_UNK func_80023D28();                            /* extern */\nM2C_UNK func_8002E31C();                            /* extern */\nM2C_UNK func_8002E348();                            /* extern */\n\nvoid func_80089F5C(void) {\n    func_80023C58(0);\n    func_800230D8();\n    func_80023CD4();\n    func_80023D28();\n    func_80023A10();\n    func_8002E31C();\n    func_8002E348();\n}\n",
   "2431bec99638f97db2aa3a05efb8578eb09e621c1d34ec76863e0fdd1c590e28": "void osViSetMode(void *);\nvoid osViSetSpecialFeatures(u32);\nextern s32 D_800B9C74;\nextern s32 D_800B9C78;\nextern s16 D_800B9EE0[8];\nextern s32 D_800BB5E0[20];\nextern s32 D_801771B8;\n\nvoid func_80089FA8(s32 arg0)\n{\n    D_800B9EE0[0] = D_800B9C74 * 2;\n    D_800B9EE0[1] = D_800B9C78 * 2;\n    D_800B9EE0[5] = D_800B9C78 * 2;\n    D_800B9EE0[4] = D_800B9C74 * 2;\n    if (D_800B9C74 != 320 && D_800B9C78 != 480) {\n        D_800BB5E0[2] = D_800B9C74;\n        D_800BB5E0[10] = D_800B9C74 * 2;\n        D_800BB5E0[8] = (D_800B9C74 * D_801771B8) / 320;\n    }\n    if (arg0 != 0) {\n        osViSetMode(D_800BB5E0);\n        osViSetSpecialFeatures(2);\n        osViSetSpecialFeatures(0x40);\n    }\n}\n",

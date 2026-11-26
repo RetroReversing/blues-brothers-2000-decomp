@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700762.886545,
- "revision": 5668,
+ "saved_at": 1795700782.3087099,
+ "revision": 5670,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16190,7 +16190,7 @@
   },
   "567320:2148047896": {
    "vram": 2148047896,
-   "function": "func_80089C18",
+   "function": "setupCameraViewMatrices",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -26641,10 +26641,10 @@
    "matched_by": "permuter-158913791667",
    "readable": false
   },
-  "func_80089C18": {
+  "setupCameraViewMatrices": {
    "vram": 2148047896,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "func_80089EF0": {
    "vram": 2148048624,
@@ -29551,7 +29551,7 @@
   "func_80089814": "local_source_158913791662",
   "func_800899C4": "local_source_158913791664",
   "func_80089C08": "local_source_158913791667",
-  "func_80089C18": "local_source_158913791668",
+  "setupCameraViewMatrices": "local_source_158913791668",
   "func_80089EF0": "local_source_158913791669",
   "func_8008C3FC": "local_source_158913791680",
   "func_8008C510": "local_source_158913791681",
@@ -40168,7 +40168,7 @@
    "status": "open"
   },
   {
-   "name": "func_80089C18",
+   "name": "setupCameraViewMatrices",
    "vram": 2148047896,
    "size": 728,
    "status": "open"
@@ -44259,6 +44259,12 @@
    "name": "debugPrintf",
    "address": 2148047324,
    "size": 548,
+   "kind": "func"
+  },
+  {
+   "name": "setupCameraViewMatrices",
+   "address": 2148047896,
+   "size": 728,
    "kind": "func"
   },
   {

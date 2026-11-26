@@ -43,24 +43,25 @@ void guLookAtReflectMtx(MtxW *m, LookAtW *l, f32 xEye, f32 yEye, f32 zEye, f32 x
 f32 __cosf(f32);
 f32 sinApprox(f32);
 
-void func_80089C18(void) {
-    s32 lx;
-    s32 ly;
-    s32 lz;
-    f32 k;
+/* Builds the projection, view and reflection matrices for the current view, then queues the matching display-list commands. */
+void setupCameraViewMatrices(void) {
+    s32 lightX;
+    s32 lightY;
+    s32 lightZ;
+    f32 waveAngle;
     u8 unused[0x58];
 
-    lx = D_800B9F00[D_800B9EC0].x;
-    ly = D_800B9F00[D_800B9EC0].y;
-    lz = D_800B9F00[D_800B9EC0].z;
+    lightX = D_800B9F00[D_800B9EC0].x;
+    lightY = D_800B9F00[D_800B9EC0].y;
+    lightZ = D_800B9F00[D_800B9EC0].z;
     guPerspective(&D_80178238->proj[D_800B9EC0], &D_801771C4, D_800B9C80, -1.3333334f, D_800B9E88, 25000.0f, 1.0f);
     guLookAtHilite(&D_80178238->view[D_800B9EC0], &D_80178238->lookAt[D_800B9EC0], &D_80178238->hilite[D_800B9EC0],
-                   0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 100.0f, 0.0f, 1.0f, 0.0f, lx, ly, lz, 100.0f, 0.0f, 0.0f, 32, 32);
-    k = 0.0061359182f;
+                   0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 100.0f, 0.0f, 1.0f, 0.0f, lightX, lightY, lightZ, 100.0f, 0.0f, 0.0f, 32, 32);
+    waveAngle = 0.0061359182f;
     if (D_80179A30 != 0) {
         D_800B9EB4 = 0.0f;
-        D_800B9EB0 = __cosf(gTextWaveTime * k);
-        D_800B9EAC = sinApprox(gTextWaveTime * k);
+        D_800B9EB0 = __cosf(gTextWaveTime * waveAngle);
+        D_800B9EAC = sinApprox(gTextWaveTime * waveAngle);
     }
     guLookAtReflectMtx(&D_80178238->refl[D_800B9EC0], &D_80178238->reflLookAt[D_800B9EC0], 0.0f, 0.0f, 0.0f, 0.0f,
                        0.0f, 100.0f, D_800B9EAC, D_800B9EB0, D_800B9EB4);
