@@ -19,10 +19,10 @@ s32 func_8002E7B8();
 extern void *gCameraRig;
 extern void *gCameraTarget;
 extern s32 D_80171994;
-extern void *D_801719A8;
-extern void *D_801719AC;
-extern s32 D_801719B0;
-extern s32 D_801719C8;
+extern void *gComboActorA;
+extern void *gComboActorB;
+extern s32 gComboWinFlagsA;
+extern s32 gComboWinFlagsB;
 extern s32 D_80171A48;
 extern s32 func_80082EF8;
 extern s32 func_80083830;
@@ -45,8 +45,8 @@ void func_8008250C(void *arg0) {
     var_s0 = temp_v0_2;
     if (tickActorTimer() != 0) {
         var_a2 = temp_v0_2;
-        var_a1 = &D_801719C8;
-        var_a0 = &D_801719B0;
+        var_a1 = &gComboWinFlagsB;
+        var_a0 = &gComboWinFlagsA;
         M2C_FIELD(arg0, s32 *, 0x80) += 1;
         do {
             temp_v1 = *(s32 *)var_a1;
@@ -87,8 +87,8 @@ void func_8008250C(void *arg0) {
               M2C_FIELD(arg0, s32 **, 0x9C) = var_v0_2;
             }
             
-            M2C_FIELD(D_801719A8, s32 *, 0x68) = -1;
-            M2C_FIELD(D_801719AC, s32 *, 0x68) = -1;
+            M2C_FIELD(gComboActorA, s32 *, 0x68) = -1;
+            M2C_FIELD(gComboActorB, s32 *, 0x68) = -1;
             func_80023620(0x141);
         }
     }

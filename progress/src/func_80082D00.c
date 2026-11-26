@@ -27,8 +27,8 @@ extern Obj *gCameraRig;
 extern s32 D_800B87E4;
 extern s32 D_800B87EC;
 extern s32 gSplinePointCount[];
-extern s32 D_801719A8;
-extern s32 D_801719AC;
+extern s32 gComboActorA;
+extern s32 gComboActorB;
 extern s32 gComboSlots[];
 extern s32 D_80171A54;
 
@@ -57,8 +57,8 @@ void func_80082D00(Obj *arg0) {
     sendCommand(0x16, func_800823F0);
     sendCommand(0x1E, 0);
     arg0->fn9C = func_80082BE0;
-    actorSetAnim(D_801719A8, 0x18A, 0x100);
-    actorSetAnim(D_801719AC, 0x19A, 0x100);
+    actorSetAnim(gComboActorA, 0x18A, 0x100);
+    actorSetAnim(gComboActorB, 0x19A, 0x100);
     func_80033BC0();
     gCameraRig->fn9C = func_800836E4;
     gCameraRig->x74 = 0;

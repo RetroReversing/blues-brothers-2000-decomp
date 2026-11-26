@@ -22,7 +22,7 @@ s32 func_80082400();
 s32 sprintf();
 extern char D_80009B4C[];
 extern char D_800B8720[];
-extern s32 D_801719A8;
+extern s32 gComboActorA;
 extern void *D_80171A30;
 extern s32 func_800864B8;
 
@@ -50,7 +50,7 @@ void func_80086550(void *arg0) {
         }
         startStoryDialog(temp_s1, sp10, arg0);
         M2C_FIELD(arg0, s32 **, 0x9C) = &func_800864B8;
-        actorSetAnim(D_801719A8, 0x178, 0x100);
+        actorSetAnim(gComboActorA, 0x178, 0x100);
         sendCommand(0xC, 0x80);
         sendCommand(8, 0x78);
         M2C_FIELD_PTR(arg0, s32 *, 0x64) = 0x12C;

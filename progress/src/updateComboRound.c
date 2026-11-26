@@ -62,8 +62,8 @@ extern Pair gComboDefs[];
 extern s32 D_800B9B40[];
 extern u8 gCamSpeedScale[];
 extern u8 gComboBeat[];
-extern u8 D_801719A8[];
-extern u8 D_801719AC[];
+extern u8 gComboActorA[];
+extern u8 gComboActorB[];
 extern Slot gComboSlots;
 extern u8 D_80171A30[];
 extern u8 D_80171A34[];
@@ -87,7 +87,7 @@ extern u8 D_80171A50[];
         if ((*(s32 *)D_80171A34) != 1) {
             if (gComboSlots.xC != 0) {
                 (*(s32 *)D_80171A50)++;
-                actorSetAnim((*(Obj * *)D_801719A8), gComboDefs[gComboSlots.x0].x4, 0x100);
+                actorSetAnim((*(Obj * *)gComboActorA), gComboDefs[gComboSlots.x0].x4, 0x100);
                 gComboSlots.x8 = gComboDefs[stage].x0;
                 gComboSlots.xC = 0;
                 gComboSlots.x10[0] = 0;
@@ -99,7 +99,7 @@ extern u8 D_80171A50[];
                 func_80087160(func_80023D58(0x150));
             } else {
                 func_80087160(func_80023D58(0x192));
-                actorSetAnim((*(Obj * *)D_801719A8), 0x16B, 0x100);
+                actorSetAnim((*(Obj * *)gComboActorA), 0x16B, 0x100);
             }
         }
     }
@@ -110,7 +110,7 @@ extern u8 D_80171A50[];
             sprintf(buf, D_80009B40, D_800B8720[stage].x8);
             startStoryDialog(fontId, buf, owner);
             (*(Obj * *)D_80171A30)->x68 = -1;
-            actorSetAnim((*(Obj * *)D_801719A8), 0x178, 0x100);
+            actorSetAnim((*(Obj * *)gComboActorA), 0x178, 0x100);
             sendCommand(12, 0x80);
             sendCommand(8, 0x78);
             return;
@@ -123,15 +123,15 @@ extern u8 D_80171A50[];
         sprintf(buf, D_80009B54, D_800B8720[stage].x8);
         startStoryDialog(fontId, buf, owner);
         owner->fn9C = func_80086B3C;
-        actorSetAnim((*(Obj * *)D_801719A8), 1, 0x100);
-        (*(Obj * *)D_801719AC)->x10 = -0x4000;
-        actorSetAnim((*(Obj * *)D_801719AC), 0x18C, 0x100);
-        (*(Obj * *)D_801719AC)->x10 = 0x8000;
+        actorSetAnim((*(Obj * *)gComboActorA), 1, 0x100);
+        (*(Obj * *)gComboActorB)->x10 = -0x4000;
+        actorSetAnim((*(Obj * *)gComboActorB), 0x18C, 0x100);
+        (*(Obj * *)gComboActorB)->x10 = 0x8000;
         (*(Obj * *)D_80171A30)->x68 = -1;
         return;
     }
-    if ((*(Obj * *)D_801719AC)->xD0 == 0x18B) {
-        animTime = (*(Obj * *)D_801719AC)->xDC;
+    if ((*(Obj * *)gComboActorB)->xD0 == 0x18B) {
+        animTime = (*(Obj * *)gComboActorB)->xDC;
         if ((D_80009B60 <= animTime && animTime < D_80009B68) || (D_80009B70 <= animTime && animTime < D_80009B78)) {
             func_80082400();
         }

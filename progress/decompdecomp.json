@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700641.383619,
- "revision": 5661,
+ "saved_at": 1795700663.797929,
+ "revision": 5663,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16081,8 +16081,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "545028:2148025604": {
    "vram": 2148025604,
@@ -26197,10 +26196,10 @@
    "matched_by": "manual-26b81f558abe4c41",
    "readable": false
   },
-  "func_800826B4": {
+  "resolveComboBeat": {
    "vram": 2148017844,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "func_80082990": {
    "vram": 2148018576,
@@ -39629,7 +39628,7 @@
    "status": "open"
   },
   {
-   "name": "func_800826B4",
+   "name": "resolveComboBeat",
    "vram": 2148017844,
    "size": 732,
    "status": "open"
@@ -44143,6 +44142,12 @@
    "kind": "func"
   },
   {
+   "name": "resolveComboBeat",
+   "address": 2148017844,
+   "size": 732,
+   "kind": "func"
+  },
+  {
    "name": "updateComboInput",
    "address": 2148020072,
    "size": 1004,
@@ -46249,6 +46254,30 @@
    "kind": "data"
   },
   {
+   "name": "gComboActorA",
+   "address": 2148997544,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gComboActorB",
+   "address": 2148997548,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gComboWinFlagsA",
+   "address": 2148997552,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gComboWinFlagsB",
+   "address": 2148997576,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "gComboSlots",
    "address": 2148997600,
    "size": 4,
@@ -47488,7 +47517,7 @@
   },
   {
    "address": 2148219232,
-   "type": "Obj *",
+   "type": "Unk800826B4 *",
    "source": "match"
   },
   {
@@ -47722,8 +47751,28 @@
    "source": "match"
   },
   {
+   "address": 2148997544,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148997548,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148997552,
+   "type": "volatile s32[]",
+   "source": "match"
+  },
+  {
+   "address": 2148997576,
+   "type": "volatile s32[]",
+   "source": "match"
+  },
+  {
    "address": 2148997600,
-   "type": "Unk801719E0[]",
+   "type": "Unk801719E0_b[]",
    "source": "match"
   },
   {

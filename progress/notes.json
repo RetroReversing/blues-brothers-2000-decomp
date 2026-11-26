@@ -12672,5 +12672,13 @@
   "created_at": 1795699967.050567,
   "score_before": 0,
   "score_after": 0
+ },
+ {
+  "function": "func_8001EBF4",
+  "text": "claude-729eb0 (Opus 5.5): structural audit after the #3702 draft-branch fix: saved best has the target CFG (one if/else, BD6C0 stored in the arms and reloaded at the end), no draft-inherited error. Fresh m2c draft (origin/main seeds) uses a join local for BD6C0: 1325 (cse kills the reload); saved-best body in target store order: 500. Unchanged 200.",
+  "by": "manual-041edfd416e34c34",
+  "created_at": 1795700653.0427551,
+  "score_before": 200,
+  "score_after": 200
  }
 ]

@@ -32,7 +32,7 @@ void func_80086028(Obj *);
 extern Info gComboDefs[];
 extern s32 gCamSpeedScale;
 extern s32 gComboBeat;
-extern s32 D_801719A8;
+extern s32 gComboActorA;
 extern Rec gComboSlots[];
 extern Obj *D_80171A30;
 extern s32 D_80171A34;
@@ -56,7 +56,7 @@ void func_8008626C(Obj *o)
         D_80171A34++;
         if (gComboSlots[0].pad != 0) {
             D_80171A50++;
-            actorSetAnim(D_801719A8, gComboDefs[func_80086004()].b, 0x100);
+            actorSetAnim(gComboActorA, gComboDefs[func_80086004()].b, 0x100);
             v = gComboDefs[func_80086004()].a;
             gComboSlots[0].pad = 0;
             gComboSlots[0].b[0] = 0;
@@ -76,13 +76,13 @@ void func_8008626C(Obj *o)
             gComboSlots[0].n = gComboDefs[func_80086004()].a;
             D_80171A34 = 0;
         } else {
-            actorSetAnim(D_801719A8, 0x16B, 0x100);
+            actorSetAnim(gComboActorA, 0x16B, 0x100);
             func_80087160(func_80023D58(0x192));
         }
     }
     if (D_80171A34 >= 4) {
         o->cb = &func_80085F58 + 2;
         func_80087160(func_80023D58(0x201));
-        actorSetAnim(D_801719A8, 0x179, 0x100);
+        actorSetAnim(gComboActorA, 0x179, 0x100);
     }
 }

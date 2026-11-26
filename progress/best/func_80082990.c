@@ -30,13 +30,13 @@ s32 func_80082688(s32, s32);
 void updateComboInput(s32);
 void func_80083354(s32);
 void func_80083604(void);
-void func_800826B4(Obj *);
+void resolveComboBeat(Obj *);
 extern Info gComboDefs[];
 extern s32 gCamSpeedScale;
 extern s32 gComboBeat;
 extern s32 D_80171994;
-extern Obj *D_801719A8;
-extern Obj *D_801719AC;
+extern Obj *gComboActorA;
+extern Obj *gComboActorB;
 extern Rec gComboSlots[];
 
 void func_80082990(Obj *o)
@@ -48,11 +48,11 @@ void func_80082990(Obj *o)
     f64 f;
 
     func_80082400();
-    if (D_801719A8->anim == 0x17B) {
-        f = *(volatile f32 *)&D_801719A8->frame;
+    if (gComboActorA->anim == 0x17B) {
+        f = *(volatile f32 *)&gComboActorA->frame;
     }
-    if (D_801719AC->anim == 0x18B) {
-        f = *(volatile f32 *)&D_801719AC->frame;
+    if (gComboActorB->anim == 0x18B) {
+        f = *(volatile f32 *)&gComboActorB->frame;
     }
     gComboBeat += gCamSpeedScale;
     m = gComboBeat % 144;
@@ -86,7 +86,7 @@ void func_80082990(Obj *o)
             gComboSlots[i].b[5] = 0;
             gComboSlots[i].type++;
             if (gComboSlots[i].type >= 12) {
-                o->cb = (void *)func_800826B4;
+                o->cb = (void *)resolveComboBeat;
                 gComboSlots[i].type = 0;
                 o->timer = 100;
             }
@@ -101,6 +101,6 @@ void func_80082990(Obj *o)
     if (any) {
         func_80083604();
     }
-    actorSetAnim(D_801719A8, snd[0], 0x100);
-    actorSetAnim(D_801719AC, snd[1], 0x100);
+    actorSetAnim(gComboActorA, snd[0], 0x100);
+    actorSetAnim(gComboActorB, snd[1], 0x100);
 }

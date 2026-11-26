@@ -20,10 +20,10 @@ typedef struct {
 extern s32 gComboBeat;
 extern s32 gCamSpeedScale;
 extern Unk801719E0_b gComboSlots[];
-extern s32 D_801719A8;
-extern s32 D_801719AC;
-extern volatile s32 D_801719B0[];
-extern volatile s32 D_801719C8[];
+extern s32 gComboActorA;
+extern s32 gComboActorB;
+extern volatile s32 gComboWinFlagsA[];
+extern volatile s32 gComboWinFlagsB[];
 extern volatile s32 D_80171988;
 extern volatile s32 D_8017198C;
 extern Unk800826B4 *gCameraRig;
@@ -39,19 +39,20 @@ void func_80082990(void);
 void func_8008250C(void);
 void func_80083870(void);
 
-void func_800826B4(Unk800826B4 *arg0) {
+/* Resolves one combo beat: when the beat window hits, the side with more combo hits wins (or a coin flip breaks a tie), and the winner's animation and camera play. */
+void resolveComboBeat(Unk800826B4 *comboActor) {
     s32 phase;
 
     gComboBeat += gCamSpeedScale;
     phase = gComboBeat % 144;
-    if (tickActorTimer(arg0) == 0) {
+    if (tickActorTimer(comboActor) == 0) {
         return;
     }
     if (func_80082688(phase, 36) == 0) {
         return;
     }
     func_800836CC();
-    arg0->unk9C = func_80082990;
+    comboActor->unk9C = func_80082990;
     if (gComboSlots[1].unk4 == gComboSlots[0].unk4) {
         if (randomRange(0, 100) >= 51) {
             gComboSlots[1].unk4++;
@@ -60,13 +61,13 @@ void func_800826B4(Unk800826B4 *arg0) {
         }
     }
     if (gComboSlots[0].unk4 > gComboSlots[1].unk4) {
-        arg0->unk64 = 400;
-        arg0->unk9C = func_8008250C;
+        comboActor->unk64 = 400;
+        comboActor->unk9C = func_8008250C;
         sendCommand(12, 0x80);
         sendCommand(8, 0x78);
-        actorSetAnim(D_801719A8, 0x188, 0x100);
-        actorSetAnim(D_801719AC, 0x199, 0x100);
-        D_801719B0[arg0->unk80] = 1;
+        actorSetAnim(gComboActorA, 0x188, 0x100);
+        actorSetAnim(gComboActorB, 0x199, 0x100);
+        gComboWinFlagsA[comboActor->unk80] = 1;
         func_80087160(D_80171988);
         gCameraRig->unk9C = func_80083870;
         gCameraRig->unkB4 = 0;
@@ -76,11 +77,11 @@ void func_800826B4(Unk800826B4 *arg0) {
             gCameraRig->unk70 = 4;
         }
     } else if (gComboSlots[0].unk4 < gComboSlots[1].unk4) {
-        arg0->unk64 = 400;
-        arg0->unk9C = func_8008250C;
-        actorSetAnim(D_801719A8, 0x189, 0x100);
-        actorSetAnim(D_801719AC, 0x198, 0x100);
-        D_801719C8[arg0->unk80] = 1;
+        comboActor->unk64 = 400;
+        comboActor->unk9C = func_8008250C;
+        actorSetAnim(gComboActorA, 0x189, 0x100);
+        actorSetAnim(gComboActorB, 0x198, 0x100);
+        gComboWinFlagsB[comboActor->unk80] = 1;
         func_80087160(D_8017198C);
         if (randomRange(0, 100) >= 51) {
             gCameraRig->unk70 = 3;
@@ -90,10 +91,10 @@ void func_800826B4(Unk800826B4 *arg0) {
         gCameraRig->unk9C = func_80083870;
         gCameraRig->unkB4 = 0;
     } else {
-        arg0->unk64 = 400;
-        arg0->unk9C = func_8008250C;
-        actorSetAnim(D_801719A8, 0x189, 0x100);
-        actorSetAnim(D_801719AC, 0x198, 0x100);
-        D_801719C8[arg0->unk80] = 1;
+        comboActor->unk64 = 400;
+        comboActor->unk9C = func_8008250C;
+        actorSetAnim(gComboActorA, 0x189, 0x100);
+        actorSetAnim(gComboActorB, 0x198, 0x100);
+        gComboWinFlagsB[comboActor->unk80] = 1;
     }
 }

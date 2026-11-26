@@ -22,8 +22,8 @@ extern f64 D_80009B90;
 extern f64 D_80009B98;
 extern f64 D_80009BA0;
 extern s32 gComboBeat;
-extern void *D_801719A8;
-extern void *D_801719AC;
+extern void *gComboActorA;
+extern void *gComboActorB;
 extern void *D_80171A30;
 extern M2C_UNK func_800869E8;
 
@@ -32,15 +32,15 @@ void func_80086B3C(void *arg0) {
 
     M2C_FIELD(D_80171A30, f32 *, 4) = approachF32(20.0f, M2C_FIELD(D_80171A30, f32 *, 4), 4.0f);
     if (findActor(0x800, 0) == 0) {
-        actorSetAnim(D_801719A8, 1, 0x100);
-        M2C_FIELD(D_801719A8, s32 *, 0x10) = -0x4000;
-        actorSetAnim(D_801719AC, 0x18C, 0x100);
-        M2C_FIELD(D_801719AC, s32 *, 0x10) = 0x8000;
+        actorSetAnim(gComboActorA, 1, 0x100);
+        M2C_FIELD(gComboActorA, s32 *, 0x10) = -0x4000;
+        actorSetAnim(gComboActorB, 0x18C, 0x100);
+        M2C_FIELD(gComboActorB, s32 *, 0x10) = 0x8000;
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800869E8;
         M2C_FIELD(arg0, s32 *, 0x74) = (s32) gComboBeat;
         M2C_FIELD(D_80171A30, s32 *, 0x68) = 0xE;
     }
-    if ((M2C_FIELD(D_801719AC, s32 *, 0xD0) == 0x18B) && (((temp_fv1 = (f64) M2C_FIELD(D_801719AC, f32 *, 0xDC), (D_80009B88 <= temp_fv1)) && (temp_fv1 < D_80009B90)) || ((D_80009B98 <= temp_fv1) && (temp_fv1 < D_80009BA0)))) {
+    if ((M2C_FIELD(gComboActorB, s32 *, 0xD0) == 0x18B) && (((temp_fv1 = (f64) M2C_FIELD(gComboActorB, f32 *, 0xDC), (D_80009B88 <= temp_fv1)) && (temp_fv1 < D_80009B90)) || ((D_80009B98 <= temp_fv1) && (temp_fv1 < D_80009BA0)))) {
         func_80082400();
     }
 }

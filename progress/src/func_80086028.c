@@ -37,7 +37,7 @@ extern Entry D_800B8720[];
 extern s32 D_800B9B40[];
 extern s32 gCamSpeedScale;
 extern s32 gComboBeat;
-extern s32 D_801719A8;
+extern s32 gComboActorA;
 extern Rec gComboSlots[];
 extern Obj *D_80171A30;
 extern s32 D_80171A34;
@@ -62,7 +62,7 @@ void func_80086028(Obj *o)
         return;
     }
     gComboSlots[0].type = 0;
-    actorSetAnim(D_801719A8, 0x178, 0x100);
+    actorSetAnim(gComboActorA, 0x178, 0x100);
     sendCommand(0xC, 0x80);
     sendCommand(8, 0x78);
     D_80171A54++;

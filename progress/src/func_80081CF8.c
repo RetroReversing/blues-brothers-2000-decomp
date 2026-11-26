@@ -18,8 +18,8 @@ M2C_UNK func_80027D7C(s32, s32, M2C_UNK, M2C_UNK);  /* extern */
 extern s32 D_800AB9B4;
 extern s32 D_800BD07C;
 extern s32 D_800BD1E4;
-extern s32 D_801719B0;
-extern s32 D_801719C8;
+extern s32 gComboWinFlagsA;
+extern s32 gComboWinFlagsB;
 
 void func_80081CF8(void *arg0) {
     s32 var_s0;
@@ -31,7 +31,7 @@ void func_80081CF8(void *arg0) {
     var_s1 = 0;
     if (D_800AB9B4 == 0) {
         for (; var_s1 < 5; var_s1++) {
-            if (*(&D_801719B0 + var_s1) != 0) {
+            if (*(&gComboWinFlagsA + var_s1) != 0) {
                 func_80027D7C(getImageAsset(D_800BD1E4), ((0x1E) + var_s1 * 15), 0xF, 0);
             } else {
                 func_80027D7C(getImageAsset(D_800BD07C), ((0x1E) + var_s1 * 15), 0xF, 0);
@@ -39,7 +39,7 @@ void func_80081CF8(void *arg0) {
         }
         var_s1 = 0;
         for (; var_s1 < 5; var_s1++) {
-            if (*(&D_801719C8 + var_s1) != 0) {
+            if (*(&gComboWinFlagsB + var_s1) != 0) {
                 func_80027D7C(getImageAsset(D_800BD1E4), ((0xBE) + var_s1 * 15), 0xF, 0);
             } else {
                 func_80027D7C(getImageAsset(D_800BD07C), ((0xBE) + var_s1 * 15), 0xF, 0);
