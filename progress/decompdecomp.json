@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700803.4247,
- "revision": 5674,
+ "saved_at": 1795700814.107265,
+ "revision": 5676,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16258,8 +16258,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "352772:2147833348": {
    "vram": 2147833348,
@@ -16899,7 +16898,7 @@
   },
   "407184:2147887760": {
    "vram": 2147887760,
-   "function": "func_80062A90",
+   "function": "updateCameraRig",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -23807,10 +23806,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80062A90": {
+  "updateCameraRig": {
    "vram": 2147887760,
    "matched_by": "manual-a57f45738d2c42cb",
-   "readable": false
+   "readable": true
   },
   "func_80062D64": {
    "vram": 2147888484,
@@ -29279,7 +29278,7 @@
   "func_80061F78": "local_source_158913791103",
   "func_800620C0": "local_source_158913791105",
   "func_80062280": "local_source_158913791108",
-  "func_80062A90": "local_source_158913791110",
+  "updateCameraRig": "local_source_158913791110",
   "func_80062D64": "local_source_158913791111",
   "spawnCutsceneActor": "local_source_158913791115",
   "func_80063D3C": "local_source_158913791116",
@@ -36749,7 +36748,7 @@
    "status": "open"
   },
   {
-   "name": "func_80062A90",
+   "name": "updateCameraRig",
    "vram": 2147887760,
    "size": 724,
    "status": "open"
@@ -43981,6 +43980,12 @@
    "kind": "func"
   },
   {
+   "name": "updateCameraRig",
+   "address": 2147887760,
+   "size": 724,
+   "kind": "func"
+  },
+  {
    "name": "spawnCutsceneActor",
    "address": 2147892480,
    "size": 60,
@@ -47572,7 +47577,7 @@
   },
   {
    "address": 2148219232,
-   "type": "Unk800826B4 *",
+   "type": "s32",
    "source": "match"
   },
   {

@@ -1,4 +1,3 @@
-/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 #ifndef M2C_DEFINES
 #define M2C_DEFINES
 typedef s32 M2C_UNK;
@@ -42,7 +41,8 @@ typedef struct Cam {
 } Cam;
 extern Cam *D_800B7FE0;
 
-s32 func_80062A90(void) {
+/* Aims the two camera rig parts along their view vectors, updates the rig matrix, and sends the end-of-intro command once the frame counter passes 1510. Returns the done flag. */
+s32 updateCameraRig(void) {
     f32 a[4];
     f32 b[4];
     f32 m[16];
@@ -92,5 +92,3 @@ s32 func_80062A90(void) {
     }
     return D_800B7FE0->f3F4;
 }
-
-

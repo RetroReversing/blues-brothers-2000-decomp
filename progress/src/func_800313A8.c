@@ -16,7 +16,7 @@ M2C_UNK sendCommand(M2C_UNK, s32);                /* extern */
 M2C_UNK func_80030C40();             /* extern */
 M2C_UNK func_80062280();                            /* extern */
 M2C_UNK func_80062A44();                            /* extern */
-s32 func_80062A90();                                /* extern */
+s32 updateCameraRig();                                /* extern */
 extern M2C_UNK gAudioVolume;
 extern s32 D_80107040;
 extern s32 gPadPressed;
@@ -38,7 +38,7 @@ void func_800313A8(void *arg0) {
         goto block_4;
     }
 block_4:
-    if (func_80062A90() != 0) {
+    if (updateCameraRig() != 0) {
         func_80062A44();
         sendCommand(0x1D, 0);
         func_80030C40(arg0, 1);

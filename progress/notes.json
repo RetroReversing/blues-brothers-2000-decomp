@@ -9516,7 +9516,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:15d8714506e7253d22ddfdeeba6b525635c2956076265c792ccac3853e1551a4"
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "ap14: best 846 default profile (saved 5108 -> 846), 427 under -mfp32 (trial not exact, not applied). Source = Cam struct (D_800B7FE0 pointer; matrices at 0x30/0x70/0xB0/0xF0/0x130/0x170 as u8[0x40]; Part* at 0xC/0x10 with x/y/z at 4/8/0xC; counters 0x3F4/0x3F8), a[4]/b[4]/m[16] f32 locals, sqrtf declared f32 sqrtf(f32), pool words as LITERALS -0.15f/-150.0f/1000.0 (the target uses lui at + lwc1 and keeps the three in saved fp regs f20/f22/f24 across block 2). KEY: both z stores must survive: write b[2]=-0.15f BEFORE the x/y *1000.0 products and b[2]=-150.0f after them (2282 -> 1190); (x*x+y*y)+z*z with the three differences in x,y,z order. Rows left: in the target the z difference store (swc1 f2,0x28) is scheduled BEFORE sqrt.s and sqrt.s writes f2 (same reg), ours stores it in the bc1t delay slot and sqrt.s writes f0; the x/len store (swc1 f6,0x20) is also missing in the climbed source (b[0]/len adjacent to b[0]*1000 drops it) while the p5b-order source keeps it but has the z-store problem. Tried: locals dx/dy/dz (store before/after len), compound -=, regrouped sums, pointer/cast spellings of the first z store, statement permutations of the 5 post-sqrt lines (565 best), prove_chain all families (cut off, no gain). File with best source at the same score: see saved candidate.",
   "by": "manual-57bb4eaaaa484af6",
   "created_at": 1795625870.240154,
@@ -9525,7 +9525,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:30b0362495e2984e4ce538650bc3c659fcb76e259fc98a1054a17862655c9434"
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "best 846, z-store/sqrt scheduling rows left (see note)",
   "by": "manual-57bb4eaaaa484af6",
   "created_at": 1795625976.595674,
@@ -9834,7 +9834,7 @@
   "score_after": 865
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "ap21: 846 -> 747 (default profile; 334 under -mfp32, not exact so profile not changed). Both blocks: write the z difference FIRST (b[2]=b[2]-a[2]; b[0]=..; b[1]=..), then len=sqrtf(...), then normalise in natural order x/len, y/len, z=-0.15f, then x*1000.0, y*1000.0, z=-150.0f (natural normalise order keeps the x/len store; adjacent x/len then x*1000 stores get deleted by cse). Exhaustive 6x6x6 orders of diff/normalise/scale per block done under -mfp32. Rows left (identical in both blocks): the target loads b[2] then a[2] (lwc1 f2,0x28; lwc1 f0,0x18; sub.s f2,f2,f0; mul f0,f2,f2; swc1 f2,0x28; sqrt.s f2,f12 so len lives in f2 and bc1t delay is nop); ours loads a[2] first, dz in f0, sqrt.s f0, mov.s f2,f0 in the bc1t slot. Natural x,y,z diff order has the loads right but the z store lands after sqrt (bc1t delay slot) and the pool order breaks (1620-2325). dz/sum temporaries, other sum orders, prove_chain all families (38 children, none better): no gain. Next: why sched1 puts the z load pair last only with z-first source; compiler dumps of 281 with -dS.",
   "by": "manual-fd202535700a4bdb",
   "created_at": 1795633377.517091,
@@ -9843,7 +9843,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:30b0362495e2984e4ce538650bc3c659fcb76e259fc98a1054a17862655c9434"
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "ap21: 846 -> 747 saved; remaining rows are the z-diff load order and sqrt/len register (f0 vs f2) in both blocks. See note.",
   "by": "manual-fd202535700a4bdb",
   "created_at": 1795633382.826667,
@@ -10221,7 +10221,7 @@
   "score_after": 865
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '334 d6cd9b285f702da508e4 sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
   "by": "manual-fa253f9ceee84c1b",
   "created_at": 1795635931.5302,
@@ -10436,7 +10436,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:2e44c275cefb8af26a543d31733b0189d1ca9c3197e71335582f3a48f02ed02d"
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "ap23: under sn-n64-281 -mfp32 (334) EVERY remaining row of both blocks is one f0/f2 exchange in the z group (b2 = b[2]-a[2]): target has b2 in f2, a2 in f0, dz in f2, dz*dz in f0, sqrt.s f2 (so len lives in f2, no mov.s in the bc1t slot); ours has b2 f0, a2 f2, dz f0, dz^2 f2, sqrt.s f0 + `mov.s f2,f0` in the bc1t delay slot. The x and y groups already match (a in f0, b in f4/f2...). Reading cc1n64 -dl/-dS: pseudos 90 (b2, life 6 insns) / 91 (a2, life 4) / 92 (dz): local-alloc ranks by refs/life, so the shorter-lived a2 should take f0 first (as in the x/y groups). In ours it does not: b2/dz got f0 and a2 f2, which is what happens when a2 is loaded BEFORE b2 (final asm: `lwc1 f2,0x18; lwc1 f0,0x28`), while the target loads b2 first (`lwc1 f2,0x28; lwc1 f0,0x18`). sched1 itself orders them b2 (insn 37) then a2 (39) (`insn 39 has a greater potential hazard, now 39 37`), so the swap is made later (sched2 or the priority at allocation); the z group is the last group in the block (z difference written first in the source). So the open lever is the load order/lives of the z pair at allocation time, not the sqrt or stores. Nothing new compiled; saved best 747 default / 334 -mfp32, profile not applied (not exact).",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637693.445888,
@@ -10444,7 +10444,7 @@
   "score_after": 747
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap23: see notes",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637693.798982,
@@ -10452,7 +10452,7 @@
   "score_after": 747
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "ap23 follow-up (verified with cc1n64 -dS/-dl/-dg/-dR dumps of the saved best): after sched1 the z pair is already `37 lwc1 b2; 39 lwc1 a2; 40 sub` and local-alloc (not sched2) then gives b2/dz (one tied quantity, refs 2+4, life ~9) $f0 and a2 (refs 2, life 4) $f2; sched2 only reorders the two loads afterwards. The x and y groups of the same block (same refs/lives) come out with a in $f0, so the z group differs by the allocation order of {b2,dz} vs a2 (refs*floor_log2/life near a tie): the target needs a2 allocated first (a2 f0, b2/dz f2). A way to lower the {b2,dz} quantity priority or raise a2`s (one more counted reference of a[2] in the block, or a longer b2/dz life) is the lever; I did not find a faithful spelling for it.",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637726.113554,
@@ -10701,7 +10701,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3bc992b840acecedef0e1d022c425a4181e607aa77353aae515d59a9aaa6ad52"
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "op88: unchanged 747 (334 isolated -mfp32). lreg (cc1n64 -dl) of the saved best: b2 = reg 90 (2 refs / 6 insns), a2 = 91 (2/4), dz = 92 (4/4); local-alloc ties dz to b2 (sub's dying first operand), so the {b2,dz} quantity (refs 6, priority ~1.3) is allocated before a2 (0.5) and takes $f0. The x/y groups come out right only because dz already holds $f0 across them. Hypothesis for the target (a2 $f0, b2/dz $f2, dz*dz $f0): the z square's pseudo is allocated before {b2,dz}, takes $f0 and conflicts with dz (dz is stored after the mul), so {b2,dz} drops to $f2 and a2 gets $f0; that needs the square to rank above ~1.3 (2 refs over at most one insn). Tried, no gain: b[2] -= a[2] 334, -a[2] + b[2] 2160, do-while(0) around the diff 2566 / around an a2 or b2 load copy 2066, a2 through a block local 392, all 12 sum orders and groupings (334-346), staged sums len = x2 + y2; sqrtf(len + z2) 394, len = z2 first 1986-2078.",
   "by": "manual-f7f61c1765d84883",
   "created_at": 1795641449.242319,
@@ -10901,7 +10901,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:48ad4be740fbb861969579a271bf574b6ad9748e5e3e56d45a5c35d493e01258"
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "Profile probe: this saved C scores 334 under sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (its single-precision values use even FP registers only, where -mfp64 allocates odd ones), 747 under its own settings; not exact. Nothing was changed. Try its C with that compiler (try_compiler) before more source spellings; an exact result there is applied for this function only.",
   "by": "autopilot",
   "created_at": 1795643831.4118998,
@@ -11532,7 +11532,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:4b20e7b23a5e61b67140d40eaef8b3805be6aa8d62f0d3cc3094db6dce50ac61"
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "op97 (library 0.6.48): unchanged 747 (334 -mfp32). prove_chain --families all --children 40 (default and --fp-flip) and a full run under -mfp32 (--children 800, 757 of 763 children judged): no child improves 334. Tried for the z pair (target b2 loaded first into $f2, a2 into $f0, b2-a2 into $f2, square into $f0): t = a[2]; b[2] = b[2] - t: 442; t = b[2]; b[2] = t - a[2]: 430; t = b[2] - a[2]; b[2] = t: 1970; block-scoped f32 t = a[2]: 392; b[2] = -(a[2] - b[2]): 1730; len = b[2]*b[2] staged first: 2078; compound -= : 334 (identical). The temporary-first trick that fixed the same f0/f2 exchange in func_8000E1EC (t = o->x; f = D->x - t, temporary_hoist) does not apply here: both operands are stack slots of arrays the calls filled, and every staging changes the x/y groups too.",
   "by": "manual-c49166d3e00442aa",
   "created_at": 1795652886.62498,
@@ -11540,7 +11540,7 @@
   "score_after": 747
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "[Released without compiling it once; notes not checked by a compile.] op97 (library 0.6.48): unchanged 747 (334 -mfp32). prove_chain --families all --children 40 (default and --fp-flip) and a full run under -mfp32 (--children 800, 757 of 763 children judged): no child improves 334. Tried for the z pair (target b2 loaded first into $f2, a2 into $f0, b2-a2 into $f2, square into $f0): t = a[2]; b[2] = b[2] - t: 442; t = b[2]; b[2] = t - a[2]: 430; t = b[2] - a[2]; b[2] = t: 1970; block-scoped f32 t = a[2]: 392; b[2] = -(a[2] - b[2]): 1730; len = b[2]*b[2] staged first: 2078; compound -= : 334 (identical). The temporary-first trick that fixed the same f0/f2 exchange in func_8000E1EC (t = o->x; f = D->x - t, temporary_hoist) does not apply here: both operands are stack slots of arrays the calls filled, and every staging changes the x/y groups too.",
   "by": "manual-c49166d3e00442aa",
   "created_at": 1795652888.316809,
@@ -12104,7 +12104,7 @@
   "score_after": 4025
  },
  {
-  "function": "func_80062A90",
+  "function": "updateCameraRig",
   "text": "claude-0e891a: matched (0) under sn-n64-281 -mfp32 applied from an exact trial. prove_chain --fp-flip --families all --children 300 --combine 8 found it as one combined step: identical_statement_comove (b[2] -= a[2] after the x and y differences) + local_web_split (len_1/len_2, one per normalised vector). Neither alone improved 334.",
   "by": "manual-a57f45738d2c42cb",
   "created_at": 1795679491.539891,
