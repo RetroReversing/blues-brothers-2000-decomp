@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_80015C30(void *);                      /* extern */
+M2C_UNK spawnSparkle(void *);                      /* extern */
 M2C_UNK func_8004EB60(void *);                      /* extern */
 void *func_800511B4(void *);                        /* extern */
 void func_8000EA34(void *);
@@ -41,7 +41,7 @@ void func_8000EA6C(void *arg0) {
         func_8004EB60(arg0);
         var_s0 = 0;
         do {
-            do { func_80015C30(arg0); } while (0);
+            do { spawnSparkle(arg0); } while (0);
             do { var_s0 += 1; } while (0);
         } while (var_s0 < 4);
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);

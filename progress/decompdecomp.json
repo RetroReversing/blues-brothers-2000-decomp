@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700523.2215412,
- "revision": 5651,
+ "saved_at": 1795700572.511806,
+ "revision": 5655,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -10340,7 +10340,7 @@
   },
   "63380:2147543956": {
    "vram": 2147543956,
-   "function": "func_8000EB94",
+   "function": "updateFlungPlayer",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -14481,7 +14481,7 @@
   },
   "63524:2147544100": {
    "vram": 2147544100,
-   "function": "func_8000EC24",
+   "function": "updateVortexCapture",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -14681,7 +14681,7 @@
   },
   "92208:2147572784": {
    "vram": 2147572784,
-   "function": "func_80015C30",
+   "function": "spawnSparkle",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -16453,8 +16453,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "272664:2147753240": {
    "vram": 2147753240,
@@ -18362,15 +18361,15 @@
    "matched_by": "permuter-158913790034",
    "readable": false
   },
-  "func_8000EB94": {
+  "updateFlungPlayer": {
    "vram": 2147543956,
    "matched_by": "manual-94c19b9cd6ff4066",
    "readable": false
   },
-  "func_8000EC24": {
+  "updateVortexCapture": {
    "vram": 2147544100,
    "matched_by": "manual-291cac6721ed4aac",
-   "readable": false
+   "readable": true
   },
   "func_8000EF08": {
    "vram": 2147544840,
@@ -18912,7 +18911,7 @@
    "matched_by": "manual-d815639955454bd3",
    "readable": false
   },
-  "func_80015C30": {
+  "spawnSparkle": {
    "vram": 2147572784,
    "matched_by": "manual-3572b8f795c14e2c",
    "readable": false
@@ -28800,8 +28799,8 @@
   "func_8000E4AC": "local_source_158913790027",
   "func_8000E570": "local_source_158913790028",
   "func_8000E874": "local_source_158913790031",
-  "func_8000EB94": "local_source_158913790035",
-  "func_8000EC24": "local_source_158913790036",
+  "updateFlungPlayer": "local_source_158913790035",
+  "updateVortexCapture": "local_source_158913790036",
   "func_8000EF3C": "local_source_158913790038",
   "func_8000F0DC": "local_source_158913790040",
   "func_8000F1FC": "local_source_158913790042",
@@ -28860,7 +28859,7 @@
   "func_80015980": "local_source_158913790142",
   "func_80015A90": "local_source_158913790143",
   "func_80015B34": "local_source_158913790144",
-  "func_80015C30": "local_source_158913790145",
+  "spawnSparkle": "local_source_158913790145",
   "func_80016168": "local_source_158913790152",
   "func_800162E4": "local_source_158913790154",
   "collideActorWithPlatform": "local_source_158913790155",
@@ -30185,13 +30184,13 @@
    "status": "open"
   },
   {
-   "name": "func_8000EB94",
+   "name": "updateFlungPlayer",
    "vram": 2147543956,
    "size": 144,
    "status": "open"
   },
   {
-   "name": "func_8000EC24",
+   "name": "updateVortexCapture",
    "vram": 2147544100,
    "size": 740,
    "status": "open"
@@ -30845,7 +30844,7 @@
    "status": "open"
   },
   {
-   "name": "func_80015C30",
+   "name": "spawnSparkle",
    "vram": 2147572784,
    "size": 500,
    "status": "open"
@@ -43171,6 +43170,18 @@
    "kind": "func"
   },
   {
+   "name": "vortexPullRadius",
+   "address": 2147484908,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "vortexCaptureRadius",
+   "address": 2147484912,
+   "size": 4,
+   "kind": "data"
+  },
+  {
    "name": "gBumpRadius",
    "address": 2147518684,
    "size": 4,
@@ -43201,6 +43212,18 @@
    "kind": "func"
   },
   {
+   "name": "updateFlungPlayer",
+   "address": 2147543956,
+   "size": 144,
+   "kind": "func"
+  },
+  {
+   "name": "updateVortexCapture",
+   "address": 2147544100,
+   "size": 740,
+   "kind": "func"
+  },
+  {
    "name": "updateProximityTrigger",
    "address": 2147554336,
    "size": 788,
@@ -43210,6 +43233,12 @@
    "name": "updateProjectile",
    "address": 2147566240,
    "size": 828,
+   "kind": "func"
+  },
+  {
+   "name": "spawnSparkle",
+   "address": 2147572784,
+   "size": 500,
    "kind": "func"
   },
   {
@@ -46190,6 +46219,41 @@
    "source": "match"
   },
   {
+   "address": 2147484908,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147484912,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147484916,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147484920,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147484924,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147484928,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147484932,
+   "type": "f32",
+   "source": "match"
+  },
+  {
    "address": 2147485820,
    "type": "f32",
    "source": "match"
@@ -47371,7 +47435,7 @@
   },
   {
    "address": 2148245196,
-   "type": "s32",
+   "type": "s32[]",
    "source": "match"
   },
   {
@@ -47381,7 +47445,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Obj *",
+   "type": "u8[]",
    "source": "match"
   },
   {

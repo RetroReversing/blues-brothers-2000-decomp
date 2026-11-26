@@ -6309,7 +6309,7 @@
    "unit": "main_text_B780",
    "mode": "rom"
   },
-  "func_8000EB94": {
+  "updateFlungPlayer": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -6409,7 +6409,7 @@
    "unit": "local_source_158913790035",
    "mode": "rom"
   },
-  "func_8000EC24": {
+  "updateVortexCapture": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -6419,10 +6419,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "da9ad90c2f291578d4ea5a9e6b251170d0ecc3e4f8f514c669947abba3907d04",
-   "recorded_at": 1795696829.657732,
-   "attempt_id": 158913861750,
-   "source_sha256": "d0836ac77a0c2e2891ddc36423580bee5195983a11357554aa674c0511d7e76d",
+   "symbols_sha256": "5e75bfe9423a3463a51c3b3ba31431fafe0f1443835373b5abe08f07821c9305",
+   "recorded_at": 1795700571.1174002,
+   "attempt_id": 158913862098,
+   "source_sha256": "a372b5ab46155f97bf3675f9f87d93a01abd43980ee2a91c5d44b1449b88c7e0",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 769,
    "compiler": {
@@ -6464,7 +6464,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -6473,32 +6473,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G8",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913790036",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -16898,7 +16872,7 @@
    "unit": "local_source_158913790144",
    "mode": "rom"
   },
-  "func_80015C30": {
+  "spawnSparkle": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -197266,7 +197240,7 @@
   "b80bb95df4916be7f813537006b0e2bf89ef116b7b8400a2d484d851503b3583": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_80015C30(void *);                      /* extern */\nM2C_UNK func_8004EB60(void *);                      /* extern */\nvoid *func_800511B4(void *);                        /* extern */\nvoid func_8000EA34(void *);\n\nvoid func_8000EA6C(void *arg0) {\n    s32 var_s0;\n    s32 var_v1;\n    void *temp_v0;\n\n    if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {\n        var_v1 = M2C_FIELD(arg0, s32 *, 0x94);\n        M2C_FIELD(arg0, s32 *, 0) = 0x129;\n        if (var_v1 < 0) {\n            var_v1 += 3;\n        }\n        M2C_FIELD(arg0, s32 *, 0x94) = (s32) (var_v1 >> 2);\n        M2C_FIELD(arg0, s32 *, 0x7C) = 1;\n    }\n    if (M2C_FIELD(arg0, s32 *, 0xC0) & 2) {\n        temp_v0 = func_800511B4(arg0);\n        M2C_FIELD(temp_v0, f32 *, 4) = M2C_FIELD(arg0, f32 *, 4);\n        M2C_FIELD(temp_v0, f32 *, 8) = M2C_FIELD(arg0, f32 *, 8);\n        M2C_FIELD(temp_v0, f32 *, 0xC) = M2C_FIELD(arg0, f32 *, 0xC);\n        M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_8000EA34;\n        M2C_FIELD(temp_v0, s32 *, 0) = 0x101;\n        func_8004EB60(arg0);\n        var_s0 = 0;\n        do {\n            do { func_80015C30(arg0); } while (0);\n            do { var_s0 += 1; } while (0);\n        } while (var_s0 < 4);\n        M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);\n    }\n}\n\n",
   "28b80bcf1111d081ffbaa667ca9b7b92d1b0ee2c5056f234b90262cb8586187e": "/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\ns32 func_8002D5CC();                                /* extern */\nM2C_UNK func_800393F4(void *);                      /* extern */\nextern s32 D_80107040;\nextern s32 D_801070A0;\nextern s32 D_801073B0;\nextern s32 D_801073C0;\n\nvoid func_8000EB34(void *arg0) {\n    if (func_8002D5CC(arg0) != 0) {\n        M2C_FIELD(arg0, M2C_UNK (**)(void *), 0x9C) = func_800393F4;\n        return;\n    }\n    D_801073C0 = 0;\n    D_801073B0 = 0;\n    D_80107040 = 0;\n    D_801070A0 = 0;\n    func_800393F4(arg0);\n}\n",
   "0e7b86f5051a051ac075d9abab456fae7e0071ad8d691ec6ee0618c173971529": "s32 func_8002D5CC(void *);\ns32 func_8002DA80(void *);\ns32 func_8004303C();\nextern f32 D_800B9EC4;\nextern s32 func_8000EB34;\ntypedef struct {\n  unsigned char pad_0[12];\n  float field_C;\n  int field_10;\n  unsigned char pad_14[60];\n  float field_50;\n  unsigned char pad_54[16];\n  int field_64;\n  unsigned char pad_68[52];\n  void *field_9C;\n  unsigned char pad_A0[16];\n  float field_B0;\n} R;\nvoid func_8000EB94(R *arg0) {\n  f32 k = -1600.0f;\n  func_8004303C();\n  arg0->field_10 = 0;\n  arg0->field_50 += D_800B9EC4 * k;\n  arg0->field_B0 = k;\n  func_8002DA80(arg0);\n  if ((func_8002D5CC(arg0) != 0) || (arg0->field_C > 3226.0f)) {\n    arg0->field_9C = &func_8000EB34;\n    arg0->field_64 = 0x64;\n  }\n}",
-  "d0836ac77a0c2e2891ddc36423580bee5195983a11357554aa674c0511d7e76d": "s16 coss(u16);\ns16 sins(u16);\nvoid func_80015C30(void *);\nvoid *func_80023874(s32, void *);\nvoid func_8002A360(s32, s32);\ns32 func_8002D204(s32, s32, s32);\nvoid func_8002D620(void *, void *);\nf32 func_8002D66C(void *, f32, s32 *);\nvoid func_800433A8(void *, s32, s32);\nvoid func_8000EB94(void *);\n\ntypedef struct Obj {\n    char pad0[4];\n    f32 x4;\n    f32 x8;\n    f32 xC;\n    s32 x10;\n    char pad14[0x4C - 0x14];\n    f32 x4C;\n    f32 x50;\n    f32 x54;\n    char pad58[0x64 - 0x58];\n    s32 x64;\n    char pad68[0x70 - 0x68];\n    s32 x70;\n    char pad74[0x9C - 0x74];\n    void (*fn9C)(void *);\n    char padA0[0xAC - 0xA0];\n    s32 xAC;\n    s32 xB0;\n    s32 xB4;\n    char padB8[0xD0 - 0xB8];\n    s32 xD0;\n} Obj;\n\nextern f32 D_800004EC;\nextern f32 D_800004F0;\nextern f32 D_800004F4;\nextern f32 D_800004F8;\nextern f32 D_800004FC;\nextern f32 D_80000500;\nextern f32 D_80000504;\nextern Obj *D_800B3964[];\nextern s32 D_800B9ECC[];\nextern u8 D_800BD06C[];\n#define BD (*(Obj **)D_800BD06C)\n\nvoid func_8000EC24(Obj *arg0) {\n    s32 ang;\n    f32 lim;\n    f32 d;\n    s32 speed;\n    s32 i;\n    s32 t;\n    Obj *e;\n\n    lim = D_800004EC;\n    d = func_8002D66C(arg0, lim, &ang);\n    if (lim <= d) {\n        return;\n    }\n    if (BD->xC < arg0->xC - D_800004F0) {\n        return;\n    }\n    if (BD->x8 > arg0->x8) {\n        return;\n    }\n    if (BD->xD0 != 11) {\n        return;\n    }\n    speed = (s32)(lim - d);\n    speed *= 20;\n    speed = (D_800B9ECC[0] * speed) / 600;\n    if (D_800004F0 <= d) {\n        BD->x10 = func_8002D204(ang + 0x8000, BD->x10, D_800B9ECC[0] << 9);\n        BD->xC += (speed * coss(ang - 0x8000)) >> 15;\n        BD->x4 += (speed * sins(ang - 0x8000)) >> 15;\n        return;\n    }\n    if (d < D_800004F0) {\n        func_8002A360(0xC, 0x80);\n        func_8002A360(8, 0x57);\n        for (i = 0; i < 4; i++) {\n            func_80015C30(arg0);\n        }\n        BD->x8 = D_800004F4;\n        if (arg0->x70 == 3) {\n            BD->x8 = D_800004F8;\n        }\n        BD->xC = D_800004FC;\n        e = func_80023874(0x1021, 0);\n        while (e != 0) {\n            if (e->x70 == arg0->x70) {\n                BD->x4 = e->x4;\n                break;\n            }\n            e = func_80023874(0x1021, e);\n        }\n        if (e != 0) {\n            D_800B3964[0]->x70 = e->x70;\n        }\n        BD->x4C = 0.0f;\n        BD->x50 = 0.0f;\n        BD->x54 = D_80000500;\n        BD->x10 = 0x8000;\n        func_8002D620(BD, e);\n        BD->fn9C = func_8000EB94;\n        BD->xAC = 0;\n        BD->xB0 = 0;\n        BD->xB4 = 0;\n        BD->x64 = 300;\n        BD->x50 = D_80000504;\n        func_800433A8(BD, 0x10, 0x100);\n    }\n}\n",
+  "a372b5ab46155f97bf3675f9f87d93a01abd43980ee2a91c5d44b1449b88c7e0": "s16 coss(u16);\ns16 sins(u16);\nvoid spawnSparkle(void *);\nvoid *findActor(s32, void *);\nvoid sendCommand(s32, s32);\ns32 approachAngle(s32, s32, s32);\nvoid syncActorPrevPos(void *, void *);\nf32 getCameraTargetDist(void *, f32, s32 *);\nvoid actorSetAnim(void *, s32, s32);\nvoid updateFlungPlayer(void *);\n\ntypedef struct Obj {\n    char pad0[4];\n    f32 x4;\n    f32 x8;\n    f32 xC;\n    s32 x10;\n    char pad14[0x4C - 0x14];\n    f32 x4C;\n    f32 x50;\n    f32 x54;\n    char pad58[0x64 - 0x58];\n    s32 x64;\n    char pad68[0x70 - 0x68];\n    s32 x70;\n    char pad74[0x9C - 0x74];\n    void (*fn9C)(void *);\n    char padA0[0xAC - 0xA0];\n    s32 xAC;\n    s32 xB0;\n    s32 xB4;\n    char padB8[0xD0 - 0xB8];\n    s32 xD0;\n} Obj;\n\nextern f32 vortexPullRadius;\nextern f32 vortexCaptureRadius;\nextern f32 D_800004F4;\nextern f32 D_800004F8;\nextern f32 D_800004FC;\nextern f32 D_80000500;\nextern f32 D_80000504;\nextern Obj *D_800B3964[];\nextern s32 gCamSpeedScale[];\nextern u8 gCameraTarget[];\n#define PLAYER (*(Obj **)gCameraTarget)\n\n/* Vortex enemy: pulls the player within 600 units toward it and, once close enough, captures the player and flings them to the matching marker. */\nvoid updateVortexCapture(Obj *vortex) {\n    s32 angle;\n    f32 pullRadius;\n    f32 dist;\n    s32 speed;\n    s32 i;\n    s32 t;\n    Obj *target;\n\n    pullRadius = vortexPullRadius;\n    dist = getCameraTargetDist(vortex, pullRadius, &angle);\n    if (pullRadius <= dist) {\n        return;\n    }\n    if (PLAYER->xC < vortex->xC - vortexCaptureRadius) {\n        return;\n    }\n    if (PLAYER->x8 > vortex->x8) {\n        return;\n    }\n    if (PLAYER->xD0 != 11) {\n        return;\n    }\n    speed = (s32)(pullRadius - dist);\n    speed *= 20;\n    speed = (gCamSpeedScale[0] * speed) / 600;\n    if (vortexCaptureRadius <= dist) {\n        PLAYER->x10 = approachAngle(angle + 0x8000, PLAYER->x10, gCamSpeedScale[0] << 9);\n        PLAYER->xC += (speed * coss(angle - 0x8000)) >> 15;\n        PLAYER->x4 += (speed * sins(angle - 0x8000)) >> 15;\n        return;\n    }\n    if (dist < vortexCaptureRadius) {\n        sendCommand(0xC, 0x80);\n        sendCommand(8, 0x57);\n        for (i = 0; i < 4; i++) {\n            spawnSparkle(vortex);\n        }\n        PLAYER->x8 = D_800004F4;\n        if (vortex->x70 == 3) {\n            PLAYER->x8 = D_800004F8;\n        }\n        PLAYER->xC = D_800004FC;\n        target = findActor(0x1021, 0);\n        while (target != 0) {\n            if (target->x70 == vortex->x70) {\n                PLAYER->x4 = target->x4;\n                break;\n            }\n            target = findActor(0x1021, target);\n        }\n        if (target != 0) {\n            D_800B3964[0]->x70 = target->x70;\n        }\n        PLAYER->x4C = 0.0f;\n        PLAYER->x50 = 0.0f;\n        PLAYER->x54 = D_80000500;\n        PLAYER->x10 = 0x8000;\n        syncActorPrevPos(PLAYER, target);\n        PLAYER->fn9C = updateFlungPlayer;\n        PLAYER->xAC = 0;\n        PLAYER->xB0 = 0;\n        PLAYER->xB4 = 0;\n        PLAYER->x64 = 300;\n        PLAYER->x50 = D_80000504;\n        actorSetAnim(PLAYER, 0x10, 0x100);\n    }\n}",
   "179772f2f5905c5ae2284d73a899ae7a144d708b4f10983858d96ba30c3f0f8d": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nextern M2C_UNK func_800184D0;\n\nvoid func_8000EF08(void *arg0) {\n    M2C_FIELD(arg0, s32 *, 0) = 0x129;\n    if (M2C_FIELD(arg0, s32 *, 0xC0) & 2) {\n        M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800184D0;\n        M2C_FIELD(arg0, s32 *, 0x7C) = 0;\n        M2C_FIELD(arg0, s32 *, 0x64) = 0x64;\n    }\n}\n",
   "8ab45e73f40c453b18ac7c2d736131907962ce55e612e85b1386438910e1197b": "s16 coss(u16);\ns16 sins(u16);\nextern s32 D_800B9EA4;\nextern s32 D_800B9ECC;\n\ntypedef struct Obj {\n    s32 pad0;\n    f32 x4;\n    f32 x8;\n    f32 xC;\n    u8 pad10[0x5C - 0x10];\n    s32 t5C;\n    u8 pad60[0x7C - 0x60];\n    s32 r7C;\n    u8 pad80[0xA0 - 0x80];\n    void (*cbA0)(struct Obj *);\n} Obj;\n\nvoid func_8000EF3C(Obj *obj) {\n    obj->x8 += 50.0f;\n    obj->xC += (obj->r7C * coss(D_800B9EA4 * 500 & 0xFFFC)) >> 15;\n    obj->x4 += (obj->r7C * sins(D_800B9EA4 * 500 & 0xFFFC)) >> 15;\n    obj->r7C += 10;\n    obj->t5C -= D_800B9ECC;\n    if (obj->t5C <= 0) {\n        obj->cbA0(obj);\n    }\n}\n",
   "8b99b6f9fe6bd651c30937d47cf6117fa406cf4a89ae24ad69836d01508c6f18": "s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);\nvoid *func_8002E374(s32);\nextern s32 func_8000EF3C;\n#define F(e, t, o) (*(t)((s8 *)(e) + (o)))\nvoid *func_8000F044(void *arg0) {\n    void *temp_v0;\n\n    temp_v0 = func_8002E374(0x98);\n    F(temp_v0, s32 *, 0x64) = 0x12C;\n    F(temp_v0, f32 *, 4) = F(arg0, f32 *, 4);\n    F(temp_v0, f32 *, 8) = F(arg0, f32 *, 8);\n    F(temp_v0, f32 *, 0xC) = F(arg0, f32 *, 0xC);\n    F(temp_v0, s32 *, 0x68) = 0xD;\n    F(temp_v0, s32 **, 0x9C) = &func_8000EF3C;\n    F(temp_v0, s32 *, 0x58) = func_800221C0(1, 1, 1, 3, 0, 1, 1, 0);\n    return temp_v0;\n}\n",

@@ -13,7 +13,7 @@ typedef struct {
     s32 y;
     s32 z;
 } Pt;
-void func_80015C30(Obj *);
+void spawnSparkle(Obj *);
 s32 spawnEffectObj(s32, s32, s32, s32);
 f32 getCameraTargetDist(Obj *, f32, s32 *);
 void actorSetAnim(Obj *, s32, s32);
@@ -47,7 +47,7 @@ void func_800721A8(Obj *o) {
             gCameraTarget->z = n->z;
             gCameraTarget->f9C = animStepKeys;
             for (i = 0; i < 4; i++) {
-                func_80015C30(o);
+                spawnSparkle(o);
             }
         }
     }

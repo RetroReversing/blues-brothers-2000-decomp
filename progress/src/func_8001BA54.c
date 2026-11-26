@@ -1,5 +1,5 @@
 s32 func_80013654(void *);
-s32 func_80015C30(void *);
+s32 spawnSparkle(void *);
 s32 func_8001B990(s32, s32);
 s32 sendCommand(s32, s32);
 f32 getCameraTargetDist(void *, f32, s32);
@@ -7,7 +7,7 @@ void *func_80051384(void *);
 extern void *gCameraTarget;
 extern s32 D_800BD100;
 extern s32 func_8000EA34;
-extern s32 func_8000EC24;
+extern s32 updateVortexCapture;
 extern s32 func_800721A8;
 inline static f32 inline_fn(void *arg0)
 {
@@ -52,11 +52,11 @@ void func_8001BA54(void *arg0)
     *((s32 *) (((char *) temp_v0) + 0)) = 0x101;
     do
     {
-      func_80015C30(arg0);
+      spawnSparkle(arg0);
       var_s0 += 1;
     }
     while (var_s0 < 4);
-    *((s32 **) (((char *) arg0) + 0x9C)) = &func_8000EC24;
+    *((s32 **) (((char *) arg0) + 0x9C)) = &updateVortexCapture;
     *((s32 *) (((char *) arg0) + 0x68)) = -1;
   }
 

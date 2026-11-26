@@ -40,7 +40,7 @@ extern s32 D_800BD090[];
 extern f32 D_80000864;
 extern f32 D_80000868;
 
-Obj *func_80015C30(Obj *arg0) {
+Obj *spawnSparkle(Obj *arg0) {
     Obj *o;
     u16 a;
 

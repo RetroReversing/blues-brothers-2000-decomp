@@ -257,10 +257,10 @@
 <g><title>func_8000EB34: {&#x27;matched&#x27;: 1}</title>
 <rect x="810.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8000EB94: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateFlungPlayer: {&#x27;matched&#x27;: 1}</title>
 <rect x="20.000" y="170" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8000EC24: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateVortexCapture: {&#x27;matched&#x27;: 1}</title>
 <rect x="30.000" y="170" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8000EF08: {&#x27;matched&#x27;: 1}</title>
@@ -587,7 +587,7 @@
 <g><title>func_80015B34: {&#x27;matched&#x27;: 1}</title>
 <rect x="310.000" y="180" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80015C30: {&#x27;matched&#x27;: 1}</title>
+<g><title>spawnSparkle: {&#x27;matched&#x27;: 1}</title>
 <rect x="320.000" y="180" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80015E24: {&#x27;matched&#x27;: 1}</title>

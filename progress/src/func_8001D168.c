@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80013654();
-s32 func_80015C30();
+s32 spawnSparkle();
 s32 func_80017F78();
 s32 func_8001B990();
 s32 packDrawFlags();
@@ -34,7 +34,7 @@ void func_8001D168(void *arg0) {
         var_s0 = 0;
         M2C_FIELD(arg0, s32 *, 0x68) = 0xE;
         do {
-            func_80015C30(arg0);
+            spawnSparkle(arg0);
             var_s0 += 1;
         } while (var_s0 < 4);
         temp_v0 = func_800510F4(arg0);

@@ -16,7 +16,7 @@ typedef struct {
   unsigned char pad_A0[16];
   float field_B0;
 } R;
-void func_8000EB94(R *arg0) {
+void updateFlungPlayer(R *arg0) {
   f32 k = -1600.0f;
   animStepKeys();
   arg0->field_10 = 0;

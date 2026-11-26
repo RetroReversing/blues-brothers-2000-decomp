@@ -5180,7 +5180,7 @@
   "score_after": 360
  },
  {
-  "function": "func_8000EB94",
+  "function": "updateFlungPlayer",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap7 compiler sweep: best trial 330 under sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32",
   "by": "manual-19a7531dd5c741fb",
   "created_at": 1795550738.542882,

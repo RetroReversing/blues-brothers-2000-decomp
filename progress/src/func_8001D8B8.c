@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80013784(void *);                          /* extern */
-M2C_UNK func_80015C30(void *);                      /* extern */
+M2C_UNK spawnSparkle(void *);                      /* extern */
 s32 func_8001B990(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 f32 getCameraTargetDist(void *, f32, s32);                    /* extern */
@@ -42,7 +42,7 @@ void func_8001D8B8(void *arg0) {
             var_s0 = 0;
             M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) + 1);
             do {
-                func_80015C30(arg0);
+                spawnSparkle(arg0);
                 var_s0 += 1;
             } while (var_s0 < 4);
         }
