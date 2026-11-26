@@ -40,7 +40,7 @@ void func_8006DBB8(void);
 /* Main menu input: moves the cursor with up/down, clamps it to the item count, and
    on A runs the selected item (start, options, and so on) by setting the next state
    and its draw/update callbacks. Left/right and Start also adjust the menu value. */
-void updateMainMenu(Obj *menu) {
+/* Main menu input: moves the cursor up and down, clamps it to the item count, and on A runs the selected item by setting the next state and its update/draw callbacks. Left/right change the value at unk7C; Start resets to the default state. */ void updateMainMenu(Obj *menu) {
     s32 selectionMoved;
 
     selectionMoved = func_8003D654();
