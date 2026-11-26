@@ -46,53 +46,53 @@ extern char D_8014AA98[];
 #define gMode (*(s32 *)D_8014AA98)
 extern f32 D_80008180;
 
-/* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ s32 runMessageBox(Obj *arg0, Msg *arg1) {
+/* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ /* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ s32 runMessageBox(Obj *arg0, Msg *arg1) {
     u8 *text;
-    s32 len;
-    s32 pad;
+    s32 textLen;
+    s32 indent;
     Obj *textObj;
-    s32 n;
-    s32 x;
-    s32 m;
+    s32 centerPad;
+    s32 xPos;
+    s32 boxMode;
 
     text = arg1->text;
-    len = strlen(text);
+    textLen = strlen(text);
     if (arg0->f7C == 0) {
         arg0->f7C = 1;
-        m = arg1->mode;
-        arg0->f84 = m;
-        if (m == 1) {
-            gMode = m;
+        boxMode = arg1->mode;
+        arg0->f84 = boxMode;
+        if (boxMode == 1) {
+            gMode = boxMode;
         } else {
             gMode = 0;
         }
-        pad = 0;
+        indent = 0;
         arg0->f68 = 0xE;
-        arg0->f64 = len * 8;
+        arg0->f64 = textLen * 8;
         arg0->f88 = text;
         arg0->f98 = drawMessageText;
         if (gFlag != 0) {
-            pad = 20;
+            indent = 20;
         }
         textObj = func_8002E374(0x87);
         textObj->f28 = 0;
         if (gMode == 0) {
-            func_800271A8(0x3E, pad / 20 + 1);
+            func_800271A8(0x3E, indent / 20 + 1);
         } else {
-            func_800271A8(0x22, 11 - pad / 20);
+            func_800271A8(0x22, 11 - indent / 20);
         }
-        n = func_800291AC(text) / 15;
-        n -= 4;
-        if (n < 0) {
-            n = 0;
+        centerPad = func_800291AC(text) / 15;
+        centerPad -= 4;
+        if (centerPad < 0) {
+            centerPad = 0;
         }
-        n *= 20;
+        centerPad *= 20;
         if (gMode != 0) {
-            textObj->f2C = pad - 0x6A;
+            textObj->f2C = indent - 0x6A;
         } else {
-            x = 0x2A - n;
-            x -= pad;
-            textObj->f2C = x;
+            xPos = 0x2A - centerPad;
+            xPos -= indent;
+            textObj->f2C = xPos;
         }
         textObj->f34 = 0;
         textObj->f38 = 0;
@@ -121,7 +121,7 @@ extern f32 D_80008180;
             return 0;
         }
     }
-    if (arg0->f64 < len * 14 - 50 && (gPad & 0x8000)) {
+    if (arg0->f64 < textLen * 14 - 50 && (gPad & 0x8000)) {
         sendCommand(0xC, 0x80);
         sendCommand(8, 0xA3);
         arg0->f64 = -1;
