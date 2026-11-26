@@ -17,7 +17,7 @@ void *spawnEffectObj(M2C_UNK, s32, s32, s32);        /* extern */
 s32 func_80023D58(M2C_UNK);                         /* extern */
 s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 extern M2C_UNK func_80012078;
-extern M2C_UNK func_8002F8D0;
+extern M2C_UNK drawImageSprite;
 
 void *func_80012110(void *arg0) {
     f32 temp_fv0;
@@ -25,7 +25,7 @@ void *func_80012110(void *arg0) {
 
     temp_v0 = spawnEffectObj(1, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
     M2C_FIELD(temp_v0, s32 *, 0x64) = 0xC8;
-    M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_8002F8D0;
+    M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &drawImageSprite;
     M2C_FIELD(temp_v0, s32 *, 0x60) = func_80023D58(0x188);
     M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80012078;
     M2C_FIELD(temp_v0, s32 *, 0x7C) = 1;

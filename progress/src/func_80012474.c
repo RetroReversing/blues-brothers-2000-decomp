@@ -30,7 +30,7 @@ s32 randomRange(s32, s32);
 s32 func_8002D1A0(void);
 s16 func_80095F60(u16);
 s16 func_800944B0(u16);
-void func_8002F8D0(void);
+void drawImageSprite(void);
 void func_80012418(void);
 extern s32 D_800BCFB4;
 extern ObjU *gCameraTarget;
@@ -39,7 +39,7 @@ ObjU *func_80012474(s32 arg0, s32 arg1, s32 arg2) {
     ObjU *o;
 
     o = spawnEffectObj(0x101, arg0, arg1, arg2);
-    o->f98 = func_8002F8D0;
+    o->f98 = drawImageSprite;
     o->f9C = func_80012418;
     o->f70 = 90;
     o->f78 = 0xFFFFFF;

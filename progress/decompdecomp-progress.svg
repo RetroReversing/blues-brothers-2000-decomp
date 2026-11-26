@@ -1103,7 +1103,7 @@
 <g><title>func_8001EBF4: {&#x27;attempt&#x27;: 1}</title>
 <rect x="430.000" y="200" width="8.000" height="8" fill="#bf8700"/>
 </g>
-<g><title>func_8001EC90: {&#x27;matched&#x27;: 1}</title>
+<g><title>buildMeshDisplayList: {&#x27;matched&#x27;: 1}</title>
 <rect x="440.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>isObjectInRange: {&#x27;matched&#x27;: 1}</title>
@@ -1949,7 +1949,7 @@
 <g><title>func_8002F604: {&#x27;matched&#x27;: 1}</title>
 <rect x="50.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002F8D0: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawImageSprite: {&#x27;matched&#x27;: 1}</title>
 <rect x="60.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>drawQuadSprite: {&#x27;matched&#x27;: 1}</title>

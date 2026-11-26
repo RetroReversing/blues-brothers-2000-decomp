@@ -17,13 +17,13 @@ s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* ex
 void *spawnEffectObj(M2C_UNK, s32, s32, s32);        /* extern */
 extern s32 D_800BD1D4;
 extern M2C_UNK func_80015E24;
-extern M2C_UNK func_8002F8D0;
+extern M2C_UNK drawImageSprite;
 
 void *func_80015EAC(void *arg0) {
     void *temp_v0;
 
     temp_v0 = spawnEffectObj(0x101, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
-    M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_8002F8D0;
+    M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &drawImageSprite;
     M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80015E24;
     M2C_FIELD(temp_v0, s32 *, 0x70) = 0x1E;
     M2C_FIELD_PTR(temp_v0, s32 *, 0x78) = 0xFFFFFF;

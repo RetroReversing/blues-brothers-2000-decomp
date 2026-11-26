@@ -47,7 +47,7 @@ extern s32 D_800BD090[];
 void func_8001261C(void);
 extern u8 func_80023078[];
 void func_80023848(void);
-void func_8002F8D0(void);
+void drawImageSprite(void);
 
 Obj *func_80012718(Obj *arg0) {
     Obj *obj;
@@ -76,7 +76,7 @@ Obj *func_80012718(Obj *arg0) {
     obj->unkD8 = tmp;
     obj->unk5C = 0xFF;
     obj->unk64 = 200;
-    obj->unk98 = func_8002F8D0;
+    obj->unk98 = drawImageSprite;
     obj->unk60 = D_800BD090[0];
     obj->unk9C = func_8001261C;
     obj->unk70 = 30;

@@ -41,7 +41,7 @@ typedef struct {
     _g->w0 = _SHIFTL(0xDF, 24, 8); \
     _g->w1 = 0; }
 
-Gfx *func_8001EC90(s16 *cmd, Vtx *vtx, Gfx *gfx) {
+Gfx *buildMeshDisplayList(s16 *cmd, Vtx *vtx, Gfx *gfx) {
     u8 alpha = 0x80;
     s32 count = 0;
     s32 n, i;

@@ -9,14 +9,14 @@ extern s32 randomRange(s32, s32);
 extern void syncActorPrevPos(Obj *);
 extern s32 D_800BCFAC;
 extern void func_8001292C(void);
-extern void func_8002F8D0(void);
+extern void drawImageSprite(void);
 
 Obj *func_80012B3C(Pos *arg0) {
     Obj *o;
 
     o = spawnEffectObj(1, (s32) arg0->x, (s32) arg0->y, (s32) arg0->z);
     o->f64 = 0xC8;
-    o->f98 = func_8002F8D0;
+    o->f98 = drawImageSprite;
     o->f9C = func_8001292C;
     o->f78 = 0xFFFFFF;
     o->f60 = D_800BCFAC;

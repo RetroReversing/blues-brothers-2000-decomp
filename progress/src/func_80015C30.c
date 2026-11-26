@@ -35,7 +35,7 @@ Obj *spawnEffectObj(s32, s32, s32, s32);
 s32 randomRange(s32, s32);
 s32 func_8002D1A0(void);
 void func_80015B34();
-void func_8002F8D0();
+void drawImageSprite();
 extern s32 D_800BD090[];
 extern f32 D_80000864;
 extern f32 D_80000868;
@@ -46,7 +46,7 @@ Obj *func_80015C30(Obj *arg0) {
 
     o = spawnEffectObj(0x101, arg0->x, arg0->y, arg0->z);
     o->f64 = 200;
-    o->f98 = func_8002F8D0;
+    o->f98 = drawImageSprite;
     o->f60 = D_800BD090[0];
     o->f9C = func_80015B34;
     o->f70 = 30;

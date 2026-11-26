@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700324.209216,
- "revision": 5633,
+ "saved_at": 1795700343.142793,
+ "revision": 5635,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16126,12 +16126,11 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "197840:2147678416": {
    "vram": 2147678416,
-   "function": "func_8002F8D0",
+   "function": "drawImageSprite",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -19772,7 +19771,7 @@
    "best_score": 200,
    "best_by": "autopilot"
   },
-  "func_8001EC90": {
+  "buildMeshDisplayList": {
    "vram": 2147609744,
    "matched_by": "manual-807f4e416fb04e7d",
    "readable": false
@@ -21197,10 +21196,10 @@
    "matched_by": "manual-c49166d3e00442aa",
    "readable": false
   },
-  "func_8002F8D0": {
+  "drawImageSprite": {
    "vram": 2147678416,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "drawQuadSprite": {
    "vram": 2147679168,
@@ -29009,7 +29008,7 @@
   "func_8002E944": "local_source_158913790591",
   "drawBillboardSprite": "local_source_158913790597",
   "func_8002F604": "local_source_158913790598",
-  "func_8002F8D0": "local_source_158913790599",
+  "drawImageSprite": "local_source_158913790599",
   "drawQuadSprite": "local_source_158913790600",
   "drawRingEffect": "local_source_158913790603",
   "func_80030B90": "local_source_158913790605",
@@ -31883,7 +31882,7 @@
    "status": "open"
   },
   {
-   "name": "func_8001EC90",
+   "name": "buildMeshDisplayList",
    "vram": 2147609744,
    "size": 752,
    "status": "open"
@@ -33599,7 +33598,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002F8D0",
+   "name": "drawImageSprite",
    "vram": 2147678416,
    "size": 752,
    "status": "open"
@@ -43255,6 +43254,12 @@
    "kind": "func"
   },
   {
+   "name": "buildMeshDisplayList",
+   "address": 2147609744,
+   "size": 752,
+   "kind": "func"
+  },
+  {
    "name": "isObjectInRange",
    "address": 2147610496,
    "size": 300,
@@ -43558,6 +43563,12 @@
    "name": "drawBillboardSprite",
    "address": 2147676864,
    "size": 836,
+   "kind": "func"
+  },
+  {
+   "name": "drawImageSprite",
+   "address": 2147678416,
+   "size": 752,
    "kind": "func"
   },
   {

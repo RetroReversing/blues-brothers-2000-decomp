@@ -18,7 +18,7 @@ void *func_800239E0();                              /* extern */
 s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK syncActorPrevPos(void *);                      /* extern */
 extern s32 D_800BD1E0;
-extern M2C_UNK func_8002F8D0;
+extern M2C_UNK drawImageSprite;
 extern M2C_UNK func_80085528;
 
 void *func_80085650(void *arg0) {
@@ -30,7 +30,7 @@ void *func_80085650(void *arg0) {
     }
     {
         var_s0 = spawnEffectObj(1, 0, 0, 0);
-        M2C_FIELD(var_s0, M2C_UNK **, 0x98) = &func_8002F8D0;
+        M2C_FIELD(var_s0, M2C_UNK **, 0x98) = &drawImageSprite;
         M2C_FIELD(var_s0, s32 *, 0x60) = (s32) D_800BD1E0;
         M2C_FIELD(var_s0, M2C_UNK **, 0x9C) = &func_80085528;
         M2C_FIELD(var_s0, s32 *, 0x70) = randomRange(8, 0x1E);

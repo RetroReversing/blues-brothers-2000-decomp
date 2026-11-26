@@ -22,7 +22,7 @@ s16 sins(u16);                                      /* extern */
 extern s32 *gCameraTarget;
 extern s32 D_8014AB3C;
 extern s32 D_8014AB44;
-extern M2C_UNK func_8002F8D0;
+extern M2C_UNK drawImageSprite;
 extern M2C_UNK func_800677F8;
 typedef struct Obj {
     s32 id;
@@ -71,7 +71,7 @@ void *func_8006788C(Obj *arg0, s32 arg1) {
 
     o = spawnEffectObj(1, (s32) arg0->x, (s32) (arg0->y + 250.0f), (s32) arg0->z);
     o->f64 = 0x3E8;
-    o->f98 = &func_8002F8D0;
+    o->f98 = &drawImageSprite;
     p = (Src *) arg0->f8C;
     sp20[0] = (s32) p->x;
     sp20[1] = (s32) p->y;

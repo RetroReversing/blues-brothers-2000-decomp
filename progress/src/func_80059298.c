@@ -19,7 +19,7 @@ M2C_UNK func_8002D3E4(void *, M2C_UNK);             /* extern */
 M2C_UNK func_8003BF98(s32);                         /* extern */
 extern s32 gCameraTarget;
 extern s32 D_8014AAD0;
-extern M2C_UNK func_8002F8D0;
+extern M2C_UNK drawImageSprite;
 extern M2C_UNK func_8005923C;
 
 typedef struct { unsigned char pad_0[16]; int field_10; unsigned char pad_14[4]; int field_18; unsigned char pad_1C[60]; int field_58; int field_5C; int field_60; int field_64; int field_68; unsigned char pad_6C[4]; int field_70; int field_74; int field_78; int field_7C; } __repair_record_temp_v0;
@@ -27,7 +27,7 @@ void *func_80059298(void *arg0) {
     void *temp_v0;
 
     temp_v0 = spawnEffectObj(1, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
-    M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_8002F8D0;
+    M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &drawImageSprite;
     M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_8005923C;
     ((__repair_record_temp_v0*)temp_v0)->field_70 = 0x32;
     ((__repair_record_temp_v0*)temp_v0)->field_78 = 0xFFFFFF;
