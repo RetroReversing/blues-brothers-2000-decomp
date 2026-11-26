@@ -45,7 +45,7 @@ typedef struct {
    0x7013 load n vertices, 0x7003 triangle, 0x7004 quad, 0x7012 skip one word,
    0x7000 end. Loaded vertices get the stream's alpha. Returns the next free
    display list slot. */
-Gfx *buildMeshDisplayList(s16 *cmdStream, Vtx *vtxBuf, Gfx *dl) {
+/* Turns a compact mesh command stream into RDP display list commands. Opcodes: 0x7013 load n vertices, 0x7003 triangle, 0x7004 quad, 0x7012 skip one word, 0x7000 end. Loaded vertices get alpha 0x80. Returns the next free display list slot. */ Gfx *buildMeshDisplayList(s16 *cmdStream, Vtx *vtxBuf, Gfx *dl) {
     u8 vtxAlpha = 0x80;
     s32 vtxCount = 0;
     s32 vtxN, i;
