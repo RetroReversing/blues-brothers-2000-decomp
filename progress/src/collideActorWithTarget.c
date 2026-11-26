@@ -24,7 +24,7 @@ extern s32 D_80140240;
  * a close hit on a flagged actor (kind 0xF7/0xF8) launches the target upward with a
  * bounce animation and sound. Otherwise the target is pushed out to a 400-unit radius
  * around the actor's offset point. */
-/* Collision between an actor and the camera target. If the target is above the actor and close to a flagged actor (state 0xF7/0xF8), it bounces the target upward and plays the bounce animation. Otherwise it pushes the target out to a 400-unit radius around the actor. */ s32 collideActorWithTarget(Obj67C6C *actor) {
+s32 collideActorWithTarget(Obj67C6C *actor) {
     s32 dy;
     s32 x;
     s32 z;
