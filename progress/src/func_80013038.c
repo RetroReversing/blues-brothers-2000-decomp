@@ -18,7 +18,7 @@ M2C_UNK func_8002D604(void *);                      /* extern */
 void *func_8004EB60(void *);                        /* extern */
 extern s32 D_800BD23C;
 extern M2C_UNK func_80012FB8;
-extern M2C_UNK func_8001F26C;
+extern M2C_UNK drawActorModel;
 
 void func_80013038(void *arg0) {
     void *temp_v0;
@@ -27,7 +27,7 @@ void func_80013038(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0xE4) = func_80023E3C(0x90);
     M2C_FIELD(arg0, s32 *, 0x58) = packDrawFlags(1, 1, 0, 2, 0, 1, 1, 0);
     M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;
-    M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_8001F26C;
+    M2C_FIELD(arg0, M2C_UNK **, 0x98) = &drawActorModel;
     M2C_FIELD(arg0, s32 *, 0x94) = 0x1B58;
     func_8002D604(arg0);
     func_8002D604(arg0);

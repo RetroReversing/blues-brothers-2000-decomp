@@ -16,7 +16,7 @@ s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 extern s32 D_800B7B0C;
 extern s32 D_800B81D0;
 extern s32 D_8014A924;
-void func_8001F26C(void);
+void drawActorModel(void);
 void func_8001F9A8(void);
 void func_8001FCF0(void);
 extern u8 func_80023078[];
@@ -26,7 +26,7 @@ void func_8004E8B0(Obj *arg0, u32 arg1) {
     switch (arg1) {
     case 0:
         arg0->unk58 = packDrawFlags(0, 1, 0, 3, D_800B7B0C, 0, 1, 0);
-        arg0->unk98 = func_8001F26C;
+        arg0->unk98 = drawActorModel;
         arg0->unk68 = 2;
         arg0->unk5C = 0xFF;
         break;

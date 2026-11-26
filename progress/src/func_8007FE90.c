@@ -38,7 +38,7 @@ extern char D_80009700[];
 extern Obj *gCameraRig;
 extern Obj *D_800B3964;
 extern s32 D_80107040;
-void func_8001F26C(void);
+void drawActorModel(void);
 
 void func_8007FE90(Obj *arg0) {
     Obj *other;
@@ -46,7 +46,7 @@ void func_8007FE90(Obj *arg0) {
     f32 dx, dy, dz;
 
     if (arg0->unk7C == 0) {
-        arg0->unk98 = func_8001F26C;
+        arg0->unk98 = drawActorModel;
         src = gCameraRig;
         arg0->x = src->x;
         arg0->y = src->y;

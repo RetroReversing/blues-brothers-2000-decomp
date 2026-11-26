@@ -57,7 +57,7 @@ extern s32 gObjTriCounts[];
 extern u8 D_80177E18[];
 #define GP (*(GfxW **)D_80177E18)
 
-s32 func_8001F26C(Obj *arg0) {
+s32 drawActorModel(Obj *arg0) {
     f32 m1[10];
     f32 m2[10];
     f32 f;

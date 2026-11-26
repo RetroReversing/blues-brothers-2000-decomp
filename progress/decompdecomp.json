@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700051.659904,
- "revision": 5605,
+ "saved_at": 1795700066.3577092,
+ "revision": 5607,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15108,7 +15108,7 @@
   },
   "130668:2147611244": {
    "vram": 2147611244,
-   "function": "func_8001F26C",
+   "function": "drawActorModel",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "108076:2147588652": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "drawHudCounters",
-   "vram": 2147588652
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_B780": "common_main_text_B780.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -19813,7 +19796,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8001F26C": {
+  "drawActorModel": {
    "vram": 2147611244,
    "matched_by": "manual-aeeb5be5af9d41ed",
    "readable": false
@@ -24991,7 +24974,7 @@
   "updateMovingPlatform": {
    "vram": 2147954084,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_800730E0": {
    "vram": 2147954912,
@@ -28933,7 +28916,7 @@
   "func_8001EB18": "local_source_158913790314",
   "func_8001EF80": "local_source_158913790318",
   "func_8001F0AC": "local_source_158913790319",
-  "func_8001F26C": "local_source_158913790322",
+  "drawActorModel": "local_source_158913790322",
   "func_8001F5A4": "local_source_158913790323",
   "func_8001F9A8": "local_source_158913790325",
   "func_8001FB54": "local_source_158913790326",
@@ -31929,7 +31912,7 @@
    "status": "open"
   },
   {
-   "name": "func_8001F26C",
+   "name": "drawActorModel",
    "vram": 2147611244,
    "size": 824,
    "status": "open"
@@ -43253,6 +43236,12 @@
    "kind": "func"
   },
   {
+   "name": "drawActorModel",
+   "address": 2147611244,
+   "size": 824,
+   "kind": "func"
+  },
+  {
    "name": "updateCameraView",
    "address": 2147614564,
    "size": 396,
@@ -47086,7 +47075,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Obj142A0 *",
+   "type": "Obj72DA4 *",
    "source": "match"
   },
   {
@@ -47096,12 +47085,12 @@
   },
   {
    "address": 2148485632,
-   "type": "Bound[]",
+   "type": "Vec3i[]",
    "source": "match"
   },
   {
    "address": 2148491656,
-   "type": "Bound[]",
+   "type": "Vec3i[]",
    "source": "match"
   },
   {

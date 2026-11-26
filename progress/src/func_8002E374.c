@@ -21,7 +21,7 @@ Def *getImageAsset(s32);
 s32 func_80023E3C(s32);
 extern s32 D_800B7B0C;
 extern s32 D_800FB038[];
-void func_8001F26C(void);
+void drawActorModel(void);
 
 Obj *func_8002E374(s32 id) {
     Def *def;
@@ -38,6 +38,6 @@ Obj *func_8002E374(s32 id) {
         o->f58 = packDrawFlags(0, 1, 0, 3, D_800B7B0C, 0, 1, 0);
     }
     o->f94 = 30000;
-    o->f98 = func_8001F26C;
+    o->f98 = drawActorModel;
     return o;
 }

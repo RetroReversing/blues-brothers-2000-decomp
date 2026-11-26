@@ -35,7 +35,7 @@ void func_8007FE5C(Obj800A8 *);
 extern Obj800A8 *D_800B3964;
 extern s32 gCamSpeedScale;
 extern Obj800A8 *gCameraTarget;
-void func_8001F26C();
+void drawActorModel();
 
 void func_800800A8(Obj800A8 *arg0) {
     s32 t;
@@ -43,7 +43,7 @@ void func_800800A8(Obj800A8 *arg0) {
         arg0->x = gCameraTarget->x;
         arg0->y = gCameraTarget->y;
         arg0->z = gCameraTarget->z;
-        arg0->f98 = func_8001F26C;
+        arg0->f98 = drawActorModel;
         arg0->f14 = randomRange(-0x7D0, 0x7D0) + 0x2AF8;
         arg0->f10 = func_8002D1A0();
         func_8002D4E0(arg0, 0x3E8);

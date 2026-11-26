@@ -33,84 +33,84 @@ extern Obj72DA4 *gCameraTarget;
 extern Vec3i gPlatformMaxOffsets[];
 extern Vec3i gPlatformMinOffsets[];
 
-void updateMovingPlatform(Obj72DA4 *arg0) {
-    f32 sp10[10];
-    f32 sp38[10];
-    Vec3 sp60;
-    Vec3 sp70;
-    Vec3 sp80;
-    f32 a;
-    f32 d;
-    s32 n;
-    s32 i;
-    Vec3i *p;
-    Vec3i *q;
+/* Per-frame update for a moving platform: rotates its bounds by its angle, and if the camera target is standing on it, carries the target along. */ void updateMovingPlatform(Obj72DA4 *platform) {
+    f32 rotMtx[10];
+    f32 baseMtx[10];
+    Vec3 boundMin;
+    Vec3 boundMax;
+    Vec3 tmpVec;
+    f32 rad;
+    f32 delta;
+    s32 outside;
+    s32 offIdx;
+    Vec3i *minOff;
+    Vec3i *maxOff;
 
-    if (tickActorTimer(arg0) != 0) {
-        arg0->unk64 = randomRange(100, 500);
-        func_8002ADFC(D_800B8398[arg0->unk78], 3000, arg0);
+    if (tickActorTimer(platform) != 0) {
+        platform->unk64 = randomRange(100, 500);
+        func_8002ADFC(D_800B8398[platform->unk78], 3000, platform);
     }
-    if (func_80050144(arg0, arg0->unk70) != 0) {
-        if (arg0->parent != NULL) {
-            arg0->parent->unk80--;
+    if (func_80050144(platform, platform->unk70) != 0) {
+        if (platform->parent != NULL) {
+            platform->parent->unk80--;
         }
-        arg0->update(arg0);
+        platform->update(platform);
     }
-    mtxIdentity3(sp38);
-    a = arg0->angle;
-    a *= 6.283185307179586;
-    a *= (1.0 / 65536.0);
-    func_8002DB6C(sp10, sp38, a);
-    i = arg0->unkB8;
-    p = &gPlatformMinOffsets[i];
-    sp60.x = p->x;
-    sp60.y = p->y;
-    sp60.z = p->z;
-    q = &gPlatformMaxOffsets[i];
-    sp70.x = q->x;
-    sp70.y = q->y;
-    sp70.z = q->z;
-    mtxTransformVec3(&sp80, sp10, &sp60, i);
-    sp60.x = sp80.x;
-    sp60.y = sp80.y;
-    sp60.z = sp80.z;
-    mtxTransformVec3(&sp80, sp10, &sp70);
-    sp70.x = sp80.x;
-    sp70.y = sp80.y;
-    sp70.z = sp80.z;
-    if (sp70.x < sp60.x) {
-        func_8002DAC8(&sp70.x, &sp60.x);
+    mtxIdentity3(baseMtx);
+    rad = platform->angle;
+    rad *= 6.283185307179586;
+    rad *= (1.0 / 65536.0);
+    func_8002DB6C(rotMtx, baseMtx, rad);
+    offIdx = platform->unkB8;
+    minOff = &gPlatformMinOffsets[offIdx];
+    boundMin.x = minOff->x;
+    boundMin.y = minOff->y;
+    boundMin.z = minOff->z;
+    maxOff = &gPlatformMaxOffsets[offIdx];
+    boundMax.x = maxOff->x;
+    boundMax.y = maxOff->y;
+    boundMax.z = maxOff->z;
+    mtxTransformVec3(&tmpVec, rotMtx, &boundMin, offIdx);
+    boundMin.x = tmpVec.x;
+    boundMin.y = tmpVec.y;
+    boundMin.z = tmpVec.z;
+    mtxTransformVec3(&tmpVec, rotMtx, &boundMax);
+    boundMax.x = tmpVec.x;
+    boundMax.y = tmpVec.y;
+    boundMax.z = tmpVec.z;
+    if (boundMax.x < boundMin.x) {
+        func_8002DAC8(&boundMax.x, &boundMin.x);
     }
-    if (sp70.y < sp60.y) {
-        func_8002DAC8(&sp70.y, &sp60.y);
+    if (boundMax.y < boundMin.y) {
+        func_8002DAC8(&boundMax.y, &boundMin.y);
     }
-    if (sp70.z < sp60.z) {
-        func_8002DAC8(&sp70.z, &sp60.z);
+    if (boundMax.z < boundMin.z) {
+        func_8002DAC8(&boundMax.z, &boundMin.z);
     }
-    d = gCameraTarget->x - arg0->x;
-    n = 0;
-    if (d > 0.0f) {
-        if (sp70.x < d) {
-            n = 1;
-        }
-    }
-    if (d <= 0.0f) {
-        if (d < sp60.x) {
-            n++;
+    delta = gCameraTarget->x - platform->x;
+    outside = 0;
+    if (delta > 0.0f) {
+        if (boundMax.x < delta) {
+            outside = 1;
         }
     }
-    d = gCameraTarget->z - arg0->z;
-    if (d > 0.0f) {
-        if (sp70.z < d) {
-            n++;
+    if (delta <= 0.0f) {
+        if (delta < boundMin.x) {
+            outside++;
         }
     }
-    if (d <= 0.0f) {
-        if (d < sp60.z) {
-            n++;
+    delta = gCameraTarget->z - platform->z;
+    if (delta > 0.0f) {
+        if (boundMax.z < delta) {
+            outside++;
         }
     }
-    if (n == 0 && gCameraTarget->y <= arg0->y + (f32)gPlatformMinOffsets[arg0->unkB8].y && gCameraTarget->kind == 3) {
+    if (delta <= 0.0f) {
+        if (delta < boundMin.z) {
+            outside++;
+        }
+    }
+    if (outside == 0 && gCameraTarget->y <= platform->y + (f32)gPlatformMinOffsets[platform->unkB8].y && gCameraTarget->kind == 3) {
         func_8003B980(gCameraTarget);
     }
 }
