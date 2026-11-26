@@ -14,14 +14,14 @@ typedef s32 M2C_UNK32;
 
 M2C_UNK loadSlotAssetSet(s32, M2C_UNK);                /* extern */
 extern s32 D_80171994;
-extern M2C_UNK D_80171A70;
-extern M2C_UNK func_800877C8;
+extern M2C_UNK gBrotherActorTypes;
+extern M2C_UNK initBrothersScene;
 
 void func_8008776C(void *arg0) {
-    M2C_FIELD(&D_80171A70, s32 *, 0) = 0;
-    M2C_FIELD(&D_80171A70, s32 *, 4) = 4;
-    M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800877C8;
+    M2C_FIELD(&gBrotherActorTypes, s32 *, 0) = 0;
+    M2C_FIELD(&gBrotherActorTypes, s32 *, 4) = 4;
+    M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &initBrothersScene;
     D_80171994 = 0;
-    loadSlotAssetSet(M2C_FIELD(&D_80171A70, s32 *, 0), 0x17B);
-    loadSlotAssetSet(M2C_FIELD(&D_80171A70, s32 *, 4), 0x18B);
+    loadSlotAssetSet(M2C_FIELD(&gBrotherActorTypes, s32 *, 0), 0x17B);
+    loadSlotAssetSet(M2C_FIELD(&gBrotherActorTypes, s32 *, 4), 0x18B);
 }

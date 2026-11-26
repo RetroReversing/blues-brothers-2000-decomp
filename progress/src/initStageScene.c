@@ -70,7 +70,7 @@ extern s32 D_80171A40;
 extern s32 D_80171A4C;
 extern s32 D_80171A50;
 extern s32 D_80171A54;
-extern s32 D_80171A70[];
+extern s32 gBrotherActorTypes[];
 
 /* Sets up the stage: spawns the two brother actors and camera, and loads the stage's assets and sounds. */ void initStageScene(Obj86C98 *owner) {
     s32 stageIndex;
@@ -153,6 +153,6 @@ extern s32 D_80171A70[];
     owner->unk9C = func_80086B3C;
     D_801719A8->unk10 = -0x4000;
     D_801719AC->unk10 = 0x4000;
-    D_80171A70[0] = 0;
-    D_80171A70[1] = 0;
+    gBrotherActorTypes[0] = 0;
+    gBrotherActorTypes[1] = 0;
 }

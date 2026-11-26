@@ -18,7 +18,7 @@ typedef struct {
 } Unk800820E8;
 
 extern Unk801719E0 gComboSlots[];
-extern s32 D_80171A70[];
+extern s32 gBrotherActorTypes[];
 extern s32 D_80171A54;
 extern s32 D_800AB9B4;
 extern s32 gComboBeat;
@@ -50,7 +50,7 @@ void func_800820E8(Unk800820E8 *arg0) {
     s32 m36;
 
     scale = 1;
-    fp = getComboSequence(gComboSlots[arg0->unk70].unk0, D_80171A70[arg0->unk70], D_80171A54);
+    fp = getComboSequence(gComboSlots[arg0->unk70].unk0, gBrotherActorTypes[arg0->unk70], D_80171A54);
     x = arg0->unk4;
     y = arg0->unk8;
     w = 24;

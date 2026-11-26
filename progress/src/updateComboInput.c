@@ -25,7 +25,7 @@ extern s32 gPrevStickY[];
 extern s32 gComboBeat;
 extern ComboSlot gComboSlots[];
 extern s32 D_80171A54;
-extern s32 D_80171A70[];
+extern s32 gBrotherActorTypes[];
 
 /* Reads one player's stick and buttons and advances or resets their combo sequence. */
 void updateComboInput(s32 player) {
@@ -37,7 +37,7 @@ void updateComboInput(s32 player) {
     s32 i;
 
     phase = gComboBeat % 144;
-    seq = getComboSequence(gComboSlots[player].type, D_80171A70[player], D_80171A54);
+    seq = getComboSequence(gComboSlots[player].type, gBrotherActorTypes[player], D_80171A54);
     stickX = gStickX[player];
     stickY = gStickY[player];
     if (abs(stickX) * 2 > abs(stickY)) {

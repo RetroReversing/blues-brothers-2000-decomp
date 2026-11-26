@@ -19,20 +19,20 @@ M2C_UNK loadSlotAssetSet(s32, M2C_UNK);                /* extern */
 extern M2C_UNK D_800B9B90;
 extern s32 D_8013FB20;
 extern M2C_UNK D_80171988;
-extern M2C_UNK D_80171A70;
-extern M2C_UNK func_800877C8;
+extern M2C_UNK gBrotherActorTypes;
+extern M2C_UNK initBrothersScene;
 
 void func_800876A4(void *arg0) {
     M2C_UNK *__base_D_800B9B90;
     if (D_8013FB20 == 0xFF) {
-        M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800877C8;
+        M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &initBrothersScene;
         func_80023620(0x101, arg0);
         func_8002E7B8(0, 0);
         __base_D_800B9B90 = &D_800B9B90;
-        M2C_FIELD(&D_80171988, s32 *, 0) = func_80023D58(*(M2C_FIELD(&D_80171A70, s32 *, 0) + __base_D_800B9B90));
-        M2C_FIELD(&D_80171988, s32 *, 4) = func_80023D58(*(M2C_FIELD(&D_80171A70, s32 *, 4) + __base_D_800B9B90));
-        loadSlotAssetSet(M2C_FIELD(&D_80171A70, s32 *, 0), 0x17B);
-        loadSlotAssetSet(M2C_FIELD(&D_80171A70, s32 *, 4), 0x18B);
+        M2C_FIELD(&D_80171988, s32 *, 0) = func_80023D58(*(M2C_FIELD(&gBrotherActorTypes, s32 *, 0) + __base_D_800B9B90));
+        M2C_FIELD(&D_80171988, s32 *, 4) = func_80023D58(*(M2C_FIELD(&gBrotherActorTypes, s32 *, 4) + __base_D_800B9B90));
+        loadSlotAssetSet(M2C_FIELD(&gBrotherActorTypes, s32 *, 0), 0x17B);
+        loadSlotAssetSet(M2C_FIELD(&gBrotherActorTypes, s32 *, 4), 0x18B);
     }
 }
 

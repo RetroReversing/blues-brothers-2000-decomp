@@ -57,14 +57,14 @@ extern s32 D_80171A38;
 extern s32 D_80171A3C;
 extern s32 D_80171A40;
 extern s32 D_80171A4C;
-extern s32 D_80171A70[];
+extern s32 gBrotherActorTypes[];
 extern u8 func_80023078[];
 void updateFollowCamera(void);
 void func_8004318C(void);
 void func_80082EF8(void);
 
-void func_800877C8(Obj *arg0) {
-    Obj *o;
+/* Sets up the brothers' scene: starts the splines and draw lists, spawns the two brother actors and the camera target, and loads the scene's sound and animation assets. */ void initBrothersScene(Obj *sceneObj) {
+    Obj *actor;
 
     gCameraRig->unk70 = 1;
     initSpline(1, 0);
@@ -74,30 +74,30 @@ void func_800877C8(Obj *arg0) {
     initSpline(5, 1);
     func_80026C04(D_801719B0, 0, 0x14);
     func_80026C04(D_801719C8, 0, 0x14);
-    arg0->unk80 = 0;
+    sceneObj->unk80 = 0;
     D_80171A34 = 30;
-    o = func_80087FE4(D_80171A70[0]);
-    D_801719A8 = o;
-    o->unk10 = 0x8000;
-    o->unk9C = func_8004318C;
-    o->x = -200.0f;
-    o->y = 293.0f;
-    o->z = -567.0f;
-    arg0->unkA8 = o;
-    o->unk0 = 0x1023;
-    o->unkF8 |= 1;
-    actorSetAnim(o, 0x18A, 0x100);
-    o = func_80087FE4(D_80171A70[1]);
-    D_801719AC = o;
-    o->unk10 = 0x8000;
-    o->unk9C = func_8004318C;
-    o->x = 200.0f;
-    o->y = 293.0f;
-    o->z = -567.0f;
-    o->unk0 = 0x1023;
-    o->unkF8 |= 1;
-    o->unk58 = packDrawFlags(1, 1, 2, 3, 0, 0, 1, 0);
-    actorSetAnim(o, 0x19A, 0x100);
+    actor = func_80087FE4(gBrotherActorTypes[0]);
+    D_801719A8 = actor;
+    actor->unk10 = 0x8000;
+    actor->unk9C = func_8004318C;
+    actor->x = -200.0f;
+    actor->y = 293.0f;
+    actor->z = -567.0f;
+    sceneObj->unkA8 = actor;
+    actor->unk0 = 0x1023;
+    actor->unkF8 |= 1;
+    actorSetAnim(actor, 0x18A, 0x100);
+    actor = func_80087FE4(gBrotherActorTypes[1]);
+    D_801719AC = actor;
+    actor->unk10 = 0x8000;
+    actor->unk9C = func_8004318C;
+    actor->x = 200.0f;
+    actor->y = 293.0f;
+    actor->z = -567.0f;
+    actor->unk0 = 0x1023;
+    actor->unkF8 |= 1;
+    actor->unk58 = packDrawFlags(1, 1, 2, 3, 0, 0, 1, 0);
+    actorSetAnim(actor, 0x19A, 0x100);
     gCameraTarget->unk9C = func_80023078 + 8;
     gCameraTarget->unk68 = -1;
     gCameraTarget->x = 0.0f;
@@ -106,9 +106,9 @@ void func_800877C8(Obj *arg0) {
     gCameraTarget->unk50 = 0;
     gCameraTarget->unk90 = 1;
     gCameraTarget->unkF8 |= 0x40;
-    o = findActor(6, 0);
-    if (o != NULL) {
-        o->unk68 = -1;
+    actor = findActor(6, 0);
+    if (actor != NULL) {
+        actor->unk68 = -1;
     }
     D_80171A38 = func_80023D58(0x221);
     D_80171A3C = func_80023D58(0x222);
@@ -120,15 +120,15 @@ void func_800877C8(Obj *arg0) {
     D_801719DC = func_80023D58(0x1FE);
     D_80171A4C = func_80023D58(0x1FF);
     D_801719A0 = func_80023D58(0x1FC);
-    arg0->unk94 = 0x24;
+    sceneObj->unk94 = 0x24;
     func_8002A360(0xE, 0x83);
     func_80033BC0();
     gCameraRig->unk9C = updateFollowCamera;
     if (D_80171994 == 0) {
         func_80052A5C(0x56B);
-        func_80052B24(func_80023DBC(0xE81), D_80009BD8, arg0);
+        func_80052B24(func_80023DBC(0xE81), D_80009BD8, sceneObj);
     }
-    arg0->unk9C = func_80082EF8;
+    sceneObj->unk9C = func_80082EF8;
     D_800B5DD4 = 1;
     func_80023D58(0x21C);
     func_80023D58(0x21D);
