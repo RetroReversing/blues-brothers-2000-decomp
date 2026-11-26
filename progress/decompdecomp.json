@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700814.107265,
- "revision": 5676,
+ "saved_at": 1795700830.870791,
+ "revision": 5678,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16412,7 +16412,7 @@
   },
   "532148:2148012724": {
    "vram": 2148012724,
-   "function": "func_800812B4",
+   "function": "splineClosestT",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16909,8 +16909,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "274684:2147755260": {
    "vram": 2147755260,
@@ -26107,10 +26106,10 @@
    "matched_by": "manual-0bd1864b0391423e",
    "readable": false
   },
-  "func_800812B4": {
+  "splineClosestT": {
    "vram": 2148012724,
    "matched_by": "manual-d8adb74680f54138",
-   "readable": false
+   "readable": true
   },
   "initSpline": {
    "vram": 2148013448,
@@ -29502,7 +29501,7 @@
   "initSplineEndSegment": "local_source_158913791561",
   "initSplineSegment": "local_source_158913791562",
   "func_80081188": "local_source_158913791563",
-  "func_800812B4": "local_source_158913791564",
+  "splineClosestT": "local_source_158913791564",
   "initSpline": "local_source_158913791565",
   "func_80081990": "local_source_158913791566",
   "func_80081AC0": "local_source_158913791567",
@@ -39521,7 +39520,7 @@
    "status": "open"
   },
   {
-   "name": "func_800812B4",
+   "name": "splineClosestT",
    "vram": 2148012724,
    "size": 724,
    "status": "open"
@@ -44155,6 +44154,12 @@
    "kind": "func"
   },
   {
+   "name": "splineClosestT",
+   "address": 2148012724,
+   "size": 724,
+   "kind": "func"
+  },
+  {
    "name": "initSpline",
    "address": 2148013448,
    "size": 1032,
@@ -47763,7 +47768,7 @@
   },
   {
    "address": 2148837800,
-   "type": "Vec3i_50144 *[]",
+   "type": "Vec3i_812B4 *[]",
    "source": "match"
   },
   {
@@ -47788,7 +47793,7 @@
   },
   {
    "address": 2148997312,
-   "type": "Seg *[]",
+   "type": "Spline_812B4 *[]",
    "source": "match"
   },
   {

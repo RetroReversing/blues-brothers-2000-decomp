@@ -28,7 +28,7 @@ void func_8003C140(Obj *);
 void func_8003C37C(Obj *);
 void animStepKeys(Obj *);
 void func_80074FB4(Obj *);
-f32 func_800812B4(s32, f32 *, s32, s32);
+f32 splineClosestT(s32, f32 *, s32, s32);
 s32 func_80081990(f32 *, s32, f32);
 void func_80081AC0(f32 *, s32, f32);
 void fireActorEvents(Obj *);
@@ -84,7 +84,7 @@ s32 func_80075008(Obj *arg0) {
     }
     d = func_8002D858(arg0, 0);
     D_801700D0 = d;
-    e = func_800812B4(6, &gCameraTarget->x, 0, 0);
+    e = splineClosestT(6, &gCameraTarget->x, 0, 0);
     if (d < 420.0f || e < arg0->unkB4) {
         if (arg0->unkBC == 0) {
             D_800B83C8 = 0;

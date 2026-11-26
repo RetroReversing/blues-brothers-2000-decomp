@@ -43,7 +43,7 @@ f32 func_8002DD60(f32);
 void func_8002E100(f32 *, f32 *);
 s32 animStepKeys(void *);
 void func_80043328(void *, s32, s32);
-f32 func_800812B4(s32, void *, f32 *, s32);
+f32 splineClosestT(s32, void *, f32 *, s32);
 void func_80081990(void *, s32, f32);
 void func_80081AC0(f32 *, s32, f32);
 extern Flag84CCC *D_800B3964;
@@ -107,7 +107,7 @@ s32 updateChaseAI(Obj84CCC *obj) {
     } else {
         range = gSplinePointCount[pathIdx];
         func_80043328(obj, obj->unk74 + 2, 0x100);
-        h = func_800812B4(pathIdx, gCameraTarget + 4, &sp20, 0);
+        h = splineClosestT(pathIdx, gCameraTarget + 4, &sp20, 0);
         D_8014AAB0->unk88 = 3;
         D_8014AAB0->unk100 = h;
         D_8014AAB0->unk104 = sp20;

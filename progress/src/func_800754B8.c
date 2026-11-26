@@ -17,7 +17,7 @@ s32 sendCommand(s32, s32);            /* extern */
 void *func_80075F58(void *);                        /* extern */
 void *func_80075FEC(void *);                        /* extern */
 s32 func_80080DE0(s32);                         /* extern */
-f32 func_800812B4(s32, void *, s32, s32); /* extern */
+f32 splineClosestT(s32, void *, s32, s32); /* extern */
 s32 func_80081AC0(f32 *, s32, f32);         /* extern */
 extern f64 D_800091E8;
 extern void *D_800B3964;
@@ -34,7 +34,7 @@ void func_800754B8(void *arg0) {
     temp_fv1 = (*(f32 *)((s8 *)arg0 + 0x100));
     if (temp_fv1 == 0.0f) {
         if (func_80080DE0(6) != 0) {
-            (*(f32 *)((s8 *)arg0 + 0x100)) = func_800812B4(6, arg0 + 4, 0, 0);
+            (*(f32 *)((s8 *)arg0 + 0x100)) = splineClosestT(6, arg0 + 4, 0, 0);
         }
     } else {
         temp_v0 = (*(void **)((s8 *)D_800B3964 + 0xA8));

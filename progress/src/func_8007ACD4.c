@@ -9,7 +9,7 @@ u8 *func_80055D10(s32);
 void func_80074F74(void);
 void func_8007ABE0(void);
 void updateCameraSplineTrigger(void);
-f32 func_800812B4(s32, void *, void *, s32);
+f32 splineClosestT(s32, void *, void *, s32);
 s32 func_80081990(void *, s32, f32);
 extern f32 D_800094B4;
 extern f32 D_800094B8;
@@ -59,7 +59,7 @@ void func_8007ACD4(u8 *arg0) {
     if (*(void **)(g + 0x9C) != func_80036DB4) {
         *(void **)(g + 0x9C) = func_80036DB4;
     }
-    d = func_800812B4(1, gCameraTarget[0] + 4, arg0 + 0x104, 0);
+    d = splineClosestT(1, gCameraTarget[0] + 4, arg0 + 0x104, 0);
     t = d + D_800094B8;
     *(f32 *)(arg0 + 0x100) = d;
     *(f32 *)(arg0 + 0xDC) = t;

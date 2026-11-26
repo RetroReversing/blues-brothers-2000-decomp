@@ -148079,7 +148079,7 @@
    "unit": "local_source_158913791563",
    "mode": "rom"
   },
-  "func_800812B4": {
+  "splineClosestT": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -148089,10 +148089,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "1cbac7047d15b97d436de6c32a3d4886b2af62a58ceaff50d0bca8dabe2259f4",
-   "recorded_at": 1795628410.8800662,
-   "attempt_id": 158913852849,
-   "source_sha256": "e6dfd06a75ee9b45076fb7fce6e8efa54ce4fe252cd7ad68af38d8d47b412e53",
+   "symbols_sha256": "6ed0c9e770d3681827d9dc495ce7e4f058a74a7a4edf01b5565411b134ab470b",
+   "recorded_at": 1795700829.084297,
+   "attempt_id": 158913862115,
+   "source_sha256": "cc988f79e2057d01fd7a8302fea4faab2af4a832e63c942e345c8e87fdf64664",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 909,
    "compiler": {
@@ -148111,7 +148111,7 @@
    },
    "compiler_identity": {
     "toolchain": "sn-n64-281",
-    "registry_sha256": "14e28e8f96d57fb28d493fc5d8ff869e8cf1dc291e1c8adaf0233952948aed40",
+    "registry_sha256": "8eb23176b1932cb664777fba69b2915c713b60c625fc11f9ad0c22d12f3e9115",
     "install_sha256": "d949422c5b7c39402c79d468bd890710d5bd3eb8ba3929116a8a5543a4a7191f",
     "executables": {
      "cc1n64.exe": "d90df1028c46d826e37146dbcc3e3385f78c59e05a9ddd952daa94c9ad379d9c"
@@ -148134,7 +148134,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -148143,32 +148143,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G0",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913791564",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -198439,7 +198413,7 @@
   "eb524909afa94bd7f02cf58f332f48689dbf1e750b8759962bcc67abf32ad1ab": "void func_80080F64(f32 *out, f32 *a, f32 *b) {\n    f32 ax, ay, az, bx, by, bz, tx, ty, tz;\n    f32 x, y, z;\n\n    ax = a[0]; bx = b[0]; tx = b[3];\n    x = (bx + 2.0f * ax + tx) - 2.0f * a[3];\n    ay = a[1]; by = b[1]; ty = b[4];\n    y = (by + 2.0f * ay + ty) - 2.0f * a[4];\n    az = a[2]; bz = b[2]; tz = b[5];\n    z = (bz + 2.0f * az + tz) - 2.0f * a[5];\n    out[2] = bx;\n    out[3] = ax;\n    out[6] = by;\n    out[7] = ay;\n    out[10] = bz;\n    out[11] = az;\n    out[0] = x;\n    out[4] = y;\n    out[8] = z;\n    out[1] = ((tx - x * 3.0f) - bx) * 0.5f;\n    out[5] = ((ty - y * 3.0f) - by) * 0.5f;\n    out[9] = ((tz - z * 3.0f) - bz) * 0.5f;\n}\n",
   "09f4d36d350e9444965e7d8bf8c4eb8638d297070229973b802094bb022cec08": "void func_80081074(f32 *out, f32 *a, f32 *ta, f32 *b, f32 *tb) {\n    f32 ax, ay, az, bx, by, bz, tx, ty, tz;\n    f32 x, y, z;\n\n    ax = a[0]; bx = b[0]; tx = tb[0];\n    x = (bx + 2.0f * ax + tx) - 2.0f * ta[0];\n    ay = a[1]; by = b[1]; ty = tb[1];\n    y = (by + 2.0f * ay + ty) - 2.0f * ta[1];\n    az = a[2]; bz = b[2]; tz = tb[2];\n    z = (bz + 2.0f * az + tz) - 2.0f * ta[2];\n    out[2] = bx;\n    out[3] = ax;\n    out[6] = by;\n    out[7] = ay;\n    out[10] = bz;\n    out[11] = az;\n    out[0] = x;\n    out[4] = y;\n    out[8] = z;\n    out[1] = ((tx - x * 3.0f) - bx) * 0.5f;\n    out[5] = ((ty - y * 3.0f) - by) * 0.5f;\n    out[9] = ((tz - z * 3.0f) - bz) * 0.5f;\n}\n",
   "764c55074fa2d9deb41dd7db42c98b735f882ab30c59f9e175827df1eb7ca7f6": "typedef struct {\n    s32 x;\n    s32 y;\n    s32 z;\n} Vec3i;\nf32 sqrtf(f32);\nextern s32 D_8014A928[];\nextern Vec3i *D_8014A9A8[];\n\ns32 func_80081188(s32 idx, f32 *pos, f32 *outDist) {\n    s32 n;\n    f32 best;\n    s32 bestIdx;\n    s32 i;\n    Vec3i *p;\n    f32 dx;\n    f32 dy;\n    f32 dz;\n    f32 d;\n\n    n = D_8014A928[idx];\n    best = 1e+09f;\n    bestIdx = 0;\n    if (n == 0) {\n        return bestIdx;\n    }\n    p = D_8014A9A8[idx];\n    for (i = 0; i < n; i++) {\n        dx = pos[0] - p[i].x;\n        dy = pos[1] - p[i].y;\n        dz = pos[2] - p[i].z;\n        d = sqrtf(dx * dx + dy * dy + dz * dz);\n        if (d < best) {\n            bestIdx = i;\n            best = d;\n        }\n    }\n    if (outDist != 0) {\n        *outDist = best;\n    }\n    return bestIdx;\n}\n",
-  "e6dfd06a75ee9b45076fb7fce6e8efa54ce4fe252cd7ad68af38d8d47b412e53": "typedef struct {\n    s32 x, y, z;\n} Vec3i_812B4;\n\ntypedef struct {\n    f32 x, y, z;\n} Vec3f_812B4;\n\ntypedef struct {\n    u8 data[0x30];\n} Spline_812B4;\n\nextern s32 D_8014A928[];\nextern Vec3i_812B4 *D_8014A9A8[];\nextern Spline_812B4 *D_801718C0[];\n\nf32 sqrtf(f32);\nf32 func_80080DFC(void *arg0, f32 arg1);\nf32 func_80080E38(void *arg0, f32 arg1);\nf32 func_80080E74(void *arg0, f32 arg1);\n\nf32 func_800812B4(s32 path, Vec3f_812B4 *pos, f32 *outDist, Vec3f_812B4 *outPos) {\n    s32 n;\n    s32 best;\n    s32 i;\n    s32 k;\n    Vec3i_812B4 *pts;\n    Spline_812B4 *spl;\n    f32 bestDist;\n    f32 dist;\n    f32 dx;\n    f32 dy;\n    f32 dz;\n    f32 t;\n    f32 frac;\n    f32 ret;\n    f32 count;\n    f32 step;\n    f32 fbest;\n    Vec3f_812B4 p;\n\n    n = D_8014A928[path];\n    bestDist = 1e9f;\n    best = 0;\n    if (n == 0) {\n        return 0.0f;\n    }\n    pts = D_8014A9A8[path];\n    for (i = 0; i < n; i++) {\n        dx = pos->x - pts[i].x;\n        dy = pos->y - pts[i].y;\n        dz = pos->z - pts[i].z;\n        dist = sqrtf(dx * dx + dy * dy + dz * dz);\n        if (dist < bestDist) {\n            best = i;\n            bestDist = dist;\n        }\n    }\n    ret = best;\n    count = n;\n    spl = D_801718C0[path];\n    t = ret - 1.0f;\n    if (t < 0.0f) {\n        t = 0.0f;\n    }\n    step = 0.005f;\n    for (; t < (f32)best + 1.0; step = 0.005f, t += step) {\n        if (count <= t) {\n            return ret;\n        }\n        k = t;\n        frac = t - k;\n        p.x = func_80080DFC(&spl[k], frac);\n        p.y = func_80080E38(&spl[k], frac);\n        p.z = func_80080E74(&spl[k], frac);\n        dx = pos->x - p.x;\n        dz = pos->z - p.z;\n        dist = sqrtf(dx * dx + dz * dz);\n        if (dist <= bestDist) {\n            bestDist = dist;\n            ret = t;\n            if (outPos != NULL) {\n                outPos->x = p.x;\n                outPos->y = p.y;\n                outPos->z = p.z;\n            }\n            if (outDist != NULL) {\n                *outDist = bestDist;\n            }\n        }\n    }\n    return ret;\n}\n\n",
+  "cc988f79e2057d01fd7a8302fea4faab2af4a832e63c942e345c8e87fdf64664": "typedef struct {\n    s32 x, y, z;\n} Vec3i_812B4;\n\ntypedef struct {\n    f32 x, y, z;\n} Vec3f_812B4;\n\ntypedef struct {\n    u8 data[0x30];\n} Spline_812B4;\n\nextern s32 gSplinePointCount[];\nextern Vec3i_812B4 *gSplineSrcPoints[];\nextern Spline_812B4 *gSplineSegs[];\n\nf32 sqrtf(f32);\nf32 func_80080DFC(void *arg0, f32 arg1);\nf32 func_80080E38(void *arg0, f32 arg1);\nf32 func_80080E74(void *arg0, f32 arg1);\n\n/* Finds the point on spline `path` closest to `pos` (searching the nearest control point and its neighbours) and returns its parameter t. Optionally returns that point's position and distance in the XZ plane. */\nf32 splineClosestT(s32 path, Vec3f_812B4 *pos, f32 *outDist, Vec3f_812B4 *outPos) {\n    s32 n;\n    s32 best;\n    s32 i;\n    s32 k;\n    Vec3i_812B4 *pts;\n    Spline_812B4 *spl;\n    f32 bestDist;\n    f32 dist;\n    f32 dx;\n    f32 dy;\n    f32 dz;\n    f32 t;\n    f32 frac;\n    f32 ret;\n    f32 count;\n    f32 step;\n    f32 fbest;\n    Vec3f_812B4 p;\n\n    n = gSplinePointCount[path];\n    bestDist = 1e9f;\n    best = 0;\n    if (n == 0) {\n        return 0.0f;\n    }\n    pts = gSplineSrcPoints[path];\n    for (i = 0; i < n; i++) {\n        dx = pos->x - pts[i].x;\n        dy = pos->y - pts[i].y;\n        dz = pos->z - pts[i].z;\n        dist = sqrtf(dx * dx + dy * dy + dz * dz);\n        if (dist < bestDist) {\n            best = i;\n            bestDist = dist;\n        }\n    }\n    ret = best;\n    count = n;\n    spl = gSplineSegs[path];\n    t = ret - 1.0f;\n    if (t < 0.0f) {\n        t = 0.0f;\n    }\n    step = 0.005f;\n    for (; t < (f32)best + 1.0; step = 0.005f, t += step) {\n        if (count <= t) {\n            return ret;\n        }\n        k = t;\n        frac = t - k;\n        p.x = func_80080DFC(&spl[k], frac);\n        p.y = func_80080E38(&spl[k], frac);\n        p.z = func_80080E74(&spl[k], frac);\n        dx = pos->x - p.x;\n        dz = pos->z - p.z;\n        dist = sqrtf(dx * dx + dz * dz);\n        if (dist <= bestDist) {\n            bestDist = dist;\n            ret = t;\n            if (outPos != NULL) {\n                outPos->x = p.x;\n                outPos->y = p.y;\n                outPos->z = p.z;\n            }\n            if (outDist != NULL) {\n                *outDist = bestDist;\n            }\n        }\n    }\n    return ret;\n}",
   "1542a3d1fde8b3e7bdcedf1dccc9f03c3e6e2f742365dd8b8f90d95d9e68c297": "typedef struct Vec3i {\n    s32 x;\n    s32 y;\n    s32 z;\n} Vec3i;\n\ntypedef struct Vec3f {\n    f32 x;\n    f32 y;\n    f32 z;\n} Vec3f;\n\ntypedef struct Seg {\n    char pad[0x30];\n} Seg;\n\nvoid *heapAlloc(s32);\nvoid vec3Sub(Vec3f *, Vec3f *, Vec3f *);\nvoid initSplineEndSegment(Seg *, Vec3f *, Vec3f *);\nvoid initSplineSegment(Seg *, Vec3f *, Vec3f *, Vec3f *, Vec3f *);\nvoid debugPrintf(char *, ...);\n\nextern char D_800097D4[];\nextern char D_800097F4[];\nextern char D_80009810[];\nextern f32 D_80009830;\nextern const f32 D_80009834;\nextern const f32 D_80009838;\nextern s32 gSplinePointCount[];\nextern Vec3i *gSplineSrcPoints[];\nextern Vec3f gSplineTangents[];\nextern Seg *gSplineSegs[];\nextern u8 gSplineClosed[];\n\n/* Builds the spline with index idx from its control points: computes a tangent\n * per point (scaled by the spline's tension) and one segment per span. Open\n * splines end with the endpoint segment. Fails with a debug message if the spline\n * is already built or has no points. */\nvoid initSpline(s32 idx, s32 closed) {\n    s32 n;\n    Vec3i *src;\n    Seg *segs;\n    Vec3f *pts;\n    s32 i;\n    s32 last;\n    f32 k;\n\n    n = gSplinePointCount[idx];\n    src = gSplineSrcPoints[idx];\n    segs = heapAlloc(n * 0x30);\n    pts = heapAlloc(n * 0xC);\n    if (gSplineSegs[idx] != NULL) {\n        debugPrintf(D_800097D4, idx, D_800097F4, 382);\n        return;\n    }\n    if (n == 0) {\n        debugPrintf(D_80009810, idx, D_800097F4, 387);\n        return;\n    }\n    gSplineSegs[idx] = segs;\n    gSplineClosed[idx] = closed;\n    for (i = 0; i < n; i++) {\n        pts[i].x = src[i].x;\n        pts[i].y = src[i].y;\n        pts[i].z = src[i].z;\n    }\n    i = 1;\n    if (i < n - 1) {\n        k = D_80009830;\n        do {\n            vec3Sub(&gSplineTangents[i], &pts[i + 1], &pts[i - 1]);\n            gSplineTangents[i].x *= k;\n            gSplineTangents[i].y *= k;\n            gSplineTangents[i].z *= k;\n            i++;\n        } while (i < n - 1);\n    }\n    if (closed) {\n        vec3Sub(&gSplineTangents[0], &pts[1], &pts[n - 1]);\n        gSplineTangents[0].x *= D_80009834;\n        gSplineTangents[0].y *= D_80009834;\n        gSplineTangents[0].z *= D_80009834;\n        vec3Sub(&gSplineTangents[n - 1], &pts[0], &pts[n - 2]);\n        gSplineTangents[n - 1].x *= D_80009834;\n        gSplineTangents[n - 1].y *= D_80009834;\n        gSplineTangents[n - 1].z *= D_80009834;\n        for (i = 0; i <= n - 1; i++) {\n            initSplineSegment(&segs[i], &pts[i], &pts[(i + 1) % n], &gSplineTangents[i], &gSplineTangents[(i + 1) % n]);\n        }\n    } else {\n        vec3Sub(&gSplineTangents[0], &pts[1], &pts[0]);\n        gSplineTangents[0].x *= D_80009838;\n        gSplineTangents[0].y *= D_80009838;\n        gSplineTangents[0].z *= D_80009838;\n        vec3Sub(&gSplineTangents[n - 1], &pts[n - 1], &pts[n - 2]);\n        gSplineTangents[n - 1].x *= D_80009838;\n        gSplineTangents[n - 1].y *= D_80009838;\n        gSplineTangents[n - 1].z *= D_80009838;\n        for (i = 0; i <= n - 2; i++) {\n            initSplineEndSegment(&segs[i], &pts[i], &gSplineTangents[i]);\n        }\n    }\n}",
   "0934a416fd51955053b27d251be961bd9fb67694cd9deb9da6ebf1190e5cb38c": "typedef struct { u8 pad[0x30]; } Key;\nf32 func_80080DFC(Key *, f32);\nf32 func_80080E38(Key *, f32);\nf32 func_80080E74(Key *, f32);\nextern s32 D_8014A928[];\nextern u8 D_80171938[];\nextern Key *D_801718C0[];\n\ns32 func_80081990(f32 *out, s32 i, f32 t) {\n    f32 len;\n    s32 clamped;\n    s32 n;\n    Key *key;\n\n    len = (f32)D_8014A928[i] - 1.0 + D_80171938[i];\n    clamped = 0;\n    if (t < 0.0f) {\n        t = 0.0f;\n        clamped = 1;\n    }\n    if (len <= t) {\n        clamped = 1;\n        t = len - 0.001;\n    }\n    n = t;\n    t -= n;\n    key = D_801718C0[i] + n;\n    out[0] = func_80080DFC(key, t);\n    out[1] = func_80080E38(key, t);\n    out[2] = func_80080E74(key, t);\n    return clamped;\n}\n",
   "3509ac3247ce409b79bfa93e23b4b136bc54c7b3f432f8dbcd5273e1a643f695": "typedef struct { u8 pad[0x30]; } Key;\nf32 func_80080EB0(Key *, f32);\nf32 func_80080EEC(Key *, f32);\nf32 func_80080F28(Key *, f32);\nextern s32 D_8014A928[];\nextern u8 D_80171938[];\nextern Key *D_801718C0[];\n\ns32 func_80081AC0(f32 *out, s32 i, f32 t) {\n    f32 len;\n    s32 clamped;\n    s32 n;\n    Key *key;\n\n    len = (f32)D_8014A928[i] - 1.0 + D_80171938[i];\n    clamped = 0;\n    if (t < 0.0f) {\n        t = 0.0f;\n        clamped = 1;\n    }\n    if (len <= t) {\n        clamped = 1;\n        t = len - 0.001;\n    }\n    n = t;\n    t -= n;\n    key = D_801718C0[i] + n;\n    out[0] = func_80080EB0(key, t);\n    out[1] = func_80080EEC(key, t);\n    out[2] = func_80080F28(key, t);\n    return clamped;\n}\n",

@@ -18,7 +18,7 @@ M2C_UNK func_80033DC4(void *);                      /* extern */
 M2C_UNK func_800340B4(void *);                      /* extern */
 M2C_UNK func_80036DB4(void *);                      /* extern */
 s32 func_80075338(M2C_UNK);                         /* extern */
-f32 func_800812B4(M2C_UNK, s32, void *, M2C_UNK);   /* extern */
+f32 splineClosestT(M2C_UNK, s32, void *, M2C_UNK);   /* extern */
 s32 func_80081990(void *, M2C_UNK, f32);            /* extern */
 extern void *gCameraRig;
 extern s32 gCameraTarget;
@@ -53,7 +53,7 @@ void func_80074DDC(void *arg0) {
     }
     D_80107040 &= ~8;
     gPadPressed &= ~8;
-    temp_fv0 = func_800812B4(1, gCameraTarget + 4, arg0 + 0x104, 0);
+    temp_fv0 = splineClosestT(1, gCameraTarget + 4, arg0 + 0x104, 0);
     ((__repair_record_arg0*)arg0)->field_100 = temp_fv0;
     ((__repair_record_arg0*)arg0)->field_DC = (f32) (temp_fv0 + 0.8f);
     if (0.21 < (f64) ((__repair_record_arg0*)arg0)->field_100) {

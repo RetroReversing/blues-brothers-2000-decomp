@@ -19,7 +19,8 @@ f32 func_80080DFC(void *arg0, f32 arg1);
 f32 func_80080E38(void *arg0, f32 arg1);
 f32 func_80080E74(void *arg0, f32 arg1);
 
-f32 func_800812B4(s32 path, Vec3f_812B4 *pos, f32 *outDist, Vec3f_812B4 *outPos) {
+/* Finds the point on spline `path` closest to `pos` (searching the nearest control point and its neighbours) and returns its parameter t. Optionally returns that point's position and distance in the XZ plane. */
+f32 splineClosestT(s32 path, Vec3f_812B4 *pos, f32 *outDist, Vec3f_812B4 *outPos) {
     s32 n;
     s32 best;
     s32 i;
@@ -91,4 +92,3 @@ f32 func_800812B4(s32 path, Vec3f_812B4 *pos, f32 *outDist, Vec3f_812B4 *outPos)
     }
     return ret;
 }
-
