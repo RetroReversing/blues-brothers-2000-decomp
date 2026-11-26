@@ -1,0 +1,88 @@
+typedef struct {
+    s32 type;
+    s32 acc;
+    s32 n;
+    s32 pad;
+    u8 b[8];
+    s16 h[8];
+} Rec;
+typedef struct {
+    s32 a;
+    s32 b;
+    s32 c;
+} Info;
+typedef struct {
+    u8 pad0[4];
+    f32 x;
+    u8 pad8[0x64 - 0x8];
+    s32 timer;
+    u8 pad68[0x9C - 0x68];
+    void *cb;
+} Obj;
+
+s32 func_80082400(void);
+s32 func_80023DBC(s32);
+s32 func_80023D58(s32);
+f32 func_8002D340(f32, f32, f32);
+void func_800433A8(s32, s32, s32);
+void func_80082F68(s32);
+s32 func_80086004(void);
+void func_80087160(s32);
+void func_80086028(Obj *);
+extern Info D_800B9000[];
+extern s32 D_800B9ECC;
+extern s32 D_80171980;
+extern s32 D_801719A8;
+extern Rec D_801719E0[];
+extern Obj *D_80171A30;
+extern s32 D_80171A34;
+extern s32 D_80171A50;
+extern s32 func_80085F58;
+
+void func_8008626C(Obj *o)
+{
+    char buf[32];
+    s32 lim;
+    s32 m;
+    s32 v;
+
+    lim = func_80082400() + 1;
+    func_80023DBC(0xE33);
+    D_80171A30->x = func_8002D340(140.0f, D_80171A30->x, 4.0f);
+    D_80171980 += D_800B9ECC;
+    m = D_80171980 % 144;
+    func_80082F68(0);
+    if (m / 2 == 18) {
+        D_80171A34++;
+        if (D_801719E0[0].pad != 0) {
+            D_80171A50++;
+            func_800433A8(D_801719A8, D_800B9000[func_80086004()].b, 0x100);
+            v = D_800B9000[func_80086004()].a;
+            D_801719E0[0].pad = 0;
+            D_801719E0[0].b[0] = 0;
+            D_801719E0[0].b[1] = 0;
+            D_801719E0[0].b[2] = 0;
+            D_801719E0[0].b[3] = 0;
+            D_801719E0[0].b[4] = 0;
+            D_801719E0[0].b[5] = 0;
+            D_801719E0[0].n = v;
+            D_801719E0[0].type++;
+            func_80087160(func_80023D58(0x150));
+            if (D_801719E0[0].type >= lim) {
+                o->cb = (void *)func_80086028;
+                D_801719E0[0].type = 0;
+                o->timer = 100;
+            }
+            D_801719E0[0].n = D_800B9000[func_80086004()].a;
+            D_80171A34 = 0;
+        } else {
+            func_800433A8(D_801719A8, 0x16B, 0x100);
+            func_80087160(func_80023D58(0x192));
+        }
+    }
+    if (D_80171A34 >= 4) {
+        o->cb = &func_80085F58 + 2;
+        func_80087160(func_80023D58(0x201));
+        func_800433A8(D_801719A8, 0x179, 0x100);
+    }
+}

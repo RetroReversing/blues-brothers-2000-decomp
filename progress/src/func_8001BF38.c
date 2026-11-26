@@ -1,0 +1,45 @@
+/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+s32 func_8001B990(M2C_UNK, s32);                    /* extern */
+s32 func_8001BF08(s32);                             /* extern */
+s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 func_80023E3C(M2C_UNK);                         /* extern */
+M2C_UNK func_8002ADFC(M2C_UNK, M2C_UNK, void *);    /* extern */
+M2C_UNK func_8002D604(void *);                      /* extern */
+f32 func_8002D66C(void *, M2C_UNK, M2C_UNK);        /* extern */
+extern M2C_UNK func_8001F5A4;
+
+void func_8001BF38(void *arg0) {
+    if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
+        M2C_FIELD(arg0, s32 *, 0x7C) = 1;
+        M2C_FIELD(arg0, s32 *, 0x74) = func_8001BF08(M2C_FIELD(arg0, s32 *, 0x70));
+        M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_8001F5A4;
+    }
+    M2C_FIELD(arg0, s32 *, 0) = 0x140;
+    if (func_8001B990(0x100, M2C_FIELD(arg0, s32 *, 0x70)) == 0) {
+        M2C_FIELD(arg0, s32 *, 0xB8) = 0x96;
+        M2C_FIELD(arg0, s32 *, 0xE4) = func_80023E3C(0x96);
+        M2C_FIELD(arg0, s32 *, 0x58) = func_800221C0(1, 1, 0, 2, 0, 1, 1, 0);
+        func_8002D604(arg0);
+        if ((s32) func_8002D66C(arg0, 0x42C80000, 0) < 0x64) {
+            func_8002ADFC(0xB, 0x3E8, arg0);
+            func_8001B990(0x200, M2C_FIELD(arg0, s32 *, 0x70));
+            goto block_5;
+        }
+    } else {
+block_5:
+        M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
+    }
+}

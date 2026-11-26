@@ -1,0 +1,27 @@
+s32 func_8002A360(s32, s32);
+typedef struct ObjN {
+    u8 pad0[4];
+    f32 x;
+    f32 y;
+    f32 z;
+    u8 pad1[0xA0 - 0x10];
+    void (*fn)(struct ObjN *);
+} ObjN;
+extern ObjN *D_800BD06C;
+
+#define ABS(x) ((x) < 0 ? -(x) : (x))
+
+void func_80011FAC(ObjN *arg0) {
+    s32 dx;
+    s32 dy;
+    s32 dz;
+
+    dx = arg0->x - D_800BD06C->x;
+    dz = arg0->z - D_800BD06C->z;
+    dy = arg0->y - D_800BD06C->y;
+    if (ABS(dx) < 0xB4 && ABS(dy) < 0x168 && ABS(dz) < 0xB4) {
+        func_8002A360(0xC, 0x80);
+        func_8002A360(8, 0x3B);
+        arg0->fn(arg0);
+    }
+}

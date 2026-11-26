@@ -1,0 +1,139 @@
+typedef struct Obj {
+    char pad0[4];
+    f32 x4;
+    char pad8[0x10 - 0x8];
+    s32 x10;
+    char pad14[0x64 - 0x14];
+    s32 x64;
+    s32 x68;
+    char pad6C[0x9C - 0x6C];
+    void *fn9C;
+    char padA0[0xD0 - 0xA0];
+    s32 xD0;
+    char padD4[0xDC - 0xD4];
+    f32 xDC;
+} Obj;
+
+typedef struct Slot {
+    s32 x0;
+    s32 x4;
+    s32 x8;
+    s32 xC;
+    u8 x10[6];
+} Slot;
+
+typedef struct Pair {
+    s32 x0;
+    s32 x4;
+    s32 x8;
+} Pair;
+
+typedef struct Name {
+    s32 x0;
+    s32 x4;
+    s32 x8;
+    s32 xC;
+    s32 x10;
+} Name;
+
+s32 func_80023D58(s32);
+s32 func_80023DBC(s32);
+void func_8002A360(s32, s32);
+f32 func_8002D340(f32, f32, f32);
+void func_800433A8(void *, s32, s32);
+void func_80052B24(s32, char *, void *);
+s32 func_80082400(void);
+void func_80082F68(s32);
+void func_80087160(s32);
+int sprintf(char *, const char *, ...);
+extern char func_80085F58[];
+void func_80086550(void);
+void func_80086B3C(void);
+
+extern char D_80009B40[];
+extern char D_80009B54[];
+extern f32 D_80009B5C;
+extern f64 D_80009B60;
+extern f64 D_80009B68;
+extern f64 D_80009B70;
+extern f64 D_80009B78;
+extern Name D_800B8720[];
+extern Pair D_800B9000[];
+extern s32 D_800B9B40[];
+extern u8 D_800B9ECC[];
+extern u8 D_80171980[];
+extern u8 D_801719A8[];
+extern u8 D_801719AC[];
+extern Slot D_801719E0;
+extern u8 D_80171A30[];
+extern u8 D_80171A34[];
+extern u8 D_80171A50[];
+
+void func_8008662C(Obj *arg0) {
+    char buf[0x20];
+    s32 idx;
+    s32 font;
+    s32 t;
+    f64 a;
+
+    idx = func_80082400();
+    font = func_80023DBC(0xE33);
+    (*(Obj * *)D_80171A30)->x4 = func_8002D340(D_80009B5C, (*(Obj * *)D_80171A30)->x4, 4.0f);
+    (*(s32 *)D_80171980) += (*(s32 *)D_800B9ECC);
+    t = (*(s32 *)D_80171980) % 144;
+    func_80082F68(0);
+    if (t / 2 == 18) {
+        (*(s32 *)D_80171A34)++;
+        if ((*(s32 *)D_80171A34) != 1) {
+            if (D_801719E0.xC != 0) {
+                (*(s32 *)D_80171A50)++;
+                func_800433A8((*(Obj * *)D_801719A8), D_800B9000[D_801719E0.x0].x4, 0x100);
+                D_801719E0.x8 = D_800B9000[idx].x0;
+                D_801719E0.xC = 0;
+                D_801719E0.x10[0] = 0;
+                D_801719E0.x10[1] = 0;
+                D_801719E0.x10[2] = 0;
+                D_801719E0.x10[3] = 0;
+                D_801719E0.x10[4] = 0;
+                D_801719E0.x10[5] = 0;
+                func_80087160(func_80023D58(0x150));
+            } else {
+                func_80087160(func_80023D58(0x192));
+                func_800433A8((*(Obj * *)D_801719A8), 0x16B, 0x100);
+            }
+        }
+    }
+    if ((*(s32 *)D_80171A50) >= 3) {
+        if (D_800B9B40[idx] == 0) {
+            arg0->fn9C = func_80085F58 + 8;
+            func_80087160(func_80023D58(0x202));
+            sprintf(buf, D_80009B40, D_800B8720[idx].x8);
+            func_80052B24(font, buf, arg0);
+            (*(Obj * *)D_80171A30)->x68 = -1;
+            func_800433A8((*(Obj * *)D_801719A8), 0x178, 0x100);
+            func_8002A360(12, 0x80);
+            func_8002A360(8, 0x78);
+            return;
+        }
+        arg0->x64 = 100;
+        arg0->fn9C = func_80086550;
+        return;
+    }
+    if ((*(s32 *)D_80171A34) >= 7) {
+        sprintf(buf, D_80009B54, D_800B8720[idx].x8);
+        func_80052B24(font, buf, arg0);
+        arg0->fn9C = func_80086B3C;
+        func_800433A8((*(Obj * *)D_801719A8), 1, 0x100);
+        (*(Obj * *)D_801719AC)->x10 = -0x4000;
+        func_800433A8((*(Obj * *)D_801719AC), 0x18C, 0x100);
+        (*(Obj * *)D_801719AC)->x10 = 0x8000;
+        (*(Obj * *)D_80171A30)->x68 = -1;
+        return;
+    }
+    if ((*(Obj * *)D_801719AC)->xD0 == 0x18B) {
+        a = (*(Obj * *)D_801719AC)->xDC;
+        if ((D_80009B60 <= a && a < D_80009B68) || (D_80009B70 <= a && a < D_80009B78)) {
+            func_80082400();
+        }
+    }
+}

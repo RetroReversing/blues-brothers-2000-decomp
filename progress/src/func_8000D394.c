@@ -1,0 +1,56 @@
+/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+M2C_UNK func_8000C458();                            /* extern */
+M2C_UNK func_80023620();     /* extern */
+M2C_UNK func_8002369C(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK func_80023C58(M2C_UNK);                     /* extern */
+M2C_UNK func_80023C64(M2C_UNK);                     /* extern */
+extern void *D_800B3960;
+extern void *D_800B3964;
+extern s32 D_800BD06C;
+extern M2C_UNK func_8001FF64;
+extern M2C_UNK func_80023078;
+
+void func_8000D394(void) {
+    void *temp_a1;
+    void *temp_a2;
+    void *temp_v1;
+
+    temp_a2 = D_800B3964;
+    temp_a1 = (void *) ((s8 *) &func_80023078 + 8);
+    temp_v1 = D_800B3960;
+    M2C_FIELD(temp_a2, void **, 0x9C) = temp_a1;
+    M2C_FIELD(temp_a2, void **, 0x98) = temp_a1;
+    M2C_FIELD(temp_v1, s32 *, 4) = 0;
+    M2C_FIELD(temp_v1, s32 *, 8) = 0;
+    M2C_FIELD(temp_v1, s32 *, 0xC) = 0;
+    M2C_FIELD(temp_v1, s32 *, 0x10) = 0;
+    M2C_FIELD(temp_v1, s32 *, 0x14) = 0;
+    M2C_FIELD(temp_v1, s32 *, 0x18) = 0;
+    M2C_FIELD(temp_v1, M2C_UNK **, 0x9C) = &func_8001FF64;
+    M2C_FIELD(temp_v1, void **, 0x98) = temp_a1;
+    func_80023620(3);
+    func_80023620(6);
+    func_80023620(0x8000);
+    func_80023620(1);
+    func_8002369C(0x100, 0x1031);
+    D_800BD06C = 0;
+    func_8000C458();
+    func_80023C64(0x12345678);
+    func_80023C64(0x110);
+    func_80023C64(0x10C);
+    func_80023C58(0);
+}
+

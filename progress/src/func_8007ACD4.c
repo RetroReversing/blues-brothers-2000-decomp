@@ -1,0 +1,80 @@
+void func_8002D620(void *);
+s32 func_8002D5CC(void *);
+void func_80023078(void);
+void func_80033DC4(void *);
+void func_800340B4(void *);
+void func_80036DB4(void);
+void func_80036F44(void);
+u8 *func_80055D10(s32);
+void func_80074F74(void);
+void func_8007ABE0(void);
+void func_8007AFE8(void);
+f32 func_800812B4(s32, void *, void *, s32);
+s32 func_80081990(void *, s32, f32);
+extern f32 D_800094B4;
+extern f32 D_800094B8;
+extern f64 D_800094C0;
+extern u8 *D_800B3960[];
+extern u8 *D_800BD06C[];
+extern s32 D_800B9560[];
+
+void func_8007ACD4(u8 *arg0) {
+    u8 *g;
+    u8 *src;
+    u8 *obj;
+    f32 d;
+    f32 t;
+
+    if (*(f32 *)(arg0 + 0x104) == D_800094B4) {
+        g = D_800B3960[0];
+        *(void **)(g + 0x9C) = func_800340B4;
+        func_8002D620(g);
+        *(void **)(arg0 + 0x9C) = func_8007AFE8;
+        *(void **)(arg0 + 0x98) = (u8 *)func_80023078 + 8;
+    }
+    if (*(u8 **)(arg0 + 0xA8) == NULL) {
+        g = D_800B3960[0];
+        *(s32 *)(arg0 + 0xC0) = 0;
+        *(f32 *)(arg0 + 0xDC) = 0.0f;
+        *(s32 *)(arg0 + 0xB0) = 0;
+        *(s32 *)(g + 0xC0) = 0;
+        if (*(void **)(g + 0x9C) != func_80036DB4) {
+            *(void **)(g + 0x9C) = func_80036F44;
+        }
+        if (func_8002D5CC(arg0) != 0) {
+            src = *(u8 **)(arg0 + 0x6C);
+            obj = func_80055D10(0);
+            *(void **)(obj + 0x9C) = func_8007ABE0;
+            *(f32 *)(obj + 4) = *(f32 *)(src + 4);
+            *(f32 *)(obj + 8) = *(f32 *)(src + 8);
+            *(f32 *)(obj + 0xC) = *(f32 *)(src + 0xC);
+            *(s32 **)(obj + 0xC8) = D_800B9560;
+            *(u8 **)(arg0 + 0xA8) = obj;
+            *(s32 *)(arg0 + 0xC0) = 0;
+        }
+    } else {
+        *(s32 *)(arg0 + 0x64) = 200;
+    }
+    g = D_800B3960[0];
+    if (*(void **)(g + 0x9C) != func_80036DB4) {
+        *(void **)(g + 0x9C) = func_80036DB4;
+    }
+    d = func_800812B4(1, D_800BD06C[0] + 4, arg0 + 0x104, 0);
+    t = d + D_800094B8;
+    *(f32 *)(arg0 + 0x100) = d;
+    *(f32 *)(arg0 + 0xDC) = t;
+    if (t < 0.0) {
+        *(f32 *)(arg0 + 0xDC) = 0.0f;
+    }
+    if (*(f32 *)(arg0 + 0xDC) > D_800094C0) {
+        *(s32 *)(arg0 + 0xC0) = 1;
+    }
+    if (func_80081990(D_800B3960[0] + 4, 1, *(f32 *)(arg0 + 0xDC)) != 0) {
+        g = D_800B3960[0];
+        *(void **)(g + 0x9C) = func_800340B4;
+        func_8002D620(g);
+        func_80033DC4(D_800B3960[0]);
+        func_800340B4(D_800B3960[0]);
+        *(void **)(arg0 + 0x9C) = func_80074F74;
+    }
+}

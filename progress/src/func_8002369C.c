@@ -1,0 +1,33 @@
+/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
+#ifndef M2C_DEFINES
+#define M2C_DEFINES
+typedef s32 M2C_UNK;
+typedef s8 M2C_UNK8;
+typedef s16 M2C_UNK16;
+typedef s32 M2C_UNK32;
+#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
+#define M2C_BITWISE(type, expr) ((type)(expr))
+#define M2C_ERROR(desc) (0)
+#define M2C_CARRY 0
+#define M2C_OVERFLOW(a) (0)
+#endif
+
+extern u32 D_800AB9BC;
+extern u32 D_800AB9C0;
+
+void func_8002369C(s32 arg0, s32 arg1) {
+    s32 temp_v1;
+    u32 var_s0;
+
+    var_s0 = D_800AB9BC;
+    if (var_s0 < (u32) D_800AB9C0) {
+        do {
+            temp_v1 = M2C_FIELD(var_s0, s32 *, 0);
+            if ((temp_v1 >= arg0) && (arg1 >= temp_v1)) {
+                M2C_FIELD(var_s0, M2C_UNK (**)(u32), 0xA0)(var_s0);
+                M2C_FIELD(var_s0, s32 *, 0) = 0;
+            }
+            var_s0 += 0x108;
+        } while (var_s0 < (u32) D_800AB9C0);
+    }
+}

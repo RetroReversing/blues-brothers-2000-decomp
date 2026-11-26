@@ -1,0 +1,54 @@
+typedef struct Obj {
+    u8 pad0[4];
+    f32 x, y, z;
+    u8 pad10[0x54];
+    s32 f64;
+    u8 pad68[8];
+    s32 f70;
+    u8 pad74[0x28];
+    void *f9C;
+} Obj;
+typedef struct {
+    s32 x;
+    s32 y;
+    s32 z;
+} Pt;
+void func_80015C30(Obj *);
+s32 func_800232B4(s32, s32, s32, s32);
+f32 func_8002D66C(Obj *, f32, s32 *);
+void func_800433A8(Obj *, s32, s32);
+void func_8004303C(void);
+void func_80072310(void);
+float sqrtf(float);
+extern Obj *D_800B3964;
+extern Obj *D_800BD06C;
+extern Pt *D_8014A9A8[];
+
+void func_800721A8(Obj *o) {
+    s32 i;
+    Pt *pt;
+    Obj *n;
+    f32 dx;
+    f32 dz;
+
+    if (func_8002D66C(o, 450.0f, NULL) < 450.0f) {
+        i = o->f70;
+        pt = D_8014A9A8[i];
+        dx = pt->x - o->x;
+        dz = pt->z - o->z;
+        if (sqrtf(dx * dx + dz * dz) < 3000.0f) {
+            n = (Obj *)func_800232B4(1, 0, 0, 0);
+            n->f9C = func_80072310;
+            n->f70 = i;
+            D_800B3964->f64 = 300;
+            func_800433A8(D_800BD06C, 0x20, 0xF0);
+            D_800BD06C->x = n->x;
+            D_800BD06C->y = n->y;
+            D_800BD06C->z = n->z;
+            D_800BD06C->f9C = func_8004303C;
+            for (i = 0; i < 4; i++) {
+                func_80015C30(o);
+            }
+        }
+    }
+}

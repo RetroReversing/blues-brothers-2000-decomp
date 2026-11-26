@@ -1,0 +1,65 @@
+name: Blues Brothers 2000 (North America)
+sha1: ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f
+options:
+  disassemble_all: true
+  auto_decompile_empty_functions: false
+  basename: bluesbrothers2000
+  target_path: baserom.z64
+  elf_path: build/bluesbrothers2000.elf
+  base_path: .
+  platform: n64
+  compiler: KMC
+  ld_script_path: bluesbrothers2000.ld
+  ld_dependencies: true
+  find_file_boundaries: true
+  header_encoding: ASCII
+  o_as_suffix: true
+  use_legacy_include_asm: false
+  mips_abi_float_regs: o32
+  symbol_addrs_path:
+  - symbol_addrs.txt
+  reloc_addrs_path:
+  - reloc_addrs.txt
+  extensions_path: tools/splat_ext
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+  create_bss_pads: false
+segments:
+- name: header
+  type: header
+  start: 0
+- name: ipl3
+  type: bin
+  start: 64
+- name: entry
+  type: code
+  start: 4096
+  vram: 2147484672
+  subsegments:
+  - - 4096
+    - hasm
+  - - 4156
+    - data
+- name: main
+  type: code
+  start: 46928
+  vram: 2147527504
+  follows_vram: entry
+  subsegments:
+  - - 46928
+    - c
+    - main
+- type: bin
+  start: 568628
+  follows_vram: main
+- name: code_8008C378
+  type: code
+  start: 577400
+  vram: 2148057976
+  subsegments:
+  - - 577400
+    - c
+    - code_8008C378
+- type: bin
+  start: 696352
+- - 16777216

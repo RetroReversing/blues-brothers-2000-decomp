@@ -1,0 +1,76 @@
+s16 coss(u16);
+s16 sins(u16);
+s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+typedef struct Obj {
+    /* 0x00 */ s32 f0;
+    /* 0x04 */ f32 x;
+    /* 0x08 */ f32 y;
+    /* 0x0C */ f32 z;
+    /* 0x10 */ s32 f10;
+    /* 0x14 */ s32 f14;
+    /* 0x18 */ s32 f18;
+    /* 0x1C */ u8 pad1C[0x3C];
+    /* 0x58 */ s32 f58;
+    /* 0x5C */ s32 f5C;
+    /* 0x60 */ s32 f60;
+    /* 0x64 */ s32 f64;
+    /* 0x68 */ s32 f68;
+    /* 0x6C */ s32 f6C;
+    /* 0x70 */ s32 f70;
+    /* 0x74 */ s32 f74;
+    /* 0x78 */ s32 f78;
+    /* 0x7C */ s32 f7C;
+    /* 0x80 */ s32 f80;
+    /* 0x84 */ u8 pad84[0x10];
+    /* 0x94 */ s32 f94;
+    /* 0x98 */ void *f98;
+    /* 0x9C */ void *f9C;
+    /* 0xA0 */ u8 padA0[0x20];
+    /* 0xC0 */ s32 fC0;
+} Obj;
+Obj *func_800232B4(s32, s32, s32, s32);
+void func_8002D4E0(Obj *, s32);
+void func_8002D620(Obj *);
+extern f32 D_80009598;
+extern char D_800B3960[];
+extern char D_800BD06C[];
+extern s32 D_801700F0[];
+void func_8002FBC0(void);
+void func_8007C1C8(void);
+
+Obj *func_8007C310(void) {
+    s32 x;
+    s32 y;
+    Obj *obj;
+    s32 one;
+    Obj *pl;
+    Obj *g;
+
+    x = (*(Obj **)D_800BD06C)->x + (f32)((sins(*(u16 *)((char *)(*(Obj **)D_800BD06C) + 0x12)) * 25) >> 14);
+    y = (*(Obj **)D_800BD06C)->y + D_80009598;
+    obj = func_800232B4(0x1008, x, y, (*(Obj **)D_800BD06C)->z + (f32)((coss(*(u16 *)((char *)(*(Obj **)D_800BD06C) + 0x12)) * 25) >> 14));
+    one = 1;
+    obj->f98 = func_8002FBC0;
+    obj->f60 = D_801700F0[0];
+    obj->f58 = func_800221C0(0, 0, one, 2, 0, 0, one, one);
+    pl = (*(Obj **)D_800BD06C);
+    obj->f68 = 0xE;
+    obj->f5C = 0xFF;
+    obj->f64 = 2;
+    obj->f70 = 0x40;
+    obj->f78 = 0xFFFFFF;
+    obj->fC0 = 0;
+    obj->f74 = 0;
+    obj->f94 = -900;
+    obj->f7C = one;
+    obj->f80 = 0;
+    obj->f10 = pl->f10;
+    g = *(Obj **)D_800B3960;
+    obj->f14 = g->f14 + 0xC00;
+    obj->f18 = 0x8000;
+    obj->f9C = func_8007C1C8;
+    func_8002D4E0(obj, 3000);
+    func_8002D620(obj);
+    return obj;
+}
+

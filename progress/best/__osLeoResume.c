@@ -1,0 +1,35 @@
+/* identical to __osLeoResume in V-RALLY-PAL (local match library) (matched), with its names changed by decompdecomp */
+extern char D_80175186[];
+extern char D_800A2518[];
+
+typedef struct Ring {
+    s32 *wakeFlag;
+    s32 pad4;
+    s32 count;
+    s32 head;
+    s32 capacity;
+    s32 *items;
+} Ring;
+
+s32 __osPopThread(void *, void *);
+void __osEnqueueThread(void *, s32);
+
+/* Pushes the word at D_80175186+0x763E onto the ring at D_80175186+0x763A
+ * when it has room, then wakes the waiter (__osEnqueueThread on D_800A2518) if
+ * the ring's wake flag is set. */
+void __osLeoResume(void) {
+    Ring *ring;
+    s32 idx;
+
+    ring = *(Ring **)(D_80175186 + 0x763A);
+    if (ring != NULL) {
+        if (ring->count < ring->capacity) {
+            idx = (ring->head + ring->count) % ring->capacity;
+            ring->items[idx] = *(s32 *)(D_80175186 + 0x763E);
+            ring->count++;
+            if (*ring->wakeFlag != 0) {
+                __osEnqueueThread(D_800A2518, __osPopThread(ring, ring));
+            }
+        }
+    }
+}
