@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700594.380363,
- "revision": 5657,
+ "saved_at": 1795700618.544878,
+ "revision": 5659,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16096,8 +16096,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "361952:2147842528": {
    "vram": 2147842528,
@@ -18547,10 +18546,10 @@
    "matched_by": "permuter-158913790071",
    "readable": false
   },
-  "func_80012CD8": {
+  "updateSoundTestMenu": {
    "vram": 2147560664,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "func_80012FB8": {
    "vram": 2147561400,
@@ -30407,7 +30406,7 @@
    "status": "open"
   },
   {
-   "name": "func_80012CD8",
+   "name": "updateSoundTestMenu",
    "vram": 2147560664,
    "size": 736,
    "status": "open"
@@ -43183,6 +43182,18 @@
    "kind": "data"
   },
   {
+   "name": "sfxLabel",
+   "address": 2147485604,
+   "size": 8,
+   "kind": "data"
+  },
+  {
+   "name": "tuneLabel",
+   "address": 2147485612,
+   "size": 12,
+   "kind": "data"
+  },
+  {
    "name": "gBumpRadius",
    "address": 2147518684,
    "size": 4,
@@ -43240,6 +43251,12 @@
    "name": "updateProximityTrigger",
    "address": 2147554336,
    "size": 788,
+   "kind": "func"
+  },
+  {
+   "name": "updateSoundTestMenu",
+   "address": 2147560664,
+   "size": 736,
    "kind": "func"
   },
   {
@@ -45835,6 +45852,30 @@
    "kind": "data"
   },
   {
+   "name": "soundTestSfxId",
+   "address": 2148180472,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "soundTestTuneId",
+   "address": 2148180476,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "soundTestPlayState",
+   "address": 2148180480,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "soundTestToggleState",
+   "address": 2148180484,
+   "size": 4,
+   "kind": "data"
+  },
+  {
    "name": "gPakInitWarn",
    "address": 2148196724,
    "size": 4,
@@ -46270,6 +46311,16 @@
   {
    "address": 2147484932,
    "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147485604,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147485612,
+   "type": "char[]",
    "source": "match"
   },
   {
@@ -47343,6 +47394,26 @@
    "source": "match"
   },
   {
+   "address": 2148180472,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148180476,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148180480,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148180484,
+   "type": "s32",
+   "source": "match"
+  },
+  {
    "address": 2148196724,
    "type": "s32",
    "source": "match"
@@ -47504,7 +47575,7 @@
   },
   {
    "address": 2148561056,
-   "type": "s32",
+   "type": "Unk801070A0",
    "source": "match"
   },
   {
