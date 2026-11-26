@@ -38,14 +38,14 @@ s32 tickActorTimer(Actor *);
 void func_8002DA80(Actor *);
 f32 func_8002DD60(f32);
 s32 func_8003BF98(Actor *);
-s32 func_8003C9AC(Actor *, s32, s32, s32);
+s32 isTargetVulnerable(Actor *, s32, s32, s32);
 s32 animStepKeys(Actor *);
 s32 func_80043248(Actor *);
 void func_80043328(Actor *, s32, s32);
 void actorSetAnim(Actor *, s32, s32);
 s32 func_8005A90C(Actor *);
 void func_8005A9CC(Actor *);
-s32 func_80076080(void);
+s32 updateDistanceCull(void);
 void func_800761FC(Actor *);
 void func_80080594(Actor *, s32);
 void func_800462A0(void);
@@ -64,7 +64,7 @@ void func_80059D80(Actor *arg0) {
     s32 sq;
     s32 r;
 
-    if (func_80076080() != 0) {
+    if (updateDistanceCull() != 0) {
         return;
     }
     hx = arg0->pos[0] - arg0->home[0];
@@ -176,7 +176,7 @@ void func_80059D80(Actor *arg0) {
         case 2: {
             s32 t = isqrtS32(sq);
 
-            if (t < 250 && func_8003C9AC(arg0, 0, 1, 1) != 0 && arg0->unk80 == 0) {
+            if (t < 250 && isTargetVulnerable(arg0, 0, 1, 1) != 0 && arg0->unk80 == 0) {
                 s32 a = 8.0 <= arg0->unkDC && arg0->unkDC <= 12.0;
                 s32 b = 21.0 <= arg0->unkDC && arg0->unkDC <= 25.0;
 

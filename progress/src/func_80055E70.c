@@ -20,7 +20,7 @@ M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
 M2C_UNK startStoryDialog(s32, M2C_UNK *, void *);      /* extern */
-s32 func_80076080();                                /* extern */
+s32 updateDistanceCull();                                /* extern */
 extern M2C_UNK D_80008338;
 extern M2C_UNK D_80008340;
 extern void *gCameraTarget;
@@ -31,7 +31,7 @@ void func_80055E70(void *arg0) {
     f32 temp_fs0;
     s32 temp_s1;
 
-    if (func_80076080() == 0) {
+    if (updateDistanceCull() == 0) {
         M2C_FIELD(arg0, s32 *, 0x10) = (s32) D_801700D4;
         temp_fs0 = D_801700D0;
         do { animStepKeys(arg0); } while (0);

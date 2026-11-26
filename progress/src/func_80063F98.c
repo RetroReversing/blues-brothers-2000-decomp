@@ -18,7 +18,7 @@ s32 func_8002DA80();
 f32 func_800385AC();
 s32 animStepKeys();
 s32 actorSetAnim();
-s32 func_800853E8();
+s32 fireActorEvents();
 extern f32 D_80008B4C;
 extern s32 func_80063D70;
 
@@ -29,7 +29,7 @@ void func_80063F98(void *arg0) {
     animStepKeys(arg0);
     func_8002D3E4(arg0, 0xA0);
     func_8002DA80(arg0);
-    func_800853E8(arg0);
+    fireActorEvents(arg0);
     temp = *(f32 *)((s8 *)arg0 + 0xC);
     if (D_80008B4C < temp) {
         actorSetAnim(arg0, 0xDE, 0x100);

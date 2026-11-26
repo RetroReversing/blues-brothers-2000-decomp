@@ -20,7 +20,7 @@ s32 func_8002E7B8(s32, s32);            /* extern */
 s32 animStepKeys(void *);                      /* extern */
 s32 func_80052A5C(s32);                     /* extern */
 s32 startStoryDialog(s32, s32 *, void *);          /* extern */
-s32 func_80076080();                                /* extern */
+s32 updateDistanceCull();                                /* extern */
 extern s32 D_8000837C;
 extern s32 D_80008384;
 extern s32 D_8000838C;
@@ -32,7 +32,7 @@ void func_80056140(void *arg0) {
     s32 temp_s0;
     s32 temp_v1;
 
-    if (func_80076080() == 0) {
+    if (updateDistanceCull() == 0) {
         animStepKeys(arg0);
         temp_fs0 = func_8002D858(arg0, arg0 + 0x10);
         temp_s0 = func_80023DBC(0xE75);

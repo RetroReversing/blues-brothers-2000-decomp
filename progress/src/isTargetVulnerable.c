@@ -11,7 +11,7 @@ typedef struct {
 extern Player3C9AC *gCameraTarget;
 void func_800393F4();
 
-s32 func_8003C9AC(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+s32 isTargetVulnerable(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (gCameraTarget->state != 3) {
         return 0;
     }

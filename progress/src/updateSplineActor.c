@@ -5,14 +5,14 @@ void tickActorTimer(void *);
 void syncActorPrevPos(void *);
 void func_80043328(void *, s32, s32);
 s32 func_8006BB14(void *);
-s32 func_80076080(void *);
+s32 updateDistanceCull(void *);
 void func_80080594(void *, s32);
 s32 func_80080DE0(s32);
 void initSpline(s32, s32);
 void func_80083A28(void *);
 s32 func_80083CC4(void *);
 s32 func_80083E98(void *);
-void func_800853E8(void *);
+void fireActorEvents(void *);
 s32 func_80085900(void *);
 s32 func_80085A5C(void *);
 s32 func_80085B8C(void *);
@@ -89,14 +89,14 @@ extern Ent *gSplineSrcPoints[];
         }
         actor->x64 = randomRange(25, 30) * 100;
     }
-    if (func_80076080(actor) != 0) {
+    if (updateDistanceCull(actor) != 0) {
         return;
     }
     tickActorTimer(actor);
     if (actor->fnD8 != NULL) {
         result = actor->fnD8(actor);
     }
-    func_800853E8(actor);
+    fireActorEvents(actor);
     if (result != 0) {
         switch (actor->x78) {
         case 0:

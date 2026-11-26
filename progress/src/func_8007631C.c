@@ -14,13 +14,13 @@ typedef s32 M2C_UNK32;
 
 s32 func_80043248(void *);                          /* extern */
 M2C_UNK func_800761FC(void *);                      /* extern */
-M2C_UNK func_800853E8();                            /* extern */
+M2C_UNK fireActorEvents();                            /* extern */
 extern M2C_UNK func_800462A0;
 
 void func_8007631C(void *arg0) {
     M2C_UNK *temp_v0;
 
-    func_800853E8();
+    fireActorEvents();
     if (func_80043248(arg0) != 0) {
         temp_v0 = M2C_FIELD(arg0, M2C_UNK **, 0xD8);
         if (temp_v0 != NULL) {

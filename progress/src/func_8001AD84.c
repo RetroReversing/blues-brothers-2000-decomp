@@ -1,6 +1,6 @@
 void *findActor(s32, s32);
 f32 func_8002D77C(void *, f32, s32);
-s32 func_8003C9AC(void *, s32, s32, s32);
+s32 isTargetVulnerable(void *, s32, s32, s32);
 void actorSetAnim(void *, s32, s32, void *);
 void debugPrintf(char *);
 extern char D_80000BEC[];
@@ -22,7 +22,7 @@ void func_8001AD84(void *arg0) {
     void *r;
 
     lim = 500.0f;
-    if (func_8002D77C(arg0, lim, 0) < lim && *(s32 *)((s8 *)gCameraTarget + 0xB8) == 5 && func_8003C9AC(arg0, 0, 1, 0) != 0) {
+    if (func_8002D77C(arg0, lim, 0) < lim && *(s32 *)((s8 *)gCameraTarget + 0xB8) == 5 && isTargetVulnerable(arg0, 0, 1, 0) != 0) {
         *(void **)((s8 *)arg0 + 0x9C) = (s8 *)&func_80023078 + 8;
         o = findActor(0x137, 0);
         if (o != NULL) {

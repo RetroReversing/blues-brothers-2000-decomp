@@ -31,7 +31,7 @@ void func_80074FB4(Obj *);
 f32 func_800812B4(s32, f32 *, s32, s32);
 s32 func_80081990(f32 *, s32, f32);
 void func_80081AC0(f32 *, s32, f32);
-void func_800853E8(Obj *);
+void fireActorEvents(Obj *);
 extern Obj *D_800B3964;
 extern s32 D_800B83C8;
 extern s32 gCamSpeedScale;
@@ -54,7 +54,7 @@ s32 func_80075008(Obj *arg0) {
         return 1;
     }
     animStepKeys(arg0);
-    func_800853E8(arg0);
+    fireActorEvents(arg0);
     arg0->unk68 = 4;
     if (gCameraTarget->unk9C == func_8003C37C) {
         if (D_800BD0E0 > 0) {

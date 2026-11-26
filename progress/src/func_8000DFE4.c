@@ -12,7 +12,7 @@ typedef struct Obj {
     /* 0xB8 */ s32 fB8;
 } Obj;
 typedef struct { s32 a; f32 x, y, z; u8 pad[0xF8]; } Hit;
-void func_8000DF10(Hit *);
+void spawnPuffEffect(Hit *);
 s32 tickActorTimer(Obj *);
 extern s32 D_800B3838;
 extern Obj *gCameraTarget;
@@ -57,7 +57,7 @@ void func_8000DFE4(Obj *arg0) {
             h.z = gCameraTarget->z;
             h.y = arg0->y + gPlatformMaxOffsets[arg0->fB8].y;
             if (tickActorTimer(arg0) != 0 || gCameraTarget->f90 == 0) {
-                func_8000DF10(&h);
+                spawnPuffEffect(&h);
                 arg0->f64 = 20;
             }
             D_800B3838 = 1;

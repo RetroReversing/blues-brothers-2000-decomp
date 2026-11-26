@@ -25,7 +25,7 @@ extern f32 D_801700D0;
 extern M2C_UNK D_801700D4;
 extern s32 D_801700D8;
 
-s32 func_80076080(void *arg0) {
+s32 updateDistanceCull(void *arg0) {
     f32 limit;
     f32 dist;
     s32 near;

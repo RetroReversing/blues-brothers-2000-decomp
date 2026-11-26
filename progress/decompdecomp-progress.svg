@@ -218,7 +218,7 @@
 <g><title>func_8000DEB4: {&#x27;matched&#x27;: 1}</title>
 <rect x="680.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8000DF10: {&#x27;matched&#x27;: 1}</title>
+<g><title>spawnPuffEffect: {&#x27;matched&#x27;: 1}</title>
 <rect x="690.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8000DFE4: {&#x27;matched&#x27;: 1}</title>
@@ -2336,7 +2336,7 @@
 <g><title>func_8003C760: {&#x27;matched&#x27;: 1}</title>
 <rect x="540.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8003C9AC: {&#x27;matched&#x27;: 1}</title>
+<g><title>isTargetVulnerable: {&#x27;matched&#x27;: 1}</title>
 <rect x="550.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8003CA30: {&#x27;matched&#x27;: 1}</title>
@@ -4310,7 +4310,7 @@
 <g><title>func_80075FEC: {&#x27;matched&#x27;: 1}</title>
 <rect x="720.000" y="330" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80076080: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateDistanceCull: {&#x27;matched&#x27;: 1}</title>
 <rect x="730.000" y="330" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800761FC: {&#x27;matched&#x27;: 1}</title>
@@ -4490,7 +4490,7 @@
 <g><title>func_80079504: {&#x27;matched&#x27;: 1}</title>
 <rect x="520.000" y="340" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80079580: {&#x27;matched&#x27;: 1}</title>
+<g><title>updatePorcupineAi: {&#x27;matched&#x27;: 1}</title>
 <rect x="530.000" y="340" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8007986C: {&#x27;matched&#x27;: 1}</title>
@@ -4979,7 +4979,7 @@
 <g><title>func_800852CC: {&#x27;matched&#x27;: 1}</title>
 <rect x="550.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800853E8: {&#x27;matched&#x27;: 1}</title>
+<g><title>fireActorEvents: {&#x27;matched&#x27;: 1}</title>
 <rect x="560.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800854C4: {&#x27;matched&#x27;: 1}</title>

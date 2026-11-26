@@ -20,7 +20,7 @@ M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
 M2C_UNK startStoryDialog(s32, M2C_UNK *, void *);      /* extern */
-s32 func_80076080();                                /* extern */
+s32 updateDistanceCull();                                /* extern */
 extern M2C_UNK D_80008354;
 extern M2C_UNK D_80008360;
 extern M2C_UNK D_8000836C;
@@ -32,7 +32,7 @@ void func_80055FD8(void *arg0) {
     s32 temp_s1;
     s32 var_v0;
 
-    if (func_80076080() == 0) {
+    if (updateDistanceCull() == 0) {
         animStepKeys(arg0);
         temp_fs0 = func_8002D858(arg0, arg0 + 0x10);
         temp_s1 = func_80023DBC(0xE87);

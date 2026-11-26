@@ -2,7 +2,7 @@ s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void func_8002ADFC(s32, s32, void *);
 s32 func_8002D260(s32);
 void actorSetAnim(void *, s32, s32);
-s32 func_80076080(void *);
+s32 updateDistanceCull(void *);
 void debugPrintf(char *);
 void func_80076464();
 typedef struct Obj Obj;
@@ -54,7 +54,7 @@ void func_800764B8(Obj *arg0) {
         arg0->f7C = 1;
         arg0->f64 = 0;
     }
-    if (func_80076080(arg0) != 0) {
+    if (updateDistanceCull(arg0) != 0) {
         return;
     }
     lim = D_801700D0;

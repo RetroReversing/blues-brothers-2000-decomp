@@ -14,9 +14,9 @@ typedef s32 M2C_UNK32;
 
 s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8003BF98(void *);                      /* extern */
-s32 func_8003C9AC(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+s32 isTargetVulnerable(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK animStepKeys(void *);                      /* extern */
-s32 func_80076080();                                /* extern */
+s32 updateDistanceCull();                                /* extern */
 s16 sins(s32);                                      /* extern */
 extern f32 D_8000930C;
 extern s32 gTextWaveTime;
@@ -25,11 +25,11 @@ extern f32 D_801700D0;
 void func_80077E80(void *arg0) {
     f32 temp_fs0;
 
-    if (func_80076080() == 0) {
+    if (updateDistanceCull() == 0) {
         temp_fs0 = D_801700D0;
         M2C_FIELD(arg0, s32 *, 0x18) = (s32) ((s32) (sins((gTextWaveTime * 0xFA) & 0xFFFE) * 7) >> 3);
         animStepKeys(arg0);
-        if ((temp_fs0 < 500.0f) && (func_8003C9AC(arg0, 1, 0, 0) != 0) && (tickActorTimer(arg0) != 0)) {
+        if ((temp_fs0 < 500.0f) && (isTargetVulnerable(arg0, 1, 0, 0) != 0) && (tickActorTimer(arg0) != 0)) {
             M2C_FIELD(arg0, s32 *, 0x64) = 0x64;
             func_8003BF98(arg0);
         }

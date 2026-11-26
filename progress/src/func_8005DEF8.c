@@ -32,7 +32,7 @@ void func_8002D3E4(Actor *, s32);
 s32 tickActorTimer(Actor *);
 void syncActorPrevPos(Actor *);
 void func_8002DA80(Actor *);
-s32 func_8003C9AC(Actor *, s32, s32, s32);
+s32 isTargetVulnerable(Actor *, s32, s32, s32);
 s32 animStepKeys(Actor *);
 s32 func_80043248(Actor *);
 void func_80043328(Actor *, s32, s32);
@@ -40,7 +40,7 @@ void actorSetAnim(Actor *, s32, s32);
 s32 func_8004FF2C(Actor *, s32);
 s32 func_8005EBC0(Actor *);
 void func_8005F008(Actor *);
-s32 func_80076080(void);
+s32 updateDistanceCull(void);
 void func_800761FC(Actor *);
 void func_80080594(Actor *, s32);
 void func_800462A0(void);
@@ -57,7 +57,7 @@ void func_8005DEF8(Actor *arg0) {
     s32 pdist;
     s32 done;
 
-    if (func_80076080() != 0) {
+    if (updateDistanceCull() != 0) {
         return;
     }
     hx = arg0->pos[0] - arg0->home[0];
@@ -156,7 +156,7 @@ void func_8005DEF8(Actor *arg0) {
                 if (a < 0) {
                     a = -a;
                 }
-                if (a < 200 && func_8003C9AC(arg0, 0, 1, 1) != 0) {
+                if (a < 200 && isTargetVulnerable(arg0, 0, 1, 1) != 0) {
                     sendCommand(0xC, 0x80);
                     sendCommand(8, 0x2D);
                     func_8005F008(gCameraTarget);

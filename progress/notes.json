@@ -3924,7 +3924,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0ca2b18d7e4ddbfa97bb4e7cc84713b2e59da051e925be936accd80e634c81a3"
  },
  {
-  "function": "func_80076080",
+  "function": "updateDistanceCull",
   "text": "[Released without compiling it once; notes not checked by a compile.] App best 205 (saved draft). Plain rewrite from the assembly, local best 455: float globals D_80009240 and D_80009248 are literals in ROM (0x40400000 = 3.0f, 0x4004000000000000 = 2.5 double), so the float literals (3.0f, 2.5) fix the lui-$at rows (815 -> 620). Early returns share one return (goto to a return 1 label: 620 -> 455). Hoisting the shared arm test or swapping its polarity or a neg_one local did not help (1755, 455, 1175). Left: register rows v0/v1 for the 0x68 field and -1 and for D_800B83B4 (the target loads the field before the -1 constant). prove_chain families from 455: no child improves.",
   "by": "manual-53a7bf61d0af4814",
   "created_at": 1795548807.369083,
@@ -5682,7 +5682,7 @@
   "score_after": 445
  },
  {
-  "function": "func_800853E8",
+  "function": "fireActorEvents",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap7 compiler sweep: best trial 445 under sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mhard-float -mfp64",
   "by": "manual-19a7531dd5c741fb",
   "created_at": 1795551119.296533,
@@ -7989,7 +7989,7 @@
   "score_after": 950
  },
  {
-  "function": "func_8000DF10",
+  "function": "spawnPuffEffect",
   "text": "Prove_chain (all families, 40 children) left the saved best at its score in this pass; no hand match attempted. Saved best used as the start.",
   "by": "manual-d97339d90c7b4562",
   "created_at": 1795556997.9322271,
@@ -8112,7 +8112,7 @@
   "score_after": 850
  },
  {
-  "function": "func_8000DF10",
+  "function": "spawnPuffEffect",
   "text": "op42 handoff, best 335 under -mfp32 (trial 338d180096fc2e126549; 370 under the current profile). Twin of matched func_80015600 (same constructor shape). Source: Obj struct for the result (fields 0x58..0x7C s32, 0x98/0x9C callbacks), f32 *pos with pos[1..3] (truncated by the s32 prototype), c = 50; p->unk64 = c; p->unk70 = c; p->unk74 = 0; c = 0xFFFFFF; p->unk78 = c; p->unk7C = 0; p->unk60 = D_800BD694; then func_800221C0(0,1,4,3,0,0,2,0), 14, 0xFF, return p. Remaining: the 50 (t0) and its two stores are scheduled before the 0x98/0x9C callback stores; target puts li t0,50 early but its stores after 0x9C and loads D_800BD694 between. Tried: casts 700; struct 670; chain assignments / read-backs of 0x64 (all identical, 670); constant locals (c reused for 0xFFFFFF: 335); all 2520 orders of the 7 store groups: 335 for every order (decided by the scheduler, not statement order); prove_chain all --fp-flip 60 children: nothing.",
   "by": "manual-40990e5bd6804ace",
   "created_at": 1795557925.4418502,
@@ -8121,7 +8121,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:35427e39b75b1ebdcf212c35d46c41f35fc000f8dba4eddb7fa30c5960c038bd"
  },
  {
-  "function": "func_8000DF10",
+  "function": "spawnPuffEffect",
   "text": "stuck at 335 (fp32 trial): store scheduling of the 50 constant; see note",
   "by": "manual-40990e5bd6804ace",
   "created_at": 1795557926.759438,

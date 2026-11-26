@@ -21,9 +21,9 @@ struct ObjR {
 
 void syncActorPrevPos(ObjR *);
 s32 randomRange(s32, s32);
-s32 func_80076080(ObjR *);
+s32 updateDistanceCull(ObjR *);
 s32 tickActorTimer(ObjR *);
-void func_800853E8(ObjR *);
+void fireActorEvents(ObjR *);
 s32 func_8002444C(void);
 void func_80080594(ObjR *, s32);
 void debugPrintf(char *);
@@ -56,14 +56,14 @@ void func_800589C4(ObjR *arg0) {
         }
         arg0->f64 = randomRange(25, 30) * 100;
     }
-    if (func_80076080(arg0) != 0) {
+    if (updateDistanceCull(arg0) != 0) {
         return;
     }
     tickActorTimer(arg0);
     if (arg0->fD8 != 0) {
         ret = arg0->fD8(arg0);
     }
-    func_800853E8(arg0);
+    fireActorEvents(arg0);
     if (ret != 0) {
         switch (arg0->f78) {
         case 0:

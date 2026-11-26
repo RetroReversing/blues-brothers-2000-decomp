@@ -32,9 +32,9 @@ s32 func_80080DE0(s32 arg0);
 void initSpline(s32 idx, s32 closed);
 void syncActorPrevPos(void *arg0);
 s32 randomRange(s32 arg0, s32 arg1);
-s32 func_80076080(void *arg0);
+s32 updateDistanceCull(void *arg0);
 s32 tickActorTimer(void *arg0);
-s32 func_800853E8(void *arg0);
+s32 fireActorEvents(void *arg0);
 s32 func_80080594(void *arg0, s32 arg1);
 s32 func_8002444C(void);
 void func_80043328(void *arg0, s32 arg1, s32 arg2);
@@ -75,14 +75,14 @@ void updateSpiderAi(Unk80061800 *spider) {
         }
         spider->unk64 = randomRange(25, 30) * 100;
     }
-    if (func_80076080(spider) != 0) {
+    if (updateDistanceCull(spider) != 0) {
         return;
     }
     tickActorTimer(spider);
     if (spider->unkD8 != NULL) {
         stepResult = spider->unkD8(spider);
     }
-    func_800853E8(spider);
+    fireActorEvents(spider);
     if (stepResult != 0) {
         spider->unk8C = 0;
         for (stateIndex = 0; D_800B7FC0[stateIndex] != NULL; stateIndex++) {

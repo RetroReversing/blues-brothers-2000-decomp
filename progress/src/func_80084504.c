@@ -28,9 +28,9 @@ s32 func_80080DE0(s32 arg0);
 void initSpline(s32 idx, s32 closed);
 void syncActorPrevPos(void *arg0);
 s32 randomRange(s32 arg0, s32 arg1);
-s32 func_80076080(void *arg0);
+s32 updateDistanceCull(void *arg0);
 s32 tickActorTimer(void *arg0);
-s32 func_800853E8(void *arg0);
+s32 fireActorEvents(void *arg0);
 s32 func_80080594(void *arg0, s32 arg1);
 s32 func_8002444C(void);
 void func_80043328(void *arg0, s32 arg1, s32 arg2);
@@ -64,14 +64,14 @@ void func_80084504(Unk80084504 *arg0) {
         arg0->unkBC = 1;
         arg0->unk64 = randomRange(25, 30) * 100;
     }
-    if (func_80076080(arg0) != 0) {
+    if (updateDistanceCull(arg0) != 0) {
         return;
     }
     tickActorTimer(arg0);
     if (arg0->unkD8 != NULL) {
         result = arg0->unkD8(arg0);
     }
-    func_800853E8(arg0);
+    fireActorEvents(arg0);
     if (result != 0) {
         switch (arg0->unk78) {
         case 0:

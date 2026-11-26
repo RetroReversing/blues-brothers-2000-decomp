@@ -14,7 +14,7 @@ typedef struct {
 } Obj;
 Obj *spawnEffectObj(s32, s32, s32, s32);
 
-Obj *func_8000DF10(f32 *pos) {
+Obj *spawnPuffEffect(f32 *pos) {
     Obj *p;
     s32 g;
 

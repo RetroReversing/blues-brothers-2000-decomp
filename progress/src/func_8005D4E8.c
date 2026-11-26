@@ -52,7 +52,7 @@ s32 func_8005EBC0(Actor *);
 void func_8005F008(Actor *);
 void func_8005F090(Actor *);
 s32 func_8005F1B0(Actor *);
-s32 func_80076080(void);
+s32 updateDistanceCull(void);
 void func_800761FC(Actor *);
 void func_80080594(Actor *, s32);
 void func_800462A0(void);
@@ -70,7 +70,7 @@ void func_8005D4E8(Actor *arg0) {
     s32 done;
     s32 t;
 
-    if (func_80076080() != 0) {
+    if (updateDistanceCull() != 0) {
         return;
     }
     hx = arg0->pos[0] - arg0->home[0];

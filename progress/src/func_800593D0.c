@@ -33,7 +33,7 @@ s32 approachAngle(s32, s32, s32);
 s32 tickActorTimer(Actor *);
 void func_8003B980(Actor *);
 void func_8003BF98(Actor *);
-s32 func_8003C9AC(Actor *, s32, s32, s32);
+s32 isTargetVulnerable(Actor *, s32, s32, s32);
 s32 animStepKeys(Actor *);
 void func_80043328(Actor *, s32, s32);
 void actorSetAnim(Actor *, s32, s32);
@@ -175,7 +175,7 @@ void func_800593D0(Actor *arg0)
                     sendCommand(12, 0x80);
                     sendCommand(8, 0x2D);
                 }
-                if (func_8003C9AC(a, 0, 1, 0) != 0) {
+                if (isTargetVulnerable(a, 0, 1, 0) != 0) {
                     func_8003BF98(gCameraTarget);
                     func_80059CA8(a);
                 }

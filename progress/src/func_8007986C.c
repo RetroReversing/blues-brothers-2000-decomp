@@ -20,7 +20,7 @@ M2C_UNK func_800852CC(void *, s32);                 /* extern */
 extern s32 D_800B7B0C;
 extern M2C_UNK D_8014AA45;
 extern M2C_UNK func_80079504;
-extern M2C_UNK func_80079580;
+extern M2C_UNK updatePorcupineAi;
 
 void *func_8007986C(s32 arg0) {
     void *temp_v0;
@@ -31,7 +31,7 @@ void *func_8007986C(s32 arg0) {
     M2C_FIELD(temp_v0, s32 *, 0) = 0x1003;
     M2C_FIELD(temp_v0, s32 *, 0x58) = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
     func_800852CC(temp_v0, arg0);
-    M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80079580;
+    M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &updatePorcupineAi;
     M2C_FIELD(temp_v0, s32 *, 0x8C) = 4;
     M2C_FIELD(temp_v0, s32 *, 0x7C) = 0;
     M2C_FIELD(temp_v0, s32 *, 0x6C) = 0;

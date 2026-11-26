@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700461.1341891,
- "revision": 5646,
+ "saved_at": 1795700523.2215412,
+ "revision": 5651,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -8579,7 +8579,7 @@
   },
   "486528:2147967104": {
    "vram": 2147967104,
-   "function": "func_80076080",
+   "function": "updateDistanceCull",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -11085,7 +11085,7 @@
   },
   "548840:2148029416": {
    "vram": 2148029416,
-   "function": "func_800853E8",
+   "function": "fireActorEvents",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -13492,7 +13492,7 @@
   },
   "60176:2147540752": {
    "vram": 2147540752,
-   "function": "func_8000DF10",
+   "function": "spawnPuffEffect",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16111,8 +16111,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "362700:2147843276": {
    "vram": 2147843276,
@@ -16443,7 +16442,7 @@
   },
   "500096:2147980672": {
    "vram": 2147980672,
-   "function": "func_80079580",
+   "function": "updatePorcupineAi",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -18297,7 +18296,7 @@
    "matched_by": "permuter-158913790021",
    "readable": false
   },
-  "func_8000DF10": {
+  "spawnPuffEffect": {
    "vram": 2147540752,
    "matched_by": "manual-fe58f09571f14f6c",
    "readable": false
@@ -21837,7 +21836,7 @@
    "matched_by": "manual-291cac6721ed4aac",
    "readable": false
   },
-  "func_8003C9AC": {
+  "isTargetVulnerable": {
    "vram": 2147731884,
    "matched_by": "manual-c182cbdee7f24184",
    "readable": false
@@ -25212,7 +25211,7 @@
    "matched_by": "permuter-158913791386",
    "readable": false
   },
-  "func_80076080": {
+  "updateDistanceCull": {
    "vram": 2147967104,
    "matched_by": "manual-9fd1e39de8e6486b",
    "readable": false
@@ -25512,10 +25511,10 @@
    "matched_by": "permuter-158913791446",
    "readable": false
   },
-  "func_80079580": {
+  "updatePorcupineAi": {
    "vram": 2147980672,
    "matched_by": "manual-57bb4eaaaa484af6",
-   "readable": false
+   "readable": true
   },
   "func_8007986C": {
    "vram": 2147981420,
@@ -26342,7 +26341,7 @@
    "matched_by": "manual-40990e5bd6804ace",
    "readable": false
   },
-  "func_800853E8": {
+  "fireActorEvents": {
    "vram": 2148029416,
    "matched_by": "manual-4291b8a133fc49df",
    "readable": false
@@ -28793,7 +28792,7 @@
   "func_8000DCC4": "local_source_158913790018",
   "func_8000DDC0": "local_source_158913790019",
   "func_8000DEB4": "local_source_158913790021",
-  "func_8000DF10": "local_source_158913790022",
+  "spawnPuffEffect": "local_source_158913790022",
   "func_8000DFE4": "local_source_158913790023",
   "func_8000E1EC": "local_source_158913790024",
   "func_8000E294": "local_source_158913790025",
@@ -29444,7 +29443,7 @@
   "func_800790B4": "local_source_158913791443",
   "func_80079294": "local_source_158913791445",
   "func_80079504": "local_source_158913791446",
-  "func_80079580": "local_source_158913791447",
+  "updatePorcupineAi": "local_source_158913791447",
   "func_80079938": "local_source_158913791449",
   "func_80079A08": "local_source_158913791451",
   "func_80079BBC": "local_source_158913791452",
@@ -29523,7 +29522,7 @@
   "func_80084504": "local_source_158913791606",
   "updatePursuitVehicle": "local_source_158913791607",
   "updateChaseAI": "local_source_158913791608",
-  "func_800853E8": "local_source_158913791612",
+  "fireActorEvents": "local_source_158913791612",
   "func_80085528": "local_source_158913791614",
   "func_800858AC": "local_source_158913791617",
   "func_80085998": "local_source_158913791619",
@@ -30107,7 +30106,7 @@
    "status": "open"
   },
   {
-   "name": "func_8000DF10",
+   "name": "spawnPuffEffect",
    "vram": 2147540752,
    "size": 212,
    "status": "open"
@@ -34373,7 +34372,7 @@
    "status": "open"
   },
   {
-   "name": "func_8003C9AC",
+   "name": "isTargetVulnerable",
    "vram": 2147731884,
    "size": 132,
    "status": "open"
@@ -38441,7 +38440,7 @@
    "status": "open"
   },
   {
-   "name": "func_80076080",
+   "name": "updateDistanceCull",
    "vram": 2147967104,
    "size": 380,
    "status": "open"
@@ -38807,7 +38806,7 @@
    "status": "open"
   },
   {
-   "name": "func_80079580",
+   "name": "updatePorcupineAi",
    "vram": 2147980672,
    "size": 748,
    "status": "open"
@@ -39809,7 +39808,7 @@
    "status": "open"
   },
   {
-   "name": "func_800853E8",
+   "name": "fireActorEvents",
    "vram": 2148029416,
    "size": 220,
    "status": "open"
@@ -43195,6 +43194,12 @@
    "kind": "func"
   },
   {
+   "name": "spawnPuffEffect",
+   "address": 2147540752,
+   "size": 212,
+   "kind": "func"
+  },
+  {
    "name": "updateProximityTrigger",
    "address": 2147554336,
    "size": 788,
@@ -43687,6 +43692,12 @@
    "kind": "func"
   },
   {
+   "name": "isTargetVulnerable",
+   "address": 2147731884,
+   "size": 132,
+   "kind": "func"
+  },
+  {
    "name": "drawCenteredMessage",
    "address": 2147732896,
    "size": 84,
@@ -43981,6 +43992,18 @@
    "kind": "func"
   },
   {
+   "name": "updateDistanceCull",
+   "address": 2147967104,
+   "size": 380,
+   "kind": "func"
+  },
+  {
+   "name": "updatePorcupineAi",
+   "address": 2147980672,
+   "size": 748,
+   "kind": "func"
+  },
+  {
    "name": "updateCameraSplineTrigger",
    "address": 2147987432,
    "size": 840,
@@ -44074,6 +44097,12 @@
    "name": "updateChaseAI",
    "address": 2148027596,
    "size": 1292,
+   "kind": "func"
+  },
+  {
+   "name": "fireActorEvents",
+   "address": 2148029416,
+   "size": 220,
    "kind": "func"
   },
   {
@@ -47341,7 +47370,7 @@
   },
   {
    "address": 2148245196,
-   "type": "u8[]",
+   "type": "s32",
    "source": "match"
   },
   {
@@ -47351,7 +47380,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Unk800BD06C_579E0 *",
+   "type": "Obj *",
    "source": "match"
   },
   {

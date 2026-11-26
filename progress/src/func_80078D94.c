@@ -20,7 +20,7 @@ s32 tickActorTimer(void *);                          /* extern */
 s32 animStepKeys(void *);                          /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
-s32 func_80076080();                                /* extern */
+s32 updateDistanceCull();                                /* extern */
 s16 sins(u16);                                      /* extern */
 extern s32 gCamSpeedScale;
 extern f32 D_801700D0;
@@ -35,7 +35,7 @@ void func_80078D94(void *arg0) {
     s32 temp_a0;
     s32 temp_v0;
 
-    if ((func_80076080() == 0) && (temp_fs0 = D_801700D0, (tickActorTimer(arg0) != 0))) {
+    if ((updateDistanceCull() == 0) && (temp_fs0 = D_801700D0, (tickActorTimer(arg0) != 0))) {
         M2C_FIELD(arg0, s32 *, 0x64) = 0;
         if (animStepKeys(arg0) != 0) {
             M2C_FIELD(arg0, s32 *, 0x8C) = (s32) (M2C_FIELD(arg0, s32 *, 0x8C) - 1);

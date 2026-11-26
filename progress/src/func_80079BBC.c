@@ -6,7 +6,7 @@ f32 func_8002DD60(f32);
 s32 animStepKeys(void *);
 s32 func_80043328(void *, s32, s32);
 s32 actorSetAnim(void *, s32, s32);
-s32 func_800853E8(void *);
+s32 fireActorEvents(void *);
 extern void *gCameraTarget;
 extern s32 func_80079A08;
 void func_80079BBC(void *arg0)
@@ -27,7 +27,7 @@ void func_80079BBC(void *arg0)
     return;
   }
   *((s32 *) (((char *) arg0) + 0x68)) = 4;
-  func_800853E8(arg0);
+  fireActorEvents(arg0);
   temp_fs0_2 = 800.0f;
   if (temp_fs0_2 < func_8002DD60((*((f32 *) (((char *) arg0) + 4))) - (*((f32 *) (((char *) arg0) + 0x40)))))
   {

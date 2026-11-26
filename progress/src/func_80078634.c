@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 f32 func_8002DD60(f32);                             /* extern */
 M2C_UNK func_8003BF98(void *);                      /* extern */
-s32 func_8003C9AC(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+s32 isTargetVulnerable(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK animStepKeys(void *);                      /* extern */
 s32 func_80081990(void *, s32, f32);                /* extern */
 extern f32 D_80009320;
@@ -34,7 +34,7 @@ s32 func_80078634(void *arg0) {
         animStepKeys(arg0);
     }
     if ((M2C_FIELD(arg0, s32 *, 0xC0) & 1) && (M2C_FIELD(arg0, s32 *, 0x8C) == 0)) {
-        if (func_8003C9AC(arg0, 0, 0, 0) != 0) {
+        if (isTargetVulnerable(arg0, 0, 0, 0) != 0) {
             func_8003BF98(arg0);
         }
         M2C_FIELD(arg0, s32 *, 0xC0) = 0;

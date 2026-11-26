@@ -11,7 +11,7 @@ typedef struct ObjM5 {
     void *f9C;
 } ObjM5;
 
-s32 func_80076080(ObjM5 *);
+s32 updateDistanceCull(ObjM5 *);
 void animStepKeys(ObjM5 *);
 f32 func_8002D858(ObjM5 *, void *);
 ObjM5 *func_80023DBC(s32);
@@ -36,7 +36,7 @@ void func_800568B4(ObjM5 *arg0) {
     ObjM5 *other;
     ObjM5 *obj;
 
-    if (func_80076080(arg0) != 0) {
+    if (updateDistanceCull(arg0) != 0) {
         return;
     }
     animStepKeys(arg0);

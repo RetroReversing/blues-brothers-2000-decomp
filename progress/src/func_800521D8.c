@@ -1,5 +1,5 @@
 s32 func_80043248(void);
-void func_800853E8(void *);
+void fireActorEvents(void *);
 void func_80043214(void *);
 void func_80023078(void *);
 typedef struct {
@@ -16,7 +16,7 @@ void func_800521D8(Obj *arg0)
     s32 done;
 
     done = func_80043248();
-    func_800853E8(arg0);
+    fireActorEvents(arg0);
     switch (arg0->unkC0) {
     case 2:
         if (done != 0) {

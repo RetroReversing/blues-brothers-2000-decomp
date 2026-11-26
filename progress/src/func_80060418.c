@@ -17,7 +17,7 @@ M2C_UNK func_8002DA80(void *);                      /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 M2C_UNK updateBlockerEnemy(void *);                      /* extern */
 M2C_UNK func_80060214(void *);                      /* extern */
-s32 func_80076080();                                /* extern */
+s32 updateDistanceCull();                                /* extern */
 extern f32 D_800088F0;
 extern f32 D_800088F4;
 
@@ -36,7 +36,7 @@ void func_80060418(void *arg0) {
     temp_fs1 = temp_fv1 + D_800088F0;
     { temp_fs2 = temp_ft0 - D_800088F4; }
     temp_fs3 = temp_ft0 + D_800088F4;
-    if (func_80076080() == 0) {
+    if (updateDistanceCull() == 0) {
         func_80060214(arg0);
         if (M2C_FIELD(arg0, s32 *, 0x80) == 0) {
             func_8002DA80(arg0);

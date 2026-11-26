@@ -4,7 +4,7 @@ f32 getCameraTargetDist(void *, s32, s32 *);
 s32 func_8002DA80(void *);
 s32 updateBlockerEnemy(void *);
 s32 func_80060214(void *);
-s32 func_80076080();
+s32 updateDistanceCull();
 inline static int inline_fn(int arg0, int arg1)
 {
   return randomRange(arg0, 0xFA0) + arg1;
@@ -14,7 +14,7 @@ void func_80060574(void *arg0)
 {
   s32 sp10;
   s32 temp_a2;
-  if (func_80076080() == 0)
+  if (updateDistanceCull() == 0)
   {
     func_80060214(arg0);
     if ((*((s32 *) (((char *) arg0) + 0x80))) == 0)

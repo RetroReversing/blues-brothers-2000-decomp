@@ -53,7 +53,7 @@ s32 func_80043248(Obj60 *);
 void actorSetAnim(Obj60 *, s32, s32);
 void func_80061730(Obj60 *);
 s32 func_80061740(Obj60 *);
-s32 func_80076080(void);
+s32 updateDistanceCull(void);
 s16 func_800944B0(u16);
 s16 func_80095F60(u16);
 
@@ -73,7 +73,7 @@ void func_80060E50(Obj60 *obj) {
     s32 done;
     f32 dy;
 
-    if (func_80076080() != 0) {
+    if (updateDistanceCull() != 0) {
         return;
     }
     hx = obj->x4 - (f32) obj->x1C;

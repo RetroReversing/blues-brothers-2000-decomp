@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8003C9AC(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+s32 isTargetVulnerable(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 extern M2C_UNK func_8005FBE4;
 extern M2C_UNK func_8005FD4C;
@@ -21,7 +21,7 @@ s32 func_8005FD88(void *arg0, void *arg1) {
     M2C_UNK *temp_a0;
     M2C_UNK *temp_v1;
 
-    if (func_8003C9AC(arg1, 1, 1, 1) == 0) {
+    if (isTargetVulnerable(arg1, 1, 1, 1) == 0) {
     } else {
         temp_v1 = M2C_FIELD(arg0, M2C_UNK **, 0x9C);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8005FD4C;

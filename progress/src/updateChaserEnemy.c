@@ -18,11 +18,11 @@ void sendCommand(s32, s32);
 void func_8002ADFC(s32, s32, Obj *);
 s32 tickActorTimer(Obj *);
 f32 func_8002DD60(f32);
-s32 func_8003C9AC(Obj *, s32, s32, s32);
+s32 isTargetVulnerable(Obj *, s32, s32, s32);
 s32 animStepKeys(Obj *);
 void func_80043328(Obj *, s32, s32);
 void func_8005F470(Obj *);
-s32 func_80076080(void);
+s32 updateDistanceCull(void);
 extern f32 D_80008840;
 extern f32 D_8000885C;
 extern f32 D_80008860;
@@ -44,7 +44,7 @@ extern s32 D_80140200[];
     f32 heightRange;
     s32 animDone;
 
-    if (func_80076080() != 0) {
+    if (updateDistanceCull() != 0) {
         return;
     }
     dxToPlayer = (*(Obj **)gCameraTarget)->x - enemy->x;
@@ -67,7 +67,7 @@ extern s32 D_80140200[];
         if (tickActorTimer(enemy) == 0) {
             break;
         }
-        if (func_8002DD60(dyToPlayer) < 400.0f && func_8003C9AC(enemy, 1, 0, 0) != 0) {
+        if (func_8002DD60(dyToPlayer) < 400.0f && isTargetVulnerable(enemy, 1, 0, 0) != 0) {
             if (func_8002DD60(dxToPlayer) < 400.0f) {
                 enemy->f90 = 2;
                 enemy->f8C = 0;

@@ -16,10 +16,10 @@ void func_8002DA80(O602FC *);
 f32 func_8002DD60(f32);
 void updateBlockerEnemy(O602FC *);
 void func_80060214(O602FC *);
-s32 func_80076080(void);
+s32 updateDistanceCull(void);
 
 void func_800602FC(O602FC *arg0) {
-    if (func_80076080() != 0) {
+    if (updateDistanceCull() != 0) {
         return;
     }
     func_80060214(arg0);

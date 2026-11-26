@@ -3,7 +3,7 @@ extern s32 gCamSpeedScale;
 typedef struct { s32 id; f32 t; s32 val; s32 pad; } E;
 typedef struct { s32 x0; s32 n; s32 x8; E *e; } L;
 typedef struct { char pad[0xC8]; L *l; s32 on; s32 id; char p2[8]; f32 t; } A;
-s32 func_800853E8(A *arg0) {
+s32 fireActorEvents(A *arg0) {
     L *l; E *e; s32 i; s32 t; f32 a, b;
     t = (s32)arg0->l;
     if (t == 0) return 0;

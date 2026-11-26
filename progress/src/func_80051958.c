@@ -5,7 +5,7 @@ typedef struct Obj {
 extern s32 approachAngle(s32, s32, s32);
 extern s32 func_8002D260(s32);
 extern s32 func_8003BF98(Obj *);
-extern s32 func_8003C9AC(Obj *, s32, s32, s32);
+extern s32 isTargetVulnerable(Obj *, s32, s32, s32);
 extern s32 func_80043248(Obj *);
 extern s32 func_80043328(Obj *, s32, s32);
 extern s32 gCamSpeedScale;
@@ -15,7 +15,7 @@ s32 func_80051958(Obj *arg0) {
     s32 var_v0;
 
     arg0->f10 = approachAngle(arg0->f90, arg0->f10, gCamSpeedScale << 9);
-    if ((func_8003C9AC(arg0, 0, 0, 0) != 0) && (arg0->f80 == 0)) {
+    if ((isTargetVulnerable(arg0, 0, 0, 0) != 0) && (arg0->f80 == 0)) {
         temp_fv1 = arg0->fDC;
         if ((8.0f < temp_fv1) && (temp_fv1 < 14.0f)) {
             var_v0 = func_8002D260(arg0->f90 - arg0->f10);

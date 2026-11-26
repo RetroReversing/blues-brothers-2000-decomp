@@ -27,7 +27,7 @@ Obj *spawnEffectObj(s32, s32, s32, s32);
 Obj *findActor(s32, s32);
 f32 approachF32(f32, f32, f32);
 f32 func_8002DD60(f32);
-s32 func_8003C9AC(Obj *, s32, s32, s32);
+s32 isTargetVulnerable(Obj *, s32, s32, s32);
 void func_80065260();
 void func_8006542C();
 void func_800656B4();
@@ -87,7 +87,7 @@ void elevatorActorUpdate(Obj *arg0) {
     }
     if (dyFloorA != arg0->y) {
         arg0->y = approachF32(dyFloorA, arg0->y, 100.0f);
-    } else if ((*(Obj **)gCameraTarget)->z >= D_80008C18 && dxCam < D_80008C1C && func_8003C9AC(arg0, 1, 1, 1) != 0) {
+    } else if ((*(Obj **)gCameraTarget)->z >= D_80008C18 && dxCam < D_80008C1C && isTargetVulnerable(arg0, 1, 1, 1) != 0) {
         camActor = *(Obj **)gCameraTarget;
         if (camActor->f10 < -0x6D60 || camActor->f10 > 0x6D60) {
             camActor->f9C = func_8006542C;
