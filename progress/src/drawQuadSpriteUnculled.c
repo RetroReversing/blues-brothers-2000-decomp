@@ -44,113 +44,116 @@ void debugPrintf(void *, ...);
 
 void loadTextureClamped(s32 type, void *img, void *pal, s32);
 
-s32 drawQuadSpriteUnculled(Unk8002FEDC *arg0) {
-    s32 size;
-    s32 r;
-    s32 g;
-    s32 b;
-    s32 a;
-    s32 *tex;
-    s32 *img;
+/* Same sprite quad as drawQuadSprite, but without the range test: it sets the
+   render mode first and always emits the quad. Returns 0 on success
+   and 1 when no vertex slots are free. */
+s32 drawQuadSpriteUnculled(Unk8002FEDC *obj) {
+    s32 halfWidth;
+    s32 colorR;
+    s32 colorG;
+    s32 colorB;
+    s32 colorA;
+    s32 *texData;
+    s32 *imgData;
     s32 fmt;
-    s32 w;
-    s32 h;
-    s32 idx;
-    s32 i;
-    VtxW *v0;
-    VtxW *v1;
-    VtxW *v2;
-    VtxW *v3;
-    f32 m1[10];
-    f32 m2[14];
+    s32 texW;
+    s32 texH;
+    s32 firstSlot;
+    s32 vtxIndex;
+    VtxW *vtx0;
+    VtxW *vtx1;
+    VtxW *vtx2;
+    VtxW *vtx3;
+    f32 mtxA[10];
+    f32 mtxB[14];
 
-    b = arg0->unk78;
-    size = arg0->unk70;
-    a = arg0->unk5C;
-    g = b >> 8;
-    r = b & 0xFF;
-    b >>= 16;
-    g &= 0xFF;
-    b &= 0xFF;
-    func_8001F230(arg0);
+    colorB = obj->unk78;
+    halfWidth = obj->unk70;
+    colorA = obj->unk5C;
+    colorG = colorB >> 8;
+    colorR = colorB & 0xFF;
+    colorB >>= 16;
+    colorG &= 0xFF;
+    colorB &= 0xFF;
+    func_8001F230(obj);
     {
         GfxW *gp = D_80177E18++;
         gp->w0 = 0xE200001C;
         gp->w1 = 0x00553048;
     }
-    tex = getImageAsset(arg0->unk60);
-    img = tex;
-    if (arg0->unk74 == 0) {
-        img = tex + 4;
+    texData = getImageAsset(obj->unk60);
+    imgData = texData;
+    if (obj->unk74 == 0) {
+        imgData = texData + 4;
     }
-    w = 0x7C0;
-    h = 0x7C0;
-    if (arg0->unk74 == 0 && tex[2] == 32) {
-        loadTextureClamped(32, img, NULL, 0);
+    texW = 0x7C0;
+    texH = 0x7C0;
+    if (obj->unk74 == 0 && texData[2] == 32) {
+        loadTextureClamped(32, imgData, NULL, 0);
     } else {
-        loadTextureClamped(16, img, NULL, 0);
+        loadTextureClamped(16, imgData, NULL, 0);
     }
-    if (arg0->unk7C == 0) {
-        func_80024FE8(m1);
-        func_80024B58(m2, m1, arg0->unk10);
-        func_80024A3C(m1, m2, arg0->unk14);
-        func_80024BE0(m2, m1, arg0->unk18);
-        buildObjectMatrix(arg0, m2, 1);
+    if (obj->unk7C == 0) {
+        func_80024FE8(mtxA);
+        func_80024B58(mtxB, mtxA, obj->unk10);
+        func_80024A3C(mtxA, mtxB, obj->unk14);
+        func_80024BE0(mtxB, mtxA, obj->unk18);
+        buildObjectMatrix(obj, mtxB, 1);
     } else {
-        func_80024FE8(m1);
-        func_80024BE0(m2, m1, arg0->unk18);
-        buildObjectMatrix(arg0, m2, 0);
+        func_80024FE8(mtxA);
+        func_80024BE0(mtxB, mtxA, obj->unk18);
+        buildObjectMatrix(obj, mtxB, 0);
     }
-    i = getVertexSlot();
-    idx = i;
-    if (i == -1) {
+    vtxIndex = getVertexSlot();
+    firstSlot = vtxIndex;
+    if (vtxIndex == -1) {
         debugPrintf(D_80001230);
         return 1;
     }
-    v0 = &spriteVerts[i++];
-    v1 = &spriteVerts[i++];
-    v2 = &spriteVerts[i++];
-    v3 = &spriteVerts[i++];
-    v0->ob[0] = size;
-    v0->ob[1] = size * 2;
-    v0->ob[2] = 0;
-    v0->cn[0] = r;
-    v0->cn[1] = g;
-    v0->cn[2] = b;
-    v0->cn[3] = a;
-    v0->tc[0] = w;
-    v0->tc[1] = h;
-    v1->ob[0] = size;
-    v1->ob[1] = 0;
-    v1->ob[2] = 0;
-    v1->cn[0] = r;
-    v1->cn[1] = g;
-    v1->cn[2] = b;
-    v1->cn[3] = a;
-    v1->tc[0] = w;
-    v1->tc[1] = 0;
-    v2->ob[0] = -size;
-    v2->ob[1] = 0;
-    v2->ob[2] = 0;
-    v2->cn[0] = r;
-    v2->cn[1] = g;
-    v2->cn[2] = b;
-    v2->cn[3] = a;
-    v2->tc[0] = 0;
-    v2->tc[1] = 0;
-    v3->ob[0] = -size;
-    v3->ob[1] = size * 2;
-    v3->ob[2] = 0;
-    v3->cn[0] = r;
-    v3->cn[1] = g;
-    v3->cn[2] = b;
-    v3->cn[3] = a;
-    v3->tc[0] = 0;
-    v3->tc[1] = h;
+    vtx0 = &spriteVerts[vtxIndex++];
+    vtx1 = &spriteVerts[vtxIndex++];
+    vtx2 = &spriteVerts[vtxIndex++];
+    vtx3 = &spriteVerts[vtxIndex++];
+    vtx0->ob[0] = halfWidth;
+    vtx0->ob[1] = halfWidth * 2;
+    vtx0->ob[2] = 0;
+    vtx0->cn[0] = colorR;
+    vtx0->cn[1] = colorG;
+    vtx0->cn[2] = colorB;
+    vtx0->cn[3] = colorA;
+    vtx0->tc[0] = texW;
+    vtx0->tc[1] = texH;
+    vtx1->ob[0] = halfWidth;
+    vtx1->ob[1] = 0;
+    vtx1->ob[2] = 0;
+    vtx1->cn[0] = colorR;
+    vtx1->cn[1] = colorG;
+    vtx1->cn[2] = colorB;
+    vtx1->cn[3] = colorA;
+    vtx1->tc[0] = texW;
+    vtx1->tc[1] = 0;
+    vtx2->ob[0] = -halfWidth;
+    vtx2->ob[1] = 0;
+    vtx2->ob[2] = 0;
+    vtx2->cn[0] = colorR;
+    vtx2->cn[1] = colorG;
+    vtx2->cn[2] = colorB;
+    vtx2->cn[3] = colorA;
+    vtx2->tc[0] = 0;
+    vtx2->tc[1] = 0;
+    vtx3->ob[0] = -halfWidth;
+    vtx3->ob[1] = halfWidth * 2;
+    vtx3->ob[2] = 0;
+    vtx3->cn[0] = colorR;
+    vtx3->cn[1] = colorG;
+    vtx3->cn[2] = colorB;
+    vtx3->cn[3] = colorA;
+    vtx3->tc[0] = 0;
+    vtx3->tc[1] = texH;
     {
         GfxW *gp = D_80177E18++;
         gp->w0 = 0x01004008;
-        gp->w1 = (u32)&spriteVerts[i - 4];
+        gp->w1 = (u32)&spriteVerts[vtxIndex - 4];
     }
     {
         GfxW *gp = D_80177E18++;
@@ -162,7 +165,7 @@ s32 drawQuadSpriteUnculled(Unk8002FEDC *arg0) {
         gp->w0 = 0x07000604;
         gp->w1 = 0x402;
     }
-    bumpVertexCount(i - idx);
+    bumpVertexCount(vtxIndex - firstSlot);
     {
         GfxW *gp = D_80177E18++;
         gp->w0 = 0xE7000000;

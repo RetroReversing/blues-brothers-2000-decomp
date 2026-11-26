@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700267.02558,
- "revision": 5625,
+ "saved_at": 1795700278.164608,
+ "revision": 5626,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -17061,6 +17061,22 @@
     "-mhard-float",
     "-mfp32"
    ]
+  },
+  "199388:2147679964": {
+   "toolchain": "sn-n64-281",
+   "flags": [
+    "-G0",
+    "-mips3",
+    "-O2",
+    "-mgas",
+    "-meb",
+    "-mcpu=VR4300",
+    "-mhard-float",
+    "-mfp64"
+   ],
+   "timeout": 20,
+   "function": "drawQuadSpriteUnculled",
+   "vram": 2147679964
   }
  },
  "instructions": "",
@@ -17999,7 +18015,8 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h"
+  "local_source_158913792199": "common_local_source_158913792199.h",
+  "main_text_27750": "common_main_text_27750.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -21210,7 +21227,7 @@
   "drawQuadSpriteUnculled": {
    "vram": 2147679964,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "drawRotatedImage": {
    "vram": 2147680744,
