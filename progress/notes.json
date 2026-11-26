@@ -8797,24 +8797,6 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:17a4a83c908d3fac30fcc9b43f68fadb2622cbf4cab81560ace931bff44b5db9"
  },
  {
-  "function": "inverseSeriesApprox",
-  "text": "op65: best 105 under sn-n64-281 -G8 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (exact-trial db2e752b1dce45285738 is diagnostic, 105; the same source scores 13265 under the default profile, saved). atan approximation: |x|>=1 -> x = 1/x; |x|>0.5 -> half-angle x = (sqrtf(x*x+1) - one)/d; series x - x^3/3 + x^5/5 - x^7/7 + x^9/9 - x^11/11 written four times, each with its own pool words (named extern f32/f64 D_80000F60..D_80000FF0; D_800AE020 as extern f32[] so it loads through lui v0). one = D_80000F60 and d = (f64)x as locals (fs1/fs0). KEY: x2 must be ONE function-level f32 (a global pseudo, gets f10); the other powers block-local (statement-expression macro). Block 1 matches only with x = SERIES(...); return pi*0.5 - 2.0f*x. Remaining 21 register rows are all block 2 (0x800245BC, pi*0.5 - S): target puts the 0.5 constant loads in f0 and p3/partial-sum chain in f2 (S into f0); ours puts the chain in f0 and constants in f2. Tried: block-scoped r, function-level r (also used in blocks 3/4), x as the result (breaks x2's f10: 1175), h = pi*0.5 temp first (765), direct return (765), inline-function helper (1595), all powers function-level (3855).",
-  "by": "manual-aeeb5be5af9d41ed",
-  "created_at": 1795572745.945712,
-  "score_before": 14997,
-  "score_after": 13265,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:51652aa4f09010bd9534af55aa4c4f73c8697049ca203b302b5e7cd3f6ce3489"
- },
- {
-  "function": "inverseSeriesApprox",
-  "text": "best 105 under -G8 -mips3 -mfp32 (diagnostic); block-2 FP allocation left; see note",
-  "by": "manual-aeeb5be5af9d41ed",
-  "created_at": 1795572746.894198,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:51652aa4f09010bd9534af55aa4c4f73c8697049ca203b302b5e7cd3f6ce3489"
- },
- {
   "function": "cameraRigUpdate",
   "text": "op64: best 90 under per-function -mfp32 (compiler_experiments trial c40b049cbeb6346856d3; 240 on the current fp64 profile; saved as best). Source: plain rewrite. Keys: func_800242A8 gets a 4th arg D_800B83B0+1 ($a3 live): id = D_800B83B0; ...; D_800B83B0 = id + 1; func_800242A8(arg0->unk6C, 0xDAA, 0, id + 1). Second loop reuses the first object local o (s2). Floats 20,1281,-5818,181,500,2000,45,365 are li.s literals (lui $at); the two doubles must be named f64 D_80009138/D_80009140 (literal doubles get padded to 8 in our pool, the target pool starts 4 mod 8). One row left: lui $t0,%hi(D_800B83B0) must sit at the block top (after move a2,zero); ours lands after the D_800B3978 store. Tried: move-one-line hill climb and all 720 orders of the first six statements, ++D_800B83B0 / assignment inside the call / reread as arg (all 90 or worse). cc1n64 -dS shows sched1 places the lui after the x90 store, so it is a scheduler priority question.",
   "by": "manual-7740c92ed85f4923",
@@ -9062,23 +9044,6 @@
   "score_before": null,
   "score_after": null,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:6eb0351a977b3e6b239b955bdd7a73a40055bada703b36bb7c0d797fb0f757ea"
- },
- {
-  "function": "inverseSeriesApprox",
-  "text": "op70: still 105 under -G8 -mips3 -O2 -mfp32 (also -G8 -mips2 -O2 -mfp32: 105; -G0 -mips3 ...-mfp32: 13125). Rows: block 1 series result lands in x (f14) where the target uses a temp in f0 before add.s f0,f0,f0, and block 2 chain/constant f0<->f2 swap. Tried (all worse or same): every combination of block 1 {x = S; return P - 2x | direct | block-local r | r + r} x block 2 {r | direct | x = S | h = P first} (105 best = current); p = P after r, x/r reassigned with P - r (105); function-level x3 shared by blocks 2/3/4/1 (645-2220); macro temp declaration order (105); multi-set partial sum r += / -= statements (105). Needs: a source shape for block 2 that makes local-alloc give the constant loads f0 (higher priority) than the x3/partial-sum chain.",
-  "by": "manual-30d0b17e5a18415e",
-  "created_at": 1795608975.2236109,
-  "score_before": 13265,
-  "score_after": 13265
- },
- {
-  "function": "inverseSeriesApprox",
-  "text": "No closer than 105 under the -mfp32 trials after 30+ spellings; register-only rows in blocks 1-2, see note.",
-  "by": "manual-30d0b17e5a18415e",
-  "created_at": 1795608982.930791,
-  "score_before": 13265,
-  "score_after": 11280,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:51652aa4f09010bd9534af55aa4c4f73c8697049ca203b302b5e7cd3f6ce3489"
  },
  {
   "function": "drawAudioOptionsMenu",
@@ -12664,5 +12629,40 @@
   "created_at": 1795699301.6797109,
   "score_before": 0,
   "score_after": 0
+ },
+ {
+  "function": "inverseSeriesApprox",
+  "text": "op65: best 105 under sn-n64-281 -G8 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (exact-trial db2e752b1dce45285738 is diagnostic, 105; the same source scores 13265 under the default profile, saved). atan approximation: |x|>=1 -> x = 1/x; |x|>0.5 -> half-angle x = (sqrtf(x*x+1) - one)/d; series x - x^3/3 + x^5/5 - x^7/7 + x^9/9 - x^11/11 written four times, each with its own pool words (named extern f32/f64 D_80000F60..D_80000FF0; D_800AE020 as extern f32[] so it loads through lui v0). one = D_80000F60 and d = (f64)x as locals (fs1/fs0). KEY: x2 must be ONE function-level f32 (a global pseudo, gets f10); the other powers block-local (statement-expression macro). Block 1 matches only with x = SERIES(...); return pi*0.5 - 2.0f*x. Remaining 21 register rows are all block 2 (0x800245BC, pi*0.5 - S): target puts the 0.5 constant loads in f0 and p3/partial-sum chain in f2 (S into f0); ours puts the chain in f0 and constants in f2. Tried: block-scoped r, function-level r (also used in blocks 3/4), x as the result (breaks x2's f10: 1175), h = pi*0.5 temp first (765), direct return (765), inline-function helper (1595), all powers function-level (3855).",
+  "by": "manual-aeeb5be5af9d41ed",
+  "created_at": 1795572745.945712,
+  "score_before": 14997,
+  "score_after": 13265,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:51652aa4f09010bd9534af55aa4c4f73c8697049ca203b302b5e7cd3f6ce3489"
+ },
+ {
+  "function": "inverseSeriesApprox",
+  "text": "best 105 under -G8 -mips3 -mfp32 (diagnostic); block-2 FP allocation left; see note",
+  "by": "manual-aeeb5be5af9d41ed",
+  "created_at": 1795572746.894198,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:51652aa4f09010bd9534af55aa4c4f73c8697049ca203b302b5e7cd3f6ce3489"
+ },
+ {
+  "function": "inverseSeriesApprox",
+  "text": "op70: still 105 under -G8 -mips3 -O2 -mfp32 (also -G8 -mips2 -O2 -mfp32: 105; -G0 -mips3 ...-mfp32: 13125). Rows: block 1 series result lands in x (f14) where the target uses a temp in f0 before add.s f0,f0,f0, and block 2 chain/constant f0<->f2 swap. Tried (all worse or same): every combination of block 1 {x = S; return P - 2x | direct | block-local r | r + r} x block 2 {r | direct | x = S | h = P first} (105 best = current); p = P after r, x/r reassigned with P - r (105); function-level x3 shared by blocks 2/3/4/1 (645-2220); macro temp declaration order (105); multi-set partial sum r += / -= statements (105). Needs: a source shape for block 2 that makes local-alloc give the constant loads f0 (higher priority) than the x3/partial-sum chain.",
+  "by": "manual-30d0b17e5a18415e",
+  "created_at": 1795608975.2236109,
+  "score_before": 13265,
+  "score_after": 13265
+ },
+ {
+  "function": "inverseSeriesApprox",
+  "text": "No closer than 105 under the -mfp32 trials after 30+ spellings; register-only rows in blocks 1-2, see note.",
+  "by": "manual-30d0b17e5a18415e",
+  "created_at": 1795608982.930791,
+  "score_before": 13265,
+  "score_after": 11280,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:51652aa4f09010bd9534af55aa4c4f73c8697049ca203b302b5e7cd3f6ce3489"
  }
 ]
