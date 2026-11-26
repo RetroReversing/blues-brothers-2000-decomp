@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700830.870791,
- "revision": 5678,
+ "saved_at": 1795700844.401057,
+ "revision": 5680,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16205,7 +16205,7 @@
   },
   "634340:2148114916": {
    "vram": 2148114916,
-   "function": "_pullSubFrame",
+   "function": "envMixerPullSubFrame",
    "toolchain": "gcc-2.7.2-kmc",
    "flags": [
     "-G0",
@@ -16423,8 +16423,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "405120:2147885696": {
    "vram": 2147885696,
@@ -27727,10 +27726,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "_pullSubFrame": {
+  "envMixerPullSubFrame": {
    "vram": 2148114916,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "_frexpf": {
    "vram": 2148115640,
@@ -29642,7 +29641,7 @@
   "initHardware": "local_source_158913791876",
   "send": "local_source_158913791884",
   "kdebugserver": "local_source_158913791885",
-  "_pullSubFrame": "local_source_158913791921",
+  "envMixerPullSubFrame": "local_source_158913791921",
   "_getRate": "local_source_158913791924",
   "func_8009CD60": "local_source_158913791982",
   "func_8009CEB0": "local_source_158913791984",
@@ -41687,7 +41686,7 @@
    "status": "open"
   },
   {
-   "name": "_pullSubFrame",
+   "name": "envMixerPullSubFrame",
    "vram": 2148114916,
    "size": 724,
    "status": "open"
@@ -44725,7 +44724,7 @@
    "kind": "func"
   },
   {
-   "name": "_pullSubFrame",
+   "name": "envMixerPullSubFrame",
    "address": 2148114916,
    "size": 724,
    "kind": "func"

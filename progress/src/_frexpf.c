@@ -7514,7 +7514,7 @@ extern	f64	__pow(f64, f64);
  
 
 
-static  Acmd *_pullSubFrame(void *filter, s16 *inp, s16 *outp, s32 outCount,
+static  Acmd *envMixerPullSubFrame(void *filter, s16 *inp, s16 *outp, s32 outCount,
                             s32 sampleOffset, Acmd *p) ;
 static  s16 _getRate(f64 vol, f64 tgt, s32 count, u16* ratel);
 
@@ -7528,7 +7528,7 @@ Acmd *alEnvmixerPull(void *filter, s16 *outp, s32 outCount, s32 sampleOffset,
 s32 alEnvmixerParam(void *filter, s32 paramID, void *param);
 
 
-static Acmd* _pullSubFrame(void *filter, s16 *inp, s16 *outp, s32 outCount,
+static Acmd* envMixerPullSubFrame(void *filter, s16 *inp, s16 *outp, s32 outCount,
                     s32 sampleOffset, Acmd *p);
 
 

@@ -9392,6 +9392,15 @@
   "score_after": 5575
  },
  {
+  "function": "splineClosestT",
+  "text": "op76: nearest-point-on-path search. Saved 7324 -> 2508 (default -mfp64); the same source scores 10 under -mfp32 (not applied: not exact). Source: f32 (s32 path, Vec3f *pos, f32 *outDist, Vec3f *outPos); point loop over D_8014A9A8[path] with sqrtf(dx*dx+dy*dy+dz*dz) (declare f32 sqrtf(f32)); ret = best (f32), t = ret - 1.0f clamped at 0; for (; t < (f32)best + 1.0; t += 0.005f) with the (f32)best re-conversion so cse reuses ret's register and loop.c hoists the bound (fs4); outPos written field by field; spline segment &D_801718C0[path][(s32)t] of 0x30 bytes. Only difference left under -mfp32: the hoisted 0.005f constant is rematerialized into $f8 where the target uses $f0 (reload's spill register choice). Tried: step local, goto loop, while/do-while forms, ret/bestDist order, dist reuse, frac spelling.",
+  "by": "manual-f86831e3bb304d6a",
+  "created_at": 1795621306.5087569,
+  "score_before": 6241,
+  "score_after": 2508,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3294f1e42ddbafb06a67aa3f9bb6bf944ebe02fb17b44c6a4d94ee22e3c9f317"
+ },
+ {
   "function": "func_80047558",
   "text": "ap14: BOUNDARY verdict confirmed. Two stray words (lui a3,0x4080; addiu a2,s1,4) precede the prologue (addiu sp,-0x38) and use s1 before it is set; real entry is +8 (0x80047560). Not matched; needs Review function boundaries.",
   "by": "manual-57bb4eaaaa484af6",
@@ -12671,14 +12680,5 @@
   "created_at": 1795700653.0427551,
   "score_before": 200,
   "score_after": 200
- },
- {
-  "function": "splineClosestT",
-  "text": "op76: nearest-point-on-path search. Saved 7324 -> 2508 (default -mfp64); the same source scores 10 under -mfp32 (not applied: not exact). Source: f32 (s32 path, Vec3f *pos, f32 *outDist, Vec3f *outPos); point loop over D_8014A9A8[path] with sqrtf(dx*dx+dy*dy+dz*dz) (declare f32 sqrtf(f32)); ret = best (f32), t = ret - 1.0f clamped at 0; for (; t < (f32)best + 1.0; t += 0.005f) with the (f32)best re-conversion so cse reuses ret's register and loop.c hoists the bound (fs4); outPos written field by field; spline segment &D_801718C0[path][(s32)t] of 0x30 bytes. Only difference left under -mfp32: the hoisted 0.005f constant is rematerialized into $f8 where the target uses $f0 (reload's spill register choice). Tried: step local, goto loop, while/do-while forms, ret/bestDist order, dist reuse, frac spelling.",
-  "by": "manual-f86831e3bb304d6a",
-  "created_at": 1795621306.5087569,
-  "score_before": 6241,
-  "score_after": 2508,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3294f1e42ddbafb06a67aa3f9bb6bf944ebe02fb17b44c6a4d94ee22e3c9f317"
  }
 ]

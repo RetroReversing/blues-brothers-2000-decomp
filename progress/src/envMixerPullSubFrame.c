@@ -83,7 +83,8 @@ extern s16 D_800BB410[];
 s16 _getRate(f64 vol, f64 tgt, s32 count, u16 *ratel);
 u32 osVirtualToPhysical(void *);
 
-AcmdU *_pullSubFrame(void *filter, s16 *inp, s16 *outp, s32 outCount, s32 sampleOffset, AcmdU *p) {
+/* Queues the audio commands for one envelope-mixer sub-frame: pulls the source filter, routes the output to the main and aux buffers, and on the first sub-frame sets the start volumes and rates. */
+AcmdU *envMixerPullSubFrame(void *filter, s16 *inp, s16 *outp, s32 outCount, s32 sampleOffset, AcmdU *p) {
     AcmdU *ptr = p;
     ALEnvMixerW *e = (ALEnvMixerW *)filter;
     ALFilterW *source = e->filter.source;
