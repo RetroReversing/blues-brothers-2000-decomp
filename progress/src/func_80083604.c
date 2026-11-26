@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 
 extern s32 D_800B9094;
 extern s32 D_800B87E4;
-extern s32 D_801719E0[];
+extern s32 gComboSlots[];
 extern void *D_800B3960;
 
 void func_80083604(void) {
@@ -24,8 +24,8 @@ void func_80083604(void) {
     counter = D_800B9094 + 1;
     D_800B9094 = counter;
     if (counter == 2) {
-        lo = D_801719E0[1];
-        hi = D_801719E0[11];
+        lo = gComboSlots[1];
+        hi = gComboSlots[11];
         if (hi < lo) {
             D_800B87E4 += 0x1F4;
             M2C_FIELD(D_800B3960, s32 *, 0x94) = 1;

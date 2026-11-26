@@ -61,7 +61,7 @@ extern s32 D_801719A4;
 extern Obj86C98 *D_801719A8;
 extern Obj86C98 *D_801719AC;
 extern s32 D_801719DC;
-extern s32 D_801719E0;
+extern s32 gComboSlots;
 extern Obj86C98 *D_80171A30;
 extern s32 D_80171A34;
 extern s32 D_80171A38;
@@ -149,7 +149,7 @@ void func_80086C98(Obj86C98 *arg0) {
     o->unk98 = func_800820E8;
     *(s32 *)((u8 *)o + 0x70) = 0;
     *(s32 *)((u8 *)o + 0x68) = -1;
-    D_801719E0 = idx;
+    gComboSlots = idx;
     arg0->unk9C = func_80086B3C;
     D_801719A8->unk10 = -0x4000;
     D_801719AC->unk10 = 0x4000;

@@ -36,9 +36,9 @@ s32 sprintf(char *, const char *, ...);
 extern Entry D_800B8720[];
 extern s32 D_800B9B40[];
 extern s32 gCamSpeedScale;
-extern s32 D_80171980;
+extern s32 gComboBeat;
 extern s32 D_801719A8;
-extern Rec D_801719E0[];
+extern Rec gComboSlots[];
 extern Obj *D_80171A30;
 extern s32 D_80171A34;
 extern s32 D_80171A54;
@@ -53,15 +53,15 @@ void func_80086028(Obj *o)
 
     idx = func_80082400();
     h = func_80023DBC(0xE33);
-    D_80171980 += gCamSpeedScale;
-    m = D_80171980 % 144;
+    gComboBeat += gCamSpeedScale;
+    m = gComboBeat % 144;
     if (tickActorTimer(o) == 0) {
         return;
     }
     if (func_80082688(m, 0x24) == 0) {
         return;
     }
-    D_801719E0[0].type = 0;
+    gComboSlots[0].type = 0;
     actorSetAnim(D_801719A8, 0x178, 0x100);
     func_8002A360(0xC, 0x80);
     func_8002A360(8, 0x78);
@@ -85,8 +85,8 @@ void func_80086028(Obj *o)
             func_80087160(func_80023D58(0x220));
         }
         func_80081C10();
-        func_80026C04(D_801719E0, 0, 0x50);
-        D_801719E0[0].n = 5;
+        func_80026C04(gComboSlots, 0, 0x50);
+        gComboSlots[0].n = 5;
         D_80171A34 = 0;
         o->cb = &func_80085F58 + 26;
         o->timer = 200;

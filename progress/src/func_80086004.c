@@ -14,9 +14,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80082400();                            /* extern */
-extern s32 D_801719E0;
+extern s32 gComboSlots;
 
 s32 func_80086004(void) {
     func_80082400();
-    return D_801719E0;
+    return gComboSlots;
 }

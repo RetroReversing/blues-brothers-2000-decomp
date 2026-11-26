@@ -20,12 +20,12 @@ void func_80026C04(void *, s32, s32);
 f32 approachF32(f32, f32, f32);
 void actorSetAnim(Obj *, s32, s32);
 s32 func_80082400(void);
-extern s32 D_800B9000[];
+extern s32 gComboDefs[];
 extern s32 gCamSpeedScale;
-extern s32 D_80171980;
+extern s32 gComboBeat;
 extern Obj *D_801719A8;
 extern Obj *D_801719AC;
-extern Rec D_801719E0;
+extern Rec gComboSlots;
 extern Obj *D_80171A30;
 extern s32 D_80171A34;
 extern s32 D_80171A50;
@@ -39,9 +39,9 @@ void func_800869E8(Obj *o) {
     idx = func_80082400();
     func_80023DBC(0xE33);
     D_80171A30->f4 = approachF32(20.0f, D_80171A30->f4, 4.0f);
-    D_80171980 += gCamSpeedScale;
-    if (o->f74 + 0x120 < D_80171980) {
-        D_80171980 = 0;
+    gComboBeat += gCamSpeedScale;
+    if (o->f74 + 0x120 < gComboBeat) {
+        gComboBeat = 0;
         actorSetAnim(D_801719A8, 0x16B, 0x100);
         D_801719A8->f10 = 0x8000;
         actorSetAnim(D_801719AC, 0x18B, 0x100);
@@ -49,15 +49,15 @@ void func_800869E8(Obj *o) {
         D_80171A34 = 0;
         D_801719AC->f10 = 0x4000;
         o->f9C = func_8008662C;
-        func_80026C04(&D_801719E0, 0, 0x50);
-        D_801719E0.f0 = idx;
-        t = D_800B9000[idx * 3];
-        D_801719E0.f10 = 0;
-        D_801719E0.f11 = 0;
-        D_801719E0.f12 = 0;
-        D_801719E0.f13 = 0;
-        D_801719E0.f14 = 0;
-        D_801719E0.f15 = 0;
-        D_801719E0.f8 = t;
+        func_80026C04(&gComboSlots, 0, 0x50);
+        gComboSlots.f0 = idx;
+        t = gComboDefs[idx * 3];
+        gComboSlots.f10 = 0;
+        gComboSlots.f11 = 0;
+        gComboSlots.f12 = 0;
+        gComboSlots.f13 = 0;
+        gComboSlots.f14 = 0;
+        gComboSlots.f15 = 0;
+        gComboSlots.f8 = t;
     }
 }

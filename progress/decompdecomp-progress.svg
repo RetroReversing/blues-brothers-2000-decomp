@@ -3656,7 +3656,7 @@
 <g><title>func_800682CC: {&#x27;matched&#x27;: 1}</title>
 <rect x="140.000" y="310" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80068378: {&#x27;matched&#x27;: 1}</title>
+<g><title>initIntroScene: {&#x27;matched&#x27;: 1}</title>
 <rect x="150.000" y="310" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80068768: {&#x27;matched&#x27;: 1}</title>
@@ -4850,7 +4850,7 @@
 <g><title>func_80081AC0: {&#x27;matched&#x27;: 1}</title>
 <rect x="120.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80081BF0: {&#x27;matched&#x27;: 1}</title>
+<g><title>getComboSequence: {&#x27;matched&#x27;: 1}</title>
 <rect x="130.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80081C10: {&#x27;matched&#x27;: 1}</title>
@@ -4907,13 +4907,13 @@
 <g><title>func_80082EF8: {&#x27;matched&#x27;: 1}</title>
 <rect x="310.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80082F68: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateComboInput: {&#x27;matched&#x27;: 1}</title>
 <rect x="320.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80083354: {&#x27;matched&#x27;: 1}</title>
 <rect x="330.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800833D0: {&#x27;matched&#x27;: 1}</title>
+<g><title>checkComboWindow: {&#x27;matched&#x27;: 1}</title>
 <rect x="340.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80083604: {&#x27;matched&#x27;: 1}</title>

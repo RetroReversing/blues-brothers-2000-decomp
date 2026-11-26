@@ -45,7 +45,7 @@ extern s32 D_800BD274;
 extern s32 D_80107040[];
 extern s32 gPadPressed[];
 extern s32 D_801073B0[];
-extern s32 D_801073C0[];
+extern s32 gStickY[];
 extern s32 D_80140228;
 
 void func_8003CE48(Obj3CE48 *arg0) {
@@ -59,18 +59,18 @@ void func_8003CE48(Obj3CE48 *arg0) {
     D_80140228 = 0;
     D_800B5DD4 = 0;
     if (abs(D_801073B0[0]) < 20) {
-        if (abs(D_801073C0[0]) < 20) {
+        if (abs(gStickY[0]) < 20) {
             arg0->unk64 = 0;
         }
     }
     if (tickActorTimer(arg0) != 0) {
         arg0->unk64 = 0;
-        if (D_801073C0[0] >= 31) {
+        if (gStickY[0] >= 31) {
             flag = 1;
             arg0->unk64 = 15;
             arg0->unk88--;
         }
-        if (D_801073C0[0] < -30) {
+        if (gStickY[0] < -30) {
             flag = 1;
             arg0->unk64 = 15;
             arg0->unk88++;

@@ -7,7 +7,7 @@ extern s32 D_80107090;
 extern s32 gPadPressed;
 extern u8 D_801071F0;
 extern s32 D_801073B0;
-extern s32 D_801073C0;
+extern s32 gStickY;
 extern s32 D_80107600;
 extern s32 D_80107610;
 
@@ -19,7 +19,7 @@ void func_80025D34(void) {
         if (((s32) D_801071F0 >> var_a2) & 1) {
             *(&D_80107040 + var_a2) = *(&D_80107080 + var_a2);
             *(&D_801073B0 + var_a2) = *(&D_80107600 + var_a2);
-            *(&D_801073C0 + var_a2) = *(&D_80107610 + var_a2);
+            *(&gStickY + var_a2) = *(&D_80107610 + var_a2);
             *(&gPadPressed + var_a2) = *(&D_80107030 + var_a2);
             *(&D_80107090 + var_a2) = *(&D_80107040 + var_a2);
             *(&D_80107080 + var_a2) = *(&D_80107070 + var_a2);

@@ -29,7 +29,7 @@ extern s32 D_800B87EC;
 extern s32 gSplinePointCount[];
 extern s32 D_801719A8;
 extern s32 D_801719AC;
-extern s32 D_801719E0[];
+extern s32 gComboSlots[];
 extern s32 D_80171A54;
 
 void func_80082D00(Obj *arg0) {
@@ -66,5 +66,5 @@ void func_80082D00(Obj *arg0) {
     D_800B3960->xB4 = gSplinePointCount[1] / 2;
     D_800B3960->xB0 = gSplinePointCount[D_800B3960->x70] / 2;
     D_800B3960->xAC = gSplinePointCount[D_800B3960->x70] / 2;
-    func_80026C04(D_801719E0, 0, 0x50, D_800B3960);
+    func_80026C04(gComboSlots, 0, 0x50, D_800B3960);
 }

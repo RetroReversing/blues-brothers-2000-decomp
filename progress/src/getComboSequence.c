@@ -14,6 +14,6 @@ typedef s32 M2C_UNK32;
 
 extern char D_800B8820[];
 
-void *func_80081BF0(s32 arg0) {
+void *getComboSequence(s32 arg0) {
     return ((arg0 + 0x3C) * 0x1C) + D_800B8820;
 }

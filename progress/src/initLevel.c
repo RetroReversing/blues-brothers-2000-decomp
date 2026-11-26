@@ -122,7 +122,7 @@ extern Actor_C874 *gCameraTarget;
 extern Game_C874 D_800BD0E0;
 extern s32 D_800BD23C;
 extern s32 D_801073B0;
-extern s32 D_801073C0;
+extern s32 gStickY;
 extern s32 D_8013FFBC;
 extern s32 D_8014002C;
 extern s32 D_80140228;
@@ -212,7 +212,7 @@ void func_800414D0(void);
         break;
     }
     D_801073B0 = 0;
-    D_801073C0 = 0;
+    gStickY = 0;
     gCameraTarget->unk0 = 3;
     gCameraTarget->unk3C = 0x100;
     gCameraTarget->unk38 = 0x100;

@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699047.3626618,
- "revision": 5528,
+ "saved_at": 1795699126.058806,
+ "revision": 5530,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -1998,7 +1998,7 @@
   },
   "534512:2148015088": {
    "vram": 2148015088,
-   "function": "func_80081BF0",
+   "function": "getComboSequence",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15228,7 +15228,7 @@
   },
   "429944:2147910520": {
    "vram": 2147910520,
-   "function": "func_80068378",
+   "function": "initIntroScene",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "169404:2147649980": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "drawFontChar",
-   "vram": 2147649980
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -24128,10 +24111,10 @@
    "matched_by": "permuter-158913791169",
    "readable": false
   },
-  "func_80068378": {
+  "initIntroScene": {
    "vram": 2147910520,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_80068768": {
    "vram": 2147911528,
@@ -26143,7 +26126,7 @@
    "matched_by": "manual-1d9b7281787a4219",
    "readable": false
   },
-  "func_80081BF0": {
+  "getComboSequence": {
    "vram": 2148015088,
    "matched_by": "permuter-158913791568",
    "readable": false
@@ -26238,7 +26221,7 @@
    "matched_by": "permuter-158913791586",
    "readable": false
   },
-  "func_80082F68": {
+  "updateComboInput": {
    "vram": 2148020072,
    "matched_by": "manual-aeeb5be5af9d41ed",
    "readable": false
@@ -26248,7 +26231,7 @@
    "matched_by": "permuter-158913791588",
    "readable": false
   },
-  "func_800833D0": {
+  "checkComboWindow": {
    "vram": 2148021200,
    "matched_by": "manual-319ea32cc3a44f44",
    "readable": false
@@ -29330,7 +29313,7 @@
   "func_80068134": "local_source_158913791167",
   "func_80068174": "local_source_158913791168",
   "func_800682CC": "local_source_158913791169",
-  "func_80068378": "local_source_158913791170",
+  "initIntroScene": "local_source_158913791170",
   "func_80068894": "local_source_158913791172",
   "func_800689B4": "local_source_158913791173",
   "func_80068A34": "local_source_158913791174",
@@ -29522,7 +29505,7 @@
   "initSpline": "local_source_158913791565",
   "func_80081990": "local_source_158913791566",
   "func_80081AC0": "local_source_158913791567",
-  "func_80081BF0": "local_source_158913791568",
+  "getComboSequence": "local_source_158913791568",
   "func_800820E8": "local_source_158913791576",
   "func_800823F0": "local_source_158913791577",
   "func_80082400": "local_source_158913791578",
@@ -37131,7 +37114,7 @@
    "status": "open"
   },
   {
-   "name": "func_80068378",
+   "name": "initIntroScene",
    "vram": 2147910520,
    "size": 1008,
    "status": "open"
@@ -39561,7 +39544,7 @@
    "status": "open"
   },
   {
-   "name": "func_80081BF0",
+   "name": "getComboSequence",
    "vram": 2148015088,
    "size": 32,
    "status": "open"
@@ -39675,7 +39658,7 @@
    "status": "open"
   },
   {
-   "name": "func_80082F68",
+   "name": "updateComboInput",
    "vram": 2148020072,
    "size": 1004,
    "status": "open"
@@ -39687,7 +39670,7 @@
    "status": "open"
   },
   {
-   "name": "func_800833D0",
+   "name": "checkComboWindow",
    "vram": 2148021200,
    "size": 564,
    "status": "open"
@@ -43655,6 +43638,12 @@
    "kind": "func"
   },
   {
+   "name": "initIntroScene",
+   "address": 2147910520,
+   "size": 1008,
+   "kind": "func"
+  },
+  {
    "name": "updateChaseVehicle",
    "address": 2147924828,
    "size": 1196,
@@ -43694,6 +43683,24 @@
    "name": "initSpline",
    "address": 2148013448,
    "size": 1032,
+   "kind": "func"
+  },
+  {
+   "name": "getComboSequence",
+   "address": 2148015088,
+   "size": 32,
+   "kind": "func"
+  },
+  {
+   "name": "updateComboInput",
+   "address": 2148020072,
+   "size": 1004,
+   "kind": "func"
+  },
+  {
+   "name": "checkComboWindow",
+   "address": 2148021200,
+   "size": 564,
    "kind": "func"
   },
   {
@@ -45395,6 +45402,12 @@
    "kind": "data"
   },
   {
+   "name": "gComboDefs",
+   "address": 2148241408,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "gScreenWidth",
    "address": 2148244596,
    "size": 4,
@@ -45439,6 +45452,12 @@
   {
    "name": "gSlotEmpty",
    "address": 2148561328,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gStickY",
+   "address": 2148561856,
    "size": 0,
    "kind": "data"
   },
@@ -45517,6 +45536,30 @@
   {
    "name": "gSplineClosed",
    "address": 2148997432,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gPrevStickX",
+   "address": 2148997472,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gPrevStickY",
+   "address": 2148997488,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gComboBeat",
+   "address": 2148997504,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gComboSlots",
+   "address": 2148997600,
    "size": 0,
    "kind": "data"
   }
@@ -46414,7 +46457,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Obj *",
+   "type": "Player68378 *",
    "source": "match"
   },
   {

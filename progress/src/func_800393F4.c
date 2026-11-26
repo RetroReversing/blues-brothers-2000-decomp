@@ -62,7 +62,7 @@ extern s32 D_800BD0F4;
 extern s32 D_80107040[];
 extern s32 gPadPressed[];
 extern s32 D_801073B0[];
-extern s32 D_801073C0[];
+extern s32 gStickY[];
 extern s32 D_80140140;
 extern s32 D_801401E0;
 extern f32 D_801401E4;
@@ -215,7 +215,7 @@ void func_800393F4(Actor *arg0) {
         D_80140240 = 0x708;
         temp_v1_2 = arg0->fD0;
         if ((temp_v1_2 == 0xD) || (temp_v1_2 == 0x13)) {
-            if ((func_80024AE8(D_801073B0[0], 3) + func_80024AE8(D_801073C0[0], 3)) == 0) {
+            if ((func_80024AE8(D_801073B0[0], 3) + func_80024AE8(gStickY[0], 3)) == 0) {
                 arg0->f74 = 1;
             }
         } else if (!(D_80107040[0] & 0x2000) || (temp_v1_2 != 0x12)) {
@@ -225,7 +225,7 @@ void func_800393F4(Actor *arg0) {
             arg0->f74 = 0;
         }
         D_80140204 = D_801073B0[0];
-        D_80140208 = D_801073C0[0];
+        D_80140208 = gStickY[0];
         D_80140234 = D_8014022C;
         syncActorPrevPos(arg0);
         if ((arg0->f90 == 0) && (D_80107040[arg0->fBC] & 0x8000)) {
@@ -272,7 +272,7 @@ void func_800393F4(Actor *arg0) {
         if (!(M2C_FIELD(D_800B3960, s32 *, 0xC0) & 1)) {
             temp_v1_6 = arg0->fBC;
             temp_a0_2 = D_801073B0[temp_v1_6];
-            temp_v0_2 = D_801073C0[temp_v1_6];
+            temp_v0_2 = gStickY[temp_v1_6];
             temp_v0_3 = isqrtS32((temp_a0_2 * temp_a0_2) + (temp_v0_2 * temp_v0_2));
             arg0->f88 = temp_v0_3;
             if (temp_v0_3 >= 0x47) {
@@ -294,7 +294,7 @@ void func_800393F4(Actor *arg0) {
             temp_v1_7 = arg0->fD0;
             if ((temp_v1_7 != 0x14) && (temp_v1_7 != 0x12) && (temp_v1_7 != 0xD) && (temp_v1_7 != 0x13) && (temp_v1_7 != 0xE) && (temp_v1_7 != 0xF) && (temp_v1_7 != 0x1A)) {
                 temp_v1_8 = arg0->fBC;
-                var_s0_2 = atan2S16(D_801073B0[temp_v1_8], D_801073C0[temp_v1_8]);
+                var_s0_2 = atan2S16(D_801073B0[temp_v1_8], gStickY[temp_v1_8]);
                 D_801401E0 = M2C_FIELD(D_800B3960, s32 *, 0x10) + var_s0_2;
             }
             arg0->f10 = func_8002D1C4(D_801401E0, arg0->f10, 1);

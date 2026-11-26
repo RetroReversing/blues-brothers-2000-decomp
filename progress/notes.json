@@ -9010,6 +9010,15 @@
   "score_after": 745
  },
  {
+  "function": "drawFontChar",
+  "text": "op69 hand-off at 5241 (saved best, rev d9e7cc8c). Tried: plain rewrite from asm with one GFX block per command, special-char icons plus early return, two texture-block runs: 8880; s32 param plus u8 ch = c local: 7630; dropping the pipe sync before the accent texture block (the target has none): 6712; K&R u8 param: 6967 (andi at entry, wrong); ch = c and font = D_800AE210 at function top (ch spills to sp20 like the target): 5241. The structure is right, and the remaining rows are spill/reload allocation. The target spills the five texture-word constants (sp24..sp34, plus 0x04000400 at sp38) and ch (sb sp20), and rematerializes &D_800AE210 into t7 at both texture-image uses (t5 is the reload register). Mine keeps 0x07080200 in fp and computes the font address inline. D_80107650 = idx stores an uninitialised local (the target does sw s2 before idx is set); kept. func_80029F8C may take the 0xE200001C/0x504A50 words as args (a1/a2 hold them at both call sites): untested.",
+  "by": "manual-07a10cfe3d8b498f",
+  "created_at": 1795607422.252206,
+  "score_before": 22097,
+  "score_after": 5241,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
+ },
+ {
   "function": "loadTextureClamped",
   "text": "op68: 480 -> 340 (saved, default profile). Fix: the first LOADTILE-style w1 in the 16/32 arms written as the twin func_8002BE18 does, the full 8-term libultra form SHL(7,24,3)|SHL(0,20,4)|SHL(cm,18,2)|SHL(mask,14,4)|SHL(0,10,4)|SHL(cm,8,2)|SHL(mask,4,4)|SHL(0,0,4) (mask=0 term included): OR order now matches. Only prologue rows left: target sw ra before sw s4/s3, move s4,zero after them and li s3,2 in the first bne delay slot; ours puts sw ra in the slot. Tried: cm = 2 before mask = 0 (435), declaration order cm/mask (340).",
   "by": "manual-b6b12924c41b4c9e",
@@ -10042,6 +10051,22 @@
   "score_after": 6132
  },
  {
+  "function": "drawFontChar",
+  "text": "op84 (Opus): no change (5241). Profiles on the saved best: sn-n64-281 fp64 = fp32 5241, sn-272-0006 5841, 0004 8725, as0004 30787+, kmc 29768: keep sn-n64-281.\nRead from the target: the five two-instruction texture words (0x07080200, 0x07067400, 0xF5880400, 0x00080200, 0x0003C030) are built at the head of the non-special path and stored straight to sp24..sp34, then reloaded through $t5 at each use in both texture blocks (cse shares them along the path that skips `if (first)` and runs through coss/sins into the `ch >= 0xC0` block; every saved register is taken, so they spill). 0x04000400 is likewise built at the accent block's head and spilled to sp38 (ten cursor pointers t6+0x18..+0x60 live there at once). Writing the words as explicit u32 locals (and 0x04000400 as a block local) compiles identically (5241): the sharing and spilling are decided by pressure, not by the spelling. Next idea: reduce what holds saved registers across the calls in our build (the target keeps c in s0 then spills ch to sp20 with sb, flag `first` in s5, &D_800B2B18 in s3/s4, cursor &D_80177E18 in s1, idx in s2, 0xE7000000 in s6, 0xE1000000/0xF1000000 in fp/s7): compare our allocation table for which value takes the saved register the target gives to a texture word.",
+  "by": "manual-c8a368d866d34405",
+  "created_at": 1795634917.71646,
+  "score_before": 5241,
+  "score_after": 5241
+ },
+ {
+  "function": "drawFontChar",
+  "text": "[Released without compiling it once; notes not checked by a compile.] op84 (Opus): no change (5241). Profiles on the saved best: sn-n64-281 fp64 = fp32 5241, sn-272-0006 5841, 0004 8725, as0004 30787+, kmc 29768: keep sn-n64-281.\nRead from the target: the five two-instruction texture words (0x07080200, 0x07067400, 0xF5880400, 0x00080200, 0x0003C030) are built at the head of the non-special path and stored straight to sp24..sp34, then reloaded through $t5 at each use in both texture blocks (cse shares them along the path that skips `if (first)` and runs through coss/sins into the `ch >= 0xC0` block; every saved register is taken, so they spill). 0x04000400 is likewise built at the accent block's head and spilled to sp38 (ten cursor pointers t6+0x18..+0x60 live there at once). Writing the words as explicit u32 locals (and 0x04000400 as a block local) compiles identically (5241): the sharing and spilling are decided by pressure, not by the spelling. Next idea: reduce what holds saved registers across the calls in our build (the target keeps c in s0 then spills ch to sp20 with sb, flag `first` in s5, &D_800B2B18 in s3/s4, cursor &D_80177E18 in s1, idx in s2, 0xE7000000 in s6, 0xE1000000/0xF1000000 in fp/s7): compare our allocation table for which value takes the saved register the target gives to a texture word.",
+  "by": "manual-c8a368d866d34405",
+  "created_at": 1795634922.990979,
+  "score_before": 5241,
+  "score_after": 5241
+ },
+ {
   "function": "func_8001EBF4",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (60 profiles: SN 2.7.2 0001/as0004/0004/0006/970404 x -G0/-G8 x mips2/mips3 x fp default/32/64; KMC; 281): best 200 (281 and 272-0006 variants all 200, 0004 830); no exact profile.",
   "by": "manual-fa253f9ceee84c1b",
@@ -10750,6 +10775,24 @@
   "score_after": 650
  },
  {
+  "function": "drawFontChar",
+  "text": "op85 (Opus): 5241 -> 4651 (saved). Steps: prove_chain over all children (sn-n64-281 profile): merge_integer_lifetimes (step written into special, 4866), arithmetic_operand_order twice (4791; the last one only re-parenthesises the D_8010788C update), then by hand `c = D_800B2904[c]; idx = c - 0x20;` (the target loads the glyph byte into $s0, the parameter's register: 4651). Tried and worse: c reused for x4 + step / x4 + 64 (5006), font local dropped (5144), y written into the `first` parameter (6056, though the target has y in first's $s5).\nRemaining (register/spill pressure): the target spills the five texture words (sp24..sp34) and rematerialises &D_800AE210 into $t7 at both texture blocks; ours keeps 0x07080200 in $fp. Target saved registers: s0 c/glyph/(x4+step)/(x4+64), s1 &D_80177E18, s2 idx, s3 hi(D_800B2B18), s4 &D_800B2B18 then (x4 & 0xFFF) << 12, s5 first then y, s6 0xE7000000, s7 0xF1000000, fp 0xE1000000. ours: s7 E7, s6 E1, s5 F1, fp 0x07080200, and `special` in $t0 (target $v1); ch's sb to sp20 is scheduled before the D_800B2B18 update in ours.\nNext step: find the pseudo that takes a saved register in ours but not in the target (cc1n64 -dl -dg: priorities of the E1/F1/E7 constant pseudos versus 0x07080200 and the font address); the target's step lives in $a2 (div result) and its (D_800B28C0 << 26) reuses the divisor's $a1.",
+  "by": "manual-f1378353c5fb4a43",
+  "created_at": 1795642736.704101,
+  "score_before": 5241,
+  "score_after": 4651,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
+ },
+ {
+  "function": "drawFontChar",
+  "text": "5241 -> 4651: prove_chain steps (merge_integer_lifetimes, arithmetic_operand_order) plus c = D_800B2904[c]. Left: saved-register pressure (target spills the texture words and keeps 0xE1000000 in fp; ours keeps 0x07080200 in fp). Note added. Next step: -dl -dg priorities of the constant pseudos.",
+  "by": "manual-f1378353c5fb4a43",
+  "created_at": 1795642742.001659,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
+ },
+ {
   "function": "drawRotatedImage",
   "text": "op88: 680 -> 470 recorded (rev 97cccf2d8ec96e8bf649): `k = 0x1000;` moved from before the first GFX to just after `func_8002710C(0, 0, 0, 0xFF);` (any position from there to the GFX that reads k gives the same 470): fixes the `addiu $a3, 0xFF` / `addiu $s7, 0x1000` order and shifts the Gfx-word registers. decomp-repair assignment_at_use already offers this child (prove_chain from the old best: 980 -> 770 on the isolated scale, +300 there for the 1000.0f literal symbol). Left: the 0xFF colour constant still ranks above the lhu temps in local-alloc (target t6, ours v1; -size v1 vs a0). A colour local c (s32 or u8) set once before vertex 0, before vertex 2, or before the call: 1040 isolated (worse).",
   "by": "manual-f7f61c1765d84883",
@@ -11098,6 +11141,22 @@
   "created_at": 1795645045.214972,
   "score_before": 10632,
   "score_after": 10632
+ },
+ {
+  "function": "drawFontChar",
+  "text": "op91 (Opus): no improvement (4651, sn-n64-281; fp32 same). Global allocation map of the saved best (passes.py, SN support now on main): ours c 80 s0, first 81 s5, idx 85 s2, y 87 s4, &D_800B2B18 89 s4 / hi 90 s3, hi(D_80177E18) 150 s1, E7 152 s7, 0x07080200 172 fp, hi(D_8010788C) 256 s3, E1 286 s6, F1 291 s5, (x4&0xFFF)<<12 277 t9, step (64/D_800B28C0) t0. Target: y s5 (first and y share), (x4&0xFFF)<<12 s4 (a saved reg although no call follows: every caller-saved reg is busy across the two E4 commands in the target), E7 s6, F1 s7, E1 fp, step $a2, texture words spilled. So the target has one more pseudo competing for saved regs than ours, and the (x4&0xFFF)<<12 range overlaps more temporaries. Tried and worse: step as its own local 5026; y written into first 5921; both 6066. Next: the ch>=0xC0 block shape (the ten cursor pointers t6+0x18..0x60 live at once in the target: the GFX writes there may be one pointer bump per command written differently, e.g. a single local Gfx *g walked with g++), then the allocation follows.",
+  "by": "manual-bf7825c4edf04a80",
+  "created_at": 1795645149.537768,
+  "score_before": 4651,
+  "score_after": 4651
+ },
+ {
+  "function": "drawFontChar",
+  "text": "[Released without compiling it once; notes not checked by a compile.] no improvement over 4651; allocation map in note",
+  "by": "manual-bf7825c4edf04a80",
+  "created_at": 1795645150.5811021,
+  "score_before": 4651,
+  "score_after": 4651
  },
  {
   "function": "func_80047560",
@@ -11609,6 +11668,24 @@
   "score_after": 10632
  },
  {
+  "function": "drawFontChar",
+  "text": "op96 (Opus): 4651 -> 4122 recorded (sn-n64-281 profile, unchanged). Step 1 with decomp-repair 0.6.49: prove_chain --families all found allocation_lever (4122): `D_80107650 = idx;` moved below `c = D_800B2904[c];` (still the uninitialised idx the target stores from $s2 before `addiu $s2,$s0,-0x20`; same program). Then nothing: 676 children, 200 pair/triple merges of the best 8 (--combine 8) and a lookahead on the best 3, all no better (131 differing rows left). The library already had the step (no new family). Left, as in the earlier notes: saved-register pressure (target spills the texture words, E1 in $fp, F1 $s7, E7 $s6; y in the first parameter's $s5).",
+  "by": "manual-1d6a7cd719314ff8",
+  "created_at": 1795654942.6700501,
+  "score_before": 4651,
+  "score_after": 4122,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
+ },
+ {
+  "function": "drawFontChar",
+  "text": "op96: 4651 -> 4122 via allocation_lever; note added.",
+  "by": "manual-1d6a7cd719314ff8",
+  "created_at": 1795654944.059158,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
+ },
+ {
   "function": "func_800424FC",
   "text": "op96 (Opus): 20501 -> 11081 recorded (fp64 profile, unchanged); 19856 -> 11031 under -mfp32 (copy /tmp/dd-op89-keep/4FC_11031.c). Step 1 with decomp-repair 0.6.49, prove_chain --fp-flip --families all --children 2000 (each step scored 1979 of ~2350 children): loop_role_rename 15266 (the vertex-bounds loop counted with g, a local free there), scalar_storage_reuse 12871, dead_local_stage 11596 and 11031 (`b = cmd[1] << 1;` staged for the gSPVertex word; in the gSP2Triangles arm `g2 = c >> 5; g = g2 & 0x1F;` and k for the second triangle's third index). All faithful (every reused local is reassigned before its next read). The chain was still improving at step 4 when it hit --steps; a continuation (8 more steps, 2400 children) was stopped by the coordinator before its first step reported. Next: rerun prove_chain from the saved best with --children 2400 (about 350 children per step were cut at 2000); the earlier blockers (flags on its home slot, texs in $fp; the sllv by the register holding the compared 1 in the flag == 1 triangle arm; 560 vs 618 instructions) are not re-checked yet.",
   "by": "manual-1d6a7cd719314ff8",
@@ -11992,6 +12069,14 @@
   "created_at": 1795676946.919845,
   "score_before": 4895,
   "score_after": 4895
+ },
+ {
+  "function": "drawFontChar",
+  "text": "[Released without compiling it once; notes not checked by a compile.] claude-0e891a (Opus, decomp-repair 0.6.66): prove_chain --families all --children 400 --combine 8 (399 of 677 children judged, 200 merges, lookahead on best 3): nothing improves 4122. 131 rows remain, all saved-register pressure and texture-word spill order as in earlier notes; the first-block diff shows the target builds font+idx*0xD0 in t7 (&D_800AE210 rematerialised) and stores E7/sw zero after the address math, ours stores E7 first. No new family identified.",
+  "by": "manual-a57f45738d2c42cb",
+  "created_at": 1795677260.909038,
+  "score_before": 4122,
+  "score_after": 4122
  },
  {
   "function": "func_800424FC",
@@ -12571,90 +12656,5 @@
   "created_at": 1795698627.8883462,
   "score_before": 0,
   "score_after": 0
- },
- {
-  "function": "drawFontChar",
-  "text": "op69 hand-off at 5241 (saved best, rev d9e7cc8c). Tried: plain rewrite from asm with one GFX block per command, special-char icons plus early return, two texture-block runs: 8880; s32 param plus u8 ch = c local: 7630; dropping the pipe sync before the accent texture block (the target has none): 6712; K&R u8 param: 6967 (andi at entry, wrong); ch = c and font = D_800AE210 at function top (ch spills to sp20 like the target): 5241. The structure is right, and the remaining rows are spill/reload allocation. The target spills the five texture-word constants (sp24..sp34, plus 0x04000400 at sp38) and ch (sb sp20), and rematerializes &D_800AE210 into t7 at both texture-image uses (t5 is the reload register). Mine keeps 0x07080200 in fp and computes the font address inline. D_80107650 = idx stores an uninitialised local (the target does sw s2 before idx is set); kept. func_80029F8C may take the 0xE200001C/0x504A50 words as args (a1/a2 hold them at both call sites): untested.",
-  "by": "manual-07a10cfe3d8b498f",
-  "created_at": 1795607422.252206,
-  "score_before": 22097,
-  "score_after": 5241,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
- },
- {
-  "function": "drawFontChar",
-  "text": "op84 (Opus): no change (5241). Profiles on the saved best: sn-n64-281 fp64 = fp32 5241, sn-272-0006 5841, 0004 8725, as0004 30787+, kmc 29768: keep sn-n64-281.\nRead from the target: the five two-instruction texture words (0x07080200, 0x07067400, 0xF5880400, 0x00080200, 0x0003C030) are built at the head of the non-special path and stored straight to sp24..sp34, then reloaded through $t5 at each use in both texture blocks (cse shares them along the path that skips `if (first)` and runs through coss/sins into the `ch >= 0xC0` block; every saved register is taken, so they spill). 0x04000400 is likewise built at the accent block's head and spilled to sp38 (ten cursor pointers t6+0x18..+0x60 live there at once). Writing the words as explicit u32 locals (and 0x04000400 as a block local) compiles identically (5241): the sharing and spilling are decided by pressure, not by the spelling. Next idea: reduce what holds saved registers across the calls in our build (the target keeps c in s0 then spills ch to sp20 with sb, flag `first` in s5, &D_800B2B18 in s3/s4, cursor &D_80177E18 in s1, idx in s2, 0xE7000000 in s6, 0xE1000000/0xF1000000 in fp/s7): compare our allocation table for which value takes the saved register the target gives to a texture word.",
-  "by": "manual-c8a368d866d34405",
-  "created_at": 1795634917.71646,
-  "score_before": 5241,
-  "score_after": 5241
- },
- {
-  "function": "drawFontChar",
-  "text": "[Released without compiling it once; notes not checked by a compile.] op84 (Opus): no change (5241). Profiles on the saved best: sn-n64-281 fp64 = fp32 5241, sn-272-0006 5841, 0004 8725, as0004 30787+, kmc 29768: keep sn-n64-281.\nRead from the target: the five two-instruction texture words (0x07080200, 0x07067400, 0xF5880400, 0x00080200, 0x0003C030) are built at the head of the non-special path and stored straight to sp24..sp34, then reloaded through $t5 at each use in both texture blocks (cse shares them along the path that skips `if (first)` and runs through coss/sins into the `ch >= 0xC0` block; every saved register is taken, so they spill). 0x04000400 is likewise built at the accent block's head and spilled to sp38 (ten cursor pointers t6+0x18..+0x60 live there at once). Writing the words as explicit u32 locals (and 0x04000400 as a block local) compiles identically (5241): the sharing and spilling are decided by pressure, not by the spelling. Next idea: reduce what holds saved registers across the calls in our build (the target keeps c in s0 then spills ch to sp20 with sb, flag `first` in s5, &D_800B2B18 in s3/s4, cursor &D_80177E18 in s1, idx in s2, 0xE7000000 in s6, 0xE1000000/0xF1000000 in fp/s7): compare our allocation table for which value takes the saved register the target gives to a texture word.",
-  "by": "manual-c8a368d866d34405",
-  "created_at": 1795634922.990979,
-  "score_before": 5241,
-  "score_after": 5241
- },
- {
-  "function": "drawFontChar",
-  "text": "op85 (Opus): 5241 -> 4651 (saved). Steps: prove_chain over all children (sn-n64-281 profile): merge_integer_lifetimes (step written into special, 4866), arithmetic_operand_order twice (4791; the last one only re-parenthesises the D_8010788C update), then by hand `c = D_800B2904[c]; idx = c - 0x20;` (the target loads the glyph byte into $s0, the parameter's register: 4651). Tried and worse: c reused for x4 + step / x4 + 64 (5006), font local dropped (5144), y written into the `first` parameter (6056, though the target has y in first's $s5).\nRemaining (register/spill pressure): the target spills the five texture words (sp24..sp34) and rematerialises &D_800AE210 into $t7 at both texture blocks; ours keeps 0x07080200 in $fp. Target saved registers: s0 c/glyph/(x4+step)/(x4+64), s1 &D_80177E18, s2 idx, s3 hi(D_800B2B18), s4 &D_800B2B18 then (x4 & 0xFFF) << 12, s5 first then y, s6 0xE7000000, s7 0xF1000000, fp 0xE1000000. ours: s7 E7, s6 E1, s5 F1, fp 0x07080200, and `special` in $t0 (target $v1); ch's sb to sp20 is scheduled before the D_800B2B18 update in ours.\nNext step: find the pseudo that takes a saved register in ours but not in the target (cc1n64 -dl -dg: priorities of the E1/F1/E7 constant pseudos versus 0x07080200 and the font address); the target's step lives in $a2 (div result) and its (D_800B28C0 << 26) reuses the divisor's $a1.",
-  "by": "manual-f1378353c5fb4a43",
-  "created_at": 1795642736.704101,
-  "score_before": 5241,
-  "score_after": 4651,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
- },
- {
-  "function": "drawFontChar",
-  "text": "5241 -> 4651: prove_chain steps (merge_integer_lifetimes, arithmetic_operand_order) plus c = D_800B2904[c]. Left: saved-register pressure (target spills the texture words and keeps 0xE1000000 in fp; ours keeps 0x07080200 in fp). Note added. Next step: -dl -dg priorities of the constant pseudos.",
-  "by": "manual-f1378353c5fb4a43",
-  "created_at": 1795642742.001659,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
- },
- {
-  "function": "drawFontChar",
-  "text": "op91 (Opus): no improvement (4651, sn-n64-281; fp32 same). Global allocation map of the saved best (passes.py, SN support now on main): ours c 80 s0, first 81 s5, idx 85 s2, y 87 s4, &D_800B2B18 89 s4 / hi 90 s3, hi(D_80177E18) 150 s1, E7 152 s7, 0x07080200 172 fp, hi(D_8010788C) 256 s3, E1 286 s6, F1 291 s5, (x4&0xFFF)<<12 277 t9, step (64/D_800B28C0) t0. Target: y s5 (first and y share), (x4&0xFFF)<<12 s4 (a saved reg although no call follows: every caller-saved reg is busy across the two E4 commands in the target), E7 s6, F1 s7, E1 fp, step $a2, texture words spilled. So the target has one more pseudo competing for saved regs than ours, and the (x4&0xFFF)<<12 range overlaps more temporaries. Tried and worse: step as its own local 5026; y written into first 5921; both 6066. Next: the ch>=0xC0 block shape (the ten cursor pointers t6+0x18..0x60 live at once in the target: the GFX writes there may be one pointer bump per command written differently, e.g. a single local Gfx *g walked with g++), then the allocation follows.",
-  "by": "manual-bf7825c4edf04a80",
-  "created_at": 1795645149.537768,
-  "score_before": 4651,
-  "score_after": 4651
- },
- {
-  "function": "drawFontChar",
-  "text": "[Released without compiling it once; notes not checked by a compile.] no improvement over 4651; allocation map in note",
-  "by": "manual-bf7825c4edf04a80",
-  "created_at": 1795645150.5811021,
-  "score_before": 4651,
-  "score_after": 4651
- },
- {
-  "function": "drawFontChar",
-  "text": "op96 (Opus): 4651 -> 4122 recorded (sn-n64-281 profile, unchanged). Step 1 with decomp-repair 0.6.49: prove_chain --families all found allocation_lever (4122): `D_80107650 = idx;` moved below `c = D_800B2904[c];` (still the uninitialised idx the target stores from $s2 before `addiu $s2,$s0,-0x20`; same program). Then nothing: 676 children, 200 pair/triple merges of the best 8 (--combine 8) and a lookahead on the best 3, all no better (131 differing rows left). The library already had the step (no new family). Left, as in the earlier notes: saved-register pressure (target spills the texture words, E1 in $fp, F1 $s7, E7 $s6; y in the first parameter's $s5).",
-  "by": "manual-1d6a7cd719314ff8",
-  "created_at": 1795654942.6700501,
-  "score_before": 4651,
-  "score_after": 4122,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
- },
- {
-  "function": "drawFontChar",
-  "text": "op96: 4651 -> 4122 via allocation_lever; note added.",
-  "by": "manual-1d6a7cd719314ff8",
-  "created_at": 1795654944.059158,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
- },
- {
-  "function": "drawFontChar",
-  "text": "[Released without compiling it once; notes not checked by a compile.] claude-0e891a (Opus, decomp-repair 0.6.66): prove_chain --families all --children 400 --combine 8 (399 of 677 children judged, 200 merges, lookahead on best 3): nothing improves 4122. 131 rows remain, all saved-register pressure and texture-word spill order as in earlier notes; the first-block diff shows the target builds font+idx*0xD0 in t7 (&D_800AE210 rematerialised) and stores E7/sw zero after the address math, ours stores E7 first. No new family identified.",
-  "by": "manual-a57f45738d2c42cb",
-  "created_at": 1795677260.909038,
-  "score_before": 4122,
-  "score_after": 4122
  }
 ]

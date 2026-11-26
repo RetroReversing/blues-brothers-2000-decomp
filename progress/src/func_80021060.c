@@ -23,7 +23,7 @@ typedef struct Obj {
 } Obj;
 
 extern s32 gFrameScale;
-extern s32 D_801073C0;
+extern s32 gStickY;
 
 void func_80021060(Obj *arg0) {
     Part *p;
@@ -52,7 +52,7 @@ void func_80021060(Obj *arg0) {
         p[i].y += (p[i].vy * gFrameScale) / 100;
         p[i].z += (p[i].vz * gFrameScale) / 100;
         if (i == arg0->x88) {
-            spd = (D_801073C0 * 3000) / 80;
+            spd = (gStickY * 3000) / 80;
             a = func_8002D1A0();
             b = randomRange(0x2000, 0x2FA0);
             p[i].vx = (((spd * sins(a)) >> 15) * coss(b)) >> 15;

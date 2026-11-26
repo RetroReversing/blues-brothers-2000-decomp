@@ -43,7 +43,7 @@ f32 approachF32(f32, f32, f32);
 void actorSetAnim(void *, s32, s32);
 void func_80052B24(s32, char *, void *);
 s32 func_80082400(void);
-void func_80082F68(s32);
+void updateComboInput(s32);
 void func_80087160(s32);
 int sprintf(char *, const char *, ...);
 extern char func_80085F58[];
@@ -58,13 +58,13 @@ extern f64 D_80009B68;
 extern f64 D_80009B70;
 extern f64 D_80009B78;
 extern Name D_800B8720[];
-extern Pair D_800B9000[];
+extern Pair gComboDefs[];
 extern s32 D_800B9B40[];
 extern u8 gCamSpeedScale[];
-extern u8 D_80171980[];
+extern u8 gComboBeat[];
 extern u8 D_801719A8[];
 extern u8 D_801719AC[];
-extern Slot D_801719E0;
+extern Slot gComboSlots;
 extern u8 D_80171A30[];
 extern u8 D_80171A34[];
 extern u8 D_80171A50[];
@@ -79,23 +79,23 @@ void func_8008662C(Obj *arg0) {
     idx = func_80082400();
     font = func_80023DBC(0xE33);
     (*(Obj * *)D_80171A30)->x4 = approachF32(D_80009B5C, (*(Obj * *)D_80171A30)->x4, 4.0f);
-    (*(s32 *)D_80171980) += (*(s32 *)gCamSpeedScale);
-    t = (*(s32 *)D_80171980) % 144;
-    func_80082F68(0);
+    (*(s32 *)gComboBeat) += (*(s32 *)gCamSpeedScale);
+    t = (*(s32 *)gComboBeat) % 144;
+    updateComboInput(0);
     if (t / 2 == 18) {
         (*(s32 *)D_80171A34)++;
         if ((*(s32 *)D_80171A34) != 1) {
-            if (D_801719E0.xC != 0) {
+            if (gComboSlots.xC != 0) {
                 (*(s32 *)D_80171A50)++;
-                actorSetAnim((*(Obj * *)D_801719A8), D_800B9000[D_801719E0.x0].x4, 0x100);
-                D_801719E0.x8 = D_800B9000[idx].x0;
-                D_801719E0.xC = 0;
-                D_801719E0.x10[0] = 0;
-                D_801719E0.x10[1] = 0;
-                D_801719E0.x10[2] = 0;
-                D_801719E0.x10[3] = 0;
-                D_801719E0.x10[4] = 0;
-                D_801719E0.x10[5] = 0;
+                actorSetAnim((*(Obj * *)D_801719A8), gComboDefs[gComboSlots.x0].x4, 0x100);
+                gComboSlots.x8 = gComboDefs[idx].x0;
+                gComboSlots.xC = 0;
+                gComboSlots.x10[0] = 0;
+                gComboSlots.x10[1] = 0;
+                gComboSlots.x10[2] = 0;
+                gComboSlots.x10[3] = 0;
+                gComboSlots.x10[4] = 0;
+                gComboSlots.x10[5] = 0;
                 func_80087160(func_80023D58(0x150));
             } else {
                 func_80087160(func_80023D58(0x192));

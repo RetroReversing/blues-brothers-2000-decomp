@@ -25,15 +25,15 @@ s32 func_80023DBC(s32);
 s32 func_80023D58(s32);
 f32 approachF32(f32, f32, f32);
 void actorSetAnim(s32, s32, s32);
-void func_80082F68(s32);
+void updateComboInput(s32);
 s32 func_80086004(void);
 void func_80087160(s32);
 void func_80086028(Obj *);
-extern Info D_800B9000[];
+extern Info gComboDefs[];
 extern s32 gCamSpeedScale;
-extern s32 D_80171980;
+extern s32 gComboBeat;
 extern s32 D_801719A8;
-extern Rec D_801719E0[];
+extern Rec gComboSlots[];
 extern Obj *D_80171A30;
 extern s32 D_80171A34;
 extern s32 D_80171A50;
@@ -49,31 +49,31 @@ void func_8008626C(Obj *o)
     lim = func_80082400() + 1;
     func_80023DBC(0xE33);
     D_80171A30->x = approachF32(140.0f, D_80171A30->x, 4.0f);
-    D_80171980 += gCamSpeedScale;
-    m = D_80171980 % 144;
-    func_80082F68(0);
+    gComboBeat += gCamSpeedScale;
+    m = gComboBeat % 144;
+    updateComboInput(0);
     if (m / 2 == 18) {
         D_80171A34++;
-        if (D_801719E0[0].pad != 0) {
+        if (gComboSlots[0].pad != 0) {
             D_80171A50++;
-            actorSetAnim(D_801719A8, D_800B9000[func_80086004()].b, 0x100);
-            v = D_800B9000[func_80086004()].a;
-            D_801719E0[0].pad = 0;
-            D_801719E0[0].b[0] = 0;
-            D_801719E0[0].b[1] = 0;
-            D_801719E0[0].b[2] = 0;
-            D_801719E0[0].b[3] = 0;
-            D_801719E0[0].b[4] = 0;
-            D_801719E0[0].b[5] = 0;
-            D_801719E0[0].n = v;
-            D_801719E0[0].type++;
+            actorSetAnim(D_801719A8, gComboDefs[func_80086004()].b, 0x100);
+            v = gComboDefs[func_80086004()].a;
+            gComboSlots[0].pad = 0;
+            gComboSlots[0].b[0] = 0;
+            gComboSlots[0].b[1] = 0;
+            gComboSlots[0].b[2] = 0;
+            gComboSlots[0].b[3] = 0;
+            gComboSlots[0].b[4] = 0;
+            gComboSlots[0].b[5] = 0;
+            gComboSlots[0].n = v;
+            gComboSlots[0].type++;
             func_80087160(func_80023D58(0x150));
-            if (D_801719E0[0].type >= lim) {
+            if (gComboSlots[0].type >= lim) {
                 o->cb = (void *)func_80086028;
-                D_801719E0[0].type = 0;
+                gComboSlots[0].type = 0;
                 o->timer = 100;
             }
-            D_801719E0[0].n = D_800B9000[func_80086004()].a;
+            gComboSlots[0].n = gComboDefs[func_80086004()].a;
             D_80171A34 = 0;
         } else {
             actorSetAnim(D_801719A8, 0x16B, 0x100);

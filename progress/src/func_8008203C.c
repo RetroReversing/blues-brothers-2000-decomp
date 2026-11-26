@@ -1,5 +1,5 @@
 extern s32 gCamSpeedScale;
-extern char D_801719E0[];
+extern char gComboSlots[];
 inline static s16 inline_fn(void *arg0)
 {
   return *((s16 *) (((char *) arg0) + 0x18));
@@ -14,7 +14,7 @@ void func_8008203C(s32 arg0, s32 arg1)
   void *temp_a1;
   s32 temp;
   char *__base_D_801719E0;
-  __base_D_801719E0 = D_801719E0;
+  __base_D_801719E0 = gComboSlots;
   {
     temp = (arg1 * 2) + (arg0 * 0x28);
     temp_a1 = temp + __base_D_801719E0;

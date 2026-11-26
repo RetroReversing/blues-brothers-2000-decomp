@@ -50,7 +50,7 @@ extern s32 D_800BD100;
 extern s32 D_800BD114;
 extern s32 D_80107040;
 extern s32 D_801073B0;
-extern s32 D_801073C0;
+extern s32 gStickY;
 extern s32 D_801402F8;
 extern Obj *D_8014AAB0;
 extern s32 D_8017826C;
@@ -76,7 +76,7 @@ void drawDebugStats(Obj *overlay) {
         return;
     }
     stickX = D_801073B0;
-    stickY = D_801073C0;
+    stickY = gStickY;
     if (stickX < 0) {
         stickX = -stickX;
     }

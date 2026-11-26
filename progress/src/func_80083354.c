@@ -12,21 +12,21 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800833D0();
-extern char D_801719E0[];
+s32 checkComboWindow();
+extern char gComboSlots[];
 
 void func_80083354(s32 arg0) {
     char *__base_D_801719E0;
     s32 temp_a1;
     void *temp_s0;
 
-    __base_D_801719E0 = D_801719E0;
+    __base_D_801719E0 = gComboSlots;
     temp_a1 = arg0 * 0x28;
     temp_s0 = temp_a1 + __base_D_801719E0;
     if (M2C_FIELD(temp_s0, s32 *, 0xC) == 0) {
         M2C_FIELD((M2C_FIELD(temp_s0, s32 *, 8) + temp_a1 + __base_D_801719E0), s8 *, 0x10) = 1;
         M2C_FIELD(((M2C_FIELD(temp_s0, s32 *, 8) * 2) + temp_a1 + __base_D_801719E0), s16 *, 0x18) = 0xFF;
         M2C_FIELD(temp_s0, s32 *, 8) += 1;
-        M2C_FIELD(temp_s0, s32 *, 0xC) = func_800833D0(arg0, temp_a1, __base_D_801719E0);
+        M2C_FIELD(temp_s0, s32 *, 0xC) = checkComboWindow(arg0, temp_a1, __base_D_801719E0);
     }
 }

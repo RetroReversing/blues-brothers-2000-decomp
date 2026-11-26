@@ -21,7 +21,7 @@ extern f64 D_80009B88;
 extern f64 D_80009B90;
 extern f64 D_80009B98;
 extern f64 D_80009BA0;
-extern s32 D_80171980;
+extern s32 gComboBeat;
 extern void *D_801719A8;
 extern void *D_801719AC;
 extern void *D_80171A30;
@@ -37,7 +37,7 @@ void func_80086B3C(void *arg0) {
         actorSetAnim(D_801719AC, 0x18C, 0x100);
         M2C_FIELD(D_801719AC, s32 *, 0x10) = 0x8000;
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800869E8;
-        M2C_FIELD(arg0, s32 *, 0x74) = (s32) D_80171980;
+        M2C_FIELD(arg0, s32 *, 0x74) = (s32) gComboBeat;
         M2C_FIELD(D_80171A30, s32 *, 0x68) = 0xE;
     }
     if ((M2C_FIELD(D_801719AC, s32 *, 0xD0) == 0x18B) && (((temp_fv1 = (f64) M2C_FIELD(D_801719AC, f32 *, 0xDC), (D_80009B88 <= temp_fv1)) && (temp_fv1 < D_80009B90)) || ((D_80009B98 <= temp_fv1) && (temp_fv1 < D_80009BA0)))) {

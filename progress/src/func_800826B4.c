@@ -17,9 +17,9 @@ typedef struct {
     s32 unkB4;
 } Unk800826B4;
 
-extern s32 D_80171980;
+extern s32 gComboBeat;
 extern s32 gCamSpeedScale;
-extern Unk801719E0_b D_801719E0[];
+extern Unk801719E0_b gComboSlots[];
 extern s32 D_801719A8;
 extern s32 D_801719AC;
 extern volatile s32 D_801719B0[];
@@ -42,8 +42,8 @@ void func_80083870(void);
 void func_800826B4(Unk800826B4 *arg0) {
     s32 phase;
 
-    D_80171980 += gCamSpeedScale;
-    phase = D_80171980 % 144;
+    gComboBeat += gCamSpeedScale;
+    phase = gComboBeat % 144;
     if (tickActorTimer(arg0) == 0) {
         return;
     }
@@ -52,14 +52,14 @@ void func_800826B4(Unk800826B4 *arg0) {
     }
     func_800836CC();
     arg0->unk9C = func_80082990;
-    if (D_801719E0[1].unk4 == D_801719E0[0].unk4) {
+    if (gComboSlots[1].unk4 == gComboSlots[0].unk4) {
         if (randomRange(0, 100) >= 51) {
-            D_801719E0[1].unk4++;
+            gComboSlots[1].unk4++;
         } else {
-            D_801719E0[0].unk4++;
+            gComboSlots[0].unk4++;
         }
     }
-    if (D_801719E0[0].unk4 > D_801719E0[1].unk4) {
+    if (gComboSlots[0].unk4 > gComboSlots[1].unk4) {
         arg0->unk64 = 400;
         arg0->unk9C = func_8008250C;
         func_8002A360(12, 0x80);
@@ -75,7 +75,7 @@ void func_800826B4(Unk800826B4 *arg0) {
         } else {
             D_800B3960->unk70 = 4;
         }
-    } else if (D_801719E0[0].unk4 < D_801719E0[1].unk4) {
+    } else if (gComboSlots[0].unk4 < gComboSlots[1].unk4) {
         arg0->unk64 = 400;
         arg0->unk9C = func_8008250C;
         actorSetAnim(D_801719A8, 0x189, 0x100);
