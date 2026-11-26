@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699937.359193,
- "revision": 5593,
+ "saved_at": 1795699949.559388,
+ "revision": 5595,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14962,8 +14962,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "623392:2148103968": {
    "vram": 2148103968,
@@ -15154,7 +15153,7 @@
   },
   "196288:2147676864": {
    "vram": 2147676864,
-   "function": "func_8002F2C0",
+   "function": "drawBillboardSprite",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -21187,7 +21186,7 @@
    "matched_by": "manual-807f4e416fb04e7d",
    "readable": true
   },
-  "func_8002F2C0": {
+  "drawBillboardSprite": {
    "vram": 2147676864,
    "matched_by": "manual-aeeb5be5af9d41ed",
    "readable": false
@@ -25942,10 +25941,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8007F01C": {
+  "spawnActorPairWithLinks": {
    "vram": 2148003868,
    "matched_by": "manual-d815639955454bd3",
-   "readable": false
+   "readable": true
   },
   "updateBusterSequence": {
    "vram": 2148004708,
@@ -29007,7 +29006,7 @@
   "func_8002E79C": "local_source_158913790588",
   "func_8002E7B8": "local_source_158913790589",
   "func_8002E944": "local_source_158913790591",
-  "func_8002F2C0": "local_source_158913790597",
+  "drawBillboardSprite": "local_source_158913790597",
   "func_8002F604": "local_source_158913790598",
   "func_8002F8D0": "local_source_158913790599",
   "func_8002FBC0": "local_source_158913790600",
@@ -33587,7 +33586,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002F2C0",
+   "name": "drawBillboardSprite",
    "vram": 2147676864,
    "size": 836,
    "status": "open"
@@ -39323,7 +39322,7 @@
    "status": "open"
   },
   {
-   "name": "func_8007F01C",
+   "name": "spawnActorPairWithLinks",
    "vram": 2148003868,
    "size": 840,
    "status": "open"
@@ -43501,6 +43500,12 @@
    "kind": "func"
   },
   {
+   "name": "drawBillboardSprite",
+   "address": 2147676864,
+   "size": 836,
+   "kind": "func"
+  },
+  {
    "name": "drawRotatedImage",
    "address": 2147680744,
    "size": 1048,
@@ -43804,6 +43809,12 @@
    "name": "drawMeterPips",
    "address": 2147993612,
    "size": 888,
+   "kind": "func"
+  },
+  {
+   "name": "spawnActorPairWithLinks",
+   "address": 2148003868,
+   "size": 840,
    "kind": "func"
   },
   {

@@ -15,7 +15,7 @@ typedef struct Obj {
     s32 fC0;
 } Obj;
 void func_80065630(void);
-void func_8002F2C0(void);
+void drawBillboardSprite(void);
 void func_80065260(void);
 extern s32 D_800B7FF0;
 extern s32 D_8014AB58;
@@ -29,7 +29,7 @@ void func_80065770(Obj *o) {
         o->fC0 = 1;
         func_80065630();
         o->f6C = -1;
-        o->f98 = func_8002F2C0;
+        o->f98 = drawBillboardSprite;
     }
     o->x = o->fA4->x;
     o->y = o->fA4->y + 400.0f;

@@ -45,7 +45,7 @@ extern Vtx D_800BD6C8[];
 extern u8 D_80177E18[];
 #define GP (*(GfxW **)D_80177E18)
 
-s32 func_8002F2C0(Obj *arg0) {
+s32 drawBillboardSprite(Obj *arg0) {
     f32 m1[10];
     f32 m2[10];
     s32 pad[4];

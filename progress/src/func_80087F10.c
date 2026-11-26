@@ -21,14 +21,14 @@ typedef struct O87F10 {
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 O87F10 *func_800232B4(s32, s32, s32, s32);
 extern s32 gIntroSpriteAssets[];
-void func_8002F2C0(void);
+void drawBillboardSprite(void);
 void updateCharacterSelect(void);
 
 O87F10 *func_80087F10(s32 arg0) {
     O87F10 *o;
 
     o = func_800232B4(0x101, 0, 0, 0);
-o->f98 = func_8002F2C0;
+o->f98 = drawBillboardSprite;
 o->f60 = gIntroSpriteAssets[arg0];
 o->fBC = arg0;
 o->f70 = 100;
