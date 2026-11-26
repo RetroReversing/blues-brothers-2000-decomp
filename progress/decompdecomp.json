@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699665.136281,
- "revision": 5566,
+ "saved_at": 1795699691.502378,
+ "revision": 5568,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15209,8 +15209,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "441924:2147922500": {
    "vram": 2147922500,
@@ -15244,7 +15243,7 @@
   },
   "609072:2148089648": {
    "vram": 2148089648,
-   "function": "func_80093F30",
+   "function": "inflateFast",
    "toolchain": "sn-n64-272-0001",
    "flags": [
     "-G8",
@@ -16955,8 +16954,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "563276:2148043852": {
    "vram": 2148043852,
@@ -17062,19 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "630836:2148111412": {
-   "toolchain": "gcc-2.7.2-kmc",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-mgp32",
-    "-mfp32",
-    "-O2"
-   ],
-   "timeout": 20,
-   "function": "alRaw16Pull",
-   "vram": 2148111412
   }
  },
  "instructions": "",
@@ -18013,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "code_8008C378": "common_code_8008C378.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -27497,10 +27481,10 @@
    "matched_by": "manual-3572b8f795c14e2c",
    "readable": false
   },
-  "func_80093F30": {
+  "inflateFast": {
    "vram": 2148089648,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_80094324": {
    "vram": 2148090660,
@@ -29650,7 +29634,7 @@
   "func_80093B04": "local_source_158913791834",
   "func_80093D08": "local_source_158913791835",
   "func_80093D90": "local_source_158913791836",
-  "func_80093F30": "local_source_158913791837",
+  "inflateFast": "local_source_158913791837",
   "func_80094350": "local_source_158913791840",
   "guLookAtReflectF": "local_source_158913791843",
   "guPerspectiveF": "local_source_158913791855",
@@ -41204,7 +41188,7 @@
    "status": "open"
   },
   {
-   "name": "func_80093F30",
+   "name": "inflateFast",
    "vram": 2148089648,
    "size": 920,
    "status": "open"
@@ -43885,6 +43869,12 @@
    "name": "huftBuild",
    "address": 2148086336,
    "size": 1560,
+   "kind": "func"
+  },
+  {
+   "name": "inflateFast",
+   "address": 2148089648,
+   "size": 920,
    "kind": "func"
   },
   {
@@ -46729,6 +46719,16 @@
    "source": "match"
   },
   {
+   "address": 2147525344,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147525368,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
    "address": 2147526544,
    "type": "double[8]",
    "source": "match"
@@ -46870,7 +46870,7 @@
   },
   {
    "address": 2148561056,
-   "type": "s32",
+   "type": "s32[]",
    "source": "match"
   },
   {

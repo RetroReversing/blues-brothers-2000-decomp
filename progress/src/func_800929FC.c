@@ -95,9 +95,9 @@ extern uInt D_800BA950[];
 
 void func_8008A0C4(void);
 int func_80093D90(inflate_blocks_statef *, z_streamp, int);
-int func_80093F30(uInt, uInt, inflate_huft *, inflate_huft *, inflate_blocks_statef *, z_streamp);
+int inflateFast(uInt, uInt, inflate_huft *, inflate_huft *, inflate_blocks_statef *, z_streamp);
 #define inflate_flush func_80093D90
-#define inflate_fast func_80093F30
+#define inflate_fast inflateFast
 
 #define UPDBITS {s->bitb=b;s->bitk=k;}
 #define UPDIN {z->avail_in=n;z->total_in+=p-z->next_in;z->next_in=p;}

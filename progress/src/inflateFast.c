@@ -64,82 +64,83 @@ extern char D_8000A2F8[];
 #define GRABBITS(j) {while(k<(j)){b|=((uLong)NEXTBYTE)<<k;k+=8;}}
 #define UNGRAB {n+=(c=k>>3);p-=c;k&=7;}
 
-int func_80093F30(uInt bl, uInt bd, inflate_huft *tl, inflate_huft *td, inflate_blocks_statef *s, z_streamp z)
+/* Fast inflate loop: decodes Huffman literal/length and distance codes from the bit buffer and copies matches into the sliding window while there is room for at least 258 output bytes and 10 input bytes; returns Z_OK, Z_STREAM_END or Z_DATA_ERROR. */
+int inflateFast(uInt lenBits, uInt distBits, inflate_huft *lenTable, inflate_huft *distTable, inflate_blocks_statef *s, z_streamp z)
 {
-  inflate_huft *t;
-  uInt e;
+  inflate_huft *huft;
+  uInt extra;
   uLong b;
   uInt k;
   Bytef *p;
   uInt n;
   Bytef *q;
   uInt m;
-  uInt ml;
-  uInt md;
+  uInt lenMask;
+  uInt distMask;
   uInt c;
-  uInt d;
-  Bytef *r;
+  uInt dist;
+  Bytef *src;
 
   LOAD
 
-  ml = inflate_mask[bl];
-  md = inflate_mask[bd];
+  lenMask = inflate_mask[lenBits];
+  distMask = inflate_mask[distBits];
 
   do {
     GRABBITS(20)
-    if ((e = (t = tl + ((uInt)b & ml))->exop) == 0)
+    if ((extra = (huft = lenTable + ((uInt)b & lenMask))->exop) == 0)
     {
-      DUMPBITS(t->bits)
-      *q++ = (Byte)t->base;
+      DUMPBITS(huft->bits)
+      *q++ = (Byte)huft->base;
       m--;
       continue;
     }
     do {
-      DUMPBITS(t->bits)
-      if (e & 16)
+      DUMPBITS(huft->bits)
+      if (extra & 16)
       {
-        e &= 15;
-        c = t->base + ((uInt)b & inflate_mask[e]);
-        DUMPBITS(e)
+        extra &= 15;
+        c = huft->base + ((uInt)b & inflate_mask[extra]);
+        DUMPBITS(extra)
 
         GRABBITS(15);
-        e = (t = td + ((uInt)b & md))->exop;
+        extra = (huft = distTable + ((uInt)b & distMask))->exop;
         do {
-          DUMPBITS(t->bits)
-          if (e & 16)
+          DUMPBITS(huft->bits)
+          if (extra & 16)
           {
-            e &= 15;
-            GRABBITS(e)
-            d = t->base + ((uInt)b & inflate_mask[e]);
-            DUMPBITS(e)
+            extra &= 15;
+            GRABBITS(extra)
+            dist = huft->base + ((uInt)b & inflate_mask[extra]);
+            DUMPBITS(extra)
 
             m -= c;
-            if ((uInt)(q - s->window) >= d)
+            if ((uInt)(q - s->window) >= dist)
             {
-              r = q - d;
-              *q++ = *r++;  c--;
-              *q++ = *r++;  c--;
+              src = q - dist;
+              *q++ = *src++;  c--;
+              *q++ = *src++;  c--;
             }
             else
             {
-              e = d - (uInt)(q - s->window);
-              r = s->end - e;
-              if (c > e)
+              extra = dist - (uInt)(q - s->window);
+              src = s->end - extra;
+              if (c > extra)
               {
-                c -= e;
+                c -= extra;
                 do {
-                  *q++ = *r++;
-                } while (--e);
-                r = s->window;
+                  *q++ = *src++;
+                } while (--extra);
+                src = s->window;
               }
             }
             do {
-              *q++ = *r++;
+              *q++ = *src++;
             } while (--c);
             break;
           }
-          else if ((e & 64) == 0)
-            e = (t = t->next + ((uInt)b & inflate_mask[e]))->exop;
+          else if ((extra & 64) == 0)
+            extra = (huft = huft->next + ((uInt)b & inflate_mask[extra]))->exop;
           else
           {
             z->msg = (char*)D_8000A2E0;
@@ -150,17 +151,17 @@ int func_80093F30(uInt bl, uInt bd, inflate_huft *tl, inflate_huft *td, inflate_
         } while (1);
         break;
       }
-      if ((e & 64) == 0)
+      if ((extra & 64) == 0)
       {
-        if ((e = (t = t->next + ((uInt)b & inflate_mask[e]))->exop) == 0)
+        if ((extra = (huft = huft->next + ((uInt)b & inflate_mask[extra]))->exop) == 0)
         {
-          DUMPBITS(t->bits)
-          *q++ = (Byte)t->base;
+          DUMPBITS(huft->bits)
+          *q++ = (Byte)huft->base;
           m--;
           break;
         }
       }
-      else if (e & 32)
+      else if (extra & 32)
       {
         UNGRAB
         UPDATE

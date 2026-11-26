@@ -1178,6 +1178,15 @@
   "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:7c1fe0e32ee27306e745160464f8d5586764d827dc28ee17027332f519eb3f14"
  },
  {
+  "function": "alRaw16Pull",
+  "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 924-byte function fingerprint fe63548d44329e193d290899bd97e9575f564597; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
+  "by": "autopilot",
+  "created_at": 1795274760.807229,
+  "score_before": 0,
+  "score_after": 0,
+  "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:fce6d7005484ce817298f0ca5a4927008a4b0100aaac2e208665358a1e68badb"
+ },
+ {
   "function": "alLoadParam",
   "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 428-byte function fingerprint 3a4cfb05a808056c79c82a98681d7e7a268e9a2f; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
   "by": "autopilot",
@@ -6158,6 +6167,22 @@
   "score_after": 550
  },
  {
+  "function": "startStoryDialog",
+  "text": "Boundary question, not a C match: the extent (44 insns, 176 bytes) ends in branches into other code: bnez $v0 .L80052E90 and j .L80052E90 (a label far outside the extent, reported as Cannot find branch target), and bnez $s0 func_80052BD4 / jal func_80082400 then a tail branch to func_80052BD4. The epilogue and the code that the jumps reach are not in this extent, so no C of this extent makes it. Released as not_c for review of function boundaries; no compiles.",
+  "by": "manual-7ede63fc2efc41a9",
+  "created_at": 1795551475.054361,
+  "score_before": null,
+  "score_after": null
+ },
+ {
+  "function": "startStoryDialog",
+  "text": "Boundary: branches to .L80052E90 and func_80052BD4 leave the extent; no C of this extent makes it. No compiles.",
+  "by": "manual-7ede63fc2efc41a9",
+  "created_at": 1795551475.184188,
+  "score_before": null,
+  "score_after": null
+ },
+ {
   "function": "func_80055AD4",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap7 compiler sweep: best trial 532 under sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32",
   "by": "manual-19a7531dd5c741fb",
@@ -11075,6 +11100,33 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:91f430622a2cfe472e163ebbae869bd7126888006b7f19154686f2eedaaf1822"
  },
  {
+  "function": "startStoryDialog",
+  "text": "Hand-off of func_80052B24: best 7520 (54 differing rows) in /tmp/dd-ap25/l2.c.\n\nRemaining rows (marker | target | candidate):\n  i | lui $v0, 0x800c | lui $v0, %hi(D_800BD06C)\n  i | lw $a0, -0x2f94($v0) | lw $a0, %lo(D_800BD06C)($v0)\n  r | lwc1 $f2, 0x50($a0) | lwc1 $f1, 0x50($a0)\n  r | c.le.s $f2, $f0 | c.le.s $f1, $f0\n  i | lui $v1, 0x800b | lui $v1, %hi(D_800AE010)\n  i | lw $a1, -0x1ff0($v1) | lw $a1, %lo(D_800AE010)($v1)\n  i | lui $v0, 0x8015 | lui $v0, %hi(D_8014AA9C)\n  i | sw $zero, -0x5564($v0) | sw $zero, %lo(D_8014AA9C)($v0)\n  i | lui $v0, 0x8015 | lui $v0, %hi(D_8014AA94)\n  i | sw $zero, -0x556c($v0) | sw $zero, %lo(D_8014AA94)($v0)\n  i | lui $v0, 0x800b | lui $v0, %hi(D_800B5DD4)\n  i | sw $zero, 0x5dd4($v0) | sw $zero, %lo(D_800B5DD4)($v0)\n  i | lui $v0, 0x8010 | lui $v0, %hi(D_801070A0)\n  i | sw $zero, 0x70a0($v0) | sw $zero, %lo(D_801070A0)($v0)\n  i | lui $v0, 0x8010 | lui $v0, %hi(D_80107040)\n  i | sw $zero, 0x7040($v0) | sw $zero, %lo(D_80107040)($v0)\n  i | lui $v0, 0x8015 | lui $v0, %hi(D_8014AA90)\n  i | sw $a2, -0x1ff0($v1) | sw $a2, %lo(D_800AE010)($v1)\n  i | sw $a1, -0x5570($v0) | sw $a1, %lo(D_8014AA90)($v0)\n  i | lui $v0, 0x8014 | lui $v0, %hi(D_80140228)\n  i | sw $zero, 0x228($v0) | sw $zero, %lo(D_80140228)($v0)\n  i | lui $v0, 0x800b | lui $v0, %hi(D_800B3960)\n  i | lw $v1, 0x3960($v0) | lw $v1, %lo(D_800B3960)($v0)\n  i | lui $a0, 0x8001 | lui $a0, %hi(D_800080F0)\n  i | addiu $a0, $a0, -0x7f10 | addiu $a0, $a0, %lo(D_800080F0)\n  i | lui $v0, 0x8015 | lui $v0, %hi(D_8014AAA0)\n  i | lw $a1, -0x5560($v0) | lw $a1, %lo(D_8014AAA0)($v0)\n  i | lui $v1, 0x8005 | lui $v1, %hi(func_80053C94)\n  i | addiu $v1, $v1, 0x3c94 | addiu $v1, $v1, %lo(func_80053C94)\n  i | lui $v1, 0x8005 | lui $v1, %hi(func_80053CE0)\n  i | addiu $v1, $v1, 0x3ce0 | addiu $v1, $v1, %lo(func_80053CE0)\n  i | lui $v1, 0x8005 | lui $v1, %hi(func_80053CE0)\n  i | addiu $v1, $v1, 0x3ce0 | addiu $v1, $v1, %lo(func_80053CE0)\n  i | sw $zero, -0x5568($v0) | sw $zero, %lo(D_8014AA98)($v0)\n  i | sw $v1, -0x5568($v0) | sw $v1, %lo(D_8014AA98)($v0)\n  i | lui $s4, 0x8015 | lui $s4, %hi(D_8014AA94)\n  i | lui $s5, 0x800b | lui $s5, %hi(D_800B3960)\n  i | lui $v0, 0x8005 | lui $v0, %hi(func_80052EC0)\n  i | addiu $s7, $v0, 0x2ec0 | addiu $s7, $v0, %lo(func_80052EC0)\n  i | lui $v0, 0x8004 | lui $v0, %hi(func_8004303C)\n  ... 14 more (fast_judge.py --diff --rows all)\n\nRegister pairs (explain_regs.py):\n  $f1 where the target has $f2 (2 rows):\n  why not $f2: block-local: local-alloc gives quantities registers in priority order and $f2 was taken or tied up in that block. Move it: change its refs/length against those, or make it global (a use in another block).\n  $v0 where the target has $v1 (2 rows):\n  why not $v1: block-local: local-alloc gives quantities registers in priority order and $v1 was taken or tied up in that block (also in $v1: pseudo 95 (0.33), pseudo 103 (0.50)). Move it: change its refs/length against those, or make it global (a use in another block).\n  why not $v1: block-local: local-alloc gives quantities registers in priority order and $v1 was taken or tied up in that block (also in $v1: pseudo 95 (0.33), pseudo 103 (0.50)). Move it: change its refs/length against those, or make it global (a use in another block).\n  why not $v1: block-local: local-alloc gives quantities registers in priority order and $v1 was taken or tied up in that block (also in $v1: pseudo 95 (0.33), pseudo 103 (0.50)). Move it: change its refs/length against those, or make it global (a use in another block).\n  $v1 where the target has $v0 (2 rows):\n  why not $v0: $v0 was free in its conflicts; global.c picks the first free register of the class in allocation order: an earlier allocation (or a register nothing had used yet) decided it.\n  why not $v0: block-local: local-alloc gives quantities registers in priority order and $v0 was taken or tied up in that block (also in $v0: pseudo 90 (1.14), pseudo 94 (0.50)). Move it: change its refs/length against those, or make it global (a us",
+  "by": "manual-1699769abab64cb0",
+  "created_at": 1795644953.778582,
+  "score_before": 7795,
+  "score_after": 7520,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
+ },
+ {
+  "function": "startStoryDialog",
+  "text": "ap25 findings: structure now matches the target (231 insns). Only differences: (1) in the found-record block the D_800B3960 0xD8=0x9C copy: target lw v1,0x3960(s5); lw v0,0x9c(v1); sw v0,0xd8(v1) (pointer v1, value v0), mine pointer v0 / value v1 (local-alloc priority); (2) under the default -mfp64 profile the float compare uses f1 not f2: the -mfp32 trial removes that row (apply it with suggest when the rest is exact). Key edits that got here from a raw draft: func_80027030 is called with 2 args (the lui/ori a2 is only the temp for the seed store); no inner if(count>0) before the for loop; arg2 copy order f4,f8,fC, then D_8014AA94=arg2, then 0xA4. Tried without effect: 5 other positions of the 0xD8=0x9C copy, 250 shuffles of the obj/p store groups, void*/u32/fn-ptr types for the copy, shared old temp. Boundary note: func_80052BD4 (archived) is a stale symbol inside this function at 0x80052BD4 (an ori after lui a2); func_80052B24 is the whole function through 0x80052EBC. Strings: D_800080F0 'Story Load Failure', D_8000811C 'Story: %s not found!!'. Function pointers stored at obj+0x9C: func_80053C94, func_80053CE0, func_80052EC0 (the next function), func_8004303C.",
+  "by": "manual-1699769abab64cb0",
+  "created_at": 1795644965.703019,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
+ },
+ {
+  "function": "startStoryDialog",
+  "text": "Best 7520, only a v0/v1 pair and the f1/f2 row (-mfp32 profile) differ; see the note.",
+  "by": "manual-1699769abab64cb0",
+  "created_at": 1795644965.883361,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
+ },
+ {
   "function": "func_80047B34",
   "text": "op91 (Opus): no improvement (saved best still 3446 under sn-n64-281 -mfp32, app records 10632 under fp64). Tried natural colour order (c0,c1,c2 member order, the fix that closed func_800385AC prologue) with t/w/u around it: cblk,t,w,u 4586; cblk,t,u,w 4561; t,cblk,w,u 4201; t,w,u,cblk / t,u,w,cblk 5710. Allocation reading (cc1n64 -mfp32 -dl -dg): sin1/sin2 are global pseudos (the sqrt fallback branch), so they get what local-alloc leaves; in ours a colour-block local pseudo takes $f4/$f2 while sin1/sin2 are live, in the target local-alloc gives c0[0..2] $f14/$f18/$f20 (skipping $f2..$f12), so in the target something of higher local priority (t sum in $f10, w $f16) holds the low registers or the c0 values are not block-local. Next: find which local pseudo takes $f4 in ours (.lreg qty order for block 18) and the spelling that keeps it off sin1s range (e.g. c-values read once into scalars, or u/w as one expression).",
   "by": "manual-bf7825c4edf04a80",
@@ -11246,6 +11298,24 @@
   "score_before": null,
   "score_after": null,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:9dad031581623a1adf19f4cd9e95001020cb019aaa2323396e1a520b3f70e7fd"
+ },
+ {
+  "function": "startStoryDialog",
+  "text": "op93: EXACT under the per-function profile sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (compiler_experiments trial f9d1fc411b898a741917 on revision 2c1d7afbea108d596545 = EXACT). suggest(trial_id) was refused: \"The compiler range overlaps another function\" because the archived stale entry func_80052BD4 (gone_mark) inside this extent was counted as an overlap. Fixed in decompdecomp PR #3609 (merged): after the app runs that code, re-run the -mfp32 trial on this revision and suggest it. Source changes from the 7520 best: (1) one local u8 *p800B3960 assigned from D_800B3960 at both sites (C0 store, and the D8=9C copy in the loop) so it is a multi-block pseudo allocated by global.c after the copied value (fixes v0/v1); (2) do { func_8000C5E4(); p = D_800B3960; p->C0 = 2; lvl = func_80023E18(arg0); } while (0); adds one weighted ref so the local outranks obj (3.429 -> 3.857 vs 3.538) without touching the loop-hoisted %hi (wrapping the loop load swapped s4/s5). Scaffolding: that one-shot scope. Library family: decomp-repair global_pointer_site_local (PR #1749) produces this exact child from the saved best.",
+  "by": "manual-b48230ac293245d0",
+  "created_at": 1795646430.634986,
+  "score_before": 7520,
+  "score_after": 7510,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
+ },
+ {
+  "function": "startStoryDialog",
+  "text": "Exact source found (see note): needs the -mfp32 per-function profile, blocked only by the archived-entry overlap check fixed in decompdecomp #3609; apply once the app runs that code.",
+  "by": "manual-b48230ac293245d0",
+  "created_at": 1795646436.332278,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
  },
  {
   "function": "setupIntroScene",
@@ -12594,75 +12664,5 @@
   "created_at": 1795699301.6797109,
   "score_before": 0,
   "score_after": 0
- },
- {
-  "function": "startStoryDialog",
-  "text": "Boundary question, not a C match: the extent (44 insns, 176 bytes) ends in branches into other code: bnez $v0 .L80052E90 and j .L80052E90 (a label far outside the extent, reported as Cannot find branch target), and bnez $s0 func_80052BD4 / jal func_80082400 then a tail branch to func_80052BD4. The epilogue and the code that the jumps reach are not in this extent, so no C of this extent makes it. Released as not_c for review of function boundaries; no compiles.",
-  "by": "manual-7ede63fc2efc41a9",
-  "created_at": 1795551475.054361,
-  "score_before": null,
-  "score_after": null
- },
- {
-  "function": "startStoryDialog",
-  "text": "Boundary: branches to .L80052E90 and func_80052BD4 leave the extent; no C of this extent makes it. No compiles.",
-  "by": "manual-7ede63fc2efc41a9",
-  "created_at": 1795551475.184188,
-  "score_before": null,
-  "score_after": null
- },
- {
-  "function": "startStoryDialog",
-  "text": "Hand-off of func_80052B24: best 7520 (54 differing rows) in /tmp/dd-ap25/l2.c.\n\nRemaining rows (marker | target | candidate):\n  i | lui $v0, 0x800c | lui $v0, %hi(D_800BD06C)\n  i | lw $a0, -0x2f94($v0) | lw $a0, %lo(D_800BD06C)($v0)\n  r | lwc1 $f2, 0x50($a0) | lwc1 $f1, 0x50($a0)\n  r | c.le.s $f2, $f0 | c.le.s $f1, $f0\n  i | lui $v1, 0x800b | lui $v1, %hi(D_800AE010)\n  i | lw $a1, -0x1ff0($v1) | lw $a1, %lo(D_800AE010)($v1)\n  i | lui $v0, 0x8015 | lui $v0, %hi(D_8014AA9C)\n  i | sw $zero, -0x5564($v0) | sw $zero, %lo(D_8014AA9C)($v0)\n  i | lui $v0, 0x8015 | lui $v0, %hi(D_8014AA94)\n  i | sw $zero, -0x556c($v0) | sw $zero, %lo(D_8014AA94)($v0)\n  i | lui $v0, 0x800b | lui $v0, %hi(D_800B5DD4)\n  i | sw $zero, 0x5dd4($v0) | sw $zero, %lo(D_800B5DD4)($v0)\n  i | lui $v0, 0x8010 | lui $v0, %hi(D_801070A0)\n  i | sw $zero, 0x70a0($v0) | sw $zero, %lo(D_801070A0)($v0)\n  i | lui $v0, 0x8010 | lui $v0, %hi(D_80107040)\n  i | sw $zero, 0x7040($v0) | sw $zero, %lo(D_80107040)($v0)\n  i | lui $v0, 0x8015 | lui $v0, %hi(D_8014AA90)\n  i | sw $a2, -0x1ff0($v1) | sw $a2, %lo(D_800AE010)($v1)\n  i | sw $a1, -0x5570($v0) | sw $a1, %lo(D_8014AA90)($v0)\n  i | lui $v0, 0x8014 | lui $v0, %hi(D_80140228)\n  i | sw $zero, 0x228($v0) | sw $zero, %lo(D_80140228)($v0)\n  i | lui $v0, 0x800b | lui $v0, %hi(D_800B3960)\n  i | lw $v1, 0x3960($v0) | lw $v1, %lo(D_800B3960)($v0)\n  i | lui $a0, 0x8001 | lui $a0, %hi(D_800080F0)\n  i | addiu $a0, $a0, -0x7f10 | addiu $a0, $a0, %lo(D_800080F0)\n  i | lui $v0, 0x8015 | lui $v0, %hi(D_8014AAA0)\n  i | lw $a1, -0x5560($v0) | lw $a1, %lo(D_8014AAA0)($v0)\n  i | lui $v1, 0x8005 | lui $v1, %hi(func_80053C94)\n  i | addiu $v1, $v1, 0x3c94 | addiu $v1, $v1, %lo(func_80053C94)\n  i | lui $v1, 0x8005 | lui $v1, %hi(func_80053CE0)\n  i | addiu $v1, $v1, 0x3ce0 | addiu $v1, $v1, %lo(func_80053CE0)\n  i | lui $v1, 0x8005 | lui $v1, %hi(func_80053CE0)\n  i | addiu $v1, $v1, 0x3ce0 | addiu $v1, $v1, %lo(func_80053CE0)\n  i | sw $zero, -0x5568($v0) | sw $zero, %lo(D_8014AA98)($v0)\n  i | sw $v1, -0x5568($v0) | sw $v1, %lo(D_8014AA98)($v0)\n  i | lui $s4, 0x8015 | lui $s4, %hi(D_8014AA94)\n  i | lui $s5, 0x800b | lui $s5, %hi(D_800B3960)\n  i | lui $v0, 0x8005 | lui $v0, %hi(func_80052EC0)\n  i | addiu $s7, $v0, 0x2ec0 | addiu $s7, $v0, %lo(func_80052EC0)\n  i | lui $v0, 0x8004 | lui $v0, %hi(func_8004303C)\n  ... 14 more (fast_judge.py --diff --rows all)\n\nRegister pairs (explain_regs.py):\n  $f1 where the target has $f2 (2 rows):\n  why not $f2: block-local: local-alloc gives quantities registers in priority order and $f2 was taken or tied up in that block. Move it: change its refs/length against those, or make it global (a use in another block).\n  $v0 where the target has $v1 (2 rows):\n  why not $v1: block-local: local-alloc gives quantities registers in priority order and $v1 was taken or tied up in that block (also in $v1: pseudo 95 (0.33), pseudo 103 (0.50)). Move it: change its refs/length against those, or make it global (a use in another block).\n  why not $v1: block-local: local-alloc gives quantities registers in priority order and $v1 was taken or tied up in that block (also in $v1: pseudo 95 (0.33), pseudo 103 (0.50)). Move it: change its refs/length against those, or make it global (a use in another block).\n  why not $v1: block-local: local-alloc gives quantities registers in priority order and $v1 was taken or tied up in that block (also in $v1: pseudo 95 (0.33), pseudo 103 (0.50)). Move it: change its refs/length against those, or make it global (a use in another block).\n  $v1 where the target has $v0 (2 rows):\n  why not $v0: $v0 was free in its conflicts; global.c picks the first free register of the class in allocation order: an earlier allocation (or a register nothing had used yet) decided it.\n  why not $v0: block-local: local-alloc gives quantities registers in priority order and $v0 was taken or tied up in that block (also in $v0: pseudo 90 (1.14), pseudo 94 (0.50)). Move it: change its refs/length against those, or make it global (a us",
-  "by": "manual-1699769abab64cb0",
-  "created_at": 1795644953.778582,
-  "score_before": 7795,
-  "score_after": 7520,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
- },
- {
-  "function": "startStoryDialog",
-  "text": "ap25 findings: structure now matches the target (231 insns). Only differences: (1) in the found-record block the D_800B3960 0xD8=0x9C copy: target lw v1,0x3960(s5); lw v0,0x9c(v1); sw v0,0xd8(v1) (pointer v1, value v0), mine pointer v0 / value v1 (local-alloc priority); (2) under the default -mfp64 profile the float compare uses f1 not f2: the -mfp32 trial removes that row (apply it with suggest when the rest is exact). Key edits that got here from a raw draft: func_80027030 is called with 2 args (the lui/ori a2 is only the temp for the seed store); no inner if(count>0) before the for loop; arg2 copy order f4,f8,fC, then D_8014AA94=arg2, then 0xA4. Tried without effect: 5 other positions of the 0xD8=0x9C copy, 250 shuffles of the obj/p store groups, void*/u32/fn-ptr types for the copy, shared old temp. Boundary note: func_80052BD4 (archived) is a stale symbol inside this function at 0x80052BD4 (an ori after lui a2); func_80052B24 is the whole function through 0x80052EBC. Strings: D_800080F0 'Story Load Failure', D_8000811C 'Story: %s not found!!'. Function pointers stored at obj+0x9C: func_80053C94, func_80053CE0, func_80052EC0 (the next function), func_8004303C.",
-  "by": "manual-1699769abab64cb0",
-  "created_at": 1795644965.703019,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
- },
- {
-  "function": "startStoryDialog",
-  "text": "Best 7520, only a v0/v1 pair and the f1/f2 row (-mfp32 profile) differ; see the note.",
-  "by": "manual-1699769abab64cb0",
-  "created_at": 1795644965.883361,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
- },
- {
-  "function": "startStoryDialog",
-  "text": "op93: EXACT under the per-function profile sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (compiler_experiments trial f9d1fc411b898a741917 on revision 2c1d7afbea108d596545 = EXACT). suggest(trial_id) was refused: \"The compiler range overlaps another function\" because the archived stale entry func_80052BD4 (gone_mark) inside this extent was counted as an overlap. Fixed in decompdecomp PR #3609 (merged): after the app runs that code, re-run the -mfp32 trial on this revision and suggest it. Source changes from the 7520 best: (1) one local u8 *p800B3960 assigned from D_800B3960 at both sites (C0 store, and the D8=9C copy in the loop) so it is a multi-block pseudo allocated by global.c after the copied value (fixes v0/v1); (2) do { func_8000C5E4(); p = D_800B3960; p->C0 = 2; lvl = func_80023E18(arg0); } while (0); adds one weighted ref so the local outranks obj (3.429 -> 3.857 vs 3.538) without touching the loop-hoisted %hi (wrapping the loop load swapped s4/s5). Scaffolding: that one-shot scope. Library family: decomp-repair global_pointer_site_local (PR #1749) produces this exact child from the saved best.",
-  "by": "manual-b48230ac293245d0",
-  "created_at": 1795646430.634986,
-  "score_before": 7520,
-  "score_after": 7510,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
- },
- {
-  "function": "startStoryDialog",
-  "text": "Exact source found (see note): needs the -mfp32 per-function profile, blocked only by the archived-entry overlap check fixed in decompdecomp #3609; apply once the app runs that code.",
-  "by": "manual-b48230ac293245d0",
-  "created_at": 1795646436.332278,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
- },
- {
-  "function": "alRaw16Pull",
-  "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 924-byte function fingerprint fe63548d44329e193d290899bd97e9575f564597; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
-  "by": "autopilot",
-  "created_at": 1795274760.807229,
-  "score_before": 0,
-  "score_after": 0,
-  "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:fce6d7005484ce817298f0ca5a4927008a4b0100aaac2e208665358a1e68badb"
  }
 ]
