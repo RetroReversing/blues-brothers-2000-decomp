@@ -17,7 +17,7 @@ void *func_8006F828();                        /* extern */
 void *func_8006F88C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
 extern void *gCameraRig;
 extern void *D_800B3964;
-extern M2C_UNK func_80032E40;
+extern M2C_UNK drawStatusScreen;
 extern M2C_UNK func_8006EF70;
 extern M2C_UNK func_8006F0C0;
 extern M2C_UNK func_8006F284;
@@ -51,7 +51,7 @@ void func_8006F944(void) {
         if (M2C_FIELD(gCameraRig, s32 *, 0x74) != 0) {
             temp_v0 = func_8006F828();
             M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_8006F73C;
-            M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_80032E40;
+            M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &drawStatusScreen;
             return;
         }
         temp_v0_2 = func_8006F828();

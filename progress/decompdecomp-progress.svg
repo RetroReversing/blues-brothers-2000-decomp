@@ -2087,7 +2087,7 @@
 <g><title>func_80032E34: {&#x27;matched&#x27;: 1}</title>
 <rect x="510.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80032E40: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawStatusScreen: {&#x27;matched&#x27;: 1}</title>
 <rect x="520.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80033198: {&#x27;matched&#x27;: 1}</title>
@@ -3539,7 +3539,7 @@
 <g><title>func_80064D94: {&#x27;matched&#x27;: 1}</title>
 <rect x="550.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80064F08: {&#x27;matched&#x27;: 1}</title>
+<g><title>elevatorActorUpdate: {&#x27;matched&#x27;: 1}</title>
 <rect x="560.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80065260: {&#x27;matched&#x27;: 1}</title>

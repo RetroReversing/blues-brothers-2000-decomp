@@ -18,7 +18,7 @@ f32 func_8002DD60(f32);                             /* extern */
 extern s32 D_8014AB34;
 extern s32 D_8014AB40;
 extern M2C_UNK D_8014AB58;
-extern M2C_UNK func_80064F08;
+extern M2C_UNK elevatorActorUpdate;
 
 void func_80064D94(void *arg0) {
 f32 __repair_cmp_l; f32 __repair_cmp_r;
@@ -67,7 +67,7 @@ if (__repair_cmp_l < __repair_cmp_r) {
             }
         }
     } else {
-        M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80064F08;
+        M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &elevatorActorUpdate;
     }
 }
 

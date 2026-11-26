@@ -63619,7 +63619,7 @@
    "unit": "main_text_27750",
    "mode": "rom"
   },
-  "func_80032E40": {
+  "drawStatusScreen": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -63629,10 +63629,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "17a15bdc7a6cfa4d0fce0f1b2a5566714c405d33c827b82c277389528f20c776",
-   "recorded_at": 1795572140.088175,
-   "attempt_id": 158913845219,
-   "source_sha256": "c18de78c214ca58e6fa6a1dc71708c69bafd63415b06fdcff5e5b5ad7a6ece9f",
+   "symbols_sha256": "ad4cd2ccece15cf57e4aa1e37d25fb64e02224605912910a0f3e71f8983f03d6",
+   "recorded_at": 1795699805.02124,
+   "attempt_id": 158913862039,
+   "source_sha256": "d9e9dd4993e4b92a1f8fe0f840537b0c8fb58de7075563ad7e24337c70401c5f",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 1,
    "compiler": {
@@ -63651,7 +63651,7 @@
    },
    "compiler_identity": {
     "toolchain": "sn-n64-281",
-    "registry_sha256": "14e28e8f96d57fb28d493fc5d8ff869e8cf1dc291e1c8adaf0233952948aed40",
+    "registry_sha256": "8eb23176b1932cb664777fba69b2915c713b60c625fc11f9ad0c22d12f3e9115",
     "install_sha256": "d949422c5b7c39402c79d468bd890710d5bd3eb8ba3929116a8a5543a4a7191f",
     "executables": {
      "cc1n64.exe": "d90df1028c46d826e37146dbcc3e3385f78c59e05a9ddd952daa94c9ad379d9c"
@@ -63674,7 +63674,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -63683,32 +63683,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G0",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp64"
-    ],
-    "language": "c",
     "context_unit": "",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -108181,7 +108155,7 @@
    "unit": "local_source_158913791130",
    "mode": "rom"
   },
-  "func_80064F08": {
+  "elevatorActorUpdate": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -198651,7 +198625,7 @@
   "d4224783076490d9c3b8ce38ac1b5320f5e17df6d546133a6aaabf08b697f6d8": "/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_8000C458();                            /* extern */\nM2C_UNK func_80023C10(s32);                         /* extern */\nM2C_UNK func_80023C58(M2C_UNK);                     /* extern */\ns32 func_80023D58(s32);                             /* extern */\nM2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */\nextern M2C_UNK D_800B4A00;\nextern s32 D_801070A0;\nextern M2C_UNK func_80032BF0;\n\nvoid func_80032C5C(void *arg0) {\n    s32 temp_v0;\n\n    if (M2C_FIELD(arg0, s32 *, 0x7C) != 0) {\n        M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_80032BF0;\n        M2C_FIELD(arg0, s32 *, 0x7C) = 0;\n        M2C_FIELD(arg0, s32 *, 0x84) = 0;\n        D_801070A0 = 0;\n        M2C_FIELD(arg0, s32 *, 0x64) = 0x2BC;\n        func_80023C58(0xB9458F);\n        M2C_FIELD(arg0, s32 *, 0x60) = func_80023D58((&D_800B4A00)[M2C_FIELD(arg0, s32 *, 0x70)]);\n        func_8002E7B8(0, 0);\n    }\n    if (D_801070A0 & 0x9000) {\n        temp_v0 = M2C_FIELD(arg0, s32 *, 0x84) + 1;\n        M2C_FIELD(arg0, s32 *, 0x84) = temp_v0;\n        if ((&D_800B4A00)[temp_v0] == 0) {\n            M2C_FIELD(arg0, s32 *, 0x84) = 0;\n        }\n        func_80023C10(M2C_FIELD(arg0, s32 *, 0x60));\n        func_8000C458();\n        M2C_FIELD(arg0, s32 *, 0x60) = func_80023D58((&D_800B4A00)[M2C_FIELD(arg0, s32 *, 0x84)]);\n        M2C_FIELD(arg0, s32 *, 0x94) = 0xA;\n    }\n}\n\n",
   "d2ea4196062e2385efe14c74e35f5de7c95f765abead5a82d409a900fd1653b9": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\ns32 func_80023D58(M2C_UNK);                         /* extern */\nextern s32 D_800BD07C;\nextern M2C_UNK D_800BD168;\nextern s32 D_800BD1E4;\nextern M2C_UNK D_8013FF78;\nextern s32 D_8013FF98;\nextern s32 D_8013FF9C;\n\nvoid func_80032D5C(void) {\n    D_8013FF98 = func_80023D58(0xD8F);\n    M2C_FIELD(&D_8013FF78, s32 *, 0) = func_80023D58(0xD88);\n    M2C_FIELD(&D_8013FF78, s32 *, 4) = func_80023D58(0xD89);\n    M2C_FIELD(&D_8013FF78, s32 *, 8) = func_80023D58(0xD8A);\n    M2C_FIELD(&D_8013FF78, s32 *, 0xC) = func_80023D58(0xD8B);\n    M2C_FIELD(&D_8013FF78, s32 *, 0x10) = func_80023D58(0xD8C);\n    M2C_FIELD(&D_8013FF78, s32 *, 0x14) = func_80023D58(0xD8D);\n    M2C_FIELD(&D_8013FF78, s32 *, 0x18) = func_80023D58(0xD8E);\n    M2C_FIELD(&D_800BD168, s32 *, 0) = func_80023D58(0x1BB);\n    M2C_FIELD(&D_800BD168, s32 *, 4) = func_80023D58(0x1C5);\n    D_8013FF9C = func_80023D58(0xD84);\n    D_800BD1E4 = func_80023D58(0x1EA);\n    D_800BD07C = func_80023D58(0x1BF);\n}\n",
   "669d6570e7d44fee13e3231adf5e6754cbaf702afbe9c2f27ee94021bdba2414": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nvoid func_80032E34(void *arg0) {\n    M2C_FIELD(arg0, s32 *, 0x6C) = 0xFF;\n}\n",
-  "c18de78c214ca58e6fa6a1dc71708c69bafd63415b06fdcff5e5b5ad7a6ece9f": "s32 func_8001B990(s32, s32);\ns32 func_80023E18(s32);\nvoid func_80026C04(void *, s32, s32);\nvoid func_8002710C(s32, s32, s32, s32);\nvoid func_8002713C(s32, s32);\nvoid func_800272E0(s32, s32, s32, s32);\nvoid func_800279B4(s32, s32, s32, s32, s32, s32);\nvoid func_8002E838(s32);\nvoid func_8003CDA0(s32);\ns16 coss(u16);\n\ntypedef struct Pos {\n    s32 x;\n    s32 y;\n    s32 id;\n} Pos;\n\ntypedef struct Obj {\n    char pad0[0x6C];\n    s32 x6C;\n    char pad70[0xBC - 0x70];\n    s32 xBC;\n} Obj;\n\ntypedef struct Cnt {\n    char pad0[0x14];\n    s32 x14;\n} Cnt;\n\nextern s32 D_800A9540;\nextern u8 D_800A954B;\nextern Pos D_800A9598[];\nextern Obj *D_800B3964;\nextern Pos D_800B49AC[];\nextern s32 D_800B9EA4;\nextern s32 D_800BD07C;\nextern Cnt D_800BD0E0;\nextern s32 D_800BD168[];\nextern s32 D_800BD1E4;\nextern u8 D_800BD1F0[];\nextern s32 D_8013FF78[];\nextern s32 D_8013FF98;\nextern s32 D_8013FF9C;\n\nvoid func_80032E40(Obj *arg0) {\n    u8 got[8];\n    s32 i;\n    s32 w;\n    s32 c;\n\n    func_8002E838(arg0->x6C / 2);\n    func_80026C04(got, 0, 8);\n    got[1] = D_800A954B & 2;\n    got[2] = D_800A954B & 4;\n    got[4] = D_800A954B & 1;\n    got[6] = D_800A954B & 8;\n    got[0] = func_8001B990(0x100, 0x24);\n    got[3] = func_8001B990(0x100, 0x25);\n    got[5] = func_8001B990(0x100, 0x26);\n    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);\n    func_800272E0(func_80023E18(D_8013FF98), 0x65, 0x22, 0);\n    for (i = 0; i < 7; i++) {\n        if (got[i] == 0) {\n            func_800272E0(func_80023E18(D_8013FF78[i]), D_800B49AC[i].x, D_800B49AC[i].y, 0);\n        }\n    }\n    func_8002710C(0xFF, 0xFF, 0xFF, arg0->x6C);\n    w = D_800A9540 * 15 / 2;\n    if (D_800BD0E0.x14 == 0) {\n        D_800BD0E0.x14 = 2;\n    }\n    for (i = 0; i < D_800A9540; i++) {\n        if (i < D_800BD0E0.x14) {\n            func_800272E0(func_80023E18(D_800BD1E4), 160 + i * 15 - w, 20, 0);\n        } else {\n            func_800272E0(func_80023E18(D_800BD07C), 160 + i * 15 - w, 20, 0);\n        }\n    }\n    func_800279B4(func_80023E18(D_8013FF9C), 0x100, 0x2A, 0x30, 0x98, 0);\n    for (i = 0; i < 10; i++) {\n        if (D_800BD1F0[(D_800B3964->xBC - 1) * 10 + i] != 0) {\n            func_8002710C(0xFF, 0xFF, 0, 0xFF);\n        } else {\n            func_8002710C(0x70, 0x70, 0x70, 0xFF);\n        }\n        func_800272E0(func_80023E18(D_800BD168[D_800A9598[i].id]), D_800A9598[i].x, D_800A9598[i].y + 0x37, 0);\n    }\n    c = 0xFF - (((coss((D_800B9EA4 * 400) & 0xFFF0) * 127) >> 15) + 0x80) / 2;\n    func_8002710C(c, c, c, 0xFF);\n    func_8002713C(0xA0, 0xC8);\n    func_8003CDA0(0x71);\n}\n",
+  "d9e9dd4993e4b92a1f8fe0f840537b0c8fb58de7075563ad7e24337c70401c5f": "s32 func_8001B990(s32, s32);\ns32 getImageAsset(s32);\nvoid func_80026C04(void *, s32, s32);\nvoid setTextColor(s32, s32, s32, s32);\nvoid setTextPos(s32, s32);\nvoid drawImage(s32, s32, s32, s32);\nvoid drawImageTiles(s32, s32, s32, s32, s32, s32);\nvoid func_8002E838(s32);\nvoid drawCenteredMessage(s32);\ns16 coss(u16);\n\ntypedef struct Pos {\n    s32 x;\n    s32 y;\n    s32 id;\n} Pos;\n\ntypedef struct Obj {\n    char pad0[0x6C];\n    s32 x6C;\n    char pad70[0xBC - 0x70];\n    s32 xBC;\n} Obj;\n\ntypedef struct Cnt {\n    char pad0[0x14];\n    s32 x14;\n} Cnt;\n\nextern s32 D_800A9540;\nextern u8 D_800A954B;\nextern Pos D_800A9598[];\nextern Obj *D_800B3964;\nextern Pos D_800B49AC[];\nextern s32 gTextWaveTime;\nextern s32 D_800BD07C;\nextern Cnt D_800BD0E0;\nextern s32 D_800BD168[];\nextern s32 D_800BD1E4;\nextern u8 D_800BD1F0[];\nextern s32 D_8013FF78[];\nextern s32 D_8013FF98;\nextern s32 D_8013FF9C;\n\n/* Draws the status screen: the title, an icon for each collected item (the items' bits come from D_800A954B and func_8001B990), a row of count pips, a 10-slot list lit by the stored flags, and a caption whose shade pulses with gTextWaveTime. */\nvoid drawStatusScreen(Obj *screen) {\n    u8 collected[8];\n    s32 i;\n    s32 pipOffset;\n    s32 pulseShade;\n\n    func_8002E838(screen->x6C / 2);\n    func_80026C04(collected, 0, 8);\n    collected[1] = D_800A954B & 2;\n    collected[2] = D_800A954B & 4;\n    collected[4] = D_800A954B & 1;\n    collected[6] = D_800A954B & 8;\n    collected[0] = func_8001B990(0x100, 0x24);\n    collected[3] = func_8001B990(0x100, 0x25);\n    collected[5] = func_8001B990(0x100, 0x26);\n    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);\n    drawImage(getImageAsset(D_8013FF98), 0x65, 0x22, 0);\n    for (i = 0; i < 7; i++) {\n        if (collected[i] == 0) {\n            drawImage(getImageAsset(D_8013FF78[i]), D_800B49AC[i].x, D_800B49AC[i].y, 0);\n        }\n    }\n    setTextColor(0xFF, 0xFF, 0xFF, screen->x6C);\n    pipOffset = D_800A9540 * 15 / 2;\n    if (D_800BD0E0.x14 == 0) {\n        D_800BD0E0.x14 = 2;\n    }\n    for (i = 0; i < D_800A9540; i++) {\n        if (i < D_800BD0E0.x14) {\n            drawImage(getImageAsset(D_800BD1E4), 160 + i * 15 - pipOffset, 20, 0);\n        } else {\n            drawImage(getImageAsset(D_800BD07C), 160 + i * 15 - pipOffset, 20, 0);\n        }\n    }\n    drawImageTiles(getImageAsset(D_8013FF9C), 0x100, 0x2A, 0x30, 0x98, 0);\n    for (i = 0; i < 10; i++) {\n        if (D_800BD1F0[(D_800B3964->xBC - 1) * 10 + i] != 0) {\n            setTextColor(0xFF, 0xFF, 0, 0xFF);\n        } else {\n            setTextColor(0x70, 0x70, 0x70, 0xFF);\n        }\n        drawImage(getImageAsset(D_800BD168[D_800A9598[i].id]), D_800A9598[i].x, D_800A9598[i].y + 0x37, 0);\n    }\n    pulseShade = 0xFF - (((coss((gTextWaveTime * 400) & 0xFFF0) * 127) >> 15) + 0x80) / 2;\n    setTextColor(pulseShade, pulseShade, pulseShade, 0xFF);\n    setTextPos(0xA0, 0xC8);\n    drawCenteredMessage(0x71);\n}",
   "05b2222d9d8a605a7f4e45c579df24f33f2096b0c3e922a4445376dc46bb93d5": "typedef struct O33198 {\n    u8 pad0[0x78];\n    s32 f78;\n    u8 pad7C[0x98 - 0x7C];\n    void (*f98)(void);\n} O33198;\nvoid func_800262FC(s32);\nvoid func_80030C40(O33198 *, s32);\nvoid func_80031B54(O33198 *, s32);\nextern s32 D_801070A0;\nvoid func_80033818(void);\n\nvoid func_80033198(O33198 *arg0) {\n    arg0->f98 = func_80033818;\n    func_80031B54(arg0, 3);\n    if (D_801070A0 & 0x9000) {\n        switch (arg0->f78) {\n        case 0:\n            func_80030C40(arg0, -2);\n            break;\n        case 1:\n            func_80030C40(arg0, 1);\n            break;\n        case 2:\n            func_800262FC(0);\n            func_80030C40(arg0, 6);\n            break;\n        }\n        arg0->f78 = 0;\n    }\n}\n",
   "0858cdc89477cbc4bd11b0eb8ce228edeb9fcfdc5ba637a21e2c55b558626a64": "typedef struct O33198 {\n    u8 pad0[0x78];\n    s32 f78;\n    u8 pad7C[0x98 - 0x7C];\n    void (*f98)(void);\n} O33198;\nvoid func_800262FC(s32);\ns32 func_80026370(s32);\nvoid func_80030C40(O33198 *, s32);\nvoid func_80031B54(O33198 *, s32);\nextern s32 D_801070A0;\nvoid func_800338F4(void);\n\nvoid func_80033244(O33198 *arg0) {\n    arg0->f98 = func_800338F4;\n    func_80031B54(arg0, 3);\n    if (D_801070A0 & 0x9000) {\n        switch (arg0->f78) {\n        case 0:\n            func_80030C40(arg0, -3);\n            break;\n        case 1:\n            if (func_80026370(0)) {\n                func_80030C40(arg0, 2);\n            } else {\n                func_80030C40(arg0, 1);\n            }\n            break;\n        case 2:\n            func_800262FC(0);\n            func_80030C40(arg0, 5);\n            break;\n        }\n        arg0->f78 = 0;\n    }\n}\n",
   "87aaef6321bfb2c09611805720bfb902a033c8303d72ffb61bbed5288332ee8b": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\ns32 func_80030C40();\nextern s32 D_801070A0;\nextern s32 func_800339A0;\n\nvoid func_80033304(void *arg0) {\n    M2C_FIELD(arg0, s32 **, 0x98) = &func_800339A0;\n    if (D_801070A0 & 0x1000) {\n        D_801070A0 = 0;\n        func_80030C40(arg0, -4);\n    }\n}\n",

@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699796.130532,
- "revision": 5580,
+ "saved_at": 1795699813.026381,
+ "revision": 5582,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14906,7 +14906,7 @@
   },
   "416520:2147897096": {
    "vram": 2147897096,
-   "function": "func_80064F08",
+   "function": "elevatorActorUpdate",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -16228,8 +16228,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "427148:2147907724": {
    "vram": 2147907724,
@@ -21427,10 +21426,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80032E40": {
+  "drawStatusScreen": {
    "vram": 2147692096,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_80033198": {
    "vram": 2147692952,
@@ -23917,7 +23916,7 @@
    "matched_by": "manual-9fd1e39de8e6486b",
    "readable": false
   },
-  "func_80064F08": {
+  "elevatorActorUpdate": {
    "vram": 2147897096,
    "matched_by": "manual-114e6296bf42426c",
    "readable": false
@@ -29290,7 +29289,7 @@
   "func_80064808": "local_source_158913791128",
   "cameraUpdateByMode": "local_source_158913791129",
   "func_80064D94": "local_source_158913791130",
-  "func_80064F08": "local_source_158913791131",
+  "elevatorActorUpdate": "local_source_158913791131",
   "func_80065260": "local_source_158913791132",
   "func_8006542C": "local_source_158913791133",
   "func_80065630": "local_source_158913791134",
@@ -33875,7 +33874,7 @@
    "status": "open"
   },
   {
-   "name": "func_80032E40",
+   "name": "drawStatusScreen",
    "vram": 2147692096,
    "size": 856,
    "status": "open"
@@ -36881,7 +36880,7 @@
    "status": "open"
   },
   {
-   "name": "func_80064F08",
+   "name": "elevatorActorUpdate",
    "vram": 2147897096,
    "size": 856,
    "status": "open"
@@ -43531,6 +43530,12 @@
    "kind": "func"
   },
   {
+   "name": "drawStatusScreen",
+   "address": 2147692096,
+   "size": 856,
+   "kind": "func"
+  },
+  {
    "name": "updateFollowCamera",
    "address": 2147699172,
    "size": 1116,
@@ -43726,6 +43731,12 @@
    "name": "cameraUpdateByMode",
    "address": 2147895644,
    "size": 1080,
+   "kind": "func"
+  },
+  {
+   "name": "elevatorActorUpdate",
+   "address": 2147897096,
+   "size": 856,
    "kind": "func"
   },
   {

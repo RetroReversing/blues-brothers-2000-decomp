@@ -45,7 +45,7 @@ extern s32 D_800B5DD4[];
 extern char gCameraTarget[];
 extern s32 D_80140214[];
 
-void func_80064F08(Obj *arg0) {
+void elevatorActorUpdate(Obj *arg0) {
     f32 ax;
     f32 az;
     f32 d1;

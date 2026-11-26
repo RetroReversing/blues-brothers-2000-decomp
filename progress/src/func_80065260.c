@@ -3,7 +3,7 @@ f32 approachF32(f32, f32, f32);
 f32 func_8002DD60(f32);
 void debugPrintf(char *);
 void func_80023078(void);
-void func_80064F08(void);
+void elevatorActorUpdate(void);
 
 typedef struct Obj {
     char pad0[4];
@@ -90,6 +90,6 @@ void func_80065260(Obj *arg0) {
             (*(Obj **)D_800B3964)->xC0 = 2;
             return;
         }
-        arg0->x9C = func_80064F08;
+        arg0->x9C = elevatorActorUpdate;
     }
 }
