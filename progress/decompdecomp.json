@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699949.559388,
- "revision": 5595,
+ "saved_at": 1795699963.7268329,
+ "revision": 5596,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15164,7 +15164,8 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ]
+   ],
+   "timeout": 20
   },
   "525464:2148006040": {
    "vram": 2148006040,
@@ -21206,7 +21207,7 @@
   "drawBillboardSprite": {
    "vram": 2147676864,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_8002F604": {
    "vram": 2147677700,
