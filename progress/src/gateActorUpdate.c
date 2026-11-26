@@ -41,91 +41,91 @@ extern ObjY *gCameraTarget;
 extern Bound gPlatformMaxOffsets[];
 extern Bound gPlatformMinOffsets[];
 
-void gateActorUpdate(ObjY *arg0) {
-    s32 flags;
+/* Gate actor update: while both switch bits (0x15, 0x16) are set and the gate is at rest with its trigger armed, it fires four spawned shots and resets; otherwise it falls. Also clamps it to its floor and stops falling when the camera is inside its bounds. */
+void gateActorUpdate(ObjY *gate) {
+    s32 switchMask;
     f32 dx;
     f32 dz;
     f32 dy;
-    ObjY *p;
-    Bound *lo;
-    Bound *hi;
-    s32 off;
+    ObjY *shot;
+    Bound *maxBound;
+    Bound *minBound;
+    s32 boundOff;
 
-    flags = func_8001B990(0x100, 0x15) & func_8001B990(0x100, 0x16);
-    if (arg0->f7C == 0) {
-        arg0->f7C = 1;
-        arg0->fC0 = 3;
-        arg0->f0 = 0x10E;
-        arg0->fB0 = arg0->f50 = 0.0f;
-        syncActorPrevPos(arg0);
-        arg0->f64 = 0x64;
+    switchMask = func_8001B990(0x100, 0x15) & func_8001B990(0x100, 0x16);
+    if (gate->f7C == 0) {
+        gate->f7C = 1;
+        gate->fC0 = 3;
+        gate->f0 = 0x10E;
+        gate->fB0 = gate->f50 = 0.0f;
+        syncActorPrevPos(gate);
+        gate->f64 = 0x64;
     }
-    if (arg0->f90 != 0 && arg0->y == arg0->f44 && flags != 0) {
-        if (arg0->f88 == 0) {
-            arg0->f88 = 1;
+    if (gate->f90 != 0 && gate->y == gate->f44 && switchMask != 0) {
+        if (gate->f88 == 0) {
+            gate->f88 = 1;
             func_8002A360(0x1A, 0);
         }
-        if (tickActorTimer(arg0) != 0) {
-            arg0->f50 = 3100.0f;
-            p = func_80012718(arg0);
-            p->x = arg0->x + 300.0f;
-            p->y = arg0->y;
-            p->z = arg0->z;
-            p->f10 = 0x4000;
-            func_8002D4E0(p, 0x3E8);
-            p = func_80012718(arg0);
-            p->x = arg0->x - 300.0f;
-            p->y = arg0->y;
-            p->z = arg0->z;
-            p->f10 = -0x4000;
-            func_8002D4E0(p, 0x3E8);
-            p = func_80012718(arg0);
-            p->x = arg0->z + 300.0f;
-            p->y = arg0->y;
-            p->z = arg0->x;
-            p->f10 = 0;
-            func_8002D4E0(p, 0x3E8);
-            p = func_80012718(arg0);
-            p->x = arg0->z - 300.0f;
-            p->y = arg0->y;
-            p->z = arg0->x;
-            p->f10 = 0x8000;
-            func_8002D4E0(p, 0x3E8);
-            arg0->f64 = 0x64;
-            arg0->f88 = 0;
+        if (tickActorTimer(gate) != 0) {
+            gate->f50 = 3100.0f;
+            shot = func_80012718(gate);
+            shot->x = gate->x + 300.0f;
+            shot->y = gate->y;
+            shot->z = gate->z;
+            shot->f10 = 0x4000;
+            func_8002D4E0(shot, 0x3E8);
+            shot = func_80012718(gate);
+            shot->x = gate->x - 300.0f;
+            shot->y = gate->y;
+            shot->z = gate->z;
+            shot->f10 = -0x4000;
+            func_8002D4E0(shot, 0x3E8);
+            shot = func_80012718(gate);
+            shot->x = gate->z + 300.0f;
+            shot->y = gate->y;
+            shot->z = gate->x;
+            shot->f10 = 0;
+            func_8002D4E0(shot, 0x3E8);
+            shot = func_80012718(gate);
+            shot->x = gate->z - 300.0f;
+            shot->y = gate->y;
+            shot->z = gate->x;
+            shot->f10 = 0x8000;
+            func_8002D4E0(shot, 0x3E8);
+            gate->f64 = 0x64;
+            gate->f88 = 0;
             func_8002D124();
         }
     } else {
-        arg0->f64 = 0x64;
-        arg0->fB0 = -1600.0f;
-        arg0->f50 += D_800B9EC4 * -1600.0f;
-        if (arg0->f88 != 0) {
+        gate->f64 = 0x64;
+        gate->fB0 = -1600.0f;
+        gate->f50 += D_800B9EC4 * -1600.0f;
+        if (gate->f88 != 0) {
             func_8002A360(0x1B, 0);
-            arg0->f88 = 0;
+            gate->f88 = 0;
         }
     }
-    dx = gCameraTarget->x - arg0->x;
-    dz = gCameraTarget->z - arg0->z;
-    dy = gCameraTarget->y - arg0->y;
+    dx = gCameraTarget->x - gate->x;
+    dz = gCameraTarget->z - gate->z;
+    dy = gCameraTarget->y - gate->y;
     if (!(8000.0f < func_8002DD60(dx)) && !(8000.0f < func_8002DD60(dz))) {
         {
         char *base = (char *)gPlatformMaxOffsets;
-        off = arg0->fB8 * sizeof(Bound);
-        lo = (Bound *)(base + off);
+        boundOff = gate->fB8 * sizeof(Bound);
+        maxBound = (Bound *)(base + boundOff);
         }
-        if (!(lo->x < dx)) {
-            hi = (Bound *)((char *)gPlatformMinOffsets + off);
-            if (!(dx < hi->x) && !(lo->z < dz) && !(dz < hi->z) && dy < -600.0f) {
-                arg0->f50 = 0.0f;
+        if (!(maxBound->x < dx)) {
+            minBound = (Bound *)((char *)gPlatformMinOffsets + boundOff);
+            if (!(dx < minBound->x) && !(maxBound->z < dz) && !(dz < minBound->z) && dy < -600.0f) {
+                gate->f50 = 0.0f;
             }
         }
     }
-    func_8002DA80(arg0);
-    if (arg0->y <= arg0->f44) {
-        arg0->y = arg0->f44;
-        arg0->f50 = 0.0f;
-        arg0->fB0 = 0.0f;
+    func_8002DA80(gate);
+    if (gate->y <= gate->f44) {
+        gate->y = gate->f44;
+        gate->f50 = 0.0f;
+        gate->fB0 = 0.0f;
     }
-    func_80013384(arg0);
+    func_80013384(gate);
 }
-

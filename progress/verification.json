@@ -28811,10 +28811,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "17a15bdc7a6cfa4d0fce0f1b2a5566714c405d33c827b82c277389528f20c776",
-   "recorded_at": 1795559472.6155431,
-   "attempt_id": 158913839348,
-   "source_sha256": "55216e605820785b13d56cdbd8bc7797f00669c3af16f821e9fd886646e0f67a",
+   "symbols_sha256": "29f8589e797b3b25cb2fbf8fc27daed9b089087c98c1caf433d1752d5e512a6e",
+   "recorded_at": 1795699742.52917,
+   "attempt_id": 158913862035,
+   "source_sha256": "9ff97f228e405a8ded43c4a101b488d5286e122a2729621baf7e9e783b59a0d6",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 679,
    "compiler": {
@@ -28833,7 +28833,7 @@
    },
    "compiler_identity": {
     "toolchain": "sn-n64-281",
-    "registry_sha256": "57f297602fcbfb6e5625d354d7dbbee2ff638179b0df961ecf1cbb521b5cb1ef",
+    "registry_sha256": "8eb23176b1932cb664777fba69b2915c713b60c625fc11f9ad0c22d12f3e9115",
     "install_sha256": "d949422c5b7c39402c79d468bd890710d5bd3eb8ba3929116a8a5543a4a7191f",
     "executables": {
      "cc1n64.exe": "d90df1028c46d826e37146dbcc3e3385f78c59e05a9ddd952daa94c9ad379d9c"
@@ -28856,7 +28856,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -28865,32 +28865,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G0",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913790270",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -200185,7 +200159,8 @@
   "01f368f6107d9678a3186f5e99b4ac1f363f45568be461ab158372d5949ce31d": "void func_800899DC();\nextern s32 D_80007880;\nextern s32 D_80007898;\nextern s32 D_800078B0;\n\nvoid func_800413C0(s32 arg0) {\n    if (arg0 >= 0) {\n        func_800899DC(&D_80007880, arg0, &D_80007898);\n    }\n    if ((u32) arg0 > 0x80400000U) {\n        func_800899DC(&D_800078B0, arg0);\n    }\n}\n",
   "5d1a4d69c1868a3ebaebcbe66337fbc477b574810f9f84d218a11fa98372e9c0": "/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */\nM2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */\ns32 func_80023D58(M2C_UNK);                         /* extern */\nextern s32 D_8014AB3C;\nextern s32 D_8014AB44;\n\nvoid func_80054720(void) {\n    func_80023A74(0xE, 0x480);\n    func_80023A98(0x45, 0x47C, 0);\n    func_80023A98(0x46, 0x47D, 0);\n    func_80023A98(0x47, 0x47D, 0);\n    func_80023A98(0x48, 0x47E, 0);\n    func_80023A98(0x49, 0x47F, 0);\n    D_8014AB3C = func_80023D58(0x198);\n    D_8014AB44 = func_80023D58(0x199);\n}\n",
   "941e7a9fc706dfeb689913fd8ad42dc4d7371a10e26497455a7075d0dc657542": "typedef struct Actor {\n    u8 pad0[0x5C];\n    s32 unk5C;\n    u8 pad60[0x70 - 0x60];\n    s32 unk70;\n    s32 unk74;\n    u8 pad78[0x8C - 0x78];\n    s32 unk8C;\n    s32 unk90;\n    u8 pad94[0xA0 - 0x94];\n    void (*unkA0)(struct Actor *);\n    struct Actor *unkA4;\n    s32 unkA8;\n} Actor;\n\ns32 func_80043248(Actor *);\nextern s32 D_800B9ECC;\n\nvoid func_8005CAB0(Actor *arg0) {\n    s32 temp_v1;\n    Actor *temp_s1;\n\n    temp_s1 = arg0->unkA4;\n    if (arg0->unk70 == 0) {\n        if ((temp_s1 == NULL) || ((temp_s1->unk90 >= 2) && (temp_s1->unk8C >= 2))) {\n            arg0->unk70 = 1;\n        }\n        if (arg0->unk70 != 0) {\n            goto block_6;\n        }\n    } else {\nblock_6:\n        if (func_80043248(arg0) != 0) {\n            arg0->unk74 = 1;\n        }\n    }\n    if (arg0->unk74 != 0) {\n        temp_v1 = arg0->unk5C - (D_800B9ECC * 0xC);\n        arg0->unk5C = temp_v1;\n        if (temp_v1 < 0xA) {\n            if (temp_s1 != NULL) {\n                temp_s1->unkA8 = 0;\n            }\n            arg0->unkA0(arg0);\n        }\n    }\n}\n",
-  "2939e63b2ab06c87e2bf660dd057c5fedfaf3a19bbbfdb2f0dc47953e1e27b91": "#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\ns32 func_80023D58(s32);\ns32 func_80023E18(s32);\nvoid func_8002710C(s32, s32, s32, s32);\nvoid drawImage(s32, s32, s32, s32);\ns32 tickActorTimer(void *);\nextern s32 D_800B9ECC;\n\nvoid func_80063C40(void *arg0) {\n    s32 temp_v0;\n    s32 temp_v0_2;\n\n    temp_v0 = M2C_FIELD(arg0, s32 *, 0x5C) + (M2C_FIELD(arg0, s32 *, 0x70) * D_800B9ECC);\n    M2C_FIELD(arg0, s32 *, 0x5C) = temp_v0;\n    if (temp_v0 >= 0x100) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;\n    }\n    if (M2C_FIELD(arg0, s32 *, 0x5C) < 0) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0;\n    }\n    func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x5C));\n    temp_v0_2 = func_80023D58(0x218);\n    M2C_FIELD(arg0, s32 *, 0x60) = temp_v0_2;\n    drawImage(func_80023E18(temp_v0_2), 0, 0, 0);\n    if ((tickActorTimer(arg0) != 0) || (M2C_FIELD(arg0, s32 *, 0x5C) == 0)) {\n        M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);\n    }\n}\n"
+  "2939e63b2ab06c87e2bf660dd057c5fedfaf3a19bbbfdb2f0dc47953e1e27b91": "#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\ns32 func_80023D58(s32);\ns32 func_80023E18(s32);\nvoid func_8002710C(s32, s32, s32, s32);\nvoid drawImage(s32, s32, s32, s32);\ns32 tickActorTimer(void *);\nextern s32 D_800B9ECC;\n\nvoid func_80063C40(void *arg0) {\n    s32 temp_v0;\n    s32 temp_v0_2;\n\n    temp_v0 = M2C_FIELD(arg0, s32 *, 0x5C) + (M2C_FIELD(arg0, s32 *, 0x70) * D_800B9ECC);\n    M2C_FIELD(arg0, s32 *, 0x5C) = temp_v0;\n    if (temp_v0 >= 0x100) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;\n    }\n    if (M2C_FIELD(arg0, s32 *, 0x5C) < 0) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0;\n    }\n    func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x5C));\n    temp_v0_2 = func_80023D58(0x218);\n    M2C_FIELD(arg0, s32 *, 0x60) = temp_v0_2;\n    drawImage(func_80023E18(temp_v0_2), 0, 0, 0);\n    if ((tickActorTimer(arg0) != 0) || (M2C_FIELD(arg0, s32 *, 0x5C) == 0)) {\n        M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);\n    }\n}\n",
+  "9ff97f228e405a8ded43c4a101b488d5286e122a2729621baf7e9e783b59a0d6": "typedef struct ObjY {\n    s32 f0;\n    f32 x;\n    f32 y;\n    f32 z;\n    s32 f10;\n    u8 pad14[0x44 - 0x14];\n    f32 f44;\n    u8 pad48[0x50 - 0x48];\n    f32 f50;\n    u8 pad54[0x64 - 0x54];\n    s32 f64;\n    u8 pad68[0x7C - 0x68];\n    s32 f7C;\n    u8 pad80[0x88 - 0x80];\n    s32 f88;\n    u8 pad8C[0x90 - 0x8C];\n    s32 f90;\n    u8 pad94[0xB0 - 0x94];\n    f32 fB0;\n    u8 padB4[0xB8 - 0xB4];\n    s32 fB8;\n    u8 padBC[0xC0 - 0xBC];\n    s32 fC0;\n} ObjY;\n\ntypedef struct { s32 x; s32 pad; s32 z; } Bound;\n\nObjY *func_80012718(ObjY *);\nvoid func_80013384(ObjY *);\ns32 func_8001B990(s32, s32);\nvoid func_8002A360(s32, s32);\nvoid func_8002D124(void);\nvoid func_8002D4E0(ObjY *, s32);\ns32 tickActorTimer(ObjY *);\nvoid syncActorPrevPos(ObjY *);\nvoid func_8002DA80(ObjY *);\nf32 func_8002DD60(f32);\nextern f32 D_800B9EC4;\nextern ObjY *gCameraTarget;\nextern Bound gPlatformMaxOffsets[];\nextern Bound gPlatformMinOffsets[];\n\n/* Gate actor update: while both switch bits (0x15, 0x16) are set and the gate is at rest with its trigger armed, it fires four spawned shots and resets; otherwise it falls. Also clamps it to its floor and stops falling when the camera is inside its bounds. */\nvoid gateActorUpdate(ObjY *gate) {\n    s32 switchMask;\n    f32 dx;\n    f32 dz;\n    f32 dy;\n    ObjY *shot;\n    Bound *maxBound;\n    Bound *minBound;\n    s32 boundOff;\n\n    switchMask = func_8001B990(0x100, 0x15) & func_8001B990(0x100, 0x16);\n    if (gate->f7C == 0) {\n        gate->f7C = 1;\n        gate->fC0 = 3;\n        gate->f0 = 0x10E;\n        gate->fB0 = gate->f50 = 0.0f;\n        syncActorPrevPos(gate);\n        gate->f64 = 0x64;\n    }\n    if (gate->f90 != 0 && gate->y == gate->f44 && switchMask != 0) {\n        if (gate->f88 == 0) {\n            gate->f88 = 1;\n            func_8002A360(0x1A, 0);\n        }\n        if (tickActorTimer(gate) != 0) {\n            gate->f50 = 3100.0f;\n            shot = func_80012718(gate);\n            shot->x = gate->x + 300.0f;\n            shot->y = gate->y;\n            shot->z = gate->z;\n            shot->f10 = 0x4000;\n            func_8002D4E0(shot, 0x3E8);\n            shot = func_80012718(gate);\n            shot->x = gate->x - 300.0f;\n            shot->y = gate->y;\n            shot->z = gate->z;\n            shot->f10 = -0x4000;\n            func_8002D4E0(shot, 0x3E8);\n            shot = func_80012718(gate);\n            shot->x = gate->z + 300.0f;\n            shot->y = gate->y;\n            shot->z = gate->x;\n            shot->f10 = 0;\n            func_8002D4E0(shot, 0x3E8);\n            shot = func_80012718(gate);\n            shot->x = gate->z - 300.0f;\n            shot->y = gate->y;\n            shot->z = gate->x;\n            shot->f10 = 0x8000;\n            func_8002D4E0(shot, 0x3E8);\n            gate->f64 = 0x64;\n            gate->f88 = 0;\n            func_8002D124();\n        }\n    } else {\n        gate->f64 = 0x64;\n        gate->fB0 = -1600.0f;\n        gate->f50 += D_800B9EC4 * -1600.0f;\n        if (gate->f88 != 0) {\n            func_8002A360(0x1B, 0);\n            gate->f88 = 0;\n        }\n    }\n    dx = gCameraTarget->x - gate->x;\n    dz = gCameraTarget->z - gate->z;\n    dy = gCameraTarget->y - gate->y;\n    if (!(8000.0f < func_8002DD60(dx)) && !(8000.0f < func_8002DD60(dz))) {\n        {\n        char *base = (char *)gPlatformMaxOffsets;\n        boundOff = gate->fB8 * sizeof(Bound);\n        maxBound = (Bound *)(base + boundOff);\n        }\n        if (!(maxBound->x < dx)) {\n            minBound = (Bound *)((char *)gPlatformMinOffsets + boundOff);\n            if (!(dx < minBound->x) && !(maxBound->z < dz) && !(dz < minBound->z) && dy < -600.0f) {\n                gate->f50 = 0.0f;\n            }\n        }\n    }\n    func_8002DA80(gate);\n    if (gate->y <= gate->f44) {\n        gate->y = gate->f44;\n        gate->f50 = 0.0f;\n        gate->fB0 = 0.0f;\n    }\n    func_80013384(gate);\n}"
  },
  "headers": {
   "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b": "/* context.h for BLUES BROTHERS 2000: shared by every function. Agents grow it with edit_context:\n * add a prototype or struct the moment you work one out, so the next function benefits. */\n\ntypedef signed char s8;\ntypedef unsigned char u8;\ntypedef signed short s16;\ntypedef unsigned short u16;\ntypedef signed int s32;\ntypedef unsigned int u32;\ntypedef signed long long s64;\ntypedef unsigned long long u64;\ntypedef float f32;\ntypedef double f64;\ntypedef volatile u8 vu8;\ntypedef volatile u16 vu16;\ntypedef volatile u32 vu32;\ntypedef volatile s32 vs32;\ntypedef int s32_bool;\n\n#define NULL ((void *)0)\n#define TRUE 1\n#define FALSE 0\n#define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))\n",
