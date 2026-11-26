@@ -4,7 +4,7 @@ s32 heapAlloc();
 extern s32 D_800B8380;
 extern s32 D_800B8384[];
 extern s32 D_800B83B0;
-extern Rec12 D_800F6188[];
+extern Rec12 gPlatformMinOffsets[];
 extern s32 *D_801700B0;
 
 void func_80072CA8(void) {
@@ -14,6 +14,6 @@ void func_80072CA8(void) {
     for (i = 0; i < D_800B8380; i++) {
         D_801700B0[i] = D_800B83B0++ + 0x1D6;
         func_800242A8(D_801700B0[i], D_800B8384[i], 0);
-        D_800F6188[D_801700B0[i]].b += 0x32;
+        gPlatformMinOffsets[D_801700B0[i]].b += 0x32;
     }
 }

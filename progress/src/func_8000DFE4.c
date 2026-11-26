@@ -16,8 +16,8 @@ void func_8000DF10(Hit *);
 s32 tickActorTimer(Obj *);
 extern s32 D_800B3838;
 extern Obj *gCameraTarget;
-extern Rec D_800F4A00[];
-extern Rec D_800F6188[];
+extern Rec gPlatformMaxOffsets[];
+extern Rec gPlatformMinOffsets[];
 extern s32 D_80140224;
 
 void func_8000DFE4(Obj *arg0) {
@@ -31,14 +31,14 @@ void func_8000DFE4(Obj *arg0) {
     Rec *tbl;
 
     p = gCameraTarget;
-    tbl = D_800F4A00;
+    tbl = gPlatformMaxOffsets;
     arg0->f0 = 0x101;
     lo = &tbl[arg0->fB8];
     n = 0;
     if (p->x <= arg0->x + lo->x) {
         n = 1;
     }
-    hi = &D_800F6188[arg0->fB8];
+    hi = &gPlatformMinOffsets[arg0->fB8];
     if (arg0->x + hi->x <= p->x) {
         n++;
     }
@@ -52,10 +52,10 @@ void func_8000DFE4(Obj *arg0) {
         arg0->f64 = 20;
     }
     if (n == 4) {
-        if (gCameraTarget->y <= (top = arg0->y + D_800F4A00[arg0->fB8].y)) {
+        if (gCameraTarget->y <= (top = arg0->y + gPlatformMaxOffsets[arg0->fB8].y)) {
             h.x = gCameraTarget->x;
             h.z = gCameraTarget->z;
-            h.y = arg0->y + D_800F4A00[arg0->fB8].y;
+            h.y = arg0->y + gPlatformMaxOffsets[arg0->fB8].y;
             if (tickActorTimer(arg0) != 0 || gCameraTarget->f90 == 0) {
                 func_8000DF10(&h);
                 arg0->f64 = 20;

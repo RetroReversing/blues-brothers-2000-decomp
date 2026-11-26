@@ -38,8 +38,8 @@ extern f32 gCollideMin[3];
 extern f32 gCollideMax[3];
 extern u8 D_800B76A0[];
 extern Cell8820 *gObjTriLists[];
-extern Vec3i8820 D_800F4A00[];
-extern Vec3i8820 D_800F6188[];
+extern Vec3i8820 gPlatformMaxOffsets[];
+extern Vec3i8820 gPlatformMinOffsets[];
 extern s32 gObjTriCounts[];
 extern s8 (*D_800F9878[])[4];
 extern Hit8820 D_80140FF8[];
@@ -142,16 +142,16 @@ void collectCollisionCells(Vec3f8820 *boxMin, Vec3f8820 *boxMax, s32 flags) {
             mx[2] = d1[2];
         }
         room = e->room;
-        if (mn[0] > D_800F4A00[room].x) {
+        if (mn[0] > gPlatformMaxOffsets[room].x) {
             continue;
         }
-        if (mx[0] < D_800F6188[room].x) {
+        if (mx[0] < gPlatformMinOffsets[room].x) {
             continue;
         }
-        if (mn[2] > D_800F4A00[room].z) {
+        if (mn[2] > gPlatformMaxOffsets[room].z) {
             continue;
         }
-        if (mx[2] < D_800F6188[room].z) {
+        if (mx[2] < gPlatformMinOffsets[room].z) {
             continue;
         }
         x0 = mn[0] >> 7;

@@ -25,8 +25,8 @@ typedef struct {
     s32 unkC0;
 } Unk800552C4;
 
-extern Vec3i_552C4 D_800F4A00[];
-extern Vec3i_552C4 D_800F6188[];
+extern Vec3i_552C4 gPlatformMaxOffsets[];
+extern Vec3i_552C4 gPlatformMinOffsets[];
 extern Player_552C4 *gCameraTarget;
 
 f32 getCameraTargetDist(void *o, f32 r, s32 *ang);
@@ -50,8 +50,8 @@ s32 func_800552C4(Unk800552C4 *arg0) {
     f32 z;
 
     range = 350.0f;
-    lo = arg0->unk8 + D_800F4A00[arg0->unkB8].y;
-    hi = arg0->unk8 + D_800F6188[arg0->unkB8].y;
+    lo = arg0->unk8 + gPlatformMaxOffsets[arg0->unkB8].y;
+    hi = arg0->unk8 + gPlatformMinOffsets[arg0->unkB8].y;
     arg0->unkC0 = 0;
     if (getCameraTargetDist(arg0, range, NULL) == range) {
         return 0;

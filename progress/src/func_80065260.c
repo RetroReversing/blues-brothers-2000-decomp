@@ -39,7 +39,7 @@ extern char D_80008C30[];
 extern f32 D_80008C48;
 extern u8 D_800B3964[];
 extern u8 D_800B5DD4[];
-extern Rec D_800F4A00[];
+extern Rec gPlatformMaxOffsets[];
 extern u8 D_80140214[];
 
 void func_80065260(Obj *arg0) {
@@ -75,7 +75,7 @@ void func_80065260(Obj *arg0) {
     tgt = func_8002DD60(v - tgt);
     if (p != 0) {
         lim = D_80008C48;
-        p->x8 = arg0->x8 + (f32)D_800F4A00[arg0->xB8].x4;
+        p->x8 = arg0->x8 + (f32)gPlatformMaxOffsets[arg0->xB8].x4;
         p->x4 = approachF32(arg0->x4, p->x4, lim);
         p->xC = approachF32(arg0->xC, p->xC, lim);
     }

@@ -9,26 +9,26 @@ typedef struct {
     s32 b;
     s32 c;
 } Rec;
-extern Rec D_800F4A00[];
-extern Rec D_800F6188[];
+extern Rec gPlatformMaxOffsets[];
+extern Rec gPlatformMinOffsets[];
 
 s32 func_8000DCC4(Obj *p, Obj *o) {
     s32 d;
 
     d = p->x - o->x;
     if (d > 0) {
-        if (D_800F4A00[o->fB8].a < d) {
+        if (gPlatformMaxOffsets[o->fB8].a < d) {
             return 0;
         }
-    } else if (d < D_800F6188[o->fB8].a) {
+    } else if (d < gPlatformMinOffsets[o->fB8].a) {
         return 0;
     }
     d = p->z - o->z;
     if (d > 0) {
-        if (D_800F4A00[o->fB8].c < d) {
+        if (gPlatformMaxOffsets[o->fB8].c < d) {
             return 0;
         }
-    } else if (d < D_800F6188[o->fB8].c) {
+    } else if (d < gPlatformMinOffsets[o->fB8].c) {
         return 0;
     }
     return 1;

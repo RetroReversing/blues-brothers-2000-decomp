@@ -25,7 +25,7 @@ Obj *func_8003B980(Obj *);
 f32 sqrtf(f32);
 extern s32 gCamSpeedScale;
 extern Obj *gCameraTarget;
-extern HRow D_800F4A00[];
+extern HRow gPlatformMaxOffsets[];
 
 void func_80016CF4(Obj *arg0) {
     f32 dx;
@@ -36,12 +36,12 @@ void func_80016CF4(Obj *arg0) {
 
     if (arg0->state == 0) {
         arg0->state = 1;
-        D_800F4A00[arg0->kind].h = -15;
+        gPlatformMaxOffsets[arg0->kind].h = -15;
         arg0->f0 = 0x10E;
         syncActorPrevPos(arg0);
         arg0->goalY = arg0->baseY + 2400.0f;
     }
-    D_800F4A00[arg0->kind].h = -15;
+    gPlatformMaxOffsets[arg0->kind].h = -15;
     vy = -arg0->y;
     arg0->y = approachF32(arg0->goalY, arg0->y, gCamSpeedScale * 10.0);
     vy += arg0->y;

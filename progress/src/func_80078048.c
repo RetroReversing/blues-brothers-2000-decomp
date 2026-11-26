@@ -33,7 +33,7 @@ s16 sins(u16);
 int abs(int);
 extern s32 gTextWaveTime;
 extern Obj *gCameraTarget;
-extern Vec3i D_800F4A00[];
+extern Vec3i gPlatformMaxOffsets[];
 
 void func_80078048(Obj *arg0) {
     s32 r;
@@ -86,7 +86,7 @@ void func_80078048(Obj *arg0) {
     if (arg0->unk84 == 0) {
         return;
     }
-    D_800F4A00[arg0->unkB8].y = abs((sins((gTextWaveTime * 150) & 0xFFFE) * 225) >> 14) + 150;
+    gPlatformMaxOffsets[arg0->unkB8].y = abs((sins((gTextWaveTime * 150) & 0xFFFE) * 225) >> 14) + 150;
     if (dist < 140.0f && arg0->unkA8 != 0) {
         func_80043328(gCameraTarget, 0x20, 0x100);
         arg0->unk64 = 50;

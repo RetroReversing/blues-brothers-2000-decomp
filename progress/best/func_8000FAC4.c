@@ -45,7 +45,7 @@ Rec *findActor(s32, Rec *);
 s32 cameraGetMode(void);
 s32 func_8000F8F4(Obj *, Rec *);
 s32 func_8000FA40(f32, f32, f32, f32);
-s32 func_80016318(Obj *, Rec *, s32);
+s32 collideActorWithPlatform(Obj *, Rec *, s32);
 f32 func_8002DD60(f32);
 void handleActorHit(Obj *, f32, s32);
 void func_8003BB90(Obj *);
@@ -62,8 +62,8 @@ extern Vec3i D_800AA1BC[];
 extern Obj *gCameraTarget;
 extern s32 D_800BD0DC;
 extern Rec *D_800BD10C;
-extern Vec3i D_800F4A00[];
-extern Vec3i D_800F6188[];
+extern Vec3i gPlatformMaxOffsets[];
+extern Vec3i gPlatformMinOffsets[];
 extern s32 D_800F7910[];
 extern s32 D_80107040;
 
@@ -110,8 +110,8 @@ s32 func_8000FAC4(Obj *arg0) {
         y = arg0->y;
         qy = p->y;
         if (len <= 36100.0f) {
-            lo = qy + (f32)D_800F6188[p->idx].y;
-            ty = qy + (f32)D_800F4A00[p->idx].y;
+            lo = qy + (f32)gPlatformMinOffsets[p->idx].y;
+            ty = qy + (f32)gPlatformMaxOffsets[p->idx].y;
             if (func_8000FA40(y, arg0->py, lo, ty) != 0) {
                 len = sqrtf(len);
                 if (arg0->vy <= 0.0f) {
@@ -176,16 +176,16 @@ s32 func_8000FAC4(Obj *arg0) {
                 break;
             }
         }
-        if (p->type == 0x133 && func_80016318(arg0, p, 1) != 0) continue;
-        if (p->type == 0x105 && func_80016318(arg0, p, 0) != 0) {
+        if (p->type == 0x133 && collideActorWithPlatform(arg0, p, 1) != 0) continue;
+        if (p->type == 0x105 && collideActorWithPlatform(arg0, p, 0) != 0) {
             arg0->landed = 1;
             return 1;
         }
-        if (p->type == 0x106 && func_80016318(arg0, p, 0) != 0) {
+        if (p->type == 0x106 && collideActorWithPlatform(arg0, p, 0) != 0) {
             arg0->landed = 1;
             return 1;
         }
-        if (p->type == 0x129 && func_80016318(arg0, p, 1) != 0) {
+        if (p->type == 0x129 && collideActorWithPlatform(arg0, p, 1) != 0) {
             ret = 1;
             if (arg0->y < savedY) {
                 arg0->y = savedY;
@@ -213,27 +213,27 @@ s32 func_8000FAC4(Obj *arg0) {
                 dz = -((s32)(dx * func_80095F60(-(u16)p->angle)) >> 15) + ((s32)(dz * func_800944B0(-(u16)p->angle)) >> 15);
                 dx = t;
             }
-            if (dx > 0.0f && dx > D_800F4A00[p->idx].x) {
+            if (dx > 0.0f && dx > gPlatformMaxOffsets[p->idx].x) {
                 p->state = 2;
                 continue;
             }
-            if (dx <= 0.0f && dx < D_800F6188[p->idx].x) {
+            if (dx <= 0.0f && dx < gPlatformMinOffsets[p->idx].x) {
                 p->state = 2;
                 continue;
             }
-            if (dz > 0.0f && dz > D_800F4A00[p->idx].z) {
+            if (dz > 0.0f && dz > gPlatformMaxOffsets[p->idx].z) {
                 p->state = 2;
                 continue;
             }
-            if (dz <= 0.0f && dz < D_800F6188[p->idx].z) {
+            if (dz <= 0.0f && dz < gPlatformMinOffsets[p->idx].z) {
                 p->state = 2;
                 continue;
             }
-            if (p->y + D_800F4A00[p->idx].y < arg0->y) {
+            if (p->y + gPlatformMaxOffsets[p->idx].y < arg0->y) {
                 p->state = 0;
                 continue;
             }
-            if (arg0->y + 300.0f < p->y + D_800F6188[p->idx].y) {
+            if (arg0->y + 300.0f < p->y + gPlatformMinOffsets[p->idx].y) {
                 p->state = 1;
                 continue;
             }
@@ -249,15 +249,15 @@ s32 func_8000FAC4(Obj *arg0) {
                 arg0->vy = 0.0f;
                 p->rider = arg0;
                 p->carrying = 1;
-                arg0->y = p->y + D_800F4A00[p->idx].y;
-                handleActorHit(arg0, p->y + D_800F4A00[p->idx].y, 0);
+                arg0->y = p->y + gPlatformMaxOffsets[p->idx].y;
+                handleActorHit(arg0, p->y + gPlatformMaxOffsets[p->idx].y, 0);
                 p->state = 3;
                 return 1;
             }
             if (arg0->vy > 0.0f) {
                 arg0->vy = 0.0f;
             }
-            arg0->y = p->y + D_800F6188[p->idx].y - 300.0f;
+            arg0->y = p->y + gPlatformMinOffsets[p->idx].y - 300.0f;
         }
         if (p->type == 0x142) {
             p->carrying = 0;
@@ -266,31 +266,31 @@ s32 func_8000FAC4(Obj *arg0) {
             dz = arg0->z - p->z;
             if (func_8002DD60(dx) > 8000.0f) continue;
             if (func_8002DD60(dz) > 8000.0f) continue;
-            if (dx > D_800F4A00[p->idx].x) continue;
-            if (dx < D_800F6188[p->idx].x) continue;
-            if (dz > D_800F4A00[p->idx].z) continue;
-            if (dz < D_800F6188[p->idx].z) continue;
+            if (dx > gPlatformMaxOffsets[p->idx].x) continue;
+            if (dx < gPlatformMinOffsets[p->idx].x) continue;
+            if (dz > gPlatformMaxOffsets[p->idx].z) continue;
+            if (dz < gPlatformMinOffsets[p->idx].z) continue;
             {
             f32 y0 = p->y;
             dy = arg0->y - y0;
             dy2 = arg0->py - y0;
             }
-            if (dy > 0.0f && dy > D_800F4A00[p->idx].y) continue;
-            if (dy2 < 0.0f && dy2 + 75.0f < D_800F6188[p->idx].y) continue;
+            if (dy > 0.0f && dy > gPlatformMaxOffsets[p->idx].y) continue;
+            if (dy2 < 0.0f && dy2 + 75.0f < gPlatformMinOffsets[p->idx].y) continue;
             p->rider = arg0;
             p->carrying = 1;
             arg0->vy = 0.0f;
-            arg0->y = p->y + D_800F4A00[p->idx].y;
-            handleActorHit(arg0, p->y + D_800F4A00[p->idx].y, 0);
+            arg0->y = p->y + gPlatformMaxOffsets[p->idx].y;
+            handleActorHit(arg0, p->y + gPlatformMaxOffsets[p->idx].y, 0);
             return 1;
         }
         if (p->type == 0x138) {
             dx = arg0->x - p->x;
-            if (dx > 0.0f && dx > D_800F4A00[p->idx].x) continue;
-            if (dx <= 0.0f && dx < D_800F6188[p->idx].x) continue;
+            if (dx > 0.0f && dx > gPlatformMaxOffsets[p->idx].x) continue;
+            if (dx <= 0.0f && dx < gPlatformMinOffsets[p->idx].x) continue;
             dz = arg0->z - p->z;
-            if (dz > 0.0f && dz > D_800F4A00[p->idx].z) continue;
-            if (dz <= 0.0f && dz < D_800F6188[p->idx].z) continue;
+            if (dz > 0.0f && dz > gPlatformMaxOffsets[p->idx].z) continue;
+            if (dz <= 0.0f && dz < gPlatformMinOffsets[p->idx].z) continue;
             if (arg0->y <= p->y) {
                 D_800BD0DC = 1;
             } else {
@@ -392,49 +392,49 @@ s32 func_8000FAC4(Obj *arg0) {
         }
         if (p->type == 0x10A) {
             dx = arg0->x - p->x;
-            if (dx > 0.0f && dx > D_800F4A00[p->idx].x) continue;
-            if (dx <= 0.0f && dx < D_800F6188[p->idx].x) continue;
+            if (dx > 0.0f && dx > gPlatformMaxOffsets[p->idx].x) continue;
+            if (dx <= 0.0f && dx < gPlatformMinOffsets[p->idx].x) continue;
             dz = arg0->z - p->z;
-            if (dz > 0.0f && dz > D_800F4A00[p->idx].z) continue;
-            if (dz <= 0.0f && dz < D_800F6188[p->idx].z) continue;
+            if (dz > 0.0f && dz > gPlatformMaxOffsets[p->idx].z) continue;
+            if (dz <= 0.0f && dz < gPlatformMinOffsets[p->idx].z) continue;
             {
             f32 y0 = p->y;
             dy = arg0->y - y0;
             dy2 = arg0->py - y0;
             }
-            if (dy > 0.0f && dy > D_800F4A00[p->idx].y) continue;
-            if (dy2 < 0.0f && dy2 + 75.0f < D_800F6188[p->idx].y) continue;
-            handleActorHit(arg0, p->y + D_800F4A00[p->idx].y, 1);
+            if (dy > 0.0f && dy > gPlatformMaxOffsets[p->idx].y) continue;
+            if (dy2 < 0.0f && dy2 + 75.0f < gPlatformMinOffsets[p->idx].y) continue;
+            handleActorHit(arg0, p->y + gPlatformMaxOffsets[p->idx].y, 1);
             do { gCameraTarget->vy = 3000.0f; } while (0);
             actorSetAnim(arg0, 5, 0x100);
             return 1;
         }
         if (p->type == 0x132) {
             dx = arg0->x - p->x;
-            if (dx > 0.0f && dx > D_800F4A00[p->idx].x) continue;
-            if (dx <= 0.0f && dx < D_800F6188[p->idx].x) continue;
+            if (dx > 0.0f && dx > gPlatformMaxOffsets[p->idx].x) continue;
+            if (dx <= 0.0f && dx < gPlatformMinOffsets[p->idx].x) continue;
             dz = arg0->z - p->z;
-            if (dz > 0.0f && dz > D_800F4A00[p->idx].z) continue;
-            if (dz <= 0.0f && dz < D_800F6188[p->idx].z) continue;
+            if (dz > 0.0f && dz > gPlatformMaxOffsets[p->idx].z) continue;
+            if (dz <= 0.0f && dz < gPlatformMinOffsets[p->idx].z) continue;
             {
             f32 y0 = p->y;
             dy = arg0->y - y0;
             dy2 = arg0->py - y0;
             }
-            if (dy > 0.0f && dy > D_800F4A00[p->idx].y) continue;
-            if (dy2 < 0.0f && dy2 + 75.0f < D_800F6188[p->idx].y) continue;
-            handleActorHit(arg0, p->y + D_800F4A00[p->idx].y, 1);
+            if (dy > 0.0f && dy > gPlatformMaxOffsets[p->idx].y) continue;
+            if (dy2 < 0.0f && dy2 + 75.0f < gPlatformMinOffsets[p->idx].y) continue;
+            handleActorHit(arg0, p->y + gPlatformMaxOffsets[p->idx].y, 1);
             gCameraTarget->vy *= 5.75f;
             actorSetAnim(arg0, 5, 0x100);
             return 1;
         }
         if (p->type == 0x119) {
             dx = arg0->x - p->x;
-            if (dx > 0.0f && dx > D_800F4A00[p->idx].x) continue;
-            if (dx <= 0.0f && dx < D_800F6188[p->idx].x) continue;
+            if (dx > 0.0f && dx > gPlatformMaxOffsets[p->idx].x) continue;
+            if (dx <= 0.0f && dx < gPlatformMinOffsets[p->idx].x) continue;
             dz = arg0->z - p->z;
-            if (dz > 0.0f && dz > D_800F4A00[p->idx].z) continue;
-            if (dz <= 0.0f && dz < D_800F6188[p->idx].z) continue;
+            if (dz > 0.0f && dz > gPlatformMaxOffsets[p->idx].z) continue;
+            if (dz <= 0.0f && dz < gPlatformMinOffsets[p->idx].z) continue;
             if (arg0->y + 400.0f < p->y) {
                 func_8003BB90(arg0);
                 return 1;
@@ -442,19 +442,19 @@ s32 func_8000FAC4(Obj *arg0) {
         }
         if (p->type == 0x11A) {
             dx = arg0->x - p->x;
-            if (dx > 0.0f && dx > D_800F4A00[p->idx].x) continue;
-            if (dx <= 0.0f && dx < D_800F6188[p->idx].x) continue;
+            if (dx > 0.0f && dx > gPlatformMaxOffsets[p->idx].x) continue;
+            if (dx <= 0.0f && dx < gPlatformMinOffsets[p->idx].x) continue;
             dz = arg0->z - p->z;
-            if (dz > 0.0f && dz > D_800F4A00[p->idx].z) continue;
-            if (dz <= 0.0f && dz < D_800F6188[p->idx].z) continue;
+            if (dz > 0.0f && dz > gPlatformMaxOffsets[p->idx].z) continue;
+            if (dz <= 0.0f && dz < gPlatformMinOffsets[p->idx].z) continue;
         }
         if (p->type == 0x11C) {
             dx = arg0->x - p->x;
-            if (dx > 0.0f && dx > D_800F4A00[p->idx].x) continue;
-            if (dx <= 0.0f && dx < D_800F6188[p->idx].x) continue;
+            if (dx > 0.0f && dx > gPlatformMaxOffsets[p->idx].x) continue;
+            if (dx <= 0.0f && dx < gPlatformMinOffsets[p->idx].x) continue;
             dz = arg0->z - p->z;
-            if (dz > 0.0f && dz > D_800F4A00[p->idx].z) continue;
-            if (dz <= 0.0f && dz < D_800F6188[p->idx].z) continue;
+            if (dz > 0.0f && dz > gPlatformMaxOffsets[p->idx].z) continue;
+            if (dz <= 0.0f && dz < gPlatformMinOffsets[p->idx].z) continue;
             if (abs((s32)(p->y - arg0->y)) < 100) {
                 func_8003BF98(arg0);
                 return 1;

@@ -16,8 +16,8 @@ void func_8002A360(s32, s32);
 f32 approachF32(f32, f32, f32);
 void syncActorPrevPos(void *);
 f32 getCameraTargetDist(void *, f32, s32);
-extern Rec12 D_800F4A00[];
-extern Rec12 D_800F6188[];
+extern Rec12 gPlatformMaxOffsets[];
+extern Rec12 gPlatformMinOffsets[];
 
 void func_800166BC(void *arg0) {
     s32 go;
@@ -26,8 +26,8 @@ void func_800166BC(void *arg0) {
     go = 0;
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
         M2C_FIELD(arg0, s32 *, 0) = 0x129;
-        D_800F4A00[M2C_FIELD(arg0, s32 *, 0xB8)].a = 100;
-        D_800F6188[M2C_FIELD(arg0, s32 *, 0xB8)].a = -100;
+        gPlatformMaxOffsets[M2C_FIELD(arg0, s32 *, 0xB8)].a = 100;
+        gPlatformMinOffsets[M2C_FIELD(arg0, s32 *, 0xB8)].a = -100;
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
         M2C_FIELD(arg0, s32 *, 0x84) = 0;
         syncActorPrevPos(arg0);

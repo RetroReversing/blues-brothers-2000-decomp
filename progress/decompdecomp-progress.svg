@@ -617,7 +617,7 @@
 <g><title>func_800162E4: {&#x27;matched&#x27;: 1}</title>
 <rect x="410.000" y="180" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80016318: {&#x27;matched&#x27;: 1}</title>
+<g><title>collideActorWithPlatform: {&#x27;matched&#x27;: 1}</title>
 <rect x="420.000" y="180" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800166BC: {&#x27;matched&#x27;: 1}</title>

@@ -18,8 +18,8 @@ typedef struct Range {
 extern s32 tickActorTimer(Obj *);
 extern void func_8003BF98(Obj *);
 extern Obj *gCameraTarget;
-extern Range D_800F4A00[];
-extern Range D_800F6188[];
+extern Range gPlatformMaxOffsets[];
+extern Range gPlatformMinOffsets[];
 
 void func_80013D5C(Obj *o) {
     Obj *p;
@@ -27,11 +27,11 @@ void func_80013D5C(Obj *o) {
 
     p = gCameraTarget;
     d = p->x4 - o->x4;
-    if (d > 0 ? D_800F4A00[o->xB8].x < d : d < D_800F6188[o->xB8].x) {
+    if (d > 0 ? gPlatformMaxOffsets[o->xB8].x < d : d < gPlatformMinOffsets[o->xB8].x) {
         return;
     }
     d = p->xC - o->xC;
-    if (d > 0 ? D_800F4A00[o->xB8].z < d : d < D_800F6188[o->xB8].z) {
+    if (d > 0 ? gPlatformMaxOffsets[o->xB8].z < d : d < gPlatformMinOffsets[o->xB8].z) {
         return;
     }
     if (tickActorTimer(p) != 0 && p->x8 < o->x8 - 25.0f) {

@@ -37,7 +37,7 @@ typedef struct { s32 a; s32 h; s32 c; } Rec;
 extern char D_80009258[];
 extern s32 D_800B7B0C;
 extern Obj *gCameraTarget;
-extern Rec D_800F4A00[];
+extern Rec gPlatformMaxOffsets[];
 extern s32 D_800F7910[];
 extern s32 D_80140240;
 extern f32 D_801700D0;
@@ -60,10 +60,10 @@ void func_800764B8(Obj *arg0) {
     lim = D_801700D0;
     dy = gCameraTarget->y - arg0->y;
     tv = D_800F7910[arg0->fB8];
-    if (lim < tv && dy < (f32)(D_800F4A00[arg0->fB8].h + 50) && 5.0f < dy) {
+    if (lim < tv && dy < (f32)(gPlatformMaxOffsets[arg0->fB8].h + 50) && 5.0f < dy) {
         arg0->f64 = 70;
         gCameraTarget->f50 = D_80140240 * 2.12;
-        gCameraTarget->y = arg0->y + (f32)D_800F4A00[arg0->fB8].h + 52.0f;
+        gCameraTarget->y = arg0->y + (f32)gPlatformMaxOffsets[arg0->fB8].h + 52.0f;
         actorSetAnim(gCameraTarget, 5, 0x100);
         gCameraTarget->f9C(gCameraTarget);
         if (arg0->fA8 == 0) {

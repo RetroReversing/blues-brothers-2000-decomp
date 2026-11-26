@@ -10,8 +10,8 @@ typedef struct {
     s32 c;
 } Rec;
 extern Obj *gCameraTarget;
-extern Rec D_800F4A00[];
-extern Rec D_800F6188[];
+extern Rec gPlatformMaxOffsets[];
+extern Rec gPlatformMinOffsets[];
 f32 func_8000E1EC(Obj *o) {
     f32 f;
     f32 t;
@@ -22,9 +22,9 @@ f32 func_8000E1EC(Obj *o) {
     f = gCameraTarget->x - t;
     d = f;
     if (d > 0) {
-        c = D_800F4A00[o->fB8].a < d;
+        c = gPlatformMaxOffsets[o->fB8].a < d;
     } else {
-        c = d < D_800F6188[o->fB8].a;
+        c = d < gPlatformMinOffsets[o->fB8].a;
     }
     if (c) {
         return f;
@@ -33,8 +33,8 @@ f32 func_8000E1EC(Obj *o) {
     f = gCameraTarget->z - t;
     d = f;
     if (d > 0) {
-        if (D_800F4A00[o->fB8].c < d) return f;
+        if (gPlatformMaxOffsets[o->fB8].c < d) return f;
     } else {
-        if (d < D_800F6188[o->fB8].c) return f;
+        if (d < gPlatformMinOffsets[o->fB8].c) return f;
     }
 }

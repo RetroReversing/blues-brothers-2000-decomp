@@ -34,8 +34,8 @@ Obj72DA4 *func_8003B980(Obj72DA4 *);
 s32 func_80050144(Obj72DA4 *, s32);
 extern s32 D_800B8398[];
 extern Obj72DA4 *gCameraTarget;
-extern Vec3i D_800F4A00[];
-extern Vec3i D_800F6188[];
+extern Vec3i gPlatformMaxOffsets[];
+extern Vec3i gPlatformMinOffsets[];
 
 f32 approachF32(f32, f32, f32);
 void debugPrintf(char *);
@@ -108,11 +108,11 @@ void updateTruckPlatform(Obj72DA4 *truck) {
         angle *= (1.0 / 65536.0);
         func_8002DB6C(rotMtx, identityMtx, angle);
         i = truck->unkB8;
-        minBox = &D_800F6188[i];
+        minBox = &gPlatformMinOffsets[i];
         boxMin.x = minBox->x;
         boxMin.y = minBox->y;
         boxMin.z = minBox->z;
-        maxBox = &D_800F4A00[i];
+        maxBox = &gPlatformMaxOffsets[i];
         boxMax.x = maxBox->x;
         boxMax.y = maxBox->y;
         boxMax.z = maxBox->z;
@@ -156,7 +156,7 @@ void updateTruckPlatform(Obj72DA4 *truck) {
                 flag++;
             }
         }
-        if (flag == 0 && gCameraTarget->y <= truck->y + (f32)D_800F6188[truck->unkB8].y && gCameraTarget->kind == 3) {
+        if (flag == 0 && gCameraTarget->y <= truck->y + (f32)gPlatformMinOffsets[truck->unkB8].y && gCameraTarget->kind == 3) {
             func_8003B980(gCameraTarget);
         }
     }

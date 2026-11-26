@@ -30,8 +30,8 @@ Obj72DA4 *func_8003B980(Obj72DA4 *);
 s32 func_80050144(Obj72DA4 *, s32);
 extern s32 D_800B8398[];
 extern Obj72DA4 *gCameraTarget;
-extern Vec3i D_800F4A00[];
-extern Vec3i D_800F6188[];
+extern Vec3i gPlatformMaxOffsets[];
+extern Vec3i gPlatformMinOffsets[];
 
 void func_80072DA4(Obj72DA4 *arg0) {
     f32 sp10[10];
@@ -62,11 +62,11 @@ void func_80072DA4(Obj72DA4 *arg0) {
     a *= (1.0 / 65536.0);
     func_8002DB6C(sp10, sp38, a);
     i = arg0->unkB8;
-    p = &D_800F6188[i];
+    p = &gPlatformMinOffsets[i];
     sp60.x = p->x;
     sp60.y = p->y;
     sp60.z = p->z;
-    q = &D_800F4A00[i];
+    q = &gPlatformMaxOffsets[i];
     sp70.x = q->x;
     sp70.y = q->y;
     sp70.z = q->z;
@@ -110,7 +110,7 @@ void func_80072DA4(Obj72DA4 *arg0) {
             n++;
         }
     }
-    if (n == 0 && gCameraTarget->y <= arg0->y + (f32)D_800F6188[arg0->unkB8].y && gCameraTarget->kind == 3) {
+    if (n == 0 && gCameraTarget->y <= arg0->y + (f32)gPlatformMinOffsets[arg0->unkB8].y && gCameraTarget->kind == 3) {
         func_8003B980(gCameraTarget);
     }
 }

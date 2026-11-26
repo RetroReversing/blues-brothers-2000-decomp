@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern char D_800F4A00[];
+extern char gPlatformMaxOffsets[];
 
 void func_80013384(void *arg0) {
     char *__base_D_800F4A00;
@@ -21,7 +21,7 @@ void func_80013384(void *arg0) {
 
     temp_a2 = M2C_FIELD(arg0, void **, 0xA8);
     if (temp_a2 != NULL) {
-        __base_D_800F4A00 = D_800F4A00;
+        __base_D_800F4A00 = gPlatformMaxOffsets;
         M2C_FIELD(temp_a2, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) + (f32) M2C_FIELD(((M2C_FIELD(arg0, s32 *, 0xB8) * 0xC) + __base_D_800F4A00), s32 *, 4));
     }
 }

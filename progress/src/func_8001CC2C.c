@@ -38,8 +38,8 @@ void func_8002DA80(ObjY *);
 f32 func_8002DD60(f32);
 extern f32 D_800B9EC4;
 extern ObjY *gCameraTarget;
-extern Bound D_800F4A00[];
-extern Bound D_800F6188[];
+extern Bound gPlatformMaxOffsets[];
+extern Bound gPlatformMinOffsets[];
 
 void func_8001CC2C(ObjY *arg0) {
     s32 flags;
@@ -109,12 +109,12 @@ void func_8001CC2C(ObjY *arg0) {
     dy = gCameraTarget->y - arg0->y;
     if (!(8000.0f < func_8002DD60(dx)) && !(8000.0f < func_8002DD60(dz))) {
         {
-        char *base = (char *)D_800F4A00;
+        char *base = (char *)gPlatformMaxOffsets;
         off = arg0->fB8 * sizeof(Bound);
         lo = (Bound *)(base + off);
         }
         if (!(lo->x < dx)) {
-            hi = (Bound *)((char *)D_800F6188 + off);
+            hi = (Bound *)((char *)gPlatformMinOffsets + off);
             if (!(dx < hi->x) && !(lo->z < dz) && !(dz < hi->z) && dy < -600.0f) {
                 arg0->f50 = 0.0f;
             }

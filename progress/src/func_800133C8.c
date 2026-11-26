@@ -18,7 +18,7 @@ typedef struct Obj {
 
 f32 approachF32(f32, f32, f32);
 extern Obj *gCameraTarget;
-extern Vec3i D_800F4A00[];
+extern Vec3i gPlatformMaxOffsets[];
 extern s32 D_80140228;
 
 void func_800133C8(Obj *arg0) {
@@ -27,7 +27,7 @@ void func_800133C8(Obj *arg0) {
 
     if (arg0->x7C == 0) {
         arg0->x7C = 1;
-        h = arg0->y + D_800F4A00[arg0->xB8].y - 150.0f;
+        h = arg0->y + gPlatformMaxOffsets[arg0->xB8].y - 150.0f;
         arg0->xB4 = h;
     }
     p = arg0->xA8;
@@ -41,7 +41,7 @@ void func_800133C8(Obj *arg0) {
         arg0->y -= 20.0f;
         p = arg0->xA8;
         if (p != NULL && p->state == 3) {
-            p->y = arg0->y + D_800F4A00[arg0->xB8].y;
+            p->y = arg0->y + gPlatformMaxOffsets[arg0->xB8].y;
             D_80140228 = 1;
         }
     } else {

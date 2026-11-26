@@ -17,8 +17,8 @@ void func_80050460(void *, void *);
 Obj *func_80076BF0(s32);
 void func_800852CC(Obj *, s32);
 extern s32 D_800B7B0C;
-extern Vec3i D_800F4A00[];
-extern Vec3i D_800F6188[];
+extern Vec3i gPlatformMaxOffsets[];
+extern Vec3i gPlatformMinOffsets[];
 extern u8 D_8014AA6E[];
 void func_80075270(void);
 void func_80075308(void);
@@ -37,12 +37,12 @@ Obj *func_80075338(s32 arg0) {
         o->unk58 = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
         func_800852CC(o, arg0);
         o->unk9C = func_80075270;
-        D_800F6188[o->unkB8].x = -200;
-        D_800F6188[o->unkB8].y = -200;
-        D_800F6188[o->unkB8].z = -200;
-        D_800F4A00[o->unkB8].x = 200;
-        D_800F4A00[o->unkB8].y = 200;
-        D_800F4A00[o->unkB8].z = 200;
+        gPlatformMinOffsets[o->unkB8].x = -200;
+        gPlatformMinOffsets[o->unkB8].y = -200;
+        gPlatformMinOffsets[o->unkB8].z = -200;
+        gPlatformMaxOffsets[o->unkB8].x = 200;
+        gPlatformMaxOffsets[o->unkB8].y = 200;
+        gPlatformMaxOffsets[o->unkB8].z = 200;
         return o;
     }
 }

@@ -21,13 +21,13 @@ extern Triple D_80000A40;
 extern s32 D_80000A4C;
 extern Actor *gCameraRig;
 extern s32 *gCameraTarget;
-extern u8 D_800F4A00[];
+extern u8 gPlatformMaxOffsets[];
 
 s32 func_80018048(s32 *arg0) {
     Triple col = D_80000A40;
     Spawn *v;
     s32 ret;
-    s32 *p = (s32 *)D_800F4A00;
+    s32 *p = (s32 *)gPlatformMaxOffsets;
 
     p[0x2E0 / 4] = 100;
     p[0x2EC / 4] = 100;

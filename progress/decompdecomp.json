@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699403.086467,
- "revision": 5555,
+ "saved_at": 1795699419.952867,
+ "revision": 5557,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15209,8 +15209,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "441924:2147922500": {
    "vram": 2147922500,
@@ -15269,7 +15268,7 @@
   },
   "93976:2147574552": {
    "vram": 2147574552,
-   "function": "func_80016318",
+   "function": "collideActorWithPlatform",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -18962,10 +18961,10 @@
    "matched_by": "permuter-158913790154",
    "readable": false
   },
-  "func_80016318": {
+  "collideActorWithPlatform": {
    "vram": 2147574552,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_800166BC": {
    "vram": 2147575484,
@@ -28863,7 +28862,7 @@
   "func_80015C30": "local_source_158913790145",
   "func_80016168": "local_source_158913790152",
   "func_800162E4": "local_source_158913790154",
-  "func_80016318": "local_source_158913790155",
+  "collideActorWithPlatform": "local_source_158913790155",
   "func_800167C8": "local_source_158913790157",
   "func_800169B0": "local_source_158913790160",
   "func_80016CF4": "local_source_158913790166",
@@ -30905,7 +30904,7 @@
    "status": "open"
   },
   {
-   "name": "func_80016318",
+   "name": "collideActorWithPlatform",
    "vram": 2147574552,
    "size": 932,
    "status": "open"
@@ -43189,6 +43188,12 @@
    "kind": "func"
   },
   {
+   "name": "collideActorWithPlatform",
+   "address": 2147574552,
+   "size": 932,
+   "kind": "func"
+  },
+  {
    "name": "drawHud",
    "address": 2147585012,
    "size": 1540,
@@ -45535,6 +45540,18 @@
    "kind": "data"
   },
   {
+   "name": "gPlatformMaxOffsets",
+   "address": 2148485632,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gPlatformMinOffsets",
+   "address": 2148491656,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "gObjTriLists",
    "address": 2148499688,
    "size": 0,
@@ -45713,6 +45730,16 @@
   {
    "address": 2147484804,
    "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147485820,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147485824,
+   "type": "f32",
    "source": "match"
   },
   {
@@ -46758,6 +46785,16 @@
   {
    "address": 2148257900,
    "type": "Actor *",
+   "source": "match"
+  },
+  {
+   "address": 2148485632,
+   "type": "Vec3i[]",
+   "source": "match"
+  },
+  {
+   "address": 2148491656,
+   "type": "Vec3i[]",
    "source": "match"
   },
   {

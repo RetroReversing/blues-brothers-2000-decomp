@@ -14,8 +14,8 @@ typedef struct {
 f32 func_8002DD60(f32);
 f32 sqrtf(f32);
 extern Obj *gCameraTarget;
-extern HRow D_800F4A00[];
-extern HRow D_800F6188[];
+extern HRow gPlatformMaxOffsets[];
+extern HRow gPlatformMinOffsets[];
 extern s32 D_800F7910[];
 
 s32 func_80060C94(Obj *arg0) {
@@ -29,8 +29,8 @@ s32 func_80060C94(Obj *arg0) {
     s32 kind;
 
     kind = arg0->kind;
-    lo = arg0->y + D_800F6188[kind].h - 300.0f;
-    hi = arg0->y + D_800F4A00[kind].h + 300.0f;
+    lo = arg0->y + gPlatformMinOffsets[kind].h - 300.0f;
+    hi = arg0->y + gPlatformMaxOffsets[kind].h + 300.0f;
     r = D_800F7910[kind] / 3.0f;
     if (gCameraTarget->y < lo) {
         return 0;

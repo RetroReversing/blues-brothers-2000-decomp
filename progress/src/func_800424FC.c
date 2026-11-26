@@ -55,8 +55,8 @@ f32 sqrtf(f32);
 extern void *D_800B7478[];
 extern s32 D_800B74E0;
 extern s32 D_800B7B0C;
-extern Vec3i424 D_800F4A00[];
-extern Vec3i424 D_800F6188[];
+extern Vec3i424 gPlatformMaxOffsets[];
+extern Vec3i424 gPlatformMinOffsets[];
 extern s32 D_800F7910[];
 extern s32 gObjTriCounts[];
 extern s32 D_800FA854;
@@ -164,12 +164,12 @@ Gfx424 *func_800424FC(s32 flags, s32 index, MdlHdr *hdr_in, Gfx424 *gfx) {
             radius = len;
         }
     }
-    D_800F6188[index].x = min[0];
-    D_800F6188[index].y = min[1];
-    D_800F6188[index].z = min[2];
-    D_800F4A00[index].x = max[0];
-    D_800F4A00[index].y = max[1];
-    D_800F4A00[index].z = max[2];
+    gPlatformMinOffsets[index].x = min[0];
+    gPlatformMinOffsets[index].y = min[1];
+    gPlatformMinOffsets[index].z = min[2];
+    gPlatformMaxOffsets[index].x = max[0];
+    gPlatformMaxOffsets[index].y = max[1];
+    gPlatformMaxOffsets[index].z = max[2];
     D_800F7910[index] = radius;
     parts = hdr->parts;
     for (i = 0; i < hdr->nparts; i++) {

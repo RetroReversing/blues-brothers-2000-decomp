@@ -18,7 +18,7 @@ s32 syncActorPrevPos();
 s32 func_8004F9D0();
 s16 sins();
 extern u16 D_800B9EA6;
-extern char D_800F4A00[];
+extern char gPlatformMaxOffsets[];
 
 void func_80016B84(void *arg0) {
     char *__base_D_800F4A00;
@@ -27,7 +27,7 @@ void func_80016B84(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
         M2C_FIELD(arg0, s32 *, 0) = 0x10E;
-        __base_D_800F4A00 = D_800F4A00;
+        __base_D_800F4A00 = gPlatformMaxOffsets;
         M2C_FIELD(((M2C_FIELD(arg0, s32 *, 0xB8) * 0xC) + __base_D_800F4A00), s32 *, 4) = 0x32;
     }
     temp_a1 = M2C_FIELD(arg0, s32 *, 0x70);

@@ -43,7 +43,7 @@ extern Cam58 *gCameraTarget;
 extern Ent58 *D_800AB9BC;
 extern Ent58 *D_800AB9C0;
 extern Ent58 *D_8014AAC0;
-extern Row58 D_800F4A00[];
+extern Row58 gPlatformMaxOffsets[];
 extern s32 D_800F7910[];
 s32 animStepKeys(void);
 s32 atan2S16(s32, s32);
@@ -171,7 +171,7 @@ float sqrtf(float);
         bomb->xA0(bomb);
         break;
     }
-    row = &D_800F4A00[bomb->xB8];
+    row = &gPlatformMaxOffsets[bomb->xB8];
     if (!(bomb->x8 + (f32) row->x4 + 300.0f < gCameraTarget->x8)) {
         fx = bomb->x4 - gCameraTarget->x4;
         fz = bomb->xC - gCameraTarget->xC;

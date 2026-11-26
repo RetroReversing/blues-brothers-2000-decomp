@@ -17905,7 +17905,7 @@
    "unit": "local_source_158913790154",
    "mode": "rom"
   },
-  "func_80016318": {
+  "collideActorWithPlatform": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -17915,10 +17915,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "3791f5277e4e4a3afacbcdef2347be2655aae685b778238f931ce3e51ae8664d",
-   "recorded_at": 1795647152.238698,
-   "attempt_id": 158913859594,
-   "source_sha256": "b23071568140a9400784961f885bfb44f81c750d3a0b638f3b58425023ade6c4",
+   "symbols_sha256": "0ec64f33a3fe13af07617a7f9d32db52de45ba3ec8cdf5697272be0021b6ef14",
+   "recorded_at": 1795699419.305894,
+   "attempt_id": 158913862004,
+   "source_sha256": "fa5d495087a0052f0c7cd4ae1f13bd6b8b7f2a10b7d1616ab778e1efe8caa81b",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 823,
    "compiler": {
@@ -17937,7 +17937,7 @@
    },
    "compiler_identity": {
     "toolchain": "sn-n64-281",
-    "registry_sha256": "14e28e8f96d57fb28d493fc5d8ff869e8cf1dc291e1c8adaf0233952948aed40",
+    "registry_sha256": "8eb23176b1932cb664777fba69b2915c713b60c625fc11f9ad0c22d12f3e9115",
     "install_sha256": "d949422c5b7c39402c79d468bd890710d5bd3eb8ba3929116a8a5543a4a7191f",
     "executables": {
      "cc1n64.exe": "d90df1028c46d826e37146dbcc3e3385f78c59e05a9ddd952daa94c9ad379d9c"
@@ -17960,7 +17960,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -17969,32 +17969,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G8",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913790155",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -198470,7 +198444,7 @@
   "76b74ae3ef2e14c293206c80ab68f8bcaa18eb39c95898392bbced218f9163ce": "/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\ns32 func_8002D5CC(void *);                          /* extern */\nM2C_UNK func_8002DA80();                            /* extern */\nextern M2C_UNK D_800BD090;\n\nvoid func_80016168(void *arg0) {\n    s32 temp_v0;\n    s32 var_a0;\n\n    M2C_FIELD(arg0, s32 *, 0x18) = (s32) (M2C_FIELD(arg0, s32 *, 0x18) + M2C_FIELD(arg0, s32 *, 0x74));\n    M2C_FIELD(arg0, f32 *, 0x4C) = (f32) ((M2C_FIELD(arg0, f32 *, 0x4C) * 69.0f) / 100.0f);\n    M2C_FIELD(arg0, f32 *, 0x54) = (f32) ((M2C_FIELD(arg0, f32 *, 0x54) * 69.0f) / 100.0f);\n    func_8002DA80();\n    var_a0 = M2C_FIELD(arg0, s32 *, 0x80);\n    temp_v0 = M2C_FIELD(arg0, s32 *, 0x84) - 1;\n    M2C_FIELD(arg0, s32 *, 0x84) = temp_v0;\n    if (temp_v0 <= 0) {\n        M2C_FIELD(arg0, s32 *, 0x84) = 2;\n        M2C_FIELD(arg0, s32 *, 0x80) = (s32) (M2C_FIELD(arg0, s32 *, 0x80) + 1);\n    }\n    if (var_a0 < 0) {\n        var_a0 = 0;\n    }\n    if (var_a0 >= 9) {\n        var_a0 = 8;\n    }\n    M2C_FIELD(arg0, s32 *, 0x60) = (s32) (&D_800BD090)[var_a0];\n    if (func_8002D5CC(arg0) != 0) {\n        M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);\n    }\n}\n\n",
   "c572e006b5dd6872f08bdbf7adf6b8efa8d0684b5a34d00370dc884425dc2e23": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nvoid *func_80012718(void *);                        /* extern */\ns32 func_8002D5CC();                                /* extern */\nextern f32 D_80000878;\nextern s32 func_80016168;\nextern s32 func_80023078;\n\ntypedef struct { unsigned char pad[100]; int value; } __repair_field_64;\nvoid func_8001623C(void *arg0) {\n    f32 temp_fs0;\n    s32 var_s0;\n    void *temp_v0;\n\n    loop_goto_1:\n    {\n (*(void **)((s8 *)arg0 + 0x98)) = (void *) ((&func_80023078) + 0x2);\n    }\n    if (0)\n    {\n        goto loop_goto_1;\n    }\n    (*(s32 *)((s8 *)arg0 + 0)) = 0x101;\n    if (func_8002D5CC() != 0) {\n        var_s0 = 0;\n        temp_fs0 = 400.0f;\n        (((__repair_field_64 *)arg0)->value) = (s32) (*(s32 *)((s8 *)arg0 + 0x70));\n        do {\n            { temp_v0 = func_80012718(arg0); }\n            { var_s0 += 1; }\n            (*(f32 *)((s8 *)temp_v0 + 0x50)) = temp_fs0;\n            { { { (((__repair_field_64 *)temp_v0)->value) = 0x32; } } }\n            { { { (*(s32 **)((s8 *)temp_v0 + 0x9C)) = &func_80016168; } } }\n            { { { (*(s32 *)((s8 *)temp_v0 + 0x70)) = 0xC8; } } }\n        } while (var_s0 <= 0);\n    }\n}\n",
   "f749bd25ad3e93284fa81515091bf635b197ce2fbbdf0912f58a27ce1d3451c0": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_80023C10(s32);                         /* extern */\nextern s32 D_800BD270;\n\nvoid func_800162E4(void) {\n    if (D_800BD270 != 0) {\n        func_80023C10(D_800BD270);\n        D_800BD270 = 0;\n    }\n}\n",
-  "b23071568140a9400784961f885bfb44f81c750d3a0b638f3b58425023ade6c4": "typedef struct Vec3i {\n    s32 x;\n    s32 y;\n    s32 z;\n} Vec3i;\n\ntypedef struct Obj {\n    char pad0[4];\n    f32 x4;\n    f32 x8;\n    f32 xC;\n    char pad10[0x40 - 0x10];\n    f32 x40;\n    f32 x44;\n    f32 x48;\n    char pad4C[0xB8 - 0x4C];\n    s32 xB8;\n    char padBC[0xC0 - 0xBC];\n    s32 xC0;\n} Obj;\n\nvoid func_8003AC08(Obj *, f32);\n\nextern f32 D_8000087C;\nextern f32 D_80000880;\nextern Vec3i D_800F4A00[];\nextern Vec3i D_800F6188[];\n\ns32 func_80016318(Obj *arg0, Obj *arg1) {\n    f32 minx;\n    f32 maxy;\n    f32 maxx;\n    f32 minz;\n    f32 maxz;\n    f32 y;\n    s32 flags;\n    s32 m;\n    s32 dx;\n    s32 dz;\n\n    minx = arg1->x4 + D_800F6188[arg1->xB8].x;\n    maxy = arg1->x8 + D_800F4A00[arg1->xB8].y;\n    maxx = arg1->x4 + D_800F4A00[arg1->xB8].x;\n    minz = arg1->xC + D_800F6188[arg1->xB8].z;\n    flags = 0;\n    maxz = arg1->xC + D_800F4A00[arg1->xB8].z;\n    y = arg0->x8;\n    m = 75;\n    if (maxy < y) {\n        return 0;\n    }\n    if (y + D_8000087C < arg1->x8 + D_800F6188[arg1->xB8].y) {\n        return 0;\n    }\n    if (maxy <= arg0->x44 && y <= maxy && minx - m <= arg0->x4 && arg0->x4 <= maxx + m &&\n        minz - m <= arg0->xC && arg0->xC <= maxz + m) {\n        func_8003AC08(arg0, maxy + D_80000880);\n        arg1->xC0 |= 2;\n        return 1;\n    }\n    if (arg0->x4 < minx - m) {\n        return 0;\n    }\n    if (maxx + m < arg0->x4) {\n        return 0;\n    }\n    if (arg0->xC < minz - m) {\n        return 0;\n    }\n    if (maxz + m < arg0->xC) {\n        return 0;\n    }\n    dx = arg0->x40 - arg1->x4;\n    if (dx >= D_800F4A00[arg1->xB8].x + m) {\n        flags |= 1;\n    }\n    if (D_800F6188[arg1->xB8].x - m >= dx) {\n        flags |= 4;\n    }\n    dz = arg0->x48 - arg1->xC;\n    if (dz >= D_800F4A00[arg1->xB8].z + m) {\n        flags |= 2;\n    }\n    if (D_800F6188[arg1->xB8].z - m >= dz) {\n        flags |= 8;\n    }\n    switch (flags) {\n    case 1:\n    case 3:\n    case 9:\n        arg0->x4 = arg1->x4 + D_800F4A00[arg1->xB8].x + m;\n        break;\n    case 2:\n        arg0->xC = arg1->xC + D_800F4A00[arg1->xB8].z + m;\n        break;\n    case 4:\n    case 5:\n    case 6:\n        arg0->x4 = arg1->x4 + D_800F6188[arg1->xB8].x - m;\n        break;\n    case 8:\n        arg0->xC = arg1->xC + D_800F6188[arg1->xB8].z - m;\n        break;\n    }\n    return 0;\n}\n",
+  "fa5d495087a0052f0c7cd4ae1f13bd6b8b7f2a10b7d1616ab778e1efe8caa81b": "typedef struct Vec3i {\n    s32 x;\n    s32 y;\n    s32 z;\n} Vec3i;\n\ntypedef struct Obj {\n    char pad0[4];\n    f32 x4;\n    f32 x8;\n    f32 xC;\n    char pad10[0x40 - 0x10];\n    f32 x40;\n    f32 x44;\n    f32 x48;\n    char pad4C[0xB8 - 0x4C];\n    s32 xB8;\n    char padBC[0xC0 - 0xBC];\n    s32 xC0;\n} Obj;\n\nvoid handleActorHit(Obj *, f32);\n\nextern f32 D_8000087C;\nextern f32 D_80000880;\nextern Vec3i gPlatformMaxOffsets[];\nextern Vec3i gPlatformMinOffsets[];\n\n/* Tests an actor against a platform's bounding box: landing on top calls handleActorHit and returns 1, and a side hit pushes the actor clear of the box and returns 0. */ s32 collideActorWithPlatform(Obj *actor, Obj *platform) {\n    f32 minx;\n    f32 maxy;\n    f32 maxx;\n    f32 minz;\n    f32 maxz;\n    f32 y;\n    s32 flags;\n    s32 m;\n    s32 dx;\n    s32 dz;\n\n    minx = platform->x4 + gPlatformMinOffsets[platform->xB8].x;\n    maxy = platform->x8 + gPlatformMaxOffsets[platform->xB8].y;\n    maxx = platform->x4 + gPlatformMaxOffsets[platform->xB8].x;\n    minz = platform->xC + gPlatformMinOffsets[platform->xB8].z;\n    flags = 0;\n    maxz = platform->xC + gPlatformMaxOffsets[platform->xB8].z;\n    y = actor->x8;\n    m = 75;\n    if (maxy < y) {\n        return 0;\n    }\n    if (y + D_8000087C < platform->x8 + gPlatformMinOffsets[platform->xB8].y) {\n        return 0;\n    }\n    if (maxy <= actor->x44 && y <= maxy && minx - m <= actor->x4 && actor->x4 <= maxx + m &&\n        minz - m <= actor->xC && actor->xC <= maxz + m) {\n        handleActorHit(actor, maxy + D_80000880);\n        platform->xC0 |= 2;\n        return 1;\n    }\n    if (actor->x4 < minx - m) {\n        return 0;\n    }\n    if (maxx + m < actor->x4) {\n        return 0;\n    }\n    if (actor->xC < minz - m) {\n        return 0;\n    }\n    if (maxz + m < actor->xC) {\n        return 0;\n    }\n    dx = actor->x40 - platform->x4;\n    if (dx >= gPlatformMaxOffsets[platform->xB8].x + m) {\n        flags |= 1;\n    }\n    if (gPlatformMinOffsets[platform->xB8].x - m >= dx) {\n        flags |= 4;\n    }\n    dz = actor->x48 - platform->xC;\n    if (dz >= gPlatformMaxOffsets[platform->xB8].z + m) {\n        flags |= 2;\n    }\n    if (gPlatformMinOffsets[platform->xB8].z - m >= dz) {\n        flags |= 8;\n    }\n    switch (flags) {\n    case 1:\n    case 3:\n    case 9:\n        actor->x4 = platform->x4 + gPlatformMaxOffsets[platform->xB8].x + m;\n        break;\n    case 2:\n        actor->xC = platform->xC + gPlatformMaxOffsets[platform->xB8].z + m;\n        break;\n    case 4:\n    case 5:\n    case 6:\n        actor->x4 = platform->x4 + gPlatformMinOffsets[platform->xB8].x - m;\n        break;\n    case 8:\n        actor->xC = platform->xC + gPlatformMinOffsets[platform->xB8].z - m;\n        break;\n    }\n    return 0;\n}\n",
   "7dc82a7d8eb3ca84a0aac4d7a7b4cfd9c1efdb4b459046defd19a1d1b0e5af7b": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\ntypedef struct { s32 a; s32 b; s32 c; } Rec12;\nvoid func_8002A360(s32, s32);\nf32 func_8002D340(f32, f32, f32);\nvoid func_8002D620(void *);\nf32 func_8002D66C(void *, f32, s32);\nextern Rec12 D_800F4A00[];\nextern Rec12 D_800F6188[];\n\nvoid func_800166BC(void *arg0) {\n    s32 go;\n\n    func_8002D66C(arg0, 200.0f, 0);\n    go = 0;\n    if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {\n        M2C_FIELD(arg0, s32 *, 0) = 0x129;\n        D_800F4A00[M2C_FIELD(arg0, s32 *, 0xB8)].a = 100;\n        D_800F6188[M2C_FIELD(arg0, s32 *, 0xB8)].a = -100;\n        M2C_FIELD(arg0, s32 *, 0x7C) = 1;\n        M2C_FIELD(arg0, s32 *, 0x84) = 0;\n        func_8002D620(arg0);\n    }\n    if (M2C_FIELD(arg0, s32 *, 0xC0) == 0x29A) {\n        if (M2C_FIELD(arg0, s32 *, 0x84) == 0) {\n            func_8002A360(0xC, 0x80);\n            func_8002A360(8, 0x45);\n            M2C_FIELD(arg0, s32 *, 0x84) = 1;\n        }\n        go = 1;\n    }\n    if (go != 0) {\n        M2C_FIELD(arg0, f32 *, 8) = func_8002D340(M2C_FIELD(arg0, f32 *, 0x44) + 400.0f, M2C_FIELD(arg0, f32 *, 8), 17.0f);\n    }\n}\n",
   "c4839d5792a6718c54836aecaf7e37c06d197daf8e31ccfc9657aa4f43f9c9c1": "typedef struct Obj { u8 p0[8]; f32 f8; u8 p1[0x38]; f32 f44; u8 p2[0x44]; s32 f8C; } Obj;\nextern s16 coss(s32);\nextern s32 func_8000C43C();\nextern void func_8002ADFC(s32, s32, Obj *);\nextern s32 D_800B9EA4;\n\nvoid func_800167C8(Obj *arg0) {\n    s32 var_s1;\n\n    if (func_8000C43C() == 3) {\n        var_s1 = 0x7D0;\n    } else {\n        var_s1 = 0x3E8;\n    }\n    if ((arg0->f8 == arg0->f44) || (arg0->f8 == (arg0->f44 + (f32) ((s32) (coss(((arg0->f8C + D_800B9EA4) * 0xB4) & 0xFFFC) * 0x4B) >> 0xE)))) {\n        func_8002ADFC(0x44, var_s1, arg0);\n    }\n    arg0->f8 = arg0->f44 + (f32) ((s32) (coss(((arg0->f8C + D_800B9EA4) * 0xB4) & 0xFFFC) * 0x4B) >> 0xE);\n}\n",
   "5663bc76f4686a50227b827411894dd46e94d080080bdec5924449f632c2b9ee": "/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nvoid *func_80020E44(s32, s32, s32, s32);            /* extern */\nextern M2C_UNK func_800167C8;\n\nvoid func_800168F4(void *arg0) {\n    void *temp_v0;\n\n    temp_v0 = func_80020E44((s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC), M2C_FIELD(arg0, s32 *, 0x10) + 0x8000);\n    M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800167C8;\n    M2C_FIELD(arg0, s32 *, 0x8C) = (s32) M2C_FIELD(temp_v0, s32 *, 0x8C);\n}\n",

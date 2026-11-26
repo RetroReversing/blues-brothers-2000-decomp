@@ -16,8 +16,8 @@ void *func_8002E374();
 void *func_80042F00();
 s32 actorSetAnim();
 s32 func_80050460();
-extern char D_800F4A00[];
-extern char D_800F6188[];
+extern char gPlatformMaxOffsets[];
+extern char gPlatformMinOffsets[];
 extern char D_8014AA5C[];
 extern s32 func_80018778;
 extern s32 func_80068134;
@@ -39,7 +39,7 @@ void *func_80068174(void *arg0) {
     M2C_FIELD(temp_v0_2, s32 *, 0x5C) = 0x60;
     M2C_FIELD(temp_v0_2, s32 *, 0x68) = -1;
     M2C_FIELD(temp_v0, void **, 0xA8) = temp_v0_2;
-    __base_D_800F4A00 = D_800F4A00;
+    __base_D_800F4A00 = gPlatformMaxOffsets;
     temp_v0_3 = (M2C_FIELD(temp_v0, s32 *, 0xB8) * 0xC) + __base_D_800F4A00;
     loop_goto_1:
     {
@@ -51,7 +51,7 @@ void *func_80068174(void *arg0) {
     }
     do { do { do { M2C_FIELD(temp_v0_3, s32 *, 0) = 0x4B; } while (0); } while (0); } while (0);
     M2C_FIELD(((M2C_FIELD(temp_v0, s32 *, 0xB8) * 0xC) + __base_D_800F4A00), s32 *, 4) = 0x78;
-    __base_D_800F6188 = D_800F6188;
+    __base_D_800F6188 = gPlatformMinOffsets;
     M2C_FIELD(((M2C_FIELD(temp_v0, s32 *, 0xB8) * 0xC) + __base_D_800F6188), s32 *, 4) = 0;
     do { temp_v0_4 = (M2C_FIELD(temp_v0, s32 *, 0xB8) * 0xC) + __base_D_800F6188; } while (0);
     M2C_FIELD(temp_v0_4, s32 *, 8) = -0x4B;
