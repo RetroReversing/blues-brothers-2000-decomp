@@ -41,47 +41,48 @@ s32 func_80013784(void *arg0);
 s32 func_80055130();
 s32 func_80054EC4();
 
-s32 func_800552C4(Unk800552C4 *arg0) {
-    f32 range;
-    f32 lo;
-    f32 hi;
+/* Checks the camera target against this actor and reacts to a nearby hit or a stand: returns 0 when out of range, 2 when the target is standing on the actor, otherwise 1. */
+s32 updateTargetContact(Unk800552C4 *actor) {
+    f32 radius;
+    f32 boundLo;
+    f32 boundHi;
     f32 x;
     f32 y;
     f32 z;
 
-    range = 350.0f;
-    lo = arg0->unk8 + gPlatformMaxOffsets[arg0->unkB8].y;
-    hi = arg0->unk8 + gPlatformMinOffsets[arg0->unkB8].y;
-    arg0->unkC0 = 0;
-    if (getCameraTargetDist(arg0, range, NULL) == range) {
+    radius = 350.0f;
+    boundLo = actor->unk8 + gPlatformMaxOffsets[actor->unkB8].y;
+    boundHi = actor->unk8 + gPlatformMinOffsets[actor->unkB8].y;
+    actor->unkC0 = 0;
+    if (getCameraTargetDist(actor, radius, NULL) == radius) {
         return 0;
     }
-    if (func_8002DD60(arg0->unk8 - gCameraTarget->unk8) < range && func_800137F8(gCameraTarget) != 0) {
-        arg0->unkC0 |= 2;
+    if (func_8002DD60(actor->unk8 - gCameraTarget->unk8) < radius && func_800137F8(gCameraTarget) != 0) {
+        actor->unkC0 |= 2;
         x = gCameraTarget->unk4 + ((sins(gCameraTarget->unk12) * 45) >> 13);
         y = gCameraTarget->unk8 + 160.0f;
         z = gCameraTarget->unkC + ((coss(gCameraTarget->unk12) * 45) >> 13);
         func_80012474(x, y, z);
-        arg0->unk5C = 0xFF;
-        arg0->unk74 += 20;
-        arg0->unk78 -= 20;
-        func_80058F74(arg0, func_80055130);
+        actor->unk5C = 0xFF;
+        actor->unk74 += 20;
+        actor->unk78 -= 20;
+        func_80058F74(actor, func_80055130);
     }
     if (func_80013654(gCameraTarget) != 0) {
-        arg0->unkC0 |= 2;
+        actor->unkC0 |= 2;
         x = gCameraTarget->unk4 + ((sins(gCameraTarget->unk12) * 45) >> 13);
         y = gCameraTarget->unk8 + 160.0f;
         z = gCameraTarget->unkC + ((coss(gCameraTarget->unk12) * 45) >> 13);
         func_80012474(x, y, z);
-        arg0->unk5C = 0xFF;
-        arg0->unk74 += 100;
-        arg0->unk78 -= 100;
-        func_80058F74(arg0, func_80054EC4);
+        actor->unk5C = 0xFF;
+        actor->unk74 += 100;
+        actor->unk78 -= 100;
+        func_80058F74(actor, func_80054EC4);
         return 1;
     }
     if (func_80013784(gCameraTarget) != 0) {
-        if (gCameraTarget->unk8 <= lo && hi <= gCameraTarget->unk8) {
-            arg0->unkC0 |= 4;
+        if (gCameraTarget->unk8 <= boundLo && boundHi <= gCameraTarget->unk8) {
+            actor->unkC0 |= 4;
         }
         return 2;
     }

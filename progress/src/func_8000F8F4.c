@@ -3,7 +3,7 @@ s32 func_8000F8F4(s32 arg0, s32 *arg1) {
     ret = 0;
     switch (*arg1) {
     case 0x1000:
-        ret = func_800552C4(arg1); if (ret == 2) { ret = 1; } else { ret = 0; }
+        ret = updateTargetContact(arg1); if (ret == 2) { ret = 1; } else { ret = 0; }
         break;
     case 0x100D:
         switch (cameraGetMode()) {

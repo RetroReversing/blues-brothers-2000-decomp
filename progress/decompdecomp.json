@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700117.2678232,
- "revision": 5612,
+ "saved_at": 1795700132.637932,
+ "revision": 5614,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16160,7 +16160,7 @@
   },
   "351940:2147832516": {
    "vram": 2147832516,
-   "function": "func_800552C4",
+   "function": "updateTargetContact",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -23006,10 +23006,10 @@
    "matched_by": "permuter-158913790958",
    "readable": false
   },
-  "func_800552C4": {
+  "updateTargetContact": {
    "vram": 2147832516,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "func_800555E4": {
    "vram": 2147833316,
@@ -29185,7 +29185,7 @@
   "func_80055068": "local_source_158913790956",
   "func_80055130": "local_source_158913790957",
   "func_800551F8": "local_source_158913790958",
-  "func_800552C4": "local_source_158913790959",
+  "updateTargetContact": "local_source_158913790959",
   "updateChaserActor": "local_source_158913790961",
   "func_80055A34": "local_source_158913790962",
   "func_80055AD4": "local_source_158913790964",
@@ -35782,7 +35782,7 @@
    "status": "open"
   },
   {
-   "name": "func_800552C4",
+   "name": "updateTargetContact",
    "vram": 2147832516,
    "size": 800,
    "status": "open"
@@ -43746,6 +43746,12 @@
    "kind": "func"
   },
   {
+   "name": "updateTargetContact",
+   "address": 2147832516,
+   "size": 800,
+   "kind": "func"
+  },
+  {
    "name": "updateChaserActor",
    "address": 2147833348,
    "size": 1072,
@@ -47154,7 +47160,7 @@
   },
   {
    "address": 2148257900,
-   "type": "u8[]",
+   "type": "Player_552C4 *",
    "source": "match"
   },
   {
@@ -47164,12 +47170,12 @@
   },
   {
    "address": 2148485632,
-   "type": "Vec3i[]",
+   "type": "Vec3i_552C4[]",
    "source": "match"
   },
   {
    "address": 2148491656,
-   "type": "Vec3i[]",
+   "type": "Vec3i_552C4[]",
    "source": "match"
   },
   {
