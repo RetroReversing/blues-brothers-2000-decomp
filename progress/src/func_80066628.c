@@ -6,7 +6,7 @@ typedef struct {
 s32 findActor(s32, s32);
 void func_80052A5C(s32);
 s32 func_80052A68(s32, char *);
-void *func_80052B24(s32, char *, void *);
+void *startStoryDialog(s32, char *, void *);
 extern Player *gCameraTarget;
 extern s32 D_800BD0F4;
 void *wardenChase(void *);
@@ -31,7 +31,7 @@ void *func_80066628(u8 *obj) {
             if (gCameraTarget->y < *(f32 *) (obj + 0x8) + 50.0f) {
             func_80052A5C(0x570);
             if (func_80052A68(id, name) == 0) {
-                *(void **) (obj + 0x7C) = func_80052B24(id, name, obj);
+                *(void **) (obj + 0x7C) = startStoryDialog(id, name, obj);
                 goto fail;
             } else {
                 *(void **) (obj + 0xD8) = wardenChase;

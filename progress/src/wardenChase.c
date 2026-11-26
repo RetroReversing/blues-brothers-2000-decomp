@@ -39,7 +39,7 @@ f32 approachF32(f32, f32, f32);
 s32 tickActorTimer(Obj *);
 f32 func_8002DD60(f32);
 void func_80043328(Obj *, s32, s32);
-s32 func_80052B24(s32, void *, Obj *);
+s32 startStoryDialog(s32, void *, Obj *);
 void func_80066368(Obj *);
 extern u8 D_80008CCC[];
 extern Obj *gCameraRig;
@@ -71,7 +71,7 @@ void func_80067150(void);
         D_800B3964->unk74 = 1;
         warden->unk7C = 0;
         warden->unkD8 = func_80066FDC;
-        func_80052B24(warden->unkBC, D_80008CCC, warden);
+        startStoryDialog(warden->unkBC, D_80008CCC, warden);
         return;
     }
     if (warden->unk64 < 400 && warden->unk90 < 200) {

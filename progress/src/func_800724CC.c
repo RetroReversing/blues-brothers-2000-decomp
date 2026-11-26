@@ -17,7 +17,7 @@ void func_80034F1C(void *);
 void func_80052A30(void);
 void func_80052A5C(s32);
 s32 func_80052A68(s32, char *);
-void func_80052B24(s32, char *, void *);
+void startStoryDialog(s32, char *, void *);
 void func_800723EC(void);
 extern Obj800724CC *gCameraRig;
 extern s32 D_800B3970;
@@ -55,7 +55,7 @@ void func_800724CC(Obj800724CC *arg0) {
         id = func_80023DBC(0xE63);
         if (func_80052A68(id, name) == 0 && tickActorTimer(arg0) != 0) {
             func_80052A5C(0);
-            func_80052B24(id, name, arg0);
+            startStoryDialog(id, name, arg0);
             arg0->f7C = 1;
             func_8001B990(0x200, 0x28);
         }

@@ -57,7 +57,7 @@ Obj *func_800232B4(s32, s32, s32, s32);
 s32 approachAngle(s32, s32, s32);
 s32 func_8002D260(s32);
 s32 func_80023DBC(s32);
-void func_80052B24(s32, void *, Obj *);
+void startStoryDialog(s32, void *, Obj *);
 void func_8002A360(s32, s32);
 f32 sqrtf(f32);
 void func_80019A2C(Obj *);
@@ -253,7 +253,7 @@ void func_80019E3C(Obj *obj) {
             obj->child = NULL;
         }
         gCameraRig->cb9C = func_800340B4;
-        func_80052B24(func_80023DBC(0xE21), &D_80000B68, obj);
+        startStoryDialog(func_80023DBC(0xE21), &D_80000B68, obj);
         obj->state++;
         break;
     case 5:
@@ -264,7 +264,7 @@ void func_80019E3C(Obj *obj) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0x54);
         obj->child->unk68 = -1;
-        func_80052B24(func_80023DBC(0xE21), &D_80000B78, obj);
+        startStoryDialog(func_80023DBC(0xE21), &D_80000B78, obj);
         found = findActor(0x1013, 0);
         if (found != NULL) {
             found->destroy(found);

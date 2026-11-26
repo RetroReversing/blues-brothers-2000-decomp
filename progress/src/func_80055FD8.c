@@ -19,7 +19,7 @@ f32 func_8002D858(void *, void *);                  /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
-M2C_UNK func_80052B24(s32, M2C_UNK *, void *);      /* extern */
+M2C_UNK startStoryDialog(s32, M2C_UNK *, void *);      /* extern */
 s32 func_80076080();                                /* extern */
 extern M2C_UNK D_80008354;
 extern M2C_UNK D_80008360;
@@ -39,16 +39,16 @@ void func_80055FD8(void *arg0) {
         if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
             if (temp_fs0 < D_80008378) {
                 func_80052A5C(0x56D);
-                func_80052B24(temp_s1, &D_80008354, arg0);
+                startStoryDialog(temp_s1, &D_80008354, arg0);
                 M2C_FIELD(arg0, s32 *, 0x7C) = 1;
             }
         }
         if ((M2C_FIELD(arg0, s32 *, 0x7C) == 1) && (findActor(0x801, 0) == 0)) {
             if (func_800113D8(2) != 0) {
-                func_80052B24(temp_s1, &D_80008360, arg0);
+                startStoryDialog(temp_s1, &D_80008360, arg0);
                 var_v0 = 2;
             } else {
-                func_80052B24(temp_s1, &D_8000836C, arg0);
+                startStoryDialog(temp_s1, &D_8000836C, arg0);
                 var_v0 = 3;
             }
             M2C_FIELD(arg0, s32 *, 0x7C) = var_v0;

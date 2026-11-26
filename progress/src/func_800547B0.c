@@ -3,7 +3,7 @@ s32 func_80023DBC(s32);
 f32 getCameraTargetDist(void *, f32, void *);
 void func_80052A5C(s32);
 s32 func_80052A68(s32, char *);
-void func_80052B24(s32, char *, void *);
+void startStoryDialog(s32, char *, void *);
 void func_80058F74(void *, void *);
 void func_800548C0(void *);
 
@@ -33,7 +33,7 @@ void func_800547B0(Obj800547B0 *arg0) {
     if (dist < 750.0f) {
         func_80052A5C(0);
         if (func_80052A68(id, "tomb") == 0) {
-            func_80052B24(id, "tomb", arg0);
+            startStoryDialog(id, "tomb", arg0);
             func_8001B990(0x200, 0x11);
         }
     }

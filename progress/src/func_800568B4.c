@@ -16,7 +16,7 @@ void animStepKeys(ObjM5 *);
 f32 func_8002D858(ObjM5 *, void *);
 ObjM5 *func_80023DBC(s32);
 void func_80052A5C(s32);
-void func_80052B24(ObjM5 *, char *, ObjM5 *);
+void startStoryDialog(ObjM5 *, char *, ObjM5 *);
 ObjM5 *findActor(s32, s32);
 s32 func_800113D8(s32);
 void func_8002E7B8(s32, s32);
@@ -46,17 +46,17 @@ void func_800568B4(ObjM5 *arg0) {
         case 0:
             if (dist < 1000.0f) {
                 func_80052A5C(0x56B);
-                func_80052B24(other, D_800083B4, arg0);
+                startStoryDialog(other, D_800083B4, arg0);
                 arg0->f7C = 1;
             }
             break;
         case 1:
             if (findActor(0x801, 0) == NULL) {
                 if (func_800113D8(0) != 0 && func_800113D8(1) != 0 && func_800113D8(2) != 0 && func_800113D8(3) != 0) {
-                    func_80052B24(other, D_800083BC, arg0);
+                    startStoryDialog(other, D_800083BC, arg0);
                     arg0->f7C = 2;
                 } else {
-                    func_80052B24(other, D_800083C4, arg0);
+                    startStoryDialog(other, D_800083C4, arg0);
                     arg0->f7C = 3;
                 }
             }
@@ -64,10 +64,10 @@ void func_800568B4(ObjM5 *arg0) {
         case 2:
             if (findActor(0x801, 0) == NULL) {
                 if ((D_800A9548 & 0xF) == 0xF) {
-                    func_80052B24(other, D_800083CC, arg0);
+                    startStoryDialog(other, D_800083CC, arg0);
                     arg0->f7C = 4;
                 } else {
-                    func_80052B24(other, D_800083D4, arg0);
+                    startStoryDialog(other, D_800083D4, arg0);
                     arg0->f7C = 3;
                 }
             }

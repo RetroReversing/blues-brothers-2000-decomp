@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80023DBC(s32);                             /* extern */
-M2C_UNK func_80052B24(s32, M2C_UNK *, void *);      /* extern */
+M2C_UNK startStoryDialog(s32, M2C_UNK *, void *);      /* extern */
 extern M2C_UNK D_80009488;
 extern s32 D_800B83C4;
 
@@ -22,7 +22,7 @@ void func_8007A934(void *arg0) {
 
     temp_a0 = func_80023DBC(D_800B83C4);
     if (M2C_FIELD(arg0, s32 *, 0x88) == 0) {
-        func_80052B24(temp_a0, &D_80009488, arg0);
+        startStoryDialog(temp_a0, &D_80009488, arg0);
         M2C_FIELD(arg0, s32 *, 0x88) = (s32) (M2C_FIELD(arg0, s32 *, 0x88) + 1);
     }
 }

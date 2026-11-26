@@ -25,7 +25,7 @@ s32 func_8002492C(f32, f32);
 void func_80043328(Obj *, s32, s32);
 void actorSetAnim(Obj *, s32, s32);
 void func_80052A30(void);
-s32 func_80052B24(s32, char *, Obj *);
+s32 startStoryDialog(s32, char *, Obj *);
 void func_800664A8(Obj *);
 Obj *findActor(s32, s32);
 void func_8002A360(s32, s32);
@@ -54,7 +54,7 @@ s32 func_800674E4(Obj *arg0) {
         func_80043328(arg0, 0xFE, 0x100);
         arg0->unk70 = 0;
         arg0->unk74 = 0;
-        if (func_80052B24(arg0->unkBC, "warden_finished", arg0) != 0) {
+        if (startStoryDialog(arg0->unkBC, "warden_finished", arg0) != 0) {
             arg0->unk7C++;
         }
     } else {

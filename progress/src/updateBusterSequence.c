@@ -31,7 +31,7 @@ extern void func_80017ECC(s32, f32, f32, f32, s32, s32, s32);
 extern Act364 *func_800232B4(s32, s32, s32, s32);
 extern Act364 *findActor(s32, Act364 *);
 extern s32 func_80023DBC(s32);
-extern s32 func_80052B24(s32, u8 *, Act364 *);
+extern s32 startStoryDialog(s32, u8 *, Act364 *);
 extern f32 approachF32(f32, f32, f32);
 extern void func_8002A360(s32, s32);
 extern void func_80034F50();
@@ -125,7 +125,7 @@ static inline f32 len364(f32 x, f32 z) {
         func_80052A5C(0x55E);
         sceneId = func_80023DBC(0xE45);
         func_80052A30();
-        if (func_80052B24(sceneId, D_8000966C, o) != 0) {
+        if (startStoryDialog(sceneId, D_8000966C, o) != 0) {
             o->state++;
         }
         break;

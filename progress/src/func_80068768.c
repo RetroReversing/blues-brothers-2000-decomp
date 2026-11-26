@@ -16,7 +16,7 @@ s32 findActor();
 s32 func_80023DBC();
 s32 func_80052A30();
 s32 func_80052A5C();
-s32 func_80052B24();
+s32 startStoryDialog();
 extern s32 D_80008D80;
 extern s32 D_80008D8C;
 extern s32 D_80008D98;
@@ -42,7 +42,7 @@ void func_80068768(void *arg0) {
             func_80052A5C(0x55F);
             var_a1 = &D_80008D80;
 
-            { { { func_80052B24(temp_s0, var_a1, arg0); } } }
+            { { { startStoryDialog(temp_s0, var_a1, arg0); } } }
             (*(s32 *)((s8 *)arg0 + 0x7C)) = (s32) ((*(s32 *)((s8 *)arg0 + 0x7C)) + 1);
             return;
         case 1:
@@ -51,7 +51,7 @@ void func_80068768(void *arg0) {
             func_80052A5C(0x564);
             var_a1 = &D_80008D8C;
             {
-{ { { func_80052B24(temp_s0, var_a1, arg0); } } }
+{ { { startStoryDialog(temp_s0, var_a1, arg0); } } }
 (*(s32 *)((s8 *)arg0 + 0x7C)) = (s32) ((*(s32 *)((s8 *)arg0 + 0x7C)) + 1);
 return;
 }
@@ -59,7 +59,7 @@ return;
             func_80052A5C(0x55F);
             var_a1 = &D_80008D98;
             {
-func_80052B24(temp_s0, var_a1, arg0);
+startStoryDialog(temp_s0, var_a1, arg0);
 (*(s32 *)((s8 *)arg0 + 0x7C)) = (s32) ((*(s32 *)((s8 *)arg0 + 0x7C)) + 1);
 return;
 }

@@ -19,7 +19,7 @@ f32 func_8002D858(void *, void *);                  /* extern */
 s32 func_8002E7B8(s32, s32);            /* extern */
 s32 animStepKeys(void *);                      /* extern */
 s32 func_80052A5C(s32);                     /* extern */
-s32 func_80052B24(s32, s32 *, void *);          /* extern */
+s32 startStoryDialog(s32, s32 *, void *);          /* extern */
 s32 func_80076080();                                /* extern */
 extern s32 D_8000837C;
 extern s32 D_80008384;
@@ -41,7 +41,7 @@ void func_80056140(void *arg0) {
         case 0:
             if (temp_fs0 < D_80008394) {
                 func_80052A5C(0x561);
-                if (func_80052B24(temp_s0, &D_8000837C, arg0) != 0) {
+                if (startStoryDialog(temp_s0, &D_8000837C, arg0) != 0) {
                     (*(s32 *)((s8 *)arg0 + 0x7C)) = 1;
                     return;
                 }
@@ -51,11 +51,11 @@ void func_80056140(void *arg0) {
         case 1:
             if (findActor(0x801, 0) == 0) {
                 if (func_800113D8(1) != 0) {
-                    do { do { func_80052B24(temp_s0, &D_80008384, arg0); } while (0); } while (0);
+                    do { do { startStoryDialog(temp_s0, &D_80008384, arg0); } while (0); } while (0);
                     (*(s32 *)((s8 *)arg0 + 0x7C)) = 2;
                     return;
                 }
-                do { do { func_80052B24(temp_s0, &D_8000838C, arg0); } while (0); } while (0);
+                do { do { startStoryDialog(temp_s0, &D_8000838C, arg0); } while (0); } while (0);
                 (*(s32 *)((s8 *)arg0 + 0x7C)) = 3;
                 return;
             }

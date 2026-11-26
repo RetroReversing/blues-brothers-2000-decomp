@@ -25,7 +25,7 @@ Obj *func_8006B020(void *);
 void func_8002A360(s32, s32);
 void func_8002D124(void);
 s32 func_80023DBC(s32);
-s32 func_80052B24(s32, char *, void *);
+s32 startStoryDialog(s32, char *, void *);
 void func_8001B990(s32, s32);
 void func_8006AB80(void *);
 void func_80034F50(void *);
@@ -63,7 +63,7 @@ void func_8006ABD8(Obj *arg0)
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x34);
         func_8002D124();
-        if (func_80052B24(func_80023DBC(0xE0F), "cab_caf4", arg0) != 0) {
+        if (startStoryDialog(func_80023DBC(0xE0F), "cab_caf4", arg0) != 0) {
             c->unk9C = func_8006B0C8;
             func_8001B990(0x200, 0x24);
             arg0->unkA0(arg0);

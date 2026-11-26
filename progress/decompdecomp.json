@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699454.872957,
- "revision": 5562,
+ "saved_at": 1795699470.258944,
+ "revision": 5564,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14947,8 +14947,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "506856:2147987432": {
    "vram": 2147987432,
@@ -16944,7 +16943,7 @@
   },
   "341796:2147822372": {
    "vram": 2147822372,
-   "function": "func_80052B24",
+   "function": "startStoryDialog",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -22787,10 +22786,10 @@
    "matched_by": "manual-5660e98b9ce7421c",
    "readable": false
   },
-  "func_80052B24": {
+  "startStoryDialog": {
    "vram": 2147822372,
    "matched_by": "manual-5d965e0834ed4933",
-   "readable": false
+   "readable": true
   },
   "func_80052BD4": {
    "vram": 2147822548,
@@ -29167,7 +29166,7 @@
   "func_80052514": "local_source_158913790910",
   "func_80052760": "local_source_158913790912",
   "func_80052A5C": "local_source_158913790915",
-  "func_80052B24": "local_source_158913790917",
+  "startStoryDialog": "local_source_158913790917",
   "func_800532BC": "local_source_158913790922",
   "func_8005358C": "local_source_158913790923",
   "func_80053714": "local_source_158913790925",
@@ -35519,7 +35518,7 @@
    "status": "open"
   },
   {
-   "name": "func_80052B24",
+   "name": "startStoryDialog",
    "vram": 2147822372,
    "size": 924,
    "status": "open"
@@ -43657,6 +43656,12 @@
    "kind": "func"
   },
   {
+   "name": "startStoryDialog",
+   "address": 2147822372,
+   "size": 924,
+   "kind": "func"
+  },
+  {
    "name": "updateChaserActor",
    "address": 2147833348,
    "size": 1072,
@@ -46764,7 +46769,7 @@
   },
   {
    "address": 2148219232,
-   "type": "Obj *",
+   "type": "u8 *",
    "source": "match"
   },
   {
@@ -46819,7 +46824,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Obj *",
+   "type": "u8 *",
    "source": "match"
   },
   {
@@ -46849,7 +46854,7 @@
   },
   {
    "address": 2148561056,
-   "type": "s32[]",
+   "type": "s32",
    "source": "match"
   },
   {

@@ -41,7 +41,7 @@ s32 func_80052100(s32);
 void setActorState(s32, s32);
 s32 *func_80052444(s32);
 void func_80052A5C(s32);
-s32 func_80052B24(s32, char *, Actor64130 *);
+s32 startStoryDialog(s32, char *, Actor64130 *);
 Actor64130 *func_8005EA88(Actor64130 *);
 Actor64130 *spawnCutsceneActor(void);
 void func_80063D3C(Actor64130 *);
@@ -149,7 +149,7 @@ extern s32 gPadPressed;
         gCameraTarget->unk0 = 3;
         gCameraTarget->unk50 = 0;
         gCameraTarget->unk90 = 1;
-        if (func_80052B24(func_80023DBC(0xE39), "elroom_start", gCameraTarget) != 0) {
+        if (startStoryDialog(func_80023DBC(0xE39), "elroom_start", gCameraTarget) != 0) {
             scene->unk7C++;
         }
         break;
@@ -178,7 +178,7 @@ extern s32 gPadPressed;
             break;
         }
         func_80052A5C(0x569);
-        func_80052B24(func_80023DBC(0xE39), "guard", gCameraTarget);
+        startStoryDialog(func_80023DBC(0xE39), "guard", gCameraTarget);
         scene->unk7C++;
         break;
     case 10:

@@ -5,7 +5,7 @@ f32 func_8002D858(void *, void *);
 void func_8002E7B8(s32, s32);
 void animStepKeys(void);
 void func_80052A5C(s32);
-void func_80052B24(s32, void *, void *);
+void startStoryDialog(s32, void *, void *);
 extern s32 D_80008F04;
 extern s32 D_80008F1C;
 extern s32 D_800B5DD4;
@@ -25,9 +25,9 @@ void func_8006B54C(s32 *obj) {
             func_80052A5C(0x55F);
             if (func_80011388() == 0) {
                 obj[0x7C / 4] = 2;
-                func_80052B24(h, &D_80008F1C, obj);
+                startStoryDialog(h, &D_80008F1C, obj);
             } else {
-                func_80052B24(h, &D_80008F04, obj);
+                startStoryDialog(h, &D_80008F04, obj);
                 obj[0x7C / 4] = 3;
             }
         }

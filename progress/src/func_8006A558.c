@@ -20,7 +20,7 @@ s32 func_80023DBC(M2C_UNK);                         /* extern */
 s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8003C140(void *);                      /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
-s32 func_80052B24(s32, M2C_UNK *, void *);          /* extern */
+s32 startStoryDialog(s32, M2C_UNK *, void *);          /* extern */
 void *func_8006B760(void *);                        /* extern */
 extern M2C_UNK D_80008E84;
 extern f32 D_80008E90;
@@ -57,7 +57,7 @@ void func_8006A558(void *arg0) {
     case 6:
         temp_s0 = func_80023DBC(0xE5D);
         func_80052A5C(0);
-        if (func_80052B24(temp_s0, "hubstart", arg0) != 0) {
+        if (startStoryDialog(temp_s0, "hubstart", arg0) != 0) {
             M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) + 1);
         } else {
             M2C_FIELD(gCameraTarget, s32 *, 0x90) = 1;

@@ -19,7 +19,7 @@ s32 animStepKeys(void *);                          /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
 s32 func_80052A68(s32, M2C_UNK *);                  /* extern */
-M2C_UNK func_80052B24(s32, M2C_UNK *, void *);      /* extern */
+M2C_UNK startStoryDialog(s32, M2C_UNK *, void *);      /* extern */
 extern M2C_UNK D_80008044;
 extern f32 D_80008054;
 extern void *D_800B3964;
@@ -46,7 +46,7 @@ void func_800514EC(void *arg0) {
     if (getCameraTargetDist(arg0, temp_fs0, 0) < temp_fs0) {
         func_80052A5C(0x567);
         if (func_80052A68(var_s1, __base_D_80008044) == 0) {
-            func_80052B24(var_s1, __base_D_80008044, arg0);
+            startStoryDialog(var_s1, __base_D_80008044, arg0);
         } else {
             M2C_FIELD(arg0, s32 *, 0x80) = 1;
         }

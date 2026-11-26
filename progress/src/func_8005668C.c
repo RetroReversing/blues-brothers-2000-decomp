@@ -5,7 +5,7 @@ struct G {
 extern f32 getCameraTargetDist(G *, f32, s32);
 extern s32 func_80023DBC(s32);
 extern void func_80052A5C(s32);
-extern s32 func_80052B24(s32, void *, G *);
+extern s32 startStoryDialog(s32, void *, G *);
 extern s32 findActor(s32, s32);
 extern void func_8001B990(s32, s32);
 extern void animStepKeys(G *);
@@ -37,7 +37,7 @@ void func_8005668C(G *arg0) {
     if (arg0->f7C == 0) {
         if (temp_fs0 < temp_fs1) {
             func_80052A5C(0x568);
-            if (func_80052B24(temp_s2, D_80008398, arg0) != 0) {
+            if (startStoryDialog(temp_s2, D_80008398, arg0) != 0) {
                 arg0->f7C = 1;
             }
         }
@@ -46,10 +46,10 @@ void func_8005668C(G *arg0) {
     if ((temp_s1 == 1) && (findActor(0x801, 0) == 0)) {
         if (D_800BCFED == temp_s1) {
             func_8001B990(0x200, 0x1F);
-            func_80052B24(temp_s2, D_800083A0, arg0);
+            startStoryDialog(temp_s2, D_800083A0, arg0);
             var_v0 = 2;
         } else {
-            func_80052B24(temp_s2, D_800083A8, arg0);
+            startStoryDialog(temp_s2, D_800083A8, arg0);
             var_v0 = 3;
         }
         arg0->f7C = var_v0;

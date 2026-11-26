@@ -5,7 +5,7 @@ s32 findActor(s32, s32);
 s32 func_80023DBC(s32);
 void func_80052A30(void);
 void func_80052A5C(s32);
-s32 func_80052B24(s32, char *, void *);
+s32 startStoryDialog(s32, char *, void *);
 extern char D_800092C8[];
 extern char D_800092D0[];
 extern u8 *D_800B3964;
@@ -28,7 +28,7 @@ s32 func_80077788(u8 *obj) {
     switch (*(s32 *) (obj + 0x90)) {
         case 0:
             func_80052A5C(0x566);
-            if (func_80052B24(func_80023DBC(id), D_800092C8, obj) == 0) {
+            if (startStoryDialog(func_80023DBC(id), D_800092C8, obj) == 0) {
                 func_80052A30();
                 return 0;
             }
@@ -36,7 +36,7 @@ s32 func_80077788(u8 *obj) {
             break;
         case 1:
             func_80052A5C(0x565);
-            if (func_80052B24(func_80023DBC(id), D_800092D0, obj) != 0) {
+            if (startStoryDialog(func_80023DBC(id), D_800092D0, obj) != 0) {
                 *(s32 *) (obj + 0x90) += 1;
             }
             break;

@@ -18,7 +18,7 @@ M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 f32 func_8002D858(void *, M2C_UNK);                 /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
-s32 func_80052B24(s32, M2C_UNK *, void *);          /* extern */
+s32 startStoryDialog(s32, M2C_UNK *, void *);          /* extern */
 M2C_UNK sprintf(M2C_UNK *, M2C_UNK *, s32);         /* extern */
 extern M2C_UNK D_80008244;
 extern s32 D_800AB9C8;
@@ -44,7 +44,7 @@ void func_80053FB0(void *arg0) {
         if ((temp_fv1 < 75.0f) && (func_8002DD60(temp_fs0) < 50.0f)) {
             func_80052A5C(0);
             sprintf(sp10, &D_80008244, M2C_FIELD(arg0, s32 *, 0x70));
-            temp_v0 = func_80052B24(M2C_FIELD(arg0, s32 *, 0xBC), sp10, arg0);
+            temp_v0 = startStoryDialog(M2C_FIELD(arg0, s32 *, 0xBC), sp10, arg0);
             M2C_FIELD(arg0, s32 *, 0x84) = temp_v0;
             if (temp_v0 != 0) {
                 func_8002A360(0xC, 0x80);

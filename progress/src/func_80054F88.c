@@ -17,7 +17,7 @@ s32 func_8001C6D8();
 s32 func_80023DBC();
 s32 animStepKeys();
 s32 func_80043328();
-s32 func_80052B24();
+s32 startStoryDialog();
 s32 func_80054F38();
 extern char D_800082D8[];
 extern s32 gCamSpeedScale;
@@ -41,7 +41,7 @@ void func_80054F88(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0x5C) <= 0) {
         func_80054F38(func_8001C6D8(arg0, temp_a1, temp_a2));
         func_8001B990(0x200, 0x42);
-        func_80052B24(func_80023DBC(0xEA5), D_800082D8, arg0);
+        startStoryDialog(func_80023DBC(0xEA5), D_800082D8, arg0);
         M2C_FIELD(arg0, s32 (**)(void *), 0xA0)(arg0);
     }
 }

@@ -4,7 +4,7 @@ f32 getCameraTargetDist(void *, f32, s32);
 void animStepKeys(void *);
 void func_80052A5C(s32);
 s32 func_80052A68(s32, char *);
-s32 func_80052B24(s32, char *, void *);
+s32 startStoryDialog(s32, char *, void *);
 void func_8007A2E8(void *);
 extern char D_80009440[];
 extern char D_8000944C[];
@@ -44,18 +44,18 @@ void func_8007A3FC(u8 *arg0) {
         }
         if (flag != 0) {
             func_80052A5C(0x568);
-            func_80052B24(id, name, arg0);
+            startStoryDialog(id, name, arg0);
         }
         if (*(s32 *)(D_800B3964[0] + 0x7C) == 6) {
             func_80052A5C(0x568);
-            func_80052B24(id, D_8000944C, arg0);
+            startStoryDialog(id, D_8000944C, arg0);
             do { *(s32 *)(D_800B3964[0] + 0x7C) = 1; } while (0);
         }
         if (D_800BD0E0.arr[D_800BD0E0.idx] >= 10) {
             do { *(s32 *)(D_800B3964[0] + 0x7C) = 2; } while (0);
         } else if (*(s32 *)(arg0 + 0x88) == 0 && findActor(0x800, 0) == 0) {
             func_80052A5C(0x568);
-            if (func_80052B24(id, D_80009458, arg0) != 0) {
+            if (startStoryDialog(id, D_80009458, arg0) != 0) {
                 *(s32 *)(arg0 + 0x88) = 1;
             }
         }

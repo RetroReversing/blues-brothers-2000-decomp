@@ -28,7 +28,7 @@ void func_80026C04(void *, s32, s32);
 void func_8002A360(s32, s32);
 s32 tickActorTimer(Obj *);
 void actorSetAnim(s32, s32, s32);
-void func_80052B24(s32, char *, Obj *);
+void startStoryDialog(s32, char *, Obj *);
 void func_80081C10(void);
 s32 func_80082688(s32, s32);
 void func_80087160(s32);
@@ -70,7 +70,7 @@ void func_80086028(Obj *o)
         o->cb = &func_80085F58 + 2;
         func_80087160(func_80023D58(0x202));
         sprintf(buf, "%swin", D_800B8720[idx].name);
-        func_80052B24(h, buf, o);
+        startStoryDialog(h, buf, o);
     } else {
         if (D_80171A54 == 1) {
             func_80087160(func_80023D58(0x21D));

@@ -25,7 +25,7 @@ void func_8002D3E4(Obj *, s32);
 void func_8002DA80(Obj *);
 void animStepKeys(Obj *);
 void func_80043328(Obj *, s32, s32);
-void func_80052B24(s32, char *, Obj *);
+void startStoryDialog(s32, char *, Obj *);
 extern s32 gCamSpeedScale;
 extern Obj *gCameraTarget;
 
@@ -61,7 +61,7 @@ s32 func_800516F0(Obj *arg0) {
         arg0->unk78 = 0;
         func_8002D3E4(arg0, 0);
         if (arg0->unk70 == 1) {
-            func_80052B24(arg0->unk6C, msg, arg0);
+            startStoryDialog(arg0->unk6C, msg, arg0);
             arg0->unk70++;
         }
     }
@@ -77,7 +77,7 @@ s32 func_800516F0(Obj *arg0) {
         arg0->z = arg0->unk48 + dz * range / dist;
         func_8002D3E4(arg0, 0);
         if (arg0->unk70 == 1) {
-            func_80052B24(arg0->unk6C, msg, arg0);
+            startStoryDialog(arg0->unk6C, msg, arg0);
             arg0->unk70++;
         }
         return 1;

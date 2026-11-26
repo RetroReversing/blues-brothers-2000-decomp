@@ -41,7 +41,7 @@ s32 func_80023DBC(s32);
 void func_8002A360(s32, s32);
 f32 approachF32(f32, f32, f32);
 void actorSetAnim(void *, s32, s32);
-void func_80052B24(s32, char *, void *);
+void startStoryDialog(s32, char *, void *);
 s32 func_80082400(void);
 void updateComboInput(s32);
 void func_80087160(s32);
@@ -108,7 +108,7 @@ extern u8 D_80171A50[];
             owner->fn9C = func_80085F58 + 8;
             func_80087160(func_80023D58(0x202));
             sprintf(buf, D_80009B40, D_800B8720[stage].x8);
-            func_80052B24(fontId, buf, owner);
+            startStoryDialog(fontId, buf, owner);
             (*(Obj * *)D_80171A30)->x68 = -1;
             actorSetAnim((*(Obj * *)D_801719A8), 0x178, 0x100);
             func_8002A360(12, 0x80);
@@ -121,7 +121,7 @@ extern u8 D_80171A50[];
     }
     if ((*(s32 *)D_80171A34) >= 7) {
         sprintf(buf, D_80009B54, D_800B8720[stage].x8);
-        func_80052B24(fontId, buf, owner);
+        startStoryDialog(fontId, buf, owner);
         owner->fn9C = func_80086B3C;
         actorSetAnim((*(Obj * *)D_801719A8), 1, 0x100);
         (*(Obj * *)D_801719AC)->x10 = -0x4000;

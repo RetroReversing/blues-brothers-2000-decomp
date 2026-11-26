@@ -26,7 +26,7 @@ s32 func_80023DBC(s32);
 s32 func_8002D260(s32);
 void animStepKeys(Obj *);
 void func_80052A5C(s32);
-s32 func_80052B24(s32, char *, Obj *);
+s32 startStoryDialog(s32, char *, Obj *);
 void debugPrintf(char *);
 f32 sqrtf(f32);
 void func_8006B1D8();
@@ -71,7 +71,7 @@ void func_8006B244(Obj *arg0) {
         o->f90 = 1;
         o->f0 = 3;
         o->f50 = 0;
-        if (func_80052B24(func_80023DBC(0xEB1), D_80008EE8, arg0) != 0) {
+        if (startStoryDialog(func_80023DBC(0xEB1), D_80008EE8, arg0) != 0) {
             arg0->f7C = 0;
             func_8001B990(0x200, 0x25);
             arg0->f9C = func_8006B1D8;

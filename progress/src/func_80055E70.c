@@ -19,7 +19,7 @@ f32 func_8002DD60(f32);                             /* extern */
 M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
-M2C_UNK func_80052B24(s32, M2C_UNK *, void *);      /* extern */
+M2C_UNK startStoryDialog(s32, M2C_UNK *, void *);      /* extern */
 s32 func_80076080();                                /* extern */
 extern M2C_UNK D_80008338;
 extern M2C_UNK D_80008340;
@@ -49,10 +49,10 @@ void func_80055E70(void *arg0) {
                 temp_s1 = func_80023DBC(0xE1B);
                 func_80052A5C(0x561);
                 if (func_8001B990(0x100, 0x1C) != 0) {
-                    func_80052B24(temp_s1, &D_80008338, arg0);
+                    startStoryDialog(temp_s1, &D_80008338, arg0);
                     func_8001B990(0x200, 0x1B);
                 } else {
-                    func_80052B24(temp_s1, &D_80008340, arg0);
+                    startStoryDialog(temp_s1, &D_80008340, arg0);
                 }
                 func_80043328(arg0, 0xBF, 0x100);
                 M2C_FIELD(arg0, s32 *, 0x84) = 1;
