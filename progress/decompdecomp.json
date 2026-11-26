@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699377.59141,
- "revision": 5552,
+ "saved_at": 1795699392.735739,
+ "revision": 5553,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14617,7 +14617,8 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ]
+   ],
+   "timeout": 20
   },
   "329168:2147809744": {
    "vram": 2147809744,
@@ -26030,7 +26031,7 @@
   "updateCameraQuickcut": {
    "vram": 2148009504,
    "matched_by": "manual-3aa2b7a676f04507",
-   "readable": false
+   "readable": true
   },
   "func_800809C8": {
    "vram": 2148010440,
@@ -45442,6 +45443,12 @@
    "name": "gTextWaveAngle",
    "address": 2148215576,
    "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gCameraRig",
+   "address": 2148219232,
+   "size": 4,
    "kind": "data"
   },
   {
