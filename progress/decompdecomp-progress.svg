@@ -4961,7 +4961,7 @@
 <g><title>func_80084368: {&#x27;matched&#x27;: 1}</title>
 <rect x="490.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80084504: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateSplineDriver: {&#x27;matched&#x27;: 1}</title>
 <rect x="500.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>updatePursuitVehicle: {&#x27;matched&#x27;: 1}</title>

@@ -25,8 +25,8 @@ typedef struct Unk80061800 {
 } Unk80061800;
 
 extern s32 D_800B9B18;
-extern char D_800099F8[];
-extern char D_80009A0C[];
+extern char splineErrorMsg[];
+extern char splineErrorMsgDefault[];
 
 s32 func_80080DE0(s32 arg0);
 void initSpline(s32 idx, s32 closed);

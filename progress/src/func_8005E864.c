@@ -13,7 +13,7 @@ void func_8005CB7C(void);
 void func_8005D4E8(void);
 void func_8005DEF8(void);
 void func_8005E744(void);
-void func_80084504(void);
+void updateSplineDriver(void);
 
 void *func_8005E864(void *arg0) {
     s32 flag;
@@ -51,7 +51,7 @@ void *func_8005E864(void *arg0) {
     default:
         actorSetAnim(o, 0xDE, 0x100);
         *(s32 *)(o + 0x74) = 0xDE;
-        *(void **)(o + 0x9C) = func_80084504;
+        *(void **)(o + 0x9C) = updateSplineDriver;
         break;
     }
     if (arg0 != NULL) {

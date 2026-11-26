@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700572.511806,
- "revision": 5655,
+ "saved_at": 1795700594.380363,
+ "revision": 5657,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14492,8 +14492,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "120164:2147600740": {
    "vram": 2147600740,
@@ -16086,7 +16085,7 @@
   },
   "545028:2148025604": {
    "vram": 2148025604,
-   "function": "func_80084504",
+   "function": "updateSplineDriver",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -26312,10 +26311,10 @@
    "matched_by": "manual-3572b8f795c14e2c",
    "readable": false
   },
-  "func_80084504": {
+  "updateSplineDriver": {
    "vram": 2148025604,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "updatePursuitVehicle": {
    "vram": 2148026344,
@@ -29520,7 +29519,7 @@
   "func_80084000": "local_source_158913791602",
   "func_8008427C": "local_source_158913791603",
   "func_80084368": "local_source_158913791605",
-  "func_80084504": "local_source_158913791606",
+  "updateSplineDriver": "local_source_158913791606",
   "updatePursuitVehicle": "local_source_158913791607",
   "updateChaseAI": "local_source_158913791608",
   "fireActorEvents": "local_source_158913791612",
@@ -39773,7 +39772,7 @@
    "status": "open"
   },
   {
-   "name": "func_80084504",
+   "name": "updateSplineDriver",
    "vram": 2148025604,
    "size": 740,
    "status": "open"
@@ -43189,6 +43188,18 @@
    "kind": "data"
   },
   {
+   "name": "splineErrorMsg",
+   "address": 2147523064,
+   "size": 20,
+   "kind": "data"
+  },
+  {
+   "name": "splineErrorMsgDefault",
+   "address": 2147523084,
+   "size": 24,
+   "kind": "data"
+  },
+  {
    "name": "cameraGetMode",
    "address": 2147533884,
    "size": 28,
@@ -44116,6 +44127,12 @@
    "name": "enemyTakeHit",
    "address": 2148022560,
    "size": 264,
+   "kind": "func"
+  },
+  {
+   "name": "updateSplineDriver",
+   "address": 2148025604,
+   "size": 740,
    "kind": "func"
   },
   {

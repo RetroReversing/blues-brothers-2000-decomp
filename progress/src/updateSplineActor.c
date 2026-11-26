@@ -17,7 +17,7 @@ s32 func_80085900(void *);
 s32 func_80085A5C(void *);
 s32 func_80085B8C(void *);
 void debugPrintf(char *, s32);
-void func_80084504(void);
+void updateSplineDriver(void);
 
 typedef struct Ent {
     char pad0[4];
@@ -84,7 +84,7 @@ extern Ent *gSplineSrcPoints[];
         }
         if (func_80085900(actor) == 0) {
             actor->x7C = 0;
-            actor->fn9C = func_80084504;
+            actor->fn9C = updateSplineDriver;
             return;
         }
         actor->x64 = randomRange(25, 30) * 100;
