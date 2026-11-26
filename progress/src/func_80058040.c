@@ -19,7 +19,7 @@ M2C_UNK func_80050460(M2C_UNK *, M2C_UNK *);        /* extern */
 M2C_UNK func_800852CC(void *, void *);              /* extern */
 extern M2C_UNK D_8014AA5B;
 extern M2C_UNK func_800579E0;
-extern M2C_UNK func_80057CCC;
+extern M2C_UNK updateTargetPatrol;
 extern M2C_UNK func_80057FC0;
 
 void *func_80058040(void *arg0) {
@@ -35,7 +35,7 @@ void *func_80058040(void *arg0) {
         temp_v0_2 = M2C_FIELD(arg0, s32 *, 0x70);
         if (temp_v0_2 != 0) {
             M2C_FIELD(temp_v0, s32 *, 0x70) = temp_v0_2;
-            M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80057CCC;
+            M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &updateTargetPatrol;
         }
     }
     func_800852CC(temp_v0, arg0);

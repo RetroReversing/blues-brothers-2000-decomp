@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700311.437535,
- "revision": 5631,
+ "saved_at": 1795700324.209216,
+ "revision": 5633,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16115,7 +16115,7 @@
   },
   "362700:2147843276": {
    "vram": 2147843276,
-   "function": "func_80057CCC",
+   "function": "updateTargetPatrol",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16156,8 +16156,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "351940:2147832516": {
    "vram": 2147832516,
@@ -16872,8 +16871,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "584540:2148065116": {
    "vram": 2148065116,
@@ -23223,10 +23221,10 @@
    "matched_by": "manual-f86831e3bb304d6a",
    "readable": false
   },
-  "func_80057CCC": {
+  "updateTargetPatrol": {
    "vram": 2147843276,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "func_80057FC0": {
    "vram": 2147844032,
@@ -29211,7 +29209,7 @@
   "func_80057658": "local_source_158913790997",
   "func_80057858": "local_source_158913790998",
   "func_800579E0": "local_source_158913790999",
-  "func_80057CCC": "local_source_158913791000",
+  "updateTargetPatrol": "local_source_158913791000",
   "func_80057FC0": "local_source_158913791001",
   "func_80058040": "local_source_158913791002",
   "updateLogicBomb": "local_source_158913792184",
@@ -36042,7 +36040,7 @@
    "status": "open"
   },
   {
-   "name": "func_80057CCC",
+   "name": "updateTargetPatrol",
    "vram": 2147843276,
    "size": 756,
    "status": "open"
@@ -43796,6 +43794,12 @@
    "kind": "func"
   },
   {
+   "name": "updateTargetPatrol",
+   "address": 2147843276,
+   "size": 756,
+   "kind": "func"
+  },
+  {
    "name": "updateLogicBomb",
    "address": 2147844368,
    "size": 1384,
@@ -47286,7 +47290,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Obj *",
+   "type": "Unk800BD06C_579E0 *",
    "source": "match"
   },
   {
