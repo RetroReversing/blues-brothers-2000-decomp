@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 s32 func_80023D58(M2C_UNK);                         /* extern */
-extern M2C_UNK func_800213A8;
+extern M2C_UNK updateParticleEmitter;
 extern M2C_UNK func_80021818;
 
 void *func_80022028(void *arg0) {
@@ -23,7 +23,7 @@ void *func_80022028(void *arg0) {
     temp_v0 = func_800232B4(0x101, 0, 0, 0);
     M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_80021818;
     M2C_FIELD(temp_v0, s32 *, 0x60) = func_80023D58(0x209);
-    M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_800213A8;
+    M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &updateParticleEmitter;
     M2C_FIELD(temp_v0, s32 *, 0x88) = 0;
     if (arg0 != NULL) {
         M2C_FIELD(temp_v0, s32 *, 0x70) = (s32) M2C_FIELD(arg0, s32 *, 0);

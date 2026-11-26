@@ -12,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_800899DC(M2C_UNK *);                   /* extern */
+M2C_UNK debugPrintf(M2C_UNK *);                   /* extern */
 extern M2C_UNK D_80000D68;
 
 void func_8001E724(void) {
-    func_800899DC(&D_80000D68);
+    debugPrintf(&D_80000D68);
 }

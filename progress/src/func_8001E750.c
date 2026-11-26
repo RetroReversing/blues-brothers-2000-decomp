@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 f32 func_8002D858();
 s16 sins();
 extern f32 D_80000D74;
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 
 void func_8001E750(void *arg0) {
     f32 temp_fv0;
@@ -25,7 +25,7 @@ void func_8001E750(void *arg0) {
     if (temp_fv0 < D_80000D74) {
         M2C_FIELD(arg0, s32 *, 0x5C) = (s32) (((s32) temp_fv0 / 50) * 0x10);
     } else {
-        var_v1 = (s32) (sins((D_800B9EA4 * 0x64) & 0xFFFC) * 0xFF) >> 0xF;
+        var_v1 = (s32) (sins((gTextWaveTime * 0x64) & 0xFFFC) * 0xFF) >> 0xF;
         if (var_v1 < 0) {
             var_v1 = -var_v1;
         }

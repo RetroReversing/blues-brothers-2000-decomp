@@ -12,15 +12,15 @@ typedef struct ObjM5 {
 } ObjM5;
 
 s32 func_80076080(ObjM5 *);
-void func_8004303C(ObjM5 *);
+void animStepKeys(ObjM5 *);
 f32 func_8002D858(ObjM5 *, void *);
 ObjM5 *func_80023DBC(s32);
 void func_80052A5C(s32);
 void func_80052B24(ObjM5 *, char *, ObjM5 *);
-ObjM5 *func_80023874(s32, s32);
+ObjM5 *findActor(s32, s32);
 s32 func_800113D8(s32);
 void func_8002E7B8(s32, s32);
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 void func_8003D558(void);
 void func_80056834(void);
 extern s32 D_800A9548;
@@ -39,7 +39,7 @@ void func_800568B4(ObjM5 *arg0) {
     if (func_80076080(arg0) != 0) {
         return;
     }
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     dist = func_8002D858(arg0, &arg0->pad10);
     other = func_80023DBC(0xE6F);
     switch (arg0->f7C) {
@@ -51,7 +51,7 @@ void func_800568B4(ObjM5 *arg0) {
             }
             break;
         case 1:
-            if (func_80023874(0x801, 0) == NULL) {
+            if (findActor(0x801, 0) == NULL) {
                 if (func_800113D8(0) != 0 && func_800113D8(1) != 0 && func_800113D8(2) != 0 && func_800113D8(3) != 0) {
                     func_80052B24(other, D_800083BC, arg0);
                     arg0->f7C = 2;
@@ -62,7 +62,7 @@ void func_800568B4(ObjM5 *arg0) {
             }
             break;
         case 2:
-            if (func_80023874(0x801, 0) == NULL) {
+            if (findActor(0x801, 0) == NULL) {
                 if ((D_800A9548 & 0xF) == 0xF) {
                     func_80052B24(other, D_800083CC, arg0);
                     arg0->f7C = 4;
@@ -73,17 +73,17 @@ void func_800568B4(ObjM5 *arg0) {
             }
             break;
         case 3:
-            if (func_80023874(0x801, 0) == NULL) {
+            if (findActor(0x801, 0) == NULL) {
                 arg0->f9C = func_8003D558;
                 func_8002E7B8(1, 0);
                 arg0->f70 = 2;
             }
             break;
         case 4:
-            if (func_80023874(0x801, 0) == NULL) {
-                D_800BCFB8[func_8000C43C()] = 1;
+            if (findActor(0x801, 0) == NULL) {
+                D_800BCFB8[cameraGetMode()] = 1;
                 arg0->f9C = func_80056834;
-                obj = func_80023874(0x13C, 0);
+                obj = findActor(0x13C, 0);
                 if (obj != NULL) {
                     obj->x = arg0->x;
                     obj->y = arg0->y;

@@ -2,14 +2,14 @@ s32 func_8001EAD0(void);
 void func_8001EB18(s32);
 s32 func_8001EF80(void *, s32);
 void func_8001F230(void *);
-void func_80022728(void *, f32 *, s32);
-s32 *func_80023E18(s32);
+void buildObjectMatrix(void *, f32 *, s32);
+s32 *getImageAsset(s32);
 void func_80024A3C(f32 *, f32 *, s32);
 void func_80024B58(f32 *, f32 *, s32);
 void func_80024BE0(f32 *, f32 *, s32);
 void func_80024FE8(f32 *);
-void func_8002B880(s32, s32 *, s32, s32);
-void func_800899DC(char *);
+void loadTextureClamped(s32, s32 *, s32, s32);
+void debugPrintf(char *);
 
 typedef struct GfxW {
     u32 w0;
@@ -87,7 +87,7 @@ s32 func_8002F2C0(Obj *arg0) {
         _g->w0 = 0xE200001C;
         _g->w1 = 0x504340;
     }
-    p = func_80023E18(arg0->x60);
+    p = getImageAsset(arg0->x60);
     q = p;
     if (arg0->x74 == 0) {
         p += 4;
@@ -104,20 +104,20 @@ s32 func_8002F2C0(Obj *arg0) {
     if (arg0->x74 == 0 && q[2] == 0x20) {
         fmt = 0x20;
     }
-    func_8002B880(fmt, p, 0, 0);
+    loadTextureClamped(fmt, p, 0, 0);
     if (arg0->x7C == 0) {
         func_80024FE8(m1);
         func_80024B58(m2, m1, arg0->x10);
         func_80024A3C(m1, m2, arg0->x14);
         func_80024BE0(m2, m1, arg0->x18);
-        func_80022728(arg0, m2, 1);
+        buildObjectMatrix(arg0, m2, 1);
     } else {
         func_80024FE8(m1);
-        func_80022728(arg0, m1, 0);
+        buildObjectMatrix(arg0, m1, 0);
     }
     start = n = func_8001EAD0();
     if (n == -1) {
-        func_800899DC(D_80001230);
+        debugPrintf(D_80001230);
         return 1;
     }
     v0 = &D_800BD6C8[n++];

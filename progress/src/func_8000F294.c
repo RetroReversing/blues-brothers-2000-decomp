@@ -11,7 +11,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();
+s32 cameraGetMode();
 extern s32 D_800BD100;
 s32 func_8000F294(void *arg0) {
     s32 temp_s0;
@@ -19,7 +19,7 @@ s32 func_8000F294(void *arg0) {
     s32 var_v0;
 
     temp_s0 = (D_800BD100 * 0x10) | M2C_FIELD(arg0, s32 *, 0x78);
-    temp_v0 = func_8000C43C();
+    temp_v0 = cameraGetMode();
     switch (temp_v0) {
     case 0x12:
         var_v0 = 19;

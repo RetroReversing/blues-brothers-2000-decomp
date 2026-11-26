@@ -29,7 +29,7 @@ f32 func_8002DD60(f32);
 void func_8003BF98(Obj *);
 void func_80043328(Obj *, s32, s32);
 void func_8005B218(Obj *);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 void func_8005B968(void);
 void func_8005BA74(void);
 
@@ -44,7 +44,7 @@ s32 func_8005B6F8(Obj *arg0) {
     if (arg0->unk7C == 0) {
         arg0->unk7C = 1;
         arg0->unk64 = 700;
-        dx = D_800BD06C->x - arg0->x;
+        dx = gCameraTarget->x - arg0->x;
         if (0.0f < dx) {
             if (arg0->unkD0 != 0xCC) {
                 func_80043328(arg0, 0xCC, 0x100);
@@ -89,7 +89,7 @@ s32 func_8005B6F8(Obj *arg0) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xAD);
             func_8002D124();
-            func_8003BF98(D_800BD06C);
+            func_8003BF98(gCameraTarget);
             arg0->unkD8 = func_8005B968;
             func_8002D3E4(arg0, 0);
         } else {

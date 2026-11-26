@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-f32 func_80095DC0(f32);                             /* extern */
+f32 sinApprox(f32);                             /* extern */
 s32 guRandom();                                     /* extern */
 extern f32 D_800B9EC4;
 
@@ -30,7 +30,7 @@ void func_800485A4(void *arg0) {
     case 1:
         temp_fa0 = (f32) ((f64) M2C_FIELD(temp_s0, f32 *, 0) + (((1.0) / ((0.016666666) / (f64) D_800B9EC4)) * (0.3490658402442932)));
         M2C_FIELD(temp_s0, f32 *, 0) = temp_fa0;
-        var_fv0 = ((f64) func_80095DC0(temp_fa0) * (0.5)) + (0.5);
+        var_fv0 = ((f64) sinApprox(temp_fa0) * (0.5)) + (0.5);
 
         M2C_FIELD(temp_s0, f32 *, 4) = (f32) var_fv0;
         return;

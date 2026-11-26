@@ -6,7 +6,7 @@ s32 func_8000F8F4(s32 arg0, s32 *arg1) {
         ret = func_800552C4(arg1); if (ret == 2) { ret = 1; } else { ret = 0; }
         break;
     case 0x100D:
-        switch (func_8000C43C()) {
+        switch (cameraGetMode()) {
         case 1:
         case 3:
         case 7:

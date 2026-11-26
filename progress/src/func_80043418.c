@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 func_80023B2C(s32);                             /* extern */
 s32 func_8003EAB4(void *, s32);                 /* extern */
-s32 func_8003ECB8(void *, f32);                 /* extern */
+s32 animSampleKeys(void *, f32);                 /* extern */
 
 void func_80043418(void *arg0, s32 arg1, s32 arg2) {
     f32 temp_fs0;
@@ -32,7 +32,7 @@ void func_80043418(void *arg0, s32 arg1, s32 arg2) {
         (*(s32 *)((s8 *)arg0 + 0xD4)) = arg2;
         temp_fs0 = (*(f32 *)((s8 *)temp_s0 + 0x1C));
         func_8003EAB4(temp_s0, temp_a1);
-        func_8003ECB8(temp_s0, temp_fs0);
+        animSampleKeys(temp_s0, temp_fs0);
         temp_fs1 = (*(f32 *)((s8 *)temp_s0 + 0x1C));
         (*(s32 *)((s8 *)arg0 + 0xD0)) = arg1;
         (*(f32 *)((s8 *)arg0 + 0xDC)) = temp_fs1;

@@ -9,10 +9,10 @@ typedef struct Obj {
     s32 unkB8;
 } Obj;
 
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-s32 func_80023874(s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 findActor(s32, s32);
 Obj *func_80042F00(s32, s32, s32, s32);
-void func_800433A8(Obj *, s32, s32);
+void actorSetAnim(Obj *, s32, s32);
 void func_80050460(void *, void *);
 Obj *func_80076BF0(s32);
 void func_800852CC(Obj *, s32);
@@ -26,15 +26,15 @@ void func_80075308(void);
 Obj *func_80075338(s32 arg0) {
     Obj *o;
 
-    if (func_80023874(0x100C, 0) != 0) {
+    if (findActor(0x100C, 0) != 0) {
         return func_80076BF0(arg0);
     }
     {
         func_80050460(func_80075308, D_8014AA6E);
         o = func_80042F00(0x5A, 0, 0, 0);
-        func_800433A8(o, 0x119, 0x100);
+        actorSetAnim(o, 0x119, 0x100);
         o->unk0 = 0x100C;
-        o->unk58 = func_800221C0(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
+        o->unk58 = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
         func_800852CC(o, arg0);
         o->unk9C = func_80075270;
         D_800F6188[o->unkB8].x = -200;

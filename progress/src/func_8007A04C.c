@@ -13,11 +13,11 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_8001B990();
-void *func_80023874();
+void *findActor();
 s32 func_8002ADFC();
 f32 func_800385AC();
-s32 func_8004303C();
-s32 func_800433A8();
+s32 animStepKeys();
+s32 actorSetAnim();
 s32 func_8004F9D0();
 extern f32 D_800093FC;
 extern s32 func_80079EF0;
@@ -28,21 +28,21 @@ void func_8007A04C(void *arg0) {
     void *temp_v0;
 
     if (M2C_FIELD(arg0, s32 *, 0xD0) != 0x101) {
-        func_800433A8(arg0, (void *)0x101, 0xC0);
+        actorSetAnim(arg0, (void *)0x101, 0xC0);
     }
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     func_8004F9D0(arg0, 6);
     func_8004F9D0(arg0, 6);
     func_8004F9D0(arg0, 6);
     func_8004F9D0(arg0, 6);
     M2C_FIELD(arg0, f32 *, 8) = func_800385AC(arg0);
-    temp_v0 = func_80023874(0x137, 0);
+    temp_v0 = findActor(0x137, 0);
     temp_fv1 = M2C_FIELD(temp_v0, f32 *, 4) - M2C_FIELD(arg0, f32 *, 4);
     temp_fv0 = M2C_FIELD(temp_v0, f32 *, 0xC) - M2C_FIELD(arg0, f32 *, 0xC);
     if (((temp_fv1 * temp_fv1) + (temp_fv0 * temp_fv0)) < D_800093FC) {
         func_8002ADFC(0x6C, 0x7D0, arg0);
         M2C_FIELD(arg0, s32 **, 0x9C) = &func_80079EF0;
         func_8001B990(0x200, 0x1E);
-        func_800433A8(arg0, 0x102, 0x100);
+        actorSetAnim(arg0, 0x102, 0x100);
     }
 }

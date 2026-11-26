@@ -12,15 +12,15 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_800B9EA0;
+extern s32 gFrameScale;
 
 void func_80014E80(void *arg0) {
     s32 temp_a1;
 
-    temp_a1 = D_800B9EA0 * 8;
-    M2C_FIELD(arg0, s32 *, 0x5C) = (s32) (M2C_FIELD(arg0, s32 *, 0x5C) - (D_800B9EA0 * 4));
+    temp_a1 = gFrameScale * 8;
+    M2C_FIELD(arg0, s32 *, 0x5C) = (s32) (M2C_FIELD(arg0, s32 *, 0x5C) - (gFrameScale * 4));
     M2C_FIELD(arg0, s32 *, 0x34) = (s32) (M2C_FIELD(arg0, s32 *, 0x34) + temp_a1);
-    M2C_FIELD(arg0, s32 *, 0x38) = (s32) (M2C_FIELD(arg0, s32 *, 0x38) + (D_800B9EA0 * 6));
+    M2C_FIELD(arg0, s32 *, 0x38) = (s32) (M2C_FIELD(arg0, s32 *, 0x38) + (gFrameScale * 6));
     M2C_FIELD(arg0, s32 *, 0x3C) = (s32) (M2C_FIELD(arg0, s32 *, 0x3C) + temp_a1);
     if (M2C_FIELD(arg0, s32 *, 0x5C) <= 0) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *, s32, void *), 0xA0)(arg0, temp_a1, arg0);

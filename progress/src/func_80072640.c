@@ -12,18 +12,18 @@ typedef struct ObjK {
     void *f9C;
 } ObjK;
 
-void func_80081588(s32, s32);
+void initSpline(s32, s32);
 void func_800789A8(ObjK *);
 void func_8007591C(s32, s32);
 void func_80034F1C(ObjK *);
 void func_80036DB4(void);
 void func_800340B4(void);
-extern s32 D_8014A928[];
+extern s32 gSplinePointCount[];
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
 extern s32 D_800BD0FC;
-extern ObjK *D_800BD06C;
+extern ObjK *gCameraTarget;
 extern ObjK *D_800B3960;
 
 void func_80072640(ObjK *arg0) {
@@ -36,8 +36,8 @@ void func_80072640(ObjK *arg0) {
         D_800B3978 = 198;
         arg0->f6C = 0;
         for (i = 4; i < 30; i++) {
-            if (D_8014A928[i] != 0) {
-                func_80081588(i, 0);
+            if (gSplinePointCount[i] != 0) {
+                initSpline(i, 0);
                 if (i >= 5) {
                     arg0->f70 = i;
                     func_800789A8(arg0);
@@ -47,13 +47,13 @@ void func_80072640(ObjK *arg0) {
     }
     if (D_800BD0FC == 3) {
         func_8007591C(-0x1518, -0x1324);
-        if (-3000.0f < D_800BD06C->y) {
+        if (-3000.0f < gCameraTarget->y) {
             goto block;
         }
         arg0->f6C = 0;
     } else {
         func_8007591C(-0x5DC, 0x898);
-        if (1000.0f < D_800BD06C->y) {
+        if (1000.0f < gCameraTarget->y) {
 block:
             if (arg0->f6C == 0) {
                 arg0->f6C = 1;
@@ -64,7 +64,7 @@ block:
             arg0->f6C = 0;
         }
     }
-    if (D_800B3960->f9C == func_80036DB4 && -4900.0f < D_800BD06C->y) {
+    if (D_800B3960->f9C == func_80036DB4 && -4900.0f < gCameraTarget->y) {
         D_800B3960->f9C = func_800340B4;
     }
 }

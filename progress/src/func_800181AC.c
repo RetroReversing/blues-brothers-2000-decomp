@@ -12,18 +12,18 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023874(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
-extern void *D_800BD06C;
+s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
+extern void *gCameraTarget;
 extern M2C_UNK func_8003930C;
 
 s32 func_800181AC(void) {
 
-    if (func_80023874(0x800, 0) == 0) {
-        M2C_FIELD(D_800BD06C, s32 *, 0x10) = 0x4000;
-        M2C_FIELD(D_800BD06C, M2C_UNK **, 0x9C) = &func_8003930C;
-        M2C_FIELD(D_800BD06C, s32 *, 0x64) = 0xC8;
-        func_800433A8(D_800BD06C, 2, 0x100);
+    if (findActor(0x800, 0) == 0) {
+        M2C_FIELD(gCameraTarget, s32 *, 0x10) = 0x4000;
+        M2C_FIELD(gCameraTarget, M2C_UNK **, 0x9C) = &func_8003930C;
+        M2C_FIELD(gCameraTarget, s32 *, 0x64) = 0xC8;
+        actorSetAnim(gCameraTarget, 2, 0x100);
         return 1;
     }
     return 0;

@@ -1,6 +1,6 @@
 f32 func_8002D858();
 s32 func_8003BF98();
-s32 func_8004303C();
+s32 animStepKeys();
 extern f32 D_800092BC;
 extern f32 D_800092C0;
 extern f32 D_800092C4;
@@ -9,7 +9,7 @@ s32 func_800776D0(void *arg0)
   f32 temp_fs0;
   s32 var_v0;
   temp_fs0 = func_8002D858(arg0, arg0 + 0x10);
-  if (func_8004303C(arg0) != 0)
+  if (animStepKeys(arg0) != 0)
   {
     var_v0 = 1;
     if (!(D_800092BC < temp_fs0))

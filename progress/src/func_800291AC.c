@@ -12,14 +12,14 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();
+s32 cameraGetMode();
 s32 func_80028694();
 s32 strlen();
-extern s32 D_800B28C0;
-extern char D_800B2904[];
-extern u8 D_800B2A04;
-extern s32 D_8010788C;
-extern s32 D_80107890;
+extern s32 gFontScale;
+extern char gCharToGlyph[];
+extern u8 gGlyphPadding;
+extern s32 gTextPenX;
+extern s32 gTextPenY;
 extern s32 D_8014AA98;
 
 s32 func_800291AC(u8 *arg0) {
@@ -38,23 +38,23 @@ s32 func_800291AC(u8 *arg0) {
     if (D_8014AA98 == 1) {
         var_s6 = 0xF0;
     }
-    if (func_8000C43C() == 0x17) {
-        D_8010788C += 0x12;
+    if (cameraGetMode() == 0x17) {
+        gTextPenX += 0x12;
     }
-    D_80107890 = 0xF;
+    gTextPenY = 0xF;
     strlen(var_s2);
     var_v1 = *(u8 *)var_s2;
-    temp_s4 = D_8010788C;
+    temp_s4 = gTextPenX;
     if (var_v1 != 0) {
         do {
             if (var_v1 == 0x20) {
-                if (D_8010788C != temp_s4) {
+                if (gTextPenX != temp_s4) {
                     do { var_v0 = var_v1 & 0xFF; } while (0);
                     temp_s1 = var_s2 + 1;
-                    if (var_s6 < (((D_8010788C + func_80028694(temp_s1)) - (*(u8 *)&D_800B2A04)) + 0xD)) {
+                    if (var_s6 < (((gTextPenX + func_80028694(temp_s1)) - (*(u8 *)&gGlyphPadding)) + 0xD)) {
                         var_s2 = temp_s1;
-                        D_8010788C = temp_s4;
-                        D_80107890 += 0xF;
+                        gTextPenX = temp_s4;
+                        gTextPenY += 0xF;
                     } else {
                         goto block_11;
                     }
@@ -64,8 +64,8 @@ s32 func_800291AC(u8 *arg0) {
             } else {
                 do { var_v0 = var_v1 & 0xFF; } while (0);
     block_11:
-            __base_D_800B2A04 = &D_800B2A04;
-                D_8010788C = ((D_8010788C)) + ((2 + ((s32) (0xB - (*(u8 *)((s8 *)((s32) (*(var_v0 + D_800B2904)) + (s32) __base_D_800B2A04) + (-0x20)))) / (s32) D_800B28C0)));
+            __base_D_800B2A04 = &gGlyphPadding;
+                gTextPenX = ((gTextPenX)) + ((2 + ((s32) (0xB - (*(u8 *)((s8 *)((s32) (*(var_v0 + gCharToGlyph)) + (s32) __base_D_800B2A04) + (-0x20)))) / (s32) gFontScale)));
                 if (var_s5 != 0) {
                     var_s5 = 0;
                 }
@@ -75,5 +75,5 @@ block_13:
             var_v1 = *(u8 *)var_s2;
         } while (var_v1 != 0);
     }
-    return D_80107890 + 0xF;
+    return gTextPenY + 0xF;
 }

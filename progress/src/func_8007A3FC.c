@@ -1,7 +1,7 @@
-s32 func_80023874(s32, s32);
+s32 findActor(s32, s32);
 s32 func_80023DBC(s32);
-f32 func_8002D66C(void *, f32, s32);
-void func_8004303C(void *);
+f32 getCameraTargetDist(void *, f32, s32);
+void animStepKeys(void *);
 void func_80052A5C(s32);
 s32 func_80052A68(s32, char *);
 s32 func_80052B24(s32, char *, void *);
@@ -34,7 +34,7 @@ void func_8007A3FC(u8 *arg0) {
         }
     }
     range = D_80009464;
-    dist = func_8002D66C(arg0, range, 0);
+    dist = getCameraTargetDist(arg0, range, 0);
     flag = 0;
     id = func_80023DBC(D_800B83C4[0]);
     if (dist < range) {
@@ -53,7 +53,7 @@ void func_8007A3FC(u8 *arg0) {
         }
         if (D_800BD0E0.arr[D_800BD0E0.idx] >= 10) {
             do { *(s32 *)(D_800B3964[0] + 0x7C) = 2; } while (0);
-        } else if (*(s32 *)(arg0 + 0x88) == 0 && func_80023874(0x800, 0) == 0) {
+        } else if (*(s32 *)(arg0 + 0x88) == 0 && findActor(0x800, 0) == 0) {
             func_80052A5C(0x568);
             if (func_80052B24(id, D_80009458, arg0) != 0) {
                 *(s32 *)(arg0 + 0x88) = 1;
@@ -62,7 +62,7 @@ void func_8007A3FC(u8 *arg0) {
     } else {
         *(s32 *)(arg0 + 0x88) = 0;
     }
-    func_8004303C(arg0);
-    func_8004303C(*(void **)(arg0 + 0xA8));
+    animStepKeys(arg0);
+    animStepKeys(*(void **)(arg0 + 0xA8));
     func_8007A2E8(arg0);
 }

@@ -16,9 +16,9 @@ typedef struct Obj {
 } Obj;
 typedef struct { u8 pad[0x54]; s32 flags[24]; } Rec;
 Obj *func_80013110(Obj *);
-s32 func_80023874(s32, s32);
-s32 func_80024394(s32, s32);
-s32 func_8004303C(Obj *);
+s32 findActor(s32, s32);
+s32 randomRange(s32, s32);
+s32 animStepKeys(Obj *);
 void func_80043328(Obj *, s32, s32);
 s32 func_8006DA0C(Obj *);
 extern u8 *D_800B3964;
@@ -37,7 +37,7 @@ o->f7C = 1;
 o->f38 = 400;
 o->f3C = o->f34;
     }
-    if (func_80023874(0x103, 0) == 0) {
+    if (findActor(0x103, 0) == 0) {
         if (o->fA8 != NULL) {
             o->fA8->f68 = -1;
         }
@@ -64,7 +64,7 @@ o->f3C = o->f34;
     if (o->fA8 != NULL) {
         o->fA8->f68 = -1;
     }
-    if (func_8004303C(o) != 0) {
-        func_80043328(o, func_80024394(0, info[0]) ? info[2] : info[3], 0x100);
+    if (animStepKeys(o) != 0) {
+        func_80043328(o, randomRange(0, info[0]) ? info[2] : info[3], 0x100);
     }
 }

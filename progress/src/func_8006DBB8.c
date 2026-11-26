@@ -13,9 +13,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_800270DC(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_8002713C(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK setTextPos(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002E838(s32);                         /* extern */
-M2C_UNK func_8003CDA0(M2C_UNK);                     /* extern */
+M2C_UNK drawCenteredMessage(M2C_UNK);                     /* extern */
 
 void func_8006DBB8(void *arg0) {
     u32 temp_a0;
@@ -23,12 +23,12 @@ void func_8006DBB8(void *arg0) {
     temp_a0 = M2C_FIELD(arg0, u32 *, 0x70);
     func_8002E838((s32) (temp_a0 + (temp_a0 >> 0x1F)) >> 1);
     func_800270DC(0xFF, 0xFF, 0xFF, 0xFF);
-    func_8002713C(0xA0, 0x28);
-    func_8003CDA0(0x74);
-    func_8002713C(0xA0, 0x37);
-    func_8003CDA0(0x75);
-    func_8002713C(0xA0, 0x5A);
-    func_8003CDA0(0xD);
-    func_8002713C(0xA0, 0x6E);
-    func_8003CDA0(0xE);
+    setTextPos(0xA0, 0x28);
+    drawCenteredMessage(0x74);
+    setTextPos(0xA0, 0x37);
+    drawCenteredMessage(0x75);
+    setTextPos(0xA0, 0x5A);
+    drawCenteredMessage(0xD);
+    setTextPos(0xA0, 0x6E);
+    drawCenteredMessage(0xE);
 }

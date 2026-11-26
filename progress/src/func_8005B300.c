@@ -9,11 +9,11 @@ struct Obj {
 typedef struct Pos { u8 p0[4]; f32 x; f32 z; } Pos;
 extern void func_8002DA80(Obj *);
 extern f32 func_8002DD60(f32);
-extern s32 func_8004303C(Obj *);
+extern s32 animStepKeys(Obj *);
 extern s32 func_80043248(Obj *);
 extern void func_8005B968(Obj *);
 extern s32 func_80076080();
-extern Pos *D_800BD06C;
+extern Pos *gCameraTarget;
 extern f32 D_801700D0;
 extern s32 D_801700D4;
 extern void func_8005B6F8(Obj *);
@@ -24,8 +24,8 @@ void func_8005B300(Obj *arg0) {
     s32 temp_a0;
 
     if (func_80076080() == 0) {
-        temp_fs0 = D_800BD06C->x - arg0->x;
-        if (750.0f < func_8002DD60(D_800BD06C->z - arg0->z)) {
+        temp_fs0 = gCameraTarget->x - arg0->x;
+        if (750.0f < func_8002DD60(gCameraTarget->z - arg0->z)) {
             arg0->fA4->fA8 = 0;
             arg0->fA0(arg0);
             return;
@@ -40,7 +40,7 @@ void func_8005B300(Obj *arg0) {
         if (arg0->f88 != 0) {
             arg0->f84 = func_80043248(arg0);
         } else {
-            arg0->f84 = func_8004303C(arg0);
+            arg0->f84 = animStepKeys(arg0);
         }
         func_8002DA80(arg0);
         temp_v0 = arg0->fD8;

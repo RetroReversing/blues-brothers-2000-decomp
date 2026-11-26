@@ -14,8 +14,8 @@ typedef struct Obj {
 
 typedef struct { s32 x, y, z; } Vec3i;
 
-Obj *func_80023874(s32, Obj *);
-s32 func_8004303C(Obj *);
+Obj *findActor(s32, Obj *);
+s32 animStepKeys(Obj *);
 s32 func_8007DDB8(Obj *, Vec3i *, Vec3i *);
 s32 func_8007E1AC(Obj *);
 extern Obj *D_800B3960;
@@ -36,7 +36,7 @@ s32 func_8007E280(Obj *obj) {
     D_800B5DD4 = 0;
     D_800B4988 = 30;
     obj->ang = D_800B3960->ang;
-    if (func_80023874(0x801, 0) != 0) {
+    if (findActor(0x801, 0) != 0) {
         return 0;
     }
     if (D_800B3964->mode != 4) {
@@ -49,8 +49,8 @@ s32 func_8007E280(Obj *obj) {
     if (func_8007DDB8(obj, &D_800B86D8, &D_800B86C0) == 0) {
         return 0;
     }
-    func_8004303C(obj->link);
-    if (func_8004303C(obj) == 0) {
+    animStepKeys(obj->link);
+    if (animStepKeys(obj) == 0) {
         return 0;
     }
     obj->state++;

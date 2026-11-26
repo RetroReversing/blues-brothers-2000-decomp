@@ -1,6 +1,6 @@
 s32 func_8001B990(s32, s32);
 s32 func_80023DBC(s32);
-f32 func_8002D66C(void *, f32, void *);
+f32 getCameraTargetDist(void *, f32, void *);
 void func_80052A5C(s32);
 s32 func_80052A68(s32, char *);
 void func_80052B24(s32, char *, void *);
@@ -27,7 +27,7 @@ void func_800547B0(Obj800547B0 *arg0) {
         arg0->unkA0(arg0);
         return;
     }
-    dist = func_8002D66C(arg0, 750.0f, arg0->unk10);
+    dist = getCameraTargetDist(arg0, 750.0f, arg0->unk10);
     id = func_80023DBC(0xEA5);
     arg0->unk68 = -1;
     if (dist < 750.0f) {

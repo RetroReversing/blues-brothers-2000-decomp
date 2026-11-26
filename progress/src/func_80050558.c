@@ -8,7 +8,7 @@ typedef struct Obj {
     void *x9C;  /* 0x9C */
 } Obj;
 
-s32 func_8004303C(Obj *);
+s32 animStepKeys(Obj *);
 void func_80043328(Obj *, s32, s32);
 
 void func_80050558(Obj *arg0) {
@@ -18,7 +18,7 @@ void func_80050558(Obj *arg0) {
     prev.x = arg0->pos.x;
     prev.y = arg0->pos.y;
     prev.z = arg0->pos.z;
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     lim = 1000.0f;
     if (lim < arg0->pos.y) {
         arg0->pos.y -= 5.0f;
@@ -26,7 +26,7 @@ void func_80050558(Obj *arg0) {
     if (arg0->pos.y < lim) {
         arg0->pos.y = lim;
         func_80043328(arg0, 0x88, 0x100);
-        arg0->x9C = func_8004303C;
+        arg0->x9C = animStepKeys;
         arg0->x14 += 0x4000;
         arg0->pos.y += 25.0f;
     }

@@ -3,11 +3,11 @@ void func_80013550(void *);
 s32 func_8001B990(s32, s32);
 s32 func_8002492C(f32, f32);
 s32 func_8002D260(s32);
-void func_8002D620(void *);
+void syncActorPrevPos(void *);
 f32 func_8002DD60(f32);
 s32 func_80080DE0(s32);
 s32 func_80081188(s32, f32 *, s32);
-void func_80081588(s32, s32);
+void initSpline(s32, s32);
 void func_80081990(f32 *, s32, f32);
 void func_80081AC0(f32 *, s32, f32);
 void func_800768E8(void *);
@@ -50,9 +50,9 @@ typedef struct Obj {
 
 extern f32 D_80000BE0;
 extern f32 D_80000BE4;
-extern u8 D_800BD06C[];
-#define BD (*(Obj **)D_800BD06C)
-extern s32 D_8014A928[];
+extern u8 gCameraTarget[];
+#define BD (*(Obj **)gCameraTarget)
+extern s32 gSplinePointCount[];
 
 void func_8001A7C8(Obj *arg0) {
     f32 v[3];
@@ -71,7 +71,7 @@ void func_8001A7C8(Obj *arg0) {
         arg0->xAC = D_80000BE0;
         arg0->x104 = arg0->x8;
         if (func_80080DE0(id) == 0) {
-            func_80081588(arg0->x70, done);
+            initSpline(arg0->x70, done);
         }
     }
     if (func_8001B990(0x100, 0x1E) == 0) {
@@ -81,7 +81,7 @@ void func_8001A7C8(Obj *arg0) {
     }
     arg0->x68 = 5;
     arg0->x0 = 0x10E;
-    func_8002D620(arg0);
+    syncActorPrevPos(arg0);
     func_80081990(&arg0->x4, id, arg0->xB4);
     func_80081AC0(v, id, arg0->xB4);
     ang = func_8002492C(v[0], v[2]);
@@ -104,7 +104,7 @@ void func_8001A7C8(Obj *arg0) {
         }
     }
     if (arg0->xBC == 1) {
-        if ((f32)D_8014A928[id] - D_80000BE4 <= arg0->xB4) {
+        if ((f32)gSplinePointCount[id] - D_80000BE4 <= arg0->xB4) {
             do { done++; } while (0);
         }
     } else if (arg0->xB4 < 0.0f) {

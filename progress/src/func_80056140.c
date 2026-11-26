@@ -13,11 +13,11 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_800113D8(s32);                         /* extern */
-s32 func_80023874(s32, s32);                /* extern */
+s32 findActor(s32, s32);                /* extern */
 s32 func_80023DBC(s32);                         /* extern */
 f32 func_8002D858(void *, void *);                  /* extern */
 s32 func_8002E7B8(s32, s32);            /* extern */
-s32 func_8004303C(void *);                      /* extern */
+s32 animStepKeys(void *);                      /* extern */
 s32 func_80052A5C(s32);                     /* extern */
 s32 func_80052B24(s32, s32 *, void *);          /* extern */
 s32 func_80076080();                                /* extern */
@@ -33,7 +33,7 @@ void func_80056140(void *arg0) {
     s32 temp_v1;
 
     if (func_80076080() == 0) {
-        func_8004303C(arg0);
+        animStepKeys(arg0);
         temp_fs0 = func_8002D858(arg0, arg0 + 0x10);
         temp_s0 = func_80023DBC(0xE75);
         temp_v1 = (*(s32 *)((s8 *)arg0 + 0x7C));
@@ -49,7 +49,7 @@ void func_80056140(void *arg0) {
             }
             break;
         case 1:
-            if (func_80023874(0x801, 0) == 0) {
+            if (findActor(0x801, 0) == 0) {
                 if (func_800113D8(1) != 0) {
                     do { do { func_80052B24(temp_s0, &D_80008384, arg0); } while (0); } while (0);
                     (*(s32 *)((s8 *)arg0 + 0x7C)) = 2;
@@ -61,13 +61,13 @@ void func_80056140(void *arg0) {
             }
             break;
         case 2:
-            if (func_80023874(0x801, 0) == 0) {
+            if (findActor(0x801, 0) == 0) {
                 (*(s32 *)((s8 *)arg0 + 0x7C)) = 4;
                 return;
             }
             break;
         case 3:
-            if (func_80023874(0x801, 0) == 0) {
+            if (findActor(0x801, 0) == 0) {
                 (*(s32 **)((s8 *)arg0 + 0x9C)) = &func_8003D558;
                 func_8002E7B8(1, 0);
                 (*(s32 *)((s8 *)arg0 + 0x70)) = 2;

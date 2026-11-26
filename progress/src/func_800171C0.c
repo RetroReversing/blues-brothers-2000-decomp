@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
 void *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_8002D620(void *);                      /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 extern s32 D_800BD170;
 extern M2C_UNK func_80017160;
 extern M2C_UNK func_8002F8D0;
@@ -27,16 +27,16 @@ s32 func_800171C0(void *arg0) {
     M2C_FIELD(temp_v0, s32 *, 0x64) = 0xC8;
     M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_8002F8D0;
     M2C_FIELD(temp_v0, s32 *, 0x60) = (s32) D_800BD170;
-    M2C_FIELD(temp_v0, s32 *, 0x70) = func_80024394(0x1F4, 0x258);
+    M2C_FIELD(temp_v0, s32 *, 0x70) = randomRange(0x1F4, 0x258);
     M2C_FIELD(temp_v0, s32 *, 0x74) = 0;
     M2C_FIELD(temp_v0, s32 *, 0x78) = 0xFFFFFF;
     M2C_FIELD(temp_v0, s32 *, 0x7C) = 1;
-    M2C_FIELD(temp_v0, s32 *, 0x58) = func_800221C0(0, 1, 1, 3, 0, 0, 1, 0);
+    M2C_FIELD(temp_v0, s32 *, 0x58) = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0);
     M2C_FIELD(temp_v0, s32 *, 0x68) = 0xE;
     M2C_FIELD(temp_v0, s32 *, 0x5C) = 0xFF;
     M2C_FIELD(temp_v0, s32 *, 0x64) = 0xC8;
     M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80017160;
-    func_8002D620(temp_v0);
+    syncActorPrevPos(temp_v0);
     M2C_FIELD(temp_v0, s32 *, 0x80) = 0;
     return (s32) temp_v0;
 }

@@ -1,5 +1,5 @@
 void func_8002444C(void);
-void func_8002D620(void *);
+void syncActorPrevPos(void *);
 s32 func_80043248(void *);
 void func_80043328(void *, s32, s32);
 s32 func_8007756C(void *);
@@ -39,7 +39,7 @@ void func_800779F8(ObjI *arg0) {
         arg0->fBC = 0;
         arg0->f64 = 0x12C;
         arg0->f90 = 0;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
     }
     if (arg0->fD8 != NULL) {
         r = arg0->fD8(arg0);

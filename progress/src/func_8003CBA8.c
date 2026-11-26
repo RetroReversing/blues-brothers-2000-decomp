@@ -3,12 +3,12 @@ typedef void (*Fn)(G *);
 struct G {
     s32 f0; u8 p0[4]; f32 f8; u8 p1[0x54]; s32 f60; u8 p2[0x2C]; s32 f90; u8 p3[8]; Fn f9C;
 };
-extern void func_800433A8(G *, s32, s32);
+extern void actorSetAnim(G *, s32, s32);
 extern void func_8003BC40(G *);
 extern void func_8002A360(s32, s32);
 extern void func_8002D124();
 extern G *func_80015738(G *);
-extern G *D_800BD06C;
+extern G *gCameraTarget;
 extern s32 D_800BD170[];
 
 void func_8003CBA8(void) {
@@ -18,9 +18,9 @@ void func_8003CBA8(void) {
     G *temp_s0;
     G *temp_v0;
 
-    temp_s0 = D_800BD06C;
+    temp_s0 = gCameraTarget;
     if (temp_s0->f90 == 1) {
-        func_800433A8(temp_s0, 0x18, 0x100);
+        actorSetAnim(temp_s0, 0x18, 0x100);
         temp_s0->f9C = func_8003BC40;
         temp_s0->f0 = 0x101;
         func_8002A360(0xC, 0x80);

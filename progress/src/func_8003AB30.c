@@ -15,16 +15,16 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 void func_8002AD4C(void);                     /* extern */
 M2C_UNK func_8002D124();                            /* extern */
-M2C_UNK func_800433A8(M2C_UNK, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(M2C_UNK, M2C_UNK, M2C_UNK);    /* extern */
 extern M2C_UNK D_80107040;
-extern M2C_UNK D_801070A0;
+extern M2C_UNK gPadPressed;
 extern s32 D_8014023C;
 
 s32 func_8003AB30(void *arg0) {
 
-    if (((u32 *) &D_801070A0)[M2C_FIELD(arg0, s32 *, 0xBC)] & 0x4000) {
+    if (((u32 *) &gPadPressed)[M2C_FIELD(arg0, s32 *, 0xBC)] & 0x4000) {
         if (((u32 *) &D_80107040)[M2C_FIELD(arg0, s32 *, 0xBC)] & 0x2000) {
-            func_800433A8(arg0, 0x1E, 0x100);
+            actorSetAnim(arg0, 0x1E, 0x100);
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x82);
             func_8002D124();
@@ -33,9 +33,9 @@ s32 func_8003AB30(void *arg0) {
         D_8014023C = 0;
         func_8002AD4C();
         if (M2C_FIELD(arg0, s32 *, 0x78) != 0) {
-            func_800433A8(arg0, 0xD, 0x100);
+            actorSetAnim(arg0, 0xD, 0x100);
         } else {
-            func_800433A8(arg0, 0x13, 0x100);
+            actorSetAnim(arg0, 0x13, 0x100);
         }
         M2C_FIELD(arg0, s32 *, 0x88) = 0;
         M2C_FIELD(arg0, s32 *, 0x74) = 0;

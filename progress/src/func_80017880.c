@@ -36,19 +36,19 @@ typedef struct {
 
 s16 sins(u16);
 s16 coss(u16);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 s32 func_80023E3C(s32);
-s32 func_8002D5CC(Obj *);
+s32 tickActorTimer(Obj *);
 f32 func_8002DD60(f32);
 Obj *func_80015258(Obj *);
 void func_80014C34(Obj *);
 void func_80017710(Obj *);
 void func_8002AD9C(void);
 void func_8000C5B4(void);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern Stats D_800BD0E0;
-extern s32 D_800B9EA4;
-extern s32 D_800B9ECC;
+extern s32 gTextWaveTime;
+extern s32 gCamSpeedScale;
 
 void func_80017880(Obj *arg0) {
     f32 dx;
@@ -57,24 +57,24 @@ void func_80017880(Obj *arg0) {
 
     arg0->unkF8 |= 1;
     if (arg0->unk7C == 0) {
-        arg0->unk58 = func_800221C0(1, 1, 0, 3, 0, 0, 1, 0);
+        arg0->unk58 = packDrawFlags(1, 1, 0, 3, 0, 0, 1, 0);
         arg0->unkB8 = 0x95;
         arg0->unkE4 = func_80023E3C(0x95);
         arg0->unk94 /= 4;
         arg0->unk7C = 1;
         arg0->type = 0x101;
     }
-    if (func_8002D5CC(arg0) == 0) {
+    if (tickActorTimer(arg0) == 0) {
         return;
     }
     arg0->unk64 = 0;
-    dx = arg0->x - D_800BD06C->x;
-    dz = arg0->z - D_800BD06C->z;
-    dy = arg0->y - D_800BD06C->y;
+    dx = arg0->x - gCameraTarget->x;
+    dz = arg0->z - gCameraTarget->z;
+    dy = arg0->y - gCameraTarget->y;
     if (func_8002DD60(dx) < 180.0f && func_8002DD60(dy) < 360.0f && func_8002DD60(dz) < 180.0f) {
         D_800BD0E0.count[D_800BD0E0.index]++;
         if (D_800BD0E0.count[D_800BD0E0.index] % 100 == 0) {
-            func_80015258(D_800BD06C)->handler = func_80014C34;
+            func_80015258(gCameraTarget)->handler = func_80014C34;
         }
         arg0->unkF0 = 0xFF;
         arg0->handler = func_80017710;
@@ -82,8 +82,8 @@ void func_80017880(Obj *arg0) {
         func_8000C5B4();
         return;
     }
-    arg0->angle += D_800B9ECC << 9;
-    arg0->unk38 = (coss((D_800B9EA4 * 2000) & 0xFFF0) >> 11) + 0x100;
-    arg0->unk3C = (sins((D_800B9EA4 * 2000) & 0xFFF0) >> 11) + 0x100;
-    arg0->unk34 = (sins((D_800B9EA4 * 2000) & 0xFFF0) >> 11) + 0x100;
+    arg0->angle += gCamSpeedScale << 9;
+    arg0->unk38 = (coss((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
+    arg0->unk3C = (sins((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
+    arg0->unk34 = (sins((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
 }

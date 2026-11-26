@@ -3,7 +3,7 @@ typedef struct Obj { char pad0[0x18]; s32 f18; char pad1[0x5C-0x1C]; s32 f5C; ch
  s32 fAC; f32 fB0; s32 fB4; } Obj;
 void func_8002D9B0(Obj *);
 void func_8002D9F8(Obj *);
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 void func_80017B14(Obj *o) {
     s32 a; s32 lo; s32 lo2;
     o->fAC = 0;
@@ -11,9 +11,9 @@ void func_80017B14(Obj *o) {
     o->fB0 = -1000.0f;
     func_8002D9F8(o);
     func_8002D9B0(o);
-    lo = D_800B9ECC * o->f88;
-    a = o->f5C - (D_800B9ECC * 3);
-    lo2 = o->f84 * D_800B9ECC;
+    lo = gCamSpeedScale * o->f88;
+    a = o->f5C - (gCamSpeedScale * 3);
+    lo2 = o->f84 * gCamSpeedScale;
     o->f5C = a;
     o->f18 += lo;
     o->f70 += lo2;

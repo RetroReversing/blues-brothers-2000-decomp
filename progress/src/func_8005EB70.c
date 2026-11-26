@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800433A8();
+s32 actorSetAnim();
 
 void func_8005EB70(void *arg0) {
     if ((M2C_FIELD(arg0, s32 *, 0x84) == 0) && (arg0 != NULL)) {
-        func_800433A8(arg0, 0xE3, 0x100);
+        actorSetAnim(arg0, 0xE3, 0x100);
         M2C_FIELD(arg0, s32 *, 0x90) = 3;
         M2C_FIELD(arg0, s32 *, 0x8C) = 0;
         M2C_FIELD(arg0, s32 *, 0x84) = 1;

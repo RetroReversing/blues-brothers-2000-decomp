@@ -14,19 +14,19 @@ typedef s32 M2C_UNK32;
 
 M2C_UNK func_800134F0(void *);                      /* extern */
 M2C_UNK func_80013550(void *);                      /* extern */
-f32 func_8002D340(f32, f32, f32);                   /* extern */
+f32 approachF32(f32, f32, f32);                   /* extern */
 extern f32 D_800007D0;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_80013594(void *arg0) {
     f32 var_fa0;
 
     if (M2C_FIELD(arg0, const s32 *, 0x90) != 0) {
         var_fa0 = M2C_FIELD(arg0, const f32 *, 0x44);
-        do { M2C_FIELD(arg0, f32 *, 8) = func_8002D340(var_fa0, M2C_FIELD(arg0, const f32 *, 8), (f32) (D_800B9ECC * 0xA)); } while (0);
+        do { M2C_FIELD(arg0, f32 *, 8) = approachF32(var_fa0, M2C_FIELD(arg0, const f32 *, 8), (f32) (gCamSpeedScale * 0xA)); } while (0);
     } else {
         var_fa0 = 100.0f;
-        do { M2C_FIELD(arg0, f32 *, 8) = func_8002D340(var_fa0, M2C_FIELD(arg0, const f32 *, 8), (f32) (D_800B9ECC * 0xA)); } while (0);
+        do { M2C_FIELD(arg0, f32 *, 8) = approachF32(var_fa0, M2C_FIELD(arg0, const f32 *, 8), (f32) (gCamSpeedScale * 0xA)); } while (0);
     }
     func_800134F0(arg0);
     func_80013550(arg0);

@@ -13,11 +13,11 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
-s32 func_8004303C();                                /* extern */
+s32 animStepKeys();                                /* extern */
 extern void *D_800B7FE0;
 
 void func_80062D64(void) {
-    if (func_8004303C() != 0) {
+    if (animStepKeys() != 0) {
         func_8002A360(0x1D, 0);
         M2C_FIELD(D_800B7FE0, s32 *, 0x3F4) = 1;
     }

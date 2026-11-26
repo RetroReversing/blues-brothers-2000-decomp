@@ -1,12 +1,12 @@
 s32 func_80024AC4(s32, s32);
-s32 func_8002D204(s32, s32, s32);
-s32 func_8002D298(s32, s32, s32);
+s32 approachAngle(s32, s32, s32);
+s32 approachS32(s32, s32, s32);
 void func_8002D3E4(void *, s32);
-void func_8002D620(void *);
+void syncActorPrevPos(void *);
 void func_8002D858(void *, s32 *);
 void func_8002DA80(void *);
 s32 func_8003BF98();
-s32 func_8004303C(void *);
+s32 animStepKeys(void *);
 void func_80043328(void *, s32, s32);
 void func_80058F74(void *, void *);
 void func_800548C0();
@@ -30,10 +30,10 @@ typedef struct Obj {
     /* 0x88 */ u8 pad88[0x54];
     /* 0xDC */ f32 fDC;
 } Obj;
-extern s32 D_800B9ECC;
-extern Obj *D_800BD06C;
-#define FRAMES D_800B9ECC
-#define PLAYER D_800BD06C
+extern s32 gCamSpeedScale;
+extern Obj *gCameraTarget;
+#define FRAMES gCamSpeedScale
+#define PLAYER gCameraTarget
 
 void func_80054BF0(Obj *arg0) {
     s32 ang;
@@ -55,9 +55,9 @@ void func_80054BF0(Obj *arg0) {
         return;
     }
     func_8002D858(arg0, &ang);
-    arg0->ang = func_8002D204(ang, arg0->ang, FRAMES << 9);
-    arg0->f5C = func_8002D298(0x80, arg0->f5C, FRAMES * 2);
-    r = func_8004303C(arg0);
+    arg0->ang = approachAngle(ang, arg0->ang, FRAMES << 9);
+    arg0->f5C = approachS32(0x80, arg0->f5C, FRAMES * 2);
+    r = animStepKeys(arg0);
     d = arg0->fDC;
     if (9.0f <= d && d <= 20.0f) {
         arg0->f80 = 4000;
@@ -65,7 +65,7 @@ void func_80054BF0(Obj *arg0) {
         arg0->f80 -= func_80024AC4(arg0->f80, 2);
     }
     func_8002D3E4(arg0, arg0->f80);
-    func_8002D620(arg0);
+    syncActorPrevPos(arg0);
     func_8002DA80(arg0);
     dx = arg0->x - arg0->x0;
     dy = arg0->y - PLAYER->y;

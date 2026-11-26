@@ -1,10 +1,10 @@
 typedef struct Obj Obj;
-s32 func_8000C43C(void);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 cameraGetMode(void);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 Obj *func_800232B4(s32, s32, s32, s32);
 s32 func_80023DBC(s32);
-s32 func_800253A0(s32);
-void func_8002D620(Obj *);
+s32 heapAlloc(s32);
+void syncActorPrevPos(Obj *);
 Obj *func_80042F00(s32, s32, s32, s32);
 void func_80043328(Obj *, s32, s32);
 void func_80047864(s32, s32, s32, s32, s32);
@@ -61,7 +61,7 @@ Obj *func_80065D68(Obj *arg0) {
     s32 h;
     s32 i;
 
-    if (D_800BCFB8[func_8000C43C()] != 0) {
+    if (D_800BCFB8[cameraGetMode()] != 0) {
         return func_80076BF0(arg0);
     }
     func_80050460(func_80065C20, D_8014AA5C);
@@ -74,16 +74,16 @@ Obj *func_80065D68(Obj *arg0) {
         o->y = arg0->y;
         o->z = arg0->z;
     }
-    func_8002D620(o);
+    syncActorPrevPos(o);
     o->fD8 = func_80066628;
     o->f78 = 4;
     o->f7C = 0;
     o->f80 = 0x19;
-    o->f8C = func_800253A0(0x100);
+    o->f8C = heapAlloc(0x100);
     o->f98 = func_8006776C;
     o->fA0 = func_80065D2C;
     o->fBC = func_80023DBC(0xEAB);
-    o->f58 = func_800221C0(1, 1, 2, 3, 1, 0, 1, 0);
+    o->f58 = packDrawFlags(1, 1, 2, 3, 1, 0, 1, 0);
     h = func_80047898();
     o->fE8 = h;
     func_80047864(h, 0, 0, -0x78, 0);

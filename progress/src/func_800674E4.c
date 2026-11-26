@@ -23,16 +23,16 @@ struct Obj {
 s16 sins(u16);
 s32 func_8002492C(f32, f32);
 void func_80043328(Obj *, s32, s32);
-void func_800433A8(Obj *, s32, s32);
+void actorSetAnim(Obj *, s32, s32);
 void func_80052A30(void);
 s32 func_80052B24(s32, char *, Obj *);
 void func_800664A8(Obj *);
-Obj *func_80023874(s32, s32);
+Obj *findActor(s32, s32);
 void func_8002A360(s32, s32);
 void func_8000F670(Obj *);
 void func_800462A0(Obj *);
 extern s32 D_80140228;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 
 s32 func_800674E4(Obj *arg0) {
     if (arg0->unk7C == 0) {
@@ -42,11 +42,11 @@ s32 func_800674E4(Obj *arg0) {
         arg0->unk70 = 0;
         D_80140228 = 0;
         func_80052A30();
-        D_800BD06C->x = arg0->x + (f32)((sins(arg0->angle) * 75) >> 13);
-        D_800BD06C->z = arg0->z + (f32)((sins(arg0->angle) * 75) >> 13);
-        D_800BD06C->angle = func_8002492C(D_800BD06C->x - arg0->x, D_800BD06C->z - arg0->z) + 0x8000;
-        D_800BD06C->y = arg0->y;
-        func_800433A8(D_800BD06C, 1, 0x100);
+        gCameraTarget->x = arg0->x + (f32)((sins(arg0->angle) * 75) >> 13);
+        gCameraTarget->z = arg0->z + (f32)((sins(arg0->angle) * 75) >> 13);
+        gCameraTarget->angle = func_8002492C(gCameraTarget->x - arg0->x, gCameraTarget->z - arg0->z) + 0x8000;
+        gCameraTarget->y = arg0->y;
+        actorSetAnim(gCameraTarget, 1, 0x100);
         func_800664A8(arg0);
         return 0;
     }
@@ -59,7 +59,7 @@ s32 func_800674E4(Obj *arg0) {
         }
     } else {
         if (arg0->unk7C == 2) {
-            if (func_80023874(0x800, 0) == NULL) {
+            if (findActor(0x800, 0) == NULL) {
                 func_8002A360(0xC, 0x80);
                 func_8002A360(8, 0x5B);
                 func_80043328(arg0, 0xF7, 0x100);

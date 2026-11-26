@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_80007BE4[];
 extern s32 D_800B7690;
 extern char D_801407C8[];
@@ -22,7 +22,7 @@ void func_80048534(s32 arg0) {
     void *temp_v1;
 
     if (D_800B7690 >= 0x100) {
-        func_800899DC(D_80007BE4);
+        debugPrintf(D_80007BE4);
     }
     temp_v1 = (D_800B7690 * 8) + D_801407C8;
     ((__repair_record_temp_v1*)temp_v1)->field_4 = 1;

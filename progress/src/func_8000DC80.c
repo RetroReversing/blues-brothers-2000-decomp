@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D620(void *arg0);                      /* extern */
+s32 syncActorPrevPos(void *arg0);                      /* extern */
 s32 func_8003CA98();                            /* extern */
 extern f32 D_800004C8;
 
@@ -24,7 +24,7 @@ void func_8000DC80(void *arg0) {
     M2C_FIELD(arg0, f32 *, 0x50) = (f32) D_800004C8;
     loop_goto_1:
     {
- func_8002D620(arg0);
+ syncActorPrevPos(arg0);
     }
     if (0)
     {

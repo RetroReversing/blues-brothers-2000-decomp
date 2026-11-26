@@ -12,17 +12,17 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D204();
+s32 approachAngle();
 f32 func_8002D858();
-s32 func_8004303C();
+s32 animStepKeys();
 s32 func_80043248();
 s32 func_80043328();
 s32 func_800660CC();
 s32 func_80066628();
 s32 func_8006788C();
-extern s32 D_800B9EA0;
-extern s32 D_800B9ECC;
-extern s32 *D_800BD06C;
+extern s32 gFrameScale;
+extern s32 gCamSpeedScale;
+extern s32 *gCameraTarget;
 extern s32 D_800BD0F4;
 
 typedef struct { unsigned char pad_0[16]; int field_10; unsigned char pad_14[92]; int field_70; int field_74; int field_78; int field_7C; unsigned char pad_80[8]; int field_88; unsigned char pad_8C[4]; int field_90; } __repair_record_arg0;
@@ -37,10 +37,10 @@ void func_80065F84(void *arg0) {
         ((__repair_record_arg0*)arg0)->field_70 = func_80043248(arg0);
         ((__repair_record_arg0*)arg0)->field_10 = temp_s1;
     } else {
-        ((__repair_record_arg0*)arg0)->field_70 = func_8004303C(arg0);
-        ((__repair_record_arg0*)arg0)->field_10 = func_8002D204(((__repair_record_arg0*)arg0)->field_10, temp_s1, D_800B9ECC << 9);
+        ((__repair_record_arg0*)arg0)->field_70 = animStepKeys(arg0);
+        ((__repair_record_arg0*)arg0)->field_10 = approachAngle(((__repair_record_arg0*)arg0)->field_10, temp_s1, gCamSpeedScale << 9);
     }
-    temp_v1 = ((__repair_record_arg0*)arg0)->field_88 - D_800B9EA0;
+    temp_v1 = ((__repair_record_arg0*)arg0)->field_88 - gFrameScale;
     ((__repair_record_arg0*)arg0)->field_88 = temp_v1;
     if ((temp_v1 <= 0) && (((__repair_record_arg0*)arg0)->field_78 != 0)) {
         if (D_800BD0F4 <= 0) {
@@ -49,7 +49,7 @@ void func_80065F84(void *arg0) {
                 M2C_FIELD(arg0, s32 (**)(void *), 0xD8) = func_80066628;
                 ((__repair_record_arg0*)arg0)->field_7C = 0;
                 ((__repair_record_arg0*)arg0)->field_74 = 0;
-                *D_800BD06C = 3;
+                *gCameraTarget = 3;
                 func_8006788C(arg0, 1);
             }
         } else {

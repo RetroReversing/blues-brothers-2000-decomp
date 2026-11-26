@@ -19,12 +19,12 @@ typedef struct {
 } HRow;
 void func_800134F0(Obj *);
 void func_80013550(Obj *);
-f32 func_8002D340(f32, f32, f32);
-void func_8002D620(Obj *);
+f32 approachF32(f32, f32, f32);
+void syncActorPrevPos(Obj *);
 Obj *func_8003B980(Obj *);
 f32 sqrtf(f32);
-extern s32 D_800B9ECC;
-extern Obj *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern Obj *gCameraTarget;
 extern HRow D_800F4A00[];
 
 void func_80016CF4(Obj *arg0) {
@@ -38,12 +38,12 @@ void func_80016CF4(Obj *arg0) {
         arg0->state = 1;
         D_800F4A00[arg0->kind].h = -15;
         arg0->f0 = 0x10E;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         arg0->goalY = arg0->baseY + 2400.0f;
     }
     D_800F4A00[arg0->kind].h = -15;
     vy = -arg0->y;
-    arg0->y = func_8002D340(arg0->goalY, arg0->y, D_800B9ECC * 10.0);
+    arg0->y = approachF32(arg0->goalY, arg0->y, gCamSpeedScale * 10.0);
     vy += arg0->y;
     if (arg0->y <= arg0->baseY - 2400.0f) {
         arg0->y = arg0->baseY - 2400.0f;
@@ -55,12 +55,12 @@ void func_80016CF4(Obj *arg0) {
     }
     func_800134F0(arg0);
     func_80013550(arg0);
-    dx = arg0->x - D_800BD06C->x;
-    dz = arg0->z - D_800BD06C->z;
-    dy = arg0->y - D_800BD06C->y;
+    dx = arg0->x - gCameraTarget->x;
+    dz = arg0->z - gCameraTarget->z;
+    dy = arg0->y - gCameraTarget->y;
     d = sqrtf(dx * dx + dz * dz);
     if (d < 200.0f && vy < 0.0f && dy < 300.0f && 50.0f < dy) {
-        func_8003B980(D_800BD06C);
+        func_8003B980(gCameraTarget);
         arg0->goalY = arg0->baseY + 2400.0f;
     }
 }

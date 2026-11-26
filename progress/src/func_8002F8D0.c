@@ -30,17 +30,17 @@ extern char D_80001230[];
 
 s32 func_8001EF80(void *arg0, s32 arg1);
 void func_8001F230(void *arg0);
-s32 *func_80023E18(s32 arg0);
+s32 *getImageAsset(s32 arg0);
 void func_8002C3B8(s32 *);
 void func_80024FE8(void *arg0);
 void func_80024B58(void *arg0, void *arg1, s32 arg2);
 void func_80024A3C(void *arg0, void *arg1, s32 arg2);
 void func_80024BE0(void *arg0, void *arg1, s32 arg2);
-s32 func_80022728(void *obj, void *rot, s32 mul);
+s32 buildObjectMatrix(void *obj, void *rot, s32 mul);
 s32 func_8001EAD0(void);
-void func_80029F8C(s32 mode);
+void setRenderState(s32 mode);
 s32 func_8001EB18(s32 arg0);
-void func_800899DC(void *, ...);
+void debugPrintf(void *, ...);
 
 s32 func_8002F8D0(Unk8002F8D0 *arg0) {
     s32 size;
@@ -72,7 +72,7 @@ s32 func_8002F8D0(Unk8002F8D0 *arg0) {
         return 0;
     }
     func_8001F230(arg0);
-    dims = func_80023E18(arg0->unk60);
+    dims = getImageAsset(arg0->unk60);
     w = dims[0] << 6;
     h = dims[1] << 6;
     func_8002C3B8(dims);
@@ -81,15 +81,15 @@ s32 func_8002F8D0(Unk8002F8D0 *arg0) {
         func_80024B58(m2, m1, arg0->unk10);
         func_80024A3C(m1, m2, arg0->unk14);
         func_80024BE0(m2, m1, arg0->unk18);
-        func_80022728(arg0, m2, 1);
+        buildObjectMatrix(arg0, m2, 1);
     } else {
         func_80024FE8(m1);
         func_80024BE0(m2, m1, arg0->unk18);
-        func_80022728(arg0, m2, 0);
+        buildObjectMatrix(arg0, m2, 0);
     }
     idx = func_8001EAD0();
     if (idx == -1) {
-        func_800899DC(D_80001230);
+        debugPrintf(D_80001230);
         return 1;
     }
     w >>= 6;
@@ -140,7 +140,7 @@ s32 func_8002F8D0(Unk8002F8D0 *arg0) {
         gp->w0 = 0xE7000000;
         gp->w1 = 0;
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
     func_8001EB18(4);
     return 1;
 }

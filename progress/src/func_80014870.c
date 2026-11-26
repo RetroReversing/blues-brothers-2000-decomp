@@ -15,12 +15,12 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_80023C10(s32);                         /* extern */
 M2C_UNK func_80023C58(s32);                         /* extern */
-s32 func_80023E18(s32);                             /* extern */
+s32 getImageAsset(s32);                             /* extern */
 s32 func_80023E3C(M2C_UNK);                         /* extern */
 M2C_UNK func_80025280(s32);                         /* extern */
 M2C_UNK func_8003EA18(s32);                         /* extern */
 s32 func_80041418(s32);                             /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 extern s32 D_800AE010;
 extern M2C_UNK D_800FB038;
 extern M2C_UNK func_800393F4;
@@ -48,11 +48,11 @@ void func_80014870(void *arg0) {
     func_80023C58(0x10C);
     func_80023A74(1, 0x696);
     func_80023C58(D_800AE010);
-    func_80023E18(M2C_FIELD(__base_D_800FB038, s32 *, 4));
-    temp_s0 = func_80023E18(M2C_FIELD(__base_D_800FB038, s32 *, 4));
+    getImageAsset(M2C_FIELD(__base_D_800FB038, s32 *, 4));
+    temp_s0 = getImageAsset(M2C_FIELD(__base_D_800FB038, s32 *, 4));
     M2C_FIELD(arg0, s32 *, 0xE4) = func_80023E3C(1);
     M2C_FIELD(arg0, s32 *, 0xE0) = func_80041418(temp_s0);
-    func_800433A8(arg0, 1, 0x100);
+    actorSetAnim(arg0, 1, 0x100);
     M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800393F4;
     M2C_FIELD(arg0, s32 *, 0x68) = 3;
 }

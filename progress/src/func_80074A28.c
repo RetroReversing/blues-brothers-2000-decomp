@@ -23,7 +23,7 @@ typedef struct Obj {
     u8 padD4[0x1C];
     s32 fF0;
 } Obj;
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 s32 func_80023D58(s32);
 void func_8002ADC8(s32);
 void func_8004FC60(Obj *, s32);
@@ -31,7 +31,7 @@ void func_800741F8(void);
 void func_8007491C(Obj *);
 f32 sqrtf(f32);
 extern s32 D_800B83AC;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 
 void func_80074A28(Obj *o) {
     f32 dx;
@@ -40,7 +40,7 @@ void func_80074A28(Obj *o) {
 
     if (o->f7C == 0) {
         o->f7C = 1;
-        o->f58 = func_800221C0(0, 1, 1, 3, 0, 0, 1, 0);
+        o->f58 = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0);
         o->f5C = 0xE0;
         o->f98 = func_800741F8;
         o->f60 = func_80023D58(0x1FB);
@@ -49,13 +49,13 @@ void func_80074A28(Obj *o) {
         o->f3C = 0x180;
         func_8004FC60(o, o->f70);
     }
-    dx = o->x - D_800BD06C->x;
+    dx = o->x - gCameraTarget->x;
     dx *= dx;
-    dz = o->z - D_800BD06C->z;
+    dz = o->z - gCameraTarget->z;
     dz *= dz;
     d = sqrtf(dx + dz);
     if (D_800B83AC == 0) {
-        if (d < 500.0f && D_800BD06C->f90 != 0 && D_800BD06C->fF0 == 0 && o->fD0 != 0x16) {
+        if (d < 500.0f && gCameraTarget->f90 != 0 && gCameraTarget->fF0 == 0 && o->fD0 != 0x16) {
             o->f9C = func_8007491C;
             func_8002ADC8(1);
             o->f9C(o);

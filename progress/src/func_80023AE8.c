@@ -11,8 +11,8 @@ typedef s32 M2C_UNK32;
 #define M2C_CARRY 0
 #define M2C_OVERFLOW(a) (0)
 #endif
-s32 func_80023E18(s32); extern s32 D_800AC3D0[][4];
+s32 getImageAsset(s32); extern s32 D_800AC3D0[][4];
 s32 func_80023AE8(s32 arg0) {
  s32 p; s32 ret;
-p = D_800AC3D0[arg0][0]; if (p == 0 || func_80023E18(p) == 0) return 0; return 1;
+p = D_800AC3D0[arg0][0]; if (p == 0 || getImageAsset(p) == 0) return 0; return 1;
 }

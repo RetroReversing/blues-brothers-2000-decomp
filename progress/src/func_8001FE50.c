@@ -1,10 +1,10 @@
 s32 func_8001F230();
-s32 func_80022728(void *, s32 *, s32);
+s32 buildObjectMatrix(void *, s32 *, s32);
 s32 func_80024A3C(s32 *, s32 *, s32);
 s32 func_80024B58(s32 *, s32 *, s32);
 s32 func_80024BE0(s32 *, s32 *, s32);
 s32 func_80024FE8(s32 *);
-s32 func_80029F8C(s32, s32 *);
+s32 setRenderState(s32, s32 *);
 s32 func_800479B0(s32);
 typedef struct { s32 w0; s32 w1; } CursorRec8;
 extern CursorRec8 *D_80177E18;
@@ -41,7 +41,7 @@ s32 func_8001FE50(void *arg0)
   while (0);
   do
   {
-    func_80022728(arg0, sp48, 0);
+    buildObjectMatrix(arg0, sp48, 0);
   }
   while (0);
   if (((((Field_s32 *) (((char *) arg0) + 0x58))->v)) & 1)
@@ -61,7 +61,7 @@ s32 func_8001FE50(void *arg0)
   temp_a1 = D_80177E18++;
   (temp_a1->w0) = 0xDE000000;
   (temp_a1->w1) = (s32) ((((Field_s32 *) (((char *) arg0) + 0xE4))->v));
-  func_80029F8C(-1, temp_a1);
+  setRenderState(-1, temp_a1);
   return 1;
 }
 

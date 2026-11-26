@@ -15,7 +15,7 @@ typedef struct {
     s32 f20;
     s32 f24;
 } State;
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 s32 func_800252D8(void);
 s32 func_80025644(void);
 void func_8008A074(void *, s32);
@@ -26,10 +26,10 @@ extern Rec16 D_800BD288[];
 extern s32 D_80178270;
 
 s32 func_8000C4A0(void) {
-    D_800BD288[func_8000C43C()].a = D_80178270;
-    D_800BD288[func_8000C43C()].b = func_800252D8();
-    D_800BD288[func_8000C43C()].c = func_80025644();
-    D_800BD288[func_8000C43C()].d++;
+    D_800BD288[cameraGetMode()].a = D_80178270;
+    D_800BD288[cameraGetMode()].b = func_800252D8();
+    D_800BD288[cameraGetMode()].c = func_80025644();
+    D_800BD288[cameraGetMode()].d++;
     func_8008A074(D_800BD288, 0x400);
     D_800BD0E0.f24 = D_800BD0E0.f1C;
     D_800BD0E0.f1C++;

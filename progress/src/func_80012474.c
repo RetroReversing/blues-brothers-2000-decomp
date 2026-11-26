@@ -24,16 +24,16 @@ typedef struct ObjU {
 } ObjU;
 
 ObjU *func_800232B4(s32, s32, s32, s32);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void func_8002CE84(s32, s32);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 s32 func_8002D1A0(void);
 s16 func_80095F60(u16);
 s16 func_800944B0(u16);
 void func_8002F8D0(void);
 void func_80012418(void);
 extern s32 D_800BCFB4;
-extern ObjU *D_800BD06C;
+extern ObjU *gCameraTarget;
 
 ObjU *func_80012474(s32 arg0, s32 arg1, s32 arg2) {
     ObjU *o;
@@ -47,17 +47,17 @@ ObjU *func_80012474(s32 arg0, s32 arg1, s32 arg2) {
     o->f74 = 0;
     o->f7C = 1;
     o->f60 = D_800BCFB4;
-    o->f58 = func_800221C0(0, 1, 1, 3, 0, 0, 1, 0);
+    o->f58 = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0);
     o->f68 = 13;
     o->f5C = 0xFF;
     func_8002CE84(3, 0);
     func_8002CE84(2, 5);
     func_8002CE84(4, 0);
     o->f64 = 50;
-    o->f70 = func_80024394(40, 80);
+    o->f70 = randomRange(40, 80);
     o->f18 = func_8002D1A0();
-    o->x = D_800BD06C->x + (f32)((func_80095F60(D_800BD06C->yaw) * 45) >> 13);
-    o->y = D_800BD06C->y + 160.0f;
-    o->z = D_800BD06C->z + (f32)((func_800944B0(D_800BD06C->yaw) * 45) >> 13);
+    o->x = gCameraTarget->x + (f32)((func_80095F60(gCameraTarget->yaw) * 45) >> 13);
+    o->y = gCameraTarget->y + 160.0f;
+    o->z = gCameraTarget->z + (f32)((func_800944B0(gCameraTarget->yaw) * 45) >> 13);
     return o;
 }

@@ -13,8 +13,8 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80012718(void *);                      /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_8004303C();                            /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
+M2C_UNK animStepKeys();                            /* extern */
 extern M2C_UNK func_80061EB8;
 extern M2C_UNK func_800620C0;
 
@@ -24,7 +24,7 @@ void func_80061FA8(void *arg0) {
     s32 temp_v1;
     s32 var_v0;
 
-    func_8004303C();
+    animStepKeys();
     temp_v1 = M2C_FIELD(arg0, s32 *, 0xC0);
     M2C_FIELD(arg0, s32 *, 0x10) = (s32) (M2C_FIELD(arg0, s32 *, 0x10) + M2C_FIELD(arg0, s32 *, 0x7C));
     if (temp_v1 & ~1) {
@@ -50,7 +50,7 @@ void func_80061FA8(void *arg0) {
     }
 block_6:
     if (M2C_FIELD(arg0, s32 *, 0x34) < 0x100) {
-        temp_v0_2 = func_80024394(0, 2);
+        temp_v0_2 = randomRange(0, 2);
         M2C_FIELD(arg0, s32 *, 0x34) = (s32) (M2C_FIELD(arg0, s32 *, 0x34) + temp_v0_2);
         M2C_FIELD(arg0, s32 *, 0x38) = (s32) (M2C_FIELD(arg0, s32 *, 0x38) + temp_v0_2);
         M2C_FIELD(arg0, s32 *, 0x3C) = (s32) (M2C_FIELD(arg0, s32 *, 0x3C) + temp_v0_2);

@@ -1,4 +1,4 @@
-f32 func_80095DC0(f32);
+f32 sinApprox(f32);
 f32 __cosf(f32);
 
 void func_8004BB18(f32 mf[4][4], f32 r, f32 p, f32 h) {
@@ -9,11 +9,11 @@ void func_8004BB18(f32 mf[4][4], f32 r, f32 p, f32 h) {
     f32 sh;
     f32 ch;
 
-    sr = func_80095DC0(r);
+    sr = sinApprox(r);
     cr = __cosf(r);
-    sp = func_80095DC0(p);
+    sp = sinApprox(p);
     cp = __cosf(p);
-    sh = func_80095DC0(h);
+    sh = sinApprox(h);
     ch = __cosf(h);
     mf[0][0] = cr * ch + sr * sp * sh;
     mf[0][1] = sr * cp;

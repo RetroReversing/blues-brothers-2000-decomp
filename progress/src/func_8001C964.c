@@ -1,7 +1,7 @@
 typedef struct Obj Obj;
 Obj *func_80022028(s32);
-f32 func_8002D340(f32, f32, f32);
-void func_8002D620(Obj *);
+f32 approachF32(f32, f32, f32);
+void syncActorPrevPos(Obj *);
 struct Obj {
     /* 0x00 */ s32 f0;
     /* 0x04 */ f32 x;
@@ -29,9 +29,9 @@ extern f32 D_80000CA4;
 extern f32 D_80000CA8;
 extern f32 D_80000CAC;
 extern f32 D_80000CB0;
-extern char D_800B9ECC[];
+extern char gCamSpeedScale[];
 extern char D_800BD170[];
-#define FRAMES (*(s32 *)D_800B9ECC)
+#define FRAMES (*(s32 *)gCamSpeedScale)
 
 void func_8001C964(Obj *arg0) {
     Obj *o;
@@ -52,7 +52,7 @@ void func_8001C964(Obj *arg0) {
             arg0->y = D_80000C9C;
             arg0->z = D_80000CA0;
         }
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         arg0->f7C = 1;
         arg0->fC0 = 0;
         o = func_80022028(0);
@@ -64,7 +64,7 @@ void func_8001C964(Obj *arg0) {
     switch (arg0->fC0) {
     case 0:
         to = D_80000CA4;
-        r = func_8002D340(to, arg0->z, speed);
+        r = approachF32(to, arg0->z, speed);
         arg0->z = r;
         if (r == to) {
             arg0->fC0++;
@@ -75,14 +75,14 @@ void func_8001C964(Obj *arg0) {
         if (arg0->f70 == 1) {
             to = D_80000CAC;
         }
-        r = func_8002D340(to, arg0->x, speed);
+        r = approachF32(to, arg0->x, speed);
         arg0->x = r;
         if (r == to) {
             arg0->fC0++;
         }
         break;
     case 2:
-        r = func_8002D340(arg0->x0, arg0->x, speed);
+        r = approachF32(arg0->x0, arg0->x, speed);
         arg0->x = r;
         if (r == arg0->x0) {
             arg0->fC0++;
@@ -90,7 +90,7 @@ void func_8001C964(Obj *arg0) {
         break;
     case 3:
         to = D_80000CB0;
-        r = func_8002D340(to, arg0->z, speed);
+        r = approachF32(to, arg0->z, speed);
         arg0->z = r;
         if (r == to) {
             arg0->fC0 = 0;

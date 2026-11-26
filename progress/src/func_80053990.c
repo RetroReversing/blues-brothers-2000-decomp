@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 s16 sins(s32);                                      /* extern */
 extern f64 D_80008228;
 extern f64 D_80008230;
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 extern f32 D_800B9EC4;
 extern s32 D_80107654;
 extern s32 D_8014AA9C;
@@ -57,7 +57,7 @@ void func_80053990(void *arg0) {
         }
         M2C_FIELD(arg0, s32 *, 0x38) = (M2C_FIELD(arg0, s32 *, 0x34));
         M2C_FIELD(arg0, s32 *, 0x3C) = (M2C_FIELD(arg0, s32 *, 0x34));
-        __base_D_800B9EA4 = &D_800B9EA4;
+        __base_D_800B9EA4 = &gTextWaveTime;
         M2C_FIELD(arg0, s32 *, 0x10) = (s32) ((s32) (sins(((*__base_D_800B9EA4) * 0x64) & 0xFFFC) * 0x1F) >> 7);
         M2C_FIELD(arg0, s32 *, 0x18) = (s32) ((s32) (sins(((*__base_D_800B9EA4) * 0xC8) & 0xFFF8) * 0x1FC1) >> 0xF);
     }

@@ -18,7 +18,7 @@ typedef struct Info {
     s32 f58;
     s32 f5C;
 } Info;
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 void func_80034F1C(Obj *);
 void func_800723EC(void);
 Obj *func_800730E0(Obj *);
@@ -26,8 +26,8 @@ extern Obj *D_800B3960;
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
-extern Obj *D_800BD06C;
-extern Info D_8014A928;
+extern Obj *gCameraTarget;
+extern Info gSplinePointCount;
 
 void func_80072B58(Obj *o) {
     s32 i;
@@ -42,11 +42,11 @@ void func_80072B58(Obj *o) {
         o->f6C = 0;
         func_800723EC();
         o->f8C = 0;
-        n = D_8014A928.f5C;
-        if (D_8014A928.f58 < n) {
-            n = D_8014A928.f58;
+        n = gSplinePointCount.f5C;
+        if (gSplinePointCount.f58 < n) {
+            n = gSplinePointCount.f58;
         }
-        for (i = 0; i < n; i += func_80024394(1, 2)) {
+        for (i = 0; i < n; i += randomRange(1, 2)) {
             o->f70 = 0x17;
             c = func_800730E0(o);
             c->fA4 = 0;
@@ -59,7 +59,7 @@ void func_80072B58(Obj *o) {
             c->f84 = 0x80;
         }
     }
-    if (1000.0f < D_800BD06C->f8) {
+    if (1000.0f < gCameraTarget->f8) {
         if (o->f6C == 0) {
             o->f6C = 1;
             D_800B3960->f6C = 2;

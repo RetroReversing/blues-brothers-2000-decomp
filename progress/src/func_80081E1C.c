@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023E18();                                /* extern */
+s32 getImageAsset();                                /* extern */
 M2C_UNK func_80027D7C(s32, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 
 void func_80081E1C(s32 arg0, M2C_UNK arg1, M2C_UNK arg2, M2C_UNK arg3) {
     if (arg0 != -1) {
-        func_80027D7C(func_80023E18(), arg1, arg2, arg3);
+        func_80027D7C(getImageAsset(), arg1, arg2, arg3);
     }
 }

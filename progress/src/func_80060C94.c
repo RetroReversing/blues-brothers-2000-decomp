@@ -13,7 +13,7 @@ typedef struct {
 } HRow;
 f32 func_8002DD60(f32);
 f32 sqrtf(f32);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern HRow D_800F4A00[];
 extern HRow D_800F6188[];
 extern s32 D_800F7910[];
@@ -32,14 +32,14 @@ s32 func_80060C94(Obj *arg0) {
     lo = arg0->y + D_800F6188[kind].h - 300.0f;
     hi = arg0->y + D_800F4A00[kind].h + 300.0f;
     r = D_800F7910[kind] / 3.0f;
-    if (D_800BD06C->y < lo) {
+    if (gCameraTarget->y < lo) {
         return 0;
     }
-    if (hi < D_800BD06C->y) {
+    if (hi < gCameraTarget->y) {
         return 0;
     }
-    dx = D_800BD06C->x - arg0->x;
-    dz = D_800BD06C->z - arg0->z;
+    dx = gCameraTarget->x - arg0->x;
+    dz = gCameraTarget->z - arg0->z;
     if (r < func_8002DD60(dx)) {
         return 0;
     }
@@ -51,9 +51,9 @@ s32 func_80060C94(Obj *arg0) {
         return 0;
     }
     k = r - d;
-    dx = arg0->x - D_800BD06C->x;
-    dz = arg0->z - D_800BD06C->z;
-    D_800BD06C->x = D_800BD06C->x - dx * k / d;
-    D_800BD06C->z = D_800BD06C->z - dz * k / d;
+    dx = arg0->x - gCameraTarget->x;
+    dz = arg0->z - gCameraTarget->z;
+    gCameraTarget->x = gCameraTarget->x - dx * k / d;
+    gCameraTarget->z = gCameraTarget->z - dz * k / d;
     return 1;
 }

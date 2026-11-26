@@ -19,7 +19,7 @@ struct Obj {
     /* 0xD8 */ void *fD8;
     /* 0xDC */ f32 fDC;
 };
-Obj *func_80023874(s32, s32);
+Obj *findActor(s32, s32);
 Obj *func_8002E374(s32);
 Obj *func_80030B90(Obj *);
 s32 func_80043248(Obj *);
@@ -52,7 +52,7 @@ s32 func_8007EAC4(Obj *arg0) {
         c->f64 = 200;
         c->f9C = func_800768E8;
         c->fD8 = func_8007F898;
-        t = func_80023874(0x11F, 0);
+        t = findActor(0x11F, 0);
         if (t != 0 && t->fA8 == 0) {
             c = func_8002E374(D_800B3964->f94);
             c->x = t->x;
@@ -63,7 +63,7 @@ s32 func_8007EAC4(Obj *arg0) {
             func_8007FE50(c, t);
             D_800B3964->f70++;
         }
-        t = func_80023874(0x120, 0);
+        t = findActor(0x120, 0);
         if (t != 0 && t->fA8 == 0) {
             c = func_8002E374(D_800B3964->f94);
             c->x = t->x;

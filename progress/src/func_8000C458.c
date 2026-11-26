@@ -12,14 +12,14 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_80024B0C(s32);                         /* extern */
+M2C_UNK isqrtS32(s32);                         /* extern */
 
 void func_8000C458(void) {
     s32 var_s0;
 
     var_s0 = 0;
     do {
-        func_80024B0C(var_s0);
+        isqrtS32(var_s0);
         var_s0 += 1;
     } while (var_s0 <= 0x1869F);
 }

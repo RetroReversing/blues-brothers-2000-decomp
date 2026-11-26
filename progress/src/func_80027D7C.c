@@ -11,7 +11,7 @@ typedef struct {
     u8 data[1];
 } Img;
 
-void func_80029F8C(s32);
+void setRenderState(s32);
 
 extern GfxW *D_80177E18;
 
@@ -50,7 +50,7 @@ s32 func_80027D7C(Img *img, s32 x, s32 y, s32 flags)
     fmt = img->fmt;
     GFX(0xFC30B261, 0xFF67FFFF);
     GFX(0xE200001C, 0x504240);
-    func_80029F8C(0x59);
+    setRenderState(0x59);
     off = 0;
     switch (fmt) {
     case 16:

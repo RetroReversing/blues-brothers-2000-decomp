@@ -1,14 +1,14 @@
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 s32 func_8002492C(f32, f32);
 void func_8002A360(s32, s32);
-s32 func_8002D5CC(void *);
-void func_8004303C(void *);
-void func_800433A8(void *, s32, s32);
+s32 tickActorTimer(void *);
+void animStepKeys(void *);
+void actorSetAnim(void *, s32, s32);
 void func_80081990(void *, s32, f32);
 void func_80081AC0(f32 *, s32, f32);
 extern f64 D_80008318;
 extern f32 D_80008320;
-extern s32 D_8014A928[];
+extern s32 gSplinePointCount[];
 void func_80055A94(void *);
 
 typedef struct {
@@ -34,14 +34,14 @@ void func_80056E1C(Obj *arg0) {
     f32 lim;
 
     if (arg0->unkC0 & 0x1E) {
-        func_800433A8(arg0, 0xA7, 0x100);
+        actorSetAnim(arg0, 0xA7, 0x100);
         arg0->unk9C = func_80055A94;
         arg0->unkF0 = 0xFF;
         return;
     }
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     arg0->unkB4 += 0.05;
-    lim = D_8014A928[arg0->unk70] - 1.0f;
+    lim = gSplinePointCount[arg0->unk70] - 1.0f;
     if (lim <= arg0->unkB4) {
         arg0->unkB4 -= lim;
     }

@@ -14,13 +14,13 @@ typedef s32 M2C_UNK32;
 
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 s32 func_8002D260(s32);                             /* extern */
-s32 func_8002D5CC();                                /* extern */
+s32 tickActorTimer();                                /* extern */
 
 void func_8007C4CC(void *arg0) {
     s32 temp_v0;
     s32 temp_v1;
 
-    if (func_8002D5CC() != 0) {
+    if (tickActorTimer() != 0) {
         M2C_FIELD(arg0, s32 *, 0x64) = 0x19;
         temp_v0 = M2C_FIELD(arg0, s32 *, 0x80) ^ 1;
         M2C_FIELD(arg0, s32 *, 0x80) = temp_v0;

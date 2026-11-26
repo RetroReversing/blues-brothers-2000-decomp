@@ -18,18 +18,18 @@ typedef struct ObjS {
 
 void func_80043328(ObjS *, s32, s32);
 s32 func_8002D858(ObjS *, s32 *);
-s32 func_8002D204(s32, s32, s32);
-s32 func_8002D298(s32, s32, s32);
-void func_8004303C(ObjS *);
-f32 func_8002D340(f32, f32, f32);
+s32 approachAngle(s32, s32, s32);
+s32 approachS32(s32, s32, s32);
+void animStepKeys(ObjS *);
+f32 approachF32(f32, f32, f32);
 void func_8002DA80(ObjS *);
 void func_8003BF98(ObjS *);
 void func_80058F74(ObjS *, void *);
 void func_80054E24(void);
 void func_800548C0(void);
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern f32 D_800B9EC4;
-extern ObjS *D_800BD06C;
+extern ObjS *gCameraTarget;
 
 void func_800549F8(ObjS *arg0) {
     s32 ang;
@@ -44,16 +44,16 @@ void func_800549F8(ObjS *arg0) {
         return;
     }
     dist = func_8002D858(arg0, &ang);
-    arg0->f10 = func_8002D204(ang, arg0->f10, D_800B9ECC << 8);
-    arg0->f5C = func_8002D298(0x80, arg0->f5C, D_800B9ECC * 2);
-    func_8004303C(arg0);
-    arg0->x = func_8002D340(D_800BD06C->x, arg0->x, D_800B9EC4 * 1000.0f);
-    arg0->z = func_8002D340(D_800BD06C->z, arg0->z, D_800B9EC4 * 1000.0f);
+    arg0->f10 = approachAngle(ang, arg0->f10, gCamSpeedScale << 8);
+    arg0->f5C = approachS32(0x80, arg0->f5C, gCamSpeedScale * 2);
+    animStepKeys(arg0);
+    arg0->x = approachF32(gCameraTarget->x, arg0->x, D_800B9EC4 * 1000.0f);
+    arg0->z = approachF32(gCameraTarget->z, arg0->z, D_800B9EC4 * 1000.0f);
     arg0->f50 -= D_800B9EC4 * 4000.0;
     func_8002DA80(arg0);
-    dy = arg0->y - D_800BD06C->y;
+    dy = arg0->y - gCameraTarget->y;
     if (dist < 300.0f && dy < 250.0f && -100.0f < dy) {
-        func_8003BF98(D_800BD06C);
+        func_8003BF98(gCameraTarget);
         arg0->f5C = 0xFF;
         arg0->f84 = 1;
     }

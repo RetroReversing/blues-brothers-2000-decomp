@@ -6,7 +6,7 @@ typedef struct Obj {
     f32 f2C;
 } Obj;
 f32 func_8002DD60(f32);
-void func_8002DD8C(f32 *, void *, f32 *);
+void mtxTransformVec3(f32 *, void *, f32 *);
 extern Obj *D_800B3960;
 extern u8 D_800CD148[];
 
@@ -24,7 +24,7 @@ s32 func_8001F0AC(Obj *o, s32 r) {
     if (func_8002DD60(d[1]) > r3) {
         return 0;
     }
-    func_8002DD8C(&o->f28, D_800CD148, d);
+    mtxTransformVec3(&o->f28, D_800CD148, d);
     if (func_8002DD60(o->f28) > r) {
         return 0;
     }

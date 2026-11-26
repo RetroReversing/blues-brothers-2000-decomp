@@ -17,12 +17,12 @@ typedef struct {
 } Image;
 
 extern Gfx *D_80177E18;
-extern s32 D_80107890;
+extern s32 gTextPenY;
 
 void func_800226A0(s32);
-void func_8002220C(s32);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-void func_80029F8C(s32);
+void setDrawMode(s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+void setRenderState(s32);
 void func_800226E4(void);
 
 #define G(a, b) { Gfx *_g = (Gfx *)(D_80177E18++); _g->words.w0 = (a); _g->words.w1 = (b); }
@@ -65,13 +65,13 @@ s32 func_80029738(Image *img, s32 x0, s32 y0, s32 x1, s32 y1) {
     texw = w;
     yscale = 1;
     func_800226A0(0);
-    func_8002220C(func_800221C0(0, 0, 1, 2, 0, 0, 1, 1));
+    setDrawMode(packDrawFlags(0, 0, 1, 2, 0, 0, 1, 1));
     G(0xFC30B261, 0xFF67FFFF);
     G(0xE200001C, 0x00504A50);
-    func_80029F8C(0x5B);
+    setRenderState(0x5B);
     offset = 0;
     
-    D_80107890 = (y0 << 2);
+    gTextPenY = (y0 << 2);
     switch (bpp) {
     case 16:
         while (rows > 0) {
@@ -91,7 +91,7 @@ s32 func_80029738(Image *img, s32 x0, s32 y0, s32 x1, s32 y1) {
             G(0xF1000000, (dsdx << 16) | (dtdy & 0xFFFF));
             rows -= n;
             offset += texw * (n << 1);
-            D_80107890 += yscale * n;
+            gTextPenY += yscale * n;
         }
         break;
     case 32:
@@ -113,10 +113,10 @@ s32 func_80029738(Image *img, s32 x0, s32 y0, s32 x1, s32 y1) {
             G(0xE7000000, 0);
             G(0xF5180000 | ((((texw * 2 + 7) >> 3) & 0x1FF) << 9), 0x00080200);
             G(0xF2000000, ((((texw - 1) << 2) & 0xFFF) << 12) | ((n << 2) & 0xFFF));
-            G(0xE4000000 | (((x1 << 2) & 0xFFF) << 12) | ((D_80107890 + strip) & 0xFFF), (((x0 << 2) & 0xFFF) << 12) | (D_80107890 & 0xFFF));
+            G(0xE4000000 | (((x1 << 2) & 0xFFF) << 12) | ((gTextPenY + strip) & 0xFFF), (((x0 << 2) & 0xFFF) << 12) | (gTextPenY & 0xFFF));
             G(0xE1000000, 0);
             G(0xF1000000, (dsdx << 16) | (dtdy & 0xFFFF));
-            D_80107890 += strip;
+            gTextPenY += strip;
         }
         break;
     }

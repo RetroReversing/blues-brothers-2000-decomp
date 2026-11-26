@@ -13,14 +13,14 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_8003BF98(void *);                      /* extern */
-s32 func_8004303C();                                /* extern */
-extern void *D_800BD06C;
+s32 animStepKeys();                                /* extern */
+extern void *gCameraTarget;
 extern M2C_UNK func_800393F4;
 
 void func_8005FD4C(void) {
-    if (func_8004303C() != 0) {
-        M2C_FIELD(D_800BD06C, M2C_UNK **, 0x9C) = &func_800393F4;
-        M2C_FIELD(D_800BD06C, s32 *, 0xC0) = 0;
-        func_8003BF98(D_800BD06C);
+    if (animStepKeys() != 0) {
+        M2C_FIELD(gCameraTarget, M2C_UNK **, 0x9C) = &func_800393F4;
+        M2C_FIELD(gCameraTarget, s32 *, 0xC0) = 0;
+        func_8003BF98(gCameraTarget);
     }
 }

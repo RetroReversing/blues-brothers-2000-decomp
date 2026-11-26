@@ -1,5 +1,5 @@
-void func_8002D620(void *);
-s32 func_8002D5CC(void *);
+void syncActorPrevPos(void *);
+s32 tickActorTimer(void *);
 void func_80023078(void);
 void func_80033DC4(void *);
 void func_800340B4(void *);
@@ -15,7 +15,7 @@ extern f32 D_800094B4;
 extern f32 D_800094B8;
 extern f64 D_800094C0;
 extern u8 *D_800B3960[];
-extern u8 *D_800BD06C[];
+extern u8 *gCameraTarget[];
 extern s32 D_800B9560[];
 
 void func_8007ACD4(u8 *arg0) {
@@ -28,7 +28,7 @@ void func_8007ACD4(u8 *arg0) {
     if (*(f32 *)(arg0 + 0x104) == D_800094B4) {
         g = D_800B3960[0];
         *(void **)(g + 0x9C) = func_800340B4;
-        func_8002D620(g);
+        syncActorPrevPos(g);
         *(void **)(arg0 + 0x9C) = func_8007AFE8;
         *(void **)(arg0 + 0x98) = (u8 *)func_80023078 + 8;
     }
@@ -41,7 +41,7 @@ void func_8007ACD4(u8 *arg0) {
         if (*(void **)(g + 0x9C) != func_80036DB4) {
             *(void **)(g + 0x9C) = func_80036F44;
         }
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             src = *(u8 **)(arg0 + 0x6C);
             obj = func_80055D10(0);
             *(void **)(obj + 0x9C) = func_8007ABE0;
@@ -59,7 +59,7 @@ void func_8007ACD4(u8 *arg0) {
     if (*(void **)(g + 0x9C) != func_80036DB4) {
         *(void **)(g + 0x9C) = func_80036DB4;
     }
-    d = func_800812B4(1, D_800BD06C[0] + 4, arg0 + 0x104, 0);
+    d = func_800812B4(1, gCameraTarget[0] + 4, arg0 + 0x104, 0);
     t = d + D_800094B8;
     *(f32 *)(arg0 + 0x100) = d;
     *(f32 *)(arg0 + 0xDC) = t;
@@ -72,7 +72,7 @@ void func_8007ACD4(u8 *arg0) {
     if (func_80081990(D_800B3960[0] + 4, 1, *(f32 *)(arg0 + 0xDC)) != 0) {
         g = D_800B3960[0];
         *(void **)(g + 0x9C) = func_800340B4;
-        func_8002D620(g);
+        syncActorPrevPos(g);
         func_80033DC4(D_800B3960[0]);
         func_800340B4(D_800B3960[0]);
         *(void **)(arg0 + 0x9C) = func_80074F74;

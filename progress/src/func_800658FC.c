@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #endif
 /* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */
 
-void *func_80023874();
+void *findActor();
 s32 func_80023DBC();
 void *func_800511B4();
 s32 func_80052B24();
@@ -21,7 +21,7 @@ extern s32 D_800AB408;
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 extern s32 D_80140214;
 extern s32 D_8014AB40;
 extern s32 D_801700D8;
@@ -48,16 +48,16 @@ void func_800658FC(void *arg0) {
         return;
     }
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
-        var_a1 = func_80023874(0x121, NULL);
+        var_a1 = findActor(0x121, NULL);
         if (var_a1 != NULL) {
             M2C_FIELD(arg0, s32 *, 0x7C) += 1;
             do {
                 M2C_FIELD(var_a1, s32 **, 0x9C) = &func_80065A28;
-                var_a1 = func_80023874(0x121, var_a1);
+                var_a1 = findActor(0x121, var_a1);
             } while (var_a1 != NULL);
         }
     }
-    if ((M2C_FIELD(arg0, s32 *, 0x7C) == 1) && (func_80052B24(func_80023DBC(0xE15, var_a1), D_80008C90, D_800BD06C) != 0)) {
+    if ((M2C_FIELD(arg0, s32 *, 0x7C) == 1) && (func_80052B24(func_80023DBC(0xE15, var_a1), D_80008C90, gCameraTarget) != 0)) {
         M2C_FIELD(arg0, s32 *, 0x7C) += 1;
     }
 }

@@ -12,15 +12,15 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_8001AEDC(void *arg0) {
     s32 temp_a0;
 
     { M2C_FIELD(arg0, s32 *, 0x10) = (s32) (M2C_FIELD(arg0, s32 *, 0x10) + M2C_FIELD(arg0, s32 *, 0x7C)); }
     M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) + 0x200);
-    { M2C_FIELD(arg0, s32 *, 0x5C) = (s32) (-D_800B9ECC * 2); }
-    temp_a0 = D_800B9ECC * 2;
+    { M2C_FIELD(arg0, s32 *, 0x5C) = (s32) (-gCamSpeedScale * 2); }
+    temp_a0 = gCamSpeedScale * 2;
     M2C_FIELD(arg0, s32 *, 0x34) = (s32) (M2C_FIELD(arg0, s32 *, 0x34) - temp_a0);
     M2C_FIELD(arg0, s32 *, 0x38) = (s32) (M2C_FIELD(arg0, s32 *, 0x38) - temp_a0);
     M2C_FIELD(arg0, s32 *, 0x3C) = (s32) (M2C_FIELD(arg0, s32 *, 0x3C) - temp_a0);

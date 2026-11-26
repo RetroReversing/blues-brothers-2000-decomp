@@ -9,12 +9,12 @@ extern void func_800799A8(G *);
 extern void func_8002A360(s32, s32);
 extern void func_8003BF98(G *);
 extern void func_80043328(G *, s32, s32);
-extern void func_800433A8(G *, s32, s32);
+extern void actorSetAnim(G *, s32, s32);
 extern void func_80012718(G *);
 extern void func_80079BBC(G *);
-extern void func_800899DC();
+extern void debugPrintf();
 extern s32 func_80043248(G *);
-extern G *D_800BD06C;
+extern G *gCameraTarget;
 
 void func_80079A08(G *arg0) {
     f32 temp_fv1;
@@ -40,7 +40,7 @@ void func_80079A08(G *arg0) {
         switch (arg0->f78) {
         case 0:
             func_80043328(arg0, 0xDB, 0x100);
-            func_800433A8(D_800BD06C, 0x22, 0x80);
+            actorSetAnim(gCameraTarget, 0x22, 0x80);
             arg0->f78 = 1;
             arg0->f80 = 0;
             func_80012718(arg0);
@@ -56,7 +56,7 @@ void func_80079A08(G *arg0) {
             arg0->f78 = 0;
             return;
         default:
-            func_800899DC("bad porcupine data!");
+            debugPrintf("bad porcupine data!");
             break;
         }
     }

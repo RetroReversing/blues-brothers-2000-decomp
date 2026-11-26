@@ -8,7 +8,7 @@ typedef struct O7EE88 {
 } O7EE88;
 s32 func_80013654(O7EE88 *);
 f32 func_8002D858(O7EE88 *, s32);
-extern O7EE88 *D_800BD06C;
+extern O7EE88 *gCameraTarget;
 
 s32 func_8007EE88(O7EE88 *arg0) {
     f32 d;
@@ -25,7 +25,7 @@ s32 func_8007EE88(O7EE88 *arg0) {
     {
         if (d < 800.0) {
             k = 800.0 - d;
-            o = D_800BD06C;
+            o = gCameraTarget;
             dx = (arg0->f4 - o->f4) * k / d;
             dz = (arg0->fC - o->fC) * k / d;
             o->f4 -= dx;

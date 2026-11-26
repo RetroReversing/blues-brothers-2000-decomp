@@ -14,21 +14,21 @@ typedef s32 M2C_UNK32;
 
 s16 coss(s32);                                      /* extern */
 s32 func_8001B990(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_80024394(M2C_UNK, M2C_UNK);            /* extern */
-f32 func_8002D340(f32, f32, f32);               /* extern */
+M2C_UNK randomRange(M2C_UNK, M2C_UNK);            /* extern */
+f32 approachF32(f32, f32, f32);               /* extern */
 extern f32 D_80000C78;
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 extern M2C_UNK func_80013594;
 
 void func_8001BE38(void *arg0) {
     f32 temp_fv0;
 
-    func_80024394(0, 0x32);
-    M2C_FIELD(arg0, s32 *, 0x14) = (s32) ((s32) (coss(((D_800B9EA4 + M2C_FIELD(arg0, s32 *, 0x8C)) * 0x64) & 0xFFFC) * 0x7D) >> 0xC);
+    randomRange(0, 0x32);
+    M2C_FIELD(arg0, s32 *, 0x14) = (s32) ((s32) (coss(((gTextWaveTime + M2C_FIELD(arg0, s32 *, 0x8C)) * 0x64) & 0xFFFC) * 0x7D) >> 0xC);
     if (func_8001B990(0x100, 2) != 0) {
       f32 temp_fs0;
         do { temp_fs0 = D_80000C78; } while (0);
-        temp_fv0 = func_8002D340(temp_fs0, M2C_FIELD(arg0, f32 *, 8), 20.0f);
+        temp_fv0 = approachF32(temp_fs0, M2C_FIELD(arg0, f32 *, 8), 20.0f);
         M2C_FIELD(arg0, f32 *, 8) = temp_fv0;
         if (temp_fv0 == temp_fs0) {
             M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80013594;

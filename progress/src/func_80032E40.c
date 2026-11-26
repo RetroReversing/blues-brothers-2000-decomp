@@ -1,12 +1,12 @@
 s32 func_8001B990(s32, s32);
-s32 func_80023E18(s32);
+s32 getImageAsset(s32);
 void func_80026C04(void *, s32, s32);
-void func_8002710C(s32, s32, s32, s32);
-void func_8002713C(s32, s32);
-void func_800272E0(s32, s32, s32, s32);
+void setTextColor(s32, s32, s32, s32);
+void setTextPos(s32, s32);
+void drawImage(s32, s32, s32, s32);
 void func_800279B4(s32, s32, s32, s32, s32, s32);
 void func_8002E838(s32);
-void func_8003CDA0(s32);
+void drawCenteredMessage(s32);
 s16 coss(u16);
 
 typedef struct Pos {
@@ -32,7 +32,7 @@ extern u8 D_800A954B;
 extern Pos D_800A9598[];
 extern Obj *D_800B3964;
 extern Pos D_800B49AC[];
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 extern s32 D_800BD07C;
 extern Cnt D_800BD0E0;
 extern s32 D_800BD168[];
@@ -57,36 +57,36 @@ void func_80032E40(Obj *arg0) {
     got[0] = func_8001B990(0x100, 0x24);
     got[3] = func_8001B990(0x100, 0x25);
     got[5] = func_8001B990(0x100, 0x26);
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
-    func_800272E0(func_80023E18(D_8013FF98), 0x65, 0x22, 0);
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
+    drawImage(getImageAsset(D_8013FF98), 0x65, 0x22, 0);
     for (i = 0; i < 7; i++) {
         if (got[i] == 0) {
-            func_800272E0(func_80023E18(D_8013FF78[i]), D_800B49AC[i].x, D_800B49AC[i].y, 0);
+            drawImage(getImageAsset(D_8013FF78[i]), D_800B49AC[i].x, D_800B49AC[i].y, 0);
         }
     }
-    func_8002710C(0xFF, 0xFF, 0xFF, arg0->x6C);
+    setTextColor(0xFF, 0xFF, 0xFF, arg0->x6C);
     w = D_800A9540 * 15 / 2;
     if (D_800BD0E0.x14 == 0) {
         D_800BD0E0.x14 = 2;
     }
     for (i = 0; i < D_800A9540; i++) {
         if (i < D_800BD0E0.x14) {
-            func_800272E0(func_80023E18(D_800BD1E4), 160 + i * 15 - w, 20, 0);
+            drawImage(getImageAsset(D_800BD1E4), 160 + i * 15 - w, 20, 0);
         } else {
-            func_800272E0(func_80023E18(D_800BD07C), 160 + i * 15 - w, 20, 0);
+            drawImage(getImageAsset(D_800BD07C), 160 + i * 15 - w, 20, 0);
         }
     }
-    func_800279B4(func_80023E18(D_8013FF9C), 0x100, 0x2A, 0x30, 0x98, 0);
+    func_800279B4(getImageAsset(D_8013FF9C), 0x100, 0x2A, 0x30, 0x98, 0);
     for (i = 0; i < 10; i++) {
         if (D_800BD1F0[(D_800B3964->xBC - 1) * 10 + i] != 0) {
-            func_8002710C(0xFF, 0xFF, 0, 0xFF);
+            setTextColor(0xFF, 0xFF, 0, 0xFF);
         } else {
-            func_8002710C(0x70, 0x70, 0x70, 0xFF);
+            setTextColor(0x70, 0x70, 0x70, 0xFF);
         }
-        func_800272E0(func_80023E18(D_800BD168[D_800A9598[i].id]), D_800A9598[i].x, D_800A9598[i].y + 0x37, 0);
+        drawImage(getImageAsset(D_800BD168[D_800A9598[i].id]), D_800A9598[i].x, D_800A9598[i].y + 0x37, 0);
     }
-    c = 0xFF - (((coss((D_800B9EA4 * 400) & 0xFFF0) * 127) >> 15) + 0x80) / 2;
-    func_8002710C(c, c, c, 0xFF);
-    func_8002713C(0xA0, 0xC8);
-    func_8003CDA0(0x71);
+    c = 0xFF - (((coss((gTextWaveTime * 400) & 0xFFF0) * 127) >> 15) + 0x80) / 2;
+    setTextColor(c, c, c, 0xFF);
+    setTextPos(0xA0, 0xC8);
+    drawCenteredMessage(0x71);
 }

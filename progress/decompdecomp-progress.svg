@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="840" height="460" viewBox="0 0 840 460" role="img" aria-labelledby="title desc">
-<title id="title">2,089 / 2,106 functions matched (99.2%)</title>
+<title id="title">2,095 / 2,106 functions matched (99.5%)</title>
 <desc id="desc">Completion excludes set-aside functions. Green: matched; gold: attempted; grey: open; red: set aside.</desc>
 <rect width="840" height="460" rx="12" fill="#0f172a"/>
 <g font-family="sans-serif" fill="#f1f5f9">
 <text x="20" y="32" font-size="20">Decompilation progress</text>
 <text x="820" y="32" text-anchor="end" font-size="16">n64</text>
-<text x="20" y="59" font-size="16">2,089 / 2,106 functions matched (99.2%)</text>
+<text x="20" y="59" font-size="16">2,095 / 2,106 functions matched (99.5%)</text>
 <rect x="20" y="74" width="800" height="18" rx="4" fill="#334155"/>
-<rect x="20" y="74" width="793.542" height="18" rx="4" fill="#238636"/>
+<rect x="20" y="74" width="795.821" height="18" rx="4" fill="#238636"/>
 <rect x="20" y="108" width="10" height="10" fill="#238636"/>
-<text x="36" y="118" font-size="13">Matched: 2,089</text>
+<text x="36" y="118" font-size="13">Matched: 2,095</text>
 <rect x="220" y="108" width="10" height="10" fill="#bf8700"/>
-<text x="236" y="118" font-size="13">Attempt: 16</text>
+<text x="236" y="118" font-size="13">Attempt: 11</text>
 <rect x="420" y="108" width="10" height="10" fill="#64748b"/>
-<text x="436" y="118" font-size="13">Open: 1</text>
+<text x="436" y="118" font-size="13">Open: 0</text>
 <rect x="620" y="108" width="10" height="10" fill="#b54747"/>
 <text x="636" y="118" font-size="13">Aside: 104</text>
 <text x="20" y="144" font-size="12">Function map: up to 1 function(s) per tile</text>
@@ -134,7 +134,7 @@
 <g><title>func_8000C3C4: {&#x27;matched&#x27;: 1}</title>
 <rect x="400.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8000C43C: {&#x27;matched&#x27;: 1}</title>
+<g><title>cameraGetMode: {&#x27;matched&#x27;: 1}</title>
 <rect x="410.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8000C458: {&#x27;matched&#x27;: 1}</title>
@@ -158,7 +158,7 @@
 <g><title>func_8000C75C: {&#x27;matched&#x27;: 1}</title>
 <rect x="480.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8000C874: {&#x27;matched&#x27;: 1}</title>
+<g><title>initLevel: {&#x27;matched&#x27;: 1}</title>
 <rect x="490.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8000CDF0: {&#x27;matched&#x27;: 1}</title>
@@ -167,7 +167,7 @@
 <g><title>func_8000CF14: {&#x27;matched&#x27;: 1}</title>
 <rect x="510.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8000CF30: {&#x27;matched&#x27;: 1}</title>
+<g><title>setupStage: {&#x27;matched&#x27;: 1}</title>
 <rect x="520.000" y="160" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8000D394: {&#x27;matched&#x27;: 1}</title>
@@ -785,7 +785,7 @@
 <g><title>func_80018A94: {&#x27;matched&#x27;: 1}</title>
 <rect x="170.000" y="190" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80018BF4: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawHud: {&#x27;matched&#x27;: 1}</title>
 <rect x="180.000" y="190" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800191F8: {&#x27;matched&#x27;: 1}</title>
@@ -797,7 +797,7 @@
 <g><title>func_80019438: {&#x27;matched&#x27;: 1}</title>
 <rect x="210.000" y="190" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80019620: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawDebugStats: {&#x27;matched&#x27;: 1}</title>
 <rect x="220.000" y="190" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80019A2C: {&#x27;matched&#x27;: 1}</title>
@@ -1103,8 +1103,8 @@
 <g><title>func_8001EBF4: {&#x27;attempt&#x27;: 1}</title>
 <rect x="430.000" y="200" width="8.000" height="8" fill="#bf8700"/>
 </g>
-<g><title>func_8001EC90: {&#x27;open&#x27;: 1}</title>
-<rect x="440.000" y="200" width="8.000" height="8" fill="#64748b"/>
+<g><title>func_8001EC90: {&#x27;matched&#x27;: 1}</title>
+<rect x="440.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8001EF80: {&#x27;matched&#x27;: 1}</title>
 <rect x="450.000" y="200" width="8.000" height="8" fill="#238636"/>
@@ -1139,10 +1139,10 @@
 <g><title>func_8001FE50: {&#x27;matched&#x27;: 1}</title>
 <rect x="550.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8001FF64: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateCameraView: {&#x27;matched&#x27;: 1}</title>
 <rect x="560.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800200F0: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawTextureRect: {&#x27;matched&#x27;: 1}</title>
 <rect x="570.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800202BC: {&#x27;attempt&#x27;: 1}</title>
@@ -1166,7 +1166,7 @@
 <g><title>func_80021060: {&#x27;matched&#x27;: 1}</title>
 <rect x="640.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800213A8: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateParticleEmitter: {&#x27;matched&#x27;: 1}</title>
 <rect x="650.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80021818: {&#x27;attempt&#x27;: 1}</title>
@@ -1178,10 +1178,10 @@
 <g><title>func_80022100: {&#x27;matched&#x27;: 1}</title>
 <rect x="680.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800221C0: {&#x27;matched&#x27;: 1}</title>
+<g><title>packDrawFlags: {&#x27;matched&#x27;: 1}</title>
 <rect x="690.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002220C: {&#x27;matched&#x27;: 1}</title>
+<g><title>setDrawMode: {&#x27;matched&#x27;: 1}</title>
 <rect x="700.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800226A0: {&#x27;matched&#x27;: 1}</title>
@@ -1193,7 +1193,7 @@
 <g><title>func_80022720: {&#x27;matched&#x27;: 1}</title>
 <rect x="730.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80022728: {&#x27;matched&#x27;: 1}</title>
+<g><title>buildObjectMatrix: {&#x27;matched&#x27;: 1}</title>
 <rect x="740.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80022C2C: {&#x27;matched&#x27;: 1}</title>
@@ -1247,10 +1247,10 @@
 <g><title>func_80023848: {&#x27;matched&#x27;: 1}</title>
 <rect x="110.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80023874: {&#x27;matched&#x27;: 1}</title>
+<g><title>findActor: {&#x27;matched&#x27;: 1}</title>
 <rect x="120.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800238CC: {&#x27;matched&#x27;: 1}</title>
+<g><title>countLiveObjects: {&#x27;matched&#x27;: 1}</title>
 <rect x="130.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80023920: {&#x27;matched&#x27;: 1}</title>
@@ -1271,7 +1271,7 @@
 <g><title>func_80023A74: {&#x27;matched&#x27;: 1}</title>
 <rect x="190.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80023A98: {&#x27;matched&#x27;: 1}</title>
+<g><title>setSlotAsset: {&#x27;matched&#x27;: 1}</title>
 <rect x="200.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80023AE8: {&#x27;matched&#x27;: 1}</title>
@@ -1310,7 +1310,7 @@
 <g><title>func_80023DE0: {&#x27;matched&#x27;: 1}</title>
 <rect x="320.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80023E18: {&#x27;matched&#x27;: 1}</title>
+<g><title>getImageAsset: {&#x27;matched&#x27;: 1}</title>
 <rect x="330.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80023E3C: {&#x27;matched&#x27;: 1}</title>
@@ -1340,7 +1340,7 @@
 <g><title>func_80024380: {&#x27;matched&#x27;: 1}</title>
 <rect x="420.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80024394: {&#x27;matched&#x27;: 1}</title>
+<g><title>randomRange: {&#x27;matched&#x27;: 1}</title>
 <rect x="430.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002444C: {&#x27;matched&#x27;: 1}</title>
@@ -1370,7 +1370,7 @@
 <g><title>func_80024AE8: {&#x27;matched&#x27;: 1}</title>
 <rect x="520.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80024B0C: {&#x27;matched&#x27;: 1}</title>
+<g><title>isqrtS32: {&#x27;matched&#x27;: 1}</title>
 <rect x="530.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80024B58: {&#x27;matched&#x27;: 1}</title>
@@ -1397,7 +1397,7 @@
 <g><title>func_8002505C: {&#x27;matched&#x27;: 1}</title>
 <rect x="610.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80025100: {&#x27;matched&#x27;: 1}</title>
+<g><title>atan2S16: {&#x27;matched&#x27;: 1}</title>
 <rect x="620.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80025280: {&#x27;matched&#x27;: 1}</title>
@@ -1409,7 +1409,7 @@
 <g><title>func_80025328: {&#x27;matched&#x27;: 1}</title>
 <rect x="650.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800253A0: {&#x27;matched&#x27;: 1}</title>
+<g><title>heapAlloc: {&#x27;matched&#x27;: 1}</title>
 <rect x="660.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80025418: {&#x27;matched&#x27;: 1}</title>
@@ -1481,7 +1481,7 @@
 <g><title>func_80025F20: {&#x27;matched&#x27;: 1}</title>
 <rect x="90.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80025FF8: {&#x27;matched&#x27;: 1}</title>
+<g><title>initControllerPaks: {&#x27;matched&#x27;: 1}</title>
 <rect x="100.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80026164: {&#x27;matched&#x27;: 1}</title>
@@ -1496,7 +1496,7 @@
 <g><title>func_800261B8: {&#x27;matched&#x27;: 1}</title>
 <rect x="140.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800261D4: {&#x27;matched&#x27;: 1}</title>
+<g><title>refreshControllerPak: {&#x27;matched&#x27;: 1}</title>
 <rect x="150.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002621C: {&#x27;matched&#x27;: 1}</title>
@@ -1520,7 +1520,7 @@
 <g><title>func_80026464: {&#x27;matched&#x27;: 1}</title>
 <rect x="220.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800265C0: {&#x27;matched&#x27;: 1}</title>
+<g><title>deleteSaveSlot: {&#x27;matched&#x27;: 1}</title>
 <rect x="230.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800266B8: {&#x27;matched&#x27;: 1}</title>
@@ -1535,10 +1535,10 @@
 <g><title>func_800269B8: {&#x27;matched&#x27;: 1}</title>
 <rect x="270.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80026A6C: {&#x27;matched&#x27;: 1}</title>
+<g><title>decodeSaveName: {&#x27;matched&#x27;: 1}</title>
 <rect x="280.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80026B14: {&#x27;matched&#x27;: 1}</title>
+<g><title>getPakFreeBlocks: {&#x27;matched&#x27;: 1}</title>
 <rect x="290.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80026B50: {&#x27;matched&#x27;: 1}</title>
@@ -1583,16 +1583,16 @@
 <g><title>func_80027060: {&#x27;matched&#x27;: 1}</title>
 <rect x="430.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800270A8: {&#x27;matched&#x27;: 1}</title>
+<g><title>setTextColorRgb: {&#x27;matched&#x27;: 1}</title>
 <rect x="440.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800270DC: {&#x27;matched&#x27;: 1}</title>
 <rect x="450.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002710C: {&#x27;matched&#x27;: 1}</title>
+<g><title>setTextColor: {&#x27;matched&#x27;: 1}</title>
 <rect x="460.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002713C: {&#x27;matched&#x27;: 1}</title>
+<g><title>setTextPos: {&#x27;matched&#x27;: 1}</title>
 <rect x="470.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80027158: {&#x27;matched&#x27;: 1}</title>
@@ -1601,13 +1601,13 @@
 <g><title>func_800271A8: {&#x27;matched&#x27;: 1}</title>
 <rect x="490.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800271D8: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawInt: {&#x27;matched&#x27;: 1}</title>
 <rect x="500.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800272AC: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawFloat: {&#x27;matched&#x27;: 1}</title>
 <rect x="510.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800272E0: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawImage: {&#x27;matched&#x27;: 1}</title>
 <rect x="520.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800279B4: {&#x27;matched&#x27;: 1}</title>
@@ -1634,7 +1634,7 @@
 <g><title>func_80028710: {&#x27;matched&#x27;: 1}</title>
 <rect x="600.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002889C: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawText: {&#x27;matched&#x27;: 1}</title>
 <rect x="610.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80028900: {&#x27;matched&#x27;: 1}</title>
@@ -1643,7 +1643,7 @@
 <g><title>func_800289A0: {&#x27;matched&#x27;: 1}</title>
 <rect x="630.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800289BC: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawFontChar: {&#x27;matched&#x27;: 1}</title>
 <rect x="640.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80028FF4: {&#x27;matched&#x27;: 1}</title>
@@ -1664,7 +1664,7 @@
 <g><title>func_80029EB0: {&#x27;matched&#x27;: 1}</title>
 <rect x="700.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80029F8C: {&#x27;matched&#x27;: 1}</title>
+<g><title>setRenderState: {&#x27;matched&#x27;: 1}</title>
 <rect x="710.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002A2E0: {&#x27;matched&#x27;: 1}</title>
@@ -1745,10 +1745,10 @@
 <g><title>func_8002B7A4: {&#x27;matched&#x27;: 1}</title>
 <rect x="170.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002B880: {&#x27;matched&#x27;: 1}</title>
+<g><title>loadTextureClamped: {&#x27;matched&#x27;: 1}</title>
 <rect x="180.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002BE18: {&#x27;matched&#x27;: 1}</title>
+<g><title>loadTexture: {&#x27;matched&#x27;: 1}</title>
 <rect x="190.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002C3B8: {&#x27;matched&#x27;: 1}</title>
@@ -1775,7 +1775,7 @@
 <g><title>func_8002D1C4: {&#x27;matched&#x27;: 1}</title>
 <rect x="270.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002D204: {&#x27;matched&#x27;: 1}</title>
+<g><title>approachAngle: {&#x27;matched&#x27;: 1}</title>
 <rect x="280.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002D260: {&#x27;matched&#x27;: 1}</title>
@@ -1784,13 +1784,13 @@
 <g><title>func_8002D280: {&#x27;matched&#x27;: 1}</title>
 <rect x="300.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002D298: {&#x27;matched&#x27;: 1}</title>
+<g><title>approachS32: {&#x27;matched&#x27;: 1}</title>
 <rect x="310.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002D2FC: {&#x27;matched&#x27;: 1}</title>
 <rect x="320.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002D340: {&#x27;matched&#x27;: 1}</title>
+<g><title>approachF32: {&#x27;matched&#x27;: 1}</title>
 <rect x="330.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002D3B0: {&#x27;matched&#x27;: 1}</title>
@@ -1805,7 +1805,7 @@
 <g><title>func_8002D4E0: {&#x27;matched&#x27;: 1}</title>
 <rect x="370.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002D5CC: {&#x27;matched&#x27;: 1}</title>
+<g><title>tickActorTimer: {&#x27;matched&#x27;: 1}</title>
 <rect x="380.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002D5E8: {&#x27;matched&#x27;: 1}</title>
@@ -1814,13 +1814,13 @@
 <g><title>func_8002D604: {&#x27;matched&#x27;: 1}</title>
 <rect x="400.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002D620: {&#x27;matched&#x27;: 1}</title>
+<g><title>syncActorPrevPos: {&#x27;matched&#x27;: 1}</title>
 <rect x="410.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002D63C: {&#x27;matched&#x27;: 1}</title>
 <rect x="420.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002D66C: {&#x27;matched&#x27;: 1}</title>
+<g><title>getCameraTargetDist: {&#x27;matched&#x27;: 1}</title>
 <rect x="430.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002D77C: {&#x27;matched&#x27;: 1}</title>
@@ -1856,7 +1856,7 @@
 <g><title>func_8002DBF8: {&#x27;matched&#x27;: 1}</title>
 <rect x="540.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002DC84: {&#x27;matched&#x27;: 1}</title>
+<g><title>mtxIdentity3: {&#x27;matched&#x27;: 1}</title>
 <rect x="550.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002DCB4: {&#x27;matched&#x27;: 1}</title>
@@ -1865,7 +1865,7 @@
 <g><title>func_8002DD60: {&#x27;matched&#x27;: 1}</title>
 <rect x="570.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002DD8C: {&#x27;matched&#x27;: 1}</title>
+<g><title>mtxTransformVec3: {&#x27;matched&#x27;: 1}</title>
 <rect x="580.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002DE20: {&#x27;matched&#x27;: 1}</title>
@@ -1874,7 +1874,7 @@
 <g><title>func_8002E018: {&#x27;matched&#x27;: 1}</title>
 <rect x="600.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002E080: {&#x27;matched&#x27;: 1}</title>
+<g><title>vec3Length: {&#x27;matched&#x27;: 1}</title>
 <rect x="610.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002E0D0: {&#x27;matched&#x27;: 1}</title>
@@ -1886,7 +1886,7 @@
 <g><title>func_8002E1CC: {&#x27;matched&#x27;: 1}</title>
 <rect x="640.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002E1FC: {&#x27;matched&#x27;: 1}</title>
+<g><title>vec3Sub: {&#x27;matched&#x27;: 1}</title>
 <rect x="650.000" y="230" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002E234: {&#x27;matched&#x27;: 1}</title>
@@ -1940,8 +1940,8 @@
 <g><title>func_8002ECB8: {&#x27;matched&#x27;: 1}</title>
 <rect x="20.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002ED20: {&#x27;attempt&#x27;: 1}</title>
-<rect x="30.000" y="240" width="8.000" height="8" fill="#bf8700"/>
+<g><title>drawImageObject: {&#x27;matched&#x27;: 1}</title>
+<rect x="30.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002F2C0: {&#x27;matched&#x27;: 1}</title>
 <rect x="40.000" y="240" width="8.000" height="8" fill="#238636"/>
@@ -1958,10 +1958,10 @@
 <g><title>func_8002FEDC: {&#x27;matched&#x27;: 1}</title>
 <rect x="80.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800301E8: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawRotatedImage: {&#x27;matched&#x27;: 1}</title>
 <rect x="90.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80030600: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawRingEffect: {&#x27;matched&#x27;: 1}</title>
 <rect x="100.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80030B2C: {&#x27;matched&#x27;: 1}</title>
@@ -2027,13 +2027,13 @@
 <g><title>func_800319D4: {&#x27;matched&#x27;: 1}</title>
 <rect x="310.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80031A38: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateMenuScroll: {&#x27;matched&#x27;: 1}</title>
 <rect x="320.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80031B54: {&#x27;matched&#x27;: 1}</title>
 <rect x="330.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80031C70: {&#x27;matched&#x27;: 1}</title>
+<g><title>setSlotTextColor: {&#x27;matched&#x27;: 1}</title>
 <rect x="340.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80031CA8: {&#x27;matched&#x27;: 1}</title>
@@ -2045,7 +2045,7 @@
 <g><title>func_80031DF4: {&#x27;matched&#x27;: 1}</title>
 <rect x="370.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80031F0C: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawControllerPakMenu: {&#x27;matched&#x27;: 1}</title>
 <rect x="380.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80032314: {&#x27;matched&#x27;: 1}</title>
@@ -2153,7 +2153,7 @@
 <g><title>func_800340B4: {&#x27;matched&#x27;: 1}</title>
 <rect x="730.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800349E4: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateFollowCamera: {&#x27;matched&#x27;: 1}</title>
 <rect x="740.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80034E40: {&#x27;attempt&#x27;: 1}</title>
@@ -2180,16 +2180,16 @@
 <g><title>func_80035238: {&#x27;matched&#x27;: 1}</title>
 <rect x="20.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80035364: {&#x27;matched&#x27;: 1}</title>
+<g><title>raycastCollision: {&#x27;matched&#x27;: 1}</title>
 <rect x="30.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80035A90: {&#x27;matched&#x27;: 1}</title>
+<g><title>clipCameraToTrack: {&#x27;matched&#x27;: 1}</title>
 <rect x="40.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80035D04: {&#x27;matched&#x27;: 1}</title>
 <rect x="50.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80036074: {&#x27;matched&#x27;: 1}</title>
+<g><title>cameraAvoidWalls: {&#x27;matched&#x27;: 1}</title>
 <rect x="60.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800364B0: {&#x27;matched&#x27;: 1}</title>
@@ -2201,10 +2201,10 @@
 <g><title>func_800369EC: {&#x27;matched&#x27;: 1}</title>
 <rect x="90.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80036BD0: {&#x27;matched&#x27;: 1}</title>
+<g><title>expandBoundsToSegment: {&#x27;matched&#x27;: 1}</title>
 <rect x="100.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80036CF8: {&#x27;matched&#x27;: 1}</title>
+<g><title>initBoundsToSegment: {&#x27;matched&#x27;: 1}</title>
 <rect x="110.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80036DB4: {&#x27;matched&#x27;: 1}</title>
@@ -2237,7 +2237,7 @@
 <g><title>func_80038C84: {&#x27;matched&#x27;: 1}</title>
 <rect x="210.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80038CF8: {&#x27;matched&#x27;: 1}</title>
+<g><title>traceBounceMove: {&#x27;matched&#x27;: 1}</title>
 <rect x="220.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80039178: {&#x27;aside&#x27;: 1}</title>
@@ -2264,7 +2264,7 @@
 <g><title>func_8003AB30: {&#x27;matched&#x27;: 1}</title>
 <rect x="300.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8003AC08: {&#x27;matched&#x27;: 1}</title>
+<g><title>handleActorHit: {&#x27;matched&#x27;: 1}</title>
 <rect x="310.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8003B234: {&#x27;matched&#x27;: 1}</title>
@@ -2357,10 +2357,10 @@
 <g><title>func_8003CCB4: {&#x27;matched&#x27;: 1}</title>
 <rect x="610.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8003CDA0: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawCenteredMessage: {&#x27;matched&#x27;: 1}</title>
 <rect x="620.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8003CDF4: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawMessage: {&#x27;matched&#x27;: 1}</title>
 <rect x="630.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8003CE48: {&#x27;matched&#x27;: 1}</title>
@@ -2399,7 +2399,7 @@
 <g><title>func_8003E0BC: {&#x27;matched&#x27;: 1}</title>
 <rect x="750.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8003E278: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawAudioOptionsMenu: {&#x27;matched&#x27;: 1}</title>
 <rect x="760.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8003E780: {&#x27;matched&#x27;: 1}</title>
@@ -2423,7 +2423,7 @@
 <g><title>func_8003EAB4: {&#x27;matched&#x27;: 1}</title>
 <rect x="30.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8003ECB8: {&#x27;matched&#x27;: 1}</title>
+<g><title>animSampleKeys: {&#x27;matched&#x27;: 1}</title>
 <rect x="40.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8003F2A4: {&#x27;matched&#x27;: 1}</title>
@@ -2432,11 +2432,11 @@
 <g><title>func_8003F44C: {&#x27;matched&#x27;: 1}</title>
 <rect x="60.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80040F10: {&#x27;matched&#x27;: 1}</title>
+<g><title>buildBoneMatrices: {&#x27;matched&#x27;: 1}</title>
 <rect x="70.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800413C0: {&#x27;attempt&#x27;: 1}</title>
-<rect x="80.000" y="260" width="8.000" height="8" fill="#bf8700"/>
+<g><title>func_800413C0: {&#x27;matched&#x27;: 1}</title>
+<rect x="80.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80041418: {&#x27;matched&#x27;: 1}</title>
 <rect x="90.000" y="260" width="8.000" height="8" fill="#238636"/>
@@ -2459,7 +2459,7 @@
 <g><title>func_80042F00: {&#x27;matched&#x27;: 1}</title>
 <rect x="150.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8004303C: {&#x27;matched&#x27;: 1}</title>
+<g><title>animStepKeys: {&#x27;matched&#x27;: 1}</title>
 <rect x="160.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800430F4: {&#x27;matched&#x27;: 1}</title>
@@ -2477,7 +2477,7 @@
 <g><title>func_80043328: {&#x27;matched&#x27;: 1}</title>
 <rect x="210.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800433A8: {&#x27;matched&#x27;: 1}</title>
+<g><title>actorSetAnim: {&#x27;matched&#x27;: 1}</title>
 <rect x="220.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80043418: {&#x27;matched&#x27;: 1}</title>
@@ -2510,7 +2510,7 @@
 <g><title>func_800456EC: {&#x27;matched&#x27;: 1}</title>
 <rect x="320.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80045E34: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateModelBoneActors: {&#x27;matched&#x27;: 1}</title>
 <rect x="330.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800462A0: {&#x27;matched&#x27;: 1}</title>
@@ -2522,7 +2522,7 @@
 <g><title>func_80046F30: {&#x27;matched&#x27;: 1}</title>
 <rect x="360.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80046F58: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateCamera: {&#x27;matched&#x27;: 1}</title>
 <rect x="370.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80047560: {&#x27;matched&#x27;: 1}</title>
@@ -2585,10 +2585,10 @@
 <g><title>func_800487A4: {&#x27;matched&#x27;: 1}</title>
 <rect x="570.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80048820: {&#x27;matched&#x27;: 1}</title>
+<g><title>collectCollisionCells: {&#x27;matched&#x27;: 1}</title>
 <rect x="580.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80048C70: {&#x27;matched&#x27;: 1}</title>
+<g><title>probeCollision: {&#x27;matched&#x27;: 1}</title>
 <rect x="590.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80048C8C: {&#x27;matched&#x27;: 1}</title>
@@ -2612,7 +2612,7 @@
 <g><title>func_8004A200: {&#x27;matched&#x27;: 1}</title>
 <rect x="660.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8004B630: {&#x27;matched&#x27;: 1}</title>
+<g><title>setupCollisionTri: {&#x27;matched&#x27;: 1}</title>
 <rect x="670.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8004BA40: {&#x27;matched&#x27;: 1}</title>
@@ -2642,7 +2642,7 @@
 <g><title>func_8004CEF0: {&#x27;matched&#x27;: 1}</title>
 <rect x="760.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8004D148: {&#x27;matched&#x27;: 1}</title>
+<g><title>multiplyMatrix: {&#x27;matched&#x27;: 1}</title>
 <rect x="770.000" y="260" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8004D54C: {&#x27;matched&#x27;: 1}</title>
@@ -2867,7 +2867,7 @@
 <g><title>func_80052100: {&#x27;matched&#x27;: 1}</title>
 <rect x="710.000" y="270" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80052130: {&#x27;matched&#x27;: 1}</title>
+<g><title>setActorState: {&#x27;matched&#x27;: 1}</title>
 <rect x="720.000" y="270" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800521D8: {&#x27;matched&#x27;: 1}</title>
@@ -3032,7 +3032,7 @@
 <g><title>func_800555F0: {&#x27;matched&#x27;: 1}</title>
 <rect x="460.000" y="280" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80055604: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateChaserActor: {&#x27;matched&#x27;: 1}</title>
 <rect x="470.000" y="280" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80055A34: {&#x27;matched&#x27;: 1}</title>
@@ -3158,7 +3158,7 @@
 <g><title>func_80058040: {&#x27;matched&#x27;: 1}</title>
 <rect x="80.000" y="290" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80058110: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateLogicBomb: {&#x27;matched&#x27;: 1}</title>
 <rect x="90.000" y="290" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80058678: {&#x27;matched&#x27;: 1}</title>
@@ -3308,8 +3308,8 @@
 <g><title>func_8005C990: {&#x27;matched&#x27;: 1}</title>
 <rect x="580.000" y="290" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8005CAB0: {&#x27;attempt&#x27;: 1}</title>
-<rect x="590.000" y="290" width="8.000" height="8" fill="#bf8700"/>
+<g><title>func_8005CAB0: {&#x27;matched&#x27;: 1}</title>
+<rect x="590.000" y="290" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8005CB7C: {&#x27;matched&#x27;: 1}</title>
 <rect x="600.000" y="290" width="8.000" height="8" fill="#238636"/>
@@ -3488,10 +3488,10 @@
 <g><title>func_80063010: {&#x27;matched&#x27;: 1}</title>
 <rect x="380.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80063C40: {&#x27;attempt&#x27;: 1}</title>
-<rect x="390.000" y="300" width="8.000" height="8" fill="#bf8700"/>
+<g><title>func_80063C40: {&#x27;matched&#x27;: 1}</title>
+<rect x="390.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80063D00: {&#x27;matched&#x27;: 1}</title>
+<g><title>spawnCutsceneActor: {&#x27;matched&#x27;: 1}</title>
 <rect x="400.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80063D3C: {&#x27;matched&#x27;: 1}</title>
@@ -3518,7 +3518,7 @@
 <g><title>func_80064024: {&#x27;matched&#x27;: 1}</title>
 <rect x="480.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80064130: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateElroomScene: {&#x27;matched&#x27;: 1}</title>
 <rect x="490.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800646C0: {&#x27;matched&#x27;: 1}</title>
@@ -3533,7 +3533,7 @@
 <g><title>func_80064808: {&#x27;matched&#x27;: 1}</title>
 <rect x="530.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8006495C: {&#x27;matched&#x27;: 1}</title>
+<g><title>cameraUpdateByMode: {&#x27;matched&#x27;: 1}</title>
 <rect x="540.000" y="300" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80064D94: {&#x27;matched&#x27;: 1}</title>
@@ -3851,7 +3851,7 @@
 <g><title>func_8006BB14: {&#x27;matched&#x27;: 1}</title>
 <rect x="790.000" y="310" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8006BB5C: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateChaseVehicle: {&#x27;matched&#x27;: 1}</title>
 <rect x="800.000" y="310" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8006C008: {&#x27;matched&#x27;: 1}</title>
@@ -4127,7 +4127,7 @@
 <g><title>func_80071ACC: {&#x27;matched&#x27;: 1}</title>
 <rect x="110.000" y="330" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80071B08: {&#x27;matched&#x27;: 1}</title>
+<g><title>collidePlayerWithWall: {&#x27;matched&#x27;: 1}</title>
 <rect x="120.000" y="330" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8007209C: {&#x27;matched&#x27;: 1}</title>
@@ -4292,7 +4292,7 @@
 <g><title>func_8007591C: {&#x27;matched&#x27;: 1}</title>
 <rect x="660.000" y="330" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80075A1C: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateTruckPlatform: {&#x27;matched&#x27;: 1}</title>
 <rect x="670.000" y="330" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80075E4C: {&#x27;matched&#x27;: 1}</title>
@@ -4742,7 +4742,7 @@
 <g><title>func_8007F01C: {&#x27;matched&#x27;: 1}</title>
 <rect x="560.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8007F364: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateBusterSequence: {&#x27;matched&#x27;: 1}</title>
 <rect x="570.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8007F7DC: {&#x27;matched&#x27;: 1}</title>
@@ -4829,10 +4829,10 @@
 <g><title>func_80080F28: {&#x27;matched&#x27;: 1}</title>
 <rect x="50.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80080F64: {&#x27;matched&#x27;: 1}</title>
+<g><title>initSplineEndSegment: {&#x27;matched&#x27;: 1}</title>
 <rect x="60.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80081074: {&#x27;matched&#x27;: 1}</title>
+<g><title>initSplineSegment: {&#x27;matched&#x27;: 1}</title>
 <rect x="70.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80081188: {&#x27;matched&#x27;: 1}</title>
@@ -4841,7 +4841,7 @@
 <g><title>func_800812B4: {&#x27;matched&#x27;: 1}</title>
 <rect x="90.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80081588: {&#x27;matched&#x27;: 1}</title>
+<g><title>initSpline: {&#x27;matched&#x27;: 1}</title>
 <rect x="100.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80081990: {&#x27;matched&#x27;: 1}</title>
@@ -4964,10 +4964,10 @@
 <g><title>func_80084504: {&#x27;matched&#x27;: 1}</title>
 <rect x="500.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800847E8: {&#x27;matched&#x27;: 1}</title>
+<g><title>updatePursuitVehicle: {&#x27;matched&#x27;: 1}</title>
 <rect x="510.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80084CCC: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateChaseAI: {&#x27;matched&#x27;: 1}</title>
 <rect x="520.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800851D8: {&#x27;matched&#x27;: 1}</title>
@@ -5051,8 +5051,8 @@
 <g><title>func_80087160: {&#x27;matched&#x27;: 1}</title>
 <rect x="790.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800871C0: {&#x27;attempt&#x27;: 1}</title>
-<rect x="800.000" y="360" width="8.000" height="8" fill="#bf8700"/>
+<g><title>func_800871C0: {&#x27;matched&#x27;: 1}</title>
+<rect x="800.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8008756C: {&#x27;matched&#x27;: 1}</title>
 <rect x="810.000" y="360" width="8.000" height="8" fill="#238636"/>
@@ -5078,7 +5078,7 @@
 <g><title>func_800880B4: {&#x27;matched&#x27;: 1}</title>
 <rect x="80.000" y="370" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800880FC: {&#x27;matched&#x27;: 1}</title>
+<g><title>loadSlotAssetSet: {&#x27;matched&#x27;: 1}</title>
 <rect x="90.000" y="370" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80088658: {&#x27;matched&#x27;: 1}</title>
@@ -5129,7 +5129,7 @@
 <g><title>func_80089130: {&#x27;matched&#x27;: 1}</title>
 <rect x="250.000" y="370" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8008914C: {&#x27;matched&#x27;: 1}</title>
+<g><title>buildFrameDisplayList: {&#x27;matched&#x27;: 1}</title>
 <rect x="260.000" y="370" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800896D0: {&#x27;matched&#x27;: 1}</title>
@@ -5144,7 +5144,7 @@
 <g><title>func_800899C4: {&#x27;matched&#x27;: 1}</title>
 <rect x="300.000" y="370" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800899DC: {&#x27;matched&#x27;: 1}</title>
+<g><title>debugPrintf: {&#x27;matched&#x27;: 1}</title>
 <rect x="310.000" y="370" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80089C00: {&#x27;matched&#x27;: 1}</title>
@@ -5435,7 +5435,7 @@
 <g><title>func_8008DF5C: {&#x27;matched&#x27;: 1}</title>
 <rect x="470.000" y="380" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8008E1E0: {&#x27;matched&#x27;: 1}</title>
+<g><title>playSeqChannelNote: {&#x27;matched&#x27;: 1}</title>
 <rect x="480.000" y="380" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8008E644: {&#x27;matched&#x27;: 1}</title>
@@ -5600,7 +5600,7 @@
 <g><title>func_80091078: {&#x27;matched&#x27;: 1}</title>
 <rect x="220.000" y="390" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800910A4: {&#x27;matched&#x27;: 1}</title>
+<g><title>zInflate: {&#x27;matched&#x27;: 1}</title>
 <rect x="230.000" y="390" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80091694: {&#x27;matched&#x27;: 1}</title>
@@ -5642,7 +5642,7 @@
 <g><title>func_80093214: {&#x27;matched&#x27;: 1}</title>
 <rect x="360.000" y="390" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80093240: {&#x27;matched&#x27;: 1}</title>
+<g><title>huftBuild: {&#x27;matched&#x27;: 1}</title>
 <rect x="370.000" y="390" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80093858: {&#x27;matched&#x27;: 1}</title>
@@ -5723,7 +5723,7 @@
 <g><title>guPerspective: {&#x27;aside&#x27;: 1}</title>
 <rect x="630.000" y="390" width="8.000" height="8" fill="#b54747"/>
 </g>
-<g><title>func_80095DC0: {&#x27;matched&#x27;: 1}</title>
+<g><title>sinApprox: {&#x27;matched&#x27;: 1}</title>
 <rect x="640.000" y="390" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>sins: {&#x27;aside&#x27;: 1}</title>

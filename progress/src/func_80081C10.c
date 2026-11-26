@@ -1,4 +1,4 @@
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 typedef struct { s32 n; s32 b; s32 c; } RecA;
 typedef struct { s32 v[5]; s32 w; s32 x; } RecB;
 extern s32 D_800B87F0[];
@@ -16,8 +16,8 @@ void func_80081C10(void) {
         j = D_800B9000[i].n;
         b = &D_800B8EB0[i];
         for (; j < 5; j++) {
-            b->v[j] = D_800B87F0[func_80024394(0, 4)];
+            b->v[j] = D_800B87F0[randomRange(0, 4)];
         }
-        b->w = D_800B8808[func_80024394(0, 5)];
+        b->w = D_800B8808[randomRange(0, 5)];
     }
 }

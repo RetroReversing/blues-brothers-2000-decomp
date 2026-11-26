@@ -23,14 +23,14 @@ typedef struct {
 s32 func_80082400(void);
 s32 func_80023DBC(s32);
 s32 func_80023D58(s32);
-f32 func_8002D340(f32, f32, f32);
-void func_800433A8(s32, s32, s32);
+f32 approachF32(f32, f32, f32);
+void actorSetAnim(s32, s32, s32);
 void func_80082F68(s32);
 s32 func_80086004(void);
 void func_80087160(s32);
 void func_80086028(Obj *);
 extern Info D_800B9000[];
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 D_80171980;
 extern s32 D_801719A8;
 extern Rec D_801719E0[];
@@ -48,15 +48,15 @@ void func_8008626C(Obj *o)
 
     lim = func_80082400() + 1;
     func_80023DBC(0xE33);
-    D_80171A30->x = func_8002D340(140.0f, D_80171A30->x, 4.0f);
-    D_80171980 += D_800B9ECC;
+    D_80171A30->x = approachF32(140.0f, D_80171A30->x, 4.0f);
+    D_80171980 += gCamSpeedScale;
     m = D_80171980 % 144;
     func_80082F68(0);
     if (m / 2 == 18) {
         D_80171A34++;
         if (D_801719E0[0].pad != 0) {
             D_80171A50++;
-            func_800433A8(D_801719A8, D_800B9000[func_80086004()].b, 0x100);
+            actorSetAnim(D_801719A8, D_800B9000[func_80086004()].b, 0x100);
             v = D_800B9000[func_80086004()].a;
             D_801719E0[0].pad = 0;
             D_801719E0[0].b[0] = 0;
@@ -76,13 +76,13 @@ void func_8008626C(Obj *o)
             D_801719E0[0].n = D_800B9000[func_80086004()].a;
             D_80171A34 = 0;
         } else {
-            func_800433A8(D_801719A8, 0x16B, 0x100);
+            actorSetAnim(D_801719A8, 0x16B, 0x100);
             func_80087160(func_80023D58(0x192));
         }
     }
     if (D_80171A34 >= 4) {
         o->cb = &func_80085F58 + 2;
         func_80087160(func_80023D58(0x201));
-        func_800433A8(D_801719A8, 0x179, 0x100);
+        actorSetAnim(D_801719A8, 0x179, 0x100);
     }
 }

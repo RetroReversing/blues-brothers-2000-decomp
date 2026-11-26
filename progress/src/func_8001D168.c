@@ -16,9 +16,9 @@ s32 func_80013654();
 s32 func_80015C30();
 s32 func_80017F78();
 s32 func_8001B990();
-s32 func_800221C0();
+s32 packDrawFlags();
 s32 func_8002ADFC();
-f32 func_8002D66C();
+f32 getCameraTargetDist();
 void *func_800510F4();
 extern s32 func_8000DA34;
 extern s32 func_80013610;
@@ -27,10 +27,10 @@ void func_8001D168(void *arg0) {
     s32 var_s0;
     void *temp_v0;
 
-    if (((s32) func_8002D66C(arg0, 0x43480000, 0) < 0xC8) && (func_80013654(arg0) != 0)) {
+    if (((s32) getCameraTargetDist(arg0, 0x43480000, 0) < 0xC8) && (func_80013654(arg0) != 0)) {
         M2C_FIELD(arg0, s32 **, 0x9C) = &func_8000DA34;
         M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;
-        M2C_FIELD(arg0, s32 *, 0x58) = func_800221C0(1, 1, 1, 3, 0, 0, 1, 0);
+        M2C_FIELD(arg0, s32 *, 0x58) = packDrawFlags(1, 1, 1, 3, 0, 0, 1, 0);
         var_s0 = 0;
         M2C_FIELD(arg0, s32 *, 0x68) = 0xE;
         do {
@@ -41,7 +41,7 @@ void func_8001D168(void *arg0) {
         M2C_FIELD(temp_v0, s32 *, 0x10) = 0x8000;
         M2C_FIELD(temp_v0, s32 **, 0x9C) = &func_80013610;
         M2C_FIELD(temp_v0, s32 *, 0x5C) = 0xFF;
-        M2C_FIELD(temp_v0, s32 *, 0x58) = func_800221C0(1, 1, 1, 3, 0, 0, 1, 0);
+        M2C_FIELD(temp_v0, s32 *, 0x58) = packDrawFlags(1, 1, 1, 3, 0, 0, 1, 0);
         M2C_FIELD(temp_v0, s32 *, 0x68) = 0xE;
         func_8002ADFC(0xA, 0x3E8, arg0);
         if (func_8001B990(0x100, M2C_FIELD(arg0, s32 *, 0x70)) == 0) {

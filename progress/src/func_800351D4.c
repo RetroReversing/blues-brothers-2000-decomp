@@ -14,18 +14,18 @@ typedef s32 M2C_UNK32;
 
 s32 func_800340B4();
 s32 func_80036FB8();
-extern s32 D_800B4ABC;
+extern s32 cameraDistTable;
 extern s32 D_80107040;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 
 void func_800351D4(void *arg0) {
     s32 *__base_D_801070A0;
 
     M2C_FIELD(arg0, s32 *, 0x6C) = 0;
-    M2C_FIELD(arg0, s32 *, 0x7C) = (s32) D_800B4ABC;
+    M2C_FIELD(arg0, s32 *, 0x7C) = (s32) cameraDistTable;
     func_80036FB8(arg0, 0xF);
     D_80107040 &= ~0x40F;
-    __base_D_801070A0 = &D_801070A0;
+    __base_D_801070A0 = &gPadPressed;
     (*__base_D_801070A0) &= ~0x40F;
     func_800340B4(arg0);
 }

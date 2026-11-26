@@ -19,7 +19,7 @@ typedef struct Obj {
 } Obj;
 
 extern void func_80043328(Obj *, s32, s32);
-extern f32 func_8002D340(f32, f32, f32);
+extern f32 approachF32(f32, f32, f32);
 extern void func_800462A0(void);
 
 void func_8005BA74(Obj *o) {
@@ -29,8 +29,8 @@ void func_8005BA74(Obj *o) {
         func_80043328(o, 0xCE, 0x100);
         o->x0 = 0x101;
     }
-    o->x4C = func_8002D340(0.0f, o->x4C, 70.0f);
-    o->x54 = func_8002D340(0.0f, o->x54, 70.0f);
+    o->x4C = approachF32(0.0f, o->x4C, 70.0f);
+    o->x54 = approachF32(0.0f, o->x54, 70.0f);
     o->x5C -= 9;
     if (o->x5C < 9 || o->x84 != 0) {
         if (o->xA4 != NULL) {

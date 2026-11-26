@@ -8,9 +8,9 @@ typedef struct {
     s32 y;
     s32 z;
 } Pt;
-extern Obj *D_800BD06C;
-extern s32 D_8014A928[];
-extern Pt *D_8014A9A8[];
+extern Obj *gCameraTarget;
+extern s32 gSplinePointCount[];
+extern Pt *gSplineSrcPoints[];
 
 s32 func_8001E994(void) {
     s32 i;
@@ -21,12 +21,12 @@ s32 func_8001E994(void) {
     s32 dz;
     Pt *p;
 
-    px = D_800BD06C->x;
-    pz = D_800BD06C->z;
+    px = gCameraTarget->x;
+    pz = gCameraTarget->z;
     for (i = 29; i >= 0; i--) {
-        p = D_8014A9A8[i];
+        p = gSplineSrcPoints[i];
         if (p != NULL) {
-            for (j = 0; j < D_8014A928[i]; j++, p++) {
+            for (j = 0; j < gSplinePointCount[i]; j++, p++) {
                 dx = p->x - px;
                 dz = p->z - pz;
                 if (dx * dx + dz * dz < 810000) {

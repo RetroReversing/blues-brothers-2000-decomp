@@ -12,7 +12,7 @@ typedef struct Obj {
 } Obj;
 
 extern void func_80043328(Obj *, s32, s32);
-extern s32 func_8004303C(Obj *);
+extern s32 animStepKeys(Obj *);
 extern s16 sins(u16);
 extern s16 coss(u16);
 extern void func_8002DA80(Obj *);
@@ -25,7 +25,7 @@ void func_80039240(Obj *o) {
     s32 k;
 
     func_80043328(o, 2, 0x100);
-    r = func_8004303C(o);
+    r = animStepKeys(o);
     k = 400;
     o->x4C = (sins(*(u16 *)((u8 *)o + 0x12)) * k) >> 15;
     o->x54 = (coss(*(u16 *)((u8 *)o + 0x12)) * k) >> 15;

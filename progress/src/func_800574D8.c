@@ -11,16 +11,16 @@ typedef struct Obj {
     u8 pad78[0x18];
     s32 f90;
 } Obj;
-s32 func_8002D204(s32, s32, s32);
+s32 approachAngle(s32, s32, s32);
 void func_8002D3E4(Obj *, s32);
-s32 func_8002D5CC(Obj *);
+s32 tickActorTimer(Obj *);
 void func_8002DA80(Obj *);
 f32 func_8002DD60(f32);
 void func_80043328(Obj *, s32, s32);
 void func_80080594(Obj *, s32);
 float sqrtf(float);
-extern s32 D_800B9ECC;
-extern Obj *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern Obj *gCameraTarget;
 
 s32 func_800574D8(Obj *o) {
     f32 range;
@@ -31,20 +31,20 @@ s32 func_800574D8(Obj *o) {
 
     range = o->f74;
     range *= 50.0f;
-    o->f10 = func_8002D204(o->f90, o->f10, D_800B9ECC << 9);
+    o->f10 = approachAngle(o->f90, o->f10, gCamSpeedScale << 9);
     func_80043328(o, 0xC1, 0x100);
     func_8002D3E4(o, 100);
     func_8002DA80(o);
     dx = o->x - o->f40;
     dz = o->z - o->f48;
-    dy = func_8002DD60(D_800BD06C->y - o->y);
+    dy = func_8002DD60(gCameraTarget->y - o->y);
     dist = sqrtf(dx * dx + dz * dz);
     if (range < dist) {
         o->x = o->f40 + dx * range / dist;
         o->z = o->f48 + dz * range / dist;
         return 1;
     }
-    if (func_8002D5CC(o) != 0) {
+    if (tickActorTimer(o) != 0) {
         return 1;
     }
     if (dist < range && dy < 400.0f) {

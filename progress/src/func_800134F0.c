@@ -13,12 +13,12 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_800393C8(void *);                      /* extern */
-extern s32 *D_800BD06C;
+extern s32 *gCameraTarget;
 
 void func_800134F0(void *arg0) {
     void *temp_v0;
 
-    if (*D_800BD06C == 3) {
+    if (*gCameraTarget == 3) {
         temp_v0 = M2C_FIELD(arg0, void **, 0xA8);
         if (temp_v0 != NULL) {
             M2C_FIELD(temp_v0, f32 *, 4) = (f32) (M2C_FIELD(temp_v0, f32 *, 4) + M2C_FIELD(arg0, f32 *, 0x4C));

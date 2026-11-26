@@ -24,15 +24,15 @@ struct Obj {
     Obj *unkA8;
 };
 
-Obj *func_80023874(s32, s32);
+Obj *findActor(s32, s32);
 void func_8002A360(s32, s32);
 void func_8002D3B0(Obj *);
 void func_8002D4E0(Obj *, s32);
-s32 func_8002D5CC(Obj *);
+s32 tickActorTimer(Obj *);
 void func_8002D604(Obj *);
-void func_8002D620(Obj *);
+void syncActorPrevPos(Obj *);
 void func_8007FE5C(Obj *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 float sqrtf(float);
 extern char D_80009700[];
 extern Obj *D_800B3960;
@@ -55,24 +55,24 @@ void func_8007FE90(Obj *arg0) {
         arg0->unk14 = src->unk14;
         arg0->unk64 = 500;
         arg0->unk7C++;
-        arg0->unkA8 = func_80023874(0x102E, 0);
+        arg0->unkA8 = findActor(0x102E, 0);
         func_8002D4E0(arg0, 200);
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0xD8);
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
     }
     D_80107040 &= ~0x2000;
     func_8002D3B0(arg0);
     func_8002D604(arg0);
     other = arg0->unkA8;
     if (other == NULL) {
-        func_800899DC(D_80009700);
+        debugPrintf(D_80009700);
     }
     dx = arg0->x - other->x;
     dy = arg0->y - other->y;
     dz = arg0->z - other->z;
     if (sqrtf(dx * dx + dy * dy + dz * dz) < 1000.0f) {
-        other = func_80023874(0x102D, 0);
+        other = findActor(0x102D, 0);
         if (other != NULL && other->unk78 == 5) {
             D_800B3964->unk88 = 1;
             func_8002A360(0xC, 0x80);
@@ -86,7 +86,7 @@ void func_8007FE90(Obj *arg0) {
     if (arg0->y < -2170.0f) {
         arg0->unk64 = 0;
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         D_800B3964->unk8C = 0;
         D_800B3964->unk70--;
         func_8007FE5C(arg0);

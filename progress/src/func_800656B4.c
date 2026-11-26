@@ -11,7 +11,7 @@ typedef s32 M2C_UNK32;
 #define M2C_CARRY 0
 #define M2C_OVERFLOW(a) (0)
 #endif
-void *func_80023874(M2C_UNK, M2C_UNK);
+void *findActor(M2C_UNK, M2C_UNK);
 M2C_UNK func_80065630();
 extern s32 D_800B7FF0;
 extern s32 D_8014AB34;
@@ -34,7 +34,7 @@ void func_800656B4(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0x5C) = temp_v0_2;
         if (temp_v0_2 < 0) {
             M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
-            temp_v0_3 = func_80023874(6, 0);
+            temp_v0_3 = findActor(6, 0);
             if ((temp_v0_3 != NULL) && (D_800B7FF0 == 0)) {
                 M2C_FIELD(temp_v0_3, s32 *, 0x68) = 0xF;
             }

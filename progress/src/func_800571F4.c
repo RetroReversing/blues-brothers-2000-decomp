@@ -14,17 +14,17 @@ typedef s32 M2C_UNK32;
 
 s16 coss();
 void *func_80017344();
-s32 func_80024394();
+s32 randomRange();
 s32 func_8002D1A0();
-s32 func_8002D204();
+s32 approachAngle();
 s32 func_8002D260();
 s32 func_8002D3E4();
-s32 func_8002D5CC();
+s32 tickActorTimer();
 s32 func_8003B828();
 s32 func_80043328();
 s16 sins();
-extern s32 D_800B9ECC;
-extern s32 D_800BD06C;
+extern s32 gCamSpeedScale;
+extern s32 gCameraTarget;
 
 s32 func_800571F4(void *arg0) {
     s32 temp_s0;
@@ -36,18 +36,18 @@ s32 func_800571F4(void *arg0) {
     func_80043328(arg0, 0xC2, 0x100);
     func_8002D3E4(arg0, 0);
     if (M2C_FIELD(arg0, s32 *, 0xC0) & 1) {
-        temp_v0 = func_8002D204(M2C_FIELD(arg0, s32 *, 0x90), M2C_FIELD(arg0, s32 *, 0x10), D_800B9ECC * 0x1C0);
+        temp_v0 = approachAngle(M2C_FIELD(arg0, s32 *, 0x90), M2C_FIELD(arg0, s32 *, 0x10), gCamSpeedScale * 0x1C0);
         M2C_FIELD(arg0, s32 *, 0x10) = temp_v0;
         var_v0 = func_8002D260(M2C_FIELD(arg0, s32 *, 0x90) - temp_v0);
         if (var_v0 < 0) {
             var_v0 = -var_v0;
         }
         if (var_v0 < 0x1388) {
-            func_8003B828(D_800BD06C, 1);
+            func_8003B828(gCameraTarget, 1);
             M2C_FIELD(arg0, s32 *, 0xC0) = 0;
         }
     }
-    if (func_80024394(0, 0x64) >= 0x51) {
+    if (randomRange(0, 0x64) >= 0x51) {
         temp_s0 = func_8002D1A0();
         temp_v0_2 = func_80017344(arg0);
         temp_s0_2 = temp_s0 & 0xFFFF;
@@ -57,7 +57,7 @@ s32 func_800571F4(void *arg0) {
         func_8002D3E4(temp_v0_2, 0x190);
         M2C_FIELD(arg0, s32 *, 0xF0) = 0x80;
     }
-    if (func_8002D5CC(arg0) == 0) {
+    if (tickActorTimer(arg0) == 0) {
     } else {
         M2C_FIELD(arg0, s32 *, 0x80) = 0;
         M2C_FIELD(arg0, s32 *, 0x64) = 0xC8;

@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 f32 func_8004BC74();
 s32 func_8004D54C();
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_80007E00[];
 
 void func_8004DC38(s32 arg0, void *arg1) {
@@ -23,7 +23,7 @@ void func_8004DC38(s32 arg0, void *arg1) {
     func_8004D54C();
     temp_fv0 = func_8004BC74(arg1);
     if ((f64) temp_fv0 == 0.0) {
-        func_800899DC(D_80007E00);
+        debugPrintf(D_80007E00);
     }
     M2C_FIELD(arg1, f32 *, 0) = (f32) (M2C_FIELD(arg1, f32 *, 0) / temp_fv0);
     M2C_FIELD(arg1, f32 *, 4) = (f32) (M2C_FIELD(arg1, f32 *, 4) / temp_fv0);

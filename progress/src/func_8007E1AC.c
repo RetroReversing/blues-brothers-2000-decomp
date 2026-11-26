@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023874(M2C_UNK, M2C_UNK);                /* extern */
+s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
 s32 func_80023DBC(M2C_UNK);                         /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002ABC0(M2C_UNK);                     /* extern */
-M2C_UNK func_8004303C(void *);                      /* extern */
+M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
 s32 func_80052B24(s32, M2C_UNK *, void *);          /* extern */
 extern M2C_UNK D_80009604;
@@ -36,9 +36,9 @@ s32 func_8007E1AC(void *arg0) {
         func_8002A360(8, 0xCA);
         func_8002ABC0(0x40);
     }
-    func_8004303C(arg0);
-    func_8004303C(M2C_FIELD(arg0, void **, 0xA8));
-    if (func_80023874(0x801, 0) == 0) {
+    animStepKeys(arg0);
+    animStepKeys(M2C_FIELD(arg0, void **, 0xA8));
+    if (findActor(0x801, 0) == 0) {
         M2C_FIELD(D_800B3964, s32 *, 0x7C) = (s32) (M2C_FIELD(D_800B3964, s32 *, 0x7C) + 1);
         return 0xDE;
     }

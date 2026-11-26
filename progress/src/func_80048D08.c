@@ -24,8 +24,8 @@ typedef struct {
     u8 *cmds;
 } Model;
 
-void func_8004B630(Vtx16 *verts, s32 *idx, s8 *box, Tri *tri);
-void func_800899DC(const char *);
+void setupCollisionTri(Vtx16 *verts, s32 *idx, s8 *box, Tri *tri);
+void debugPrintf(const char *);
 extern s32 D_80140FF0;
 
 void func_80048D08(Model *m, s8 (*box)[4], Tri *tri)
@@ -62,7 +62,7 @@ void func_80048D08(Model *m, s8 (*box)[4], Tri *tri)
             idx[1] = (w & 0x1F) + base;
             w >>= 5;
             idx[2] = (w & 0x1F) + base;
-            func_8004B630(m->verts, idx, *box++, tri++);
+            setupCollisionTri(m->verts, idx, *box++, tri++);
             p += 3;
             break;
         case 5:
@@ -72,14 +72,14 @@ void func_80048D08(Model *m, s8 (*box)[4], Tri *tri)
             idx[1] = (w & 0x1F) + base;
             w >>= 5;
             idx[2] = (w & 0x1F) + base;
-            func_8004B630(m->verts, idx, *box++, tri++);
+            setupCollisionTri(m->verts, idx, *box++, tri++);
             w = p[4] | (p[3] << 8);
             idx[0] = (w & 0x1F) + base;
             w >>= 5;
             idx[1] = (w & 0x1F) + base;
             w >>= 5;
             idx[2] = (w & 0x1F) + base;
-            func_8004B630(m->verts, idx, *box++, tri++);
+            setupCollisionTri(m->verts, idx, *box++, tri++);
             p += 5;
             break;
         case 6:
@@ -89,7 +89,7 @@ void func_80048D08(Model *m, s8 (*box)[4], Tri *tri)
             p += 8;
             break;
         default:
-            func_800899DC("RSP decode error");
+            debugPrintf("RSP decode error");
             break;
         }
     }

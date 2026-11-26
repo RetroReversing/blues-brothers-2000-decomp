@@ -13,11 +13,11 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
+M2C_UNK setSlotAsset(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
 
 void func_8007A29C(void) {
     func_80023A74(0x51, 0x8F8);
-    func_80023A98(0x15E, 0x8FC, 0);
+    setSlotAsset(0x15E, 0x8FC, 0);
     func_80023A74(0x6E, 0x8FD);
-    func_80023A98(0x160, 0x901, 0);
+    setSlotAsset(0x160, 0x901, 0);
 }

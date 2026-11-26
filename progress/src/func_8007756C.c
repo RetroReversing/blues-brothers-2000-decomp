@@ -14,8 +14,8 @@ typedef struct Obj {
     f32 fDC;
 } Obj;
 f32 func_8002D858(Obj *, s32 *);
-Obj *func_80023874(s32, s32);
-s32 func_8004303C(Obj *);
+Obj *findActor(s32, s32);
+s32 animStepKeys(Obj *);
 void func_800773E8(Obj *);
 float sqrtf(float);
 
@@ -28,7 +28,7 @@ s32 func_8007756C(Obj *o) {
     if (func_8002D858(o, &o->f10) < 490.0f) {
         return 2;
     }
-    e = func_80023874(0x121, 0);
+    e = findActor(0x121, 0);
     if (e != NULL) {
         dx = e->x - o->x;
         dy = e->y - o->y;
@@ -38,7 +38,7 @@ s32 func_8007756C(Obj *o) {
             return 3;
         }
     }
-    if (func_8004303C(o)) {
+    if (animStepKeys(o)) {
         o->f6C = 0;
         o->f88++;
     }

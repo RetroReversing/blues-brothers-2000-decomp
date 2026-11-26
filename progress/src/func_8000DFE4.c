@@ -13,9 +13,9 @@ typedef struct Obj {
 } Obj;
 typedef struct { s32 a; f32 x, y, z; u8 pad[0xF8]; } Hit;
 void func_8000DF10(Hit *);
-s32 func_8002D5CC(Obj *);
+s32 tickActorTimer(Obj *);
 extern s32 D_800B3838;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern Rec D_800F4A00[];
 extern Rec D_800F6188[];
 extern s32 D_80140224;
@@ -30,7 +30,7 @@ void func_8000DFE4(Obj *arg0) {
     Obj *p;
     Rec *tbl;
 
-    p = D_800BD06C;
+    p = gCameraTarget;
     tbl = D_800F4A00;
     arg0->f0 = 0x101;
     lo = &tbl[arg0->fB8];
@@ -52,16 +52,16 @@ void func_8000DFE4(Obj *arg0) {
         arg0->f64 = 20;
     }
     if (n == 4) {
-        if (D_800BD06C->y <= (top = arg0->y + D_800F4A00[arg0->fB8].y)) {
-            h.x = D_800BD06C->x;
-            h.z = D_800BD06C->z;
+        if (gCameraTarget->y <= (top = arg0->y + D_800F4A00[arg0->fB8].y)) {
+            h.x = gCameraTarget->x;
+            h.z = gCameraTarget->z;
             h.y = arg0->y + D_800F4A00[arg0->fB8].y;
-            if (func_8002D5CC(arg0) != 0 || D_800BD06C->f90 == 0) {
+            if (tickActorTimer(arg0) != 0 || gCameraTarget->f90 == 0) {
                 func_8000DF10(&h);
                 arg0->f64 = 20;
             }
             D_800B3838 = 1;
-        } else if (D_800BD06C->y <= top + 50.0f && D_800BD06C->f90 == 0) {
+        } else if (gCameraTarget->y <= top + 50.0f && gCameraTarget->f90 == 0) {
             D_800B3838 = 1;
         } else {
             D_800B3838 = 0;

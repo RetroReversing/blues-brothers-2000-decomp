@@ -27,9 +27,9 @@ typedef struct {
 
 extern Vec3i_552C4 D_800F4A00[];
 extern Vec3i_552C4 D_800F6188[];
-extern Player_552C4 *D_800BD06C;
+extern Player_552C4 *gCameraTarget;
 
-f32 func_8002D66C(void *o, f32 r, s32 *ang);
+f32 getCameraTargetDist(void *o, f32 r, s32 *ang);
 f32 func_8002DD60(f32 arg0);
 s32 func_800137F8(void *);
 s16 sins(u16);
@@ -53,25 +53,25 @@ s32 func_800552C4(Unk800552C4 *arg0) {
     lo = arg0->unk8 + D_800F4A00[arg0->unkB8].y;
     hi = arg0->unk8 + D_800F6188[arg0->unkB8].y;
     arg0->unkC0 = 0;
-    if (func_8002D66C(arg0, range, NULL) == range) {
+    if (getCameraTargetDist(arg0, range, NULL) == range) {
         return 0;
     }
-    if (func_8002DD60(arg0->unk8 - D_800BD06C->unk8) < range && func_800137F8(D_800BD06C) != 0) {
+    if (func_8002DD60(arg0->unk8 - gCameraTarget->unk8) < range && func_800137F8(gCameraTarget) != 0) {
         arg0->unkC0 |= 2;
-        x = D_800BD06C->unk4 + ((sins(D_800BD06C->unk12) * 45) >> 13);
-        y = D_800BD06C->unk8 + 160.0f;
-        z = D_800BD06C->unkC + ((coss(D_800BD06C->unk12) * 45) >> 13);
+        x = gCameraTarget->unk4 + ((sins(gCameraTarget->unk12) * 45) >> 13);
+        y = gCameraTarget->unk8 + 160.0f;
+        z = gCameraTarget->unkC + ((coss(gCameraTarget->unk12) * 45) >> 13);
         func_80012474(x, y, z);
         arg0->unk5C = 0xFF;
         arg0->unk74 += 20;
         arg0->unk78 -= 20;
         func_80058F74(arg0, func_80055130);
     }
-    if (func_80013654(D_800BD06C) != 0) {
+    if (func_80013654(gCameraTarget) != 0) {
         arg0->unkC0 |= 2;
-        x = D_800BD06C->unk4 + ((sins(D_800BD06C->unk12) * 45) >> 13);
-        y = D_800BD06C->unk8 + 160.0f;
-        z = D_800BD06C->unkC + ((coss(D_800BD06C->unk12) * 45) >> 13);
+        x = gCameraTarget->unk4 + ((sins(gCameraTarget->unk12) * 45) >> 13);
+        y = gCameraTarget->unk8 + 160.0f;
+        z = gCameraTarget->unkC + ((coss(gCameraTarget->unk12) * 45) >> 13);
         func_80012474(x, y, z);
         arg0->unk5C = 0xFF;
         arg0->unk74 += 100;
@@ -79,8 +79,8 @@ s32 func_800552C4(Unk800552C4 *arg0) {
         func_80058F74(arg0, func_80054EC4);
         return 1;
     }
-    if (func_80013784(D_800BD06C) != 0) {
-        if (D_800BD06C->unk8 <= lo && hi <= D_800BD06C->unk8) {
+    if (func_80013784(gCameraTarget) != 0) {
+        if (gCameraTarget->unk8 <= lo && hi <= gCameraTarget->unk8) {
             arg0->unkC0 |= 4;
         }
         return 2;

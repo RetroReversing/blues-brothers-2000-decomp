@@ -12,15 +12,15 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_8010788C;
-extern s32 D_80107890;
+extern s32 gTextPenX;
+extern s32 gTextPenY;
 extern s32 D_8010789C;
 
 void func_800271A8(s32 arg0, s32 arg1) {
     s32 temp_v0;
 
-    D_8010788C = arg0;
+    gTextPenX = arg0;
     temp_v0 = (arg1 * 0xD) + 0x12;
-    D_80107890 = temp_v0;
+    gTextPenY = temp_v0;
     D_8010789C = temp_v0;
 }

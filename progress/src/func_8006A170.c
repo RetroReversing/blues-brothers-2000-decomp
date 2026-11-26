@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern M2C_UNK D_8014AB90;
 extern M2C_UNK func_80074A28;
 
@@ -31,19 +31,19 @@ void func_8006A170(void *arg0) {
         D_800B3978 = 0;
         D_800B3974 = 0;
         D_800B3970 = 0;
-        if (func_8000C43C() == 8) {
+        if (cameraGetMode() == 8) {
             var_s1 = 1;
             do {
                 temp_v0 = func_800232B4(1, 0, 0, 0);
                 M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80074A28;
                 M2C_FIELD(temp_v0, s32 *, 0x70) = var_s1;
-                M2C_FIELD(temp_v0, s32 *, 0x90) = (s32) (func_80024394(0, 0x1F) + 0x20);
+                M2C_FIELD(temp_v0, s32 *, 0x90) = (s32) (randomRange(0, 0x1F) + 0x20);
                 var_s1 += 1;
                 M2C_FIELD(temp_v0, s32 *, 0x8C) = 0xC;
             } while (var_s1 < 0x1E);
-            M2C_FIELD(&D_8014AB90, f32 *, 0) = (f32) M2C_FIELD(D_800BD06C, f32 *, 4);
-            M2C_FIELD(&D_8014AB90, f32 *, 4) = (f32) M2C_FIELD(D_800BD06C, f32 *, 8);
-            M2C_FIELD(&D_8014AB90, f32 *, 8) = (f32) M2C_FIELD(D_800BD06C, f32 *, 0xC);
+            M2C_FIELD(&D_8014AB90, f32 *, 0) = (f32) M2C_FIELD(gCameraTarget, f32 *, 4);
+            M2C_FIELD(&D_8014AB90, f32 *, 4) = (f32) M2C_FIELD(gCameraTarget, f32 *, 8);
+            M2C_FIELD(&D_8014AB90, f32 *, 8) = (f32) M2C_FIELD(gCameraTarget, f32 *, 0xC);
         }
     }
 }

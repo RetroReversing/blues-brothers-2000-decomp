@@ -22,17 +22,17 @@ typedef struct {
     s32 unk88;
 } Unk80050144;
 
-extern s32 D_8014A928[];
-extern Vec3i_50144 *D_8014A9A8[];
-extern s32 D_800B9ECC;
+extern s32 gSplinePointCount[];
+extern Vec3i_50144 *gSplineSrcPoints[];
+extern s32 gCamSpeedScale;
 extern char D_80007FD4[];
 
-void func_800899DC(void *, ...);
-s32 func_8002E1FC(void *arg0, void *arg1, void *arg2);
+void debugPrintf(void *, ...);
+s32 vec3Sub(void *arg0, void *arg1, void *arg2);
 s32 func_8002E1CC(void *arg0, void *arg1, f32 arg2);
 s32 func_8002E234(void *arg0, void *arg1, void *arg2);
 s32 func_8002492C(f32, f32);
-s32 func_8002D204(s32 arg0, s32 arg1, s32 arg2);
+s32 approachAngle(s32 arg0, s32 arg1, s32 arg2);
 
 s32 func_80050144(Unk80050144 *arg0, s32 arg1) {
     s32 *count;
@@ -51,11 +51,11 @@ s32 func_80050144(Unk80050144 *arg0, s32 arg1) {
     s32 step;
 
     i = arg0->unk88;
-    pts = D_8014A9A8[arg1];
-    count = &D_8014A928[arg1];
+    pts = gSplineSrcPoints[arg1];
+    count = &gSplinePointCount[arg1];
     ret = 0;
     if (*count == 0) {
-        func_800899DC(D_80007FD4, arg1);
+        debugPrintf(D_80007FD4, arg1);
     }
     next = i + 1;
     if (next >= *count - 1) {
@@ -70,7 +70,7 @@ s32 func_80050144(Unk80050144 *arg0, s32 arg1) {
     t = (f32)arg0->unk84 * 0.00390625f;
     dx = b.x - a.x;
     dz = b.z - a.z;
-    func_8002E1FC(&c, &b, &a);
+    vec3Sub(&c, &b, &a);
     func_8002E1CC(&d, &c, t);
     func_8002E234(&d, &d, &a);
     if (arg0->unk84 >= 0x100) {
@@ -100,7 +100,7 @@ s32 func_80050144(Unk80050144 *arg0, s32 arg1) {
         }
     }
     if (ret == 0) {
-        step = D_800B9ECC * 2;
+        step = gCamSpeedScale * 2;
         arg0->unk84 += arg0->unk80 * step;
     }
     arg0->unk4 = d.x;
@@ -108,12 +108,12 @@ s32 func_80050144(Unk80050144 *arg0, s32 arg1) {
     arg0->unkC = d.z;
     angle = func_8002492C(dx, dz);
     if (arg0->unk6C == 0xB94598) {
-        arg0->unk10 = func_8002D204(angle + (angle - arg0->unk10) * 2, arg0->unk10, D_800B9ECC << 5);
+        arg0->unk10 = approachAngle(angle + (angle - arg0->unk10) * 2, arg0->unk10, gCamSpeedScale << 5);
     }
     if (arg0->unk6C == 0xB8FD2A) {
-        arg0->unk10 = func_8002D204(angle, arg0->unk10, D_800B9ECC << 9);
+        arg0->unk10 = approachAngle(angle, arg0->unk10, gCamSpeedScale << 9);
     } else {
-        arg0->unk10 = func_8002D204(angle, arg0->unk10, D_800B9ECC << 6);
+        arg0->unk10 = approachAngle(angle, arg0->unk10, gCamSpeedScale << 6);
     }
     return ret;
 }

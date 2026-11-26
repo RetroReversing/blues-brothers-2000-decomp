@@ -1,5 +1,5 @@
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_80007CA0[];
 extern s32 D_800B7690;
 extern s32 D_801407C8;
@@ -31,7 +31,7 @@ loop_2:
         }
     } else {
 block_6:
-        func_800899DC(D_80007CA0, var_a1);
+        debugPrintf(D_80007CA0, var_a1);
         var_v0 = var_s0;
     }
     return var_s0;

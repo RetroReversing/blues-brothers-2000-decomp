@@ -25,25 +25,25 @@ typedef struct Obj {
     s32 fD8;
     f32 fDC;
 } Obj;
-s32 func_8000C43C();
+s32 cameraGetMode();
 s32 func_8000DF10();
-s32 func_80024394();
-s32 func_8002D204(s32, s32, s32);
-s32 func_8002D5CC();
+s32 randomRange();
+s32 approachAngle(s32, s32, s32);
+s32 tickActorTimer();
 f32 func_8002DD60(f32);
 s32 func_8003BF98();
 s32 func_8003C9AC();
 Obj *func_80042F00();
-s32 func_8004303C();
+s32 animStepKeys();
 s32 func_80043328();
-s32 func_800433A8();
+s32 actorSetAnim();
 s32 func_80076080();
 s32 func_80083920();
 s32 func_800853E8();
 extern f32 D_801700D0;
 extern s32 D_801700D4;
-extern s32 D_800B9ECC;
-extern Obj *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern Obj *gCameraTarget;
 extern s32 func_8007631C;
 
 void func_80079580(Obj *self) {
@@ -61,16 +61,16 @@ void func_80079580(Obj *self) {
     }
     near = D_801700D0;
     id = D_801700D4;
-    dy = self->y - D_800BD06C->y;
-    func_8002D5CC(self);
+    dy = self->y - gCameraTarget->y;
+    tickActorTimer(self);
     switch (func_80083920(self, self->f64 > 0)) {
     case 1:
-        func_800433A8(o, 0x96, 0x100);
+        actorSetAnim(o, 0x96, 0x100);
         self->f64 = 0x64;
         break;
     case 2:
         o = func_80042F00(0x21, 0, 0, 0);
-        func_800433A8(o, 0x95, 0x100);
+        actorSetAnim(o, 0x95, 0x100);
         o->f58 = self->f58;
         o->f9C = &func_8007631C;
         o->fD8 = 0;
@@ -82,7 +82,7 @@ void func_80079580(Obj *self) {
         return;
     }
     func_800853E8(self);
-    self->f70 = func_8004303C(self);
+    self->f70 = animStepKeys(self);
     if (self->f70 != 0) {
         self->f8C = self->f8C - 1;
     }
@@ -93,9 +93,9 @@ void func_80079580(Obj *self) {
         } else {
             func_80043328(self, 0x92, 0x100);
         }
-        self->f8C = func_80024394(1, 4);
+        self->f8C = randomRange(1, 4);
     }
-    self->f10 = func_8002D204(id, self->f10, D_800B9ECC << 9);
+    self->f10 = approachAngle(id, self->f10, gCamSpeedScale << 9);
     if (near < 885.0f) {
         if (func_8002DD60(dy) < 250.0f) {
             if (self->f64 <= 0) {
@@ -114,7 +114,7 @@ void func_80079580(Obj *self) {
             }
         }
     }
-    if (func_8000C43C() == 0x30) {
+    if (cameraGetMode() == 0x30) {
         if (self->fD0 == 0x93) {
             n = (s32) self->fDC;
             if (n >= 0x29) {

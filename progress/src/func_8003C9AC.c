@@ -8,23 +8,23 @@ typedef struct {
     s32 fD0;
 } Player3C9AC;
 
-extern Player3C9AC *D_800BD06C;
+extern Player3C9AC *gCameraTarget;
 void func_800393F4();
 
 s32 func_8003C9AC(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    if (D_800BD06C->state != 3) {
+    if (gCameraTarget->state != 3) {
         return 0;
     }
-    if (D_800BD06C->f9C != func_800393F4) {
+    if (gCameraTarget->f9C != func_800393F4) {
         return 0;
     }
-    if (arg1 != 0 && D_800BD06C->fD0 == 0xB) {
+    if (arg1 != 0 && gCameraTarget->fD0 == 0xB) {
         return 0;
     }
-    if (arg2 != 0 && D_800BD06C->f90 == 0) {
+    if (arg2 != 0 && gCameraTarget->f90 == 0) {
         return 0;
     }
-    if (arg3 != 0 && D_800BD06C->fD0 == 0x1A) {
+    if (arg3 != 0 && gCameraTarget->fD0 == 0x1A) {
         return 0;
     }
     return 1;

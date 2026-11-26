@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 func_80025418(s32);                             /* extern */
 M2C_UNK func_80026C04(s32, M2C_UNK, s32);           /* extern */
-M2C_UNK func_800899DC(M2C_UNK *);                   /* extern */
+M2C_UNK debugPrintf(M2C_UNK *);                   /* extern */
 extern M2C_UNK D_80001030;
 extern M2C_UNK D_80001048;
 
@@ -25,10 +25,10 @@ s32 func_80025328(s32 arg0, s32 arg1) {
     temp_lo = arg0 * arg1;
     temp_v0 = func_80025418(temp_lo);
     if (temp_v0 & 7) {
-        func_800899DC(&D_80001030);
+        debugPrintf(&D_80001030);
     }
     if (temp_v0 == 0) {
-        func_800899DC(&D_80001048);
+        debugPrintf(&D_80001048);
     }
     func_80026C04(temp_v0, 0, temp_lo);
     return temp_v0;

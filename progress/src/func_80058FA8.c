@@ -18,7 +18,7 @@ s32 func_80043248(void *);                          /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80058F74(void *, M2C_UNK *);           /* extern */
 M2C_UNK func_80059298(void *);                      /* extern */
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 extern M2C_UNK func_80059058;
 extern M2C_UNK func_80059100;
 
@@ -32,7 +32,7 @@ void func_80058FA8(void *arg0) {
             func_80043328(arg0, 0x41, 0x180);
         }
         func_80059298(arg0);
-        func_8003BF98(D_800BD06C);
+        func_8003BF98(gCameraTarget);
         return;
     }
     if (M2C_FIELD(arg0, s32 *, 0xC0) & ~1) {

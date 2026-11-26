@@ -12,22 +12,22 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
-s32 func_8002D5CC();                                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
+s32 tickActorTimer();                                /* extern */
 
 void func_8005EE10(void *arg0) {
     f32 temp_fv0;
     s32 temp_lo;
 
-    if ((func_8002D5CC() != 0) || (M2C_FIELD(arg0, s32 *, 0x5C) < 4)) {
+    if ((tickActorTimer() != 0) || (M2C_FIELD(arg0, s32 *, 0x5C) < 4)) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
         return;
     }
-    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) + (f32) (func_80024394(-4, 6) + 0xA));
-    temp_fv0 = M2C_FIELD(arg0, f32 *, 4) + (f32) func_80024394(-6, 6);
+    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) + (f32) (randomRange(-4, 6) + 0xA));
+    temp_fv0 = M2C_FIELD(arg0, f32 *, 4) + (f32) randomRange(-6, 6);
     M2C_FIELD(arg0, s32 *, 0x5C) = (s32) (M2C_FIELD(arg0, s32 *, 0x5C) - 4);
     M2C_FIELD(arg0, f32 *, 4) = temp_fv0;
-    temp_lo = M2C_FIELD(arg0, s32 *, 0x88) * func_80024394(0x40, 0x80);
+    temp_lo = M2C_FIELD(arg0, s32 *, 0x88) * randomRange(0x40, 0x80);
     M2C_FIELD(arg0, s32 *, 0x70) = (s32) (M2C_FIELD(arg0, s32 *, 0x70) + 1);
     M2C_FIELD(arg0, s32 *, 0x18) = (s32) (M2C_FIELD(arg0, s32 *, 0x18) + temp_lo);
 }

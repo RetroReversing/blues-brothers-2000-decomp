@@ -3,11 +3,11 @@ typedef struct {
     u8 pad4[4];
     f32 y;
 } Player;
-s32 func_80023874(s32, s32);
+s32 findActor(s32, s32);
 void func_80052A5C(s32);
 s32 func_80052A68(s32, char *);
 void *func_80052B24(s32, char *, void *);
-extern Player *D_800BD06C;
+extern Player *gCameraTarget;
 extern s32 D_800BD0F4;
 void *func_80066764(void *);
 
@@ -24,11 +24,11 @@ void *func_80066628(u8 *obj) {
             return *(void **) (obj + 0xD8) = func_80066764;
         }
     }
-    D_800BD06C->state = 3;
+    gCameraTarget->state = 3;
     if (*(s32 *) (obj + 0x90) < 500) {
         ret = *(void **) (obj + 0x7C);
         if (ret == 0) {
-            if (D_800BD06C->y < *(f32 *) (obj + 0x8) + 50.0f) {
+            if (gCameraTarget->y < *(f32 *) (obj + 0x8) + 50.0f) {
             func_80052A5C(0x570);
             if (func_80052A68(id, name) == 0) {
                 *(void **) (obj + 0x7C) = func_80052B24(id, name, obj);
@@ -44,7 +44,7 @@ void *func_80066628(u8 *obj) {
         ret = *(void **) (obj + 0x7C);
     }
     if (ret != 0) {
-        if (func_80023874(0x800, 0) != 0) {
+        if (findActor(0x800, 0) != 0) {
         fail:
             return 0;
         }

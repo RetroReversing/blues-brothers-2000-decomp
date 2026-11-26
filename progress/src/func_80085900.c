@@ -4,7 +4,7 @@ typedef struct {
     s32 val;
 } Entry;
 
-s32 func_8000C43C(void *);
+s32 cameraGetMode(void *);
 void func_800899C4(char *, s32);
 extern char D_80009AB0[];
 extern Entry D_800B99C0[];
@@ -25,7 +25,7 @@ s32 func_80085900(Obj *obj) {
     s32 ret;
 
     e = D_800B99C0;
-    key = func_8000C43C(obj);
+    key = cameraGetMode(obj);
     for (;;) {
         if (e->id == 0x400) {
             goto end;

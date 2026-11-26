@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80024394(s32, s32);                /* extern */
-s32 func_8002D620(void *);                      /* extern */
+s32 randomRange(s32, s32);                /* extern */
+s32 syncActorPrevPos(void *);                      /* extern */
 void *func_80042F00(s32, s32, s32, s32); /* extern */
-s32 func_800433A8(void *, s32, s32);        /* extern */
+s32 actorSetAnim(void *, s32, s32);        /* extern */
 s32 func_80050460(s32 *, s32 *);        /* extern */
 s32 func_800852CC(void *, s32);                 /* extern */
 extern s32 D_800B81D0;
@@ -33,12 +33,12 @@ void *func_8005C700(s32 arg0) {
     __base_func_8005BD8C = &func_8005BD8C;
     (*(s32 **)((s8 *)temp_v0 + 0x9C)) = (s32 *) (__base_func_8005BD8C + 0xE5);
     (*(s32 *)((s8 *)temp_v0 + 0)) = 0x1014;
-    func_800433A8(temp_v0, 0x32, 0x100);
+    actorSetAnim(temp_v0, 0x32, 0x100);
     func_800852CC(temp_v0, arg0);
-    func_8002D620(temp_v0);
+    syncActorPrevPos(temp_v0);
     if (D_800B81D0 != 0) {
         (*(s32 **)((s8 *)temp_v0 + 0x9C)) = &func_8006DC44;
-        func_800433A8(temp_v0, 0x32, func_80024394(0xC0, 0x100));
+        actorSetAnim(temp_v0, 0x32, randomRange(0xC0, 0x100));
         (*(s32 *)((s8 *)temp_v0 + 0xBC)) = 3;
     }
     return temp_v0;

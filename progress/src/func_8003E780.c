@@ -1,5 +1,5 @@
-s32 func_800899DC();
+s32 debugPrintf();
 void func_8003E780(s32 arg0, ...)
 {
-  func_800899DC();
+  debugPrintf();
 }

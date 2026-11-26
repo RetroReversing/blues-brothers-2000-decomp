@@ -27,11 +27,11 @@ s32 func_8002D5E8(Obj *);
 void func_8002D858(Obj *, s32 *);
 void func_8002DA80(Obj *);
 f32 func_8002DD60(f32);
-void func_8004303C(Obj *);
-void func_800433A8(Obj *, s32, s32);
+void animStepKeys(Obj *);
+void actorSetAnim(Obj *, s32, s32);
 s32 func_800772FC(Obj *);
 float sqrtf(float);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern f32 D_801700D0;
 void func_8008427C(void);
 
@@ -58,14 +58,14 @@ s32 func_80083B04(Obj *arg0) {
         }
         arg0->unk90 = 150;
     }
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     if (arg0->unk8C != 0) {
         return ret;
     }
-    dx = D_800BD06C->x - arg0->unk40;
-    dz = D_800BD06C->z - arg0->unk48;
+    dx = gCameraTarget->x - arg0->unk40;
+    dz = gCameraTarget->z - arg0->unk48;
     dist = sqrtf(dx * dx + dz * dz);
-    dy = D_800BD06C->y - arg0->y;
+    dy = gCameraTarget->y - arg0->y;
     if (dist < arg0->unk104 && func_8002DD60(dy) < 300.0f) {
         if (arg0->unkB8 != 12) {
             return 2;
@@ -75,7 +75,7 @@ s32 func_80083B04(Obj *arg0) {
         if (a >= -0x36B0 && a <= 0x36B0) {
             return 2;
         }
-        func_800433A8(arg0, arg0->unk74 + 3, 0x100);
+        actorSetAnim(arg0, arg0->unk74 + 3, 0x100);
         arg0->unk9C = func_8008427C;
         return 4;
     }

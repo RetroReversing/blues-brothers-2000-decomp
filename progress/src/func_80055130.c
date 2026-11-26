@@ -1,9 +1,9 @@
-s32 func_8002D298(s32, s32, s32);
-s32 func_8002D5CC(void *);
-void func_8004303C(void *);
+s32 approachS32(s32, s32, s32);
+s32 tickActorTimer(void *);
+void animStepKeys(void *);
 void func_80058F74(void *, void *);
 extern f32 D_800B9EC4;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 void func_800548C0(void *);
 
 typedef struct {
@@ -36,10 +36,10 @@ void func_80055130(Obj *arg0) {
     }
     arg0->y += D_800B9EC4 * 100.0f;
     arg0->unk10 += arg0->unk70;
-    arg0->unk70 += D_800B9ECC << 7;
-    func_8004303C(arg0);
-    arg0->unk5C = func_8002D298(0x80, arg0->unk5C, D_800B9ECC * 2);
-    if (func_8002D5CC(arg0) != 0) {
+    arg0->unk70 += gCamSpeedScale << 7;
+    animStepKeys(arg0);
+    arg0->unk5C = approachS32(0x80, arg0->unk5C, gCamSpeedScale * 2);
+    if (tickActorTimer(arg0) != 0) {
         arg0->unk14 = 0;
         func_80058F74(arg0, func_800548C0);
     }

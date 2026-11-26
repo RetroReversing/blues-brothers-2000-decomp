@@ -21,24 +21,24 @@ struct Obj {
     /* 0xBC */ s32 fBC;
 };
 void func_8001B990(s32, s32);
-Obj *func_80023874(s32, s32);
+Obj *findActor(s32, s32);
 s32 func_80023DBC(s32);
 s32 func_8002D260(s32);
-void func_8004303C(Obj *);
+void animStepKeys(Obj *);
 void func_80052A5C(s32);
 s32 func_80052B24(s32, char *, Obj *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 f32 sqrtf(f32);
 void func_8006B1D8();
 extern char D_80008EE8[];
 extern char D_80008EEC[];
 extern char D_800B3960[];
 extern char D_800B3964[];
-extern char D_800BD06C[];
+extern char gCameraTarget[];
 extern f32 D_80008F00;
 #define P3960 (*(Obj **)D_800B3960)
 #define P3964 (*(Obj **)D_800B3964)
-#define PBD06C (*(Obj **)D_800BD06C)
+#define PBD06C (*(Obj **)gCameraTarget)
 
 void func_8006B244(Obj *arg0) {
     Obj *o;
@@ -60,11 +60,11 @@ void func_8006B244(Obj *arg0) {
         arg0->f7C = 1;
         return;
     }
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     if (arg0->fA8 != 0) {
-        func_8004303C(arg0->fA8);
+        animStepKeys(arg0->fA8);
     }
-    o = func_80023874(0x1023, 0);
+    o = findActor(0x1023, 0);
     if (o == 0) {
         func_80052A5C(0x565);
         o = PBD06C;
@@ -80,7 +80,7 @@ void func_8006B244(Obj *arg0) {
         }
         arg0->f7C++;
     } else if (o->fBC >= 8) {
-        t = func_80023874(0x121, 0);
+        t = findActor(0x121, 0);
         if (t != 0) {
             dx = t->x - arg0->x;
             dy = t->y - arg0->y;
@@ -92,7 +92,7 @@ void func_8006B244(Obj *arg0) {
         }
     }
     if (arg0->f7C == 0x3C) {
-        func_800899DC(D_80008EEC);
+        debugPrintf(D_80008EEC);
     }
 }
 

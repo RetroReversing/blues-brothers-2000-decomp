@@ -7,7 +7,7 @@ typedef struct Obj {
     f32 fDC;
 } Obj;
 void func_8002A360(s32, s32);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 
 s32 func_80013654(Obj *o) {
     Obj *p;
@@ -15,7 +15,7 @@ s32 func_80013654(Obj *o) {
     if (o->fB8 == 5) {
         return 1;
     }
-    p = D_800BD06C;
+    p = gCameraTarget;
     if (p->fD0 == 13) {
         if (p->fDC < 7.0 || p->fDC > 11.0) {
             return 0;

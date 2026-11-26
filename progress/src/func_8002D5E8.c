@@ -12,12 +12,12 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_800B9EA0;
+extern s32 gFrameScale;
 
 s32 func_8002D5E8(void *arg0) {
     s32 temp_v0;
 
-    temp_v0 = M2C_FIELD(arg0, s32 *, 0x90) - D_800B9EA0;
+    temp_v0 = M2C_FIELD(arg0, s32 *, 0x90) - gFrameScale;
     M2C_FIELD(arg0, s32 *, 0x90) = temp_v0;
     return temp_v0 < 1;
 }

@@ -3,15 +3,15 @@ f32 __cosf(f32);
 s32 func_80024AC4(s32, s32);
 void func_8002DAE0(void *, void *, f32);
 void func_8002DB6C(void *, void *, f32);
-void func_8002DC84(void *);
-void func_8002DD8C(void *, void *, void *);
-s32 func_80035364(void *, void *, s32);
-void func_80036BD0(void *, void *, void *, void *);
-void func_80036CF8(void *, void *, void *, void *);
-void func_80048820(void *, void *, s32);
-f32 func_80095DC0(f32);
-extern Vec3 D_800B4B84[];
-extern f32 *D_800BD06C;
+void mtxIdentity3(void *);
+void mtxTransformVec3(void *, void *, void *);
+s32 raycastCollision(void *, void *, s32);
+void expandBoundsToSegment(void *, void *, void *, void *);
+void initBoundsToSegment(void *, void *, void *, void *);
+void collectCollisionCells(void *, void *, s32);
+f32 sinApprox(f32);
+extern Vec3 cameraRayDirs[];
+extern f32 *gCameraTarget;
 extern s32 D_8013FFA4;
 extern s32 D_8013FFA8;
 
@@ -52,37 +52,37 @@ void func_80035D04(s32 *arg0) {
     sp30[0] = ((f32 *)arg0)[1];
     sp30[1] = ((f32 *)arg0)[2];
     sp30[2] = ((f32 *)arg0)[3];
-    sp10[0] = D_800BD06C[1];
+    sp10[0] = gCameraTarget[1];
     D_8013FFA4 -= t;
-    sp10[1] = D_800BD06C[2] + 200.0f;
-    sp10[2] = D_800BD06C[3];
-    func_8002DC84(sp40);
-    func_8002DC84(sp68);
+    sp10[1] = gCameraTarget[2] + 200.0f;
+    sp10[2] = gCameraTarget[3];
+    mtxIdentity3(sp40);
+    mtxIdentity3(sp68);
     func_8002DB6C(sp40, sp68, b);
     func_8002DAE0(sp68, sp40, -a);
     k = r * __cosf(a);
-    k *= func_80095DC0(b);
+    k *= sinApprox(b);
     sp30[0] = sp10[0] - k;
-    sp30[1] = sp10[1] - r * func_80095DC0(a);
+    sp30[1] = sp10[1] - r * sinApprox(a);
     r *= __cosf(a);
     r *= __cosf(b);
     sp30[2] = sp10[2] - r;
     mask = 0;
     bit = 1;
     for (i = 1; i < 5; i++) {
-        func_8002DD8C(&pts[i], sp68, &D_800B4B84[i]);
+        mtxTransformVec3(&pts[i], sp68, &cameraRayDirs[i]);
         pts[i].x += sp30[0];
         pts[i].y += sp30[1];
         pts[i].z += sp30[2];
         if (i == 1) {
-            func_80036CF8(spD0, spE0, &pts[1], sp10);
+            initBoundsToSegment(spD0, spE0, &pts[1], sp10);
         } else {
-            func_80036BD0(spD0, spE0, &pts[i], sp10);
+            expandBoundsToSegment(spD0, spE0, &pts[i], sp10);
         }
     }
-    func_80048820(spD0, spE0, 3);
+    collectCollisionCells(spD0, spE0, 3);
     for (i = 1; i < 5; i++) {
-        if (func_80035364(sp10, &pts[i], 0) != 0) {
+        if (raycastCollision(sp10, &pts[i], 0) != 0) {
             mask |= bit;
         }
         bit <<= 1;

@@ -1,5 +1,5 @@
 void func_8002A360(s32, s32);
-void func_800433A8(void *, s32, s32, s32);
+void actorSetAnim(void *, s32, s32, s32);
 void func_8005EB70(void *);
 int abs(int);
 extern s32 D_80140240;
@@ -12,7 +12,7 @@ s32 func_8005EEDC(O *arg0, O *arg1) {
     if (dy > 0 && arg1->xD0 != 0xE3 && abs(dx) < 0x4B && abs(dz) < 0x4B && arg0->xD0 == 5 && arg0->x50 < 0.0f && dy < 0x118) {
         arg0->x50 = D_80140240;
         arg0->y += 1.0f;
-        func_800433A8(arg0, 5, 0x100, dy);
+        actorSetAnim(arg0, 5, 0x100, dy);
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 2);
         func_8005EB70(arg1);

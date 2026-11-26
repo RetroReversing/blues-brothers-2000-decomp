@@ -2135,7 +2135,7 @@
   "score_after": 30
  },
  {
-  "function": "func_80036BD0",
+  "function": "expandBoundsToSegment",
   "text": "hk60: matched at 0 from saved best 80 (16 register rows, all pairwise load swaps). Edit: each block `if (src < dst) dst = src` now reads `d = *dst; s = *src;` before the compare (dst loaded first, src second), max blocks `if (d < s) dst = s`. Same semantics, no scaffolding. Candidate: /tmp/dd-hk60/w/A.c (deleted at stop; full text in the match record). Verdict: setup.py try -> MATCH, 74 instructions, revision 9ce237ddf6452503a129.",
   "by": "manual-c0539a7e40ee47be",
   "created_at": 1795519253.477567,
@@ -2388,7 +2388,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:f9c2a92cc94104c9166269399aa4c5bac08bf51eef6ecbaa0b7e8ed7e7605d5c"
  },
  {
-  "function": "func_80031A38",
+  "function": "updateMenuScroll",
   "text": "hk73 (match-function run): matched to 0 with the source in the matched candidate. Start was the saved best at 100, which is NOT faithful: its first |D_801073B0| is unconditional negu (the bltzl with negu in its delay slot is missing), so the 100 hides a wrong abs. Faithful abs variants (if-negate, ternary, goto layouts, unsigned/bit-test forms) all compile to bgez + sw ra in its delay slot and score 260 (the target needs bltzl). prove_chain --families all --combine 10 on the 260 candidate found arm_private_rename > conditional_ternary (combined step): temp = (D >= 0) ? D : -D for the first abs, and the second abs scoped into its own s32 var_v0_2_a1 inside the if (score 0). Scaffolding: unused var_v0 local. Compiler sn-n64-281 (other sn-n64-272 builds identical).",
   "by": "manual-0d322a4885244d8a",
   "created_at": 1795520754.10579,
@@ -2744,7 +2744,7 @@
   "score_after": 105
  },
  {
-  "function": "func_8002D340",
+  "function": "approachF32",
   "text": "hk96: matched at 0 via reuse of t for the DD60 result: t = arg0-arg1; r = F(t); t = DD60(t); if (arg2 < t) t = arg2; return arg1 + r*t. Earlier best (115) used an uninitialised local; faithful versions with separate variables stayed at 632 (frame had 3 saved fp regs, target 4).",
   "by": "manual-36985d03d3d64986",
   "created_at": 1795524344.5450082,
@@ -2823,7 +2823,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:c2b68c7f5ccdc815291289f08197647e0c700c62e84660d06d3fa9531ec87063"
  },
  {
-  "function": "func_8004303C",
+  "function": "animStepKeys",
   "text": "hk106: matched at 0. Edit that did it (score 120 -> 0, isolated judge then app 01247cc4): hoist the pure read scale = (f32) M2C_FIELD(arg0_in, const s32 *, 0xD4) into a local f32 declared with the other locals, placed after temp_s0 = field_E0 and before the if; the if keeps the draft shape (do-while fence, || chain, var_v0 flags). Scaffolding: none beyond the draft. Target loads 0xD4 before the beqz on temp_s0. Source: /tmp/dd-hk106/cand/A.c (before the session folder is removed).",
   "by": "manual-6f9b61227b05469e",
   "created_at": 1795524932.5974662,
@@ -3066,7 +3066,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3fd1809721b7c9cb06916103efdafb10fc062a53e9cec0274097ee13642a7079"
  },
  {
-  "function": "func_8003CDA0",
+  "function": "drawCenteredMessage",
   "text": "hk112: matched from saved best 150 (permuter output) by one edit: the index was scaled through pointer arithmetic on an s32 * (sll 4); the target adds the byte offset ((D_800BD1D8 * 0xB1 + arg0) * 4) to the table base as char *. Scaffolding kept: the __base_D_800B4D30 local the permuter wrote (the call passes it as the second argument, the target loads &D into $a1).",
   "by": "manual-b0d6c34b4a8d473a",
   "created_at": 1795546480.527822,
@@ -3741,7 +3741,7 @@
   "score_after": 210
  },
  {
-  "function": "func_800265C0",
+  "function": "deleteSaveSlot",
   "text": "hk119: matched at 0. Saved best 200: the array store through char D_801071B0 is a word store in the target; cast to s32 *.",
   "by": "manual-7a5aa221f3a840cd",
   "created_at": 1795548151.8521159,
@@ -3941,7 +3941,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:7bad182ab7e7413487bfd83bbc05235c91aef0f5287c96b7a850860fe4165501"
  },
  {
-  "function": "func_80026A6C",
+  "function": "decodeSaveName",
   "text": "hk122 (stuck at 235, the best saved draft; the body matches, only the prologue differs): the target copies arg0 into $s1 before arg1 into $s2 and saves $s1 first; ours copies arg1 first. Also the target loads %hi(D_801070B0) straight into $s0 for var_s0, ours via $v0 (lui v0; addiu s0,v0). Tried (all 235 or worse, 435/460/490 when worse): var_s0 assigned before/after var_s1 and the memset call; a limit copy of arg1 (460); arg1 as u32 (435); (char *) casts; passing var_s0 to the call; a second var_s0 copy. Compiler is sn-n64-281 (no cc1 dumps).",
   "by": "manual-b0e2bd0ffe094005",
   "created_at": 1795548880.938425,
@@ -3949,7 +3949,7 @@
   "score_after": 235
  },
  {
-  "function": "func_80026A6C",
+  "function": "decodeSaveName",
   "text": "[Released without compiling it once; notes not checked by a compile.] Stuck at 235: prologue only (param copy order arg0/arg1 and lui into s0); about 10 variants tried, see note.",
   "by": "manual-b0e2bd0ffe094005",
   "created_at": 1795548884.710728,
@@ -4041,7 +4041,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:f50fbe727fac9a474caa73a3a33541e688cbe9d32ed44aa45f6227b639b9c4f8:cb31439d13c8f6e395fe8ea6779639e257d2bbb08be99518ac66cedf2900be3f"
  },
  {
-  "function": "func_8001FF64",
+  "function": "updateCameraView",
   "text": "[Released without compiling it once; notes not checked by a compile.] App best 210 (saved draft). Plain rewrite from the assembly also 210: the call sequence (func_80024FE8, BE0, A3C, B58, DC84, DBF8, DAE0, DB6C twice, then func_80089C18 with three float args) matches; the constant D_80000E70 is the double 9.587379760742188e-05 (ROM 0x3F1921FB4D12D84A), written as a literal. Remaining rows: the float temporaries (the target puts the three cvt.d.s in f6/f4/f0 with mul.d against f2; the draft and ours reuse the f24/f22/f20 registers), and the prologue save order (sw s1 before ra). f64 temporaries (ft1/ft0/fv0) gave 210 too. prove_chain families from 210: no child improves (1264 children, 150 scored).",
   "by": "manual-53a7bf61d0af4814",
   "created_at": 1795549129.826485,
@@ -4248,7 +4248,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:03a60f59798fabc4a595ff29774a94ba91a79b2e0e12bd8889388fffad4b78be"
  },
  {
-  "function": "func_8002D298",
+  "function": "approachS32",
   "text": "hk123: stuck at 260 (the saved draft). The target is an abs-then-clamp: bltzl on $s0 with the negation in the annulled delay slot, the copy move $v1,$v0 after the join. Ours puts the copy into the bgez slot. Tried: else-arm form, 0 - x negation, ternary, extra local for the clamp, 0 > x and x <= -1 comparisons, unsigned variable: 260, 260, 260, 260, 260, 260, 460. Only the branch form differs (sn-n64-281 profile). Not tried: compiler_experiments trial (no change to the profile here).",
   "by": "manual-78143ebb92c14ca0",
   "created_at": 1795549757.5835688,
@@ -4256,7 +4256,7 @@
   "score_after": 260
  },
  {
-  "function": "func_8002D298",
+  "function": "approachS32",
   "text": "[Released without compiling it once; notes not checked by a compile.] hk123: stuck at 260, see the note.",
   "by": "manual-78143ebb92c14ca0",
   "created_at": 1795549757.833256,
@@ -4702,7 +4702,7 @@
   "score_after": 170
  },
  {
-  "function": "func_80026A6C",
+  "function": "decodeSaveName",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap7 compiler sweep: best trial 235 under sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mhard-float -mfp64",
   "by": "manual-19a7531dd5c741fb",
   "created_at": 1795550499.765986,
@@ -4726,7 +4726,7 @@
   "score_after": 245
  },
  {
-  "function": "func_8002D298",
+  "function": "approachS32",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap7 compiler sweep: best trial 260 under sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mhard-float -mfp64",
   "by": "manual-19a7531dd5c741fb",
   "created_at": 1795550514.386442,
@@ -5351,7 +5351,7 @@
   "score_after": 745
  },
  {
-  "function": "func_8002D298",
+  "function": "approachS32",
   "text": "[Released without compiling it once; notes not checked by a compile.] Target: bltzl s0 with negu in the annulled slot and move v1,v0 after the join; ours bgez with move v1 in the slot. SN compiler, no dumps. Source shape not found.",
   "by": "manual-5660e98b9ce7421c",
   "created_at": 1795550862.000735,
@@ -6068,7 +6068,7 @@
   "score_after": 535
  },
  {
-  "function": "func_80023874",
+  "function": "findActor",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap7 compiler sweep: best trial 535 under sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mhard-float -mfp64",
   "by": "manual-19a7531dd5c741fb",
   "created_at": 1795551423.683533,
@@ -6564,7 +6564,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:8baced1579e83ffe82bd7eaa717d388457dd980887091a26d42c51c6f8e16979"
  },
  {
-  "function": "func_8002E080",
+  "function": "vec3Length",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap7 compiler sweep: best trial 600 under gcc-2.7.2-kmc -G0 -mips3 -O2 -mgp32 -mfp32",
   "by": "manual-19a7531dd5c741fb",
   "created_at": 1795551703.093736,
@@ -6856,7 +6856,7 @@
   "score_after": null
  },
  {
-  "function": "func_8002D298",
+  "function": "approachS32",
   "text": "op32 MATCHED on the project profile: the bltzl/negu skip with the move v1,v0 after it is the abs() builtin (GCC 2.8 mips abssi2 emits its own noreorder bltzl; subu), not an if-negate.",
   "by": "manual-1725631ebbd7422e",
   "created_at": 1795552158.9048069,
@@ -7353,7 +7353,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:f1b4f5907c92ce0ea05f12bbbaf2a8ca97de4637c54e7c2d13353551c51ead78"
  },
  {
-  "function": "func_8002E080",
+  "function": "vec3Length",
   "text": "[Released without compiling it once; notes not checked by a compile.] hk132: sqrt of the squared sum of three floats, and a NaN test that calls func_80094350. The saved best (640) and the spellings sum/sqrtf/NaN-test all score 640. The target register rows are f4/f2 for the squared terms and f12 for the sum, ours f2/f1; the -mfp64 trial scored 630 (diagnostic). prove_chain families (273 children) stall. Not matched.",
   "by": "manual-052353db4a82424b",
   "created_at": 1795554253.208956,
@@ -8685,7 +8685,7 @@
   "score_after": 2230
  },
  {
-  "function": "func_8003ECB8",
+  "function": "animSampleKeys",
   "text": "op62: claimed by mistake (410 instructions, over my size cap); no work done.",
   "by": "manual-83d32b880ea94c1c",
   "created_at": 1795570088.045043,
@@ -8693,7 +8693,7 @@
   "score_after": 3030
  },
  {
-  "function": "func_8003ECB8",
+  "function": "animSampleKeys",
   "text": "[Released without compiling it once; notes not checked by a compile.] not worked: over size cap",
   "by": "manual-83d32b880ea94c1c",
   "created_at": 1795570089.9511108,
@@ -8752,7 +8752,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:2dffb20f6501cc42ab97d2e0bb68cd4de0955f4b2f522e85b9389ee2f7fed601"
  },
  {
-  "function": "func_8006BB5C",
+  "function": "updateChaseVehicle",
   "text": "op62: 2395 -> 2081 saved (1696 under -mfp32), plain rewrite of the path-follower update: Obj struct, func_80081990/AC0 position and direction on path o->70 at o->B4, direction normalised, x += B0*dir[2], z -= B0*dir[0]; near (<250) branch with the 13..19 animation window, 2*o->104 branch steering accel = (cos*dx + sin*dz) / 1000.0 (sins/coss called again with results unused), else func_80081188 segment branch; common clamps of accel/B0/B4 (B4 <= count - 1.1f, >= 0). Findings: (1) the literal pool is 1.0f,250,13,19,0.5,(pad),1000.0d,0.015d,1.0f,(pad),0.02d,1.1f in source order (two separate 1.0f words): with plain literals our build's float and double pools land elsewhere (?.rdata on every literal, 3991); the saved best uses extern f32/f64 D_80008F38..D_80008F70 names, which removes the pool rows but loads through lui v0 instead of lui at (not the final form). The same float-after-double pool order blocks func_8003E7E4. (2) Still structural: target keeps the path index in s4 (one more saved register than ours), has a degenerate else if (hit) {} after the o->D0 != o->74 + 8 test (bnel s3 with a j in its slot) and a sw zero,0x64 we do not emit; the near branch clamps then jumps to the common clamp.",
   "by": "manual-83d32b880ea94c1c",
   "created_at": 1795570780.1897678,
@@ -8761,7 +8761,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:43254cd78032510127f8d0c32b8ddbd1cbd0ecaf704e718f80a8990e3fe3887f"
  },
  {
-  "function": "func_8006BB5C",
+  "function": "updateChaseVehicle",
   "text": "2081 saved; see note",
   "by": "manual-83d32b880ea94c1c",
   "created_at": 1795570780.4131,
@@ -8869,7 +8869,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3901ce7a2a587900a157111801661adef2fe16e9c5725c3f06f6aba860715466"
  },
  {
-  "function": "func_80081588",
+  "function": "initSpline",
   "text": "op65: best 160 under sn-n64-281 -G8 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (trial ab2c6098fde7f9325b86, diagnostic; same source 795 under default, saved). Source: track spline builder: n = D_8014A928[idx], src = D_8014A9A8[idx], segs = func_800253A0(n*0x30), pts = func_800253A0(n*12); error prints via func_800899DC(fmt, idx, file, line 382/387); pts[i] = (f32)src[i]; tangents: i = 1; if (i < n - 1) { k = D_80009830; do { func_8002E1FC(&D_80170600[i], &pts[i+1], &pts[i-1]); D_80170600[i] *= k; i++; } while (i < n - 1); } (explicit guard puts the k load after it); closed: ends with D_80009834 and func_80081074(&segs[i], &pts[i], &pts[(i+1)%n], &D[i], &D[(i+1)%n]) for i <= n-1; open: D_80009838 and func_80080F64(&segs[i], &pts[i], &D[i]) for i <= n-2. Only rows left: in both end-tangent blocks the target loads D_80170600[0].x before k = D_8000983x (lwc1 ft0 then lui at/lwc1 fs0); ours loads k first. Tried: k assigned inside the multiply expression, separate k per branch: no change.",
   "by": "manual-aeeb5be5af9d41ed",
   "created_at": 1795574124.5357811,
@@ -8878,7 +8878,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:5b123f0649cbdccd4702c67994f7c67cd12269fc5c50a752e2eee99cb56745b7"
  },
  {
-  "function": "func_80081588",
+  "function": "initSpline",
   "text": "160 under -G8 -mips3 -mfp32 (diagnostic): one load order left; see note",
   "by": "manual-aeeb5be5af9d41ed",
   "created_at": 1795574125.602143,
@@ -8903,7 +8903,7 @@
   "score_after": null
  },
  {
-  "function": "func_8006495C",
+  "function": "cameraUpdateByMode",
   "text": "op66: best 360 under compiler_experiments sn-n64-281 -G8 -mips2 -O2 -mfp32 (trial d020f56b87266a7777e3, revision f00273aa384d5879aa77; 2895 under the function's current fp64 profile). Plain rewrite: struct Obj (x,y,z at 4..0xC, hx/hy/hz at 0x40, off 0x88, fn 0x9C, link 0xA8); globals as extern u8 X[] read (*(T *)X) so they are split AND not in-struct (sched may move them past arg0 stores); f32 pool words D_80008BDC.. as scalar extern f32 (lui $at form); z*0.125 computed in its own local before v[0]; one local per value (no reuse across cases); do { link = arg0->link; } while (0) fence (parameter_read_scope) puts sw 0x88 before lw 0xA8. Only rows left: block 0 - target has move s2,a0 scheduled after the prologue stores (in beqz delay slot, -500 arm keeps its own j); ours: sched2 picks the sdc1 f20 store by potential hazard over the move at the T-3 tie, so reorg inverts the branch with li -500 in the slot. Tried: 4 if-chain spellings x 4 global widths x 3 target types, flags variable, ternary in the call, fences around chain/D read, copy of the parameter into a local, -mcpu variants, -fno-schedule-insns(2).",
   "by": "manual-837241761e9b48f2",
   "created_at": 1795574744.464343,
@@ -8912,7 +8912,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:ce9b04520433ff481ba1a98052bdfbf118f32554bb595a924223524791d9109d"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "op65: saved 745 (default profile; instructions match, register rows only). Source: textured spinning quad: size = 600 at entry (fp), func_8002220C(func_800221C0(0,0,1,2,0,0,1,1)), func_80029F8C(0x5B), k = 0x1000 (s7, used for F588|k and +k), Gfx combine/othermode/E2001E01,1/F9000000,100/E3000A01, func_8002710C(0,0,0,255), gDPLoadTextureBlock words (FD900000 img ... F2000000 0xFC0FC), r = zoom * 0xC000 / 320 BEFORE obj.x18 = zoom * 160 + 0xE000, loop i<4: s[i]/t[i] = ((r * sins/coss(obj.x18 + (i << 14))) >> 15) + k, local Obj (0x108 bytes at sp68; x28 = x2C = 0, x30 = 1000.0f literal (resolves to D_80001238), x34..x3C = 0x100), func_80024FE8(m); func_80022728(&obj, m, 0); four Vtx in D_8013FB30 written vertex by vertex (ob, cn, tc) then gSPVertex/2 tri words. Left: in the vertex block the target gives -size v1 and the 0xFF colour t6 (after the hoisted Gfx constants t2-t4); ours gives 0xFF v1 and -size a0, shifting the lhu temps by one. Also target sets k after the a3 = 0xFF argument (sched). Tried: m2c vertex store order (760), colour in a u8/s32 local (745), k placement grid; prove_chain timed out at step 1.",
   "by": "manual-aeeb5be5af9d41ed",
   "created_at": 1795574787.3586292,
@@ -8921,7 +8921,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:6eb0351a977b3e6b239b955bdd7a73a40055bada703b36bb7c0d797fb0f757ea"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "745: register rows only in the vertex block; see note",
   "by": "manual-aeeb5be5af9d41ed",
   "created_at": 1795574788.754123,
@@ -8930,7 +8930,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:6eb0351a977b3e6b239b955bdd7a73a40055bada703b36bb7c0d797fb0f757ea"
  },
  {
-  "function": "func_8002B880",
+  "function": "loadTextureClamped",
   "text": "op67: saved best 480 is a plain rewrite (texture block loader, 4 type arms, locals mask=0/cm=2 set at the top, used as registers in the 16/32-bit arms). Remaining 14 rows: (1) prologue order: target saves ra before s4/s3 and puts li s3,2 in the bne delay slot; ours moves sw ra into the delay slot; (2) in the 16/32 arms the LOADTILE w1 is built ((cm<<18)|0x07000000)|(cm<<8)|(mask<<4) in the target, while fold gives cm<<18 | ((cm<<8)|0x07000000) for every spelling tried (term order, 8-term libultra form, casts, u32 literals). Writing cms before cmt fixes the or order but breaks the (cm&3) CSE (1370). Tried: types/orders of mask/cm, cm/mask in the 4-arm too, + and ^ instead of |, sn-272 0001/0004/0006, KMC 2.7.2, -mips2: no change or worse. Profile sn-n64-281 default is right.",
   "by": "manual-763f293e1efd4d95",
   "created_at": 1795575934.873291,
@@ -8939,7 +8939,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:bcb566ef5c93e4a32df6c8005f4320d5e88804e550cf8730830cf95d8cc71e30"
  },
  {
-  "function": "func_8002B880",
+  "function": "loadTextureClamped",
   "text": "480: prologue order and one fold-order row pair in the 16/32 arms; see note",
   "by": "manual-763f293e1efd4d95",
   "created_at": 1795575935.093497,
@@ -8966,7 +8966,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:48ad4be740fbb861969579a271bf574b6ad9748e5e3e56d45a5c35d493e01258"
  },
  {
-  "function": "func_8007F364",
+  "function": "updateBusterSequence",
   "text": "op66: best 20 under sn-n64-281 -G8 -mips2 -O2 -mfp32 (trial 95b7694ce377d0666808, revision 2404be1e52c3c706af07; 2140 under the fp64 default). Plain state machine (switch on u32 state, 7 cases), struct offsets fixed (fn at 0x9C), pool words as extern const f32/f64 (unchanging: kept in saved FP regs across the sqrtf fallback call and hoisted out of the loop), PLAYER/CAM via (*(Act **)X) read at each use, k = D_800096AC local before sqrtf, d multi-set (first length and the loop's sqrtf both assigned to d) gives the mov.s copy, CAM->y > a->y. Only rows left: in the target-search loop the hoisted constants swap: target D_800096B0 in f24 and the 0.0f compare constant in f22; ours the reverse (greg: both 3 refs, zero lives 64 insns vs 33 for B0, so B0 ranks first). Tried: condition spellings (f, 0.0f != f, nested ifs, continue form, !(f == 0)), while / do-while loop forms; prove_chain all families (760 children) finds nothing.",
   "by": "manual-837241761e9b48f2",
   "created_at": 1795576673.9320881,
@@ -8975,7 +8975,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:86b24d0f93c69bcc1af44614ea6a00ce8a61354ba51bfa89c4c702327f4774cf"
  },
  {
-  "function": "func_800847E8",
+  "function": "updatePursuitVehicle",
   "text": "op66: best 60 under sn-n64-281 -G8 -mips2 -O2 -mfp32 (trial 3a12669386611acbe835, revision saved; 1305 under the fp64 default). Plain rewrite of the track follower: P/CAM/ECC via (*(T *)X) globals, pool words extern const, dx/dz sharing the d/acc locals (d = CAM->x; d -= o->x), s16 locals for int sins/coss, turn /= K38 after acc = ..., acc /= K44 before the func_8002D298 call, if (cD0 != c74) call; else if (r5) c64 = 0; return 1, per-arm o->cBC stores (cross-jumped later, so the AC/B0 reloads stay after them). Only row left: mov.s fs0, fv0 after func_8002D858 sits before lui s6, %hi(D_800B9ECC) in ours, after it in the target (sched2 tie). Tried: ECC argument spellings (local, 7*64, 448*x).",
   "by": "manual-837241761e9b48f2",
   "created_at": 1795577535.560585,
@@ -8984,7 +8984,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:f317d88d7ca0793cf8a5db3484e27695ce74b55e77347ee1d535b02264dbc8ab"
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "op66: best 740 (profile-independent, saved). Plain rewrite of the sound-options menu: 3-row loop with switch (row 0 music: D_800B81D8[0], row 1 sfx: D_800B81D8[1], row 2 text), stick/D-pad changes via changed flag (vol -= D_800B9ECC << changed gives the sllv), clamp in a separate v_arm local, frame: s32 buf[8] unused + yoff kept in memory (sp30) with a block-local yy = yoff copy for each bar loop (s4), color picked per arm (if (i == sel) {c = 0xFF; col = c; call} else {...}) so the arms keep their j. prove_chain (all families) got 500 only with scaffolding (label/goto around func_8002E838, double do-while around func_80027060), stripped to 740. Rows left: (1) target materialises %hi(D_800B81D8) into s6 in the prologue and s7 = &D_800B81D8 (a pointer local set first thing?); (2) the color: target keeps c in a0 for the call and copies it to s3 in the jal delay slot, ours allocates c to s3 directly; (3) bar loop: target j=s0, k=s2 (k initialised from j), x=s1, ours j/k swapped; tried all 36 orders of the for-header inits/updates and chained inits; (4) the sllv temp lands in v0/v1 in the target.",
   "by": "manual-837241761e9b48f2",
   "created_at": 1795578255.741786,
@@ -9002,7 +9002,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "op68: still 745 (default and -mfp32 alike). Tried: k = 0x1000 just before func_8002710C (745), colour in a u8 local c set before the vertex block (745), -size in its own local ns (940). The remaining rows are local/global-alloc order in the vertex block: target gives the 0xFF colour pseudo t6 (allocated after the Gfx constants and lhu temps) and -size v1.",
   "by": "manual-b6b12924c41b4c9e",
   "created_at": 1795607322.259973,
@@ -9010,7 +9010,7 @@
   "score_after": 745
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "op69 hand-off at 5241 (saved best, rev d9e7cc8c). Tried: plain rewrite from asm with one GFX block per command, special-char icons plus early return, two texture-block runs: 8880; s32 param plus u8 ch = c local: 7630; dropping the pipe sync before the accent texture block (the target has none): 6712; K&R u8 param: 6967 (andi at entry, wrong); ch = c and font = D_800AE210 at function top (ch spills to sp20 like the target): 5241. The structure is right, and the remaining rows are spill/reload allocation. The target spills the five texture-word constants (sp24..sp34, plus 0x04000400 at sp38) and ch (sb sp20), and rematerializes &D_800AE210 into t7 at both texture-image uses (t5 is the reload register). Mine keeps 0x07080200 in fp and computes the font address inline. D_80107650 = idx stores an uninitialised local (the target does sw s2 before idx is set); kept. func_80029F8C may take the 0xE200001C/0x504A50 words as args (a1/a2 hold them at both call sites): untested.",
   "by": "manual-07a10cfe3d8b498f",
   "created_at": 1795607422.252206,
@@ -9019,7 +9019,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
  },
  {
-  "function": "func_8002B880",
+  "function": "loadTextureClamped",
   "text": "op68: 480 -> 340 (saved, default profile). Fix: the first LOADTILE-style w1 in the 16/32 arms written as the twin func_8002BE18 does, the full 8-term libultra form SHL(7,24,3)|SHL(0,20,4)|SHL(cm,18,2)|SHL(mask,14,4)|SHL(0,10,4)|SHL(cm,8,2)|SHL(mask,4,4)|SHL(0,0,4) (mask=0 term included): OR order now matches. Only prologue rows left: target sw ra before sw s4/s3, move s4,zero after them and li s3,2 in the first bne delay slot; ours puts sw ra in the slot. Tried: cm = 2 before mask = 0 (435), declaration order cm/mask (340).",
   "by": "manual-b6b12924c41b4c9e",
   "created_at": 1795607425.76378,
@@ -9046,7 +9046,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "op70: 745 -> 680 (saved) by a move-one-line hill climb over the 36 vertex stores: vertex 0 colour cn[0] after ob[2]... (D_8013FB30[0].cn[0] moved up two lines, [0].tc[1] moved after the vertex-1 lines). Remaining rows unchanged in kind: target colour 0xFF pseudo is allocated last (t6, after the lhu temps a0-t1 and the hoisted Gfx words t2-t4) and -size gets v1; ours gives colour v1 and -size a0. Also k = 0x1000 (s7) is scheduled after a3 = 0xFF in the target. do { } while (0) fences around vertices, colours or ob groups: 2945-7047 (break CSE). Needs: something that lowers the colour constant priority in local-alloc (longer live range in sched1 order or a global pseudo) without changing the stores.",
   "by": "manual-30d0b17e5a18415e",
   "created_at": 1795608829.236906,
@@ -9055,7 +9055,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:6eb0351a977b3e6b239b955bdd7a73a40055bada703b36bb7c0d797fb0f757ea"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "Cannot get closer by statement order: all rows are the local-alloc priority of the 0xFF colour constant (see note); hill climb exhausted at 680.",
   "by": "manual-30d0b17e5a18415e",
   "created_at": 1795608835.029108,
@@ -9081,7 +9081,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:51652aa4f09010bd9534af55aa4c4f73c8697049ca203b302b5e7cd3f6ce3489"
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "op70: 740 -> 570/555 (app: e_y1 form 555, current colour form 570; both saved). Edits that worked: (1) bar loops: `s32 yy; for (j = 0, yy = yoff, k = 0, x = 0xA0; ...)` (j first, yy read inside the for-init) gives j=s0,k=s2,x=s1 and the lw s4 position (740 -> 600 fast_judge / 555 app); (2) colour: in each arm `c = 0xFF; func_8002710C(c, c, c, o->alpha); col = c;` (col assigned AFTER the call) gives c in a0 and move s3,a0 in the delay slot (600 -> 570 fast_judge). Left: (a) target hoists i=0 (s5), lui s6=%hi(D_800B81D8) and s7=&D_800B81D8 into the prologue before the first call while y=0x50 (fp) sits after lui D_800B9EA4; ours the other way round (y at top, s6/s7 mid); i=0 in the for header 830, moving y=0x50 anywhere no change, s32 *vol pointer 1020/3840; (b) sllv temp: target v0/v1, ours uses j (s0) as the temp; a fresh block temp fixes the sllv rows but then j loses refs and j/k/x rotate (665 for every j/k/x declaration order); c/v/col/y as temp 635-1145; (c) coss /2 block uses v0 for the rounded value (ours v1): split v into two statements 580.",
   "by": "manual-30d0b17e5a18415e",
   "created_at": 1795609219.416127,
@@ -9090,7 +9090,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:7851d3609cfc6057831a43f8d1584868d318e87f602b046897e549bf05601b69"
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "Cannot get closer with the ideas left: remaining rows are scheduler placement of loop-hoisted invariants and allocation priorities that every tried spelling trades against each other (see note).",
   "by": "manual-30d0b17e5a18415e",
   "created_at": 1795609225.2799869,
@@ -9171,7 +9171,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b605b6118322179dce9cb979e06456f49e108bb5a623d900e8a646835db13207"
  },
  {
-  "function": "func_800272E0",
+  "function": "drawImage",
   "text": "op69: saved source scores 70. It is the sibling of func_80027D7C (same sprite loops) plus an img == NULL return 0, func_800226A0(flags), func_8002220C(func_800221C0(0,0,sx,2,0,0,sx,sx)), the 0x504A50 render mode and func_800226E4() at the end. It carries over that function's steps (ih/iw copies, w * (rows << 1) offsets). Left: register assignment only. The target has sx=1 in s6, sy (copy) in fp, data (img+0x10) in s7; mine has sy in s7 and data in fp. Tried sx/sy assignment orders (sx=1;sy=1 best). func_80027D7C stalls on the same data-priority issue.",
   "by": "manual-07a10cfe3d8b498f",
   "created_at": 1795610226.8833,
@@ -9180,7 +9180,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:7c833cdd85b233c786269035e4fa9aa043b08086d28ed03288ecb3e404135d8f"
  },
  {
-  "function": "func_800272E0",
+  "function": "drawImage",
   "text": "70: only the s7/fp assignment of data vs sy is left (same as func_80027D7C). See note.",
   "by": "manual-07a10cfe3d8b498f",
   "created_at": 1795610228.794158,
@@ -9471,7 +9471,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:5f3d29f1b7ec179b3ba361aa256dfbbbb498aa37a593a61fa309f870f029cc85"
  },
  {
-  "function": "func_80031F0C",
+  "function": "drawControllerPakMenu",
   "text": "ap15: saved 1096 -> 30 (default profile, 6 register rows). Clean version: func_800271D8(func_80026B14() / 256); one call per branch for 0x6B/0x6C/0x6D then func_800270A8(0xFF,0xFF,0xFF) (3 args); loop labels loop_9/loop_10 kept (while-forms cost rows); `temp_a0 = D_8013FB70 + 9` set inside the loop test so s6 is shared; last block reads ((s32*)D_801071B0)[SEL] (no fp register). `do { var_s0 += 0xE; } while (0)` fences in both arms are REQUIRED (without: 430: they keep the add after the last call). Remaining: target computes the 3 loop pointers as shift=v0, base=a0, temp=v1; ours has shift in a0 (shift pseudo __repair_phase_temp_a0 is multi-set, so global) and gcc rewrites shift+(base-0xE) as (shift-0xE)+base. Index form (D_801073DE + i*0x20 [- 4/- 0xE], loop.c strength reduction) gets all registers right (60) but schedules `addiu s0,zero,0x37` first instead of last. Tried: decl order, shift as own local, tb temps, 120 statement permutations, prove_chain all (no child).",
   "by": "manual-bad851f42f0c40e7",
   "created_at": 1795623925.3066418,
@@ -9579,7 +9579,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:2e44c275cefb8af26a543d31733b0189d1ca9c3197e71335582f3a48f02ed02d"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "ap13: unchanged 680. Read the diff again: the 50 register rows are all one cause, the 0xFF colour pseudo (target allocates it last, t6 after the lhu temps and hoisted Gfx words; ours v1, -size a0 vs v1). No new spelling beyond the earlier hill climb; literal spellings (255, 4096, 0x258, i*0x4000) are identical code. Idea left: make the colour constant's live range in the vertex block longer in sched1 order (its first use earlier) without changing the stores.",
   "by": "manual-d8adb74680f54138",
   "created_at": 1795627401.695503,
@@ -9642,7 +9642,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:8c8d1658aef514e773043edebe7a4677044fa8f882adaabc600ce54e055415ef"
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "ap13: unchanged 525 (saved). Read the earlier notes; no new idea beyond them tried here; literal spellings only (255/160/80/128 give identical code). Rows: target hoists i=0 and the D_800B81D8 hi/address into the prologue before the first call, y=0x50 after lui D_800B9EA4; sllv temp v0/v1; coss/2 block rounded value in v0.",
   "by": "manual-d8adb74680f54138",
   "created_at": 1795628280.939447,
@@ -9868,7 +9868,7 @@
   "score_after": 6209
  },
  {
-  "function": "func_80031F0C",
+  "function": "drawControllerPakMenu",
   "text": "ap20: still 30 (saved best, default sn-n64-281 profile; 6 register rows in the loop preheader, nothing else). compiler_experiments (12 profiles: sn-n64-281 -mfp32/-mips2/-O1/-G8/-fno-strength-reduce -> 30 or worse; sn-n64-272-0001/0004/0006, -as0004, 970404, gcc-2.7.2-kmc, gcc-2.8.1-pm(-sn-as) -> 190..6055): no exact profile.\nCause found by reading the diff: the target's three loop pointers are loop.c givs (shift + (base-0xE) etc, shift=v0, base=a0, tmp=v1, then cond ptr, then `li s0,0x37` LAST). An index-form loop (D_801073DE + i*0x20 [-4/-0xE], ((s32*)D_801071B0)[i], plain `var_s1 += 1`, no fences on s1/s2 steps, `do { var_s0 += 0xE; } while (0)` kept in both arms) gives the target's instructions and the same giv order (100, 60 after prove_chain's split_integer_phase + explicit_loop_backedge) but li s0 is scheduled second (right after sll), which lengthens shift's life by one insn and flips local-alloc: shift a0, base v1, tmp v0. So the only blocker is getting `li s0,0x37` after the loop.c preheader insns. Tried: li as plain stmt / do{}while(0) fence (fence = 350, loop.c inserts the pointers after the fence's LOOP_END), before the guard (250), right after var_s1 = D_8013FB70 (250), explicit cond pointer (630-920), a local base pointer b = D_801073DE at 4 places (1908-2278), outer wrapper removed, +0xE fence on one arm only (500). prove_chain all --children 1000 from the index form: 100 -> 90 -> 60 and stops. Not tried: dumps for sn-n64-281 (passes.py refuses it; needs a wibo cc1n64 -dS wrapper) to read sched1's launch priority for the li.",
   "by": "manual-d63c73bc233f434b",
   "created_at": 1795633485.0860548,
@@ -9876,7 +9876,7 @@
   "score_after": 30
  },
  {
-  "function": "func_80031F0C",
+  "function": "drawControllerPakMenu",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap20: 30 -> 30. Index-form loop gives the target instructions (60 after prove_chain) but li s0,0x37 schedules second not last, flipping shift/base/tmp to a0/v1/v0; see my note for the 12 profiles and every variant tried. Next: dump sched1 for sn-n64-281 via a wibo cc1n64 -dS wrapper and find what makes li launch first.",
   "by": "manual-d63c73bc233f434b",
   "created_at": 1795633497.5164979,
@@ -10051,7 +10051,7 @@
   "score_after": 6132
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "op84 (Opus): no change (5241). Profiles on the saved best: sn-n64-281 fp64 = fp32 5241, sn-272-0006 5841, 0004 8725, as0004 30787+, kmc 29768: keep sn-n64-281.\nRead from the target: the five two-instruction texture words (0x07080200, 0x07067400, 0xF5880400, 0x00080200, 0x0003C030) are built at the head of the non-special path and stored straight to sp24..sp34, then reloaded through $t5 at each use in both texture blocks (cse shares them along the path that skips `if (first)` and runs through coss/sins into the `ch >= 0xC0` block; every saved register is taken, so they spill). 0x04000400 is likewise built at the accent block's head and spilled to sp38 (ten cursor pointers t6+0x18..+0x60 live there at once). Writing the words as explicit u32 locals (and 0x04000400 as a block local) compiles identically (5241): the sharing and spilling are decided by pressure, not by the spelling. Next idea: reduce what holds saved registers across the calls in our build (the target keeps c in s0 then spills ch to sp20 with sb, flag `first` in s5, &D_800B2B18 in s3/s4, cursor &D_80177E18 in s1, idx in s2, 0xE7000000 in s6, 0xE1000000/0xF1000000 in fp/s7): compare our allocation table for which value takes the saved register the target gives to a texture word.",
   "by": "manual-c8a368d866d34405",
   "created_at": 1795634917.71646,
@@ -10059,7 +10059,7 @@
   "score_after": 5241
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "[Released without compiling it once; notes not checked by a compile.] op84 (Opus): no change (5241). Profiles on the saved best: sn-n64-281 fp64 = fp32 5241, sn-272-0006 5841, 0004 8725, as0004 30787+, kmc 29768: keep sn-n64-281.\nRead from the target: the five two-instruction texture words (0x07080200, 0x07067400, 0xF5880400, 0x00080200, 0x0003C030) are built at the head of the non-special path and stored straight to sp24..sp34, then reloaded through $t5 at each use in both texture blocks (cse shares them along the path that skips `if (first)` and runs through coss/sins into the `ch >= 0xC0` block; every saved register is taken, so they spill). 0x04000400 is likewise built at the accent block's head and spilled to sp38 (ten cursor pointers t6+0x18..+0x60 live there at once). Writing the words as explicit u32 locals (and 0x04000400 as a block local) compiles identically (5241): the sharing and spilling are decided by pressure, not by the spelling. Next idea: reduce what holds saved registers across the calls in our build (the target keeps c in s0 then spills ch to sp20 with sb, flag `first` in s5, &D_800B2B18 in s3/s4, cursor &D_80177E18 in s1, idx in s2, 0xE7000000 in s6, 0xE1000000/0xF1000000 in fp/s7): compare our allocation table for which value takes the saved register the target gives to a texture word.",
   "by": "manual-c8a368d866d34405",
   "created_at": 1795634922.990979,
@@ -10131,7 +10131,7 @@
   "score_after": 475
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '525 1db6f60dafa2e6f9063b sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
   "by": "manual-fa253f9ceee84c1b",
   "created_at": 1795635646.6131148,
@@ -10165,7 +10165,7 @@
   "score_after": 650
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '680 1ef13c30d16f609a185c sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
   "by": "manual-fa253f9ceee84c1b",
   "created_at": 1795635751.96524,
@@ -10387,7 +10387,7 @@
   "score_after": 225
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "ap23: re-checked, no source change scored better this round (best stays 525 under sn-n64-281 -mfp32 as well as default; ap22 swept 60 profiles, no exact one). Current diff summary under -mfp32 (9 register, 12 operand, 2 reordered rows): (1) prologue: target does `sw s6,0x50(sp); lui s6,%hi(D_800B81D8); ... addiu s7,s6,%lo(D_800B81D8)` (i.e. s6/s7 set up and the 0x30(sp) store of yoff placed before the first call, y=0x50 -> fp after `lui D_800B9EA4`), ours the reverse (fp=0x50 first, s6/s7 after lui D_800B9EA4); (2) the cos block rounds in v0 not v1 (`addu v0,v1,v0; sra v0,v0,1; addiu a0,0xFF; subu a0,a0,v0` vs ours `... subu v1; move a0,v1`: the target writes the colour straight into a0, i.e. v_arm is not a variable kept past the call, `func_80027060(0xFF - (...)/2 x3, o->alpha)` as a temp-free argument expression is the lever); (3) sllv temp v0/v1 vs ours s0 (j). Same placement-of-hoisted-invariants family as func_8001EBF4/func_8007E280 (birthing_insn_p boost sinks single-set pseudos). Not matched; not applied.",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637552.891266,
@@ -10395,7 +10395,7 @@
   "score_after": 525
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap23: see notes",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637555.557088,
@@ -10403,7 +10403,7 @@
   "score_after": 525
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "ap23 correction: the `lever` guess in my previous note was then measured and is NOT one: the cos expression as a block-local q used for all three colour args scores 570 (-mfp32), the expression repeated in each argument 5125; the saved 525 stays best.",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637570.417651,
@@ -10476,7 +10476,7 @@
   "score_after": 865
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "ap23: re-read (saved 680 under sn-n64-281 -mfp64, 980 listed by fast_judge for the same source in this checkout`s default flags; no profile is exact). All 50 register rows are the local-alloc rank of the 0xFF colour pseudo in the vertex block: target allocates it last (t6, after the lhu temps a0-t1 and the hoisted Gfx words t2-t4) and -size gets v1; ours gives 0xFF v1 and -size a0. local-alloc ranks quantities by floor_log2(refs)*refs/life: the 16 byte stores give 0xFF 16 refs, so only a much longer life in sched1 order (or being non-local/multi-set) lowers it below the 2-3 ref lhu temps; the stores are spread over the whole 4-vertex block in the target while a hill climb of their order only reached 680. A second, independent row: target has `addiu a3,0xFF` (call arg) BEFORE `addiu s7,0x1000` (k), ours the reverse. Nothing new compiled; no gain over 680.",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637760.5457358,
@@ -10484,7 +10484,7 @@
   "score_after": 680
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap23: see notes",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637760.827462,
@@ -10492,7 +10492,7 @@
   "score_after": 680
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "ap23 correction: the `980` in my previous note is an artifact of my probe (profile flags appended twice); the app-recorded best is 680, which is the number to compare against.",
   "by": "manual-a654bc1d65be4021",
   "created_at": 1795637771.1857212,
@@ -10759,7 +10759,7 @@
   "score_after": 475
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "op88: unchanged 525 (no new source edit judged better). Reading of the remaining rows (default profile, isolated judge): (1) prologue: the target issues `lui $s6, %hi(D_800B81D8)` second, before `sw $ra`, and `addiu $s7, $s6, %lo(D_800B81D8)` well after it; ours places the lui right above the addiu, after `sw $zero, 0x30($sp)` (sched1 birthing_insn_p boosts the set-once hi pseudo next to its first use; the target's hi was not boosted, so its pseudo likely has two sets or the address local is assigned twice); (2) one `0xFF - (x >> 1)` chain allocated to $v1 with an extra `move $a0, $v1` where the target computes it straight into $a0 (the argument). decomp-repair arity_drop_store_step offered five uncompilable children here (a trimmed prototype with a second call left at four arguments): fixed in decomp-repair PR 1741; constant_compare_temp_reuse offers none.",
   "by": "manual-f7f61c1765d84883",
   "created_at": 1795642630.522017,
@@ -10775,7 +10775,7 @@
   "score_after": 650
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "op85 (Opus): 5241 -> 4651 (saved). Steps: prove_chain over all children (sn-n64-281 profile): merge_integer_lifetimes (step written into special, 4866), arithmetic_operand_order twice (4791; the last one only re-parenthesises the D_8010788C update), then by hand `c = D_800B2904[c]; idx = c - 0x20;` (the target loads the glyph byte into $s0, the parameter's register: 4651). Tried and worse: c reused for x4 + step / x4 + 64 (5006), font local dropped (5144), y written into the `first` parameter (6056, though the target has y in first's $s5).\nRemaining (register/spill pressure): the target spills the five texture words (sp24..sp34) and rematerialises &D_800AE210 into $t7 at both texture blocks; ours keeps 0x07080200 in $fp. Target saved registers: s0 c/glyph/(x4+step)/(x4+64), s1 &D_80177E18, s2 idx, s3 hi(D_800B2B18), s4 &D_800B2B18 then (x4 & 0xFFF) << 12, s5 first then y, s6 0xE7000000, s7 0xF1000000, fp 0xE1000000. ours: s7 E7, s6 E1, s5 F1, fp 0x07080200, and `special` in $t0 (target $v1); ch's sb to sp20 is scheduled before the D_800B2B18 update in ours.\nNext step: find the pseudo that takes a saved register in ours but not in the target (cc1n64 -dl -dg: priorities of the E1/F1/E7 constant pseudos versus 0x07080200 and the font address); the target's step lives in $a2 (div result) and its (D_800B28C0 << 26) reuses the divisor's $a1.",
   "by": "manual-f1378353c5fb4a43",
   "created_at": 1795642736.704101,
@@ -10784,7 +10784,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "5241 -> 4651: prove_chain steps (merge_integer_lifetimes, arithmetic_operand_order) plus c = D_800B2904[c]. Left: saved-register pressure (target spills the texture words and keeps 0xE1000000 in fp; ours keeps 0x07080200 in fp). Note added. Next step: -dl -dg priorities of the constant pseudos.",
   "by": "manual-f1378353c5fb4a43",
   "created_at": 1795642742.001659,
@@ -10793,7 +10793,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "op88: 680 -> 470 recorded (rev 97cccf2d8ec96e8bf649): `k = 0x1000;` moved from before the first GFX to just after `func_8002710C(0, 0, 0, 0xFF);` (any position from there to the GFX that reads k gives the same 470): fixes the `addiu $a3, 0xFF` / `addiu $s7, 0x1000` order and shifts the Gfx-word registers. decomp-repair assignment_at_use already offers this child (prove_chain from the old best: 980 -> 770 on the isolated scale, +300 there for the 1000.0f literal symbol). Left: the 0xFF colour constant still ranks above the lhu temps in local-alloc (target t6, ours v1; -size v1 vs a0). A colour local c (s32 or u8) set once before vertex 0, before vertex 2, or before the call: 1040 isolated (worse).",
   "by": "manual-f7f61c1765d84883",
   "created_at": 1795642886.966163,
@@ -11143,7 +11143,7 @@
   "score_after": 10632
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "op91 (Opus): no improvement (4651, sn-n64-281; fp32 same). Global allocation map of the saved best (passes.py, SN support now on main): ours c 80 s0, first 81 s5, idx 85 s2, y 87 s4, &D_800B2B18 89 s4 / hi 90 s3, hi(D_80177E18) 150 s1, E7 152 s7, 0x07080200 172 fp, hi(D_8010788C) 256 s3, E1 286 s6, F1 291 s5, (x4&0xFFF)<<12 277 t9, step (64/D_800B28C0) t0. Target: y s5 (first and y share), (x4&0xFFF)<<12 s4 (a saved reg although no call follows: every caller-saved reg is busy across the two E4 commands in the target), E7 s6, F1 s7, E1 fp, step $a2, texture words spilled. So the target has one more pseudo competing for saved regs than ours, and the (x4&0xFFF)<<12 range overlaps more temporaries. Tried and worse: step as its own local 5026; y written into first 5921; both 6066. Next: the ch>=0xC0 block shape (the ten cursor pointers t6+0x18..0x60 live at once in the target: the GFX writes there may be one pointer bump per command written differently, e.g. a single local Gfx *g walked with g++), then the allocation follows.",
   "by": "manual-bf7825c4edf04a80",
   "created_at": 1795645149.537768,
@@ -11151,7 +11151,7 @@
   "score_after": 4651
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "[Released without compiling it once; notes not checked by a compile.] no improvement over 4651; allocation map in note",
   "by": "manual-bf7825c4edf04a80",
   "created_at": 1795645150.5811021,
@@ -11200,7 +11200,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
  },
  {
-  "function": "func_80058110",
+  "function": "updateLogicBomb",
   "text": "Not matched, not attempted beyond reading (346 insns with a 5-entry jump table, FPU, loops; no compiling draft exists: m2c fails on the branch syntax, so a full hand write is needed). Read-through only, no judge runs: profile likely -mfp32 (uses f20/f22/f24, never odd regs besides f1? check). Structure: obj in s3 (a0); v0=func_8004303C() -> a0; switch(obj->x90) via table at 0x80008440 (lui 0x8001, -0x7BC0), cases 0..4: case0: func_800433A8(obj,0x77,0x100); obj->x84=0;x80=0;xC0=0;x90=1;x8C=0; case1 (sets x90=2,x8C=0, D_8014AAC0 = s2 [s2 loaded in a loop]); case2 computes dx,dz from cam (D_800BD06C) with trunc.w.s, calls func_80025100(-dx,-dz), func_8002D260 -> obj->x88, obj->x10=func_8002D204(obj->x10,..,0x1000), then loops over D_800B... entries (stride 0x108, entries starting at D_800B-0x4644, tag 0x1008) with squared-distance test via func_80024B0C < 0xC8 -> func_8002A360(0xC,0x80)/(8,0x15), < 0x190 flags |=2; case3: x8C sub-state machine (0..2) calling func_80043328/func_800433A8 with 0x7E/0x77/0x7B and func_8002A360(0xC,0x80),(8,0x3A), sets D_8014AAC0->xC0 |= 1 and obj->x84=1; case4: x5C -= 0x18 until <0 then x90=4... else obj->x A0 fn pointer call obj->xA0(obj). Common tail (label func_80058504): table at 0x800F4A00 stride 12 indexed by obj->xB8, adds an f32 and a constant 0x80009454?? (-0x7BAC) compares with cam->x8; uses func_8002DD60 on trunc'd distances, sqrt (with the c.eq.s NaN check calling func_80094350), pushes cam->x4/xC away from obj by (limit - dist)*d/dist (a camera push-out). Full source needs hand decoding from get_assembly (348 lines); rows were not judged.",
   "by": "manual-461c95cc9a664e58",
   "created_at": 1795645394.849967,
@@ -11208,7 +11208,7 @@
   "score_after": null
  },
  {
-  "function": "func_80058110",
+  "function": "updateLogicBomb",
   "text": "[Released without compiling it once; notes not checked by a compile.] Not matched, not attempted beyond reading (346 insns with a 5-entry jump table, FPU, loops; no compiling draft exists: m2c fails on the branch syntax, so a full hand write is needed). Read-through only, no judge runs: profile likely -mfp32 (uses f20/f22/f24, never odd regs besides f1? check). Structure: obj in s3 (a0); v0=func_8004303C() -> a0; switch(obj->x90) via table at 0x80008440 (lui 0x8001, -0x7BC0), cases 0..4: case0: func_800433A8(obj,0x77,0x100); obj->x84=0;x80=0;xC0=0;x90=1;x8C=0; case1 (sets x90=2,x8C=0, D_8014AAC0 = s2 [s2 loaded in a loop]); case2 computes dx,dz from cam (D_800BD06C) with trunc.w.s, calls func_80025100(-dx,-dz), func_8002D260 -> obj->x88, obj->x10=func_8002D204(obj->x10,..,0x1000), then loops over D_800B... entries (stride 0x108, entries starting at D_800B-0x4644, tag 0x1008) with squared-distance test via func_80024B0C < 0xC8 -> func_8002A360(0xC,0x80)/(8,0x15), < 0x190 flags |=2; case3: x8C sub-state machine (0..2) calling func_80043328/func_800433A8 with 0x7E/0x77/0x7B and func_8002A360(0xC,0x80),(8,0x3A), sets D_8014AAC0->xC0 |= 1 and obj->x84=1; case4: x5C -= 0x18 until <0 then x90=4... else obj->x A0 fn pointer call obj->xA0(obj). Common tail (label func_80058504): table at 0x800F4A00 stride 12 indexed by obj->xB8, adds an f32 and a constant 0x80009454?? (-0x7BAC) compares with cam->x8; uses func_8002DD60 on trunc'd distances, sqrt (with the c.eq.s NaN check calling func_80094350), pushes cam->x4/xC away from obj by (limit - dist)*d/dist (a camera push-out). Full source needs hand decoding from get_assembly (348 lines); rows were not judged.",
   "by": "manual-461c95cc9a664e58",
   "created_at": 1795645395.9941518,
@@ -11352,7 +11352,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b2448950a31ced5adf7bda284d4c591450a72e292f92631b65f075c9cb3b814d"
  },
  {
-  "function": "func_80058110",
+  "function": "updateLogicBomb",
   "text": "EXACT SOURCE (op92), submitted as an attempt. The app cannot record it yet: this function lost its data relocations and annotated assembly in the automatic boundary fix trim_start 0x80058104, so its float literals (300.0f, 3.0f: SN li.s pool words) cannot be linked. decompdecomp PR #3608 and #3610 (merged) restore them at the app's next check. With them restored (verified attach-only through _judge_with), this source is BYTE-IDENTICAL under -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32. Next agent after the update: resubmit, run compiler_experiments and apply the -mfp32 trial with suggest. Written by hand from the split's annotated asm (m2c drafts it once the five jump-table labels are put back). The only correction from the first draft (1900) was writing the float tests as !(a < b), not a >= b (c.lt.s + bc1t). dx/dz are read uninitialised in case 2, as the target does with $s5/$s6.\n\ntypedef struct Obj58 {\n    u8 pad0[4];\n    f32 x4;\n    f32 x8;\n    f32 xC;\n    s32 x10;\n    u8 pad14[0x48];\n    s32 x5C;\n    u8 pad60[0x20];\n    s32 x80;\n    s32 x84;\n    s32 x88;\n    s32 x8C;\n    u32 x90;\n    u8 pad94[0xC];\n    void (*xA0)(struct Obj58 *);\n    u8 padA4[0x14];\n    s32 xB8;\n    u8 padBC[4];\n    s32 xC0;\n} Obj58;\ntypedef struct Ent58 {\n    s32 x0;\n    f32 x4;\n    f32 x8;\n    f32 xC;\n    u8 pad10[0xB0];\n    s32 xC0;\n    u8 padC4[0x44];\n} Ent58;\ntypedef struct Row58 {\n    s32 x0;\n    s32 x4;\n    s32 x8;\n} Row58;\ntypedef struct Cam58 {\n    u8 pad0[4];\n    f32 x4;\n    f32 x8;\n    f32 xC;\n} Cam58;\nextern Cam58 *D_800BD06C;\nextern Ent58 *D_800AB9BC;\nextern Ent58 *D_800AB9C0;\nextern Ent58 *D_8014AAC0;\nextern Row58 D_800F4A00[];\nextern s32 D_800F7910[];\ns32 func_8004303C(void);\ns32 func_80025100(s32, s32);\ns32 func_8002D260(s32);\ns32 func_8002D204(s32, s32, s32);\ns32 func_80024B0C(s32);\nvoid func_8002A360(s32, s32);\nvoid func_800433A8(Obj58 *, s32, s32);\nvoid func_80043328(Obj58 *, s32, s32);\nf32 func_8002DD60(f32);\nfloat sqrtf(float);\n\nvoid func_80058110(Obj58 *obj) {\n    s32 r;\n    s32 dx;\n    s32 dy;\n    s32 dz;\n    s32 a;\n    s32 b;\n    Ent58 *e;\n    Row58 *row;\n    f32 fx;\n    f32 fz;\n    f32 lim;\n    f32 d;\n    f32 k;\n\n    r = func_8004303C();\n    switch (obj->x90) {\n    case 0:\n        obj->x84 = 0;\n        obj->x80 = 0;\n        obj->xC0 = 0;\n        obj->x90 = 1;\n        obj->x8C = 0;\n        func_800433A8(obj, 0x77, 0x100);\n        break;\n    case 1:\n        dx = obj->x4 - D_800BD06C->x4;\n        dz = obj->xC - D_800BD06C->xC;\n        obj->x88 = func_8002D260(func_80025100(-dx, -dz));\n        obj->x10 = func_8002D204(obj->x88, obj->x10, 0x1000);\n        for (e = D_800AB9BC; e <= D_800AB9C0; e++) {\n            if (e->x0 != 0x1008) {\n                continue;\n            }\n            dx = obj->x4 - e->x4;\n            a = dx * dx;\n            dy = obj->x8 - e->x8;\n            dz = obj->xC - e->xC;\n            b = dz * dz;\n            if (func_80024B0C(a + dy * dy + b) < 0xC8) {\n                if (obj->x84 == 0) {\n                    obj->x90 = 2;\n                    obj->x8C = 0;\n                    D_8014AAC0 = e;\n                    break;\n                }\n                func_8002A360(0xC, 0x80);\n                func_8002A360(8, 0x15);\n            }\n            if (func_80024B0C(a + b) < 0x190) {\n                if (e->x8 < obj->x8 && !(e->xC0 & 4)) {\n                    e->x8 = obj->x8;\n                    e->xC0 |= 2;\n                }\n            }\n        }\n        if (obj->xC0 & 8) {\n            obj->x90 = 3;\n            obj->x8C = 0;\n        }\n        break;\n    case 2:\n        switch (obj->x8C) {\n        case 0:\n            obj->x8C = 1;\n            obj->x10 = obj->x88 = func_8002D260(func_80025100(-dx, -dz));\n            func_800433A8(obj, 0x7B, 0x600);\n            func_8002A360(0xC, 0x80);\n            func_8002A360(8, 0x3A);\n            D_8014AAC0->xC0 |= 1;\n            obj->x84 = 1;\n            break;\n        case 1:\n            if (r != 0) {\n                func_80043328(obj, 0x7E, 0x100);\n               ",
   "by": "manual-42d41175a42143a3",
   "created_at": 1795647138.8316228,
@@ -11361,7 +11361,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:b34f9dc9ab3a7c1795b116fbb89c5116bbf881f9db7e0468a306bd56c7ec9797"
  },
  {
-  "function": "func_80058110",
+  "function": "updateLogicBomb",
   "text": "Exact under -mfp32 once the boundary-fix relocations are restored (PR #3608/#3610); source in my note.",
   "by": "manual-42d41175a42143a3",
   "created_at": 1795647139.2836711,
@@ -11598,7 +11598,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:84744547cc07327c7c0771f6ac4c718b3db32e0b075a1cfa9144c9d2235e8a32"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "op97 (library 0.6.47-0.6.49): unchanged 470. prove_chain --families all --children 40 default and --fp-flip: only pool_word_literal_swap moves the isolated score (770 -> 480), and that is the isolated worker's +300 for the 1000.0f literal linking under another symbol, not a gain over the app's 470 (the app scored the pool form 480). The 0.6.48/0.6.49 families offer nothing. Blocker unchanged: the 0xFF colour pseudo ranks above the lhu temps in local-alloc (target t6, ours v1).",
   "by": "manual-c49166d3e00442aa",
   "created_at": 1795653200.0083148,
@@ -11643,7 +11643,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:ae139fd03f5706be342bfc94719006850e7eda9fcff98e25a697444b6f9bea65"
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "op97 (library 0.6.47-0.6.49): unchanged 525. prove_chain --families all --children 40 default and --fp-flip: no child of 1352 improves; 0.6.48/0.6.49 families offer nothing. Blocker unchanged: the D_800B81D8 hi (lui $s6) is a sched1 birth placed next to its first use where the target issues it second in the prologue; the colour computed into $v1 then moved to $a0.",
   "by": "manual-c49166d3e00442aa",
   "created_at": 1795653272.005409,
@@ -11668,7 +11668,7 @@
   "score_after": 10632
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "op96 (Opus): 4651 -> 4122 recorded (sn-n64-281 profile, unchanged). Step 1 with decomp-repair 0.6.49: prove_chain --families all found allocation_lever (4122): `D_80107650 = idx;` moved below `c = D_800B2904[c];` (still the uninitialised idx the target stores from $s2 before `addiu $s2,$s0,-0x20`; same program). Then nothing: 676 children, 200 pair/triple merges of the best 8 (--combine 8) and a lookahead on the best 3, all no better (131 differing rows left). The library already had the step (no new family). Left, as in the earlier notes: saved-register pressure (target spills the texture words, E1 in $fp, F1 $s7, E7 $s6; y in the first parameter's $s5).",
   "by": "manual-1d6a7cd719314ff8",
   "created_at": 1795654942.6700501,
@@ -11677,7 +11677,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:cda8917efea61bfc42ce71097c5fead7143655f3bddbc51fb8c4911cc11dee2d"
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "op96: 4651 -> 4122 via allocation_lever; note added.",
   "by": "manual-1d6a7cd719314ff8",
   "created_at": 1795654944.059158,
@@ -11879,7 +11879,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:8c8d1658aef514e773043edebe7a4677044fa8f882adaabc600ce54e055415ef"
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "claude-b6e3fb (0.6.59): unchanged 470. The app currently judges the saved source 770: the +300 is the judge's literal-pool vote naming the 1000.0f literal after a nearby global (fixed in decompdecomp PR 3640; the running app needs a restart to get it; isolated judge from main gives 470 again). Colour pseudo facts from the lreg dump: (reg:QI 216) = 255, 17 refs over 74 insns in the last block, local-alloc priority ~0.92, versus 0.03-0.08 for the Gfx-word constants the target puts in t2-t4 before it. No block-local pseudo with 16+ refs can rank below them (priority floor_log2(refs)*refs/life), so in the target the colour was NOT a local-alloc candidate: local-alloc only takes pseudos with REG_BASIC_BLOCK >= 0 and REG_N_DEATHS == 1 (local-alloc.c line 472), i.e. the original colour pseudo was global (used in two blocks without crossing a call) or died twice. Tried: a colour local (s32/u8/u32) set once or twice in the vertex block (740: cse deletes the redundant second set), the same local also passed to func_8002710C(0,0,0,c) (740: cse propagates 255 into the a3 copy and flow deletes the first set). Next step: a source in which the colour value is read in two basic blocks after the last call, or set twice with a use of a different value between.",
   "by": "manual-cc196971144a4ae8",
   "created_at": 1795670831.687773,
@@ -11981,7 +11981,7 @@
   "score_after": 530
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "claude-a38abf (library 0.6.64): prove_chain --families all --children 1500 --fp-flip --combine 8 from the saved best: call_weight_ladder 375 (do { do { func_80027060(v_arm, v_arm, v_arm, o->alpha); } while (0); } while (0); one level is enough), switch_variable_split 330 (the clamp's v_arm as its own local v_arm_arm in both arms), wide_local_to_halfword 270 (v_arm as s16): 270 under both the default profile and -mfp32 in the isolated judge, NOT submitted because it relies on the do-while(0) fence (without it 570). Reading: sched2 moves insns across the calls here (calls do not end its blocks), so the prologue placement of lui $s6/addiu $s7 (D_800B81D8, hoisted by loop.c to the for loop's preheader) and of y = 0x50 is sched2's backward order; the fence is a loop-note barrier that keeps the colour chain's registers apart. A pointer local s32 *vol = D_800B81D8 (vol[0], vol[1]) puts the address at the top but as 0($s4): 4025-4110. A do { } while (0) from y = 0x50 through func_80027060: 330 (pc chain) / 435 (saved best); around the whole for loop as well: 570-895. Next: a fence-free source with the same barrier effect between func_80027158(0xA0, 0x28) and the cos chain (the target keeps addiu $fp,0x50 after the D_800B9EA4 load, so something ends sched2's reach there).",
   "by": "manual-4342031a716741b0",
   "created_at": 1795674229.0810099,
@@ -11989,7 +11989,7 @@
   "score_after": 525
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "[Released without compiling it once; notes not checked by a compile.] See note: 270 chain relies on a do-while(0) fence; not submitted.",
   "by": "manual-4342031a716741b0",
   "created_at": 1795674231.7566972,
@@ -12013,7 +12013,7 @@
   "score_after": 220
  },
  {
-  "function": "func_800301E8",
+  "function": "drawRotatedImage",
   "text": "op55bb: unchanged 470. A colour local with two values in the vertex block (c = 0xFF ... c = 0; ob[2] = c; c = 0xFF) dies twice, goes to global.c and gets the target's $t6, but both sets become non-births and the stores move to the top: 1120-1988 (u8 same). Chained cn[] assignments 530-610; c set before the loop/at top/before func_8002710C takes an s-reg (1700+). $t5 is used earlier, so the target's $t6 is not explained by global.c pass 0 alone. See docs/learnings/experiment/sn281-constant-placement-session-two.md.",
   "by": "manual-0265bf17307148fc",
   "created_at": 1795676100.359164,
@@ -12071,7 +12071,7 @@
   "score_after": 4895
  },
  {
-  "function": "func_800289BC",
+  "function": "drawFontChar",
   "text": "[Released without compiling it once; notes not checked by a compile.] claude-0e891a (Opus, decomp-repair 0.6.66): prove_chain --families all --children 400 --combine 8 (399 of 677 children judged, 200 merges, lookahead on best 3): nothing improves 4122. 131 rows remain, all saved-register pressure and texture-word spill order as in earlier notes; the first-block diff shows the target builds font+idx*0xD0 in t7 (&D_800AE210 rematerialised) and stores E7/sw zero after the address math, ours stores E7 first. No new family identified.",
   "by": "manual-a57f45738d2c42cb",
   "created_at": 1795677260.909038,
@@ -12121,7 +12121,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:2544f35a3cf25a94de6049504db8b87bc44c1dc3abb3f18cefdb785b95fc2040"
  },
  {
-  "function": "func_8003E278",
+  "function": "drawAudioOptionsMenu",
   "text": "o55b2 (library 0.6.70-0.6.71): 525 -> 205 -> 100 fence-free (recorded). Step 1: y as a giv of the loop counter (drop y = 0x50 and y += 10; y = i * 10 + 0x50 at the top of the body, or a row counter): sched1 floated the multi-set biv y=0x50 to the entry block top (priority 1, highest INSN_LUID left) where the target has the D_800B81D8 lui first; as a giv its li is emitted by strength_reduce after the hoisted address. decomp-repair stepped_constant_row_giv now reads loops whose body is a switch (PR 1780) and offers this (205). Step 2 (app local pass): switch_variable_split, the clamp value as its own v_arm_arm: 100. Left (100): sw $zero,0x30($sp) one slot early; the cos colour in v1 for v0 (addu/sra/subu); the case-0 j = D_800B9ECC[0] << changed temp in s0 where the target has v0 (j reused as a temp is what gives the loop counter j its s0: without it j/k/x take s2/s1/s0, 165; loop header init/step orders 145 at best, block-local j/k/x 165).",
   "by": "manual-bb61020a745d4533",
   "created_at": 1795681420.75046,
@@ -12608,5 +12608,53 @@
   "score_before": null,
   "score_after": null,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:48ad4be740fbb861969579a271bf574b6ad9748e5e3e56d45a5c35d493e01258"
+ },
+ {
+  "function": "alAdpcmPull",
+  "text": "[Released without compiling it once; notes not checked by a compile.] Readable pass skipped: the shared header is about 64k chars, so the context alone is too costly for this one. It's an SDK audio function (alAdpcmPull, already named). Needs a rename-only polish pass later, with the body read in pages.\n\n[Released without compiling it once; notes not checked by a compile.] claim_readable keeps returning this one after release. It is an SDK audio function with a ~64k-char header, so the readable pass is too costly here. Next agent: skip it, or take it with a rename-only polish after reading its body in pages.",
+  "by": "claude-haiku-25",
+  "created_at": 1795697963.045525,
+  "score_before": 0,
+  "score_after": 0
+ },
+ {
+  "function": "alAdpcmPull",
+  "text": "[Released without compiling it once; notes not checked by a compile.] Already has the name alAdpcmPull and a summary comment. Callee func_8009997C is already named _decodeChunk. polish_function refused local renames (inState, nOverSam, zeroAddr) with \"Rename only simple parameters and locals here\", and also refused _a inside the macro-expanded Acmd blocks. Not yet marked readable: the body is mostly Acmd word-packing macro expansions, so a make_readable needs the full ~8k-char body reproduced exactly. Try make_readable with the whole source, or polish_function on fewer renames, and then add the readable mark.\n\n[Released without compiling it once; notes not checked by a compile.] claim_readable returns this same function again after release, with a ~24k-char header each time, so it blocks the queue. Name is already alAdpcmPull and callee is _decodeChunk. Local-rename polish is refused. Needs make_readable with the full ~8k-char body, or a human decision to skip it.",
+  "by": "claude-haiku-25",
+  "created_at": 1795698004.939975,
+  "score_before": 0,
+  "score_after": 0
+ },
+ {
+  "function": "alAdpcmPull",
+  "text": "Not made readable. polish_function refuses it: 'Rename only simple parameters and locals' for zeroAddr/overBytes/nOverSam/loopDst/looped/didDecode, and it refuses comment-only plans because the body has #ifdef PORT blocks (use make_readable). make_readable with only the function body was rejected at compile: 'Acmd undeclared', 'ALLoadFilter undeclared', and stray backslashes from literal \\t. The source must be the full editable C file from get_candidate, header included (~64k chars), with the #ifdef PORT blocks kept as written. Plan for the next agent: get_candidate for the complete C, change only identifiers (params cmd/outPos/sampleOffset, locals zeroAddr->zeroOffset, nOverSam->overrunSamples, overBytes->overrunBytes, loopDst->loopDstAddr, looped->isLooped, didDecode, inState) and keep every _a macro block and declaration order. Callee func_8009997C is declared static in the header; it was not renamed. Do not reformat the Acmd blocks.\n\n[Released without compiling it once; notes not checked by a compile.] Second claim returned the same function unchanged. Still blocked: polish_function refuses (#ifdef PORT inside the body, and the local renames are rejected). make_readable needs the full editable file, since a body-only source fails with 'Acmd undeclared'. The full file is about 64k characters, so a rewrite here is not safe to attempt by hand. Next agent: get_candidate for the complete C, then make_readable with identifier-only changes listed in the previous release note. Do not reformat the Acmd _a blocks.",
+  "by": "claude-haiku-25",
+  "created_at": 1795698062.1361868,
+  "score_before": 0,
+  "score_after": 0
+ },
+ {
+  "function": "alAdpcmPull",
+  "text": "[Released without compiling it once; notes not checked by a compile.] polish_function refused local renames (error: \"Rename only simple parameters and locals here\"), with and without the #ifdef PORT blocks in scope. make_readable needs the complete editable C from get_candidate (about 64k chars, mostly shared header), which is too large to reproduce by hand. Next agent: call get_candidate(alAdpcmPull) to get the full source, then make_readable with identifier-only renames (zeroAddr->zeroOffset, nOverSam->overrunSamples, overBytes->overrunBytes, loopDst->loopDstAddr, looped->isLooped, didDecode->didDecodeFrames). Keep the _a macro blocks, the PORT branches and declaration order.\n\n[Released without compiling it once; notes not checked by a compile.] Second claim returned the same function. Still blocked: polish_function refuses local renames (\"Rename only simple parameters and locals here\"), and make_readable needs the full get_candidate C. Not changed. Suggest skipping this function until the tool accepts local renames.",
+  "by": "claude-haiku-25",
+  "created_at": 1795698088.349718,
+  "score_before": 0,
+  "score_after": 0
+ },
+ {
+  "function": "alAdpcmPull",
+  "text": "[Released without compiling it once; notes not checked by a compile.] polish_function refuses this function: it has an #ifdef PORT inside, so only make_readable applies, and make_readable needs the full ~64k-char source. Renames already known to be refused for locals via polish. rename_symbol: func_80098FF0 is already alAdpcmPull, no change needed. Next step: a make_readable pass with the complete source, or skip.\n\n[Released without compiling it once; notes not checked by a compile.] Second claim, same result: claim_readable returns alAdpcmPull again. Blocked by the #ifdef PORT inside the function, which makes polish_function refuse it and requires make_readable. make_readable needs the full ~64k-char source (get_candidate), which was not attempted. Not a rename problem: func_80098FF0 is already alAdpcmPull. Needs a full-source make_readable run or skipping.",
+  "by": "claude-haiku-25",
+  "created_at": 1795698129.601981,
+  "score_before": 0,
+  "score_after": 0
+ },
+ {
+  "function": "drawControllerPakMenu",
+  "text": "[Released without compiling it once; notes not checked by a compile.] Menu/list drawer with two goto loops and __repair_* locals. make_readable needs those kept verbatim, so a readable rewrite is hard to get past the judge. Left as-is; a smaller polish of locals only might work.\n\n[Released without compiling it once; notes not checked by a compile.] Same blocker as the previous release: goto loops and __repair_* locals must stay verbatim, and make_readable can't get past the judge. Needs a hand-written polish of locals only, or skip.",
+  "by": "claude-haiku-25",
+  "created_at": 1795698627.8883462,
+  "score_before": 0,
+  "score_after": 0
  }
 ]

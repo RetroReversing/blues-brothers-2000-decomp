@@ -1,4 +1,4 @@
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 s32 func_8002ADFC(s32, s32, void *);
 void *func_8002E374(s32);
 extern s32 D_800B81D0;
@@ -11,7 +11,7 @@ s32 func_80013110(void *arg0)
   s32 q;
   s32 k;
   temp_s1 = func_8002E374(0x90);
-  (((Field_s32 *) (((char *) temp_s1) + 0x58))->v) = func_800221C0(0, 1, 1, 1, 0, 0, 1, 0);
+  (((Field_s32 *) (((char *) temp_s1) + 0x58))->v) = packDrawFlags(0, 1, 1, 1, 0, 0, 1, 0);
 k = 0x117;
 (((Field_s32 *) (((char *) temp_s1) + 0x5C))->v) = 0x62;
 q = (((Field_s32 *) (((char *) temp_s1) + 0x94))->v) / 3;

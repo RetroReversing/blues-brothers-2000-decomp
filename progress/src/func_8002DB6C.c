@@ -1,5 +1,5 @@
 f32 __cosf(f32);
-f32 func_80095DC0(f32);
+f32 sinApprox(f32);
 void func_8002DE20(s32, s32, f32 (*)[3]);
 
 void func_8002DB6C(s32 arg0, s32 arg1, f32 angle) {
@@ -8,7 +8,7 @@ void func_8002DB6C(s32 arg0, s32 arg1, f32 angle) {
     f32 s;
 
     c = __cosf(angle);
-    s = func_80095DC0(angle);
+    s = sinApprox(angle);
     m[0][0] = c;
     m[0][1] = 0.0f;
     m[0][2] = s;

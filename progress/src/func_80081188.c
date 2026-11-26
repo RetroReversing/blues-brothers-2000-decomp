@@ -4,8 +4,8 @@ typedef struct {
     s32 z;
 } Vec3i;
 f32 sqrtf(f32);
-extern s32 D_8014A928[];
-extern Vec3i *D_8014A9A8[];
+extern s32 gSplinePointCount[];
+extern Vec3i *gSplineSrcPoints[];
 
 s32 func_80081188(s32 idx, f32 *pos, f32 *outDist) {
     s32 n;
@@ -18,13 +18,13 @@ s32 func_80081188(s32 idx, f32 *pos, f32 *outDist) {
     f32 dz;
     f32 d;
 
-    n = D_8014A928[idx];
+    n = gSplinePointCount[idx];
     best = 1e+09f;
     bestIdx = 0;
     if (n == 0) {
         return bestIdx;
     }
-    p = D_8014A9A8[idx];
+    p = gSplineSrcPoints[idx];
     for (i = 0; i < n; i++) {
         dx = pos[0] - p[i].x;
         dy = pos[1] - p[i].y;

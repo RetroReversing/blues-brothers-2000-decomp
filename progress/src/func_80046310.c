@@ -34,7 +34,7 @@ typedef struct {
     u16 pad6;
 } ShadowTri;
 
-void func_80048820(f32 *, f32 *, s32);
+void collectCollisionCells(f32 *, f32 *, s32);
 s32 func_80048C8C(f32 *, s32);
 void func_8002E018(f32 *, f32 *, f32 *);
 void func_8002E100(f32 *, f32 *);
@@ -91,7 +91,7 @@ void func_80046310(f32 *pos, f32 size, s32 flags) {
     b[0] = pos[0] + h;
     b[1] = pos[1];
     b[2] = pos[2] + h;
-    func_80048820(a, b, 0x11);
+    collectCollisionCells(a, b, 0x11);
     a[0] = pos[0];
     a[1] = pos[1] + 8.333333334;
     a[2] = pos[2];

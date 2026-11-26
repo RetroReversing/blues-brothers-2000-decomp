@@ -1,4 +1,4 @@
-void *func_80023874(s32, s32);
+void *findActor(s32, s32);
 s32 func_80043248(void *);
 typedef struct Obj { u8 pad[0x9C]; void *fn; u8 pad2[0x108 - 0xA0]; } Obj;
 extern Obj *D_800AB9BC;
@@ -13,7 +13,7 @@ s32 func_80068BF8(void *arg0) {
     void *t;
 
     if (*(s32 *)((s8 *)arg0 + 0x88) == 0) {
-        p = func_80023874(0x1004, 0);
+        p = findActor(0x1004, 0);
         if (p != NULL) {
             *(s32 *)((s8 *)p + 0xC0) = 1;
         }

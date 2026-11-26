@@ -8,7 +8,7 @@ void func_8004E008(Mat44 *, f32);
 void func_800340B4(void);
 extern u8 *D_800B3960;
 extern Mat44 D_800B76E0;
-extern u8 *D_800BD06C;
+extern u8 *gCameraTarget;
 
 void func_800664A8(u8 *arg0) {
     Mat44 m;
@@ -18,10 +18,10 @@ void func_800664A8(u8 *arg0) {
     s32 dir;
     f32 angle;
 
-    dir = func_8002492C(*(f32 *)(D_800BD06C + 4) - *(f32 *)(arg0 + 4), *(f32 *)(D_800BD06C + 0xC) - *(f32 *)(arg0 + 0xC));
+    dir = func_8002492C(*(f32 *)(gCameraTarget + 4) - *(f32 *)(arg0 + 4), *(f32 *)(gCameraTarget + 0xC) - *(f32 *)(arg0 + 0xC));
     angle = (f32)((f32)dir * 6.283185307179586) * 1.52587890625e-05;
     m = D_800B76E0;
-    func_8004DF94(&m, *(f32 *)(D_800BD06C + 4), *(f32 *)(D_800BD06C + 8), *(f32 *)(D_800BD06C + 0xC));
+    func_8004DF94(&m, *(f32 *)(gCameraTarget + 4), *(f32 *)(gCameraTarget + 8), *(f32 *)(gCameraTarget + 0xC));
     func_8004E008(&m, angle);
     func_8004DF94(&m, 0.0f, 50.0f, 800.0f);
     func_8004C020(&m, 0, 0, 0, 0, 0, 0, &x, &y, &z);

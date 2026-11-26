@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795696849.795224,
- "revision": 5440,
+ "saved_at": 1795699047.3626618,
+ "revision": 5528,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -1941,7 +1941,7 @@
   },
   "163132:2147643708": {
    "vram": 2147643708,
-   "function": "func_8002713C",
+   "function": "setTextPos",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -2130,7 +2130,7 @@
   },
   "163084:2147643660": {
    "vram": 2147643660,
-   "function": "func_8002710C",
+   "function": "setTextColor",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -2370,7 +2370,7 @@
   },
   "411904:2147892480": {
    "vram": 2147892480,
-   "function": "func_80063D00",
+   "function": "spawnCutsceneActor",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -2502,7 +2502,7 @@
   },
   "188876:2147669452": {
    "vram": 2147669452,
-   "function": "func_8002D5CC",
+   "function": "tickActorTimer",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -3896,7 +3896,7 @@
   },
   "162984:2147643560": {
    "vram": 2147643560,
-   "function": "func_800270A8",
+   "function": "setTextColorRgb",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -4171,7 +4171,7 @@
   },
   "142784:2147623360": {
    "vram": 2147623360,
-   "function": "func_800221C0",
+   "function": "packDrawFlags",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -7535,7 +7535,7 @@
   },
   "148684:2147629260": {
    "vram": 2147629260,
-   "function": "func_800238CC",
+   "function": "countLiveObjects",
    "toolchain": "sn-n64-272-0004",
    "flags": [
     "-G0",
@@ -8459,7 +8459,7 @@
   },
   "227280:2147707856": {
    "vram": 2147707856,
-   "function": "func_80036BD0",
+   "function": "expandBoundsToSegment",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -8669,7 +8669,7 @@
   },
   "133988:2147614564": {
    "vram": 2147614564,
-   "function": "func_8001FF64",
+   "function": "updateCameraView",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -8870,7 +8870,7 @@
   },
   "277564:2147758140": {
    "vram": 2147758140,
-   "function": "func_8004303C",
+   "function": "animStepKeys",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -8921,7 +8921,7 @@
   },
   "188224:2147668800": {
    "vram": 2147668800,
-   "function": "func_8002D340",
+   "function": "approachF32",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -9149,7 +9149,7 @@
   },
   "53308:2147533884": {
    "vram": 2147533884,
-   "function": "func_8000C43C",
+   "function": "cameraGetMode",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -9369,7 +9369,7 @@
   },
   "318792:2147799368": {
    "vram": 2147799368,
-   "function": "func_8004D148",
+   "function": "multiplyMatrix",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -9514,7 +9514,7 @@
   },
   "227576:2147708152": {
    "vram": 2147708152,
-   "function": "func_80036CF8",
+   "function": "initBoundsToSegment",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -12732,7 +12732,7 @@
   },
   "153356:2147633932": {
    "vram": 2147633932,
-   "function": "func_80024B0C",
+   "function": "isqrtS32",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -12877,7 +12877,7 @@
   },
   "189036:2147669612": {
    "vram": 2147669612,
-   "function": "func_8002D66C",
+   "function": "getCameraTargetDist",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -12975,7 +12975,7 @@
   },
   "191616:2147672192": {
    "vram": 2147672192,
-   "function": "func_8002E080",
+   "function": "vec3Length",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15023,7 +15023,7 @@
   },
   "222864:2147703440": {
    "vram": 2147703440,
-   "function": "func_80035A90",
+   "function": "clipCameraToTrack",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15283,7 +15283,7 @@
   },
   "484892:2147965468": {
    "vram": 2147965468,
-   "function": "func_80075A1C",
+   "function": "updateTruckPlatform",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15313,7 +15313,7 @@
   },
   "218596:2147699172": {
    "vram": 2147699172,
-   "function": "func_800349E4",
+   "function": "updateFollowCamera",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15328,7 +15328,7 @@
   },
   "547020:2148027596": {
    "vram": 2148027596,
-   "function": "func_80084CCC",
+   "function": "updateChaseAI",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15343,7 +15343,7 @@
   },
   "201216:2147681792": {
    "vram": 2147681792,
-   "function": "func_80030600",
+   "function": "drawRingEffect",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15358,7 +15358,7 @@
   },
   "311856:2147792432": {
    "vram": 2147792432,
-   "function": "func_8004B630",
+   "function": "setupCollisionTri",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15373,7 +15373,7 @@
   },
   "224372:2147704948": {
    "vram": 2147704948,
-   "function": "func_80036074",
+   "function": "cameraAvoidWalls",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15384,7 +15384,7 @@
   },
   "300064:2147780640": {
    "vram": 2147780640,
-   "function": "func_80048820",
+   "function": "collectCollisionCells",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15395,7 +15395,7 @@
   },
   "564556:2148045132": {
    "vram": 2148045132,
-   "function": "func_8008914C",
+   "function": "buildFrameDisplayList",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15410,7 +15410,7 @@
   },
   "412976:2147893552": {
    "vram": 2147893552,
-   "function": "func_80064130",
+   "function": "updateElroomScene",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15425,7 +15425,7 @@
   },
   "468744:2147949320": {
    "vram": 2147949320,
-   "function": "func_80071B08",
+   "function": "collidePlayerWithWall",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15440,7 +15440,7 @@
   },
   "585184:2148065760": {
    "vram": 2148065760,
-   "function": "func_8008E1E0",
+   "function": "playSeqChannelNote",
    "toolchain": "sn-n64-272-0001",
    "flags": [
     "-G8",
@@ -15450,7 +15450,7 @@
   },
   "289332:2147769908": {
    "vram": 2147769908,
-   "function": "func_80045E34",
+   "function": "updateModelBoneActors",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15461,7 +15461,7 @@
   },
   "260280:2147740856": {
    "vram": 2147740856,
-   "function": "func_8003ECB8",
+   "function": "animSampleKeys",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15476,7 +15476,7 @@
   },
   "597156:2148077732": {
    "vram": 2148077732,
-   "function": "func_800910A4",
+   "function": "zInflate",
    "toolchain": "sn-n64-272-0001",
    "flags": [
     "-G8",
@@ -15486,7 +15486,7 @@
   },
   "235768:2147716344": {
    "vram": 2147716344,
-   "function": "func_80038CF8",
+   "function": "traceBounceMove",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15497,7 +15497,7 @@
   },
   "269072:2147749648": {
    "vram": 2147749648,
-   "function": "func_80040F10",
+   "function": "buildBoneMatrices",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15508,7 +15508,7 @@
   },
   "144168:2147624744": {
    "vram": 2147624744,
-   "function": "func_80022728",
+   "function": "buildObjectMatrix",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15523,7 +15523,7 @@
   },
   "524132:2148004708": {
    "vram": 2148004708,
-   "function": "func_8007F364",
+   "function": "updateBusterSequence",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15534,7 +15534,7 @@
   },
   "293720:2147774296": {
    "vram": 2147774296,
-   "function": "func_80046F58",
+   "function": "updateCamera",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15549,7 +15549,7 @@
   },
   "545768:2148026344": {
    "vram": 2148026344,
-   "function": "func_800847E8",
+   "function": "updatePursuitVehicle",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15560,7 +15560,7 @@
   },
   "104436:2147585012": {
    "vram": 2147585012,
-   "function": "func_80018BF4",
+   "function": "drawHud",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15575,7 +15575,7 @@
   },
   "415068:2147895644": {
    "vram": 2147895644,
-   "function": "func_8006495C",
+   "function": "cameraUpdateByMode",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15586,7 +15586,7 @@
   },
   "605760:2148086336": {
    "vram": 2148086336,
-   "function": "func_80093240",
+   "function": "huftBuild",
    "toolchain": "sn-n64-272-0001",
    "flags": [
     "-G8",
@@ -15596,7 +15596,7 @@
   },
   "243720:2147724296": {
    "vram": 2147724296,
-   "function": "func_8003AC08",
+   "function": "handleActorHit",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15626,7 +15626,7 @@
   },
   "532872:2148013448": {
    "vram": 2148013448,
-   "function": "func_80081588",
+   "function": "initSpline",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -15641,7 +15641,7 @@
   },
   "531300:2148011876": {
    "vram": 2148011876,
-   "function": "func_80080F64",
+   "function": "initSplineEndSegment",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -15671,7 +15671,7 @@
   },
   "531572:2148012148": {
    "vram": 2148012148,
-   "function": "func_80081074",
+   "function": "initSplineSegment",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16262,7 +16262,7 @@
   },
   "352772:2147833348": {
    "vram": 2147833348,
-   "function": "func_80055604",
+   "function": "updateChaserActor",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -16277,7 +16277,7 @@
   },
   "444252:2147924828": {
    "vram": 2147924828,
-   "function": "func_8006BB5C",
+   "function": "updateChaseVehicle",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -16322,7 +16322,7 @@
   },
   "221028:2147701604": {
    "vram": 2147701604,
-   "function": "func_80035364",
+   "function": "raycastCollision",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17033,7 +17033,22 @@
   },
   "363792:2147844368": {
    "vram": 2147844368,
-   "function": "func_80058110",
+   "function": "updateLogicBomb",
+   "toolchain": "sn-n64-281",
+   "flags": [
+    "-G0",
+    "-mips3",
+    "-O2",
+    "-mgas",
+    "-meb",
+    "-mcpu=VR4300",
+    "-mhard-float",
+    "-mfp32"
+   ]
+  },
+  "556480:2148037056": {
+   "vram": 2148037056,
+   "function": "func_800871C0",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17982,7 +17997,8 @@
   "local_source_158913792181": "common_local_source_158913792181.h",
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
-  "local_source_158913792189": "common_local_source_158913792189.h"
+  "local_source_158913792189": "common_local_source_158913792189.h",
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -18140,7 +18156,7 @@
    "matched_by": "manual-8db12549f67a4fbd",
    "readable": false
   },
-  "func_8000C43C": {
+  "cameraGetMode": {
    "vram": 2147533884,
    "matched_by": "manual-adcd2e69bf5d4bb2",
    "readable": false
@@ -18180,10 +18196,10 @@
    "matched_by": "manual-c9811967853b4e7d",
    "readable": false
   },
-  "func_8000C874": {
+  "initLevel": {
    "vram": 2147534964,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_8000CDF0": {
    "vram": 2147536368,
@@ -18195,10 +18211,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8000CF30": {
+  "setupStage": {
    "vram": 2147536688,
    "matched_by": "manual-83d32b880ea94c1c",
-   "readable": false
+   "readable": true
   },
   "func_8000D394": {
    "vram": 2147537812,
@@ -19225,10 +19241,10 @@
    "matched_by": "manual-4d0ea4ddcfe54823",
    "readable": false
   },
-  "func_80018BF4": {
+  "drawHud": {
    "vram": 2147585012,
    "matched_by": "manual-07a10cfe3d8b498f",
-   "readable": false
+   "readable": true
   },
   "func_800191F8": {
    "vram": 2147586552,
@@ -19245,10 +19261,10 @@
    "matched_by": "manual-56199151d2a74de9",
    "readable": false
   },
-  "func_80019620": {
+  "drawDebugStats": {
    "vram": 2147587616,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_80019A2C": {
    "vram": 2147588652,
@@ -19755,6 +19771,11 @@
    "best_score": 200,
    "best_by": "autopilot"
   },
+  "func_8001EC90": {
+   "vram": 2147609744,
+   "matched_by": "manual-807f4e416fb04e7d",
+   "readable": false
+  },
   "func_8001EF80": {
    "vram": 2147610496,
    "matched_by": "manual-a7b51e3b3e704687",
@@ -19810,12 +19831,12 @@
    "matched_by": "manual-fa4a82564c8649a5",
    "readable": false
   },
-  "func_8001FF64": {
+  "updateCameraView": {
    "vram": 2147614564,
    "matched_by": "manual-9fd1e39de8e6486b",
    "readable": false
   },
-  "func_800200F0": {
+  "drawTextureRect": {
    "vram": 2147614960,
    "matched_by": "manual-a51886a25c444ccd",
    "readable": false
@@ -19855,10 +19876,10 @@
    "matched_by": "manual-291cac6721ed4aac",
    "readable": false
   },
-  "func_800213A8": {
+  "updateParticleEmitter": {
    "vram": 2147619752,
    "matched_by": "manual-837241761e9b48f2",
-   "readable": false
+   "readable": true
   },
   "func_80021818": {
    "vram": 2147620888,
@@ -19875,15 +19896,15 @@
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
   },
-  "func_800221C0": {
+  "packDrawFlags": {
    "vram": 2147623360,
    "matched_by": "permuter-158913790342",
    "readable": false
   },
-  "func_8002220C": {
+  "setDrawMode": {
    "vram": 2147623436,
    "matched_by": "manual-837241761e9b48f2",
-   "readable": false
+   "readable": true
   },
   "func_800226A0": {
    "vram": 2147624608,
@@ -19900,10 +19921,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80022728": {
+  "buildObjectMatrix": {
    "vram": 2147624744,
    "matched_by": "manual-07a10cfe3d8b498f",
-   "readable": false
+   "readable": true
   },
   "func_80022C2C": {
    "vram": 2147626028,
@@ -19995,12 +20016,12 @@
    "matched_by": "manual-1870e4fd92aa4428",
    "readable": false
   },
-  "func_80023874": {
+  "findActor": {
    "vram": 2147629172,
    "matched_by": "manual-f95c49f22fff44f9",
    "readable": false
   },
-  "func_800238CC": {
+  "countLiveObjects": {
    "vram": 2147629260,
    "matched_by": "autopilot",
    "readable": false
@@ -20035,7 +20056,7 @@
    "matched_by": "permuter-158913790372",
    "readable": false
   },
-  "func_80023A98": {
+  "setSlotAsset": {
    "vram": 2147629720,
    "matched_by": "manual-9de5252acd2245ec",
    "readable": false
@@ -20100,7 +20121,7 @@
    "matched_by": "manual-b0d6c34b4a8d473a",
    "readable": false
   },
-  "func_80023E18": {
+  "getImageAsset": {
    "vram": 2147630616,
    "matched_by": "autopilot",
    "readable": false
@@ -20150,7 +20171,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80024394": {
+  "randomRange": {
    "vram": 2147632020,
    "matched_by": "permuter-158913790396",
    "readable": false
@@ -20200,7 +20221,7 @@
    "matched_by": "manual-9467302fa763402f",
    "readable": false
   },
-  "func_80024B0C": {
+  "isqrtS32": {
    "vram": 2147633932,
    "matched_by": "manual-02d61035baaa4f41",
    "readable": false
@@ -20245,7 +20266,7 @@
    "matched_by": "manual-94c19b9cd6ff4066",
    "readable": false
   },
-  "func_80025100": {
+  "atan2S16": {
    "vram": 2147635456,
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
@@ -20265,7 +20286,7 @@
    "matched_by": "permuter-158913790418",
    "readable": false
   },
-  "func_800253A0": {
+  "heapAlloc": {
    "vram": 2147636128,
    "matched_by": "autopilot",
    "readable": false
@@ -20380,7 +20401,7 @@
    "matched_by": "manual-12ab267e711c43ff",
    "readable": false
   },
-  "func_80025FF8": {
+  "initControllerPaks": {
    "vram": 2147639288,
    "matched_by": "manual-0bd1864b0391423e",
    "readable": false
@@ -20405,7 +20426,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_800261D4": {
+  "refreshControllerPak": {
    "vram": 2147639764,
    "matched_by": "autopilot",
    "readable": false
@@ -20445,7 +20466,7 @@
    "matched_by": "manual-ddc965dc86ee4f66",
    "readable": false
   },
-  "func_800265C0": {
+  "deleteSaveSlot": {
    "vram": 2147640768,
    "matched_by": "manual-7a5aa221f3a840cd",
    "readable": false
@@ -20470,12 +20491,12 @@
    "matched_by": "manual-94c19b9cd6ff4066",
    "readable": false
   },
-  "func_80026A6C": {
+  "decodeSaveName": {
    "vram": 2147641964,
    "matched_by": "manual-d815639955454bd3",
    "readable": false
   },
-  "func_80026B14": {
+  "getPakFreeBlocks": {
    "vram": 2147642132,
    "matched_by": "autopilot",
    "readable": false
@@ -20550,7 +20571,7 @@
    "matched_by": "manual-87e23bb1e7854fc4",
    "readable": false
   },
-  "func_800270A8": {
+  "setTextColorRgb": {
    "vram": 2147643560,
    "matched_by": "permuter-158913790477",
    "readable": false
@@ -20560,12 +20581,12 @@
    "matched_by": "permuter-158913790478",
    "readable": false
   },
-  "func_8002710C": {
+  "setTextColor": {
    "vram": 2147643660,
    "matched_by": "permuter-158913790479",
    "readable": false
   },
-  "func_8002713C": {
+  "setTextPos": {
    "vram": 2147643708,
    "matched_by": "permuter-158913790480",
    "readable": false
@@ -20580,17 +20601,17 @@
    "matched_by": "permuter-158913790482",
    "readable": false
   },
-  "func_800271D8": {
+  "drawInt": {
    "vram": 2147643864,
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
   },
-  "func_800272AC": {
+  "drawFloat": {
    "vram": 2147644076,
    "matched_by": "permuter-158913790484",
    "readable": false
   },
-  "func_800272E0": {
+  "drawImage": {
    "vram": 2147644128,
    "matched_by": "manual-d63c73bc233f434b",
    "readable": false
@@ -20635,7 +20656,7 @@
    "matched_by": "manual-29c030df8a2c47c2",
    "readable": false
   },
-  "func_8002889C": {
+  "drawText": {
    "vram": 2147649692,
    "matched_by": "manual-fa4a82564c8649a5",
    "readable": false
@@ -20650,10 +20671,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_800289BC": {
+  "drawFontChar": {
    "vram": 2147649980,
    "matched_by": "manual-7b03c0bd1d5b4f32",
-   "readable": false
+   "readable": true
   },
   "func_80028FF4": {
    "vram": 2147651572,
@@ -20685,7 +20706,7 @@
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
   },
-  "func_80029F8C": {
+  "setRenderState": {
    "vram": 2147655564,
    "matched_by": "manual-aeeb5be5af9d41ed",
    "readable": false
@@ -20825,15 +20846,15 @@
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
   },
-  "func_8002B880": {
+  "loadTextureClamped": {
    "vram": 2147661952,
    "matched_by": "manual-30d0b17e5a18415e",
-   "readable": false
+   "readable": true
   },
-  "func_8002BE18": {
+  "loadTexture": {
    "vram": 2147663384,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_8002C3B8": {
    "vram": 2147664824,
@@ -20875,7 +20896,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8002D204": {
+  "approachAngle": {
    "vram": 2147668484,
    "matched_by": "autopilot",
    "readable": false
@@ -20890,7 +20911,7 @@
    "matched_by": "permuter-158913790543",
    "readable": false
   },
-  "func_8002D298": {
+  "approachS32": {
    "vram": 2147668632,
    "matched_by": "manual-1725631ebbd7422e",
    "readable": false
@@ -20900,7 +20921,7 @@
    "matched_by": "manual-1d9b7281787a4219",
    "readable": false
   },
-  "func_8002D340": {
+  "approachF32": {
    "vram": 2147668800,
    "matched_by": "manual-36985d03d3d64986",
    "readable": false
@@ -20925,7 +20946,7 @@
    "matched_by": "permuter-158913790550",
    "readable": false
   },
-  "func_8002D5CC": {
+  "tickActorTimer": {
    "vram": 2147669452,
    "matched_by": "permuter-158913790551",
    "readable": false
@@ -20940,7 +20961,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8002D620": {
+  "syncActorPrevPos": {
    "vram": 2147669536,
    "matched_by": "autopilot",
    "readable": false
@@ -20950,7 +20971,7 @@
    "matched_by": "manual-abad06d7ee7a4caa",
    "readable": false
   },
-  "func_8002D66C": {
+  "getCameraTargetDist": {
    "vram": 2147669612,
    "matched_by": "manual-3f0a68c1dcd84e99",
    "readable": false
@@ -21010,7 +21031,7 @@
    "matched_by": "manual-d815639955454bd3",
    "readable": false
   },
-  "func_8002DC84": {
+  "mtxIdentity3": {
    "vram": 2147671172,
    "matched_by": "permuter-158913790568",
    "readable": false
@@ -21025,7 +21046,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8002DD8C": {
+  "mtxTransformVec3": {
    "vram": 2147671436,
    "matched_by": "autopilot",
    "readable": false
@@ -21040,7 +21061,7 @@
    "matched_by": "manual-06eef21484b64bbc",
    "readable": false
   },
-  "func_8002E080": {
+  "vec3Length": {
    "vram": 2147672192,
    "matched_by": "manual-d815639955454bd3",
    "readable": false
@@ -21060,7 +21081,7 @@
    "matched_by": "manual-9f6be38046014f4f",
    "readable": false
   },
-  "func_8002E1FC": {
+  "vec3Sub": {
    "vram": 2147672572,
    "matched_by": "autopilot",
    "readable": false
@@ -21160,10 +21181,10 @@
    "best_score": 115,
    "best_by": "autopilot"
   },
-  "func_8002ED20": {
+  "drawImageObject": {
    "vram": 2147675424,
-   "best_score": 32548,
-   "best_by": "autopilot"
+   "matched_by": "manual-807f4e416fb04e7d",
+   "readable": true
   },
   "func_8002F2C0": {
    "vram": 2147676864,
@@ -21190,15 +21211,15 @@
    "matched_by": "manual-f86831e3bb304d6a",
    "readable": false
   },
-  "func_800301E8": {
+  "drawRotatedImage": {
    "vram": 2147680744,
    "matched_by": "manual-2fe8338fcd974daa",
-   "readable": false
+   "readable": true
   },
-  "func_80030600": {
+  "drawRingEffect": {
    "vram": 2147681792,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_80030B2C": {
    "vram": 2147683116,
@@ -21305,7 +21326,7 @@
    "matched_by": "permuter-158913790624",
    "readable": false
   },
-  "func_80031A38": {
+  "updateMenuScroll": {
    "vram": 2147686968,
    "matched_by": "manual-0d322a4885244d8a",
    "readable": false
@@ -21315,7 +21336,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80031C70": {
+  "setSlotTextColor": {
    "vram": 2147687536,
    "matched_by": "autopilot",
    "readable": false
@@ -21335,10 +21356,10 @@
    "matched_by": "permuter-158913790630",
    "readable": false
   },
-  "func_80031F0C": {
+  "drawControllerPakMenu": {
    "vram": 2147688204,
    "matched_by": "manual-d52de911be6641da",
-   "readable": false
+   "readable": true
   },
   "func_80032314": {
    "vram": 2147689236,
@@ -21515,10 +21536,10 @@
    "matched_by": "manual-8486f82c73be483e",
    "readable": false
   },
-  "func_800349E4": {
+  "updateFollowCamera": {
    "vram": 2147699172,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_80034E40": {
    "vram": 2147700288,
@@ -21560,12 +21581,12 @@
    "matched_by": "manual-d4bc36234c4a4382",
    "readable": false
   },
-  "func_80035364": {
+  "raycastCollision": {
    "vram": 2147701604,
    "matched_by": "manual-926f1561804549f8",
    "readable": false
   },
-  "func_80035A90": {
+  "clipCameraToTrack": {
    "vram": 2147703440,
    "matched_by": "manual-83d32b880ea94c1c",
    "readable": false
@@ -21575,10 +21596,10 @@
    "matched_by": "manual-7740c92ed85f4923",
    "readable": false
   },
-  "func_80036074": {
+  "cameraAvoidWalls": {
    "vram": 2147704948,
    "matched_by": "manual-837241761e9b48f2",
-   "readable": false
+   "readable": true
   },
   "func_800364B0": {
    "vram": 2147706032,
@@ -21595,12 +21616,12 @@
    "matched_by": "manual-a51886a25c444ccd",
    "readable": false
   },
-  "func_80036BD0": {
+  "expandBoundsToSegment": {
    "vram": 2147707856,
    "matched_by": "manual-c0539a7e40ee47be",
    "readable": false
   },
-  "func_80036CF8": {
+  "initBoundsToSegment": {
    "vram": 2147708152,
    "matched_by": "manual-46436e069aac492e",
    "readable": false
@@ -21655,10 +21676,10 @@
    "matched_by": "manual-8f6feb4ef2e84060",
    "readable": false
   },
-  "func_80038CF8": {
+  "traceBounceMove": {
    "vram": 2147716344,
    "matched_by": "manual-837241761e9b48f2",
-   "readable": false
+   "readable": true
   },
   "func_800391C4": {
    "vram": 2147717572,
@@ -21695,10 +21716,10 @@
    "matched_by": "manual-11a5eda80b1f4400",
    "readable": false
   },
-  "func_8003AC08": {
+  "handleActorHit": {
    "vram": 2147724296,
    "matched_by": "manual-07a10cfe3d8b498f",
-   "readable": false
+   "readable": true
   },
   "func_8003B234": {
    "vram": 2147725876,
@@ -21850,12 +21871,12 @@
    "matched_by": "manual-25999a4b516b4636",
    "readable": false
   },
-  "func_8003CDA0": {
+  "drawCenteredMessage": {
    "vram": 2147732896,
    "matched_by": "manual-b0d6c34b4a8d473a",
    "readable": false
   },
-  "func_8003CDF4": {
+  "drawMessage": {
    "vram": 2147732980,
    "matched_by": "autopilot",
    "readable": false
@@ -21920,10 +21941,10 @@
    "matched_by": "manual-6682de1b73204dd9",
    "readable": false
   },
-  "func_8003E278": {
+  "drawAudioOptionsMenu": {
    "vram": 2147738232,
    "matched_by": "manual-bb61020a745d4533",
-   "readable": false
+   "readable": true
   },
   "func_8003E780": {
    "vram": 2147739520,
@@ -21960,10 +21981,10 @@
    "matched_by": "manual-56199151d2a74de9",
    "readable": false
   },
-  "func_8003ECB8": {
+  "animSampleKeys": {
    "vram": 2147740856,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_8003F2A4": {
    "vram": 2147742372,
@@ -21975,10 +21996,10 @@
    "matched_by": "manual-aacbb7d1735a48e9",
    "readable": false
   },
-  "func_80040F10": {
+  "buildBoneMatrices": {
    "vram": 2147749648,
    "matched_by": "manual-837241761e9b48f2",
-   "readable": false
+   "readable": true
   },
   "func_800413B8": {
    "vram": 2147750840,
@@ -21987,8 +22008,8 @@
   },
   "func_800413C0": {
    "vram": 2147750848,
-   "best_score": 10,
-   "best_by": "autopilot"
+   "matched_by": "manual-807f4e416fb04e7d",
+   "readable": false
   },
   "func_80041418": {
    "vram": 2147750936,
@@ -22025,7 +22046,7 @@
    "matched_by": "permuter-158913790768",
    "readable": false
   },
-  "func_8004303C": {
+  "animStepKeys": {
    "vram": 2147758140,
    "matched_by": "manual-6f9b61227b05469e",
    "readable": false
@@ -22055,7 +22076,7 @@
    "matched_by": "permuter-158913790774",
    "readable": false
   },
-  "func_800433A8": {
+  "actorSetAnim": {
    "vram": 2147759016,
    "matched_by": "permuter-158913790775",
    "readable": false
@@ -22105,10 +22126,10 @@
    "matched_by": "manual-926f1561804549f8",
    "readable": false
   },
-  "func_80045E34": {
+  "updateModelBoneActors": {
    "vram": 2147769908,
    "matched_by": "manual-837241761e9b48f2",
-   "readable": false
+   "readable": true
   },
   "func_800462A0": {
    "vram": 2147771040,
@@ -22125,10 +22146,10 @@
    "matched_by": "permuter-158913790789",
    "readable": false
   },
-  "func_80046F58": {
+  "updateCamera": {
    "vram": 2147774296,
    "matched_by": "manual-07a10cfe3d8b498f",
-   "readable": false
+   "readable": true
   },
   "func_80047558": {
    "vram": 2147775832,
@@ -22235,12 +22256,12 @@
    "matched_by": "permuter-158913790810",
    "readable": false
   },
-  "func_80048820": {
+  "collectCollisionCells": {
    "vram": 2147780640,
    "matched_by": "manual-837241761e9b48f2",
-   "readable": false
+   "readable": true
   },
-  "func_80048C70": {
+  "probeCollision": {
    "vram": 2147781744,
    "matched_by": "autopilot",
    "readable": false
@@ -22280,10 +22301,10 @@
    "matched_by": "manual-bf7825c4edf04a80",
    "readable": false
   },
-  "func_8004B630": {
+  "setupCollisionTri": {
    "vram": 2147792432,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_8004BA40": {
    "vram": 2147793472,
@@ -22330,10 +22351,10 @@
    "matched_by": "manual-a4719a5bc6e74e9e",
    "readable": false
   },
-  "func_8004D148": {
+  "multiplyMatrix": {
    "vram": 2147799368,
    "matched_by": "autopilot",
-   "readable": false
+   "readable": true
   },
   "func_8004D54C": {
    "vram": 2147800396,
@@ -22705,7 +22726,7 @@
    "matched_by": "permuter-158913790904",
    "readable": false
   },
-  "func_80052130": {
+  "setActorState": {
    "vram": 2147819824,
    "matched_by": "permuter-158913790905",
    "readable": false
@@ -23000,10 +23021,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80055604": {
+  "updateChaserActor": {
    "vram": 2147833348,
    "matched_by": "manual-bad851f42f0c40e7",
-   "readable": false
+   "readable": true
   },
   "func_80055A34": {
    "vram": 2147834420,
@@ -23220,10 +23241,10 @@
    "best_score": 500,
    "best_by": "autopilot"
   },
-  "func_80058110": {
+  "updateLogicBomb": {
    "vram": 2147844368,
    "matched_by": "autopilot",
-   "readable": false
+   "readable": true
   },
   "func_80058678": {
    "vram": 2147845752,
@@ -23487,8 +23508,8 @@
   },
   "func_8005CAB0": {
    "vram": 2147863216,
-   "best_score": 2881,
-   "best_by": "autopilot"
+   "matched_by": "manual-807f4e416fb04e7d",
+   "readable": false
   },
   "func_8005CB7C": {
    "vram": 2147863420,
@@ -23812,10 +23833,10 @@
   },
   "func_80063C40": {
    "vram": 2147892288,
-   "best_score": 940,
-   "best_by": "autopilot"
+   "matched_by": "manual-807f4e416fb04e7d",
+   "readable": false
   },
-  "func_80063D00": {
+  "spawnCutsceneActor": {
    "vram": 2147892480,
    "matched_by": "permuter-158913791115",
    "readable": false
@@ -23860,10 +23881,10 @@
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
   },
-  "func_80064130": {
+  "updateElroomScene": {
    "vram": 2147893552,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_800646C0": {
    "vram": 2147894976,
@@ -23885,10 +23906,10 @@
    "matched_by": "manual-1c2ff5b060bb47c6",
    "readable": false
   },
-  "func_8006495C": {
+  "cameraUpdateByMode": {
    "vram": 2147895644,
    "matched_by": "manual-b6b12924c41b4c9e",
-   "readable": false
+   "readable": true
   },
   "func_80064D94": {
    "vram": 2147896724,
@@ -24415,10 +24436,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8006BB5C": {
+  "updateChaseVehicle": {
    "vram": 2147924828,
    "matched_by": "manual-bad851f42f0c40e7",
-   "readable": false
+   "readable": true
   },
   "func_8006C008": {
    "vram": 2147926024,
@@ -24885,10 +24906,10 @@
    "matched_by": "permuter-158913791325",
    "readable": false
   },
-  "func_80071B08": {
+  "collidePlayerWithWall": {
    "vram": 2147949320,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_8007209C": {
    "vram": 2147950748,
@@ -25160,10 +25181,10 @@
    "matched_by": "manual-12ab267e711c43ff",
    "readable": false
   },
-  "func_80075A1C": {
+  "updateTruckPlatform": {
    "vram": 2147965468,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_80075E4C": {
    "vram": 2147966540,
@@ -25925,10 +25946,10 @@
    "matched_by": "manual-d815639955454bd3",
    "readable": false
   },
-  "func_8007F364": {
+  "updateBusterSequence": {
    "vram": 2148004708,
    "matched_by": "manual-b6b12924c41b4c9e",
-   "readable": false
+   "readable": true
   },
   "func_8007F7DC": {
    "vram": 2148005852,
@@ -26070,12 +26091,12 @@
    "matched_by": "permuter-158913791560",
    "readable": false
   },
-  "func_80080F64": {
+  "initSplineEndSegment": {
    "vram": 2148011876,
    "matched_by": "manual-d4bc36234c4a4382",
    "readable": false
   },
-  "func_80081074": {
+  "initSplineSegment": {
    "vram": 2148012148,
    "matched_by": "manual-d4bc36234c4a4382",
    "readable": false
@@ -26090,10 +26111,10 @@
    "matched_by": "manual-d8adb74680f54138",
    "readable": false
   },
-  "func_80081588": {
+  "initSpline": {
    "vram": 2148013448,
    "matched_by": "manual-b6b12924c41b4c9e",
-   "readable": false
+   "readable": true
   },
   "func_80081990": {
    "vram": 2148014480,
@@ -26295,15 +26316,15 @@
    "matched_by": "manual-f86831e3bb304d6a",
    "readable": false
   },
-  "func_800847E8": {
+  "updatePursuitVehicle": {
    "vram": 2148026344,
    "matched_by": "manual-b6b12924c41b4c9e",
-   "readable": false
+   "readable": true
   },
-  "func_80084CCC": {
+  "updateChaseAI": {
    "vram": 2148027596,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_800851D8": {
    "vram": 2148028888,
@@ -26452,8 +26473,8 @@
   },
   "func_800871C0": {
    "vram": 2148037056,
-   "best_score": 190,
-   "best_by": "manual-55e2fba56d6145ca"
+   "matched_by": "manual-55e2fba56d6145ca",
+   "readable": false
   },
   "func_8008756C": {
    "vram": 2148037996,
@@ -26495,10 +26516,10 @@
    "matched_by": "manual-8b905ec32f7846e6",
    "readable": false
   },
-  "func_800880FC": {
+  "loadSlotAssetSet": {
    "vram": 2148040956,
    "matched_by": "autopilot",
-   "readable": false
+   "readable": true
   },
   "func_80088658": {
    "vram": 2148042328,
@@ -26580,10 +26601,10 @@
    "matched_by": "permuter-158913791659",
    "readable": false
   },
-  "func_8008914C": {
+  "buildFrameDisplayList": {
    "vram": 2148045132,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_800896D0": {
    "vram": 2148046544,
@@ -26605,7 +26626,7 @@
    "matched_by": "permuter-158913791664",
    "readable": false
   },
-  "func_800899DC": {
+  "debugPrintf": {
    "vram": 2148047324,
    "matched_by": "manual-83d32b880ea94c1c",
    "readable": false
@@ -27080,10 +27101,10 @@
    "matched_by": "manual-a57f45738d2c42cb",
    "readable": false
   },
-  "func_8008E1E0": {
+  "playSeqChannelNote": {
    "vram": 2148065760,
    "matched_by": "manual-837241761e9b48f2",
-   "readable": false
+   "readable": true
   },
   "func_8008E644": {
    "vram": 2148066884,
@@ -27355,10 +27376,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_800910A4": {
+  "zInflate": {
    "vram": 2148077732,
    "matched_by": "manual-763f293e1efd4d95",
-   "readable": false
+   "readable": true
   },
   "func_80091694": {
    "vram": 2148079252,
@@ -27425,10 +27446,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_80093240": {
+  "huftBuild": {
    "vram": 2148086336,
    "matched_by": "manual-07a10cfe3d8b498f",
-   "readable": false
+   "readable": true
   },
   "func_80093858": {
    "vram": 2148087896,
@@ -27540,7 +27561,7 @@
    "best_score": 933,
    "best_by": "autopilot-named-donors"
   },
-  "func_80095DC0": {
+  "sinApprox": {
    "vram": 2148097472,
    "matched_by": "autopilot",
    "readable": false
@@ -28268,7 +28289,7 @@
   "__osLeoInterrupt": {
    "vram": 2148148896,
    "matched_by": "autopilot",
-   "readable": false
+   "readable": true
   },
   "__osLeoAbnormalResume": {
    "vram": 2148150188,
@@ -28859,7 +28880,7 @@
   "func_800187D8": "local_source_158913790205",
   "func_80018914": "local_source_158913790207",
   "func_80018A94": "local_source_158913790210",
-  "func_80018BF4": "local_source_158913790211",
+  "drawHud": "local_source_158913790211",
   "func_800191F8": "local_source_158913790212",
   "func_80019218": "local_source_158913790213",
   "func_80019D6C": "local_source_158913790217",
@@ -28899,11 +28920,11 @@
   "func_8001F5A4": "local_source_158913790323",
   "func_8001F9A8": "local_source_158913790325",
   "func_8001FB54": "local_source_158913790326",
-  "func_8001FF64": "local_source_158913790329",
+  "updateCameraView": "local_source_158913790329",
   "func_80020B3C": "local_source_158913790332",
   "func_80022028": "local_source_158913790340",
-  "func_800221C0": "local_source_158913790342",
-  "func_80022728": "local_source_158913790347",
+  "packDrawFlags": "local_source_158913790342",
+  "buildObjectMatrix": "local_source_158913790347",
   "func_80022C2C": "local_source_158913790348",
   "func_80022EDC": "local_source_158913790349",
   "func_80023088": "local_source_158913790351",
@@ -28922,7 +28943,7 @@
   "func_80024468": "local_source_158913790398",
   "func_800247D0": "local_source_158913790399",
   "func_80024984": "local_source_158913790402",
-  "func_80024B0C": "local_source_158913790406",
+  "isqrtS32": "local_source_158913790406",
   "func_80024C68": "local_source_158913790409",
   "func_80024D5C": "local_source_158913790410",
   "func_80025280": "local_source_158913790416",
@@ -28944,10 +28965,10 @@
   "func_80026C4C": "local_source_158913790467",
   "func_80026E84": "local_source_158913790472",
   "func_80027038": "local_source_158913790475",
-  "func_800270A8": "local_source_158913790477",
+  "setTextColorRgb": "local_source_158913790477",
   "func_800270DC": "local_source_158913790478",
-  "func_8002710C": "local_source_158913790479",
-  "func_8002713C": "local_source_158913790480",
+  "setTextColor": "local_source_158913790479",
+  "setTextPos": "local_source_158913790480",
   "func_800271A8": "local_source_158913790482",
   "func_8002854C": "local_source_158913790489",
   "func_8002ABC0": "local_source_158913790510",
@@ -28967,9 +28988,9 @@
   "func_8002D3E4": "local_source_158913790548",
   "func_8002D464": "local_source_158913790549",
   "func_8002D4E0": "local_source_158913790550",
-  "func_8002D5CC": "local_source_158913790551",
+  "tickActorTimer": "local_source_158913790551",
   "func_8002D5E8": "local_source_158913790552",
-  "func_8002D66C": "local_source_158913790556",
+  "getCameraTargetDist": "local_source_158913790556",
   "func_8002D77C": "local_source_158913790557",
   "func_8002D858": "local_source_158913790558",
   "func_8002D8F4": "local_source_158913790559",
@@ -28979,7 +29000,7 @@
   "func_8002DAE0": "local_source_158913790565",
   "func_8002DB6C": "local_source_158913790566",
   "func_8002DBF8": "local_source_158913790567",
-  "func_8002E080": "local_source_158913790574",
+  "vec3Length": "local_source_158913790574",
   "func_8002E100": "local_source_158913790576",
   "func_8002E31C": "local_source_158913790582",
   "func_8002E79C": "local_source_158913790588",
@@ -28989,7 +29010,7 @@
   "func_8002F604": "local_source_158913790598",
   "func_8002F8D0": "local_source_158913790599",
   "func_8002FBC0": "local_source_158913790600",
-  "func_80030600": "local_source_158913790603",
+  "drawRingEffect": "local_source_158913790603",
   "func_80030B90": "local_source_158913790605",
   "func_80030C6C": "local_source_158913790607",
   "func_80030CC0": "local_source_158913790608",
@@ -29018,26 +29039,26 @@
   "func_80033BDC": "local_source_158913790662",
   "func_80033DC4": "local_source_158913790663",
   "func_800340B4": "local_source_158913790666",
-  "func_800349E4": "local_source_158913790667",
+  "updateFollowCamera": "local_source_158913790667",
   "func_80034F50": "local_source_158913790670",
   "func_80034FEC": "local_source_158913790671",
   "func_800350F4": "local_source_158913790672",
   "func_80035164": "local_source_158913790673",
-  "func_80035364": "local_source_158913790676",
-  "func_80035A90": "local_source_158913790677",
+  "raycastCollision": "local_source_158913790676",
+  "clipCameraToTrack": "local_source_158913790677",
   "func_80035D04": "local_source_158913790678",
-  "func_80036074": "local_source_158913790679",
+  "cameraAvoidWalls": "local_source_158913790679",
   "func_800364B0": "local_source_158913790680",
   "func_80036780": "local_source_158913790681",
   "func_800369EC": "local_source_158913790682",
-  "func_80036CF8": "local_source_158913790684",
+  "initBoundsToSegment": "local_source_158913790684",
   "func_80036FB8": "local_source_158913790687",
   "func_800379C8": "local_source_158913790692",
   "func_800385AC": "local_source_158913790693",
-  "func_80038CF8": "local_source_158913790695",
+  "traceBounceMove": "local_source_158913790695",
   "func_800391C4": "local_source_158913790697",
   "func_800393F4": "local_source_158913790701",
-  "func_8003AC08": "local_source_158913790704",
+  "handleActorHit": "local_source_158913790704",
   "func_8003B3F4": "local_source_158913790706",
   "func_8003B670": "local_source_158913790707",
   "func_8003B828": "local_source_158913790708",
@@ -29056,10 +29077,10 @@
   "func_8003CBA8": "local_source_158913790733",
   "func_8003D7A8": "local_source_158913790743",
   "func_8003E7E4": "local_source_158913790753",
-  "func_8003ECB8": "local_source_158913790757",
+  "animSampleKeys": "local_source_158913790757",
   "func_8003F2A4": "local_source_158913790758",
   "func_8003F44C": "local_source_158913790759",
-  "func_80040F10": "local_source_158913790760",
+  "buildBoneMatrices": "local_source_158913790760",
   "func_8004145C": "local_source_158913790763",
   "func_800414D0": "local_source_158913790764",
   "func_80041D18": "local_source_158913790765",
@@ -29069,22 +29090,22 @@
   "func_8004318C": "local_source_158913790771",
   "func_80043214": "local_source_158913790772",
   "func_80043248": "local_source_158913790773",
-  "func_80045E34": "local_source_158913790786",
+  "updateModelBoneActors": "local_source_158913790786",
   "func_800462A0": "local_source_158913790787",
   "func_80046310": "local_source_158913790788",
   "func_80046F30": "local_source_158913790789",
-  "func_80046F58": "local_source_158913790790",
+  "updateCamera": "local_source_158913790790",
   "func_80047560": "local_source_158913792180",
   "func_8004811C": "local_source_158913790799",
   "func_80048248": "local_source_158913790801",
   "func_800483E0": "local_source_158913790804",
   "func_800485A4": "local_source_158913790807",
   "func_800487A4": "local_source_158913790810",
-  "func_80048820": "local_source_158913790811",
+  "collectCollisionCells": "local_source_158913790811",
   "func_80048CD8": "local_source_158913790814",
   "func_800493A0": "local_source_158913790818",
   "func_8004A200": "local_source_158913790819",
-  "func_8004B630": "local_source_158913790820",
+  "setupCollisionTri": "local_source_158913790820",
   "func_8004BA8C": "local_source_158913790822",
   "func_8004BB18": "local_source_158913790823",
   "func_8004BC74": "local_source_158913790824",
@@ -29165,7 +29186,7 @@
   "func_80055130": "local_source_158913790957",
   "func_800551F8": "local_source_158913790958",
   "func_800552C4": "local_source_158913790959",
-  "func_80055604": "local_source_158913790961",
+  "updateChaserActor": "local_source_158913790961",
   "func_80055A34": "local_source_158913790962",
   "func_80055AD4": "local_source_158913790964",
   "func_80055C34": "local_source_158913790966",
@@ -29191,7 +29212,7 @@
   "func_80057CCC": "local_source_158913791000",
   "func_80057FC0": "local_source_158913791001",
   "func_80058040": "local_source_158913791002",
-  "func_80058110": "local_source_158913792184",
+  "updateLogicBomb": "local_source_158913792184",
   "func_80058734": "local_source_158913791005",
   "func_80058820": "local_source_158913791006",
   "func_800589C4": "local_source_158913791007",
@@ -29259,14 +29280,14 @@
   "func_80062280": "local_source_158913791108",
   "func_80062A90": "local_source_158913791110",
   "func_80062D64": "local_source_158913791111",
-  "func_80063D00": "local_source_158913791115",
+  "spawnCutsceneActor": "local_source_158913791115",
   "func_80063D3C": "local_source_158913791116",
   "func_80063E50": "local_source_158913791120",
   "func_80064024": "local_source_158913791123",
-  "func_80064130": "local_source_158913791124",
+  "updateElroomScene": "local_source_158913791124",
   "func_80064730": "local_source_158913791127",
   "func_80064808": "local_source_158913791128",
-  "func_8006495C": "local_source_158913791129",
+  "cameraUpdateByMode": "local_source_158913791129",
   "func_80064D94": "local_source_158913791130",
   "func_80064F08": "local_source_158913791131",
   "func_80065260": "local_source_158913791132",
@@ -29320,7 +29341,7 @@
   "func_8006B43C": "local_source_158913791226",
   "func_8006B760": "local_source_158913791229",
   "func_8006B8CC": "local_source_158913791231",
-  "func_8006BB5C": "local_source_158913791235",
+  "updateChaseVehicle": "local_source_158913791235",
   "func_8006C008": "local_source_158913791236",
   "func_8006C264": "local_source_158913791238",
   "func_8006DBB8": "local_source_158913791251",
@@ -29356,7 +29377,7 @@
   "func_80071940": "local_source_158913791322",
   "func_80071970": "local_source_158913791323",
   "func_80071ACC": "local_source_158913791325",
-  "func_80071B08": "local_source_158913791326",
+  "collidePlayerWithWall": "local_source_158913791326",
   "func_800721A8": "local_source_158913791328",
   "func_80072310": "local_source_158913791329",
   "func_800724CC": "local_source_158913791331",
@@ -29386,7 +29407,7 @@
   "func_80075748": "local_source_158913791376",
   "func_80075888": "local_source_158913791377",
   "func_8007591C": "local_source_158913791380",
-  "func_80075A1C": "local_source_158913791381",
+  "updateTruckPlatform": "local_source_158913791381",
   "func_80075EBC": "local_source_158913791383",
   "func_80075F58": "local_source_158913791385",
   "func_80075FEC": "local_source_158913791386",
@@ -29465,7 +29486,7 @@
   "func_8007E810": "local_source_158913791525",
   "func_8007EAC4": "local_source_158913791526",
   "func_8007EE88": "local_source_158913791528",
-  "func_8007F364": "local_source_158913791532",
+  "updateBusterSequence": "local_source_158913791532",
   "func_8007F7DC": "local_source_158913791533",
   "func_8007F898": "local_source_158913791534",
   "func_8007F990": "local_source_158913791535",
@@ -29477,11 +29498,11 @@
   "func_80080BAC": "local_source_158913791553",
   "func_80080EEC": "local_source_158913791559",
   "func_80080F28": "local_source_158913791560",
-  "func_80080F64": "local_source_158913791561",
-  "func_80081074": "local_source_158913791562",
+  "initSplineEndSegment": "local_source_158913791561",
+  "initSplineSegment": "local_source_158913791562",
   "func_80081188": "local_source_158913791563",
   "func_800812B4": "local_source_158913791564",
-  "func_80081588": "local_source_158913791565",
+  "initSpline": "local_source_158913791565",
   "func_80081990": "local_source_158913791566",
   "func_80081AC0": "local_source_158913791567",
   "func_80081BF0": "local_source_158913791568",
@@ -29499,8 +29520,8 @@
   "func_8008427C": "local_source_158913791603",
   "func_80084368": "local_source_158913791605",
   "func_80084504": "local_source_158913791606",
-  "func_800847E8": "local_source_158913791607",
-  "func_80084CCC": "local_source_158913791608",
+  "updatePursuitVehicle": "local_source_158913791607",
+  "updateChaseAI": "local_source_158913791608",
   "func_800853E8": "local_source_158913791612",
   "func_80085528": "local_source_158913791614",
   "func_800858AC": "local_source_158913791617",
@@ -29512,6 +29533,7 @@
   "func_80086B3C": "local_source_158913791631",
   "func_80086C98": "local_source_158913791632",
   "func_80087160": "local_source_158913791634",
+  "func_800871C0": "local_source_158913792199",
   "func_8008756C": "local_source_158913791636",
   "func_800877C8": "local_source_158913791639",
   "func_80087B68": "local_source_158913791640",
@@ -29525,7 +29547,7 @@
   "func_80088F40": "local_source_158913791657",
   "func_80088F60": "local_source_158913791658",
   "func_80089130": "local_source_158913791659",
-  "func_8008914C": "local_source_158913791660",
+  "buildFrameDisplayList": "local_source_158913791660",
   "func_80089814": "local_source_158913791662",
   "func_800899C4": "local_source_158913791664",
   "func_80089C08": "local_source_158913791667",
@@ -29569,7 +29591,7 @@
   "func_8008DCB4": "local_source_158913791754",
   "func_8008DEC0": "local_source_158913791759",
   "func_8008DF5C": "local_source_158913791760",
-  "func_8008E1E0": "local_source_158913791761",
+  "playSeqChannelNote": "local_source_158913791761",
   "func_8008E6D4": "local_source_158913791763",
   "func_8008E834": "local_source_158913791764",
   "func_8008E9AC": "local_source_158913791766",
@@ -29599,7 +29621,7 @@
   "func_80090E50": "local_source_158913791812",
   "func_80090EB4": "local_source_158913791813",
   "func_80090F2C": "local_source_158913791814",
-  "func_800910A4": "local_source_158913791816",
+  "zInflate": "local_source_158913791816",
   "func_80091760": "local_source_158913791818",
   "func_80091894": "local_source_158913791819",
   "func_800918E0": "local_source_158913791820",
@@ -29607,7 +29629,7 @@
   "func_80092920": "local_source_158913791825",
   "func_80092980": "local_source_158913791827",
   "func_800929FC": "local_source_158913791828",
-  "func_80093240": "local_source_158913791830",
+  "huftBuild": "local_source_158913791830",
   "func_80093908": "local_source_158913791832",
   "func_80093B04": "local_source_158913791834",
   "func_80093D08": "local_source_158913791835",
@@ -29916,7 +29938,7 @@
    "status": "open"
   },
   {
-   "name": "func_8000C43C",
+   "name": "cameraGetMode",
    "vram": 2147533884,
    "size": 28,
    "status": "open"
@@ -29964,7 +29986,7 @@
    "status": "open"
   },
   {
-   "name": "func_8000C874",
+   "name": "initLevel",
    "vram": 2147534964,
    "size": 1404,
    "status": "open"
@@ -29982,7 +30004,7 @@
    "status": "open"
   },
   {
-   "name": "func_8000CF30",
+   "name": "setupStage",
    "vram": 2147536688,
    "size": 1124,
    "status": "open"
@@ -31218,7 +31240,7 @@
    "status": "open"
   },
   {
-   "name": "func_80018BF4",
+   "name": "drawHud",
    "vram": 2147585012,
    "size": 1540,
    "status": "open"
@@ -31242,7 +31264,7 @@
    "status": "open"
   },
   {
-   "name": "func_80019620",
+   "name": "drawDebugStats",
    "vram": 2147587616,
    "size": 1036,
    "status": "open"
@@ -31932,13 +31954,13 @@
    "status": "open"
   },
   {
-   "name": "func_8001FF64",
+   "name": "updateCameraView",
    "vram": 2147614564,
    "size": 396,
    "status": "open"
   },
   {
-   "name": "func_800200F0",
+   "name": "drawTextureRect",
    "vram": 2147614960,
    "size": 460,
    "status": "open"
@@ -31986,7 +32008,7 @@
    "status": "open"
   },
   {
-   "name": "func_800213A8",
+   "name": "updateParticleEmitter",
    "vram": 2147619752,
    "size": 1136,
    "status": "open"
@@ -32010,13 +32032,13 @@
    "status": "open"
   },
   {
-   "name": "func_800221C0",
+   "name": "packDrawFlags",
    "vram": 2147623360,
    "size": 76,
    "status": "open"
   },
   {
-   "name": "func_8002220C",
+   "name": "setDrawMode",
    "vram": 2147623436,
    "size": 1172,
    "status": "open"
@@ -32040,7 +32062,7 @@
    "status": "open"
   },
   {
-   "name": "func_80022728",
+   "name": "buildObjectMatrix",
    "vram": 2147624744,
    "size": 1284,
    "status": "open"
@@ -32154,13 +32176,13 @@
    "status": "open"
   },
   {
-   "name": "func_80023874",
+   "name": "findActor",
    "vram": 2147629172,
    "size": 88,
    "status": "open"
   },
   {
-   "name": "func_800238CC",
+   "name": "countLiveObjects",
    "vram": 2147629260,
    "size": 84,
    "status": "open"
@@ -32202,7 +32224,7 @@
    "status": "open"
   },
   {
-   "name": "func_80023A98",
+   "name": "setSlotAsset",
    "vram": 2147629720,
    "size": 80,
    "status": "open"
@@ -32280,7 +32302,7 @@
    "status": "open"
   },
   {
-   "name": "func_80023E18",
+   "name": "getImageAsset",
    "vram": 2147630616,
    "size": 36,
    "status": "open"
@@ -32340,7 +32362,7 @@
    "status": "open"
   },
   {
-   "name": "func_80024394",
+   "name": "randomRange",
    "vram": 2147632020,
    "size": 184,
    "status": "open"
@@ -32400,7 +32422,7 @@
    "status": "open"
   },
   {
-   "name": "func_80024B0C",
+   "name": "isqrtS32",
    "vram": 2147633932,
    "size": 76,
    "status": "open"
@@ -32454,7 +32476,7 @@
    "status": "open"
   },
   {
-   "name": "func_80025100",
+   "name": "atan2S16",
    "vram": 2147635456,
    "size": 380,
    "status": "open"
@@ -32478,7 +32500,7 @@
    "status": "open"
   },
   {
-   "name": "func_800253A0",
+   "name": "heapAlloc",
    "vram": 2147636128,
    "size": 120,
    "status": "open"
@@ -32622,7 +32644,7 @@
    "status": "open"
   },
   {
-   "name": "func_80025FF8",
+   "name": "initControllerPaks",
    "vram": 2147639288,
    "size": 364,
    "status": "open"
@@ -32652,7 +32674,7 @@
    "status": "open"
   },
   {
-   "name": "func_800261D4",
+   "name": "refreshControllerPak",
    "vram": 2147639764,
    "size": 72,
    "status": "open"
@@ -32700,7 +32722,7 @@
    "status": "open"
   },
   {
-   "name": "func_800265C0",
+   "name": "deleteSaveSlot",
    "vram": 2147640768,
    "size": 248,
    "status": "open"
@@ -32730,13 +32752,13 @@
    "status": "open"
   },
   {
-   "name": "func_80026A6C",
+   "name": "decodeSaveName",
    "vram": 2147641964,
    "size": 168,
    "status": "open"
   },
   {
-   "name": "func_80026B14",
+   "name": "getPakFreeBlocks",
    "vram": 2147642132,
    "size": 56,
    "status": "open"
@@ -32826,7 +32848,7 @@
    "status": "open"
   },
   {
-   "name": "func_800270A8",
+   "name": "setTextColorRgb",
    "vram": 2147643560,
    "size": 52,
    "status": "open"
@@ -32838,13 +32860,13 @@
    "status": "open"
   },
   {
-   "name": "func_8002710C",
+   "name": "setTextColor",
    "vram": 2147643660,
    "size": 48,
    "status": "open"
   },
   {
-   "name": "func_8002713C",
+   "name": "setTextPos",
    "vram": 2147643708,
    "size": 28,
    "status": "open"
@@ -32862,19 +32884,19 @@
    "status": "open"
   },
   {
-   "name": "func_800271D8",
+   "name": "drawInt",
    "vram": 2147643864,
    "size": 212,
    "status": "open"
   },
   {
-   "name": "func_800272AC",
+   "name": "drawFloat",
    "vram": 2147644076,
    "size": 52,
    "status": "open"
   },
   {
-   "name": "func_800272E0",
+   "name": "drawImage",
    "vram": 2147644128,
    "size": 1748,
    "status": "open"
@@ -32928,7 +32950,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002889C",
+   "name": "drawText",
    "vram": 2147649692,
    "size": 100,
    "status": "open"
@@ -32946,7 +32968,7 @@
    "status": "open"
   },
   {
-   "name": "func_800289BC",
+   "name": "drawFontChar",
    "vram": 2147649980,
    "size": 1592,
    "status": "open"
@@ -32988,7 +33010,7 @@
    "status": "open"
   },
   {
-   "name": "func_80029F8C",
+   "name": "setRenderState",
    "vram": 2147655564,
    "size": 848,
    "status": "open"
@@ -33156,13 +33178,13 @@
    "status": "open"
   },
   {
-   "name": "func_8002B880",
+   "name": "loadTextureClamped",
    "vram": 2147661952,
    "size": 1432,
    "status": "open"
   },
   {
-   "name": "func_8002BE18",
+   "name": "loadTexture",
    "vram": 2147663384,
    "size": 1440,
    "status": "open"
@@ -33216,7 +33238,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002D204",
+   "name": "approachAngle",
    "vram": 2147668484,
    "size": 92,
    "status": "open"
@@ -33234,7 +33256,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002D298",
+   "name": "approachS32",
    "vram": 2147668632,
    "size": 100,
    "status": "open"
@@ -33246,7 +33268,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002D340",
+   "name": "approachF32",
    "vram": 2147668800,
    "size": 112,
    "status": "open"
@@ -33276,7 +33298,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002D5CC",
+   "name": "tickActorTimer",
    "vram": 2147669452,
    "size": 28,
    "status": "open"
@@ -33294,7 +33316,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002D620",
+   "name": "syncActorPrevPos",
    "vram": 2147669536,
    "size": 28,
    "status": "open"
@@ -33306,7 +33328,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002D66C",
+   "name": "getCameraTargetDist",
    "vram": 2147669612,
    "size": 272,
    "status": "open"
@@ -33378,7 +33400,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002DC84",
+   "name": "mtxIdentity3",
    "vram": 2147671172,
    "size": 48,
    "status": "open"
@@ -33396,7 +33418,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002DD8C",
+   "name": "mtxTransformVec3",
    "vram": 2147671436,
    "size": 148,
    "status": "open"
@@ -33414,7 +33436,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002E080",
+   "name": "vec3Length",
    "vram": 2147672192,
    "size": 80,
    "status": "open"
@@ -33438,7 +33460,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002E1FC",
+   "name": "vec3Sub",
    "vram": 2147672572,
    "size": 56,
    "status": "open"
@@ -33558,7 +33580,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002ED20",
+   "name": "drawImageObject",
    "vram": 2147675424,
    "size": 1440,
    "status": "open"
@@ -33594,13 +33616,13 @@
    "status": "open"
   },
   {
-   "name": "func_800301E8",
+   "name": "drawRotatedImage",
    "vram": 2147680744,
    "size": 1048,
    "status": "open"
   },
   {
-   "name": "func_80030600",
+   "name": "drawRingEffect",
    "vram": 2147681792,
    "size": 1324,
    "status": "open"
@@ -33732,7 +33754,7 @@
    "status": "open"
   },
   {
-   "name": "func_80031A38",
+   "name": "updateMenuScroll",
    "vram": 2147686968,
    "size": 284,
    "status": "open"
@@ -33744,7 +33766,7 @@
    "status": "open"
   },
   {
-   "name": "func_80031C70",
+   "name": "setSlotTextColor",
    "vram": 2147687536,
    "size": 56,
    "status": "open"
@@ -33768,7 +33790,7 @@
    "status": "open"
   },
   {
-   "name": "func_80031F0C",
+   "name": "drawControllerPakMenu",
    "vram": 2147688204,
    "size": 1032,
    "status": "open"
@@ -33984,7 +34006,7 @@
    "status": "open"
   },
   {
-   "name": "func_800349E4",
+   "name": "updateFollowCamera",
    "vram": 2147699172,
    "size": 1116,
    "status": "open"
@@ -34038,13 +34060,13 @@
    "status": "open"
   },
   {
-   "name": "func_80035364",
+   "name": "raycastCollision",
    "vram": 2147701604,
    "size": 1836,
    "status": "open"
   },
   {
-   "name": "func_80035A90",
+   "name": "clipCameraToTrack",
    "vram": 2147703440,
    "size": 628,
    "status": "open"
@@ -34056,7 +34078,7 @@
    "status": "open"
   },
   {
-   "name": "func_80036074",
+   "name": "cameraAvoidWalls",
    "vram": 2147704948,
    "size": 1084,
    "status": "open"
@@ -34080,13 +34102,13 @@
    "status": "open"
   },
   {
-   "name": "func_80036BD0",
+   "name": "expandBoundsToSegment",
    "vram": 2147707856,
    "size": 296,
    "status": "open"
   },
   {
-   "name": "func_80036CF8",
+   "name": "initBoundsToSegment",
    "vram": 2147708152,
    "size": 188,
    "status": "open"
@@ -34152,7 +34174,7 @@
    "status": "open"
   },
   {
-   "name": "func_80038CF8",
+   "name": "traceBounceMove",
    "vram": 2147716344,
    "size": 1152,
    "status": "open"
@@ -34206,7 +34228,7 @@
    "status": "open"
   },
   {
-   "name": "func_8003AC08",
+   "name": "handleActorHit",
    "vram": 2147724296,
    "size": 1580,
    "status": "open"
@@ -34392,13 +34414,13 @@
    "status": "open"
   },
   {
-   "name": "func_8003CDA0",
+   "name": "drawCenteredMessage",
    "vram": 2147732896,
    "size": 84,
    "status": "open"
   },
   {
-   "name": "func_8003CDF4",
+   "name": "drawMessage",
    "vram": 2147732980,
    "size": 84,
    "status": "open"
@@ -34476,7 +34498,7 @@
    "status": "open"
   },
   {
-   "name": "func_8003E278",
+   "name": "drawAudioOptionsMenu",
    "vram": 2147738232,
    "size": 1280,
    "status": "open"
@@ -34524,7 +34546,7 @@
    "status": "open"
   },
   {
-   "name": "func_8003ECB8",
+   "name": "animSampleKeys",
    "vram": 2147740856,
    "size": 1516,
    "status": "open"
@@ -34542,7 +34564,7 @@
    "status": "open"
   },
   {
-   "name": "func_80040F10",
+   "name": "buildBoneMatrices",
    "vram": 2147749648,
    "size": 1192,
    "status": "open"
@@ -34602,7 +34624,7 @@
    "status": "open"
   },
   {
-   "name": "func_8004303C",
+   "name": "animStepKeys",
    "vram": 2147758140,
    "size": 184,
    "status": "open"
@@ -34638,7 +34660,7 @@
    "status": "open"
   },
   {
-   "name": "func_800433A8",
+   "name": "actorSetAnim",
    "vram": 2147759016,
    "size": 112,
    "status": "open"
@@ -34704,7 +34726,7 @@
    "status": "open"
   },
   {
-   "name": "func_80045E34",
+   "name": "updateModelBoneActors",
    "vram": 2147769908,
    "size": 1132,
    "status": "open"
@@ -34728,7 +34750,7 @@
    "status": "open"
   },
   {
-   "name": "func_80046F58",
+   "name": "updateCamera",
    "vram": 2147774296,
    "size": 1536,
    "status": "open"
@@ -34860,13 +34882,13 @@
    "status": "open"
   },
   {
-   "name": "func_80048820",
+   "name": "collectCollisionCells",
    "vram": 2147780640,
    "size": 1104,
    "status": "open"
   },
   {
-   "name": "func_80048C70",
+   "name": "probeCollision",
    "vram": 2147781744,
    "size": 28,
    "status": "open"
@@ -34914,7 +34936,7 @@
    "status": "open"
   },
   {
-   "name": "func_8004B630",
+   "name": "setupCollisionTri",
    "vram": 2147792432,
    "size": 1036,
    "status": "open"
@@ -34974,7 +34996,7 @@
    "status": "open"
   },
   {
-   "name": "func_8004D148",
+   "name": "multiplyMatrix",
    "vram": 2147799368,
    "size": 1028,
    "status": "open"
@@ -35424,7 +35446,7 @@
    "status": "open"
   },
   {
-   "name": "func_80052130",
+   "name": "setActorState",
    "vram": 2147819824,
    "size": 168,
    "status": "open"
@@ -35778,7 +35800,7 @@
    "status": "open"
   },
   {
-   "name": "func_80055604",
+   "name": "updateChaserActor",
    "vram": 2147833348,
    "size": 1072,
    "status": "open"
@@ -36042,7 +36064,7 @@
    "status": "open"
   },
   {
-   "name": "func_80058110",
+   "name": "updateLogicBomb",
    "vram": 2147844368,
    "size": 1384,
    "status": "open"
@@ -36762,7 +36784,7 @@
    "status": "open"
   },
   {
-   "name": "func_80063D00",
+   "name": "spawnCutsceneActor",
    "vram": 2147892480,
    "size": 60,
    "status": "open"
@@ -36816,7 +36838,7 @@
    "status": "open"
   },
   {
-   "name": "func_80064130",
+   "name": "updateElroomScene",
    "vram": 2147893552,
    "size": 1424,
    "status": "open"
@@ -36846,7 +36868,7 @@
    "status": "open"
   },
   {
-   "name": "func_8006495C",
+   "name": "cameraUpdateByMode",
    "vram": 2147895644,
    "size": 1080,
    "status": "open"
@@ -37488,7 +37510,7 @@
    "status": "open"
   },
   {
-   "name": "func_8006BB5C",
+   "name": "updateChaseVehicle",
    "vram": 2147924828,
    "size": 1196,
    "status": "open"
@@ -38052,7 +38074,7 @@
    "status": "open"
   },
   {
-   "name": "func_80071B08",
+   "name": "collidePlayerWithWall",
    "vram": 2147949320,
    "size": 1428,
    "status": "open"
@@ -38382,7 +38404,7 @@
    "status": "open"
   },
   {
-   "name": "func_80075A1C",
+   "name": "updateTruckPlatform",
    "vram": 2147965468,
    "size": 1072,
    "status": "open"
@@ -39306,7 +39328,7 @@
    "status": "open"
   },
   {
-   "name": "func_8007F364",
+   "name": "updateBusterSequence",
    "vram": 2148004708,
    "size": 1144,
    "status": "open"
@@ -39480,13 +39502,13 @@
    "status": "open"
   },
   {
-   "name": "func_80080F64",
+   "name": "initSplineEndSegment",
    "vram": 2148011876,
    "size": 272,
    "status": "open"
   },
   {
-   "name": "func_80081074",
+   "name": "initSplineSegment",
    "vram": 2148012148,
    "size": 276,
    "status": "open"
@@ -39504,7 +39526,7 @@
    "status": "open"
   },
   {
-   "name": "func_80081588",
+   "name": "initSpline",
    "vram": 2148013448,
    "size": 1032,
    "status": "open"
@@ -39756,13 +39778,13 @@
    "status": "open"
   },
   {
-   "name": "func_800847E8",
+   "name": "updatePursuitVehicle",
    "vram": 2148026344,
    "size": 1252,
    "status": "open"
   },
   {
-   "name": "func_80084CCC",
+   "name": "updateChaseAI",
    "vram": 2148027596,
    "size": 1292,
    "status": "open"
@@ -39996,7 +40018,7 @@
    "status": "open"
   },
   {
-   "name": "func_800880FC",
+   "name": "loadSlotAssetSet",
    "vram": 2148040956,
    "size": 1372,
    "status": "open"
@@ -40098,7 +40120,7 @@
    "status": "open"
   },
   {
-   "name": "func_8008914C",
+   "name": "buildFrameDisplayList",
    "vram": 2148045132,
    "size": 1412,
    "status": "open"
@@ -40128,7 +40150,7 @@
    "status": "open"
   },
   {
-   "name": "func_800899DC",
+   "name": "debugPrintf",
    "vram": 2148047324,
    "size": 548,
    "status": "open"
@@ -40710,7 +40732,7 @@
    "status": "open"
   },
   {
-   "name": "func_8008E1E0",
+   "name": "playSeqChannelNote",
    "vram": 2148065760,
    "size": 1124,
    "status": "open"
@@ -41040,7 +41062,7 @@
    "status": "open"
   },
   {
-   "name": "func_800910A4",
+   "name": "zInflate",
    "vram": 2148077732,
    "size": 1520,
    "status": "open"
@@ -41124,7 +41146,7 @@
    "status": "open"
   },
   {
-   "name": "func_80093240",
+   "name": "huftBuild",
    "vram": 2148086336,
    "size": 1560,
    "status": "open"
@@ -41286,7 +41308,7 @@
    "status": "asm"
   },
   {
-   "name": "func_80095DC0",
+   "name": "sinApprox",
    "vram": 2148097472,
    "size": 416,
    "status": "open"
@@ -43148,15 +43170,573 @@
    "kind": "func"
   },
   {
+   "name": "cameraGetMode",
+   "address": 2147533884,
+   "size": 28,
+   "kind": "func"
+  },
+  {
+   "name": "initLevel",
+   "address": 2147534964,
+   "size": 1404,
+   "kind": "func"
+  },
+  {
+   "name": "setupStage",
+   "address": 2147536688,
+   "size": 1124,
+   "kind": "func"
+  },
+  {
+   "name": "drawHud",
+   "address": 2147585012,
+   "size": 1540,
+   "kind": "func"
+  },
+  {
+   "name": "drawDebugStats",
+   "address": 2147587616,
+   "size": 1036,
+   "kind": "func"
+  },
+  {
+   "name": "updateCameraView",
+   "address": 2147614564,
+   "size": 396,
+   "kind": "func"
+  },
+  {
+   "name": "drawTextureRect",
+   "address": 2147614960,
+   "size": 460,
+   "kind": "func"
+  },
+  {
+   "name": "updateParticleEmitter",
+   "address": 2147619752,
+   "size": 1136,
+   "kind": "func"
+  },
+  {
+   "name": "packDrawFlags",
+   "address": 2147623360,
+   "size": 76,
+   "kind": "func"
+  },
+  {
+   "name": "setDrawMode",
+   "address": 2147623436,
+   "size": 1172,
+   "kind": "func"
+  },
+  {
+   "name": "buildObjectMatrix",
+   "address": 2147624744,
+   "size": 1284,
+   "kind": "func"
+  },
+  {
+   "name": "findActor",
+   "address": 2147629172,
+   "size": 88,
+   "kind": "func"
+  },
+  {
+   "name": "countLiveObjects",
+   "address": 2147629260,
+   "size": 84,
+   "kind": "func"
+  },
+  {
+   "name": "setSlotAsset",
+   "address": 2147629720,
+   "size": 80,
+   "kind": "func"
+  },
+  {
+   "name": "getImageAsset",
+   "address": 2147630616,
+   "size": 36,
+   "kind": "func"
+  },
+  {
+   "name": "randomRange",
+   "address": 2147632020,
+   "size": 184,
+   "kind": "func"
+  },
+  {
+   "name": "isqrtS32",
+   "address": 2147633932,
+   "size": 76,
+   "kind": "func"
+  },
+  {
+   "name": "atan2S16",
+   "address": 2147635456,
+   "size": 380,
+   "kind": "func"
+  },
+  {
+   "name": "heapAlloc",
+   "address": 2147636128,
+   "size": 120,
+   "kind": "func"
+  },
+  {
+   "name": "initControllerPaks",
+   "address": 2147639288,
+   "size": 364,
+   "kind": "func"
+  },
+  {
+   "name": "refreshControllerPak",
+   "address": 2147639764,
+   "size": 72,
+   "kind": "func"
+  },
+  {
+   "name": "deleteSaveSlot",
+   "address": 2147640768,
+   "size": 248,
+   "kind": "func"
+  },
+  {
+   "name": "decodeSaveName",
+   "address": 2147641964,
+   "size": 168,
+   "kind": "func"
+  },
+  {
+   "name": "getPakFreeBlocks",
+   "address": 2147642132,
+   "size": 56,
+   "kind": "func"
+  },
+  {
+   "name": "setTextColorRgb",
+   "address": 2147643560,
+   "size": 52,
+   "kind": "func"
+  },
+  {
+   "name": "setTextColor",
+   "address": 2147643660,
+   "size": 48,
+   "kind": "func"
+  },
+  {
+   "name": "setTextPos",
+   "address": 2147643708,
+   "size": 28,
+   "kind": "func"
+  },
+  {
+   "name": "drawInt",
+   "address": 2147643864,
+   "size": 212,
+   "kind": "func"
+  },
+  {
+   "name": "drawFloat",
+   "address": 2147644076,
+   "size": 52,
+   "kind": "func"
+  },
+  {
+   "name": "drawImage",
+   "address": 2147644128,
+   "size": 1748,
+   "kind": "func"
+  },
+  {
+   "name": "drawText",
+   "address": 2147649692,
+   "size": 100,
+   "kind": "func"
+  },
+  {
+   "name": "drawFontChar",
+   "address": 2147649980,
+   "size": 1592,
+   "kind": "func"
+  },
+  {
+   "name": "setRenderState",
+   "address": 2147655564,
+   "size": 848,
+   "kind": "func"
+  },
+  {
+   "name": "loadTextureClamped",
+   "address": 2147661952,
+   "size": 1432,
+   "kind": "func"
+  },
+  {
+   "name": "loadTexture",
+   "address": 2147663384,
+   "size": 1440,
+   "kind": "func"
+  },
+  {
+   "name": "approachAngle",
+   "address": 2147668484,
+   "size": 92,
+   "kind": "func"
+  },
+  {
+   "name": "approachS32",
+   "address": 2147668632,
+   "size": 100,
+   "kind": "func"
+  },
+  {
+   "name": "approachF32",
+   "address": 2147668800,
+   "size": 112,
+   "kind": "func"
+  },
+  {
+   "name": "tickActorTimer",
+   "address": 2147669452,
+   "size": 28,
+   "kind": "func"
+  },
+  {
+   "name": "syncActorPrevPos",
+   "address": 2147669536,
+   "size": 28,
+   "kind": "func"
+  },
+  {
+   "name": "getCameraTargetDist",
+   "address": 2147669612,
+   "size": 272,
+   "kind": "func"
+  },
+  {
+   "name": "mtxIdentity3",
+   "address": 2147671172,
+   "size": 48,
+   "kind": "func"
+  },
+  {
+   "name": "mtxTransformVec3",
+   "address": 2147671436,
+   "size": 148,
+   "kind": "func"
+  },
+  {
+   "name": "vec3Length",
+   "address": 2147672192,
+   "size": 80,
+   "kind": "func"
+  },
+  {
+   "name": "vec3Sub",
+   "address": 2147672572,
+   "size": 56,
+   "kind": "func"
+  },
+  {
+   "name": "drawImageObject",
+   "address": 2147675424,
+   "size": 1440,
+   "kind": "func"
+  },
+  {
+   "name": "drawRotatedImage",
+   "address": 2147680744,
+   "size": 1048,
+   "kind": "func"
+  },
+  {
+   "name": "drawRingEffect",
+   "address": 2147681792,
+   "size": 1324,
+   "kind": "func"
+  },
+  {
+   "name": "updateMenuScroll",
+   "address": 2147686968,
+   "size": 284,
+   "kind": "func"
+  },
+  {
+   "name": "setSlotTextColor",
+   "address": 2147687536,
+   "size": 56,
+   "kind": "func"
+  },
+  {
+   "name": "drawControllerPakMenu",
+   "address": 2147688204,
+   "size": 1032,
+   "kind": "func"
+  },
+  {
+   "name": "updateFollowCamera",
+   "address": 2147699172,
+   "size": 1116,
+   "kind": "func"
+  },
+  {
+   "name": "raycastCollision",
+   "address": 2147701604,
+   "size": 1836,
+   "kind": "func"
+  },
+  {
+   "name": "clipCameraToTrack",
+   "address": 2147703440,
+   "size": 628,
+   "kind": "func"
+  },
+  {
+   "name": "cameraAvoidWalls",
+   "address": 2147704948,
+   "size": 1084,
+   "kind": "func"
+  },
+  {
+   "name": "expandBoundsToSegment",
+   "address": 2147707856,
+   "size": 296,
+   "kind": "func"
+  },
+  {
+   "name": "initBoundsToSegment",
+   "address": 2147708152,
+   "size": 188,
+   "kind": "func"
+  },
+  {
+   "name": "traceBounceMove",
+   "address": 2147716344,
+   "size": 1152,
+   "kind": "func"
+  },
+  {
+   "name": "handleActorHit",
+   "address": 2147724296,
+   "size": 1580,
+   "kind": "func"
+  },
+  {
+   "name": "drawCenteredMessage",
+   "address": 2147732896,
+   "size": 84,
+   "kind": "func"
+  },
+  {
+   "name": "drawMessage",
+   "address": 2147732980,
+   "size": 84,
+   "kind": "func"
+  },
+  {
+   "name": "drawAudioOptionsMenu",
+   "address": 2147738232,
+   "size": 1280,
+   "kind": "func"
+  },
+  {
+   "name": "animSampleKeys",
+   "address": 2147740856,
+   "size": 1516,
+   "kind": "func"
+  },
+  {
+   "name": "buildBoneMatrices",
+   "address": 2147749648,
+   "size": 1192,
+   "kind": "func"
+  },
+  {
+   "name": "animStepKeys",
+   "address": 2147758140,
+   "size": 184,
+   "kind": "func"
+  },
+  {
+   "name": "actorSetAnim",
+   "address": 2147759016,
+   "size": 112,
+   "kind": "func"
+  },
+  {
+   "name": "updateModelBoneActors",
+   "address": 2147769908,
+   "size": 1132,
+   "kind": "func"
+  },
+  {
+   "name": "updateCamera",
+   "address": 2147774296,
+   "size": 1536,
+   "kind": "func"
+  },
+  {
+   "name": "collectCollisionCells",
+   "address": 2147780640,
+   "size": 1104,
+   "kind": "func"
+  },
+  {
+   "name": "probeCollision",
+   "address": 2147781744,
+   "size": 28,
+   "kind": "func"
+  },
+  {
+   "name": "setupCollisionTri",
+   "address": 2147792432,
+   "size": 1036,
+   "kind": "func"
+  },
+  {
+   "name": "multiplyMatrix",
+   "address": 2147799368,
+   "size": 1028,
+   "kind": "func"
+  },
+  {
+   "name": "setActorState",
+   "address": 2147819824,
+   "size": 168,
+   "kind": "func"
+  },
+  {
+   "name": "updateChaserActor",
+   "address": 2147833348,
+   "size": 1072,
+   "kind": "func"
+  },
+  {
+   "name": "updateLogicBomb",
+   "address": 2147844368,
+   "size": 1384,
+   "kind": "func"
+  },
+  {
+   "name": "spawnCutsceneActor",
+   "address": 2147892480,
+   "size": 60,
+   "kind": "func"
+  },
+  {
+   "name": "updateElroomScene",
+   "address": 2147893552,
+   "size": 1424,
+   "kind": "func"
+  },
+  {
+   "name": "cameraUpdateByMode",
+   "address": 2147895644,
+   "size": 1080,
+   "kind": "func"
+  },
+  {
+   "name": "updateChaseVehicle",
+   "address": 2147924828,
+   "size": 1196,
+   "kind": "func"
+  },
+  {
+   "name": "collidePlayerWithWall",
+   "address": 2147949320,
+   "size": 1428,
+   "kind": "func"
+  },
+  {
+   "name": "updateTruckPlatform",
+   "address": 2147965468,
+   "size": 1072,
+   "kind": "func"
+  },
+  {
+   "name": "updateBusterSequence",
+   "address": 2148004708,
+   "size": 1144,
+   "kind": "func"
+  },
+  {
+   "name": "initSplineEndSegment",
+   "address": 2148011876,
+   "size": 272,
+   "kind": "func"
+  },
+  {
+   "name": "initSplineSegment",
+   "address": 2148012148,
+   "size": 276,
+   "kind": "func"
+  },
+  {
+   "name": "initSpline",
+   "address": 2148013448,
+   "size": 1032,
+   "kind": "func"
+  },
+  {
+   "name": "updatePursuitVehicle",
+   "address": 2148026344,
+   "size": 1252,
+   "kind": "func"
+  },
+  {
+   "name": "updateChaseAI",
+   "address": 2148027596,
+   "size": 1292,
+   "kind": "func"
+  },
+  {
+   "name": "loadSlotAssetSet",
+   "address": 2148040956,
+   "size": 1372,
+   "kind": "func"
+  },
+  {
    "name": "main",
    "address": 2148043472,
    "size": 88,
    "kind": "func"
   },
   {
+   "name": "buildFrameDisplayList",
+   "address": 2148045132,
+   "size": 1412,
+   "kind": "func"
+  },
+  {
+   "name": "debugPrintf",
+   "address": 2148047324,
+   "size": 548,
+   "kind": "func"
+  },
+  {
    "name": "MusSetMasterVolume",
    "address": 2148061292,
    "size": 44,
+   "kind": "func"
+  },
+  {
+   "name": "playSeqChannelNote",
+   "address": 2148065760,
+   "size": 1124,
+   "kind": "func"
+  },
+  {
+   "name": "zInflate",
+   "address": 2148077732,
+   "size": 1520,
+   "kind": "func"
+  },
+  {
+   "name": "huftBuild",
+   "address": 2148086336,
+   "size": 1560,
    "kind": "func"
   },
   {
@@ -43253,6 +43833,12 @@
    "name": "guPerspective",
    "address": 2148097008,
    "size": 456,
+   "kind": "func"
+  },
+  {
+   "name": "sinApprox",
+   "address": 2148097472,
+   "size": 416,
    "kind": "func"
   },
   {
@@ -44694,9 +45280,291 @@
    "address": 2148174896,
    "size": 152,
    "kind": "func"
+  },
+  {
+   "name": "gPakInitWarn",
+   "address": 2148196724,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gPakInitError",
+   "address": 2148196728,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gFontTexture",
+   "address": 2148196880,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gFontIconOpen",
+   "address": 2148211856,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gFontIconClose",
+   "address": 2148212896,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gFontIconTilde",
+   "address": 2148213936,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gFontScale",
+   "address": 2148214976,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gHighCharToGlyph",
+   "address": 2148214980,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gCharToGlyph",
+   "address": 2148215044,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gGlyphPadding",
+   "address": 2148215300,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gTextWaveAngle",
+   "address": 2148215576,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gDeletePending",
+   "address": 2148223624,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gDeleteSlot",
+   "address": 2148223628,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "cameraDistTable",
+   "address": 2148223676,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "cameraRayDirs",
+   "address": 2148223876,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gAudioVolume",
+   "address": 2148237784,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gScreenWidth",
+   "address": 2148244596,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gScreenHeight",
+   "address": 2148244600,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gFrameScale",
+   "address": 2148245152,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gTextWaveTime",
+   "address": 2148245156,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gCamSpeedScale",
+   "address": 2148245196,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gCameraTarget",
+   "address": 2148257900,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gPadPressed",
+   "address": 2148561056,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gSlotEmpty",
+   "address": 2148561328,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gPakFileTable",
+   "address": 2148561886,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gTextPenX",
+   "address": 2148563084,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gTextPenY",
+   "address": 2148563088,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gImageVtx",
+   "address": 2148793136,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gSlotScrollTop",
+   "address": 2148793200,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gCameraSnapshot",
+   "address": 2148794328,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gCollideMin",
+   "address": 2148837624,
+   "size": 12,
+   "kind": "data"
+  },
+  {
+   "name": "gCollideMax",
+   "address": 2148837640,
+   "size": 12,
+   "kind": "data"
+  },
+  {
+   "name": "gSplinePointCount",
+   "address": 2148837672,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gSplineSrcPoints",
+   "address": 2148837800,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gSplineTangents",
+   "address": 2148992512,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gSplineSegs",
+   "address": 2148997312,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gSplineClosed",
+   "address": 2148997432,
+   "size": 0,
+   "kind": "data"
   }
  ],
  "global_types": [
+  {
+   "address": 2147484804,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486368,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486440,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486468,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486476,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486484,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486488,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486492,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486496,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486500,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486504,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147486520,
+   "type": "char[]",
+   "source": "match"
+  },
   {
    "address": 2147486528,
    "type": "char[]",
@@ -44715,6 +45583,16 @@
   {
    "address": 2147486584,
    "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2147487376,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147487428,
+   "type": "char[]",
    "source": "match"
   },
   {
@@ -44883,6 +45761,56 @@
    "source": "match"
   },
   {
+   "address": 2147488808,
+   "type": "f64",
+   "source": "match"
+  },
+  {
+   "address": 2147488816,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147488820,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147488824,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147488828,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147488832,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147488836,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147488840,
+   "type": "f64",
+   "source": "match"
+  },
+  {
+   "address": 2147489088,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147489096,
+   "type": "const f64",
+   "source": "match"
+  },
+  {
    "address": 2147514040,
    "type": "f32",
    "source": "match"
@@ -44893,8 +45821,38 @@
    "source": "match"
   },
   {
+   "address": 2147514488,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147514496,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2147514520,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2147514544,
+   "type": "s32",
+   "source": "match"
+  },
+  {
    "address": 2147514564,
    "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147514896,
+   "type": "f64",
+   "source": "match"
+  },
+  {
+   "address": 2147515584,
+   "type": "u8[]",
    "source": "match"
   },
   {
@@ -45003,6 +45961,66 @@
    "source": "match"
   },
   {
+   "address": 2147519452,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519456,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519460,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519464,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519468,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519472,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519476,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519480,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519484,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519488,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519492,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147519496,
+   "type": "f32",
+   "source": "match"
+  },
+  {
    "address": 2147520312,
    "type": "f32",
    "source": "match"
@@ -45068,6 +46086,81 @@
    "source": "match"
   },
   {
+   "address": 2147521020,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147522156,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2147522196,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147522200,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147522208,
+   "type": "const f64",
+   "source": "match"
+  },
+  {
+   "address": 2147522216,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147522220,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147522224,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147522228,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147522516,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147522548,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147522576,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147522608,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147522612,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147522616,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
    "address": 2147523064,
    "type": "char[]",
    "source": "match"
@@ -45075,6 +46168,46 @@
   {
    "address": 2147523084,
    "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147523116,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523120,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523128,
+   "type": "const f64",
+   "source": "match"
+  },
+  {
+   "address": 2147523136,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523140,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523144,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523148,
+   "type": "const f32",
+   "source": "match"
+  },
+  {
+   "address": 2147523152,
+   "type": "const f32",
    "source": "match"
   },
   {
@@ -45170,6 +46303,176 @@
   {
    "address": 2147526544,
    "type": "double[8]",
+   "source": "match"
+  },
+  {
+   "address": 2148196724,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148196728,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148196880,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2148211856,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2148212896,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2148213936,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2148214976,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148214980,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2148215044,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2148215300,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2148223624,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148223628,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148237784,
+   "type": "s32[]",
+   "source": "match"
+  },
+  {
+   "address": 2148244596,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148244600,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148245152,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
+   "address": 2148245156,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148245196,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148257900,
+   "type": "Obj *",
+   "source": "match"
+  },
+  {
+   "address": 2148561056,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148561328,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2148561886,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2148563084,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148563088,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148793136,
+   "type": "Vtx[]",
+   "source": "match"
+  },
+  {
+   "address": 2148793200,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148794328,
+   "type": "State349E4",
+   "source": "match"
+  },
+  {
+   "address": 2148837624,
+   "type": "f32[3]",
+   "source": "match"
+  },
+  {
+   "address": 2148837640,
+   "type": "f32[3]",
+   "source": "match"
+  },
+  {
+   "address": 2148837672,
+   "type": "s32[]",
+   "source": "match"
+  },
+  {
+   "address": 2148837800,
+   "type": "Vec3i *[]",
+   "source": "match"
+  },
+  {
+   "address": 2148992512,
+   "type": "Vec3f[]",
+   "source": "match"
+  },
+  {
+   "address": 2148997312,
+   "type": "Seg *[]",
+   "source": "match"
+  },
+  {
+   "address": 2148997432,
+   "type": "u8[]",
    "source": "match"
   }
  ],

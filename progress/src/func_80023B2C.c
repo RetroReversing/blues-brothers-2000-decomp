@@ -13,14 +13,14 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80023AE8();                                /* extern */
-M2C_UNK func_80023E18(s32);                         /* extern */
-M2C_UNK func_800899DC(M2C_UNK *, s32);              /* extern */
+M2C_UNK getImageAsset(s32);                         /* extern */
+M2C_UNK debugPrintf(M2C_UNK *, s32);              /* extern */
 extern M2C_UNK D_80000F20;
 extern M2C_UNK D_800AC3D0;
 
 void func_80023B2C(s32 arg0) {
     if (func_80023AE8() == 0) {
-        func_800899DC(&D_80000F20, arg0);
+        debugPrintf(&D_80000F20, arg0);
     }
-    func_80023E18((&D_800AC3D0)[arg0 * 4]);
+    getImageAsset((&D_800AC3D0)[arg0 * 4]);
 }

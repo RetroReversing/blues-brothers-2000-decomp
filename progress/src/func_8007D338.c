@@ -23,13 +23,13 @@ s32 func_8007D338(void) {
         M2C_FIELD(base, f32 *, 8) = 120.0f;
         if (M2C_FIELD(base, f32 *, 0x4C) == 0.0f) {
             do {
-                r = (f32) func_80024394(-5, 5);
+                r = (f32) randomRange(-5, 5);
                 M2C_FIELD(base, f32 *, 0x4C) = r;
             } while (r == 0.0f);
         }
         if (M2C_FIELD(base, f32 *, 0x50) == 0.0f) {
             do {
-                r = (f32) func_80024394(-5, 5);
+                r = (f32) randomRange(-5, 5);
                 M2C_FIELD(base, f32 *, 0x50) = r;
             } while (r == 0.0f);
         }
@@ -37,5 +37,5 @@ s32 func_8007D338(void) {
         M2C_FIELD(base, s32 *, 0x64) = 0x5DC0;
     }
     func_8007D860();
-    return func_8002D5CC(base) != 0;
+    return tickActorTimer(base) != 0;
 }

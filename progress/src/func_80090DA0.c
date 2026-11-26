@@ -16,7 +16,7 @@ typedef struct z_stream_s {
 } z_stream;
 extern char D_80009DC0[];
 s32 func_80091078(z_stream *strm, const char *version, s32 stream_size);
-s32 func_800910A4(z_stream *strm, s32 flush);
+s32 zInflate(z_stream *strm, s32 flush);
 s32 func_80090EB4(z_stream *strm);
 
 s32 func_80090DA0(u8 *dest, u32 *destLen, u8 *source, u32 sourceLen) {
@@ -43,7 +43,7 @@ s32 func_80090DA0(u8 *dest, u32 *destLen, u8 *source, u32 sourceLen) {
         return err;
     }
 
-    err = func_800910A4(&stream, 4);
+    err = zInflate(&stream, 4);
     if (err != 1) {
         func_80090EB4(&stream);
         return err == 0 ? -5 : err;

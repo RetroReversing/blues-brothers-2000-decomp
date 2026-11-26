@@ -1,7 +1,7 @@
 typedef struct { s32 x, y, z; } Vec3i;
 s16 coss(u16);
 s16 sins(u16);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 
 void func_80020B3C(u8 *arg0)
 {
@@ -24,9 +24,9 @@ void func_80020B3C(u8 *arg0)
     ey = y;
     for (; i < 4; i++) {
         if (i != 0 && i != n) {
-            ox = func_80024394(-10, 10);
-            oy = func_80024394(-10, 10);
-            oz = func_80024394(-10, 10);
+            ox = randomRange(-10, 10);
+            oy = randomRange(-10, 10);
+            oz = randomRange(-10, 10);
         } else {
             ox = oy = oz = 0;
         }

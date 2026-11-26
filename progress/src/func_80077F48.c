@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80024394(s32, s32);                /* extern */
-s32 func_8003ECB8(s32, f32);                    /* extern */
+s32 randomRange(s32, s32);                /* extern */
+s32 animSampleKeys(s32, f32);                    /* extern */
 void *func_80042F00(s32, s32, s32, s32); /* extern */
-s32 func_800433A8(void *, s32, s32);        /* extern */
+s32 actorSetAnim(void *, s32, s32);        /* extern */
 s32 func_80050460(s32 *, void *);           /* extern */
 s32 func_800852CC(void *, s32);                 /* extern */
 extern s32 D_8014AA38;
@@ -28,9 +28,9 @@ s32 func_80077F48(s32 arg0) {
 
     func_80050460(&func_80077E50, (char *)&D_8014AA38 + 2);
     temp_s0 = func_80042F00(0x1C, 0, 0, 0);
-    func_800433A8(temp_s0, 0xA1, func_80024394(0xE0, 0x120));
+    actorSetAnim(temp_s0, 0xA1, randomRange(0xE0, 0x120));
     temp_s1 = (*(s32 *)((s8 *)temp_s0 + 0xE0));
-    func_8003ECB8(temp_s1, (f32) func_80024394(0, 0xA));
+    animSampleKeys(temp_s1, (f32) randomRange(0, 0xA));
     (*(s32 *)((s8 *)temp_s0 + 0)) = 0x101B;
     func_800852CC(temp_s0, arg0);
     (*(s32 **)((s8 *)temp_s0 + 0x9C)) = &func_80077E80;

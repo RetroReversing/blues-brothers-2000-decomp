@@ -1,6 +1,6 @@
-s32 func_80023874(s32, s32);
+s32 findActor(s32, s32);
 s32 func_80023DBC(s32);
-void func_8004303C(void *);
+void animStepKeys(void *);
 void func_80052A5C(s32);
 s32 func_80052A68(s32, s32 *);
 s32 func_80052B24(s32, s32 *, void *);
@@ -21,6 +21,6 @@ s32 func_80077964(ObjU *arg0) {
         }
         arg0->f88 = func_80052B24(h, d, arg0);
     }
-    func_8004303C(arg0);
-    return func_80023874(0x801, 0) == 0;
+    animStepKeys(arg0);
+    return findActor(0x801, 0) == 0;
 }

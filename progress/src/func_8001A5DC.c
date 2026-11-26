@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 f32 func_8002DD60(f32);                             /* extern */
 extern void *D_800B3964;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 
 void func_8001A5DC(void *arg0) {
     f32 temp_fs0;
@@ -27,9 +27,9 @@ void func_8001A5DC(void *arg0) {
     }
     M2C_FIELD(arg0, s32 *, 0) = 0x102;
     M2C_FIELD(arg0, s32 *, 0x68) = 3;
-    temp_fs0 = func_8002DD60(M2C_FIELD(D_800BD06C, f32 *, 4) - M2C_FIELD(arg0, f32 *, 4));
-    temp_fs1 = func_8002DD60(M2C_FIELD(D_800BD06C, f32 *, 8) - M2C_FIELD(arg0, f32 *, 8));
-    temp_fv0 = func_8002DD60(M2C_FIELD(D_800BD06C, f32 *, 0xC) - M2C_FIELD(arg0, f32 *, 0xC));
+    temp_fs0 = func_8002DD60(M2C_FIELD(gCameraTarget, f32 *, 4) - M2C_FIELD(arg0, f32 *, 4));
+    temp_fs1 = func_8002DD60(M2C_FIELD(gCameraTarget, f32 *, 8) - M2C_FIELD(arg0, f32 *, 8));
+    temp_fv0 = func_8002DD60(M2C_FIELD(gCameraTarget, f32 *, 0xC) - M2C_FIELD(arg0, f32 *, 0xC));
     if ((temp_fs0 < 50.0f) && (temp_fv0 < 50.0f) && (temp_fs1 < 100.0f)) {
         M2C_FIELD(arg0, s32 *, 0xF0) = 0xE0;
         M2C_FIELD(D_800B3964, s32 *, 0x88) = (s32) M2C_FIELD(arg0, s32 *, 0x70);

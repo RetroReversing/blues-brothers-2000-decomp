@@ -14,16 +14,16 @@ typedef s32 M2C_UNK32;
 
 s32 func_80024380(s32);                             /* extern */
 s32 func_8002A360(s32, s32);            /* extern */
-f32 func_8002D340(f32, f32, f32);                   /* extern */
+f32 approachF32(f32, f32, f32);                   /* extern */
 s32 func_80035238();                            /* extern */
-extern s32 D_800B9ECC;
-extern void *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern void *gCameraTarget;
 extern s32 func_80023078;
 
 void func_80017598(void *arg0) {
     s32 temp_ft0;
 
-    temp_ft0 = (s32) (M2C_FIELD(D_800BD06C, f32 *, 4) - M2C_FIELD(arg0, f32 *, 4));
+    temp_ft0 = (s32) (M2C_FIELD(gCameraTarget, f32 *, 4) - M2C_FIELD(arg0, f32 *, 4));
     if (M2C_FIELD(arg0, s32 *, 0x74) < 0) {
         if (temp_ft0 < 0x65) {
 
@@ -42,7 +42,7 @@ block_4:
         M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 0x44) + 500.0f);
     }
     if (M2C_FIELD(arg0, s32 *, 0xC0) == 2) {
-        M2C_FIELD(arg0, f32 *, 8) = func_8002D340(M2C_FIELD(arg0, f32 *, 0x44), M2C_FIELD(arg0, f32 *, 8), (f32) D_800B9ECC * 6.0f);
+        M2C_FIELD(arg0, f32 *, 8) = approachF32(M2C_FIELD(arg0, f32 *, 0x44), M2C_FIELD(arg0, f32 *, 8), (f32) gCamSpeedScale * 6.0f);
         if (M2C_FIELD(arg0, s32 *, 0x90) == 0) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x45);

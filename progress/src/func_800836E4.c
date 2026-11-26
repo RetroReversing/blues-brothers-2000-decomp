@@ -10,18 +10,18 @@ typedef struct Obj {
     f32 cur;    /* 0xB4 */
 } Obj;
 
-f32 func_8002D340(f32, f32, f32);
+f32 approachF32(f32, f32, f32);
 void func_80034F50(Obj *);
 void func_80083830(Obj *);
-extern s32 D_800BD06C;
-extern s32 D_8014A928[];
+extern s32 gCameraTarget;
+extern s32 gSplinePointCount[];
 
 void func_800836E4(Obj *arg0) {
-    f32 limit = D_8014A928[arg0->x70];
+    f32 limit = gSplinePointCount[arg0->x70];
 
     if (arg0->x94 == 2) {
         arg0->x94 = 0;
-        arg0->xA8 = D_800BD06C;
+        arg0->xA8 = gCameraTarget;
         arg0->speed = arg0->speed - 2.0;
         if (arg0->max < arg0->speed) {
             arg0->speed = arg0->max;
@@ -32,7 +32,7 @@ void func_800836E4(Obj *arg0) {
     }
     if (arg0->x94 == 1) {
         arg0->x94 = 0;
-        arg0->xA8 = D_800BD06C;
+        arg0->xA8 = gCameraTarget;
         arg0->speed = arg0->speed + 2.0;
         if (arg0->speed < arg0->max) {
             arg0->speed = arg0->max;
@@ -41,7 +41,7 @@ void func_800836E4(Obj *arg0) {
             arg0->speed = limit - 1.0;
         }
     }
-    arg0->cur = func_8002D340(arg0->speed, arg0->cur, 0.04f);
+    arg0->cur = approachF32(arg0->speed, arg0->cur, 0.04f);
     func_80083830(arg0);
     func_80034F50(arg0);
 }

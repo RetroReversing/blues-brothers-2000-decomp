@@ -23,13 +23,13 @@ struct Obj {
     /* 0xBC */ u8 padBC[0x28];
     /* 0xE4 */ s32 fE4;
 };
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 s32 func_80023E3C(s32);
 void func_80053C38(Obj *);
 s16 sins(u16);
 void func_8001FE50();
 extern char D_800B4988[];
-extern char D_800B9EA4[];
+extern char gTextWaveTime[];
 extern char D_8014AA98[];
 extern s32 D_8014AAA0[];
 extern f32 D_80008238;
@@ -70,9 +70,9 @@ void func_80053CE0(Obj *arg0) {
         }
         arg0->f10 = 0x8000;
         if (D_8014AAA0[0] == 0x56F && arg0->fB8 == 0x89) {
-            arg0->f58 = func_800221C0(0, 1, 2, 3, 0, 0, 1, 0);
+            arg0->f58 = packDrawFlags(0, 1, 2, 3, 0, 0, 1, 0);
         } else {
-            arg0->f58 = func_800221C0(1, 1, 0, 3, 0, 0, 1, 0);
+            arg0->f58 = packDrawFlags(1, 1, 0, 3, 0, 0, 1, 0);
         }
         arg0->f98 = func_8001FE50;
         arg0->f68 = 0xD;
@@ -87,7 +87,7 @@ void func_80053CE0(Obj *arg0) {
     if (arg0->f2C > 0.0f) {
         pad = -0x1800;
     }
-    t = (sins((G(D_800B9EA4) * 100) & 0xFFFC) >> 4) + 0x8000; arg0->f10 = pad + t;
-    arg0->f14 = sins((G(D_800B9EA4) * 50) & 0xFFFE) >> 5;
+    t = (sins((G(gTextWaveTime) * 100) & 0xFFFC) >> 4) + 0x8000; arg0->f10 = pad + t;
+    arg0->f14 = sins((G(gTextWaveTime) * 50) & 0xFFFE) >> 5;
     func_80053C38(arg0);
 }

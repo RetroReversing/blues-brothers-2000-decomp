@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s16 coss(u16);                                      /* extern */
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 M2C_UNK func_8000C5B4();                       /* extern */
 M2C_UNK func_8000F7A0(void *);                      /* extern */
 s32 func_8000FAC4(void *);                          /* extern */
@@ -22,8 +22,8 @@ M2C_UNK func_80017CF0(void *);                      /* extern */
 s32 func_80023E3C(M2C_UNK);                         /* extern */
 s32 func_80024AC4(s32, M2C_UNK);                    /* extern */
 s32 func_80024AE8(s32, M2C_UNK);                    /* extern */
-s32 func_80024B0C(s32);                             /* extern */
-s32 func_80025100(s32, s32);                        /* extern */
+s32 isqrtS32(s32);                             /* extern */
+s32 atan2S16(s32, s32);                        /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002ABCC();                            /* extern */
 M2C_UNK func_8002ACAC();                            /* extern */
@@ -32,18 +32,18 @@ M2C_UNK func_8002AD4C();                            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
 s32 func_8002D1C4(s32, s32, M2C_UNK);               /* extern */
 M2C_UNK func_8002D3E4(void *, M2C_UNK);             /* extern */
-M2C_UNK func_8002D620(void *);                      /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 void *func_8002E374(M2C_UNK);                       /* extern */
 M2C_UNK func_80037164(void *, void *, void *);      /* extern */
 M2C_UNK func_8003A9A8(void *, s32);                 /* extern */
 s32 func_8003AB30(void *);                          /* extern */
-M2C_UNK func_8003AC08(void *, f32, M2C_UNK);  /* extern */
+M2C_UNK handleActorHit(void *, f32, M2C_UNK);  /* extern */
 M2C_UNK func_8003C37C();                            /* extern */
 s32 func_8003C5D8(void *);                          /* extern */
 s32 func_8003CA30(void *);                          /* extern */
-s32 func_8004303C(void *);                          /* extern */
+s32 animStepKeys(void *);                          /* extern */
 M2C_UNK func_80043328(); /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 s16 sins(u16);                                      /* extern */
 extern s32 D_800B3838;
 extern void *D_800B3960;
@@ -53,14 +53,14 @@ extern s32 D_800B4CE8;
 extern s32 D_800B4CFC;
 extern f32 D_800B4D00;
 extern f32 D_800B4D04;
-extern s32 D_800B9EA0;
+extern s32 gFrameScale;
 extern f32 D_800B9EC4;
-extern s32 D_800B9ECC;
-extern void *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern void *gCameraTarget;
 extern s32 D_800BD0DC;
 extern s32 D_800BD0F4;
 extern s32 D_80107040[];
-extern s32 D_801070A0[];
+extern s32 gPadPressed[];
 extern s32 D_801073B0[];
 extern s32 D_801073C0[];
 extern s32 D_80140140;
@@ -180,7 +180,7 @@ void func_800393F4(Actor *arg0) {
 
     var_fs0 = 7000.0f;
     if (D_800BD0F4 <= 0) {
-        M2C_FIELD(D_800BD06C, s32 *, 0xC0) = 0;
+        M2C_FIELD(gCameraTarget, s32 *, 0xC0) = 0;
         func_8003C37C();
         return;
     }
@@ -201,9 +201,9 @@ void func_800393F4(Actor *arg0) {
     }
     if (!(M2C_FIELD(D_800B3960, s32 *, 0xC0) & 1)) {
         if (arg0->fE0 == 0) {
-            func_800433A8(arg0, 1, 0x100);
+            actorSetAnim(arg0, 1, 0x100);
         }
-        temp_v1 = D_80140230 - D_800B9EA0;
+        temp_v1 = D_80140230 - gFrameScale;
         D_80140230 = temp_v1;
         if (temp_v1 <= 0) {
             D_80140230 = 0;
@@ -227,7 +227,7 @@ void func_800393F4(Actor *arg0) {
         D_80140204 = D_801073B0[0];
         D_80140208 = D_801073C0[0];
         D_80140234 = D_8014022C;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         if ((arg0->f90 == 0) && (D_80107040[arg0->fBC] & 0x8000)) {
             var_fs0 = 3500.0f;
         }
@@ -235,7 +235,7 @@ void func_800393F4(Actor *arg0) {
         D_800BD0DC = 0;
         if (temp_v1_3 != 0) {
             temp_v1_3 = arg0->fBC;
-            if ((D_801070A0[temp_v1_3] & 0x8000) || ((arg0->fB8 == 6) && (D_80107040[temp_v1_3] & 0x8000))) {
+            if ((gPadPressed[temp_v1_3] & 0x8000) || ((arg0->fB8 == 6) && (D_80107040[temp_v1_3] & 0x8000))) {
                 if (arg0->f50 <= 0.0f) {
                     var_s0_2 = 4;
                     if (arg0->fB8 == 6) {
@@ -243,27 +243,27 @@ void func_800393F4(Actor *arg0) {
                     }
                     arg0->f50 = (f32) ((var_s0_2 * D_80140240) / 4) + (D_800B9EC4 * var_fs0);
                     arg0->f8 += 1.0f;
-                    func_800433A8(arg0, 5, 0x100);
+                    actorSetAnim(arg0, 5, 0x100);
                     func_8002ACAC();
                 }
             }
         }
-        if (!(D_80107040[arg0->fBC] & 0x10) && (D_801070A0[arg0->fBC] & 0x20) && (arg0->f90 != 0)) {
+        if (!(D_80107040[arg0->fBC] & 0x10) && (gPadPressed[arg0->fBC] & 0x20) && (arg0->f90 != 0)) {
             func_8000C5B4();
             if (arg0->fD0 != 0x1A) {
-                func_800433A8(arg0, 0x1A, 0x100);
+                actorSetAnim(arg0, 0x1A, 0x100);
                 func_8002A360(0xC, 0x80);
                 func_8002A360(8, 0x1E);
                 func_8002D124();
             }
         }
-        if (((D_8014020C < 0) || (temp_v0 = D_8014020C - D_800B9EA0, D_8014020C = temp_v0, (temp_v0 <= 0))) && (temp_v1_5 = arg0->fBC, ((D_80107040[temp_v1_5] & 0x2000) != 0))) {
+        if (((D_8014020C < 0) || (temp_v0 = D_8014020C - gFrameScale, D_8014020C = temp_v0, (temp_v0 <= 0))) && (temp_v1_5 = arg0->fBC, ((D_80107040[temp_v1_5] & 0x2000) != 0))) {
             temp_v1_4 = arg0->fD0;
             if (temp_v1_4 == 1) {
                 if (arg0->f90 != 0) {
                     if ((D_800B4CE4 == NULL) && (arg0->fB8 == temp_v1_4)) {
-                        if (D_801070A0[temp_v1_5] & 0x10) {
-                            func_800433A8(arg0, 0x1C, 0x100);
+                        if (gPadPressed[temp_v1_5] & 0x10) {
+                            actorSetAnim(arg0, 0x1C, 0x100);
                         }
                     }
                 }
@@ -273,7 +273,7 @@ void func_800393F4(Actor *arg0) {
             temp_v1_6 = arg0->fBC;
             temp_a0_2 = D_801073B0[temp_v1_6];
             temp_v0_2 = D_801073C0[temp_v1_6];
-            temp_v0_3 = func_80024B0C((temp_a0_2 * temp_a0_2) + (temp_v0_2 * temp_v0_2));
+            temp_v0_3 = isqrtS32((temp_a0_2 * temp_a0_2) + (temp_v0_2 * temp_v0_2));
             arg0->f88 = temp_v0_3;
             if (temp_v0_3 >= 0x47) {
                 arg0->f88 = 0x46;
@@ -294,13 +294,13 @@ void func_800393F4(Actor *arg0) {
             temp_v1_7 = arg0->fD0;
             if ((temp_v1_7 != 0x14) && (temp_v1_7 != 0x12) && (temp_v1_7 != 0xD) && (temp_v1_7 != 0x13) && (temp_v1_7 != 0xE) && (temp_v1_7 != 0xF) && (temp_v1_7 != 0x1A)) {
                 temp_v1_8 = arg0->fBC;
-                var_s0_2 = func_80025100(D_801073B0[temp_v1_8], D_801073C0[temp_v1_8]);
+                var_s0_2 = atan2S16(D_801073B0[temp_v1_8], D_801073C0[temp_v1_8]);
                 D_801401E0 = M2C_FIELD(D_800B3960, s32 *, 0x10) + var_s0_2;
             }
             arg0->f10 = func_8002D1C4(D_801401E0, arg0->f10, 1);
         }
         temp_lo = arg0->f74 * arg0->f88;
-        temp_s0_2 = temp_lo * D_800B9EA0;
+        temp_s0_2 = temp_lo * gFrameScale;
         arg0->f88 = temp_lo;
         M2C_FIELD(D_800B3960, s32 *, 0x74) = (s32) (M2C_FIELD(D_800B3960, s32 *, 0x74) + ((s32) (temp_s0_2 * sins(var_s0_2 & 0xFFFF)) >> 0xF));
         temp_v0_4 = arg0->f88 - 8;
@@ -312,7 +312,7 @@ void func_800393F4(Actor *arg0) {
         if (((temp_v1_9 == 0xB) || (temp_v1_9 == 0x24)) && (D_80140224 >= 0x15)) {
             D_80140224 = 0x14;
         }
-        var_a0 = (D_80140224 - func_80024AC4(D_80140200, 4)) * D_800B9EA0;
+        var_a0 = (D_80140224 - func_80024AC4(D_80140200, 4)) * gFrameScale;
         if (arg0->fD0 == 0x12) {
             if (D_80140224 == 0) {
                 var_a0 = func_80024AC4(var_a0, 4);
@@ -385,7 +385,7 @@ block_102:
         }
         if (arg0->fD0 == 0x2A) {
             D_80140200 = 0;
-            temp_v1_11 = D_800B9ECC * 0xC00;
+            temp_v1_11 = gCamSpeedScale * 0xC00;
             arg0->f14 = (s32) (arg0->f14 - temp_v1_11);
             temp_a0_4 = arg0->f70 - temp_v1_11;
             arg0->f70 = temp_a0_4;
@@ -436,7 +436,7 @@ block_102:
             temp_v0_6 = func_80012718(arg0);
             M2C_FIELD(temp_v0_6, f32 *, 8) = (f32) (M2C_FIELD(temp_v0_6, f32 *, 8) - 50.0f);
         }
-        temp_v0_7 = func_8000C43C();
+        temp_v0_7 = cameraGetMode();
         switch (temp_v0_7) {                        /* switch 1; irregular */
         case 1:                                     /* switch 1 */
             if (D_80140214 != 0) {
@@ -456,7 +456,7 @@ block_102:
             break;
         }
         D_801401E4 = arg0->fDC;
-        var_s0_2 = func_8004303C(arg0);
+        var_s0_2 = animStepKeys(arg0);
         if ((f64) arg0->f50 < -3500.0) {
             func_80043328(arg0, 0x10, 0x100);
         }
@@ -513,7 +513,7 @@ block_102:
                 M2C_FIELD(temp_v0_9, f32 *, 4) = (f32) arg0->f4;
                 M2C_FIELD(temp_v0_9, f32 *, 8) = (f32) (arg0->f8 + 300.0f);
                 M2C_FIELD(temp_v0_9, f32 *, 0xC) = (f32) arg0->fC;
-                func_8002D620(temp_v0_9);
+                syncActorPrevPos(temp_v0_9);
             }
             /* fallthrough */
         case 29:
@@ -550,12 +550,12 @@ block_181:
             break;
         case 13:
         case 19:
-            if (D_801070A0[arg0->fBC] & 0x4000) {
+            if (gPadPressed[arg0->fBC] & 0x4000) {
                 D_8014023C = 1;
             }
-            if ((D_8014023C != 0) && (temp_ft0 = (f64) arg0->fDC, (9.0 < temp_ft0)) && (temp_ft0 <= ((f64) D_800B9ECC + 9.0 + 1.0))) {
+            if ((D_8014023C != 0) && (temp_ft0 = (f64) arg0->fDC, (9.0 < temp_ft0)) && (temp_ft0 <= ((f64) gCamSpeedScale + 9.0 + 1.0))) {
                 func_8002AD4C();
-                func_800433A8(arg0, 0xE, 0x100);
+                actorSetAnim(arg0, 0xE, 0x100);
                 arg0->f88 = 0;
                 arg0->f74 = 0;
                 D_8014023C = 0;
@@ -564,13 +564,13 @@ block_181:
             }
             goto block_202;
         case 14:
-            if (D_801070A0[arg0->fBC] & 0x4000) {
+            if (gPadPressed[arg0->fBC] & 0x4000) {
                 D_8014023C = 1;
             }
             if (D_8014023C != 0) {
                 temp_ft0_2 = (f64) arg0->fDC;
-                if ((9.0 < temp_ft0_2) && (temp_ft0_2 <= ((f64) D_800B9ECC + 1.0 + 9.0))) {
-                    func_800433A8(arg0, 0xF, 0x100);
+                if ((9.0 < temp_ft0_2) && (temp_ft0_2 <= ((f64) gCamSpeedScale + 1.0 + 9.0))) {
+                    actorSetAnim(arg0, 0xF, 0x100);
                     arg0->f88 = 0;
                     arg0->f74 = 0;
                     D_8014023C = 0;
@@ -608,13 +608,13 @@ block_202:
             break;
         case 5:                                     /* switch 2 */
         case 12:                                    /* switch 2 */
-            if (D_801070A0[arg0->fBC] & 0x2000) {
+            if (gPadPressed[arg0->fBC] & 0x2000) {
                 func_80043328(arg0, 0x2A, 0x100);
                 D_800B4CFC = 0;
                 arg0->f7C = 9;
                 arg0->f70 = 0x10000;
             }
-            if ((D_801070A0[arg0->fBC] & 0x4000) && (D_80140200 >= 0x191)) {
+            if ((gPadPressed[arg0->fBC] & 0x4000) && (D_80140200 >= 0x191)) {
                 D_80140200 = (D_80140200 * 0x96) / 100;
                 func_80043328(arg0, 0x11, 0x100);
             }
@@ -647,7 +647,7 @@ block_211:
             }
             temp_fv1_8 = (f64) arg0->fDC;
             if (2.0 <= temp_fv1_8) {
-                if (temp_fv1_8 <= ((f64) D_800B9ECC + 2.0)) {
+                if (temp_fv1_8 <= ((f64) gCamSpeedScale + 2.0)) {
                     if ((var_s2 != 0) && (arg0->fCC == 0)) {
                         func_8002A360(0xC, 0x80);
                         func_8002A360(8, 3);
@@ -673,7 +673,7 @@ block_211:
             if ((((temp_fv1_10 <= 1.0) || ((20.0 <= temp_fv1_10) && (var_s0_2 != 0))) && (1.0 <= (f64) arg0->fDC)) || (((f64) D_801401E4 <= 11.0) && (11.0 <= (f64) arg0->fDC))) {
                 func_8002ABCC();
             }
-            if (D_801070A0[arg0->fBC] & 0x2000) {
+            if (gPadPressed[arg0->fBC] & 0x2000) {
                 arg0->f74 = 0;
                 func_80043328(arg0, 0x12, 0x100);
                 func_80012718(arg0);
@@ -711,7 +711,7 @@ block_211:
             var_s0_2 = func_8003C5D8(arg0);
             arg0->f90 = var_s0_2;
             if (var_s0_2 != 0) {
-                func_8003AC08(arg0, D_8014022C, 0);
+                handleActorHit(arg0, D_8014022C, 0);
             }
             if (((f64) D_80140140 != -1000000.0) && (arg0->f8 < (f32) (D_80140140 - 0xC8))) {
                 func_8002A360(0xC, 0x80);

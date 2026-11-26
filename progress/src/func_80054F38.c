@@ -14,11 +14,11 @@ typedef s32 M2C_UNK32;
 
 M2C_UNK func_800385AC();                            /* extern */
 extern f32 D_800082D4;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 
 void func_80054F38(void *arg0) {
     func_800385AC();
-    M2C_FIELD(arg0, f32 *, 4) = (f32) M2C_FIELD(D_800BD06C, const f32 *, 4);
-    M2C_FIELD(arg0, f32 *, 0xC) = (f32) M2C_FIELD(D_800BD06C, const f32 *, 0xC);
-    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(D_800BD06C, const f32 *, 8) + D_800082D4);
+    M2C_FIELD(arg0, f32 *, 4) = (f32) M2C_FIELD(gCameraTarget, const f32 *, 4);
+    M2C_FIELD(arg0, f32 *, 0xC) = (f32) M2C_FIELD(gCameraTarget, const f32 *, 0xC);
+    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(gCameraTarget, const f32 *, 8) + D_800082D4);
 }

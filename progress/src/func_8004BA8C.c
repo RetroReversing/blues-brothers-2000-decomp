@@ -14,14 +14,14 @@ typedef s32 M2C_UNK32;
 #endif
 
 f32 __cosf(f32);
-f32 func_80095DC0(f32);
+f32 sinApprox(f32);
 extern f32 D_80007DB4;
 
 void func_8004BA8C(f32 *m, f32 a) {
     f32 s;
     f32 c;
 
-    s = func_80095DC0(a);
+    s = sinApprox(a);
     c = __cosf(a);
     m[0] = c;
     m[1] = 0.0f;

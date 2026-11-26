@@ -1,7 +1,7 @@
-void *func_80023E18();
+void *getImageAsset();
 s32 func_80026CB4();
 s32 func_80053EF0();
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_800080F0[];
 extern char D_80008104[];
 s16 func_80052A68(s32 arg0, s32 arg1)
@@ -10,9 +10,9 @@ s16 func_80052A68(s32 arg0, s32 arg1)
     void *temp_v0;
     void *var_s1;
 
-    temp_v0 = func_80023E18(arg0);
+    temp_v0 = getImageAsset(arg0);
     if (temp_v0 == NULL) {
-        func_800899DC(D_800080F0);
+        debugPrintf(D_800080F0);
         return 0;
     }
     func_80053EF0(temp_v0);
@@ -28,7 +28,7 @@ s16 func_80052A68(s32 arg0, s32 arg1)
                 var_s1 += 0xC;
             } while (var_s0 < *((s16 *) (((char *) temp_v0) + 4)));
         }
-        func_800899DC(D_80008104, arg1);
+        debugPrintf(D_80008104, arg1);
     }
     return 0;
 }

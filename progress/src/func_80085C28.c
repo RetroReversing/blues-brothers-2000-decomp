@@ -1,14 +1,14 @@
-s32 func_8000C43C(void);
-s32 func_80024394(s32, s32);
+s32 cameraGetMode(void);
+s32 randomRange(s32, s32);
 s32 func_8002444C(void);
-void func_8002D5CC(void *);
-void func_8002D620(void *);
+void tickActorTimer(void *);
+void syncActorPrevPos(void *);
 void func_80043328(void *, s32, s32);
 s32 func_8006BB14(void *);
 s32 func_80076080(void *);
 void func_80080594(void *, s32);
 s32 func_80080DE0(s32);
-void func_80081588(s32, s32);
+void initSpline(s32, s32);
 void func_80083A28(void *);
 s32 func_80083CC4(void *);
 s32 func_80083E98(void *);
@@ -16,7 +16,7 @@ void func_800853E8(void *);
 s32 func_80085900(void *);
 s32 func_80085A5C(void *);
 s32 func_80085B8C(void *);
-void func_800899DC(char *, s32);
+void debugPrintf(char *, s32);
 void func_80084504(void);
 
 typedef struct Ent {
@@ -56,7 +56,7 @@ extern f32 D_80009B34;
 extern f32 D_80009B38;
 extern f32 D_80009B3C;
 extern u8 D_800B9B18[];
-extern Ent *D_8014A9A8[];
+extern Ent *gSplineSrcPoints[];
 
 void func_80085C28(Obj *arg0) {
     s32 ret;
@@ -64,12 +64,12 @@ void func_80085C28(Obj *arg0) {
     ret = 1;
     if (arg0->x7C == 0) {
         if (func_80080DE0(arg0->x70) == 0) {
-            func_80081588(arg0->x70, *(s32 *)D_800B9B18);
+            initSpline(arg0->x70, *(s32 *)D_800B9B18);
         }
         arg0->x7C = 1;
         arg0->x78 = 0;
         arg0->fnD8 = NULL;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         if (arg0->xAC == 0.0f) {
             arg0->xAC = D_80009B34;
         }
@@ -78,8 +78,8 @@ void func_80085C28(Obj *arg0) {
         }
         arg0->xB4 = 0.0f;
         arg0->xBC = 1;
-        arg0->x8 = D_8014A9A8[arg0->x70]->x4;
-        if (func_8000C43C() == 0x30 && arg0->xB8 == 12) {
+        arg0->x8 = gSplineSrcPoints[arg0->x70]->x4;
+        if (cameraGetMode() == 0x30 && arg0->xB8 == 12) {
             arg0->x8 -= D_80009B3C;
         }
         if (func_80085900(arg0) == 0) {
@@ -87,12 +87,12 @@ void func_80085C28(Obj *arg0) {
             arg0->fn9C = func_80084504;
             return;
         }
-        arg0->x64 = func_80024394(25, 30) * 100;
+        arg0->x64 = randomRange(25, 30) * 100;
     }
     if (func_80076080(arg0) != 0) {
         return;
     }
-    func_8002D5CC(arg0);
+    tickActorTimer(arg0);
     if (arg0->fnD8 != NULL) {
         ret = arg0->fnD8(arg0);
     }
@@ -114,7 +114,7 @@ void func_80085C28(Obj *arg0) {
                 arg0->x8C = 0;
                 break;
             default:
-                func_800899DC(D_80009B04, ret);
+                debugPrintf(D_80009B04, ret);
                 break;
             }
             break;
@@ -126,7 +126,7 @@ void func_80085C28(Obj *arg0) {
         default:
             switch (ret) {
             case 1:
-                arg0->x64 = func_80024394(25, 30) * 100;
+                arg0->x64 = randomRange(25, 30) * 100;
                 arg0->x78 = 0;
                 arg0->fnD8 = func_80083E98;
                 if (func_8002444C() & 1) {
@@ -150,7 +150,7 @@ void func_80085C28(Obj *arg0) {
                 func_80080594(arg0, 0);
                 break;
             default:
-                func_800899DC(D_80009B1C, ret);
+                debugPrintf(D_80009B1C, ret);
                 break;
             }
             break;

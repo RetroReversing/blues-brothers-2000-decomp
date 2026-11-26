@@ -13,13 +13,13 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80043328();
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_800081C0[];
 extern s32 D_8014AA94;
 
 s32 func_800537E8(s32 arg0, void *arg1) {
     if (D_8014AA94 == 0) {
-        func_800899DC(D_800081C0);
+        debugPrintf(D_800081C0);
     }
     func_80043328(D_8014AA94, M2C_FIELD(arg1, s32 *, 4), 0x100);
     return 0;

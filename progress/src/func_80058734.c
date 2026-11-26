@@ -12,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80050460(M2C_UNK *, void *);           /* extern */
 void *func_800851D8(void *);                        /* extern */
 M2C_UNK func_80085244(void *, s32);                 /* extern */
@@ -32,10 +32,10 @@ void *func_80058734(s32 arg0) {
     func_80050460(&func_80058678, (char *)&D_8014AA42 + 1);
     temp_v0 = func_80042F00(0x12, 0, 0, 0);
     M2C_FIELD(temp_v0, s32 *, 0) = 0x100B;
-    func_800433A8(temp_v0, 0x77, 0x100);
+    actorSetAnim(temp_v0, 0x77, 0x100);
     func_800852CC(temp_v0, arg0);
     temp_s1 = func_800851D8(temp_v0);
-    if (func_8000C43C() == 0x3C) {
+    if (cameraGetMode() == 0x3C) {
         M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = (M2C_UNK *) ((char *)&func_80058104 + 0xC);
         M2C_FIELD(temp_v0, s32 *, 0x34) = 0x200;
         M2C_FIELD(temp_v0, s32 *, 0x38) = 0x200;

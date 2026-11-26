@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_80023874(M2C_UNK, void *);               /* extern */
-extern void *D_800BD06C;
+void *findActor(M2C_UNK, void *);               /* extern */
+extern void *gCameraTarget;
 extern M2C_UNK func_8000F670;
 
 void func_8001B588(void) {
@@ -23,11 +23,11 @@ void func_8001B588(void) {
     void *temp_s0;
     void *var_a1;
 
-    temp_s0 = D_800BD06C;
+    temp_s0 = gCameraTarget;
     var_a1 = NULL;
     var_s1 = -1;
 loop_1:
-    var_a1 = func_80023874(0x816, var_a1);
+    var_a1 = findActor(0x816, var_a1);
     if (var_a1 != NULL) {
         temp_v1 = M2C_FIELD(var_a1, s32 *, 0x78);
         if (temp_v1 >= var_s1) {
@@ -39,7 +39,7 @@ loop_1:
         goto loop_1;
     }
     for (;;) {
-        var_a1 = func_80023874(0x13C, var_a1);
+        var_a1 = findActor(0x13C, var_a1);
         if (var_a1 == NULL) {
             break;
         }

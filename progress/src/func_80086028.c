@@ -26,8 +26,8 @@ s32 func_80023DBC(s32);
 s32 func_80023D58(s32);
 void func_80026C04(void *, s32, s32);
 void func_8002A360(s32, s32);
-s32 func_8002D5CC(Obj *);
-void func_800433A8(s32, s32, s32);
+s32 tickActorTimer(Obj *);
+void actorSetAnim(s32, s32, s32);
 void func_80052B24(s32, char *, Obj *);
 void func_80081C10(void);
 s32 func_80082688(s32, s32);
@@ -35,7 +35,7 @@ void func_80087160(s32);
 s32 sprintf(char *, const char *, ...);
 extern Entry D_800B8720[];
 extern s32 D_800B9B40[];
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 D_80171980;
 extern s32 D_801719A8;
 extern Rec D_801719E0[];
@@ -53,16 +53,16 @@ void func_80086028(Obj *o)
 
     idx = func_80082400();
     h = func_80023DBC(0xE33);
-    D_80171980 += D_800B9ECC;
+    D_80171980 += gCamSpeedScale;
     m = D_80171980 % 144;
-    if (func_8002D5CC(o) == 0) {
+    if (tickActorTimer(o) == 0) {
         return;
     }
     if (func_80082688(m, 0x24) == 0) {
         return;
     }
     D_801719E0[0].type = 0;
-    func_800433A8(D_801719A8, 0x178, 0x100);
+    actorSetAnim(D_801719A8, 0x178, 0x100);
     func_8002A360(0xC, 0x80);
     func_8002A360(8, 0x78);
     D_80171A54++;

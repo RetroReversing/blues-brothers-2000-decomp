@@ -1,6 +1,6 @@
 s16 func_80095F60(u16);
 void func_80011734(void *);
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 
 typedef struct {
     u8 pad0[0x68];
@@ -18,7 +18,7 @@ void func_80011CA4(Obj *arg0) {
     if (arg0->unk80 >= 0x3B7) {
         arg0->unkA0();
     }
-    s = func_80095F60(arg0->unk80 * D_800B9EA4);
+    s = func_80095F60(arg0->unk80 * gTextWaveTime);
     arg0->unk80 += 5;
     if ((s >> 9) > 0) {
         arg0->unk68 = arg0->unk7C;

@@ -1,5 +1,5 @@
 void func_8002E46C(void);
-void func_8008914C(s32);
+void buildFrameDisplayList(s32);
 void func_800896D0(void);
 void func_80089814(s32);
 s32 func_8008990C(u64 *);
@@ -7,11 +7,11 @@ void func_80089C00(void);
 void func_80089C08(void);
 extern s32 D_800B9E8C;
 extern s32 D_800B9E90;
-extern s32 D_800B9EA0;
-extern s32 D_800B9EA4;
+extern s32 gFrameScale;
+extern s32 gTextWaveTime;
 extern f32 D_800B9EC4;
 extern s32 D_800B9EC8;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern u64 D_801771E0;
 extern s32 D_80178238;
 extern s32 D_80178270;
@@ -21,7 +21,7 @@ void func_80088F60(void) {
     s32 t;
 
     func_800896D0();
-    func_8008914C(0);
+    buildFrameDisplayList(0);
     func_80089814(D_80178238);
     func_80089C00();
     D_80178280 = D_801771E0;
@@ -42,16 +42,16 @@ void func_80088F60(void) {
     if (D_800B9E90 > 1000) {
         D_800B9EC8 = 1000;
     }
-    D_800B9ECC = (D_800B9EC8 + 8) >> 4;
-    if (D_800B9ECC <= 0) {
-        D_800B9ECC = 1;
+    gCamSpeedScale = (D_800B9EC8 + 8) >> 4;
+    if (gCamSpeedScale <= 0) {
+        gCamSpeedScale = 1;
     }
     D_800B9E8C++;
     func_80089C08();
-    D_800B9EA0 = D_800B9E90 / 10;
-    if (D_800B9EA0 > 10) {
-        D_800B9EA0 = 10;
+    gFrameScale = D_800B9E90 / 10;
+    if (gFrameScale > 10) {
+        gFrameScale = 10;
     }
-    D_800B9EA4 += D_800B9EA0;
+    gTextWaveTime += gFrameScale;
     func_8002E46C();
 }

@@ -10,9 +10,9 @@ typedef struct {
     u8 data[0x30];
 } Spline_812B4;
 
-extern s32 D_8014A928[];
-extern Vec3i_812B4 *D_8014A9A8[];
-extern Spline_812B4 *D_801718C0[];
+extern s32 gSplinePointCount[];
+extern Vec3i_812B4 *gSplineSrcPoints[];
+extern Spline_812B4 *gSplineSegs[];
 
 f32 sqrtf(f32);
 f32 func_80080DFC(void *arg0, f32 arg1);
@@ -39,13 +39,13 @@ f32 func_800812B4(s32 path, Vec3f_812B4 *pos, f32 *outDist, Vec3f_812B4 *outPos)
     f32 fbest;
     Vec3f_812B4 p;
 
-    n = D_8014A928[path];
+    n = gSplinePointCount[path];
     bestDist = 1e9f;
     best = 0;
     if (n == 0) {
         return 0.0f;
     }
-    pts = D_8014A9A8[path];
+    pts = gSplineSrcPoints[path];
     for (i = 0; i < n; i++) {
         dx = pos->x - pts[i].x;
         dy = pos->y - pts[i].y;
@@ -58,7 +58,7 @@ f32 func_800812B4(s32 path, Vec3f_812B4 *pos, f32 *outDist, Vec3f_812B4 *outPos)
     }
     ret = best;
     count = n;
-    spl = D_801718C0[path];
+    spl = gSplineSegs[path];
     t = ret - 1.0f;
     if (t < 0.0f) {
         t = 0.0f;

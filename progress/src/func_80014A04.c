@@ -13,9 +13,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_80015258(s32);                           /* extern */
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 extern M2C_UNK func_80014C34;
 
 void func_80014A04(void) {
-    M2C_FIELD(func_80015258(D_800BD06C), M2C_UNK **, 0x9C) = &func_80014C34;
+    M2C_FIELD(func_80015258(gCameraTarget), M2C_UNK **, 0x9C) = &func_80014C34;
 }

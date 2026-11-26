@@ -41,16 +41,16 @@ typedef struct Rec {
 
 Rec *func_80023088(s32);
 Rec *func_800230B0(s32);
-Rec *func_80023874(s32, Rec *);
-s32 func_8000C43C(void);
+Rec *findActor(s32, Rec *);
+s32 cameraGetMode(void);
 s32 func_8000F8F4(Obj *, Rec *);
 s32 func_8000FA40(f32, f32, f32, f32);
 s32 func_80016318(Obj *, Rec *, s32);
 f32 func_8002DD60(f32);
-void func_8003AC08(Obj *, f32, s32);
+void handleActorHit(Obj *, f32, s32);
 void func_8003BB90(Obj *);
 void func_8003BF98(Obj *);
-void func_800433A8(Obj *, s32, s32);
+void actorSetAnim(Obj *, s32, s32);
 s32 func_800609F8(Rec *);
 s32 func_80060C94(Rec *);
 s16 func_800944B0(u16);
@@ -59,7 +59,7 @@ f32 sqrtf(f32);
 int abs(int);
 
 extern Vec3i D_800AA1BC[];
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern s32 D_800BD0DC;
 extern Rec *D_800BD10C;
 extern Vec3i D_800F4A00[];
@@ -102,7 +102,7 @@ s32 func_8000FAC4(Obj *arg0) {
     ret = 0;
     start = func_80023088(0);
     end = func_800230B0(0);
-    p = func_80023874(0x12D, 0);
+    p = findActor(0x12D, 0);
     if (p != 0 && p->key != -1) {
         dx = arg0->x - p->x;
         dz = arg0->z - p->z;
@@ -118,7 +118,7 @@ s32 func_8000FAC4(Obj *arg0) {
                     arg0->y = ty + ((p->y + 20.0) - ty) * len / 190.0;
                     arg0->vy = 0.0f;
                     if (arg0->landed == 0) {
-                        func_8003AC08(arg0, arg0->y, 0);
+                        handleActorHit(arg0, arg0->y, 0);
                     }
                     arg0->landed = 1;
                     return 1;
@@ -250,7 +250,7 @@ s32 func_8000FAC4(Obj *arg0) {
                 p->rider = arg0;
                 p->carrying = 1;
                 arg0->y = p->y + D_800F4A00[p->idx].y;
-                func_8003AC08(arg0, p->y + D_800F4A00[p->idx].y, 0);
+                handleActorHit(arg0, p->y + D_800F4A00[p->idx].y, 0);
                 p->state = 3;
                 return 1;
             }
@@ -281,7 +281,7 @@ s32 func_8000FAC4(Obj *arg0) {
             p->carrying = 1;
             arg0->vy = 0.0f;
             arg0->y = p->y + D_800F4A00[p->idx].y;
-            func_8003AC08(arg0, p->y + D_800F4A00[p->idx].y, 0);
+            handleActorHit(arg0, p->y + D_800F4A00[p->idx].y, 0);
             return 1;
         }
         if (p->type == 0x138) {
@@ -302,7 +302,7 @@ s32 func_8000FAC4(Obj *arg0) {
             if (k == 2) return 1;
             if (k == 1) return 0;
         }
-        if (func_8000C43C() < 0x10) continue;
+        if (cameraGetMode() < 0x10) continue;
         if (p->type == 0x10D) {
             k = func_800609F8(p);
             if (k == 2) return 1;
@@ -404,9 +404,9 @@ s32 func_8000FAC4(Obj *arg0) {
             }
             if (dy > 0.0f && dy > D_800F4A00[p->idx].y) continue;
             if (dy2 < 0.0f && dy2 + 75.0f < D_800F6188[p->idx].y) continue;
-            func_8003AC08(arg0, p->y + D_800F4A00[p->idx].y, 1);
-            do { D_800BD06C->vy = 3000.0f; } while (0);
-            func_800433A8(arg0, 5, 0x100);
+            handleActorHit(arg0, p->y + D_800F4A00[p->idx].y, 1);
+            do { gCameraTarget->vy = 3000.0f; } while (0);
+            actorSetAnim(arg0, 5, 0x100);
             return 1;
         }
         if (p->type == 0x132) {
@@ -423,9 +423,9 @@ s32 func_8000FAC4(Obj *arg0) {
             }
             if (dy > 0.0f && dy > D_800F4A00[p->idx].y) continue;
             if (dy2 < 0.0f && dy2 + 75.0f < D_800F6188[p->idx].y) continue;
-            func_8003AC08(arg0, p->y + D_800F4A00[p->idx].y, 1);
-            D_800BD06C->vy *= 5.75f;
-            func_800433A8(arg0, 5, 0x100);
+            handleActorHit(arg0, p->y + D_800F4A00[p->idx].y, 1);
+            gCameraTarget->vy *= 5.75f;
+            actorSetAnim(arg0, 5, 0x100);
             return 1;
         }
         if (p->type == 0x119) {

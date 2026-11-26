@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_8002ADFC(M2C_UNK, M2C_UNK, void *);    /* extern */
-s32 func_8004303C();                          /* extern */
+s32 animStepKeys();                          /* extern */
 s32 func_8007DDB8(void *, M2C_UNK *, M2C_UNK *);    /* extern */
 extern void *D_800B3964;
 extern M2C_UNK D_800B86C0;
@@ -33,8 +33,8 @@ s32 func_8007E4B8(void *arg0) {
     void *temp_s2;
 
     temp_s2 = ((__repair_record_arg0*)arg0)->field_A8;
-    temp_s0 = func_8004303C();
-    { func_8004303C(temp_s2); }
+    temp_s0 = animStepKeys();
+    { animStepKeys(temp_s2); }
     temp_v0 = ((__repair_record_arg0*)arg0)->field_88;
     if (temp_v0 == 0) {
         D_80140228 = 1;

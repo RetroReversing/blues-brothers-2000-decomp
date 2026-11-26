@@ -23,10 +23,10 @@ typedef struct Obj {
     u8 padA0[4];
     struct Obj *fA4;
 } Obj;
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-s32 func_80024394(s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 randomRange(s32, s32);
 Obj *func_8002E374(s32);
-void func_800899DC(char *);
+void debugPrintf(char *);
 extern char D_800090D8[];
 extern s32 D_800B7B0C;
 extern s32 D_800B8380;
@@ -38,9 +38,9 @@ Obj *func_800730E0(Obj *parent) {
     Obj *o;
 
     if (parent == NULL) {
-        func_800899DC(D_800090D8);
+        debugPrintf(D_800090D8);
     }
-    r = func_80024394(0, D_800B8380 - 1);
+    r = randomRange(0, D_800B8380 - 1);
     o = func_8002E374(D_801700B0[r]);
     o->f9C = func_80072DA4;
     o->x = parent->x;
@@ -50,11 +50,11 @@ Obj *func_800730E0(Obj *parent) {
     o->f78 = r;
     o->f80 = 1;
     o->fA4 = parent;
-    o->f58 = func_800221C0(0, 1, 2, 3, D_800B7B0C, 0, 1, 0);
+    o->f58 = packDrawFlags(0, 1, 2, 3, D_800B7B0C, 0, 1, 0);
     o->f6C = 0xB8FD2A;
     o->f34 -= 40; o->f38 = o->f34; o->f3C = o->f34;
     o->f94 /= 3;
-    o->f64 = func_80024394(100, 500);
+    o->f64 = randomRange(100, 500);
     o->f0 = 0x1030;
     return o;
 }

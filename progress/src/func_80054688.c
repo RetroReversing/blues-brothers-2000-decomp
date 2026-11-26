@@ -13,9 +13,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80023A04();                                /* extern */
-extern s32 D_800B9EA0;
+extern s32 gFrameScale;
 extern f32 D_800B9EC4;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 D_8010704C;
 extern s32 D_8014AAB0;
 
@@ -26,6 +26,6 @@ void func_80054688(void *arg0) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
     }
     M2C_FIELD(arg0, f32 *, 0x100) = D_800B9EC4;
-    M2C_FIELD(arg0, s32 *, 0x94) = D_800B9EA0;
-    M2C_FIELD(arg0, s32 *, 0x90) = D_800B9ECC;
+    M2C_FIELD(arg0, s32 *, 0x94) = gFrameScale;
+    M2C_FIELD(arg0, s32 *, 0x90) = gCamSpeedScale;
 }

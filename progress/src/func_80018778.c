@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();
+s32 cameraGetMode();
 extern char D_800BCFB8[];
 
 void func_80018778(void *arg0) {
@@ -20,7 +20,7 @@ void func_80018778(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0) = 0x12D;
     M2C_FIELD(arg0, s32 *, 0x68) = -1;
     __base_D_800BCFB8 = D_800BCFB8;
-    if (*(func_8000C43C() + __base_D_800BCFB8) != 0) {
+    if (*(cameraGetMode() + __base_D_800BCFB8) != 0) {
         M2C_FIELD(arg0, s32 (**)(void *), 0xA0)(arg0);
     }
 }

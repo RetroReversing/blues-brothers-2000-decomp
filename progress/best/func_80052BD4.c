@@ -14,29 +14,29 @@ typedef s32 M2C_UNK32;
 
 s32 func_8000C5E4();
 void *func_800232B4();
-void *func_80023874();
-void *func_80023E18();
+void *findActor();
+void *getImageAsset();
 s32 func_800242A8();
 s32 func_80026B50();
 s32 func_80027030();
 s32 func_80043328();
 s32 func_80053EF0();
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_800080F0[];
 extern char D_8000811C[];
 extern s32 D_800AE010;
 extern void *D_800B3960;
 extern s32 D_800B5DD4;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern s32 D_80107040;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern s32 D_80140228;
 extern s32 D_8014AA90;
 extern void *D_8014AA94;
 extern s32 D_8014AA98;
 extern s32 D_8014AA9C;
 extern s32 D_8014AAA0;
-extern s32 func_8004303C;
+extern s32 animStepKeys;
 extern s32 func_80052EC0;
 extern s32 func_80053C94;
 extern s32 func_80053CE0;
@@ -61,7 +61,7 @@ s32 func_80052BD4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s3
     D_8014AA9C = 0;
     D_8014AA94 = NULL;
     D_800B5DD4 = 0;
-    D_801070A0 = 0;
+    gPadPressed = 0;
     D_80107040 = 0;
     D_800AE010 = temp_a2;
     D_8014AA90 = temp_a1;
@@ -69,21 +69,21 @@ s32 func_80052BD4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s3
     D_80140228 = 0;
     func_8000C5E4();
     M2C_FIELD(D_800B3960, s32 *, 0xC0) = 2;
-    temp_v0 = func_80023E18(saved_reg_s1);
+    temp_v0 = getImageAsset(saved_reg_s1);
     if (temp_v0 == NULL) {
-        func_800899DC(D_800080F0);
+        debugPrintf(D_800080F0);
     }
     func_800242A8(0x88, 0x560, 0);
     if (D_8014AAA0 != 0) {
         func_800242A8(0x89, D_8014AAA0, 0);
     }
-    if (func_80023874(0x801, 0) == NULL) {
+    if (findActor(0x801, 0) == NULL) {
         M2C_FIELD(func_800232B4(0x801, 0, 0, 0), s32 **, 0x9C) = &func_80053C94;
     }
-    if (func_80023874(0x802, 0) == NULL) {
+    if (findActor(0x802, 0) == NULL) {
         M2C_FIELD(func_800232B4(0x802, 0, 0, 0), s32 **, 0x9C) = &func_80053CE0;
     }
-    temp_v0_2 = func_80023874(0x803, 0);
+    temp_v0_2 = findActor(0x803, 0);
     if (temp_v0_2 != NULL) {
         M2C_FIELD(temp_v0_2, s32 *, 0x7C) = 0;
     } else {
@@ -116,18 +116,18 @@ loop_17:
                 M2C_FIELD(temp_a3, s32 **, 0x9C) = &func_80052EC0;
                 M2C_FIELD(temp_a3, s32 *, 0x64) = 0xC8;
                 M2C_FIELD(temp_a3, s32 *, 0xD8) = 0;
-                temp_v0_3 = M2C_FIELD(D_800BD06C, s32 **, 0x9C);
-                M2C_FIELD(D_800BD06C, s32 **, 0x9C) = &func_8004303C;
-                M2C_FIELD(D_800BD06C, s32 *, 0x4C) = 0;
-                M2C_FIELD(D_800BD06C, s32 *, 0x50) = 0;
-                M2C_FIELD(D_800BD06C, s32 *, 0x54) = 0;
-                M2C_FIELD(D_800BD06C, s32 **, 0xD8) = temp_v0_3;
-                func_80043328(D_800BD06C, 1, 0x100, temp_a3);
+                temp_v0_3 = M2C_FIELD(gCameraTarget, s32 **, 0x9C);
+                M2C_FIELD(gCameraTarget, s32 **, 0x9C) = &animStepKeys;
+                M2C_FIELD(gCameraTarget, s32 *, 0x4C) = 0;
+                M2C_FIELD(gCameraTarget, s32 *, 0x50) = 0;
+                M2C_FIELD(gCameraTarget, s32 *, 0x54) = 0;
+                M2C_FIELD(gCameraTarget, s32 **, 0xD8) = temp_v0_3;
+                func_80043328(gCameraTarget, 1, 0x100, temp_a3);
             }
         }
     }
     if (var_s6 == 0) {
-        func_800899DC(D_8000811C, arg15);
+        debugPrintf(D_8000811C, arg15);
     }
     var_a1 = M2C_FIELD(var_s1, s32 **, 4);
     if (*(s32 *)var_a1 != -1) {

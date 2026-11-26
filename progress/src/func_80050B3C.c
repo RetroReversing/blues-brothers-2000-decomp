@@ -13,9 +13,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80024AC4(s32, M2C_UNK);                    /* extern */
-s32 func_80025100(s32, s32);                        /* extern */
+s32 atan2S16(s32, s32);                        /* extern */
 f32 func_8002DD60(f32);                    /* extern */
-M2C_UNK func_8004303C(void *);                      /* extern */
+M2C_UNK animStepKeys(void *);                      /* extern */
 
 void func_80050B3C(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x84) = (s32) ((f32) M2C_FIELD(arg0, s32 *, 0x84) + M2C_FIELD(arg0, f32 *, 0x4C));
@@ -42,6 +42,6 @@ void func_80050B3C(void *arg0) {
     M2C_FIELD(arg0, f32 *, 4) = (f32) (M2C_FIELD(arg0, f32 *, 4) + (f32) func_80024AC4(M2C_FIELD(arg0, s32 *, 0x84) - (s32) M2C_FIELD(arg0, f32 *, 4), 3));
     M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) + (f32) func_80024AC4(M2C_FIELD(arg0, s32 *, 0x88) - (s32) M2C_FIELD(arg0, f32 *, 8), 3));
     M2C_FIELD(arg0, f32 *, 0xC) = (f32) (M2C_FIELD(arg0, f32 *, 0xC) + (f32) func_80024AC4(M2C_FIELD(arg0, s32 *, 0x8C) - (s32) M2C_FIELD(arg0, f32 *, 0xC), 3));
-    func_8004303C(arg0);
-    M2C_FIELD(arg0, s32 *, 0x10) = func_80025100((s32) M2C_FIELD(arg0, f32 *, 0x4C), (s32) M2C_FIELD(arg0, f32 *, 0x54));
+    animStepKeys(arg0);
+    M2C_FIELD(arg0, s32 *, 0x10) = atan2S16((s32) M2C_FIELD(arg0, f32 *, 0x4C), (s32) M2C_FIELD(arg0, f32 *, 0x54));
 }

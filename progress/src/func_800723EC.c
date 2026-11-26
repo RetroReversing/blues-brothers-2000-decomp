@@ -14,8 +14,8 @@ typedef s32 M2C_UNK32;
 
 void *func_800232B4(s32, s32, s32, s32);
 void func_80072CA8(void);
-extern s32 D_8014A928[];
-extern s32 *D_8014A9A8[];
+extern s32 gSplinePointCount[];
+extern s32 *gSplineSrcPoints[];
 extern s32 func_80073224;
 
 void func_800723EC(void) {
@@ -26,12 +26,12 @@ void func_800723EC(void) {
 
     found = 0;
     for (i = 20; i < 30; i++) {
-        if (D_8014A928[i] != 0) {
+        if (gSplinePointCount[i] != 0) {
             found = 1;
             o = func_800232B4(1, 0, 0, 0);
             *(s32 **)((s8 *)o + 0x9C) = &func_80073224;
             *(s32 *)((s8 *)o + 0x70) = i;
-            p = D_8014A9A8[i];
+            p = gSplineSrcPoints[i];
             if (p != NULL) {
                 *(f32 *)((s8 *)o + 4) = p[0];
                 *(f32 *)((s8 *)o + 8) = p[1];

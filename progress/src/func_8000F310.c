@@ -1,18 +1,18 @@
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 s32 func_8000F294(void *);
 void func_80023620(s32);
 void func_80023730(void *, s32, s32);
-void *func_80023874(s32, s32);
+void *findActor(s32, s32);
 void func_8002A360(s32, s32);
 void func_8002E79C(void);
 void func_8002E7B8(s32, s32);
 void func_8002E944(void);
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 void func_8000F178();
 void func_8000F1FC();
 extern char func_80023078[];
 void func_800393F4();
-void func_8004303C();
+void animStepKeys();
 void func_8006CEF8();
 typedef struct Obj {
     /* 0x00 */ s32 f0;
@@ -37,9 +37,9 @@ extern s32 D_800B5DD4;
 extern void *D_800BCFA0;
 extern s32 D_800BCFA4;
 extern u8 D_800BCFB8[];
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern u8 D_800BD120[];
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern s32 D_8013FB20;
 
 void func_8000F310(Obj *arg0) {
@@ -57,18 +57,18 @@ void func_8000F310(Obj *arg0) {
             func_80023730(arg0, 0x100, 0x1031);
             D_800BCFA4 = arg0->f78;
             D_800BCFA0 = arg0->f98;
-            if (D_800BD120[func_8000C43C()] == 0 && func_8000F294(arg0) != 0) {
-                D_800BD120[func_8000C43C()] = 1;
+            if (D_800BD120[cameraGetMode()] == 0 && func_8000F294(arg0) != 0) {
+                D_800BD120[cameraGetMode()] = 1;
                 D_800AB9C8 = 0x1000;
-                func_800433A8(D_800BD06C, 1, 0x100);
-                D_800BD06C->f9C = func_8004303C;
-                D_800BD06C->f0 = 3;
-                D_800BD06C->f50 = 0;
-                D_800BD06C->f90 = 1;
+                actorSetAnim(gCameraTarget, 1, 0x100);
+                gCameraTarget->f9C = animStepKeys;
+                gCameraTarget->f0 = 3;
+                gCameraTarget->f50 = 0;
+                gCameraTarget->f90 = 1;
                 func_8002E944();
                 arg0->f98 = func_8000F1FC;
                 D_800AA1B4 = 2;
-                o = func_80023874(6, 0);
+                o = findActor(6, 0);
                 if (o != 0) {
                     o->f68 = -1;
                 }
@@ -76,13 +76,13 @@ void func_8000F310(Obj *arg0) {
                 func_8002E79C();
                 D_800AA1B4 = 5;
             }
-            D_800BCFB8[func_8000C43C()] = 1;
+            D_800BCFB8[cameraGetMode()] = 1;
         }
         break;
     case 2:
-        if (D_801070A0 & 0x8000) {
+        if (gPadPressed & 0x8000) {
             D_800AA1B4 = 3;
-        } else if (D_801070A0 & 0x4000) {
+        } else if (gPadPressed & 0x4000) {
             func_8002E79C();
             D_800AA1B4 = 4;
         }
@@ -96,7 +96,7 @@ void func_8000F310(Obj *arg0) {
         D_800AA1B4 = 4;
         break;
     case 4:
-        o = func_80023874(6, 0);
+        o = findActor(6, 0);
         if (o != 0) {
             o->f68 = 0xF;
         }
@@ -112,7 +112,7 @@ void func_8000F310(Obj *arg0) {
         arg0->f78 = D_800BCFA4;
         arg0->f98 = D_800BCFA0;
         arg0->f9C = func_8000F178;
-        D_800BD06C->f9C = func_800393F4;
+        gCameraTarget->f9C = func_800393F4;
         break;
     }
 }

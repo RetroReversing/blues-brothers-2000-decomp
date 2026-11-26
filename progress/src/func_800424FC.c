@@ -50,7 +50,7 @@ Gfx424 *func_80044DFC(Gfx424 *, u8 *, MdlTex *);
 Gfx424 *func_800455C0(Gfx424 *);
 Gfx424 *func_80045678(Gfx424 *, s32, s32);
 void func_800899C4(char *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 f32 sqrtf(f32);
 extern void *D_800B7478[];
 extern s32 D_800B74E0;
@@ -119,7 +119,7 @@ Gfx424 *func_800424FC(s32 flags, s32 index, MdlHdr *hdr_in, Gfx424 *gfx) {
     D_800FA854 = 0;
     base = (u8 *)hdr;
     if (hdr->magic != 0x103) {
-        func_800899DC("wrong rsp version");
+        debugPrintf("wrong rsp version");
     }
     hdr->texs = (MdlTex *)((s32)hdr->texs + (s32)hdr);
     hdr->cmds = (u8 *)((s32)hdr->cmds + (s32)hdr);
@@ -189,7 +189,7 @@ Gfx424 *func_800424FC(s32 flags, s32 index, MdlHdr *hdr_in, Gfx424 *gfx) {
             } else {
                 k = t->id;
                 if (k == -1) {
-                    func_800899DC("-1 tbk index");
+                    debugPrintf("-1 tbk index");
                 }
                 t->tex = func_80024324(k);
             }
@@ -370,7 +370,7 @@ Gfx424 *func_800424FC(s32 flags, s32 index, MdlHdr *hdr_in, Gfx424 *gfx) {
             D_800F90A0[index] = D_800FA854;
             return gfx;
         default:
-            func_800899DC("BAD RSP COMMAND");
+            debugPrintf("BAD RSP COMMAND");
             break;
         }
     }

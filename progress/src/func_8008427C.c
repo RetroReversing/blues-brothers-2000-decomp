@@ -14,20 +14,20 @@ typedef s32 M2C_UNK32;
 
 s32 func_8002D260(s32);                             /* extern */
 M2C_UNK func_8002D858(void *, s32 *);               /* extern */
-s32 func_8004303C();                                /* extern */
-M2C_UNK func_800433A8(void *, s32, M2C_UNK);        /* extern */
+s32 animStepKeys();                                /* extern */
+M2C_UNK actorSetAnim(void *, s32, M2C_UNK);        /* extern */
 extern M2C_UNK func_80083EDC;
 extern M2C_UNK func_80084000;
 
 void func_8008427C(void *arg0) {
     s32 sp10;
 
-    if (func_8004303C() != 0) {
+    if (animStepKeys() != 0) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80084000;
         M2C_FIELD(arg0, M2C_UNK **, 0xD8) = &func_80083EDC;
         M2C_FIELD(arg0, s32 *, 0x78) = 2;
         M2C_FIELD(arg0, s32 *, 0x10) = func_8002D260(M2C_FIELD(arg0, s32 *, 0x10) + 0x8000);
-        func_800433A8(arg0, M2C_FIELD(arg0, s32 *, 0x74) + M2C_FIELD(arg0, s32 *, 0x78), 0x100);
+        actorSetAnim(arg0, M2C_FIELD(arg0, s32 *, 0x74) + M2C_FIELD(arg0, s32 *, 0x78), 0x100);
         return;
     }
     func_8002D858(arg0, &sp10);

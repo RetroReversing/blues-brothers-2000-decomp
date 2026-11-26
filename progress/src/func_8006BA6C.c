@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-f32 func_8002D66C(void *, f32, M2C_UNK);            /* extern */
-M2C_UNK func_8004303C();                            /* extern */
+f32 getCameraTargetDist(void *, f32, M2C_UNK);            /* extern */
+M2C_UNK animStepKeys();                            /* extern */
 M2C_UNK func_80081188(s32, s32, f32 *);             /* extern */
 extern f32 D_80008F34;
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 
 s32 func_8006BA6C(void *arg0) {
     f32 sp10;
@@ -25,10 +25,10 @@ s32 func_8006BA6C(void *arg0) {
     s32 var_v0;
     s32 var_v1;
 
-    func_8004303C();
+    animStepKeys();
     temp_fs1 = 1500.0f;
-    temp_fs0 = func_8002D66C(arg0, temp_fs1, 0);
-    func_80081188(M2C_FIELD(arg0, s32 *, 0x70), D_800BD06C + 4, &sp10);
+    temp_fs0 = getCameraTargetDist(arg0, temp_fs1, 0);
+    func_80081188(M2C_FIELD(arg0, s32 *, 0x70), gCameraTarget + 4, &sp10);
     var_v1 = 0;
     if (sp10 <= M2C_FIELD(arg0, f32 *, 0x104)) {
         var_v1 = 1;

@@ -17,9 +17,9 @@ M2C_UNK func_80030C40();             /* extern */
 M2C_UNK func_80062280();                            /* extern */
 M2C_UNK func_80062A44();                            /* extern */
 s32 func_80062A90();                                /* extern */
-extern M2C_UNK D_800B81D8;
+extern M2C_UNK gAudioVolume;
 extern s32 D_80107040;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern s32 D_80171A48;
 extern M2C_UNK func_80023078;
 
@@ -29,8 +29,8 @@ void func_800313A8(void *arg0) {
             func_80030C40(arg0, 1);
             return;
         }
-        func_8002A360(0, M2C_FIELD(&D_800B81D8, s32 *, 0) * 0x147);
-        func_8002A360(1, M2C_FIELD(&D_800B81D8, s32 *, 4) * 0x147);
+        func_8002A360(0, M2C_FIELD(&gAudioVolume, s32 *, 0) * 0x147);
+        func_8002A360(1, M2C_FIELD(&gAudioVolume, s32 *, 4) * 0x147);
         func_80062280();
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
         M2C_FIELD(arg0, s32 *, 0x90) = 0;
@@ -43,6 +43,6 @@ block_4:
         func_8002A360(0x1D, 0);
         func_80030C40(arg0, 1);
         D_80107040 = 0;
-        D_801070A0 = 0;
+        gPadPressed = 0;
     }
 }

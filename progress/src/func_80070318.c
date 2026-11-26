@@ -32,13 +32,13 @@ extern s32 D_800B3978;
 extern s32 D_800B4A84;
 extern s32 D_800B7B0C;
 extern s32 D_800B81D0;
-extern s32 D_800B81D8[];
+extern s32 gAudioVolume[];
 extern s32 D_800B81E0[];
 extern s32 D_800B81F4[];
 extern s32 D_800B9C70;
-extern s32 D_800B9EA0;
-extern s32 D_800B9ECC;
-extern s32 D_800BD06C;
+extern s32 gFrameScale;
+extern s32 gCamSpeedScale;
+extern s32 gCameraTarget;
 extern s32 D_800BD100;
 extern s32 D_800BD274;
 extern s32 D_80107040;
@@ -53,8 +53,8 @@ void func_80070318(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x78) = 0;
     func_8002A360(0x1F, 0);
     func_8002A360(4, 0);
-    func_8002A360(0, D_800B81D8[0] * 327);
-    func_8002A360(1, D_800B81D8[1] * 327);
+    func_8002A360(0, gAudioVolume[0] * 327);
+    func_8002A360(1, gAudioVolume[1] * 327);
     func_8002A360(0xC, 0x80);
     D_800AB408 = 0;
     D_800BD274 = 0x41;
@@ -69,7 +69,7 @@ void func_80070318(void *arg0) {
     D_800B3970 = 0;
     D_800B3974 = 0;
     D_800B7B0C = 0;
-    D_800BD06C = func_800232B4(1, 0, 0, 0);
+    gCameraTarget = func_800232B4(1, 0, 0, 0);
     func_8004EC68(0xABE);
     func_800242A8(0x9C, 0x458, 0);
     func_800242A8(0x87, 0xCE3, 0);
@@ -97,7 +97,7 @@ void func_80070318(void *arg0) {
     M2C_FIELD(D_800B3964, s32 *, 0x7C) = 0;
     func_80088ED0();
     func_80088F40();
-    D_800B9EA0 = 2;
-    D_800B9ECC = 2;
+    gFrameScale = 2;
+    gCamSpeedScale = 2;
     func_8002A360(3, 8);
 }

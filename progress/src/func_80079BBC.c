@@ -3,21 +3,21 @@ s32 func_8002D464(void *, s32);
 f32 func_8002D858(void *, s32);
 s32 func_8002DA80(void *);
 f32 func_8002DD60(f32);
-s32 func_8004303C(void *);
+s32 animStepKeys(void *);
 s32 func_80043328(void *, s32, s32);
-s32 func_800433A8(void *, s32, s32);
+s32 actorSetAnim(void *, s32, s32);
 s32 func_800853E8(void *);
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern s32 func_80079A08;
 void func_80079BBC(void *arg0)
 {
   f32 temp_fs0;
   f32 temp_fs0_2;
   s32 temp_a0;
-  temp_fs0 = func_8002DD60((*((f32 *) (((char *) arg0) + 8))) - (*((f32 *) (((char *) D_800BD06C) + 8))));
+  temp_fs0 = func_8002DD60((*((f32 *) (((char *) arg0) + 8))) - (*((f32 *) (((char *) gCameraTarget) + 8))));
   if ((*((s32 *) (((char *) arg0) + 0x7C))) == 0)
   {
-    func_800433A8(arg0, 0xDA, 0x100);
+    actorSetAnim(arg0, 0xDA, 0x100);
     func_8002D464(arg0, 0xFA);
     *((s32 *) (((char *) arg0) + 0x7C)) = 1;
   }
@@ -44,7 +44,7 @@ void func_80079BBC(void *arg0)
     *((s32 *) (((char *) arg0) + 0x78)) = 0;
     return;
   }
-  if (func_8004303C(arg0) != 0)
+  if (animStepKeys(arg0) != 0)
   {
     if ((*((s32 *) (((char *) arg0) + 0xD0))) == 0xDC)
     {

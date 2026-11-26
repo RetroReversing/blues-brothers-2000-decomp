@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 f32 func_8002D280(f32, M2C_UNK);                    /* extern */
 M2C_UNK func_8002D9B0(void *);                      /* extern */
 M2C_UNK func_8002D9F8(void *);                      /* extern */
@@ -28,8 +28,8 @@ void func_80085528(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x5C) -= 3;
     M2C_FIELD(arg0, s32 *, 0x70) -= 2;
     M2C_FIELD(arg0, f32 *, 0xB0) = -1250.0f;
-    M2C_FIELD(arg0, f32 *, 0xAC) = func_80024394(0x32, 0x190);
-    M2C_FIELD(arg0, f32 *, 0xB4) = func_80024394(0x32, 0x190);
+    M2C_FIELD(arg0, f32 *, 0xAC) = randomRange(0x32, 0x190);
+    M2C_FIELD(arg0, f32 *, 0xB4) = randomRange(0x32, 0x190);
     func_8002D9F8(arg0);
     func_8002D9B0(arg0);
     if (M2C_FIELD(arg0, f32 *, 8) < D_8014022C + 25.0f) {

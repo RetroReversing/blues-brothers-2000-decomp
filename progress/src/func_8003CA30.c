@@ -14,12 +14,12 @@ typedef s32 M2C_UNK32;
 
 s32 func_80043328();
 extern char D_80107040[];
-extern char D_801070A0[];
+extern char gPadPressed[];
 
 s32 func_8003CA30(void *arg0) {
 
     if (!(((u32 *) &D_80107040)[M2C_FIELD(arg0, s32 *, 0xBC)] & 0x2000)) {
-        if (((u32 *) &D_801070A0)[M2C_FIELD(arg0, s32 *, 0xBC)] & 0x10) {
+        if (((u32 *) &gPadPressed)[M2C_FIELD(arg0, s32 *, 0xBC)] & 0x10) {
             func_80043328(arg0, 0x25, 0x100);
             return 1;
         }

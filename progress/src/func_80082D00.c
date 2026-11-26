@@ -2,7 +2,7 @@ s32 func_80023D58(s32);
 void func_80026C04(void *, s32, s32, void *);
 void func_8002A360(s32, void *);
 void func_80033BC0(void);
-void func_800433A8(s32, s32, s32);
+void actorSetAnim(s32, s32, s32);
 void func_80081C10(void);
 void func_80087160(s32);
 void func_800823F0(void);
@@ -26,7 +26,7 @@ typedef struct Obj {
 extern Obj *D_800B3960;
 extern s32 D_800B87E4;
 extern s32 D_800B87EC;
-extern s32 D_8014A928[];
+extern s32 gSplinePointCount[];
 extern s32 D_801719A8;
 extern s32 D_801719AC;
 extern s32 D_801719E0[];
@@ -57,14 +57,14 @@ void func_80082D00(Obj *arg0) {
     func_8002A360(0x16, func_800823F0);
     func_8002A360(0x1E, 0);
     arg0->fn9C = func_80082BE0;
-    func_800433A8(D_801719A8, 0x18A, 0x100);
-    func_800433A8(D_801719AC, 0x19A, 0x100);
+    actorSetAnim(D_801719A8, 0x18A, 0x100);
+    actorSetAnim(D_801719AC, 0x19A, 0x100);
     func_80033BC0();
     D_800B3960->fn9C = func_800836E4;
     D_800B3960->x74 = 0;
     D_800B3960->x70 = 1;
-    D_800B3960->xB4 = D_8014A928[1] / 2;
-    D_800B3960->xB0 = D_8014A928[D_800B3960->x70] / 2;
-    D_800B3960->xAC = D_8014A928[D_800B3960->x70] / 2;
+    D_800B3960->xB4 = gSplinePointCount[1] / 2;
+    D_800B3960->xB0 = gSplinePointCount[D_800B3960->x70] / 2;
+    D_800B3960->xAC = gSplinePointCount[D_800B3960->x70] / 2;
     func_80026C04(D_801719E0, 0, 0x50, D_800B3960);
 }

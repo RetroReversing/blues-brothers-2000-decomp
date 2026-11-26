@@ -1,12 +1,12 @@
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 
 s32 func_80082400(void) {
     s32 temp_v0;
     s32 var_s0;
 
     var_s0 = -1;
-    temp_v0 = func_8000C43C();
+    temp_v0 = cameraGetMode();
     switch (temp_v0) {
     case 0xA:
         var_s0 = 0;

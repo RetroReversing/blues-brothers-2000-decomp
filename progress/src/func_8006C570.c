@@ -14,8 +14,8 @@ typedef struct {
 
 void func_8000F310(void);
 void func_80023078(void);
-s32 func_80025FF8(void);
-s32 func_800261D4(s32);
+s32 initControllerPaks(void);
+s32 refreshControllerPak(s32);
 s32 func_8002621C(s32);
 void func_800262FC(s32);
 s32 func_80026370(s32);
@@ -23,27 +23,27 @@ void func_800263F4(void);
 void func_8002642C(void);
 void func_80026780(void);
 s32 func_80026848(s32);
-void func_800270A8(s32, s32, s32);
-void func_8002713C(s32, s32);
+void setTextColorRgb(s32, s32, s32);
+void setTextPos(s32, s32);
 void func_80027158(s32, s32);
 void func_8002A360(s32, s32);
-s32 func_8002D5CC(Menu *);
+s32 tickActorTimer(Menu *);
 void func_8002E6E4(void);
 void func_8002E79C(void);
 void func_8002E838(s32);
 void func_8003245C(void);
-void func_8003CDA0(s32);
+void drawCenteredMessage(s32);
 void func_8003D854(void);
 void func_8003DEF0(void);
 extern s32 D_800A9550;
-extern s32 D_800AE174;
-extern s32 D_800AE178;
+extern s32 gPakInitWarn;
+extern s32 gPakInitError;
 extern s32 D_800AE19C;
 extern s32 D_800AE1A0;
 extern s32 D_800AE1A4;
 extern s32 D_800AE1A8;
 extern s32 D_800B81C4;
-extern u32 D_801070A0;
+extern u32 gPadPressed;
 
 void func_8006C570(Menu *arg0) {
     s32 r;
@@ -56,10 +56,10 @@ void func_8006C570(Menu *arg0) {
     switch (arg0->state) {
     case 0:
         D_800B81C4 = 0;
-        D_800AE174 = 0;
-        func_800261D4(0);
-        D_800AE178 = 0;
-        switch (func_80025FF8()) {
+        gPakInitWarn = 0;
+        refreshControllerPak(0);
+        gPakInitError = 0;
+        switch (initControllerPaks()) {
         case 0:
             arg0->state = 1;
             break;
@@ -75,35 +75,35 @@ void func_8006C570(Menu *arg0) {
         }
         break;
     case 1:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0x8D);
-        func_8003CDA0(0x77);
-        func_8003CDA0(0x78);
-        func_8003CDA0(0x5F);
-        func_8003CDA0(0x8E);
-        func_8003CDA0(0x56);
-        func_8003CDA0(0x60);
-        if (D_801070A0 & 0x8000) {
-            D_800AE174 = 0;
+        drawCenteredMessage(0x8D);
+        drawCenteredMessage(0x77);
+        drawCenteredMessage(0x78);
+        drawCenteredMessage(0x5F);
+        drawCenteredMessage(0x8E);
+        drawCenteredMessage(0x56);
+        drawCenteredMessage(0x60);
+        if (gPadPressed & 0x8000) {
+            gPakInitWarn = 0;
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 4;
         }
-        if (D_801070A0 & 0x4000) {
+        if (gPadPressed & 0x4000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x9C);
             arg0->state = 5;
         }
         break;
     case 2:
-        if (D_800AE174 == 0) {
+        if (gPakInitWarn == 0) {
             func_8003245C();
             func_800263F4();
             func_80026848(1);
             func_8002642C();
             func_80026780();
-            if (D_800AE1A4 == 0 && D_800AE1A8 == 0 && D_800AE174 == 0) {
+            if (D_800AE1A4 == 0 && D_800AE1A8 == 0 && gPakInitWarn == 0) {
                 arg0->state = 0xE;
                 arg0->unk64 = 0xFA;
                 break;
@@ -112,32 +112,32 @@ void func_8006C570(Menu *arg0) {
         arg0->state = 7;
         break;
     case 14:
-        func_800270A8(0xFF, 0xFF, 0xFF);
-        func_8002713C(0xA0, 0x6F);
-        func_8003CDA0(0x13);
-        if (func_8002D5CC(arg0) != 0 || (D_801070A0 & 0xD000)) {
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
+        setTextPos(0xA0, 0x6F);
+        drawCenteredMessage(0x13);
+        if (tickActorTimer(arg0) != 0 || (gPadPressed & 0xD000)) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 5;
         }
         break;
     case 3:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0x8D);
-        func_8003CDA0(0x7B);
-        func_8003CDA0(0x7C);
-        func_8003CDA0(0x78);
-        func_8003CDA0(0x5F);
-        func_8003CDA0(0x8E);
-        func_8003CDA0(0x56);
-        func_8003CDA0(0x60);
-        if (D_801070A0 & 0x8000) {
+        drawCenteredMessage(0x8D);
+        drawCenteredMessage(0x7B);
+        drawCenteredMessage(0x7C);
+        drawCenteredMessage(0x78);
+        drawCenteredMessage(0x5F);
+        drawCenteredMessage(0x8E);
+        drawCenteredMessage(0x56);
+        drawCenteredMessage(0x60);
+        if (gPadPressed & 0x8000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 4;
         }
-        if (D_801070A0 & 0x4000) {
+        if (gPadPressed & 0x4000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x9C);
             arg0->state = 0xD;
@@ -145,25 +145,25 @@ void func_8006C570(Menu *arg0) {
         break;
     case 4:
         if (func_8002621C(0) != 0) {
-            D_800AE174 = 0;
+            gPakInitWarn = 0;
             arg0->state = 3;
-        } else if (func_800261D4(0) == 0) {
-            D_800AE174 = 0;
+        } else if (refreshControllerPak(0) == 0) {
+            gPakInitWarn = 0;
             arg0->state = 1;
-        } else if (D_800AE174 != 0) {
+        } else if (gPakInitWarn != 0) {
             if (D_800B81C4 != 0) {
                 arg0->state = 9;
             } else {
                 arg0->state = 7;
             }
-        } else if (D_800AE178 == 0) {
+        } else if (gPakInitError == 0) {
             func_800263F4();
             func_80026848(1);
             func_8002642C();
         } else {
             func_80026780();
             func_800263F4();
-            r = func_80026848(D_800AE1A4 | D_800AE1A8 | D_800AE174);
+            r = func_80026848(D_800AE1A4 | D_800AE1A8 | gPakInitWarn);
             func_8002642C();
             if (D_800AE1A8 != 0) {
                 if (D_800AE1A0 / 256 < 3 || D_800AE19C == 16) {
@@ -180,66 +180,66 @@ void func_8006C570(Menu *arg0) {
         }
         break;
     case 10:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0x8F);
-        func_8003CDA0(0x90);
-        func_8003CDA0(0x91);
-        func_8003CDA0(0x5C);
-        if (D_801070A0 & 0x8000) {
+        drawCenteredMessage(0x8F);
+        drawCenteredMessage(0x90);
+        drawCenteredMessage(0x91);
+        drawCenteredMessage(0x5C);
+        if (gPadPressed & 0x8000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 4;
         }
         break;
     case 11:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0x92);
-        func_8003CDA0(0x5C);
-        func_8003CDA0(0x56);
-        func_8003CDA0(0x60);
-        if (D_801070A0 & 0x8000) {
+        drawCenteredMessage(0x92);
+        drawCenteredMessage(0x5C);
+        drawCenteredMessage(0x56);
+        drawCenteredMessage(0x60);
+        if (gPadPressed & 0x8000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 2;
         }
-        if (D_801070A0 & 0x4000) {
+        if (gPadPressed & 0x4000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x9C);
             arg0->state = 1;
         }
         break;
     case 12:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0x8B);
-        func_8003CDA0(0x93);
-        func_8003CDA0(0x94);
-        func_8003CDA0(0x5F);
-        func_8003CDA0(0x95);
-        if (D_801070A0 & 0x8000) {
+        drawCenteredMessage(0x8B);
+        drawCenteredMessage(0x93);
+        drawCenteredMessage(0x94);
+        drawCenteredMessage(0x5F);
+        drawCenteredMessage(0x95);
+        if (gPadPressed & 0x8000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 1;
         }
         break;
     case 5:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0x7D);
-        func_8003CDA0(0x7E);
-        func_8003CDA0(0x7F);
-        func_8003CDA0(0x5F);
-        func_8003CDA0(0x96);
-        func_8003CDA0(0x56);
-        func_8003CDA0(0x97);
-        if (D_801070A0 & 0x8000) {
+        drawCenteredMessage(0x7D);
+        drawCenteredMessage(0x7E);
+        drawCenteredMessage(0x7F);
+        drawCenteredMessage(0x5F);
+        drawCenteredMessage(0x96);
+        drawCenteredMessage(0x56);
+        drawCenteredMessage(0x97);
+        if (gPadPressed & 0x8000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 6;
         }
-        if (D_801070A0 & 0x4000) {
+        if (gPadPressed & 0x4000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x9C);
             arg0->state = 0xD;
@@ -253,23 +253,23 @@ void func_8006C570(Menu *arg0) {
         }
         break;
     case 7:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0x82);
-        func_8003CDA0(0x83);
-        func_8003CDA0(0x84);
-        func_8003CDA0(0x85);
-        func_8003CDA0(0x86);
-        func_8003CDA0(0x87);
-        func_8003CDA0(0x88);
-        func_8003CDA0(0x56);
-        func_8003CDA0(0x60);
-        if (D_801070A0 & 0x8000) {
+        drawCenteredMessage(0x82);
+        drawCenteredMessage(0x83);
+        drawCenteredMessage(0x84);
+        drawCenteredMessage(0x85);
+        drawCenteredMessage(0x86);
+        drawCenteredMessage(0x87);
+        drawCenteredMessage(0x88);
+        drawCenteredMessage(0x56);
+        drawCenteredMessage(0x60);
+        if (gPadPressed & 0x8000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 0xF;
         }
-        if (D_801070A0 & 0x4000) {
+        if (gPadPressed & 0x4000) {
             func_800262FC(0);
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x9C);
@@ -277,19 +277,19 @@ void func_8006C570(Menu *arg0) {
         }
         break;
     case 15:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0xF);
-        func_8003CDA0(0x58);
-        func_8003CDA0(0x59);
-        func_8003CDA0(0x89);
-        func_8003CDA0(0x8A);
-        if (D_801070A0 & 0x8000) {
+        drawCenteredMessage(0xF);
+        drawCenteredMessage(0x58);
+        drawCenteredMessage(0x59);
+        drawCenteredMessage(0x89);
+        drawCenteredMessage(0x8A);
+        if (gPadPressed & 0x8000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 8;
         }
-        if (D_801070A0 & 0x4000) {
+        if (gPadPressed & 0x4000) {
             func_800262FC(0);
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x9C);
@@ -317,21 +317,21 @@ void func_8006C570(Menu *arg0) {
         }
         break;
     case 9:
-        func_800270A8(0xFF, 0xFF, 0xFF);
+        setTextColorRgb(0xFF, 0xFF, 0xFF);
         func_80027158(0xA0, 0x32);
-        func_8003CDA0(0x5E);
-        func_8003CDA0(0x8B);
-        func_8003CDA0(0x8C);
-        func_8003CDA0(0x5F);
-        func_8003CDA0(0x60);
-        func_8003CDA0(0);
-        if (D_801070A0 & 0x8000) {
+        drawCenteredMessage(0x5E);
+        drawCenteredMessage(0x8B);
+        drawCenteredMessage(0x8C);
+        drawCenteredMessage(0x5F);
+        drawCenteredMessage(0x60);
+        drawCenteredMessage(0);
+        if (gPadPressed & 0x8000) {
             func_800262FC(0);
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 5;
         }
-        if (D_801070A0 & 0x4000) {
+        if (gPadPressed & 0x4000) {
             func_800262FC(0);
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);

@@ -20,8 +20,8 @@ void func_8001F1D0(void);
 void func_8001F230(Obj *);
 void func_80022C2C(Obj *, void *, s32);
 void func_80027060(s32, s32, s32, s32);
-void func_80029F8C(s32);
-void func_8002DC84(void *);
+void setRenderState(s32);
+void mtxIdentity3(void *);
 extern s32 D_800B7B0C;
 extern GfxW *D_80177E18;
 
@@ -49,7 +49,7 @@ s32 func_8001F9A8(Obj *arg0) {
         _g->w1 = 0xFFFFFE38;
         func_80027060(0xFF, 0xFF, 0xFF, 0x80);
     }
-    func_8002DC84(mtx);
+    mtxIdentity3(mtx);
     func_80022C2C(arg0, mtx, 1);
     {
         s32 x = arg0->unk7C;
@@ -68,6 +68,6 @@ s32 func_8001F9A8(Obj *arg0) {
         _g->w0 = 0xE7000000;
         _g->w1 = 0;
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
     return 1;
 }

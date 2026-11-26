@@ -15,12 +15,12 @@ typedef s32 M2C_UNK32;
 s32 func_8001B990();
 s32 func_8001C6D8();
 s32 func_80023DBC();
-s32 func_8004303C();
+s32 animStepKeys();
 s32 func_80043328();
 s32 func_80052B24();
 s32 func_80054F38();
 extern char D_800082D8[];
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_80054F88(void *arg0) {
     s32 temp_a1;
@@ -31,13 +31,13 @@ void func_80054F88(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
         return;
     }
-    func_8004303C(arg0);
-    temp_a2 = D_800B9ECC * 2;
-    temp_a1 = D_800B9ECC << 8;
+    animStepKeys(arg0);
+    temp_a2 = gCamSpeedScale * 2;
+    temp_a1 = gCamSpeedScale << 8;
     M2C_FIELD(arg0, s32 *, 0x5C) -= temp_a2;
     M2C_FIELD(arg0, s32 *, 0x10) += M2C_FIELD(arg0, s32 *, 0x70);
     M2C_FIELD(arg0, s32 *, 0x70) += temp_a1;
-    M2C_FIELD(arg0, f32 *, 8) += (f32) (D_800B9ECC * 4);
+    M2C_FIELD(arg0, f32 *, 8) += (f32) (gCamSpeedScale * 4);
     if (M2C_FIELD(arg0, s32 *, 0x5C) <= 0) {
         func_80054F38(func_8001C6D8(arg0, temp_a1, temp_a2));
         func_8001B990(0x200, 0x42);

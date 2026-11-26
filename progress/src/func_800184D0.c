@@ -13,9 +13,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80015C30(void *);                      /* extern */
-s32 func_8002D204(s32, s32, M2C_UNK);               /* extern */
+s32 approachAngle(s32, s32, M2C_UNK);               /* extern */
 s32 func_8002D260(M2C_UNK);                         /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8002D604(void *);                      /* extern */
 M2C_UNK func_8004EB60(void *);                      /* extern */
 extern f32 D_80000A7C;
@@ -32,7 +32,7 @@ void func_800184D0(void *arg0) {
         M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) + D_80000A7C);
         M2C_FIELD(arg0, s32 *, 0x84) = func_8002D260(0x1FFF);
     }
-    temp_v0 = func_8002D204(M2C_FIELD(arg0, s32 *, 0x84), M2C_FIELD(arg0, s32 *, 0x18), 0x578);
+    temp_v0 = approachAngle(M2C_FIELD(arg0, s32 *, 0x84), M2C_FIELD(arg0, s32 *, 0x18), 0x578);
     M2C_FIELD(arg0, s32 *, 0x18) = temp_v0;
     if (temp_v0 == M2C_FIELD(arg0, s32 *, 0x84)) {
         if (M2C_FIELD(arg0, s32 *, 0x84) == func_8002D260(0x1FFF))
@@ -56,7 +56,7 @@ void func_800184D0(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x34) = temp_ft0;
     M2C_FIELD(arg0, s32 *, 0x38) = temp_ft0;
     M2C_FIELD(arg0, s32 *, 0x3C) = temp_ft0;
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         func_8004EB60(arg0);
         var_s0 = 0;
         do {

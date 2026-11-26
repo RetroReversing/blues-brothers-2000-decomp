@@ -12,7 +12,7 @@ s32 func_8002ECB8(void);
 void func_8006DD34(s32);
 extern Cam *D_800B3960;
 extern s32 D_800B81D0;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 s32 func_800705A4(Obj *arg0) {
     s32 scroll = 1;
@@ -39,7 +39,7 @@ s32 func_800705A4(Obj *arg0) {
         break;
     }
     if (scroll) {
-        D_800B3960->z -= D_800B9ECC * 15;
+        D_800B3960->z -= gCamSpeedScale * 15;
     }
     return 0;
 }

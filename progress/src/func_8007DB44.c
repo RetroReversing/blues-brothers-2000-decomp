@@ -13,9 +13,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_8002D3E4(void *, M2C_UNK);             /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8002DA80(void *);                      /* extern */
-M2C_UNK func_8004303C(void *);                      /* extern */
+M2C_UNK animStepKeys(void *);                      /* extern */
 void *func_8007DA68();                              /* extern */
 extern void *D_801705EC;
 extern void *D_801705F0;
@@ -42,10 +42,10 @@ s32 func_8007DB44(void) {
     } else {
         var_s0 = D_801705EC;
     }
-    if (func_8002D5CC(var_s0) != 0) {
+    if (tickActorTimer(var_s0) != 0) {
         M2C_FIELD(var_s0, s32 *, 0x64) = 0;
         func_8002DA80(var_s0);
-        func_8004303C(var_s0);
+        animStepKeys(var_s0);
         M2C_FIELD(var_s0, M2C_UNK (**)(void *), 0x98)(var_s0);
     }
     return 0;

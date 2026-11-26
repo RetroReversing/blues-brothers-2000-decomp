@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80025100(s32, s32);                        /* extern */
-s32 func_8002D204(s32, s32, s32);                   /* extern */
+s32 atan2S16(s32, s32);                        /* extern */
+s32 approachAngle(s32, s32, s32);                   /* extern */
 extern s32 D_800B4C28;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 D_800BD278;
 extern s32 D_800BD280;
 extern s32 D_800BD68C;
@@ -73,7 +73,7 @@ s32 func_800660CC(void *arg0, s32 arg1, s32 arg2) {
         M2C_FIELD(arg0, s32 *, 0x50) = 0;
     }
     if ((var_s0 != 0) && (arg2 == 0)) {
-        M2C_FIELD(arg0, s32 *, 0x10) = func_8002D204(func_80025100((s32) (M2C_FIELD(arg0, f32 *, 0x40) - M2C_FIELD(arg0, f32 *, 4)), (s32) (M2C_FIELD(arg0, f32 *, 0x48) - M2C_FIELD(arg0, f32 *, 0xC))), M2C_FIELD(arg0, s32 *, 0x10), D_800B9ECC << 0xA);
+        M2C_FIELD(arg0, s32 *, 0x10) = approachAngle(atan2S16((s32) (M2C_FIELD(arg0, f32 *, 0x40) - M2C_FIELD(arg0, f32 *, 4)), (s32) (M2C_FIELD(arg0, f32 *, 0x48) - M2C_FIELD(arg0, f32 *, 0xC))), M2C_FIELD(arg0, s32 *, 0x10), gCamSpeedScale << 0xA);
     }
     return var_s0;
 }

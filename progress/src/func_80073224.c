@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80024394(M2C_UNK, s32);                    /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
+s32 randomRange(M2C_UNK, s32);                    /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_800730E0(void *);                      /* extern */
 extern s32 D_800AB9C8;
 extern void *D_800B3964;
@@ -39,14 +39,14 @@ void func_80073224(void *arg0) {
             }
             M2C_FIELD(arg0, s32 *, 0x7C) = 1;
             M2C_FIELD(arg0, s32 *, 0x80) = 0;
-            M2C_FIELD(arg0, s32 *, 0x64) = func_80024394(0, M2C_FIELD(arg0, s32 *, 0x78));
+            M2C_FIELD(arg0, s32 *, 0x64) = randomRange(0, M2C_FIELD(arg0, s32 *, 0x78));
         }
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             if (M2C_FIELD(arg0, s32 *, 0x80) < M2C_FIELD(arg0, s32 *, 0x74)) {
                 func_800730E0(arg0);
                 M2C_FIELD(arg0, s32 *, 0x80) = (s32) (M2C_FIELD(arg0, s32 *, 0x80) + 1);
             }
-            M2C_FIELD(arg0, s32 *, 0x64) = (s32) (M2C_FIELD(arg0, s32 *, 0x78) + func_80024394(-0x14, 0x14));
+            M2C_FIELD(arg0, s32 *, 0x64) = (s32) (M2C_FIELD(arg0, s32 *, 0x78) + randomRange(-0x14, 0x14));
         }
     }
 }

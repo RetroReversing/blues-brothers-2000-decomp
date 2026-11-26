@@ -1,4 +1,4 @@
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 void func_8002A360(s32, s32);
 void func_8002D124(void);
 void func_8003BC40(void *);
@@ -16,7 +16,7 @@ typedef struct {
     void (*unk9C)(void *);
 } Obj;
 
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 Obj *func_80015738(Obj *);
 
 void func_8003CCB4(void) {
@@ -24,9 +24,9 @@ void func_8003CCB4(void) {
     Obj *o;
     s32 i;
 
-    p = D_800BD06C;
+    p = gCameraTarget;
     if (p->unk90 == 1) {
-        func_800433A8(p, 0x1A, 0x100);
+        actorSetAnim(p, 0x1A, 0x100);
         p->unk9C = func_8003BC40;
         p->unk0 = 0x101;
         func_8002A360(0xC, 0x80);

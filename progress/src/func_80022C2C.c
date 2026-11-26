@@ -19,7 +19,7 @@ typedef struct {
 
 void func_80022720(void);
 void func_8002DE20(f32 (*)[3], f32 (*)[3], f32 (*)[3]);
-void func_800899DC(const char *, s32, s32, const char *, s32);
+void debugPrintf(const char *, s32, s32, const char *, s32);
 void guMtxF2L(f32 (*)[4], Mtx4 *);
 extern s32 D_800AB9A0;
 extern s32 D_800B9EB8;
@@ -94,7 +94,7 @@ s32 func_80022C2C(Obj4 *arg0, f32 (*arg1)[3], s32 arg2) {
     arg0->mtx = &D_800CD530[D_800AB9A0][D_800B9EB8];
     D_800AB9A0++;
     if (D_800AB9A0 >= 0x1A4) {
-        func_800899DC("MAX NUMBER OF ROT_MATS EXCCEDED %d MAX=%d %s %d\n", D_800AB9A0, 0x1A4, "C:/PROJECTS/BLUES/MATRIX.c", 0x10F);
+        debugPrintf("MAX NUMBER OF ROT_MATS EXCCEDED %d MAX=%d %s %d\n", D_800AB9A0, 0x1A4, "C:/PROJECTS/BLUES/MATRIX.c", 0x10F);
     }
     return D_800AB9A0 - 1;
 }

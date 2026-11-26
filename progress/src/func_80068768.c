@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #endif
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 
-s32 func_80023874();
+s32 findActor();
 s32 func_80023DBC();
 s32 func_80052A30();
 s32 func_80052A5C();
@@ -22,7 +22,7 @@ extern s32 D_80008D8C;
 extern s32 D_80008D98;
 extern void *D_800B3960;
 extern s32 D_800B5DD4;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern s32 func_800393F4;
 extern s32 func_80064808;
 extern s32 func_80068894;
@@ -32,7 +32,7 @@ void func_80068768(void *arg0) {
     s32 temp_s0;
     s32 temp_v1;
 
-    if (func_80023874(0x800, 0) == 0) {
+    if (findActor(0x800, 0) == 0) {
         D_800B5DD4 = 0;
         func_80052A30();
         do { do { temp_s0 = func_80023DBC(0xE0F); } while (0); } while (0);
@@ -66,7 +66,7 @@ return;
         case 3:
             (*(s32 **)((s8 *)arg0 + 0x9C)) = &func_80068894;
             D_800B5DD4 = 1;
-            (*(s32 **)((s8 *)D_800BD06C + 0x9C)) = &func_800393F4;
+            (*(s32 **)((s8 *)gCameraTarget + 0x9C)) = &func_800393F4;
             break;
         }
     }

@@ -18,17 +18,17 @@ s32 func_8001F230();
 s32 func_80022C2C();
 s32 func_8002338C();
 s32 func_80027060();
-s32 func_80029F8C();
+s32 setRenderState();
 s32 func_8002DAE0(s32 *, s32 *, f32);
 s32 func_8002DB6C(s32 *, s32 *, f32);
 s32 func_8002DBF8(s32 *, s32 *, f32);
-s32 func_8002DC84();
+s32 mtxIdentity3();
 f32 func_8002DD60(f32);
 s32 func_800479B0();
-f32 func_80095DC0(f32);
+f32 sinApprox(f32);
 extern u8 D_800A9554[];
 extern s32 D_800AB408;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 D_800BD114;
 extern s32 D_800F7910[];
 extern s32 D_800F90A0[];
@@ -85,7 +85,7 @@ s32 func_8001F5A4(Act *self) {
         return 0;
     }
     t = (f32) D_800F7910[self->fB8];
-    t /= func_80095DC0(0.9250245f);
+    t /= sinApprox(0.9250245f);
     t += self->f30;
     if (t < 0.0f) {
         return 0;
@@ -103,7 +103,7 @@ s32 func_8001F5A4(Act *self) {
         g1->w1 = -0x805;
         g1->w0 = 0xFC11FE23;
     }
-    self->fF0 = self->fF0 - D_800B9ECC * 8;
+    self->fF0 = self->fF0 - gCamSpeedScale * 8;
     if (self->fF0 <= 0) {
         self->fF0 = 0;
     }
@@ -113,7 +113,7 @@ s32 func_8001F5A4(Act *self) {
     bb *= 0.00009587379760742188;
     cc = (f32) self->f18;
     cc *= 0.00009587379760742188;
-    func_8002DC84(sp10);
+    mtxIdentity3(sp10);
     func_8002DB6C(sp38, sp10, a);
     func_8002DAE0(sp10, sp38, bb);
     func_8002DBF8(sp38, sp10, cc);
@@ -131,7 +131,7 @@ s32 func_8001F5A4(Act *self) {
         g3->w0 = 0xE7000000;
         g3->w1 = 0;
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
     D_800BD114 += D_800F90A0[self->fB8];
     if (self->fF8 & 1) {
         func_8002338C(self);

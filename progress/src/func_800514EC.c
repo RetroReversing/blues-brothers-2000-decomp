@@ -13,9 +13,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80023DBC(M2C_UNK);                         /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
-f32 func_8002D66C(void *, f32, M2C_UNK);            /* extern */
-s32 func_8004303C(void *);                          /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
+f32 getCameraTargetDist(void *, f32, M2C_UNK);            /* extern */
+s32 animStepKeys(void *);                          /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
 s32 func_80052A68(s32, M2C_UNK *);                  /* extern */
@@ -37,13 +37,13 @@ void func_800514EC(void *arg0) {
     var_s1 = M2C_FIELD(arg0, s32 *, 0x6C);
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
-        M2C_FIELD(arg0, s32 *, 0x8C) = func_80024394(1, 4);
+        M2C_FIELD(arg0, s32 *, 0x8C) = randomRange(1, 4);
         M2C_FIELD(arg0, s32 *, 0x80) = 0;
         var_s1 = func_80023DBC(0xE21);
         M2C_FIELD(arg0, s32 *, 0x6C) = var_s1;
     }
     temp_fs0 = 200.0f;
-    if (func_8002D66C(arg0, temp_fs0, 0) < temp_fs0) {
+    if (getCameraTargetDist(arg0, temp_fs0, 0) < temp_fs0) {
         func_80052A5C(0x567);
         if (func_80052A68(var_s1, __base_D_80008044) == 0) {
             func_80052B24(var_s1, __base_D_80008044, arg0);
@@ -54,7 +54,7 @@ void func_800514EC(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0x8C) = 5;
         func_80043328(arg0, 0x127, 0x100);
     }
-    temp_v0 = func_8004303C(arg0);
+    temp_v0 = animStepKeys(arg0);
     M2C_FIELD(arg0, s32 *, 0x70) = temp_v0;
     if (temp_v0 != 0) {
         M2C_FIELD(arg0, s32 *, 0x8C) = (s32) (M2C_FIELD(arg0, s32 *, 0x8C) - 1);
@@ -65,7 +65,7 @@ void func_800514EC(void *arg0) {
         } else {
             func_80043328(arg0, 0x129, 0x100);
         }
-        M2C_FIELD(arg0, s32 *, 0x8C) = func_80024394(1, 4);
+        M2C_FIELD(arg0, s32 *, 0x8C) = randomRange(1, 4);
     }
     if (M2C_FIELD(D_800B3964, s32 *, 0x7C) == 0x63) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80051A74;

@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_80023874(M2C_UNK, void *);               /* extern */
+void *findActor(M2C_UNK, void *);               /* extern */
 s32 func_80023D58();                  /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 extern s32 D_8014AB34;
@@ -44,7 +44,7 @@ f32 __repair_cmp_l; f32 __repair_cmp_r;
             M2C_FIELD(&D_8014AB58, s32 *, 0xC) = func_80023D58(0x19C);
         }
     } else if ((temp_v1 & 3) != 3) {
-        var_s0 = func_80023874(0x11E, NULL);
+        var_s0 = findActor(0x11E, NULL);
         if (var_s0 != NULL) {
             temp_fs0 = 300.0f;
 loop_6:
@@ -61,7 +61,7 @@ if (__repair_cmp_l < __repair_cmp_r) {
                     M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) | 2);
                 }
             }
-            var_s0 = func_80023874(0x11E, var_s0);
+            var_s0 = findActor(0x11E, var_s0);
             if (var_s0 != NULL) {
                 goto loop_6;
             }

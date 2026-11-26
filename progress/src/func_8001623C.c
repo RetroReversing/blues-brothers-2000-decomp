@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_80012718(void *);                        /* extern */
-s32 func_8002D5CC();                                /* extern */
+s32 tickActorTimer();                                /* extern */
 extern f32 D_80000878;
 extern s32 func_80016168;
 extern s32 func_80023078;
@@ -33,7 +33,7 @@ void func_8001623C(void *arg0) {
         goto loop_goto_1;
     }
     (*(s32 *)((s8 *)arg0 + 0)) = 0x101;
-    if (func_8002D5CC() != 0) {
+    if (tickActorTimer() != 0) {
         var_s0 = 0;
         temp_fs0 = 400.0f;
         (((__repair_field_64 *)arg0)->value) = (s32) (*(s32 *)((s8 *)arg0 + 0x70));

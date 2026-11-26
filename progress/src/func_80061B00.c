@@ -12,14 +12,14 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D204(s32, s32, M2C_UNK);               /* extern */
-M2C_UNK func_8004303C();                            /* extern */
+s32 approachAngle(s32, s32, M2C_UNK);               /* extern */
+M2C_UNK animStepKeys();                            /* extern */
 
 s32 func_80061B00(void *arg0) {
     s32 temp_v0;
 
-    func_8004303C();
-    temp_v0 = func_8002D204(M2C_FIELD(arg0, s32 *, 0x6C), M2C_FIELD(arg0, s32 *, 0x10), 0x1000);
+    animStepKeys();
+    temp_v0 = approachAngle(M2C_FIELD(arg0, s32 *, 0x6C), M2C_FIELD(arg0, s32 *, 0x10), 0x1000);
     M2C_FIELD(arg0, s32 *, 0x10) = temp_v0;
     return temp_v0 == M2C_FIELD(arg0, s32 *, 0x6C);
 }

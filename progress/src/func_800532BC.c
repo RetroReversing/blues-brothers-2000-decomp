@@ -1,9 +1,9 @@
 typedef struct Obj Obj;
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void func_800271A8(s32, s32);
 s32 func_800291AC(u8 *);
 void func_8002A360(s32, s32);
-s32 func_8002D5CC(void *);
+s32 tickActorTimer(void *);
 Obj *func_8002E374(s32);
 s32 strlen(const char *);
 void func_8001FE50();
@@ -39,10 +39,10 @@ struct Obj {
 };
 typedef struct { s32 mode; u8 *text; } Msg;
 extern char D_800B4988[];
-extern char D_801070A0[];
+extern char gPadPressed[];
 extern char D_8014AA98[];
 #define gFlag (*(s32 *)D_800B4988)
-#define gPad (*(s32 *)D_801070A0)
+#define gPad (*(s32 *)gPadPressed)
 #define gMode (*(s32 *)D_8014AA98)
 extern f32 D_80008180;
 
@@ -98,7 +98,7 @@ s32 func_800532BC(Obj *arg0, Msg *arg1) {
         o->f38 = 0;
         o->f3C = 0;
         o->f30 = D_80008180;
-        o->f58 = func_800221C0(0, 1, 0, 3, 0, 0, 1, 0);
+        o->f58 = packDrawFlags(0, 1, 0, 3, 0, 0, 1, 0);
         o->f9C = func_80053990;
         o->fA4 = arg0;
         o->f78 = arg0->f78;
@@ -111,7 +111,7 @@ s32 func_800532BC(Obj *arg0, Msg *arg1) {
         arg0->f80 = 0;
         return 1;
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         if (arg0->f64 < -1000) {
             return 0;
         }

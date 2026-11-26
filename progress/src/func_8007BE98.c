@@ -1,13 +1,13 @@
-s32 func_8000C43C(void);
-f32 func_8002D340(f32, f32, f32);
-void func_8002D620(void *);
+s32 cameraGetMode(void);
+f32 approachF32(f32, f32, f32);
+void syncActorPrevPos(void *);
 f32 func_8002DD60(f32);
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 f32 sqrtf(f32);
 void func_800340B4(void);
 void func_800351D4(void);
 void func_800393F4(void);
-void func_8004303C(void);
+void animStepKeys(void);
 void func_8007CB84(void);
 
 typedef struct Obj {
@@ -38,11 +38,11 @@ extern f32 D_80009588;
 extern f32 D_8000958C;
 extern Obj *D_800B3960[];
 extern u8 D_800B3964[];
-extern u8 D_800B9ECC[];
-extern u8 D_800BD06C[];
+extern u8 gCamSpeedScale[];
+extern u8 gCameraTarget[];
 extern u8 D_801700E0[];
 extern u8 D_801700E4[];
-#define BD (*(Obj **)D_800BD06C)
+#define BD (*(Obj **)gCameraTarget)
 #define P60 (D_800B3960[0])
 #define P64 (*(Obj **)D_800B3964)
 
@@ -60,11 +60,11 @@ void func_8007BE98(Obj *arg0) {
     dy = arg0->x8 - BD->x8;
     dist = sqrtf(dx * dx + dz * dz);
     if (arg0->x7C == 0) {
-        if (func_8000C43C() == 0x3C) {
+        if (cameraGetMode() == 0x3C) {
             P64->xA8 = arg0;
             arg0->x7C = 1;
             arg0->x90 = 0;
-            func_8002D620(arg0);
+            syncActorPrevPos(arg0);
         }
         return;
     }
@@ -72,10 +72,10 @@ void func_8007BE98(Obj *arg0) {
         switch (arg0->x90) {
         case 1:
             if (dist < D_80009578) {
-                func_800433A8(BD, 1, 0x100);
+                actorSetAnim(BD, 1, 0x100);
                 {
                     Obj *b1 = BD;
-                b1->fn9C = func_8004303C;
+                b1->fn9C = animStepKeys;
                 b1->x0 = 3;
                 b1->x50 = 0;
                 b1->x90 = 1;
@@ -86,7 +86,7 @@ void func_8007BE98(Obj *arg0) {
             }
             break;
         case 2:
-            arg0->x8 = func_8002D340(arg0->x44 + (f32)arg0->x8C, arg0->x8, (f32)(*(s32 *)D_800B9ECC * 10));
+            arg0->x8 = approachF32(arg0->x44 + (f32)arg0->x8C, arg0->x8, (f32)(*(s32 *)gCamSpeedScale * 10));
             BD->x8 = arg0->x8 + (f32)*(s32 *)D_801700E4;
             if (arg0->x8 == arg0->x44 + (f32)arg0->x8C) {
                 BD->x74 = *(s32 *)D_801700E0;
@@ -101,7 +101,7 @@ void func_8007BE98(Obj *arg0) {
             }
             break;
         case 4:
-            arg0->x8 = func_8002D340(arg0->x44, arg0->x8, (f32)(*(s32 *)D_800B9ECC * 10));
+            arg0->x8 = approachF32(arg0->x44, arg0->x8, (f32)(*(s32 *)gCamSpeedScale * 10));
             if (arg0->x8 == arg0->x44) {
                 arg0->x90 = 5;
             }

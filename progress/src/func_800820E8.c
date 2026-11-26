@@ -26,7 +26,7 @@ typedef struct { u32 w0, w1; } GfxW;
 extern GfxW *D_80177E18;
 
 Unk800820E8_fp *func_80081BF0(s32, s32, s32);
-void func_8002710C(s32, s32, s32, s32);
+void setTextColor(s32, s32, s32, s32);
 s32 func_80023D58(s32);
 void func_80081E1C(s32, s32, s32, s32);
 void func_8008203C(s32, s32);
@@ -78,14 +78,14 @@ void func_800820E8(Unk800820E8 *arg0) {
         g = 0x60;
         bl = 0x60;
     }
-    func_8002710C(r, g, bl, b);
+    setTextColor(r, g, bl, b);
     func_80081E1C(func_80023D58(0x20A), scale * (w + x - 15), scale * (y - 6), 0);
     {
         GfxW *g = D_80177E18++;
         g->w0 = 0xE7000000;
         g->w1 = 0;
     }
-    func_8002710C(0xFF, 0xFF, 0xFF, b);
+    setTextColor(0xFF, 0xFF, 0xFF, b);
     for (i = 0; i < 5; i++) {
         func_8008203C(arg0->unk70, i);
         if (D_801719E0[arg0->unk70].unk10[i] != 0) {
@@ -95,7 +95,7 @@ void func_800820E8(Unk800820E8 *arg0) {
         }
     }
     func_8008203C(arg0->unk70, 5);
-    func_8002710C(0xFF, 0xFF, 0xFF, a);
+    setTextColor(0xFF, 0xFF, 0xFF, a);
     func_80081E78(func_80081F0C(fp->unk0[5]), x + w * 5, y - 7, D_801719E0[arg0->unk70].unk18[5]);
 }
 

@@ -12,18 +12,18 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 s32 func_8001B990(M2C_UNK, M2C_UNK);                /* extern */
 s32 func_80023DBC(M2C_UNK);                         /* extern */
 f32 func_8002DD60(f32);                             /* extern */
-M2C_UNK func_8004303C(void *);                      /* extern */
+M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
 M2C_UNK func_80052B24(s32, M2C_UNK *, void *);      /* extern */
 s32 func_80076080();                                /* extern */
 extern M2C_UNK D_80008338;
 extern M2C_UNK D_80008340;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern f32 D_801700D0;
 extern s32 D_801700D4;
 
@@ -34,8 +34,8 @@ void func_80055E70(void *arg0) {
     if (func_80076080() == 0) {
         M2C_FIELD(arg0, s32 *, 0x10) = (s32) D_801700D4;
         temp_fs0 = D_801700D0;
-        do { func_8004303C(arg0); } while (0);
-        if (func_8000C43C() == 3) {
+        do { animStepKeys(arg0); } while (0);
+        if (cameraGetMode() == 3) {
             if (temp_fs0 <= 500.0f) {
                 M2C_FIELD(arg0, s32 *, 0x80) = 0;
                 if (M2C_FIELD(arg0, s32 *, 0xD0) == 0xBF) {
@@ -45,7 +45,7 @@ void func_80055E70(void *arg0) {
                 M2C_FIELD(arg0, s32 *, 0x80) = 1;
                 M2C_FIELD(arg0, s32 *, 0x84) = 0;
             }
-            if ((M2C_FIELD(arg0, s32 *, 0x80) == 0) && (func_8002DD60(M2C_FIELD(arg0, f32 *, 8) - M2C_FIELD(D_800BD06C, f32 *, 8)) < 500.0f) && (M2C_FIELD(arg0, s32 *, 0x84) == 0)) {
+            if ((M2C_FIELD(arg0, s32 *, 0x80) == 0) && (func_8002DD60(M2C_FIELD(arg0, f32 *, 8) - M2C_FIELD(gCameraTarget, f32 *, 8)) < 500.0f) && (M2C_FIELD(arg0, s32 *, 0x84) == 0)) {
                 temp_s1 = func_80023DBC(0xE1B);
                 func_80052A5C(0x561);
                 if (func_8001B990(0x100, 0x1C) != 0) {

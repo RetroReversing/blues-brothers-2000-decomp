@@ -12,16 +12,16 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023874(M2C_UNK, M2C_UNK);                /* extern */
-void func_8002D620(void *);                         /* extern */
+s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
+void syncActorPrevPos(void *);                         /* extern */
 extern M2C_UNK func_80018954;
 
 void func_80018A34(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
     } else {
-        if (func_80023874(0x1025, 0) == 0) {
+        if (findActor(0x1025, 0) == 0) {
             M2C_FIELD(arg0, s32 *, 0) = 0x10E;
             M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80018954;
         }

@@ -1,6 +1,6 @@
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 void *func_80042F00(s32, s32, s32, s32);
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 void func_80050460(void *, void *);
 void func_800852CC(void *, void *);
 extern f32 D_80008800;
@@ -29,27 +29,27 @@ void *func_8005E864(void *arg0) {
     o = func_80042F00(0x26, flag, flag, flag);
     *(s32 *)(o + 0) = 0x100D;
     func_800852CC(o, arg0);
-    switch (func_8000C43C()) {
+    switch (cameraGetMode()) {
     case 7:
         *(void **)(o + 0x9C) = func_8005DEF8;
-        func_800433A8(o, 0xDF, 0x100);
+        actorSetAnim(o, 0xDF, 0x100);
         break;
     case 3:
         *(void **)(o + 0x9C) = func_8005D4E8;
-        func_800433A8(o, 0xE5, 0x70);
+        actorSetAnim(o, 0xE5, 0x70);
         flag = 1;
         break;
     case 1:
         *(void **)(o + 0x9C) = func_8005CB7C;
-        func_800433A8(o, 0xE5, 0x70);
+        actorSetAnim(o, 0xE5, 0x70);
         flag = 1;
         break;
     case 9:
-        func_800433A8(o, 0xE7, 0x100);
+        actorSetAnim(o, 0xE7, 0x100);
         flag = 1;
         break;
     default:
-        func_800433A8(o, 0xDE, 0x100);
+        actorSetAnim(o, 0xDE, 0x100);
         *(s32 *)(o + 0x74) = 0xDE;
         *(void **)(o + 0x9C) = func_80084504;
         break;
@@ -70,7 +70,7 @@ void *func_8005E864(void *arg0) {
     if (flag != 0) {
         c = func_80042F00(0x64, *(f32 *)(o + 4), *(f32 *)(o + 8), *(f32 *)(o + 0xC));
         *(s32 *)(c + 0) = 0x101;
-        func_800433A8(c, 0xE9, 0x100);
+        actorSetAnim(c, 0xE9, 0x100);
         *(void **)(o + 0xA8) = c;
         *(void **)(c + 0xA4) = o;
         *(void **)(c + 0x9C) = (u8 *)func_8005CAA8 + 8;

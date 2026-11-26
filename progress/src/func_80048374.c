@@ -8,7 +8,7 @@ typedef s32 M2C_UNK32;
 #define M2C_ERROR(desc) (0)
 #define M2C_CARRY 0
 #define M2C_OVERFLOW(a) (0)
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_80007BE4[];
 extern s32 D_800B7690;
 extern char D_801407C8[];
@@ -17,7 +17,7 @@ void func_80048374(s32 arg0) {
     s32 n;
 
     if (D_800B7690 >= 0x100) {
-        func_800899DC(D_80007BE4);
+        debugPrintf(D_80007BE4);
     }
     { u8 *bp = D_801407C8; temp_v1 = bp + D_800B7690 * 8; }
     M2C_FIELD(temp_v1, s8 *, 4) = 0;

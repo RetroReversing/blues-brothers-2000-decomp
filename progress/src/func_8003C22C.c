@@ -12,12 +12,12 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D5CC();                                /* extern */
+s32 tickActorTimer();                                /* extern */
 M2C_UNK func_8003C140(s32);                         /* extern */
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 
 void func_8003C22C(void) {
-    if (func_8002D5CC() != 0) {
-        func_8003C140(D_800BD06C);
+    if (tickActorTimer() != 0) {
+        func_8003C140(gCameraTarget);
     }
 }

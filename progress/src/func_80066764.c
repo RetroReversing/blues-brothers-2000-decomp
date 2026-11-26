@@ -32,11 +32,11 @@ struct Obj {
 
 s16 coss(u16);
 s16 sins(u16);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 void func_8002A360(s32, s32);
 void func_8002D124(void);
-f32 func_8002D340(f32, f32, f32);
-s32 func_8002D5CC(Obj *);
+f32 approachF32(f32, f32, f32);
+s32 tickActorTimer(Obj *);
 f32 func_8002DD60(f32);
 void func_80043328(Obj *, s32, s32);
 s32 func_80052B24(s32, void *, Obj *);
@@ -45,7 +45,7 @@ extern u8 D_80008CCC[];
 extern Obj *D_800B3960;
 extern Obj *D_800B3964;
 extern s32 D_800B5DD4;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 void func_80034F50(void);
 void func_80066EA4(void);
 void func_80066FDC(void);
@@ -65,8 +65,8 @@ s32 func_80066764(Obj *arg0) {
         arg0->unk84 = 0;
     }
     speed = arg0->unk80;
-    arg0->x = func_8002D340(D_800BD06C->x, arg0->x, speed);
-    arg0->z = func_8002D340(D_800BD06C->z, arg0->z, speed);
+    arg0->x = approachF32(gCameraTarget->x, arg0->x, speed);
+    arg0->z = approachF32(gCameraTarget->z, arg0->z, speed);
     if ((arg0->unkC0 & ~1) && D_800B3964->unk74 == 0) {
         D_800B3964->unk74 = 1;
         arg0->unk7C = 0;
@@ -97,14 +97,14 @@ s32 func_80066764(Obj *arg0) {
         r[0] = r[0] + arg0->x;
         r[1] = r[1] + arg0->y;
         r[2] = r[2] + arg0->z;
-        if (func_8002DD60(r[0] - D_800BD06C->x) < 250.0f && func_8002DD60(r[2] - D_800BD06C->z) < 250.0f) {
+        if (func_8002DD60(r[0] - gCameraTarget->x) < 250.0f && func_8002DD60(r[2] - gCameraTarget->z) < 250.0f) {
             arg0->unkD8 = func_80066EA4;
             arg0->unk74 = 1;
             arg0->unk84 = 2;
             arg0->unk7C = 0;
             D_800B5DD4 = 0;
             func_8002A360(0xC, 0x80);
-            func_8002A360(8, func_80024394(0, 1) + 0xD0);
+            func_8002A360(8, randomRange(0, 1) + 0xD0);
             func_8002D124();
             D_800B3960->unk9C = func_80034F50;
             D_800B3960->unkA8 = arg0;
@@ -112,7 +112,7 @@ s32 func_80066764(Obj *arg0) {
             return;
         }
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         arg0->unk7C = 0;
         arg0->unkD8 = func_80067150;
     }

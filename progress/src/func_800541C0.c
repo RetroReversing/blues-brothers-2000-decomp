@@ -30,7 +30,7 @@ typedef struct Handler {
     s32 (*fn)(Obj *, s32 *);
 } Handler;
 
-extern void func_800899DC(char *);
+extern void debugPrintf(char *);
 extern void func_80023078(void);
 extern char D_80008134[];
 extern char D_80008144[];
@@ -44,12 +44,12 @@ void func_800541C0(Obj *o) {
 
     seq = o->x74;
     if (seq == NULL) {
-        func_800899DC(D_80008134);
+        debugPrintf(D_80008134);
     }
     step = (s32 *)seq->steps;
     step += o->x78 * 2;
     if (seq->count < o->x78) {
-        func_800899DC(D_80008144);
+        debugPrintf(D_80008144);
     }
     if (o->xD8 == NULL) {
         o->x98 = (s8 *)&func_80023078 + 8;

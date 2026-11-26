@@ -35,26 +35,26 @@ extern s32 D_800BD000[];
 extern s32 D_800BD084;
 extern s32 D_800BD050;
 extern s32 D_800BCFF8;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern Obj *D_800B3960;
-extern s32 D_800B9ECC;
-extern s32 D_800B9EA0;
+extern s32 gCamSpeedScale;
+extern s32 gFrameScale;
 extern char D_80000B40[];
 extern char D_80000B54[];
 extern s32 D_80000B68;
 extern s32 D_80000B78;
 
-s32 func_8002D5CC(void);
+s32 tickActorTimer(void);
 s32 func_80023D58(s32);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 Obj *func_8005B060(Obj *);
 void func_80088F40(void);
 Obj *func_80017DEC(s32);
-void func_800433A8(Obj *, s32, s32);
-void func_800899DC(char *);
-Obj *func_80023874(s32, s32);
+void actorSetAnim(Obj *, s32, s32);
+void debugPrintf(char *);
+Obj *findActor(s32, s32);
 Obj *func_800232B4(s32, s32, s32, s32);
-s32 func_8002D204(s32, s32, s32);
+s32 approachAngle(s32, s32, s32);
 s32 func_8002D260(s32);
 s32 func_80023DBC(s32);
 void func_80052B24(s32, void *, Obj *);
@@ -64,7 +64,7 @@ void func_80019A2C(Obj *);
 void func_80023078(Obj *);
 void func_8003930C(Obj *);
 void func_80034F50(Obj *);
-void func_8001FF64(Obj *);
+void updateCameraView(Obj *);
 void func_80019D6C(Obj *);
 void func_800340B4(Obj *);
 
@@ -76,7 +76,7 @@ void func_80019E3C(Obj *obj) {
     f32 dz;
     f32 dist;
 
-    if (func_8002D5CC() != 0) {
+    if (tickActorTimer() != 0) {
         obj->timer = 0;
     }
     switch (obj->state) {
@@ -102,28 +102,28 @@ void func_80019E3C(Obj *obj) {
         obj->child = NULL;
         obj->unk8C = 6;
         do {
-            obj->unk8C = func_80024394(1, 8);
+            obj->unk8C = randomRange(1, 8);
         } while (obj->unk8C == 6);
         o = func_8005B060(obj);
         o->destroy(o);
         func_80088F40();
         found = func_80017DEC(0);
         if (found != NULL) {
-            D_800BD06C->rot = -0x4000;
-            D_800BD06C->cb9C = func_8003930C;
-            D_800BD06C->timer = 200;
-            func_800433A8(D_800BD06C, 2, 0x100);
+            gCameraTarget->rot = -0x4000;
+            gCameraTarget->cb9C = func_8003930C;
+            gCameraTarget->timer = 200;
+            actorSetAnim(gCameraTarget, 2, 0x100);
             D_800B3960->x = found->x;
             D_800B3960->y = found->y;
             D_800B3960->z = found->z;
             D_800B3960->cb9C = func_80034F50;
             D_800B3960->child = NULL;
         } else {
-            func_800899DC(D_80000B40);
+            debugPrintf(D_80000B40);
         }
         break;
     case 1:
-        if (func_80023874(0x800, 0) != NULL) {
+        if (findActor(0x800, 0) != NULL) {
             obj->state++;
             found = func_800232B4(0x101, 0, 0, 0);
             obj->child = found;
@@ -137,19 +137,19 @@ void func_80019E3C(Obj *obj) {
         break;
     case 2:
         obj->unk8C = 6000;
-        if (func_80023874(0x800, 0) == NULL) {
-            found = func_80023874(0x134, 0);
+        if (findActor(0x800, 0) == NULL) {
+            found = findActor(0x134, 0);
             if (found != NULL) {
-                D_800BD06C->x = found->x;
-                D_800BD06C->y = found->y;
-                D_800BD06C->z = found->z;
+                gCameraTarget->x = found->x;
+                gCameraTarget->y = found->y;
+                gCameraTarget->z = found->z;
                 found->unk68 = 3;
                 found->cb9C = (void *)((u8 *)func_80023078 + 8);
             }
             obj->state++;
-            o = func_80023874(0x120, 0);
+            o = findActor(0x120, 0);
             if (o == NULL) {
-                func_800899DC(D_80000B54);
+                debugPrintf(D_80000B54);
             }
             D_800B3960->x = o->x;
             D_800B3960->y = o->y;
@@ -161,14 +161,14 @@ void func_80019E3C(Obj *obj) {
             D_800B3960->x = 2835.0f;
             D_800B3960->y = 500.0f;
             D_800B3960->z = -6.0f;
-            D_800B3960->cb9C = func_8001FF64;
+            D_800B3960->cb9C = updateCameraView;
             D_800B3960->unk14 = 0;
             obj->child->unk68 = 13;
             obj->timer = -1;
         }
         break;
     case 3:
-        found = func_80023874(0x1013, 0);
+        found = findActor(0x1013, 0);
         if (found != NULL) {
             obj->timer = 500;
             D_800B3960->cb9C = func_80019D6C;
@@ -180,13 +180,13 @@ void func_80019E3C(Obj *obj) {
             D_800B3960->x = 2835.0f;
             D_800B3960->y = 500.0f;
             D_800B3960->z = -6.0f;
-            D_800B3960->cb9C = func_8001FF64;
+            D_800B3960->cb9C = updateCameraView;
         }
         if (found == NULL) {
             if (obj->timer <= 0) {
-                o = func_80023874(0x120, 0);
+                o = findActor(0x120, 0);
                 if (o == NULL) {
-                    func_800899DC(D_80000B54);
+                    debugPrintf(D_80000B54);
                 }
                 D_800B3960->x = o->x;
                 D_800B3960->y = o->y;
@@ -196,19 +196,19 @@ void func_80019E3C(Obj *obj) {
                 D_800B3960->unk18 = 0;
                 D_800B3960->unk14 = 0;
                 D_800B3960->y = 500.0f;
-                D_800B3960->cb9C = func_8001FF64;
+                D_800B3960->cb9C = updateCameraView;
                 D_800B3960->z = -6.0f;
-                found = func_80023874(0x134, 0);
+                found = findActor(0x134, 0);
                 if (found != NULL) {
-                    D_800BD06C->x = found->x;
-                    D_800BD06C->y = found->y;
-                    D_800BD06C->z = found->z;
+                    gCameraTarget->x = found->x;
+                    gCameraTarget->y = found->y;
+                    gCameraTarget->z = found->z;
                 }
                 if (obj->unk84 == 3) {
                     obj->unk84 = 4;
                     obj->state++;
                 } else {
-                    o = func_80017DEC(func_80024394(5, 8));
+                    o = func_80017DEC(randomRange(5, 8));
                     if (o == NULL) {
                         o = &tmp;
                         o->x = -1911.0f;
@@ -222,21 +222,21 @@ void func_80019E3C(Obj *obj) {
         }
         if (found != NULL) {
             if (obj->unk74 != 0) {
-                found->rot = func_8002D204(func_8002D260(((obj->unk88 - 2) & 7) << 13), found->rot, D_800B9ECC << 10);
+                found->rot = approachAngle(func_8002D260(((obj->unk88 - 2) & 7) << 13), found->rot, gCamSpeedScale << 10);
                 obj->unk74 = 0;
             }
         }
-        found = func_80023874(0x134, 0);
+        found = findActor(0x134, 0);
         if (found != NULL) {
-            dx = D_800BD06C->x - found->x;
-            dz = D_800BD06C->z - found->z;
+            dx = gCameraTarget->x - found->x;
+            dz = gCameraTarget->z - found->z;
             dist = sqrtf(dx * dx + dz * dz);
             if (350.0f < dist) {
-                D_800BD06C->x = dx * 350.0f / dist + found->x;
-                D_800BD06C->z = dz * 350.0f / dist + found->z;
+                gCameraTarget->x = dx * 350.0f / dist + found->x;
+                gCameraTarget->z = dz * 350.0f / dist + found->z;
             }
             if (obj->unk70 == 0) {
-                obj->unk8C -= D_800B9EA0;
+                obj->unk8C -= gFrameScale;
             }
             if (obj->unk8C < 0) {
                 obj->unk8C = 0;
@@ -265,7 +265,7 @@ void func_80019E3C(Obj *obj) {
         func_8002A360(8, 0x54);
         obj->child->unk68 = -1;
         func_80052B24(func_80023DBC(0xE21), &D_80000B78, obj);
-        found = func_80023874(0x1013, 0);
+        found = findActor(0x1013, 0);
         if (found != NULL) {
             found->destroy(found);
         }
@@ -273,7 +273,7 @@ void func_80019E3C(Obj *obj) {
         obj->state++;
         break;
     case 7:
-        if (func_80023874(0x801, 0) == NULL) {
+        if (findActor(0x801, 0) == NULL) {
             obj->state = 2;
         }
         break;

@@ -41,11 +41,11 @@ typedef struct {
     s32 unk3C;
 } Player68378;
 
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 Obj68378 *func_800232B4(s32, s32, s32, s32);
-Obj68378 *func_80023874(s32, Obj68378 *);
+Obj68378 *findActor(s32, Obj68378 *);
 void func_800242A8(s32, s32, s32);
-void func_8002D620(Obj68378 *);
+void syncActorPrevPos(Obj68378 *);
 Obj68378 *func_8002E374(s32);
 Obj68378 *func_80051BE8(s32);
 void func_80052A30(void);
@@ -55,7 +55,7 @@ Obj68378 *func_8006AE5C(Obj68378 *);
 void func_80017880(void);
 void func_800646C0(void);
 void func_80064730(void);
-void func_8006495C(void);
+void cameraUpdateByMode(void);
 void func_80068768(void);
 void func_800690B0(void);
 void func_8006982C(void);
@@ -65,7 +65,7 @@ extern Obj68378 *D_800B3960;
 extern s32 D_800B5DD4;
 extern Entry68378 D_800B8000[];
 extern s32 D_800B83B0;
-extern Player68378 *D_800BD06C;
+extern Player68378 *gCameraTarget;
 
 void func_80068378(Obj68378 *arg0) {
     s32 i;
@@ -85,9 +85,9 @@ void func_80068378(Obj68378 *arg0) {
         arg0->unk74 = 0;
         arg0->unk88 = 0;
         arg0->unk84 = 0;
-        D_800BD06C->unk3C = 320;
-        D_800BD06C->unk38 = 320;
-        D_800BD06C->unk34 = 320;
+        gCameraTarget->unk3C = 320;
+        gCameraTarget->unk38 = 320;
+        gCameraTarget->unk34 = 320;
         func_800682CC();
         D_800B5DD4 = 0;
         func_80052A30();
@@ -106,7 +106,7 @@ void func_80068378(Obj68378 *arg0) {
             o->unk70 = D_800B8000[i].unk1C;
             o->unk9C = func_800690B0;
         }
-        keep = func_80023874(0x13C, NULL);
+        keep = findActor(0x13C, NULL);
         if (keep != NULL) {
             keep->x = -593.0f;
             keep->y = 371.0f;
@@ -121,7 +121,7 @@ void func_80068378(Obj68378 *arg0) {
         keep->x = -500.0f;
         keep->y = 900.0f;
         keep->z = -2080.0f;
-        keep->unk58 = func_800221C0(1, 1, 2, 3, 0, 0, 1, 0);
+        keep->unk58 = packDrawFlags(1, 1, 2, 3, 0, 0, 1, 0);
         o = func_80051BE8(0);
         o->x = 406.0f;
         o->y = 726.0f;
@@ -134,17 +134,17 @@ void func_80068378(Obj68378 *arg0) {
         o->z = -1850.0f;
     }
     if (arg0->unk7C == 0) {
-        o = func_80023874(0x8001, NULL);
+        o = findActor(0x8001, NULL);
         if (o != NULL) {
-            o2 = func_80023874(0x1012, NULL);
+            o2 = findActor(0x1012, NULL);
             if (o2 != NULL) {
-                o->unk9C = func_8006495C;
+                o->unk9C = cameraUpdateByMode;
                 o->x = 0.0f;
                 o->unkC0 = 0;
                 o->unkA8 = o2;
                 o->y = 815.0f;
                 o->z = -2920.0f;
-                func_8002D620(o);
+                syncActorPrevPos(o);
                 arg0->unk7C = 1;
             }
         }

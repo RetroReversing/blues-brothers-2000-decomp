@@ -38,10 +38,10 @@ struct Obj {
     void *unkD8;
 };
 
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 Obj *func_800231FC(void);
 Obj *func_800239E0(void);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 void func_80026C04(void *, s32, s32);
 extern s32 D_800BD090[];
 void func_8001261C(void);
@@ -83,7 +83,7 @@ Obj *func_80012718(Obj *arg0) {
     obj->unk7C = 1;
     obj->unk74 = 0;
     obj->unk78 = 0xFFFFFF;
-    obj->unk58 = func_800221C0(0, 1, 1, 3, 0, 0, 2, 0);
+    obj->unk58 = packDrawFlags(0, 1, 1, 3, 0, 0, 2, 0);
     obj->unk68 = 0xD;
     obj->unk5C = 0xFF;
     obj->unk18 = 0xC000;
@@ -91,11 +91,11 @@ Obj *func_80012718(Obj *arg0) {
     obj->unk10 += 0x8000;
     obj->unk84 = 3;
     obj->y += 20.0f;
-    obj->unk18 = func_80024394(0, 0xFFFF);
-    obj->x += func_80024394(-40, 40);
-    obj->z += func_80024394(-40, 40);
-    obj->y += func_80024394(0, 10);
-    obj->unk80 = -func_80024394(0, 3);
+    obj->unk18 = randomRange(0, 0xFFFF);
+    obj->x += randomRange(-40, 40);
+    obj->z += randomRange(-40, 40);
+    obj->y += randomRange(0, 10);
+    obj->unk80 = -randomRange(0, 3);
     obj->unk4C = arg0->unk4C;
     obj->unk54 = arg0->unk54;
     return obj;

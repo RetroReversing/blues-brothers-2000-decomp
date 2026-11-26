@@ -12,21 +12,21 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK func_8002D3E4(void *, M2C_UNK);             /* extern */
-s32 func_8004303C();                                /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+s32 animStepKeys();                                /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 
 void func_8005FBE4(void *arg0) {
     s32 temp_v0;
     s32 var_v0;
 
-    if (func_8004303C() != 0) {
+    if (animStepKeys() != 0) {
         temp_v0 = M2C_FIELD(arg0, s32 *, 0xD8);
         M2C_FIELD(arg0, s32 *, 0xD8) = 0;
         M2C_FIELD(arg0, s32 *, 0x9C) = temp_v0;
-        func_800433A8(arg0, 0x55, 0x100);
-        if (func_80024394(0, 0x64) >= 0x33) {
+        actorSetAnim(arg0, 0x55, 0x100);
+        if (randomRange(0, 0x64) >= 0x33) {
             var_v0 = M2C_FIELD(arg0, s32 *, 0x10) + 0x2000;
         } else {
             var_v0 = M2C_FIELD(arg0, s32 *, 0x10) - 0x2000;

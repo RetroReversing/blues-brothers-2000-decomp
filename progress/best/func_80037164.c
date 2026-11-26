@@ -28,12 +28,12 @@ void func_8002E018(f32 *, f32 *, f32 *);
 f32 func_8002E0D0(f32 *, f32 *);
 void func_8002E100(f32 *, f32 *);
 void func_8002E1CC(f32 *, f32 *, f32);
-f32 *func_8002E1FC(f32 *, f32 *, f32 *);
+f32 *vec3Sub(f32 *, f32 *, f32 *);
 void func_8002E234(f32 *, f32 *, f32 *);
 void func_8002E26C(f32 *, f32 *, f32 *, f32 *);
 void func_80037050(f32 *, f32 *);
 void func_80037064(s32 *, s32 *, s32, s32, s32);
-void func_80048820(f32 *, f32 *, s32);
+void collectCollisionCells(f32 *, f32 *, s32);
 extern f32 D_800B4C10[3];
 extern f32 D_800B4C1C[3];
 extern s32 D_800B76A0;
@@ -120,7 +120,7 @@ void func_80037164(Actor *arg0, f32 *pos, f32 *vel) {
     if (bmin[2] > bmax[2]) {
         func_80037050(&bmin[2], &bmax[2]);
     }
-    func_80048820(bmin, bmax, 1);
+    collectCollisionCells(bmin, bmax, 1);
     zero = 0.0;
     fz = 0.0f;
     i = 0;
@@ -149,22 +149,22 @@ void func_80037164(Actor *arg0, f32 *pos, f32 *vel) {
         if (func_8002E0D0(n, vel) > fz) {
             goto next_i;
         }
-        d0 = func_8002E0D0(n, func_8002E1FC(tmp, pos, v0));
+        d0 = func_8002E0D0(n, vec3Sub(tmp, pos, v0));
         if (!(d0 >= zero) || !(d0 < 115.0f)) {
             goto next_i;
         }
-        d1 = func_8002E0D0(n, func_8002E1FC(tmp, end, v0));
+        d1 = func_8002E0D0(n, vec3Sub(tmp, end, v0));
         func_8002E1CC(tmp, n, -d0);
         func_8002E234(proj, tmp, pos);
         n[0] = -n[0];
         n[1] = -n[1];
         n[2] = -n[2];
-        func_8002E018(e0, func_8002E1FC(tmp, v1, v0), n);
-        func_8002E018(e1, func_8002E1FC(tmp, v2, v1), n);
-        func_8002E018(e2, func_8002E1FC(tmp, v0, v2), n);
-        s0 = func_8002E0D0(e0, func_8002E1FC(tmp, proj, v0));
-        s1 = func_8002E0D0(e1, func_8002E1FC(tmp, proj, v1));
-        s2 = func_8002E0D0(e2, func_8002E1FC(tmp, proj, v2));
+        func_8002E018(e0, vec3Sub(tmp, v1, v0), n);
+        func_8002E018(e1, vec3Sub(tmp, v2, v1), n);
+        func_8002E018(e2, vec3Sub(tmp, v0, v2), n);
+        s0 = func_8002E0D0(e0, vec3Sub(tmp, proj, v0));
+        s1 = func_8002E0D0(e1, vec3Sub(tmp, proj, v1));
+        s2 = func_8002E0D0(e2, vec3Sub(tmp, proj, v2));
         if (!(s0 >= fz) || !(s1 >= fz) || !(s2 >= fz)) {
             t = d0 - d1;
             if (func_8002DD60(t) > 1e-7) {
@@ -172,9 +172,9 @@ void func_80037164(Actor *arg0, f32 *pos, f32 *vel) {
             hit[0] = pos[0] + (end[0] - pos[0]) * t;
             hit[1] = pos[1] + (end[1] - pos[1]) * t;
             hit[2] = pos[2] + (end[2] - pos[2]) * t;
-            s0 = func_8002E0D0(e0, func_8002E1FC(tmp, hit, v0));
-            do { do { s1 = func_8002E0D0(e1, func_8002E1FC(tmp, hit, v1));
-            s2 = func_8002E0D0(e2, func_8002E1FC(tmp, hit, v2)); } while (0); } while (0);
+            s0 = func_8002E0D0(e0, vec3Sub(tmp, hit, v0));
+            do { do { s1 = func_8002E0D0(e1, vec3Sub(tmp, hit, v1));
+            s2 = func_8002E0D0(e2, vec3Sub(tmp, hit, v2)); } while (0); } while (0);
             if (s0 >= fz && s1 >= fz && s2 >= fz) {
                 goto hit;
             }

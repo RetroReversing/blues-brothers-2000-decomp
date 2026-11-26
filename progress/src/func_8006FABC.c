@@ -24,10 +24,10 @@ typedef struct {
     f32 unk104;
 } Obj3;
 
-void func_8001FF64(Obj3 *);
-s32 func_8002D298(s32, s32, s32);
-f32 func_8002D340(f32, f32, f32);
-void func_8002D620(void);
+void updateCameraView(Obj3 *);
+s32 approachS32(s32, s32, s32);
+f32 approachF32(f32, f32, f32);
+void syncActorPrevPos(void);
 void func_80034FEC(Obj3 *, s32 *);
 void func_8004C020(Mtx3 *, s32, s32, s32, s32, s32, s32, f32 *, f32 *, f32 *);
 void func_8004DF94(Mtx3 *, f32, f32, f32);
@@ -42,7 +42,7 @@ extern f64 D_80009040;
 extern Mtx3 D_800B76E0;
 extern f32 D_800B8320[2];
 extern f32 D_800B8328[2];
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_8006FABC(Obj3 *arg0) {
     s32 pos[3];
@@ -61,12 +61,12 @@ arg0->unk100 = D_800B8320[0];
 arg0->unk104 = D_800B8320[1];
 arg0->unk88 = -0x78;
 arg0->unk8C = 0;
-        func_8002D620();
+        syncActorPrevPos();
     }
     arg0->unk70 = 1;
     if (arg0->unk6C == 0) {
-        arg0->unk100 = func_8002D340(D_800B8328[0], arg0->unk100, D_800B9ECC * 35.0);
-        arg0->unk104 = func_8002D340(D_800B8328[1], arg0->unk104, D_800B9ECC * 35.0);
+        arg0->unk100 = approachF32(D_800B8328[0], arg0->unk100, gCamSpeedScale * 35.0);
+        arg0->unk104 = approachF32(D_800B8328[1], arg0->unk104, gCamSpeedScale * 35.0);
         if (arg0->unk100 == D_800B8328[0]) {
             done = 1;
         }
@@ -80,7 +80,7 @@ arg0->unk8C = 0;
     arg0->y = out[1];
     arg0->z = out[2];
     if (arg0->unk74 != 0) {
-        arg0->unk88 = func_8002D298(0x50, arg0->unk88, 0x19);
+        arg0->unk88 = approachS32(0x50, arg0->unk88, 0x19);
     }
     pos[0] = arg0->px;
     pos[1] = arg0->py + arg0->unk88;
@@ -90,5 +90,5 @@ arg0->unk8C = 0;
         arg0->unk7C = 1;
         func_8006F944();
     }
-    func_8001FF64(arg0);
+    updateCameraView(arg0);
 }

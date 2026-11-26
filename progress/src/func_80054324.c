@@ -1,13 +1,13 @@
 void *func_800232B4();
-s32 func_80023874();
-void *func_80023E18();
+s32 findActor();
+void *getImageAsset();
 s32 func_80026CB4();
 void func_80053EF0();
-void func_800899DC();
+void debugPrintf();
 extern char D_800080F0[];
 extern char D_8000811C[];
 extern s32 D_80107040;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern s32 D_80140228;
 extern s32 D_8014AA94;
 extern s32 D_8014AA9C;
@@ -22,15 +22,15 @@ void func_80054324(s32 arg0, s32 arg1)
     void *temp_v0_2;
 
     var_s3 = 0;
-    if (func_80023874(0x800, 0) == 0) {
+    if (findActor(0x800, 0) == 0) {
         D_8014AA9C = 0;
         D_8014AA94 = 0;
         D_80140228 = 0;
-        D_801070A0 = 0;
+        gPadPressed = 0;
         D_80107040 = 0;
-        temp_v0 = func_80023E18(arg0);
+        temp_v0 = getImageAsset(arg0);
         if (temp_v0 == NULL) {
-            func_800899DC(D_800080F0);
+            debugPrintf(D_800080F0);
         }
         func_80053EF0(temp_v0);
         var_s1 = *((s32 **) ((char *) temp_v0 + 8));
@@ -54,7 +54,7 @@ void func_80054324(s32 arg0, s32 arg1)
             }
         }
         if (var_s3 == 0) {
-            func_800899DC(D_8000811C, arg1);
+            debugPrintf(D_8000811C, arg1);
         }
     }
 }

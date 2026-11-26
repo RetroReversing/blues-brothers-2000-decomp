@@ -1,4 +1,4 @@
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void *func_800232B4(s32, s32, s32, s32);
 void func_8002A360(s32, s32);
 s32 func_8002D260(s32);
@@ -41,9 +41,9 @@ extern f32 D_800095A8;
 extern f32 D_800095AC;
 extern f32 D_800095B0;
 extern u8 D_800B3960[];
-extern u8 D_800BD06C[];
+extern u8 gCameraTarget[];
 #define B60 (*(Obj **)D_800B3960)
-#define BD (*(Obj **)D_800BD06C)
+#define BD (*(Obj **)gCameraTarget)
 extern s32 D_801700F8[];
 
 Obj *func_8007C54C(void) {
@@ -55,7 +55,7 @@ Obj *func_8007C54C(void) {
     o->x2C = D_800095A0;
     o->x30 = D_800095A4;
     o->x60 = D_801700F8[0];
-    o->x58 = func_800221C0(0, 0, 2, 2, 0, 0, 1, 1);
+    o->x58 = packDrawFlags(0, 0, 2, 2, 0, 0, 1, 1);
     o->x68 = 14;
     o->x5C = 0xFF;
     o->x64 = 25;
@@ -75,7 +75,7 @@ Obj *func_8007C54C(void) {
     o->x2C = D_800095AC;
     o->x30 = D_800095B0;
     o->x60 = D_801700F8[1];
-    o->x58 = func_800221C0(0, 0, 2, 2, 0, 0, 1, 1);
+    o->x58 = packDrawFlags(0, 0, 2, 2, 0, 0, 1, 1);
     o->x68 = 14;
     o->x5C = 0xFF;
     o->x64 = 25;

@@ -39,8 +39,8 @@ typedef struct Name {
 s32 func_80023D58(s32);
 s32 func_80023DBC(s32);
 void func_8002A360(s32, s32);
-f32 func_8002D340(f32, f32, f32);
-void func_800433A8(void *, s32, s32);
+f32 approachF32(f32, f32, f32);
+void actorSetAnim(void *, s32, s32);
 void func_80052B24(s32, char *, void *);
 s32 func_80082400(void);
 void func_80082F68(s32);
@@ -60,7 +60,7 @@ extern f64 D_80009B78;
 extern Name D_800B8720[];
 extern Pair D_800B9000[];
 extern s32 D_800B9B40[];
-extern u8 D_800B9ECC[];
+extern u8 gCamSpeedScale[];
 extern u8 D_80171980[];
 extern u8 D_801719A8[];
 extern u8 D_801719AC[];
@@ -78,8 +78,8 @@ void func_8008662C(Obj *arg0) {
 
     idx = func_80082400();
     font = func_80023DBC(0xE33);
-    (*(Obj * *)D_80171A30)->x4 = func_8002D340(D_80009B5C, (*(Obj * *)D_80171A30)->x4, 4.0f);
-    (*(s32 *)D_80171980) += (*(s32 *)D_800B9ECC);
+    (*(Obj * *)D_80171A30)->x4 = approachF32(D_80009B5C, (*(Obj * *)D_80171A30)->x4, 4.0f);
+    (*(s32 *)D_80171980) += (*(s32 *)gCamSpeedScale);
     t = (*(s32 *)D_80171980) % 144;
     func_80082F68(0);
     if (t / 2 == 18) {
@@ -87,7 +87,7 @@ void func_8008662C(Obj *arg0) {
         if ((*(s32 *)D_80171A34) != 1) {
             if (D_801719E0.xC != 0) {
                 (*(s32 *)D_80171A50)++;
-                func_800433A8((*(Obj * *)D_801719A8), D_800B9000[D_801719E0.x0].x4, 0x100);
+                actorSetAnim((*(Obj * *)D_801719A8), D_800B9000[D_801719E0.x0].x4, 0x100);
                 D_801719E0.x8 = D_800B9000[idx].x0;
                 D_801719E0.xC = 0;
                 D_801719E0.x10[0] = 0;
@@ -99,7 +99,7 @@ void func_8008662C(Obj *arg0) {
                 func_80087160(func_80023D58(0x150));
             } else {
                 func_80087160(func_80023D58(0x192));
-                func_800433A8((*(Obj * *)D_801719A8), 0x16B, 0x100);
+                actorSetAnim((*(Obj * *)D_801719A8), 0x16B, 0x100);
             }
         }
     }
@@ -110,7 +110,7 @@ void func_8008662C(Obj *arg0) {
             sprintf(buf, D_80009B40, D_800B8720[idx].x8);
             func_80052B24(font, buf, arg0);
             (*(Obj * *)D_80171A30)->x68 = -1;
-            func_800433A8((*(Obj * *)D_801719A8), 0x178, 0x100);
+            actorSetAnim((*(Obj * *)D_801719A8), 0x178, 0x100);
             func_8002A360(12, 0x80);
             func_8002A360(8, 0x78);
             return;
@@ -123,9 +123,9 @@ void func_8008662C(Obj *arg0) {
         sprintf(buf, D_80009B54, D_800B8720[idx].x8);
         func_80052B24(font, buf, arg0);
         arg0->fn9C = func_80086B3C;
-        func_800433A8((*(Obj * *)D_801719A8), 1, 0x100);
+        actorSetAnim((*(Obj * *)D_801719A8), 1, 0x100);
         (*(Obj * *)D_801719AC)->x10 = -0x4000;
-        func_800433A8((*(Obj * *)D_801719AC), 0x18C, 0x100);
+        actorSetAnim((*(Obj * *)D_801719AC), 0x18C, 0x100);
         (*(Obj * *)D_801719AC)->x10 = 0x8000;
         (*(Obj * *)D_80171A30)->x68 = -1;
         return;

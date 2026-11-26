@@ -13,35 +13,35 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK coss(s32);                                  /* extern */
-s32 func_80023E18(s32);                             /* extern */
+s32 getImageAsset(s32);                             /* extern */
 M2C_UNK func_80027038(M2C_UNK);                     /* extern */
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_8002713C(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK setTextPos(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_800294D0(s32);                         /* extern */
-M2C_UNK func_8003CDA0(M2C_UNK);                     /* extern */
+M2C_UNK drawCenteredMessage(M2C_UNK);                     /* extern */
 M2C_UNK func_80081E1C(s32, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 
 void func_80031DF4(void *arg0) {
-    coss((D_800B9EA4 * 0x28F) & 0xFFFF);
+    coss((gTextWaveTime * 0x28F) & 0xFFFF);
     M2C_FIELD(arg0, s32 *, 0x68) = 0xE;
     func_80027038(1);
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
-    func_800294D0(func_80023E18(M2C_FIELD(arg0, s32 *, 0x84)));
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
+    func_800294D0(getImageAsset(M2C_FIELD(arg0, s32 *, 0x84)));
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
     func_80081E1C(M2C_FIELD(arg0, s32 *, 0x60), 0xA0, 0x14, 2);
     func_80027038(1);
-    func_8002713C(0xA0, 0x3C);
-    func_8003CDA0(0x46);
-    func_8003CDA0(0x47);
-    func_8003CDA0(0x48);
-    func_8003CDA0(0x49);
-    func_8003CDA0(0x4A);
-    func_8003CDA0(0x4B);
-    func_8003CDA0(0x4C);
-    func_8003CDA0(0x4D);
-    func_8003CDA0(0x4E);
-    func_8003CDA0(0x4F);
+    setTextPos(0xA0, 0x3C);
+    drawCenteredMessage(0x46);
+    drawCenteredMessage(0x47);
+    drawCenteredMessage(0x48);
+    drawCenteredMessage(0x49);
+    drawCenteredMessage(0x4A);
+    drawCenteredMessage(0x4B);
+    drawCenteredMessage(0x4C);
+    drawCenteredMessage(0x4D);
+    drawCenteredMessage(0x4E);
+    drawCenteredMessage(0x4F);
     M2C_FIELD(arg0, s32 *, 0xBC) = 0;
-    func_8003CDA0(0x45);
+    drawCenteredMessage(0x45);
 }

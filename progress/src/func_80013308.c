@@ -13,7 +13,7 @@ typedef struct {
     s32 iB0;
 } Obj;
 
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 void func_800131F8(void);
 
 void func_80013308(Obj *obj) {
@@ -24,8 +24,8 @@ void func_80013308(Obj *obj) {
     obj->i50 = 0;
     obj->iB0 = 0;
     obj->y8 = obj->f44;
-    dx_1 = D_800BD06C->x4 - obj->x4;
-    dz = D_800BD06C->zC - obj->zC;
+    dx_1 = gCameraTarget->x4 - obj->x4;
+    dz = gCameraTarget->zC - obj->zC;
     dx_2 = abs(dx_1);
     if (dx_2 < 201) {
         if (((dz < 0) ? -dz : dz) < 201) {

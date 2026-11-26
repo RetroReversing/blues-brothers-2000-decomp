@@ -1,12 +1,12 @@
 typedef struct { u8 pad[0x20]; s32 used; } Heap;
 s32 func_80023D58(s32);
 s32 func_80023DE0(s32);
-s32 func_800253A0(s32);
+s32 heapAlloc(s32);
 void func_80025820(s32, s32);
 s32 func_80025A00(s32, s32);
 s32 func_80025AC4(s32);
 s32 func_800424FC(s32, s32, s32, s32);
-void func_800899DC(void *);
+void debugPrintf(void *);
 extern u8 D_80000F34[];
 extern s32 D_800F80E8[];
 extern s32 D_800F9878[];
@@ -35,7 +35,7 @@ s32 func_80024130(s32 idx, s32 key, s32 arg2) {
             }
         }
     }
-    base = func_800253A0(func_80025AC4(k) + 0xC800);
+    base = heapAlloc(func_80025AC4(k) + 0xC800);
     size = func_80025A00(k, base);
     D_800FB038[idx] = func_80023D58(k);
     if (size & 0x3F) {
@@ -48,7 +48,7 @@ s32 func_80024130(s32 idx, s32 key, s32 arg2) {
     D_800F9878[idx] = 0;
     D_800F80E8[idx] = 0;
     if (r - end > 0xC800) {
-        func_800899DC(D_80000F34);
+        debugPrintf(D_80000F34);
     }
     len = r - base;
     func_80025820(base, len);

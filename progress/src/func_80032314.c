@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023E18();
+s32 getImageAsset();
 s32 func_80027038();
-s32 func_8002710C();
-s32 func_8002713C();
+s32 setTextColor();
+s32 setTextPos();
 s32 func_80028710();
 s32 func_800294D0();
-s32 func_80031C70();
+s32 setSlotTextColor();
 extern s32 D_800B4A90;
 
 void func_80032314(void *arg0) {
@@ -30,12 +30,12 @@ void func_80032314(void *arg0) {
     func_80027038(1);
     var_s0 = 0;
     var_s2 = 0x46;
-    func_800294D0(func_80023E18(M2C_FIELD(arg0, s32 *, 0x84)));
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
+    func_800294D0(getImageAsset(M2C_FIELD(arg0, s32 *, 0x84)));
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
     var_s1 = &D_800B4A90;
     do {
-        func_80031C70(arg0, var_s0);
-        func_8002713C(0xA0, var_s2);
+        setSlotTextColor(arg0, var_s0);
+        setTextPos(0xA0, var_s2);
         temp_a0 = *(s32 *)var_s1;
         var_s1 += 4;
         var_s2 += 0xF;

@@ -15,10 +15,10 @@ typedef struct Obj57 {
 s16 coss();
 s16 sins();
 Obj57 *func_80017344();
-s32 func_80024394();
+s32 randomRange();
 s32 func_8002D1A0();
 s32 func_8002D3E4();
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 void func_800462A0(void);
 
 void func_80057020(Obj57 *arg0) {
@@ -27,7 +27,7 @@ void func_80057020(Obj57 *arg0) {
     Obj57 *temp_v0_2;
     s32 i;
 
-    if (func_80024394(0, 0x64) >= 0x47) {
+    if (randomRange(0, 0x64) >= 0x47) {
         temp_s0 = func_8002D1A0();
         temp_v0_2 = func_80017344(arg0);
         temp_s0_2 = temp_s0 & 0xFFFF;
@@ -36,8 +36,8 @@ void func_80057020(Obj57 *arg0) {
         temp_v0_2->xC += (f32) ((s32) (coss(temp_s0_2) * 0x19) >> 0xD);
         func_8002D3E4(temp_v0_2, 0x12C);
     }
-    arg0->x5C -= D_800B9ECC * 5;
-    for (i = 0; i < D_800B9ECC; i++) {
+    arg0->x5C -= gCamSpeedScale * 5;
+    for (i = 0; i < gCamSpeedScale; i++) {
         arg0->x34 = arg0->x34 * 0x101;
         arg0->x3C = arg0->x3C * 0x101;
         arg0->x38 = arg0->x38 * 0xFE;

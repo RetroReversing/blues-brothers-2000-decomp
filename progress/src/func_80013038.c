@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
 s32 func_80023E3C(M2C_UNK);                         /* extern */
 M2C_UNK func_8002D604(void *);                      /* extern */
 void *func_8004EB60(void *);                        /* extern */
@@ -25,7 +25,7 @@ void func_80013038(void *arg0) {
 
     M2C_FIELD(arg0, s32 *, 0xB8) = 0x90;
     M2C_FIELD(arg0, s32 *, 0xE4) = func_80023E3C(0x90);
-    M2C_FIELD(arg0, s32 *, 0x58) = func_800221C0(1, 1, 0, 2, 0, 1, 1, 0);
+    M2C_FIELD(arg0, s32 *, 0x58) = packDrawFlags(1, 1, 0, 2, 0, 1, 1, 0);
     M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;
     M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_8001F26C;
     M2C_FIELD(arg0, s32 *, 0x94) = 0x1B58;

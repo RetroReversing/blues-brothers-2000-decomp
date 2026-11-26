@@ -14,15 +14,15 @@ typedef struct Obj {
     s32 f80;
 } Obj;
 void func_8002D3E4(Obj *, s32);
-s32 func_8002D5CC(Obj *);
+s32 tickActorTimer(Obj *);
 void func_8002DA80(Obj *);
 f32 func_8002DD60(f32);
 void func_80043328(Obj *, s32, s32);
 void func_80080594(Obj *, s32);
 s32 func_8002444C(void);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 float sqrtf(float);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 
 s32 func_8005738C(Obj *o) {
     f32 range;
@@ -36,21 +36,21 @@ s32 func_8005738C(Obj *o) {
     func_80043328(o, 0xC0, 0x100);
     func_8002D3E4(o, 0);
     func_8002DA80(o);
-    dy = func_8002DD60(D_800BD06C->y - o->y);
-    dx = D_800BD06C->x - o->f40;
-    dz = D_800BD06C->z - o->f48;
+    dy = func_8002DD60(gCameraTarget->y - o->y);
+    dx = gCameraTarget->x - o->f40;
+    dz = gCameraTarget->z - o->f48;
     dist = sqrtf(dx * dx + dz * dz);
     if (dist < range && dy < 400.0f) {
         func_80080594(o, 0);
         return 2;
     }
-    if (func_8002D5CC(o) == 0) {
+    if (tickActorTimer(o) == 0) {
         return 0;
     }
     if ((func_8002444C() & 3) != 3) {
         return 1;
     }
     o->f80 = 1;
-    o->f64 = func_80024394(0x50, 0x140);
+    o->f64 = randomRange(0x50, 0x140);
     return 0;
 }

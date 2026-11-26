@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #endif
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 
-s32 func_8000C874();
+s32 initLevel();
 s32 func_8002E7B8();
 s32 func_80088ED0();
 s32 func_80088F40();
@@ -35,6 +35,6 @@ void func_8000F178(void *arg0) {
     *(s32 *)((char *)temp_v0 + 0x24) = temp_v1;
     temp_v1 = *(s32 *)((char *)arg0 + 0x78);
     *(s32 *)((char *)temp_v0 + 0x1C) = temp_v1;
-    func_8000C874();
+    initLevel();
     func_80088F40();
 }

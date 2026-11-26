@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002D620(void *);                      /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 M2C_UNK func_80043328(void *, s32, M2C_UNK);        /* extern */
 s32 func_8006A758(void *);                          /* extern */
 s32 func_8006A7A0(void *);                          /* extern */
 s32 func_8006A914(void *);                          /* extern */
 s32 func_80080DE0(s32);                             /* extern */
-M2C_UNK func_80081588(s32, M2C_UNK);                /* extern */
+M2C_UNK initSpline(s32, M2C_UNK);                /* extern */
 M2C_UNK func_80083A28(void *);                      /* extern */
 extern f32 D_80008EA0;
 extern f32 D_80008EA4;
@@ -32,12 +32,12 @@ void func_8006A978(void *arg0) {
 
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
         if (func_80080DE0(M2C_FIELD(arg0, s32 *, 0x70)) == 0) {
-            func_80081588(M2C_FIELD(arg0, s32 *, 0x70), 1);
+            initSpline(M2C_FIELD(arg0, s32 *, 0x70), 1);
         }
         M2C_FIELD(arg0, s32 *, 0xBC) = 1;
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
         M2C_FIELD(arg0, s32 *, 0x78) = 0;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         M2C_FIELD(arg0, s32 (**)(void *), 0xD8) = NULL;
         if (M2C_FIELD(arg0, f32 *, 0xAC) == 0.0f) {
             M2C_FIELD(arg0, f32 *, 0xAC) = (f32) D_80008EA0;

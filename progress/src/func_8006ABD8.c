@@ -17,7 +17,7 @@ typedef struct Obj {
     u8 padA4[4];
     struct Obj *unkA8;
 } Obj;
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 Obj *func_8002E374(s32);
 void func_8002D858(void *, void *);
 s32 func_80043248(void *);
@@ -39,7 +39,7 @@ void func_8006ABD8(Obj *arg0)
     Obj *p;
 
     if (arg0->unk7C == 0) {
-        func_800433A8(arg0, 0x1A6, 0x100);
+        actorSetAnim(arg0, 0x1A6, 0x100);
         arg0->unk7C = 1;
         arg0->unk70 = 0;
         arg0->y = 900.0f;
@@ -58,7 +58,7 @@ void func_8006ABD8(Obj *arg0)
     if ((arg0->unk70 = func_80043248(arg0)) != 0) {
         arg0->y = (f32)D_800B4C28;
         c = func_8006B020(arg0);
-        func_800433A8(c, 0xB6, 0x100);
+        actorSetAnim(c, 0xB6, 0x100);
         c->y = (f32)D_800B4C28;
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x34);

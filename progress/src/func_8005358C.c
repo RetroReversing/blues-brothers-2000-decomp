@@ -13,9 +13,9 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_8002A360(s32, s32);            /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 s32 strlen(s32);                                    /* extern */
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern s32 func_8005321C;
 
 s32 func_8005358C(void *arg0, void *arg1) {
@@ -37,15 +37,15 @@ do {
         (*(s32 *)((s8 *)arg0 + 0x80)) = 0;
         goto block_10;
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         (*(s32 *)((s8 *)arg0 + 0x64)) = -1;
-        if (D_801070A0 & 0x8000) {
+        if (gPadPressed & 0x8000) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             return 0;
         }
     }
-    if (((*(s32 *)((s8 *)arg0 + 0x64)) < ((temp_s2 * 0xE) - 0x32)) && (D_801070A0 & 0x8000)) {
+    if (((*(s32 *)((s8 *)arg0 + 0x64)) < ((temp_s2 * 0xE) - 0x32)) && (gPadPressed & 0x8000)) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0xA3);
         (*(s32 *)((s8 *)arg0 + 0x64)) = -1;

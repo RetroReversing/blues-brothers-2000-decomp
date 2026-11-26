@@ -13,16 +13,16 @@ typedef s32 M2C_UNK32;
 #endif
 
 extern f64 D_80008970;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern s32 D_8014AB20;
 
 s32 func_80061740(void) {
     s32 temp_v1;
     s32 var_v0;
 
-    temp_v1 = (*(s32 *)((s8 *)D_800BD06C + 0xD0));
-    if ((temp_v1 == 0xD) || (((*(s32 *)((s8 *)D_800BD06C + 0xD0))) == 0x13)) {
-        if (D_80008970 < (f64) (*(f32 *)((s8 *)D_800BD06C + 0xDC))) {
+    temp_v1 = (*(s32 *)((s8 *)gCameraTarget + 0xD0));
+    if ((temp_v1 == 0xD) || (((*(s32 *)((s8 *)gCameraTarget + 0xD0))) == 0x13)) {
+        if (D_80008970 < (f64) (*(f32 *)((s8 *)gCameraTarget + 0xDC))) {
             if (D_8014AB20 < 0x258) {
                 return 1;
             }
@@ -31,10 +31,10 @@ s32 func_80061740(void) {
         goto block_6;
     }
 block_6:
-    if (((*(s32 *)((s8 *)D_800BD06C + 0xD0)) == 0x12) && (D_8014AB20 < 0x258)) {
+    if (((*(s32 *)((s8 *)gCameraTarget + 0xD0)) == 0x12) && (D_8014AB20 < 0x258)) {
         return 2;
     }
-    if (((*(s32 *)((s8 *)D_800BD06C + 0xD0)) == 0x2C) && (D_8014AB20 < 0x258)) {
+    if (((*(s32 *)((s8 *)gCameraTarget + 0xD0)) == 0x2C) && (D_8014AB20 < 0x258)) {
         return 3;
     }
     return 0;

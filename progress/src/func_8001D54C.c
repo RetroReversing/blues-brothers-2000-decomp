@@ -23,14 +23,14 @@ struct ObjE {
     s32 fC0;
 };
 
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 s32 func_8001B990(s32, s32);
-void func_8001FF64(ObjE *);
+void updateCameraView(ObjE *);
 void func_8002A360(s32, s32);
-f32 func_8002D340(f32, f32, f32);
-void func_8002D620(ObjE *);
+f32 approachF32(f32, f32, f32);
+void syncActorPrevPos(ObjE *);
 extern ObjE *D_800B3960;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_8001D54C(ObjE *arg0) {
     s32 go;
@@ -38,7 +38,7 @@ void func_8001D54C(ObjE *arg0) {
     f32 *tgt;
 
     if (arg0->f7C == 0) {
-        if (func_8000C43C() == 7) {
+        if (cameraGetMode() == 7) {
             arg0->f90 = 1;
         } else {
             arg0->f90 = 0;
@@ -62,7 +62,7 @@ void func_8001D54C(ObjE *arg0) {
     if (go != 0) {
     if (arg0->fC0 == 1) {
         if (arg0->f90 != 0) {
-            *cur = func_8002D340(*tgt - 750.0f, *cur, D_800B9ECC * 7);
+            *cur = approachF32(*tgt - 750.0f, *cur, gCamSpeedScale * 7);
             if (*cur == *tgt - 750.0f) {
                 arg0->fC0 = 0;
                 if (arg0->f90 != 0) {
@@ -71,7 +71,7 @@ void func_8001D54C(ObjE *arg0) {
                 }
             }
         } else {
-            *cur = func_8002D340(*tgt - 500.0f, *cur, D_800B9ECC * 20);
+            *cur = approachF32(*tgt - 500.0f, *cur, gCamSpeedScale * 20);
             if (*cur == *tgt - 500.0f) {
                 func_8002A360(12, 0x80);
                 func_8002A360(8, 0x72);
@@ -80,7 +80,7 @@ void func_8001D54C(ObjE *arg0) {
         }
     }
     if (arg0->fC0 == 2) {
-        *cur = func_8002D340(*tgt, *cur, D_800B9ECC * 20);
+        *cur = approachF32(*tgt, *cur, gCamSpeedScale * 20);
         if (*cur == *tgt) {
             arg0->fC0 = 0;
             arg0->f74 = 0;
@@ -88,11 +88,11 @@ void func_8001D54C(ObjE *arg0) {
                 arg0->fA0(arg0);
                 D_800B3960->fC0 = 0;
                 D_800B3960->f9C = D_800B3960->fA4;
-                func_8001FF64(D_800B3960);
+                updateCameraView(D_800B3960);
             }
         }
     }
     } else {
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
     }
 }

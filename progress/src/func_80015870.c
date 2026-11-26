@@ -1,6 +1,6 @@
 s16 coss(u16);
 s16 sins(u16);
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 typedef struct Obj {
     u8 pad0[4];
@@ -23,13 +23,13 @@ typedef struct Obj {
 } Obj;
 
 void func_80015870(Obj *arg0) {
-    arg0->unk18 += D_800B9ECC * 300;
+    arg0->unk18 += gCamSpeedScale * 300;
     arg0->x = arg0->baseX + (f32)((arg0->radius * coss(arg0->u10.a.angle)) >> 15);
     arg0->z = arg0->baseZ + (f32)((arg0->radius * sins(arg0->u10.a.angle)) >> 15);
     arg0->radius += 10;
-    arg0->u10.unk10 += D_800B9ECC << 9;
-    arg0->y += (f32)(D_800B9ECC * 5);
-    arg0->timer -= D_800B9ECC * 4;
+    arg0->u10.unk10 += gCamSpeedScale << 9;
+    arg0->y += (f32)(gCamSpeedScale * 5);
+    arg0->timer -= gCamSpeedScale * 4;
     if (arg0->timer <= 0) {
         arg0->cb(arg0);
     }

@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_80042F00();
-s32 func_800433A8();
+s32 actorSetAnim();
 s32 func_80050460();
 s32 func_800852CC();
 extern char D_800F4A00[];
@@ -31,7 +31,7 @@ void *func_80078308(s32 arg0) {
 
     func_80050460(&func_80078008, (char *)D_8014AA68 + 2);
     temp_v0 = func_80042F00(0x58, 0, 0, 0);
-    func_800433A8(temp_v0, 0x11A, 0xC0);
+    actorSetAnim(temp_v0, 0x11A, 0xC0);
     func_800852CC(temp_v0, arg0);
     M2C_FIELD(temp_v0, s32 **, 0x9C) = &func_80078048;
     base = D_800F4A00;

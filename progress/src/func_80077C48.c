@@ -12,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800253A0(M2C_UNK);                         /* extern */
+s32 heapAlloc(M2C_UNK);                         /* extern */
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80047864(s32, M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
 s32 func_80047898();                                /* extern */
 M2C_UNK func_80050460(M2C_UNK *, void *);           /* extern */
@@ -33,12 +33,12 @@ s32 func_80077C48(void) {
     M2C_FIELD(temp_v0, s32 *, 0x74) = 0x19C;
     M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_800779F8;
     M2C_FIELD(temp_v0, s32 *, 0) = 0x1023;
-    func_800433A8(temp_v0, 0x1A0, 0x100);
+    actorSetAnim(temp_v0, 0x1A0, 0x100);
     temp_v0_2 = func_80047898();
     M2C_FIELD(temp_v0, s32 *, 0xE8) = temp_v0_2;
     func_80047864(temp_v0_2, 0, 0, -0x78, 0);
     func_80047864(temp_v0_2, 0, 0, -0x78, 0);
-    M2C_FIELD(temp_v0, s32 *, 0x8C) = func_800253A0(0x80);
+    M2C_FIELD(temp_v0, s32 *, 0x8C) = heapAlloc(0x80);
     M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_80077D2C;
     M2C_FIELD(temp_v0, M2C_UNK **, 0xA0) = &func_80065D2C;
     return (s32) temp_v0;

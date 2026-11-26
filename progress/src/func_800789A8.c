@@ -1,6 +1,6 @@
 s32 func_8002444C(void);
 void *func_80042F00(s32, s32, s32, s32);
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 void func_80050460(void *, void *);
 void *func_80076BF0(s32);
 void func_800852CC(void *, s32);
@@ -49,12 +49,12 @@ ObjC *func_800789A8(s32 arg0) {
     }
     o = func_80042F00(id, 0, 0, 0);
 skip:
-    func_800433A8(o, 0x11D, 0x100);
+    actorSetAnim(o, 0x11D, 0x100);
     o->f9C = func_800787E8;
     func_800852CC(o, arg0);
     o->f0 = 0x102F;
     sub = func_80042F00(0x69, 0, 0, 0);
-    func_800433A8(sub, 0x120, 0x100);
+    actorSetAnim(sub, 0x120, 0x100);
     o->fA8 = sub;
     return o;
 }

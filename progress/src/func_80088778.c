@@ -12,14 +12,14 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_8002713C(M2C_UNK, s32);                /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK setTextPos(M2C_UNK, s32);                /* extern */
 M2C_UNK func_80028410(M2C_UNK, s32, s32, M2C_UNK);  /* extern */
 M2C_UNK func_80028FF4(s32, void *);                 /* extern */
 s32 func_800291AC(s32);                             /* extern */
-s32 func_8002D5CC(void *);                            /* extern */
+s32 tickActorTimer(void *);                            /* extern */
 extern s32 D_800B4D30[];
-extern s32 D_800B9C74;
+extern s32 gScreenWidth;
 extern s32 D_800BD1D8;
 extern s32 D_8014AA98;
 typedef struct { s32 w0; s32 w1; } CursorRec8;
@@ -32,18 +32,18 @@ void func_80088778(void *arg0) {
     s32 w;
     CursorRec8 *p;
 
-    h = 0xC8; w = D_800B9C74 - 0x1E;
-    func_8002D5CC(arg0);
+    h = 0xC8; w = gScreenWidth - 0x1E;
+    tickActorTimer(arg0);
     if (M2C_FIELD(arg0, s32 *, 0x64) < -0xC8) {
         (*(M2C_UNK (**)(void *))((s8 *)(arg0) + 0xA0))(arg0);
         return;
     }
-        func_8002713C(0x22, 0);
+        setTextPos(0x22, 0);
     t = func_800291AC(D_800B4D30[(D_800BD1D8 * 0xB1) + M2C_FIELD(arg0, s32 *, 0x70)]) + 0xA; y = h - t;
     D_8014AA98 = 0;
     func_80028410(0x1E, y, w, h);
-    func_8002713C(0x22, y + 5);
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
+    setTextPos(0x22, y + 5);
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
     saved = M2C_FIELD(arg0, s32 *, 0x64);
     i = (D_800BD1D8 * 0xB1) + M2C_FIELD(arg0, s32 *, 0x70);
     M2C_FIELD(arg0, s32 *, 0x64) = 0;

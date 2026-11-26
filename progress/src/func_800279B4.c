@@ -5,9 +5,9 @@ typedef struct GfxW {
 
 void func_800226A0(s32);
 void func_800226E4(void);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-void func_8002220C(s32);
-void func_80029F8C(s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+void setDrawMode(s32);
+void setRenderState(s32);
 
 extern GfxW *D_80177E18;
 
@@ -28,10 +28,10 @@ s32 func_800279B4(u8 *img, s32 w_in, s32 h, s32 x, s32 y, s32 arg5) {
     sx = 1;
     sy = 1;
     func_800226A0(arg5);
-    func_8002220C(func_800221C0(0, 0, sx, 2, 0, 0, sx, sx));
+    setDrawMode(packDrawFlags(0, 0, sx, 2, 0, 0, sx, sx));
     GFX(0xFC30B261, 0xFF67FFFF);
     GFX(0xE200001C, 0x504A50);
-    func_80029F8C(0x59);
+    setRenderState(0x59);
     off = 0;
     while (h > 0) {
         rows = h;

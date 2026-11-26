@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
+M2C_UNK setSlotAsset(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_800526E0(M2C_UNK);                     /* extern */
 extern s32 D_800B4988;
@@ -23,7 +23,7 @@ extern M2C_UNK func_80088A1C;
 void func_800886E8(void *arg0) {
     if (D_8013FB20 == 0xFF) {
         func_80023A74(0x76, 0xCF9);
-        func_80023A98(0x1C0, 0xCFA, 0);
+        setSlotAsset(0x1C0, 0xCFA, 0);
         func_800526E0(0);
         func_8002E7B8(0, 0);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80088A1C;

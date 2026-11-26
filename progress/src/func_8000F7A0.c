@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 extern s32 D_800B4C28;
 extern M2C_UNK D_800BD278;
 extern M2C_UNK D_800BD688;
@@ -24,7 +24,7 @@ s32 func_8000F7A0(void *arg0) {
 
     margin = 0xA;
     changed = 0;
-    if (func_8000C43C() == 3) {
+    if (cameraGetMode() == 3) {
         margin = 0x1F4;
     }
     t = (f32) (M2C_FIELD(&D_800BD278, s32 *, 0) + margin);

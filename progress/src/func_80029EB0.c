@@ -1,5 +1,5 @@
 typedef struct { u32 w0, w1; } GfxW;
-void func_80029F8C(s32);
+void setRenderState(s32);
 extern GfxW *D_80177E18;
 
 void func_80029EB0(void) {
@@ -38,5 +38,5 @@ void func_80029EB0(void) {
         _g->w0 = 0xD7000002;
         _g->w1 = 0x80008000;
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
 }

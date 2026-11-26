@@ -19,7 +19,7 @@ typedef struct Obj {
     s32 xC0;
 } Obj;
 
-void func_8003AC08(Obj *, f32);
+void handleActorHit(Obj *, f32);
 
 extern f32 D_8000087C;
 extern f32 D_80000880;
@@ -54,7 +54,7 @@ s32 func_80016318(Obj *arg0, Obj *arg1) {
     }
     if (maxy <= arg0->x44 && y <= maxy && minx - m <= arg0->x4 && arg0->x4 <= maxx + m &&
         minz - m <= arg0->xC && arg0->xC <= maxz + m) {
-        func_8003AC08(arg0, maxy + D_80000880);
+        handleActorHit(arg0, maxy + D_80000880);
         arg1->xC0 |= 2;
         return 1;
     }

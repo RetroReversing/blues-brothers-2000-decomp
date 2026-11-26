@@ -1,4 +1,4 @@
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 void func_800462A0(void *);
 
 typedef struct {
@@ -17,8 +17,8 @@ void func_8005FC64(Obj *arg0) {
     s32 t;
     s32 u;
 
-    arg0->unk5C -= D_800B9ECC * 5;
-    for (i = 0; i < D_800B9ECC; i++) {
+    arg0->unk5C -= gCamSpeedScale * 5;
+    for (i = 0; i < gCamSpeedScale; i++) {
         arg0->unk34 *= 0x101;
         arg0->unk3C *= 0x101;
         arg0->unk38 *= 0xFE;

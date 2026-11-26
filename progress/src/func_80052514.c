@@ -12,12 +12,12 @@ typedef struct ObjT {
 } ObjT;
 
 void func_800414D0(ObjT *);
-void func_8002DC84(f32 *);
+void mtxIdentity3(f32 *);
 void func_8002DB6C(f32 *, f32 *, f32);
 void func_800955C8(Mtx4 *, Mtx4 *);
-void func_8002DD8C(f32 *, f32 *, f32 *);
+void mtxTransformVec3(f32 *, f32 *, f32 *);
 void func_80034FEC(ObjT *, s32 *);
-void func_8001FF64(ObjT *);
+void updateCameraView(ObjT *);
 extern s32 D_80140260[];
 extern Mtx4 *D_80140310[];
 extern s32 D_800B74E4;
@@ -39,7 +39,7 @@ void func_80052514(ObjT *arg0) {
     D_80140310[1] = &m1;
     D_800B74E4 = 2;
     func_800414D0(arg0);
-    func_8002DC84(q0);
+    mtxIdentity3(q0);
     func_8002DB6C(q1, q0, 3.1415925f);
     p = arg0->f8C;
     func_800955C8(p++, &m0);
@@ -48,7 +48,7 @@ void func_80052514(ObjT *arg0) {
     v[0] = p[0][3][0];
     v[1] = p[0][3][1];
     v[2] = p[0][3][2];
-    func_8002DD8C(out, q1, v);
+    mtxTransformVec3(out, q1, v);
     D_800B3960->x = arg0->x + out[0];
     D_800B3960->y = arg0->y + out[1];
     D_800B3960->z = arg0->z + out[2];
@@ -56,7 +56,7 @@ void func_80052514(ObjT *arg0) {
     v[0] = p[0][3][0];
     v[1] = p[0][3][1];
     v[2] = p[0][3][2];
-    func_8002DD8C(out, q1, v);
+    mtxTransformVec3(out, q1, v);
     out[0] += arg0->x;
     out[1] += arg0->y;
     out[2] += arg0->z;
@@ -64,5 +64,5 @@ void func_80052514(ObjT *arg0) {
     pos[1] = out[1];
     pos[2] = out[2];
     func_80034FEC(D_800B3960, pos);
-    D_800B3960->f9C = func_8001FF64;
+    D_800B3960->f9C = updateCameraView;
 }

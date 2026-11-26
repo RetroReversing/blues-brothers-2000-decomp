@@ -19,12 +19,12 @@ typedef struct Obj87B68 {
 } Obj87B68;
 
 void func_8002A360(s32, s32);
-s32 func_8002D5CC(Obj87B68 *);
+s32 tickActorTimer(Obj87B68 *);
 void func_8002D604(Obj87B68 *);
 void func_80047824(s32, s32, s32, s32, s32);
 void func_80047864(s32, s32, s32, s32, s32);
 extern Vec3 D_800B9B60[];
-extern s32 D_801070A0[];
+extern s32 gPadPressed[];
 extern s32 D_801073B0[];
 extern Obj87B68 *D_80171A80[];
 
@@ -41,9 +41,9 @@ void func_80087B68(Obj87B68 *arg0) {
         if (v < 20) {
             arg0->unk64 = 0;
         }
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             arg0->unk64 = 0;
-            if ((D_801070A0[arg0->unkBC] & 0x200) || D_801073B0[arg0->unkBC] < -30) {
+            if ((gPadPressed[arg0->unkBC] & 0x200) || D_801073B0[arg0->unkBC] < -30) {
             dec:
                 arg0->unk84 = (arg0->unk84 - 1) & 3;
                 if (arg0->unkA8->unk84 == arg0->unk84) {
@@ -53,7 +53,7 @@ void func_80087B68(Obj87B68 *arg0) {
                 func_8002A360(12, 0x80);
                 func_8002A360(8, 0x9F);
             }
-            if ((D_801070A0[arg0->unkBC] & 0x100) || D_801073B0[arg0->unkBC] >= 31) {
+            if ((gPadPressed[arg0->unkBC] & 0x100) || D_801073B0[arg0->unkBC] >= 31) {
             inc:
                 arg0->unk84 = (arg0->unk84 + 1) & 3;
                 if (arg0->unkA8->unk84 == arg0->unk84) {
@@ -71,7 +71,7 @@ void func_80087B68(Obj87B68 *arg0) {
         arg0->z = D_800B9B60[arg0->unk84].z;
         func_8002D604(arg0);
         func_8002D604(arg0);
-        if (D_801070A0[arg0->unkBC] & 0x9000) {
+        if (gPadPressed[arg0->unkBC] & 0x9000) {
             func_8002A360(12, 0x80);
             func_8002A360(8, 0xA5);
             p = D_80171A80[arg0->unk84];
@@ -90,7 +90,7 @@ void func_80087B68(Obj87B68 *arg0) {
     } else if (arg0->unkC0 == 1) {
         arg0->unk70 = 100;
         arg0->unk10 = 0;
-        if (D_801070A0[arg0->unkBC] & 0x9000) {
+        if (gPadPressed[arg0->unkBC] & 0x9000) {
             func_8002A360(12, 0x80);
             func_8002A360(8, 0x9C);
             p = D_80171A80[arg0->unk84];

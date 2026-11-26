@@ -6,8 +6,8 @@
 - **Compiler:** sn-n64-281
 <!-- decompdecomp:details:end -->
 <!-- decompdecomp:progress:start -->
-- **Progress:** 2089 matching function(s), 63 best attempt(s)
-- **Completion:** 2,089 / 2,106 functions (99.2%). 104 set aside, excluded from completion.
+- **Progress:** 2095 matching function(s), 58 best attempt(s)
+- **Completion:** 2,095 / 2,106 functions (99.5%). 104 set aside, excluded from completion.
 <!-- decompdecomp:progress:end -->
 <!-- decompdecomp:visuals:start -->
 ![Decompilation completion and function map](progress/decompdecomp-progress.svg)
@@ -22,7 +22,7 @@ A native build of the game (Windows, Linux, macOS) needs these steps. The game's
 
 | Step | Status | Detail |
 | :-- | :-- | :-- |
-| The game's code in C | ⬜ in progress | 2,089 of 2,210 functions in C |
+| The game's code in C | ⬜ in progress | 2,095 of 2,210 functions in C |
 | Compiles for a PC | ⬜ in progress | not checked yet |
 | Links for a PC | ⬜ in progress | not checked yet |
 | Assets extracted | ⬜ in progress | 10 resources mapped |

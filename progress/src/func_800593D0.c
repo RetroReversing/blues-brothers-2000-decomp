@@ -24,25 +24,25 @@ struct Actor {
     f32 unkDC;
 };
 
-s32 func_80024394(s32, s32);
-s32 func_80024B0C(s32);
-s32 func_80025100(s32, s32);
+s32 randomRange(s32, s32);
+s32 isqrtS32(s32);
+s32 atan2S16(s32, s32);
 void func_8002A360(s32, s32);
 void func_8002D124(void);
-s32 func_8002D204(s32, s32, s32);
-s32 func_8002D5CC(Actor *);
+s32 approachAngle(s32, s32, s32);
+s32 tickActorTimer(Actor *);
 void func_8003B980(Actor *);
 void func_8003BF98(Actor *);
 s32 func_8003C9AC(Actor *, s32, s32, s32);
-s32 func_8004303C(Actor *);
+s32 animStepKeys(Actor *);
 void func_80043328(Actor *, s32, s32);
-void func_800433A8(Actor *, s32, s32);
+void actorSetAnim(Actor *, s32, s32);
 void func_8004EB60(Actor *);
 void func_80059CA8(Actor *);
 s32 func_80083920(Actor *, s32);
 void func_8007631C(void);
 extern s32 D_800B7FB0;
-extern Actor *D_800BD06C;
+extern Actor *gCameraTarget;
 extern s32 D_8014AAE0;
 
 void func_800593D0(Actor *arg0)
@@ -53,24 +53,24 @@ void func_800593D0(Actor *arg0)
     s32 done;
     s32 r;
 
-    fx = D_800BD06C->x;
+    fx = gCameraTarget->x;
     fx -= a->x;
     dx = fx;
-    fy = D_800BD06C->y;
+    fy = gCameraTarget->y;
     fy -= a->y;
     dy = abs((s32)fy);
-    fz = D_800BD06C->z;
+    fz = gCameraTarget->z;
     fz -= a->z;
     dz = fz;
     if (dy >= 751) {
         return;
     }
-    D_8014AAE0 = func_80024B0C(dx * dx + dz * dz);
+    D_8014AAE0 = isqrtS32(dx * dx + dz * dz);
     switch (a->unk90) {
     case 0:
         a->unk90 = 1;
         a->unk8C = 0;
-        func_800433A8(a, 0x39, 0x100);
+        actorSetAnim(a, 0x39, 0x100);
         break;
     case 1:
         a->unk68 = -1;
@@ -84,15 +84,15 @@ void func_800593D0(Actor *arg0)
         }
         break;
     case 2:
-        done = func_8004303C(a);
-        a->unk10 = func_8002D204(func_80025100(dx, dz), a->unk10, 0xC00);
+        done = animStepKeys(a);
+        a->unk10 = approachAngle(atan2S16(dx, dz), a->unk10, 0xC00);
         r = func_80083920(a, a->unk90 == 3 && a->unk8C == 1);
         switch (r) {
         case 1:
             func_8002A360(12, 0x80);
             func_8002A360(8, 0x2E);
             func_8002D124();
-            func_800433A8(a, 0x3B, 0x100);
+            actorSetAnim(a, 0x3B, 0x100);
             a->unk90 = 3;
             a->unk8C = r;
             return;
@@ -100,7 +100,7 @@ void func_800593D0(Actor *arg0)
             func_8002A360(12, 0x80);
             func_8002A360(8, 0x17);
             func_8002D124();
-            func_800433A8(a, 0x3C, 0x100);
+            actorSetAnim(a, 0x3C, 0x100);
             a->unk90 = 3;
             a->unk8C = 0;
             a->unk88 = a->unk34;
@@ -115,7 +115,7 @@ void func_800593D0(Actor *arg0)
             break;
         case 1:
             if (D_8014AAE0 > 1000) {
-                func_800433A8(a, 0x3A, 0x100);
+                actorSetAnim(a, 0x3A, 0x100);
                 a->unk8C = 2;
                 break;
             }
@@ -123,14 +123,14 @@ void func_800593D0(Actor *arg0)
                 func_80043328(a, 0x38, 0x100);
             }
             if (D_8014AAE0 < 1000) {
-                if (func_80024394(0, 100) > 50) {
+                if (randomRange(0, 100) > 50) {
                     func_8002A360(12, 0x80);
                     func_8002A360(8, 0x16);
-                    func_800433A8(a, 0x3E, 0x100);
+                    actorSetAnim(a, 0x3E, 0x100);
                 } else {
                     func_8002A360(12, 0x80);
                     func_8002A360(8, 0x16);
-                    func_800433A8(a, 0x3D, 0x100);
+                    actorSetAnim(a, 0x3D, 0x100);
                 }
                 D_800B7FB0 = 0;
                 a->unk8C = 3;
@@ -155,7 +155,7 @@ void func_800593D0(Actor *arg0)
                 func_8002A360(12, 0x80);
                 func_8002A360(8, 0x2E);
                 func_8002D124();
-                func_800433A8(a, 0x3B, 0x100);
+                actorSetAnim(a, 0x3B, 0x100);
                 a->unk90 = 3;
                 a->unk8C = r;
                 return;
@@ -163,7 +163,7 @@ void func_800593D0(Actor *arg0)
                 func_8002A360(12, 0x80);
                 func_8002A360(8, 0x17);
                 func_8002D124();
-                func_800433A8(a, 0x3C, 0x100);
+                actorSetAnim(a, 0x3C, 0x100);
                 a->unk90 = 3;
                 a->unk8C = 0;
                 a->unk88 = a->unk34;
@@ -176,7 +176,7 @@ void func_800593D0(Actor *arg0)
                     func_8002A360(8, 0x2D);
                 }
                 if (func_8003C9AC(a, 0, 1, 0) != 0) {
-                    func_8003BF98(D_800BD06C);
+                    func_8003BF98(gCameraTarget);
                     func_80059CA8(a);
                 }
                 a->unk8C = 4;
@@ -187,7 +187,7 @@ void func_800593D0(Actor *arg0)
                     func_8002A360(12, 0x80);
                     func_8002A360(8, 0x2D);
                 }
-                func_8003B980(D_800BD06C);
+                func_8003B980(gCameraTarget);
                 a->unk8C = 4;
                 break;
             }
@@ -208,14 +208,14 @@ void func_800593D0(Actor *arg0)
             }
             break;
         case 6:
-            if (func_8002D5CC(a) != 0) {
+            if (tickActorTimer(a) != 0) {
                 a->unk8C = 1;
             }
             break;
         }
         break;
     case 3:
-        done = func_8004303C(a);
+        done = animStepKeys(a);
         switch (a->unk8C) {
         case 0:
             a->unk9C = func_8007631C;

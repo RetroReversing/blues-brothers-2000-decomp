@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D298(M2C_UNK, s32, s32);               /* extern */
-extern s32 D_800B9ECC;
+s32 approachS32(M2C_UNK, s32, s32);               /* extern */
+extern s32 gCamSpeedScale;
 void func_80067FF4(void *);
 
 void func_8006808C(void *arg0) {
@@ -32,7 +32,7 @@ void func_8006808C(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0xF4) = 0;
     }
     if (M2C_FIELD(p, s32 *, 0x78) < M2C_FIELD(arg0, s32 *, 0x90)) {
-        M2C_FIELD(arg0, s32 *, 0x8C) = func_8002D298(0, M2C_FIELD(arg0, s32 *, 0x8C), D_800B9ECC * 4);
+        M2C_FIELD(arg0, s32 *, 0x8C) = approachS32(0, M2C_FIELD(arg0, s32 *, 0x8C), gCamSpeedScale * 4);
         if (M2C_FIELD(arg0, s32 *, 0x8C) == 0) {
             M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);
         }

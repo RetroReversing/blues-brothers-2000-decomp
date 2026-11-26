@@ -1,7 +1,7 @@
 void func_80012110(void *);
-s32 func_80024394(s32, s32);
-s32 func_8002D5CC(void *);
-void func_8002D620(void *);
+s32 randomRange(s32, s32);
+s32 tickActorTimer(void *);
+void syncActorPrevPos(void *);
 void func_8000D4C4(void *);
 
 typedef struct {
@@ -25,18 +25,18 @@ void func_8000D52C(Obj8000D52C *arg0) {
     s32 i;
 
     if (arg0->unk7C == 0) {
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         arg0->unk7C = 1;
     }
-    arg0->unk4 = arg0->unk40 + func_80024394(-0x14, 0x14);
-    arg0->unkC = arg0->unk48 + func_80024394(-0x14, 0x14);
-    if (func_8002D5CC(arg0) != 0) {
+    arg0->unk4 = arg0->unk40 + randomRange(-0x14, 0x14);
+    arg0->unkC = arg0->unk48 + randomRange(-0x14, 0x14);
+    if (tickActorTimer(arg0) != 0) {
         arg0->unk64 = 0x64;
         arg0->unk9C = func_8000D4C4;
         arg0->unk4 = arg0->unk40;
         arg0->unkC = arg0->unk48;
         arg0->unk8 = arg0->unk44 + 600.0f;
-        for (i = 0; i < func_80024394(2, 7); i++) {
+        for (i = 0; i < randomRange(2, 7); i++) {
             func_80012110(arg0);
         }
     }

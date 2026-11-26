@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80038CF8();
+s32 traceBounceMove();
 extern s32 D_8014014C;
 
 #define sp18 (*(s32 *)(sp + 0x0))
@@ -26,7 +26,7 @@ typedef struct { unsigned char pad[8]; int value; } __repair_field_8;
 void func_80038C84(s32 arg0, void *arg1, void *arg2) {
     u8 sp[32];
     D_8014014C = 0;
-    { func_80038CF8(arg0, arg1, arg2, &sp18, &sp28); }
+    { traceBounceMove(arg0, arg1, arg2, &sp18, &sp28); }
     *(__repair_record_arg2 *)arg1 = *(__repair_record_arg2 *)&sp18;
     *(__repair_record_arg2 *)arg2 = *(__repair_record_arg2 *)&sp28;
 }

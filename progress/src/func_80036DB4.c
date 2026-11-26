@@ -12,15 +12,15 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8001FF64(void *);                      /* extern */
+M2C_UNK updateCameraView(void *);                      /* extern */
 s32 func_80024AE8(s32, M2C_UNK);                    /* extern */
 s32 func_8002D260(s32);                             /* extern */
 M2C_UNK func_80034FEC(void *, s32 *);               /* extern */
 M2C_UNK func_80036FB8(void *, M2C_UNK);             /* extern */
 extern f32 D_80001474;
 extern f32 D_80001478;
-extern void *D_800BD06C;
-extern s32 D_801070A0;
+extern void *gCameraTarget;
+extern s32 gPadPressed;
 extern s32 D_801073B0;
 extern s32 D_801073C0;
 
@@ -44,27 +44,27 @@ void func_80036DB4(void *arg0) {
             M2C_FIELD(arg0, s32 *, 0x14) = 0x2328;
         }
     } else {
-        sp10[0] = (s32) M2C_FIELD(D_800BD06C, f32 *, 4);
-        sp10[1] = (s32) (M2C_FIELD(D_800BD06C, f32 *, 8) + 200.0f);
-        sp10[2] = (s32) M2C_FIELD(D_800BD06C, f32 *, 0xC);
+        sp10[0] = (s32) M2C_FIELD(gCameraTarget, f32 *, 4);
+        sp10[1] = (s32) (M2C_FIELD(gCameraTarget, f32 *, 8) + 200.0f);
+        sp10[2] = (s32) M2C_FIELD(gCameraTarget, f32 *, 0xC);
         func_80034FEC(arg0, sp10);
     }
-    if (D_801070A0 & 8) {
+    if (gPadPressed & 8) {
         temp_v0_2 = M2C_FIELD(arg0, s32 *, 0xC0) ^ 1;
         M2C_FIELD(arg0, s32 *, 0xC0) = temp_v0_2;
         if (temp_v0_2 == 1) {
-            M2C_FIELD(arg0, f32 *, 4) = (f32) M2C_FIELD(D_800BD06C, f32 *, 4);
-            M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(D_800BD06C, f32 *, 8) + 300.0f);
-            M2C_FIELD(arg0, f32 *, 0xC) = (f32) M2C_FIELD(D_800BD06C, f32 *, 0xC);
+            M2C_FIELD(arg0, f32 *, 4) = (f32) M2C_FIELD(gCameraTarget, f32 *, 4);
+            M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(gCameraTarget, f32 *, 8) + 300.0f);
+            M2C_FIELD(arg0, f32 *, 0xC) = (f32) M2C_FIELD(gCameraTarget, f32 *, 0xC);
             M2C_FIELD(arg0, s32 *, 0x14) = 0;
-            M2C_FIELD(arg0, s32 *, 0x10) = (s32) M2C_FIELD(D_800BD06C, s32 *, 0x10);
+            M2C_FIELD(arg0, s32 *, 0x10) = (s32) M2C_FIELD(gCameraTarget, s32 *, 0x10);
         } else {
             M2C_FIELD(arg0, f32 *, 4) = (f32) M2C_FIELD(arg0, f32 *, 0x40);
             M2C_FIELD(arg0, f32 *, 8) = (f32) M2C_FIELD(arg0, f32 *, 0x44);
             M2C_FIELD(arg0, f32 *, 0xC) = (f32) M2C_FIELD(arg0, f32 *, 0x48);
-            M2C_FIELD(D_800BD06C, s32 *, 0x10) = (s32) M2C_FIELD(arg0, s32 *, 0x10);
+            M2C_FIELD(gCameraTarget, s32 *, 0x10) = (s32) M2C_FIELD(arg0, s32 *, 0x10);
         }
     }
-    func_8001FF64(arg0);
+    updateCameraView(arg0);
     func_80036FB8(arg0, 0xE);
 }

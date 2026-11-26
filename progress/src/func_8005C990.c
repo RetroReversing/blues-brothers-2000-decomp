@@ -18,7 +18,7 @@ s32 func_80013784(s32);                             /* extern */
 s32 func_800137E0(s32, s32);                        /* extern */
 s32 func_800137F8(s32);                             /* extern */
 s32 func_80083920(void *, s32);                     /* extern */
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 extern s32 D_8014AB00;
 
 s32 func_8005C990(void *arg0) {
@@ -29,7 +29,7 @@ s32 func_8005C990(void *arg0) {
 
     M2C_FIELD(arg0, s32 *, 0xC0) = (s32) (M2C_FIELD_PTR(arg0, const s32 *, 0xC0) & 0x41);
     if (D_8014AB00 < 0xD2) {
-        temp_v0_2 = func_80013654(D_800BD06C);
+        temp_v0_2 = func_80013654(gCameraTarget);
         if (temp_v0_2 != 0) {
             temp_v1 = M2C_FIELD(arg0, const s32 *, 0xC0);
             M2C_FIELD(arg0, s32 *, 0xC0) = (s32) (temp_v1 | 2);
@@ -37,13 +37,13 @@ s32 func_8005C990(void *arg0) {
                 M2C_FIELD(arg0, s32 *, 0xC0) = (s32) (temp_v1 | 0x82);
             }
         }
-        if (func_800137E0(D_800BD06C, temp_v0_2) != 0) {
+        if (func_800137E0(gCameraTarget, temp_v0_2) != 0) {
             M2C_FIELD(arg0, s32 *, 0xC0) = (s32) (M2C_FIELD(arg0, const s32 *, 0xC0) | 8);
         }
-        if (func_80013784(D_800BD06C) != 0) {
+        if (func_80013784(gCameraTarget) != 0) {
             M2C_FIELD(arg0, s32 *, 0xC0) = (s32) (M2C_FIELD(arg0, const s32 *, 0xC0) | 4);
         }
-        if (func_800137F8(D_800BD06C) != 0) {
+        if (func_800137F8(gCameraTarget) != 0) {
             M2C_FIELD(arg0, s32 *, 0xC0) = (s32) (M2C_FIELD(arg0, const s32 *, 0xC0) | 0x12);
         }
     }

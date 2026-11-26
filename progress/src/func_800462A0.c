@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern M2C_UNK func_80045E34;
+extern M2C_UNK updateModelBoneActors;
 
 void func_800462A0(void *arg0) {
     s32 temp_v1;
@@ -20,7 +20,7 @@ void func_800462A0(void *arg0) {
     temp_v1 = M2C_FIELD(arg0, s32 *, 0xBC);
     if (temp_v1 <= 0xE75975) {
         M2C_FIELD(arg0, s32 *, 0xBC) = 0xE75976;
-        M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_80045E34;
+        M2C_FIELD(arg0, M2C_UNK **, 0x98) = &updateModelBoneActors;
         return;
     }
     if (temp_v1 == 0xE75976) {

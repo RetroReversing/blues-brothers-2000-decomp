@@ -29,7 +29,7 @@ typedef struct {
     s32 unk5C;
 } Player;
 
-void *func_800253A0(s32);
+void *heapAlloc(s32);
 
 extern f32 D_800076B8;
 void func_8003E7E4(Player *p, Anim *a) {
@@ -57,7 +57,7 @@ void func_8003E7E4(Player *p, Anim *a) {
     p->unk58 = -1;
     /*__repair_chain_scope*/do { p->count = n; } while (0);
     m = n;
-    p->buf20 = func_800253A0(m * sizeof(Xf) + m * sizeof(Xf) + m * sizeof(V3) + m * sizeof(Xf) + m * sizeof(Xf) + m * sizeof(Xf) + m * sizeof(Xf));
+    p->buf20 = heapAlloc(m * sizeof(Xf) + m * sizeof(Xf) + m * sizeof(V3) + m * sizeof(Xf) + m * sizeof(Xf) + m * sizeof(Xf) + m * sizeof(Xf));
     p->buf2C = p->buf20 + p->count;
     p->buf44 = (V3 *)(p->buf2C + p->count);
     p->buf48 = (Xf *)(p->buf44 + p->count);

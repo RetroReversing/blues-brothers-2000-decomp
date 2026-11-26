@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800253A0(s32);                             /* extern */
+s32 heapAlloc(s32);                             /* extern */
 M2C_UNK func_80025A00(s32, s32);                    /* extern */
 s32 func_80025AC4();                                /* extern */
 
@@ -21,7 +21,7 @@ s32 func_80023B84(s32 arg0, s32 *arg1) {
     s32 temp_v0_2;
 
     temp_v0_2 = func_80025AC4();
-    temp_v0 = func_800253A0(temp_v0_2);
+    temp_v0 = heapAlloc(temp_v0_2);
     func_80025A00(arg0, temp_v0);
     *arg1 = temp_v0_2;
     return temp_v0;

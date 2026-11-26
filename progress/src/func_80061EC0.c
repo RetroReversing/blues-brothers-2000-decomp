@@ -8,14 +8,14 @@ typedef struct Obj61 {
     u8 padA4[0x1C];
     s32 xC0;
 } Obj61;
-Obj61 *func_80023874(s32, Obj61 *);
+Obj61 *findActor(s32, Obj61 *);
 f32 func_8002DD60(f32);
 
 void func_80061EC0(Obj61 *a) {
     Obj61 *p;
     f32 k, t, t0;
 
-    p = func_80023874(0x11E, NULL);
+    p = findActor(0x11E, NULL);
     if (p != NULL) {
         k = *(f32 *)0x800089C0;
         do {
@@ -27,7 +27,7 @@ void func_80061EC0(Obj61 *a) {
                     break;
                 }
             }
-            p = func_80023874(0x11E, p);
+            p = findActor(0x11E, p);
         } while (p != NULL);
     }
     a->fn(a);

@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_80023620(M2C_UNK, void *);             /* extern */
 s32 func_80023D58(s32);                             /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_800880FC(s32, M2C_UNK);                /* extern */
+M2C_UNK loadSlotAssetSet(s32, M2C_UNK);                /* extern */
 extern M2C_UNK D_800B9B90;
 extern s32 D_8013FB20;
 extern M2C_UNK D_80171988;
@@ -31,8 +31,8 @@ void func_800876A4(void *arg0) {
         __base_D_800B9B90 = &D_800B9B90;
         M2C_FIELD(&D_80171988, s32 *, 0) = func_80023D58(*(M2C_FIELD(&D_80171A70, s32 *, 0) + __base_D_800B9B90));
         M2C_FIELD(&D_80171988, s32 *, 4) = func_80023D58(*(M2C_FIELD(&D_80171A70, s32 *, 4) + __base_D_800B9B90));
-        func_800880FC(M2C_FIELD(&D_80171A70, s32 *, 0), 0x17B);
-        func_800880FC(M2C_FIELD(&D_80171A70, s32 *, 4), 0x18B);
+        loadSlotAssetSet(M2C_FIELD(&D_80171A70, s32 *, 0), 0x17B);
+        loadSlotAssetSet(M2C_FIELD(&D_80171A70, s32 *, 4), 0x18B);
     }
 }
 

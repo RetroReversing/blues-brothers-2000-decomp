@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D5CC(void *);                          /* extern */
-f32 func_8002D66C(void *, M2C_UNK, M2C_UNK);        /* extern */
+s32 tickActorTimer(void *);                          /* extern */
+f32 getCameraTargetDist(void *, M2C_UNK, M2C_UNK);        /* extern */
 M2C_UNK func_8003BF98(s32 *);                       /* extern */
 extern f32 D_80000788;
 extern void *D_800B3960;
-extern s32 D_800B9EA0;
-extern s32 *D_800BD06C;
+extern s32 gFrameScale;
+extern s32 *gCameraTarget;
 extern M2C_UNK D_800BD218;
 
 void func_80012228(void *arg0) {
@@ -26,17 +26,17 @@ void func_80012228(void *arg0) {
     s32 temp_v0;
     s32 temp_v1;
 
-    temp_v1 = M2C_FIELD(arg0, s32 *, 0x84) - D_800B9EA0;
+    temp_v1 = M2C_FIELD(arg0, s32 *, 0x84) - gFrameScale;
     M2C_FIELD(arg0, s32 *, 0x84) = temp_v1;
     if (temp_v1 < 0) {
         M2C_FIELD(arg0, s32 *, 0x84) = 0;
     }
-    temp_fv1 = func_8002D66C(arg0, 0x43480000, 0);
-    if ((M2C_FIELD(arg0, s32 *, 0x84) == 0) && (*D_800BD06C == 3) && (temp_fv1 < 100.0f)) {
-        func_8003BF98(D_800BD06C);
+    temp_fv1 = getCameraTargetDist(arg0, 0x43480000, 0);
+    if ((M2C_FIELD(arg0, s32 *, 0x84) == 0) && (*gCameraTarget == 3) && (temp_fv1 < 100.0f)) {
+        func_8003BF98(gCameraTarget);
         M2C_FIELD(arg0, s32 *, 0x84) = 0xC8;
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         M2C_FIELD(arg0, s32 *, 0x64) = 1;
         temp_v0 = (M2C_FIELD(arg0, s32 *, 0x80) + 1) & 7;
         M2C_FIELD(arg0, s32 *, 0x80) = temp_v0;

@@ -12,19 +12,19 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80025100(s32, s32);
-extern void *D_800BD06C;
+s32 atan2S16(s32, s32);
+extern void *gCameraTarget;
 
 f32 func_8002D8F4(void *arg0, s32 *arg1) {
     f32 dx;
     f32 dy;
     f32 dz;
 
-    dx = M2C_FIELD(D_800BD06C, f32 *, 4) - M2C_FIELD(arg0, f32 *, 4);
-    dy = M2C_FIELD(D_800BD06C, f32 *, 8) - M2C_FIELD(arg0, f32 *, 8);
-    dz = M2C_FIELD(D_800BD06C, f32 *, 0xC) - M2C_FIELD(arg0, f32 *, 0xC);
+    dx = M2C_FIELD(gCameraTarget, f32 *, 4) - M2C_FIELD(arg0, f32 *, 4);
+    dy = M2C_FIELD(gCameraTarget, f32 *, 8) - M2C_FIELD(arg0, f32 *, 8);
+    dz = M2C_FIELD(gCameraTarget, f32 *, 0xC) - M2C_FIELD(arg0, f32 *, 0xC);
     if (arg1 != NULL) {
-        *arg1 = func_80025100((s32) dx, (s32) dz);
+        *arg1 = atan2S16((s32) dx, (s32) dz);
     }
     return sqrtf(dx * dx + dy * dy + dz * dz);
 }

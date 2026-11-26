@@ -43,10 +43,10 @@ extern ModelTri *D_800F80E8[];
 extern ModelVtx *D_800FA860[];
 extern CollRec D_80140FF8[];
 extern RayHit D_80148CF8[];
-extern Vec3 D_8014A8F8;
-extern Vec3 D_8014A908;
+extern Vec3 gCollideMin;
+extern Vec3 gCollideMax;
 
-void func_800899DC(char *);
+void debugPrintf(char *);
 f32 func_80094350(f32);
 f32 sqrtf(f32);
 
@@ -87,8 +87,8 @@ s32 func_800493A0(Vec3 *start, Vec3 *end, s32 flags) {
     if (start->x == end->x && start->y == end->y && start->z == end->z) {
         return 0;
     }
-    if (start->x < D_8014A8F8.x || end->x < D_8014A8F8.x || D_8014A908.x < start->x || D_8014A908.x < end->x
-        || start->z < D_8014A8F8.z || end->z < D_8014A8F8.z || D_8014A908.z < start->z || D_8014A908.z < end->z) {
+    if (start->x < gCollideMin.x || end->x < gCollideMin.x || gCollideMax.x < start->x || gCollideMax.x < end->x
+        || start->z < gCollideMin.z || end->z < gCollideMin.z || gCollideMax.z < start->z || gCollideMax.z < end->z) {
     }
     for (i = 0; i < D_800B76A0; i++) {
         obj = D_80140FF8[i].obj;
@@ -255,7 +255,7 @@ s32 func_800493A0(Vec3 *start, Vec3 *end, s32 flags) {
             best.tri = tri;
         } else {
             if (D_800B76A4 >= 0x80) {
-                func_800899DC("intersections array overflow!");
+                debugPrintf("intersections array overflow!");
             }
             if (flags & 2) {
                 tri->flags |= 8;

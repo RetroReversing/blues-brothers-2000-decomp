@@ -3,14 +3,14 @@ void func_8000DC80(Obj *);
 Obj *func_800232B4(s32, s32, s32, s32);
 s32 func_80023D58(s32);
 void func_8002A360(s32, s32);
-s32 func_8002D5CC(Obj *);
+s32 tickActorTimer(Obj *);
 void func_80035238(void);
 void func_8003BCC4(Obj *);
 void func_800414D0(Obj *);
 s32 func_80043248(Obj *);
-void func_800433A8(Obj *, s32, s32);
-void func_80045E34(Obj *);
-void func_8001FF64();
+void actorSetAnim(Obj *, s32, s32);
+void updateModelBoneActors(Obj *);
+void updateCameraView();
 extern char func_80023078[];
 void func_8003BE2C();
 void func_8003BF4C();
@@ -51,7 +51,7 @@ void func_8003C37C(Obj *arg0) {
 
     switch (arg0->fC0) {
     case 0:
-        func_800433A8(arg0, 0x16, 0x100);
+        actorSetAnim(arg0, 0x16, 0x100);
         arg0->f9C = func_8003C37C;
         arg0->f0 = 0x101;
         arg0->fC0++;
@@ -63,14 +63,14 @@ void func_8003C37C(Obj *arg0) {
         break;
     case 2:
         D_80140228 = 0;
-        arg0->f98 = func_80045E34;
+        arg0->f98 = updateModelBoneActors;
         arg0->f64 = 150;
         arg0->fC0++;
         break;
     case 3:
         arg0->f68 = -1;
         arg0->f98 = func_800414D0;
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             arg0->fC0++;
             if (D_800BD0E0.f0 == 0) {
                 arg0->fC0++;
@@ -105,7 +105,7 @@ void func_8003C37C(Obj *arg0) {
         o->f68 = 0xE;
         o->f64 = 300;
         D_800A9540 = 2;
-        D_800B3960->f9C = func_8001FF64;
+        D_800B3960->f9C = updateCameraView;
         D_80140244 = func_80023D58(0xD9E);
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x13);

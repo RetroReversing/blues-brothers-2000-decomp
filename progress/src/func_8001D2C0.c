@@ -12,16 +12,16 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8001FF64(void *);                      /* extern */
-s32 func_8002D5CC();                                /* extern */
+M2C_UNK updateCameraView(void *);                      /* extern */
+s32 tickActorTimer();                                /* extern */
 extern void *D_800B3960;
 extern M2C_UNK func_80023078;
 
 void func_8001D2C0(void *arg0) {
-    if (func_8002D5CC() != 0) {
+    if (tickActorTimer() != 0) {
         M2C_FIELD(D_800B3960, s32 *, 0xC0) = 0;
         M2C_FIELD(D_800B3960, s32 *, 0x9C) = (s32) M2C_FIELD(D_800B3960, s32 *, 0xA4);
-        func_8001FF64(D_800B3960);
+        updateCameraView(D_800B3960);
         M2C_FIELD(arg0, void **, 0x9C) = (void *) (&func_80023078 + 2);
     }
 }

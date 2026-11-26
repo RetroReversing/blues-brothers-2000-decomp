@@ -17,15 +17,15 @@ typedef struct Obj {
     /* 0x90 */ s32 f90;
 } Obj;
 s32 func_8002492C(f32, f32);
-s32 func_8002D204(s32, s32, s32);
+s32 approachAngle(s32, s32, s32);
 void func_8002E1CC(f32 *, f32 *, f32);
-void func_8002E1FC(f32 *, f32 *, f32 *);
+void vec3Sub(f32 *, f32 *, f32 *);
 void func_8002E234(f32 *, f32 *, f32 *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 extern char D_80007FAC[];
-extern s32 D_800B9ECC;
-extern s32 D_8014A928[];
-extern Pt *D_8014A9A8[];
+extern s32 gCamSpeedScale;
+extern s32 gSplinePointCount[];
+extern Pt *gSplineSrcPoints[];
 
 s32 func_8004FF2C(Obj *arg0, s32 path) {
     f32 a[4];
@@ -41,12 +41,12 @@ s32 func_8004FF2C(Obj *arg0, s32 path) {
     s32 ret;
 
     i = arg0->f80;
-    pts = D_8014A9A8[path];
-    if (D_8014A928[path] == 0) {
-        func_800899DC(D_80007FAC);
+    pts = gSplineSrcPoints[path];
+    if (gSplinePointCount[path] == 0) {
+        debugPrintf(D_80007FAC);
     }
     j = i + 1;
-    if (j > D_8014A928[path] - 1) {
+    if (j > gSplinePointCount[path] - 1) {
         j = 0;
     }
     a[0] = pts[i].x;
@@ -58,7 +58,7 @@ s32 func_8004FF2C(Obj *arg0, s32 path) {
     t = arg0->f7C * 0.00390625f;
     dx = b[0] - a[0];
     dz = b[2] - a[2];
-    func_8002E1FC(d, b, a);
+    vec3Sub(d, b, a);
     func_8002E1CC(p, d, t);
     func_8002E234(p, p, a);
     ret = 0;
@@ -66,7 +66,7 @@ s32 func_8004FF2C(Obj *arg0, s32 path) {
     if (arg0->f7C >= 256) {
         arg0->f7C -= 256;
         arg0->f80++;
-        if (arg0->f80 > D_8014A928[path] - 1) {
+        if (arg0->f80 > gSplinePointCount[path] - 1) {
             arg0->f80 = 0;
         }
         ret = 1;
@@ -75,7 +75,7 @@ s32 func_8004FF2C(Obj *arg0, s32 path) {
         arg0->f7C += 256;
         arg0->f80--;
         if (arg0->f80 < 0) {
-            arg0->f80 = D_8014A928[path] - 1;
+            arg0->f80 = gSplinePointCount[path] - 1;
         }
     }
     arg0->x = p[0];

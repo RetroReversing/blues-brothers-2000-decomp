@@ -15,14 +15,14 @@ typedef s32 M2C_UNK32;
 s16 coss(u16);                                      /* extern */
 s32 func_8002444C();                                /* extern */
 M2C_UNK func_8002D260(s32);                         /* extern */
-f32 func_8002D340(f32, f32, f32);                   /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
-s32 func_8004303C(void *);                          /* extern */
+f32 approachF32(f32, f32, f32);                   /* extern */
+s32 tickActorTimer(void *);                          /* extern */
+s32 animStepKeys(void *);                          /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 s32 func_80076080();                                /* extern */
 s16 sins(u16);                                      /* extern */
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern f32 D_801700D0;
 extern M2C_UNK func_8007631C;
 extern M2C_UNK func_80079038;
@@ -35,9 +35,9 @@ void func_80078D94(void *arg0) {
     s32 temp_a0;
     s32 temp_v0;
 
-    if ((func_80076080() == 0) && (temp_fs0 = D_801700D0, (func_8002D5CC(arg0) != 0))) {
+    if ((func_80076080() == 0) && (temp_fs0 = D_801700D0, (tickActorTimer(arg0) != 0))) {
         M2C_FIELD(arg0, s32 *, 0x64) = 0;
-        if (func_8004303C(arg0) != 0) {
+        if (animStepKeys(arg0) != 0) {
             M2C_FIELD(arg0, s32 *, 0x8C) = (s32) (M2C_FIELD(arg0, s32 *, 0x8C) - 1);
         }
         if ((M2C_FIELD(arg0, s32 *, 0xD0) == 0x104) && (M2C_FIELD(arg0, f32 *, 4) == M2C_FIELD(arg0, f32 *, 0x40)) && (M2C_FIELD(arg0, f32 *, 0xC) == M2C_FIELD(arg0, f32 *, 0x48))) {
@@ -69,13 +69,13 @@ block_13:
             temp_v0 = M2C_FIELD(arg0, s32 *, 0xFC) - 1;
             M2C_FIELD(arg0, s32 *, 0xFC) = temp_v0;
             if (temp_v0 <= 0) {
-                func_800433A8(arg0, 0x108, 0x100);
+                actorSetAnim(arg0, 0x108, 0x100);
                 M2C_FIELD(arg0, s32 *, 0) = 0x101;
                 M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8007631C;
                 M2C_FIELD(arg0, s32 *, 0xD8) = 0;
                 return;
             }
-            func_800433A8(arg0, 0x109, 0xE0);
+            actorSetAnim(arg0, 0x109, 0xE0);
             M2C_FIELD(arg0, s32 *, 0x7C) = 1;
             M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80079038;
             goto block_18;
@@ -86,9 +86,9 @@ block_18:
             M2C_FIELD(arg0, s32 *, 0x7C) = 0;
             return;
         }
-        temp_fs0 = (f32) ((f64) D_800B9ECC * 3.0);
-        M2C_FIELD(arg0, f32 *, 4) = func_8002D340(M2C_FIELD(arg0, f32 *, 0x40), M2C_FIELD(arg0, f32 *, 4), temp_fs0);
-        M2C_FIELD(arg0, f32 *, 0xC) = func_8002D340(M2C_FIELD(arg0, f32 *, 0x48), M2C_FIELD(arg0, f32 *, 0xC), temp_fs0);
+        temp_fs0 = (f32) ((f64) gCamSpeedScale * 3.0);
+        M2C_FIELD(arg0, f32 *, 4) = approachF32(M2C_FIELD(arg0, f32 *, 0x40), M2C_FIELD(arg0, f32 *, 4), temp_fs0);
+        M2C_FIELD(arg0, f32 *, 0xC) = approachF32(M2C_FIELD(arg0, f32 *, 0x48), M2C_FIELD(arg0, f32 *, 0xC), temp_fs0);
     }
 }
 

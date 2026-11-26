@@ -14,11 +14,11 @@ typedef s32 M2C_UNK32;
 
 s16 coss(u16);                                      /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
-s32 func_8002D5CC(void *);                 /* extern */
+s32 tickActorTimer(void *);                 /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 s16 sins(u16);                                      /* extern */
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern M2C_UNK func_80066764;
 extern M2C_UNK func_800672A0;
 
@@ -34,13 +34,13 @@ void func_80067150(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0xC0) & 0x18) {
         M2C_FIELD(arg0, M2C_UNK **, 0xD8) = &func_800672A0;
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
-        __base_D_800BD06C = &D_800BD06C;
-        func_800433A8((*__base_D_800BD06C), 0x1A, 0x100);
+        __base_D_800BD06C = &gCameraTarget;
+        actorSetAnim((*__base_D_800BD06C), 0x1A, 0x100);
         M2C_FIELD((*__base_D_800BD06C), f32 *, 4) = (f32) (M2C_FIELD((*__base_D_800BD06C), f32 *, 4) - (f32) ((s32) (sins(M2C_FIELD(arg0, u16 *, 0x12)) * 0x4B) >> 0xE));
         M2C_FIELD((*__base_D_800BD06C), f32 *, 0xC) = (f32) (M2C_FIELD((*__base_D_800BD06C), f32 *, 0xC) - (f32) ((s32) (coss(M2C_FIELD(arg0, u16 *, 0x12)) * 0x4B) >> 0xE));
         return;
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0xD2);
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;

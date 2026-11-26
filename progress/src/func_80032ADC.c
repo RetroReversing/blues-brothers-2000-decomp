@@ -13,12 +13,12 @@ typedef s32 M2C_UNK32;
 #endif
 void func_80023C58(s32);
 void func_80023C64(s32);
-s32 func_8002D298(s32, s32, s32);
+s32 approachS32(s32, s32, s32);
 void func_80030C40(void *, s32);
 extern s32 D_800AE010;
 extern s32 D_800B3968;
 extern s32 D_800B9C70;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern char func_80023078[];
 extern s32 func_800318BC;
 
@@ -32,16 +32,16 @@ void func_80032ADC(void *arg0) {
         M2C_FIELD(arg0, s32 **, 0x98) = &func_800318BC;
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
         M2C_FIELD(arg0, s32 *, 0x6C) = 0;
-        D_801070A0 = 0;
+        gPadPressed = 0;
         M2C_FIELD(arg0, s32 *, 0x90) = D_800AE010;
         M2C_FIELD(arg0, s32 *, 0x64) = 0x2BC;
         func_80023C58(0xB9458F);
         M2C_FIELD(arg0, f32 *, 8) = 240.0f;
     }
     if (M2C_FIELD(arg0, s32 *, 0x94) != 0) {
-        M2C_FIELD(arg0, s32 *, 0x6C) = func_8002D298(0xFF, M2C_FIELD(arg0, s32 *, 0x6C), 5);
+        M2C_FIELD(arg0, s32 *, 0x6C) = approachS32(0xFF, M2C_FIELD(arg0, s32 *, 0x6C), 5);
     } else {
-        M2C_FIELD(arg0, s32 *, 0x6C) = func_8002D298(0, M2C_FIELD(arg0, s32 *, 0x6C), 5);
+        M2C_FIELD(arg0, s32 *, 0x6C) = approachS32(0, M2C_FIELD(arg0, s32 *, 0x6C), 5);
     }
     if (M2C_FIELD(arg0, s32 *, 0x94) != 0 && M2C_FIELD(arg0, f32 *, 8) < -350.0f) {
         M2C_FIELD(arg0, void **, 0x98) = func_80023078 + 8;

@@ -28,7 +28,7 @@ typedef struct Obj {
 extern void func_80034F1C(Obj *);
 extern void func_80023078(void);
 extern void func_800340B4(void);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 
 void func_80034E40(Obj *o) {
     Obj *p;
@@ -42,7 +42,7 @@ void func_80034E40(Obj *o) {
     o->x78 = 0x1388;
     o->x9C = func_800340B4;
     o->x6C = 1;
-    p = D_800BD06C;
+    p = gCameraTarget;
     o->x7C = 0xBB8;
     o->x80 = -0x1000;
     o->x90 = 0x3E8;

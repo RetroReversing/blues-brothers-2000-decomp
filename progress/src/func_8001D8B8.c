@@ -16,9 +16,9 @@ s32 func_80013784(void *);                          /* extern */
 M2C_UNK func_80015C30(void *);                      /* extern */
 s32 func_8001B990(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
-f32 func_8002D66C(void *, f32, s32);                    /* extern */
-M2C_UNK func_8004303C(void *);                      /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+f32 getCameraTargetDist(void *, f32, s32);                    /* extern */
+M2C_UNK animStepKeys(void *);                      /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 extern f32 D_80000D2C;
 
 void func_8001D8B8(void *arg0) {
@@ -26,7 +26,7 @@ void func_8001D8B8(void *arg0) {
     s32 var_s0;
 
     temp_fs0 = 200.0f;
-    if ((func_8002D66C(arg0, temp_fs0, 0) < temp_fs0) && (func_80013784(arg0) != 0)) {
+    if ((getCameraTargetDist(arg0, temp_fs0, 0) < temp_fs0) && (func_80013784(arg0) != 0)) {
         if (M2C_FIELD(arg0, s32 *, 0x70) == 1) {
             func_8001B990(0x200, 0x17);
         }
@@ -56,11 +56,11 @@ void func_8001D8B8(void *arg0) {
 block_18:
             if ((M2C_FIELD(arg0, s32 *, 0x70) != 3) || (func_8001B990(0x100, 0x19) != 0)) {
                 if (M2C_FIELD(arg0, s32 *, 0x7C) == 1) {
-                    func_800433A8(arg0, 0x135, 0x100);
+                    actorSetAnim(arg0, 0x135, 0x100);
                     M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) + 1);
                 }
                 if (M2C_FIELD(arg0, s32 *, 0x7C) != 0) {
-                    func_8004303C(arg0);
+                    animStepKeys(arg0);
                 }
             }
         }

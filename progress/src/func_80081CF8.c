@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023E18(s32);                             /* extern */
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+s32 getImageAsset(s32);                             /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80027D7C(s32, s32, M2C_UNK, M2C_UNK);  /* extern */
 extern s32 D_800AB9B4;
 extern s32 D_800BD07C;
@@ -27,22 +27,22 @@ void func_80081CF8(void *arg0) {
     s32 var_s1;
 
     M2C_FIELD(arg0, s32 *, 0x68) = 0xE;
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
     var_s1 = 0;
     if (D_800AB9B4 == 0) {
         for (; var_s1 < 5; var_s1++) {
             if (*(&D_801719B0 + var_s1) != 0) {
-                func_80027D7C(func_80023E18(D_800BD1E4), ((0x1E) + var_s1 * 15), 0xF, 0);
+                func_80027D7C(getImageAsset(D_800BD1E4), ((0x1E) + var_s1 * 15), 0xF, 0);
             } else {
-                func_80027D7C(func_80023E18(D_800BD07C), ((0x1E) + var_s1 * 15), 0xF, 0);
+                func_80027D7C(getImageAsset(D_800BD07C), ((0x1E) + var_s1 * 15), 0xF, 0);
             }
         }
         var_s1 = 0;
         for (; var_s1 < 5; var_s1++) {
             if (*(&D_801719C8 + var_s1) != 0) {
-                func_80027D7C(func_80023E18(D_800BD1E4), ((0xBE) + var_s1 * 15), 0xF, 0);
+                func_80027D7C(getImageAsset(D_800BD1E4), ((0xBE) + var_s1 * 15), 0xF, 0);
             } else {
-                func_80027D7C(func_80023E18(D_800BD07C), ((0xBE) + var_s1 * 15), 0xF, 0);
+                func_80027D7C(getImageAsset(D_800BD07C), ((0xBE) + var_s1 * 15), 0xF, 0);
             }
         }
     }

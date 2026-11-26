@@ -5,7 +5,7 @@ typedef struct Ent234F4 {
     u8 pad_A0[0x68];
 } Ent234F4;
 
-void func_8001FF64(Ent234F4 *);
+void updateCameraView(Ent234F4 *);
 void func_80048F5C(void);
 extern s32 D_800AB9B4;
 extern Ent234F4 *D_800AB9BC;
@@ -21,7 +21,7 @@ void func_800234F4(void) {
         for (p = D_800AB9BC; p < D_800AB9C0; p++) {
             if (p->flags & 0x8000) {
                 if (p->flags == 0x8001) {
-                    func_8001FF64(p);
+                    updateCameraView(p);
                 } else {
                     p->fn(p);
                     if (D_800B9C7C != 0) {

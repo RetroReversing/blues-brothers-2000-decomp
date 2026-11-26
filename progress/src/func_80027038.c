@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 
 void func_80027038(void) {
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
 }

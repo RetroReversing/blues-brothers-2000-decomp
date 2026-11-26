@@ -12,12 +12,12 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
 void *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D3E4(void *, M2C_UNK);             /* extern */
 M2C_UNK func_8003BF98(s32);                         /* extern */
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 extern s32 D_8014AAD0;
 extern M2C_UNK func_8002F8D0;
 extern M2C_UNK func_8005923C;
@@ -35,7 +35,7 @@ void *func_80059298(void *arg0) {
     ((__repair_record_temp_v0*)temp_v0)->field_74 = 0;
     ((__repair_record_temp_v0*)temp_v0)->field_7C = 1;
     ((__repair_record_temp_v0*)temp_v0)->field_60 = (s32) D_8014AAD0;
-    { ((__repair_record_temp_v0*)temp_v0)->field_58 = func_800221C0(0, 1, 1, 3, 0, 0, 1, 0); }
+    { ((__repair_record_temp_v0*)temp_v0)->field_58 = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0); }
     ((__repair_record_temp_v0*)temp_v0)->field_68 = 0xE;
     ((__repair_record_temp_v0*)temp_v0)->field_5C = 0xFF;
     ((__repair_record_temp_v0*)temp_v0)->field_18 = 0xC000;
@@ -44,6 +44,6 @@ void *func_80059298(void *arg0) {
     func_8002D3E4(temp_v0, 0x1E); } } }
     func_8002A360(0xC, 0x80);
     func_8002A360(8, 0x15);
-    func_8003BF98(D_800BD06C);
+    func_8003BF98(gCameraTarget);
     return temp_v0;
 }

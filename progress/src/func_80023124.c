@@ -1,4 +1,4 @@
-void func_800899DC();
+void debugPrintf();
 extern char D_80000F00[];
 extern u32 D_800AB9B0;
 extern s32 D_800AB9B8;
@@ -46,7 +46,7 @@ u32 func_80023124(void)
   temp = (u32) D_800AB9B0;
   if (temp2 >= temp)
   {
-    func_800899DC(D_80000F00, 0x190);
+    debugPrintf(D_80000F00, 0x190);
   }
   D_800AB9B8 += 1;
   return var_s0;

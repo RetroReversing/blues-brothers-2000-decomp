@@ -14,7 +14,7 @@ Obj *func_80056F04(Obj *);
 Obj *func_800232B4(s32, s32, s32, s32);
 void func_8003BB90(Obj *);
 void func_8007BC24(void);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 
 void func_8007BD08(Obj *arg0) {
     Obj *p;
@@ -47,7 +47,7 @@ void func_8007BD08(Obj *arg0) {
         p->f74 = 1;
         arg0->f7C = 1;
     }
-    if (D_800BD06C->y < -25355.0f && D_800BD06C->f0 == 3) {
-        func_8003BB90(D_800BD06C);
+    if (gCameraTarget->y < -25355.0f && gCameraTarget->f0 == 3) {
+        func_8003BB90(gCameraTarget);
     }
 }

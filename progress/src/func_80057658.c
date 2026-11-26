@@ -20,13 +20,13 @@ struct Obj {
 s16 coss(u16);
 s16 sins(u16);
 s32 func_8002D1A0(void);
-s32 func_8002D204(s32, s32, s32);
+s32 approachAngle(s32, s32, s32);
 void func_8002D3E4(Obj *, s32);
 void func_8002DA80(Obj *);
 Obj *func_80017344(Obj *);
 void func_80043328(Obj *, s32, s32);
 f32 sqrtf(f32);
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 s32 func_80057658(Obj *arg0) {
     f32 rad;
@@ -38,7 +38,7 @@ s32 func_80057658(Obj *arg0) {
 
     rad = arg0->f74;
     rad *= 50.0f;
-    arg0->ang = func_8002D204(arg0->f90, arg0->ang, (D_800B9ECC + 1) << 9);
+    arg0->ang = approachAngle(arg0->f90, arg0->ang, (gCamSpeedScale + 1) << 9);
     func_80043328(arg0, 0xC5, 0x100);
     func_8002D3E4(arg0, 700);
     func_8002DA80(arg0);

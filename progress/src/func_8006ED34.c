@@ -1,6 +1,6 @@
-s32 func_8002D5CC(void *);
+s32 tickActorTimer(void *);
 s32 func_8006DAE8(s32);
-s32 func_8002D298(s32, s32, s32);
+s32 approachS32(s32, s32, s32);
 void func_8002A360(s32, s32);
 void func_80023C10(s32);
 void func_8006DDD4(void *);
@@ -29,7 +29,7 @@ void func_8006ED34(void *arg0) {
         F(arg0, s32, 0x7C) += 1;
     }
     if (F(arg0, s32, 0x80) == 2) {
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             var_s1 = func_8006DAE8(D_800B82C0[F(arg0, s32, 0x84)]);
         }
     }
@@ -64,7 +64,7 @@ void func_8006ED34(void *arg0) {
         void *q = D_800B3964;
         void *p = D_800B3960;
         F(q, s32, 0x84) = F(arg0, s32, 0x84);
-        F(D_800B3960, s32, 0x8C) = func_8002D298(D_800B82CC[F(arg0, s32, 0x84)], F(p, s32, 0x8C), 0x200);
+        F(D_800B3960, s32, 0x8C) = approachS32(D_800B82CC[F(arg0, s32, 0x84)], F(p, s32, 0x8C), 0x200);
     }
     if (F(arg0, s32, 0x8C) != 0) {
         F(arg0, s32, 0x90) = 0x1001;

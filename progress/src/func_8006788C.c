@@ -14,12 +14,12 @@ typedef s32 M2C_UNK32;
 #endif
 
 s16 coss(u16);                                      /* extern */
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
 void *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK func_8002ADFC(M2C_UNK, M2C_UNK, void *);    /* extern */
 s16 sins(u16);                                      /* extern */
-extern s32 *D_800BD06C;
+extern s32 *gCameraTarget;
 extern s32 D_8014AB3C;
 extern s32 D_8014AB44;
 extern M2C_UNK func_8002F8D0;
@@ -87,14 +87,14 @@ void *func_8006788C(Obj *arg0, s32 arg1) {
     o->f74 = 0;
     o->f78 = 0xFFFFFF;
     o->f7C = 1;
-    o->f58 = func_800221C0(0, 1, 1, 3, 0, 0, 2, 0);
+    o->f58 = packDrawFlags(0, 1, 1, 3, 0, 0, 2, 0);
     o->f68 = 0xA;
     o->f5C = 0xFF;
     o->f18 = 0xC000;
     o->f64 = 0xC8;
     o->f10 = arg0->f10 + 0x8000;
     o->f84 = 3;
-    o->f80 = -func_80024394(0, 3);
+    o->f80 = -randomRange(0, 3);
     o->f4C = arg0->f4C;
     o->f54 = arg0->f54;
     if (arg1 != 0) {
@@ -102,7 +102,7 @@ void *func_8006788C(Obj *arg0, s32 arg1) {
         o->f90 = 1;
         o->f60 = D_8014AB44;
         o->f70 = o->f70 + 0x2D;
-        *D_800BD06C = 3;
+        *gCameraTarget = 3;
     } else {
         o->f90 = 0;
         o->f70 = 0x4B;

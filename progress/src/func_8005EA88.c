@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80050460(M2C_UNK *, M2C_UNK *);        /* extern */
 extern M2C_UNK D_800B9510;
 extern M2C_UNK D_8014AA55;
@@ -25,7 +25,7 @@ void *func_8005EA88(void *arg0) {
     func_80050460(&func_8005E744, &D_8014AA55);
     temp_v0 = func_80042F00(0x26, 0, 0, 0);
     M2C_FIELD(temp_v0, s32 *, 0) = 0x100D;
-    func_800433A8(temp_v0, 0xDE, 0x100);
+    actorSetAnim(temp_v0, 0xDE, 0x100);
     if (arg0 != NULL) {
         M2C_FIELD(temp_v0, f32 *, 4) = (f32) M2C_FIELD(arg0, f32 *, 4);
         M2C_FIELD(temp_v0, f32 *, 8) = (f32) M2C_FIELD(arg0, f32 *, 8);

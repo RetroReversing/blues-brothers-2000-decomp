@@ -20,7 +20,7 @@ typedef struct Obj {
 
 s16 coss(u16);
 s16 sins(u16);
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_80015518(Obj *arg0) {
     arg0->x18 += 0x4B4;
@@ -29,7 +29,7 @@ void func_80015518(Obj *arg0) {
     arg0->y += 20.0f;
     arg0->radius += 10;
     arg0->angle += 0x1000;
-    arg0->timer -= D_800B9ECC * 4;
+    arg0->timer -= gCamSpeedScale * 4;
     if (arg0->timer <= 0) {
         arg0->func(arg0);
     }

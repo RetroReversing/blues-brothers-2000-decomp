@@ -16,7 +16,7 @@ s32 func_800171C0(void *);                      /* extern */
 s32 func_8001B990(s32, s32);            /* extern */
 void *func_800232B4(s32, s32, s32, s32); /* extern */
 extern f32 D_80000CB4;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 func_8001C964;
 extern s32 func_80023078;
 
@@ -25,7 +25,7 @@ void func_8001CB68(void *arg0) {
     f32 temp_fv1;
     void *temp_v0;
 
-    temp_fv1 = M2C_FIELD(arg0, f32 *, 0xC) - (f32) (D_800B9ECC * 2);
+    temp_fv1 = M2C_FIELD(arg0, f32 *, 0xC) - (f32) (gCamSpeedScale * 2);
     M2C_FIELD(arg0, f32 *, 0xC) = temp_fv1;
     if (temp_fv1 <= (M2C_FIELD(arg0, f32 *, 0x48) - D_80000CB4)) {
         if (M2C_FIELD(arg0, s32 *, 0x70) == 1) {

@@ -15,8 +15,8 @@ typedef s32 M2C_UNK32;
 
 s32 func_80023DBC();
 s32 func_8002A360();
-s32 func_8002D5CC();
-s32 func_800433A8();
+s32 tickActorTimer();
+s32 actorSetAnim();
 s32 func_80052B24();
 s32 func_80082400();
 s32 sprintf();
@@ -37,7 +37,7 @@ void func_80086550(void *arg0) {
 
     temp_s0 = func_80082400();
     temp_s1 = func_80023DBC(0xE33);
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         loop_goto_1:
         {
  __base_D_800B8720 = D_800B8720;
@@ -50,7 +50,7 @@ void func_80086550(void *arg0) {
         }
         func_80052B24(temp_s1, sp10, arg0);
         M2C_FIELD(arg0, s32 **, 0x9C) = &func_800864B8;
-        func_800433A8(D_801719A8, 0x178, 0x100);
+        actorSetAnim(D_801719A8, 0x178, 0x100);
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x78);
         M2C_FIELD_PTR(arg0, s32 *, 0x64) = 0x12C;

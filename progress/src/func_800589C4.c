@@ -19,14 +19,14 @@ struct ObjR {
     f32 f104;
 };
 
-void func_8002D620(ObjR *);
-s32 func_80024394(s32, s32);
+void syncActorPrevPos(ObjR *);
+s32 randomRange(s32, s32);
 s32 func_80076080(ObjR *);
-s32 func_8002D5CC(ObjR *);
+s32 tickActorTimer(ObjR *);
 void func_800853E8(ObjR *);
 s32 func_8002444C(void);
 void func_80080594(ObjR *, s32);
-void func_800899DC(char *);
+void debugPrintf(char *);
 void func_80043328(ObjR *, s32, s32);
 void func_80083A28(ObjR *);
 s32 func_8003BF98();
@@ -37,7 +37,7 @@ s32 func_80083EDC(ObjR *);
 s32 func_8006BB14(ObjR *);
 extern char D_8000846C[];
 extern char D_8000847C[];
-extern ObjR *D_800BD06C;
+extern ObjR *gCameraTarget;
 
 void func_800589C4(ObjR *arg0) {
     s32 ret;
@@ -47,19 +47,19 @@ void func_800589C4(ObjR *arg0) {
         arg0->f7C = 1;
         arg0->f78 = 0;
         arg0->fD8 = 0;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         if (arg0->fAC == 0.0f) {
             arg0->fAC = 0.015f;
         }
         if (arg0->f104 == 0.0f) {
             arg0->f104 = 700.0f;
         }
-        arg0->f64 = func_80024394(25, 30) * 100;
+        arg0->f64 = randomRange(25, 30) * 100;
     }
     if (func_80076080(arg0) != 0) {
         return;
     }
-    func_8002D5CC(arg0);
+    tickActorTimer(arg0);
     if (arg0->fD8 != 0) {
         ret = arg0->fD8(arg0);
     }
@@ -81,7 +81,7 @@ void func_800589C4(ObjR *arg0) {
                 arg0->f8C = 0;
                 break;
             default:
-                func_800899DC(D_8000846C);
+                debugPrintf(D_8000846C);
                 break;
             }
             break;
@@ -93,7 +93,7 @@ void func_800589C4(ObjR *arg0) {
         default:
             switch (ret) {
             case 1:
-                arg0->f64 = func_80024394(25, 30) * 100;
+                arg0->f64 = randomRange(25, 30) * 100;
                 arg0->f78 = 0;
                 arg0->fD8 = func_80083E98;
                 if (func_8002444C() & 1) {
@@ -119,7 +119,7 @@ void func_800589C4(ObjR *arg0) {
                 arg0->f8C = 0;
                 break;
             default:
-                func_800899DC(D_8000847C);
+                debugPrintf(D_8000847C);
                 break;
             }
             break;
@@ -130,7 +130,7 @@ void func_800589C4(ObjR *arg0) {
         }
     }
     if (arg0->fC0 & 4) {
-        func_8003BF98(D_800BD06C);
+        func_8003BF98(gCameraTarget);
     }
     arg0->fC0 &= ~4;
     func_80083A28(arg0);

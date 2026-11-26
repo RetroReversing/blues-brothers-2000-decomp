@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002D620(void *);                      /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80050460(M2C_UNK *, M2C_UNK *);        /* extern */
@@ -39,7 +39,7 @@ void *func_80058040(void *arg0) {
         }
     }
     func_800852CC(temp_v0, arg0);
-    func_8002D620(temp_v0);
+    syncActorPrevPos(temp_v0);
     if (arg0 != NULL) {
         M2C_FIELD(temp_v0, s32 *, 0x74) = (s32) M2C_FIELD(arg0, s32 *, 0x74);
     }

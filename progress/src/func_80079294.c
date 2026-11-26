@@ -2,10 +2,10 @@ s32 func_80013654(void *);
 s32 func_80013784(void *);
 s32 func_800137E0(void *);
 s32 func_800137F8(void *);
-f32 func_8002D66C(void *, f32, s32);
-void func_8003AC08(void *, f32, s32);
+f32 getCameraTargetDist(void *, f32, s32);
+void handleActorHit(void *, f32, s32);
 s16 *func_800851D8(void);
-extern void *D_800BD06C[];
+extern void *gCameraTarget[];
 extern f32 D_80009394;
 extern f32 D_80009398;
 extern f32 D_8000939C;
@@ -39,26 +39,26 @@ ret1:
     }
     r = D_8000939C;
     F(arg0, s32, 0xC0) = 0;
-    d = func_8002D66C(arg0, r, 0);
+    d = getCameraTargetDist(arg0, r, 0);
     if (d < D_800093A0) {
         d = D_800093A0;
     }
     if (d < r) {
-        if (top < F(D_800BD06C[0], f32, 8)) {
+        if (top < F(gCameraTarget[0], f32, 8)) {
             return 0;
         }
-        if (F(D_800BD06C[0], f32, 8) + D_800093A4 < low) {
+        if (F(gCameraTarget[0], f32, 8) + D_800093A4 < low) {
             return 0;
         }
-        if (top <= F(D_800BD06C[0], f32, 0x44) && F(D_800BD06C[0], f32, 8) < top) {
-            func_8003AC08(D_800BD06C[0], F(arg0, f32, 8) + D_800093A8, 0);
+        if (top <= F(gCameraTarget[0], f32, 0x44) && F(gCameraTarget[0], f32, 8) < top) {
+            handleActorHit(gCameraTarget[0], F(arg0, f32, 8) + D_800093A8, 0);
             if (func_80013784(arg0) != 0) {
                 F(arg0, s32, 0xC0) |= 4;
             }
             return 2;
         }
         if (d < D_800093AC) {
-            void *p = D_800BD06C[0];
+            void *p = gCameraTarget[0];
             f32 k = D_800093AC - d;
             f32 dx = F(arg0, f32, 4) - F(p, f32, 4);
             f32 dz = F(arg0, f32, 0xC) - F(p, f32, 0xC);
@@ -70,7 +70,7 @@ ret1:
                 F(arg0, s32, 0xC0) = u | 0x103;
             }
         }
-        res = func_80013654(D_800BD06C[0]);
+        res = func_80013654(gCameraTarget[0]);
         if (res != 0) {
             w = F(arg0, s32, 0xC0);
             F(arg0, s32, 0xC0) = w | 2;
@@ -78,13 +78,13 @@ ret1:
                 F(arg0, s32, 0xC0) = w | 0x82;
             }
         }
-        if (func_800137E0(D_800BD06C[0]) != 0) {
+        if (func_800137E0(gCameraTarget[0]) != 0) {
             F(arg0, s32, 0xC0) |= 8;
         }
         if (func_80013784(arg0) != 0) {
             F(arg0, s32, 0xC0) |= 4;
         }
-        if (func_800137F8(D_800BD06C[0]) != 0) {
+        if (func_800137F8(gCameraTarget[0]) != 0) {
             F(arg0, s32, 0xC0) |= 0x12;
         }
         goto ret1;

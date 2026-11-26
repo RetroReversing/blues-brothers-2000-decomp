@@ -1,5 +1,5 @@
 void func_80025280(void *);
-s32 func_800899DC(s32 *);
+s32 debugPrintf(s32 *);
 extern s32 D_800010C4;
 extern s32 D_800AE010;
 
@@ -14,7 +14,7 @@ void *func_80025820(void *arg0, u32 arg1) {
     size = hdr[0];
     do {} while (0);
     if (size < arg1) {
-        func_800899DC(&D_800010C4);
+        debugPrintf(&D_800010C4);
         hdr = (u32 *)(p - 8);
         p = arg0;
     }

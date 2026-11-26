@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80048820(f32 *, f32 *, s32);
+s32 collectCollisionCells(f32 *, f32 *, s32);
 s32 func_80048C8C(f32 *, s32);
 extern f32 D_80148D14;
 
@@ -22,7 +22,7 @@ void func_80013F24(void *arg0) {
     sp10[0] = *(f32 *)((s8 *)arg0 + 4);
     sp10[1] = *(f32 *)((s8 *)arg0 + 8);
     sp10[2] = *(f32 *)((s8 *)arg0 + 0xC);
-    func_80048820(sp10, sp10, 0);
+    collectCollisionCells(sp10, sp10, 0);
     if (func_80048C8C(sp10, 1) != 0) {
         *(f32 *)((s8 *)arg0 + 8) = D_80148D14;
     }

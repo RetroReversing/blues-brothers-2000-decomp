@@ -8,9 +8,9 @@ extern s32 func_8002444C();
 extern s32 func_80078634(Obj *);
 extern s32 func_8007855C(Obj *);
 extern void func_80078720();
-extern void func_800899DC(char *);
-extern void func_800433A8(Obj *, s32, s32);
-extern s32 D_8014A928[];
+extern void debugPrintf(char *);
+extern void actorSetAnim(Obj *, s32, s32);
+extern s32 gSplinePointCount[];
 
 void func_800787E8(Obj *arg0) {
     f32 temp_ft0;
@@ -36,14 +36,14 @@ void func_800787E8(Obj *arg0) {
             arg0->f10 = 0x8000;
             arg0->fB4 = temp_ft0 + arg0->fB4;
         } else {
-            arg0->fB4 = (f32) (D_8014A928[temp_a0] - 1) - temp_ft0;
+            arg0->fB4 = (f32) (gSplinePointCount[temp_a0] - 1) - temp_ft0;
             arg0->fAC = -arg0->fAC;
             arg0->f10 = 0;
         }
     }
     temp_s1 = arg0->fA8;
     if (temp_s1 == NULL) {
-        func_800899DC("punk has no skateboard!");
+        debugPrintf("punk has no skateboard!");
     }
     temp_v0 = arg0->fD8;
     if (temp_v0 != NULL) {
@@ -58,10 +58,10 @@ void func_800787E8(Obj *arg0) {
             arg0->fD8 = func_80078634;
             arg0->f74 = 0;
         } else {
-            func_800899DC("[Error] you're a punk!");
+            debugPrintf("[Error] you're a punk!");
         }
-        func_800433A8(arg0, arg0->f74 + 0x11D, 0x100);
-        func_800433A8(temp_s1, arg0->f74 + 0x120, 0x100);
+        actorSetAnim(arg0, arg0->f74 + 0x11D, 0x100);
+        actorSetAnim(temp_s1, arg0->f74 + 0x120, 0x100);
         arg0->f88 = 0;
         arg0->f8C = 0;
     }

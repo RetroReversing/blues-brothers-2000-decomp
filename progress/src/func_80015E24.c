@@ -8,10 +8,10 @@ typedef struct Obj {
     u8 pad74[0x2C];
     void (*fA0)(struct Obj *);
 } Obj;
-extern s32 D_800B9EA0;
+extern s32 gFrameScale;
 
 void func_80015E24(Obj *o) {
-    o->f5C -= D_800B9EA0 * 8;
+    o->f5C -= gFrameScale * 8;
     o->f18 += 0x400;
     o->f70 = o->f5C * 90 / 255;
     if (o->f5C <= 0) {

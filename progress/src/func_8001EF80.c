@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 f32 func_8002DD60(f32);                             /* extern */
-M2C_UNK func_8002DD8C(void *, M2C_UNK *, f32 *);    /* extern */
+M2C_UNK mtxTransformVec3(void *, M2C_UNK *, f32 *);    /* extern */
 extern void *D_800B3960;
 extern M2C_UNK D_800CD148;
 
@@ -32,7 +32,7 @@ s32 func_8001EF80(void *arg0, s32 arg1) {
     if (func_8002DD60(sp10[2]) > (f32) arg1) {
         return 0;
     }
-    func_8002DD8C((s8 *) arg0 + 0x28, &D_800CD148, sp10);
+    mtxTransformVec3((s8 *) arg0 + 0x28, &D_800CD148, sp10);
     if (func_8002DD60(M2C_FIELD(arg0, f32 *, 0x28)) > (f32) arg1) {
         return 0;
     }

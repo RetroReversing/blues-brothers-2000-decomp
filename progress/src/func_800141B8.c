@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_800140D0();                              /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK func_8002D4E0(void *, s32);                 /* extern */
 extern f32 D_80000824;
 
@@ -22,9 +22,9 @@ s32 func_800141B8(void) {
     void *temp_s0;
 
     temp_s0 = func_800140D0();
-    ((__repair_record_temp_s0*)temp_s0)->field_14 = func_80024394(0x2EE0, 0x3FFC);
-    ((__repair_record_temp_s0*)temp_s0)->field_10 = (s32) (func_80024394(1, 8) << 0xD);
-    func_8002D4E0(temp_s0, func_80024394(0x3E8, 0x3EA));
+    ((__repair_record_temp_s0*)temp_s0)->field_14 = randomRange(0x2EE0, 0x3FFC);
+    ((__repair_record_temp_s0*)temp_s0)->field_10 = (s32) (randomRange(1, 8) << 0xD);
+    func_8002D4E0(temp_s0, randomRange(0x3E8, 0x3EA));
     ((__repair_record_temp_s0*)temp_s0)->field_14 = 0;
     ((__repair_record_temp_s0*)temp_s0)->field_8 = (f32) (((__repair_record_temp_s0*)temp_s0)->field_8 + D_80000824);
     return (s32) temp_s0;

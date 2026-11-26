@@ -26,13 +26,13 @@ typedef struct {
     s32 flags;
 } Obj;
 
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 s32 func_80013784(Obj *);
 void func_80017F78();
 void func_8001B990(s32, s32);
-void func_8001FF64(Obj *);
+void updateCameraView(Obj *);
 void func_8002A360(s32, s32);
-void func_8002D66C(Obj *, f32, s32);
+void getCameraTargetDist(Obj *, f32, s32);
 void func_8001D2C0(Obj *);
 extern s32 func_80023078;
 extern s32 D_800A954C;
@@ -68,13 +68,13 @@ void func_8001D30C(Obj *o)
         o->vel = 0.0f;
     }
     o->state = 0x10E;
-    func_8002D66C(o, 200.0f, 0);
+    getCameraTargetDist(o, 200.0f, 0);
     if (o->y < lo) {
         func_8001B990(0x200, o->id);
         o->y = lo;
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0xF);
-        if (func_8000C43C() == 7) {
+        if (cameraGetMode() == 7) {
             func_8001B990(0x200, o->id);
             if (D_800A954C == 0) {
                 p = D_800B3960;
@@ -91,7 +91,7 @@ void func_8001D30C(Obj *o)
                 D_80140228 = 0;
                 p->w14 = q->w14;
                 p->w18 = q->w18;
-                func_8001FF64(p);
+                updateCameraView(p);
                 func_8002A360(0xC, 0x80);
                 func_8002A360(8, 0x72);
                 o->cb = (void *)func_8001D2C0;

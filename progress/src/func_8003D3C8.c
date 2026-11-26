@@ -12,20 +12,20 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 M2C_UNK func_80014A84(void *);                      /* extern */
-s32 func_80023874(M2C_UNK, M2C_UNK);                /* extern */
+s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK func_80025D00(M2C_UNK);                     /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002CE84(M2C_UNK, M2C_UNK);            /* extern */
-s32 func_8002D298(M2C_UNK, s32, s32);               /* extern */
+s32 approachS32(M2C_UNK, s32, s32);               /* extern */
 extern s32 D_800AB9B4;
 extern s32 D_800B5DCC;
 extern s32 D_800B5DD4;
 extern s32 D_800B5DD8;
-extern s32 D_800B9EA4;
-extern s32 D_800B9ECC;
-extern s32 D_801070A0;
+extern s32 gTextWaveTime;
+extern s32 gCamSpeedScale;
+extern s32 gPadPressed;
 extern s32 D_8013FB20;
 extern s32 D_80140250;
 extern M2C_UNK func_8003D854;
@@ -37,26 +37,26 @@ void func_8003D3C8(void *arg0) {
     M2C_UNK *var_v0;
     s32 temp_v0;
 
-    if ((func_80023874(0x801, 0) == 0) && (D_800B5DD4 != 0) && (D_8013FB20 == 0)) {
+    if ((findActor(0x801, 0) == 0) && (D_800B5DD4 != 0) && (D_8013FB20 == 0)) {
         if (M2C_FIELD(arg0, s32 *, 0x68) > 0) {
-            temp_v0 = func_8002D298(0, M2C_FIELD(arg0, s32 *, 0x70), D_800B9ECC * 0x10);
+            temp_v0 = approachS32(0, M2C_FIELD(arg0, s32 *, 0x70), gCamSpeedScale * 0x10);
             M2C_FIELD(arg0, s32 *, 0x70) = temp_v0;
             if (temp_v0 == 0) {
                 M2C_FIELD(arg0, s32 *, 0x68) = -1;
             }
         }
-        if (D_801070A0 & 0x1000) {
+        if (gPadPressed & 0x1000) {
             M2C_FIELD(arg0, s32 *, 0x88) = 0;
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             func_8002A360(0, 0x3E8);
             func_8002CE84(5, 0);
-            D_801070A0 = 0;
-            D_80140250 = D_800B9EA4;
+            gPadPressed = 0;
+            D_80140250 = gTextWaveTime;
             func_80025D00(0);
             func_80025D00(0);
             func_80025D00(0);
-            if (func_8000C43C() == 0x3B) {
+            if (cameraGetMode() == 0x3B) {
                 D_800B5DCC = 3;
                 D_800B5DD8 = 3;
                 M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003DB40;

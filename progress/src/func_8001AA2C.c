@@ -15,11 +15,11 @@ typedef s32 M2C_UNK32;
 s16 coss(u16);                                      /* extern */
 M2C_UNK func_800134F0(void *);                      /* extern */
 M2C_UNK func_80013550(void *);                      /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_8002D620(void *);                      /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 M2C_UNK func_8004F9D0(void *, s32);                 /* extern */
 s16 sins(u16);                                      /* extern */
-extern M2C_UNK D_800B9EA4;
+extern M2C_UNK gTextWaveTime;
 
 void func_8001AA2C(void *arg0) {
     M2C_UNK *__base_D_800B9EA4;
@@ -29,13 +29,13 @@ void func_8001AA2C(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0) = k;
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
-        M2C_FIELD(arg0, s32 *, 0x8C) = func_80024394(-0x64, 0);
-        M2C_FIELD(arg0, s32 *, 0x90) = func_80024394(-0xC8, 0x64);
+        M2C_FIELD(arg0, s32 *, 0x8C) = randomRange(-0x64, 0);
+        M2C_FIELD(arg0, s32 *, 0x90) = randomRange(-0xC8, 0x64);
         k = 0xB94598;
         M2C_FIELD(arg0, s32 *, 0x6C) = k;
     }
     func_8004F9D0(arg0, M2C_FIELD(arg0, s32 *, 0x70));
-    __base_D_800B9EA4 = &D_800B9EA4;
+    __base_D_800B9EA4 = &gTextWaveTime;
     {
         f32 t;
         s32 a;
@@ -50,7 +50,7 @@ void func_8001AA2C(void *arg0) {
     }
     M2C_FIELD(arg0, f32 *, 0x4C) = (f32) (M2C_FIELD(arg0, f32 *, 4) - M2C_FIELD(arg0, f32 *, 0x40));
     M2C_FIELD(arg0, f32 *, 0x54) = (f32) (M2C_FIELD(arg0, f32 *, 0xC) - M2C_FIELD(arg0, f32 *, 0x48));
-    func_8002D620(arg0);
+    syncActorPrevPos(arg0);
     func_800134F0(arg0);
     func_80013550(arg0);
 }

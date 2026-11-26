@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8000C874(void);                       /* extern */
+M2C_UNK initLevel(void);                       /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_80088F40();                            /* extern */
@@ -24,7 +24,7 @@ extern s32 D_800B5DD0;
 extern s32 D_800BD0FC;
 extern s32 D_8013FB20;
 extern void *D_8013FB74;
-extern M2C_UNK func_8001FF64;
+extern M2C_UNK updateCameraView;
 extern M2C_UNK func_80023078;
 extern M2C_UNK func_8003D3C8;
 
@@ -42,7 +42,7 @@ void func_8003D558(void *arg0) {
         D_800B3838 = 0;
         if (D_800B5DD0 != 0) {
             D_800B5DD0 = 0;
-            func_8000C874();
+            initLevel();
             func_80088F40();
             return;
         }
@@ -53,7 +53,7 @@ void func_8003D558(void *arg0) {
             D_800B4A84 = 1;
         }
         M2C_FIELD(D_8013FB74, s32 *, 0x90) = 2;
-        M2C_FIELD(D_800B3960, M2C_UNK **, 0x9C) = &func_8001FF64;
+        M2C_FIELD(D_800B3960, M2C_UNK **, 0x9C) = &updateCameraView;
         D_800BD0FC = 0;
     }
 }

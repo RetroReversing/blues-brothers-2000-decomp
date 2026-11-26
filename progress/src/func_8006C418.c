@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 f32 func_8002D858();
-s32 func_8004303C();
+s32 animStepKeys();
 s32 func_80043248();
 s32 func_80043328();
 s32 func_8006C264();
@@ -27,7 +27,7 @@ void func_8006C418(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0x88) != 0) {
         M2C_FIELD(arg0, s32 *, 0x84) = func_80043248(arg0);
     } else {
-        M2C_FIELD(arg0, s32 *, 0x84) = func_8004303C(arg0);
+        M2C_FIELD(arg0, s32 *, 0x84) = animStepKeys(arg0);
     }
     if (M2C_FIELD(arg0, s32 *, 0xD0) == 0xF1) {
         if (M2C_FIELD(arg0, s32 *, 0x84) != 0) {

@@ -1,13 +1,13 @@
 s32 func_8000C4A0(void);
 s32 func_8000C594(void);
-void func_8000C874(void);
+void initLevel(void);
 void func_8000CDF0(void);
-void func_8000CF30(void);
+void setupStage(void);
 void func_8000D394(void);
 void func_80023C10(s32);
 s32 func_80023D58(s32);
 void func_8002A360(s32, s32);
-s32 func_8002D5CC(void *);
+s32 tickActorTimer(void *);
 void func_8002E7B8(s32, s32);
 void func_80030C40(void *, s32);
 void func_80030C6C(void *, void *);
@@ -44,7 +44,7 @@ void func_80030FDC(Obj *arg0) {
     s32 n;
 
     if (arg0->x7C != 0) {
-        func_8000CF30();
+        setupStage();
         arg0->x98 = (u8 *)func_80023078 + 8;
         arg0->x7C = 0;
         arg0->x90 = 0;
@@ -78,13 +78,13 @@ void func_80030FDC(Obj *arg0) {
             arg0->x64 = 0;
             arg0->xC0 = 1;
         }
-        if (arg0->x88 != 0 && func_8002D5CC(arg0) != 0) {
+        if (arg0->x88 != 0 && tickActorTimer(arg0) != 0) {
             arg0->xC0 = 1;
         }
     }
     switch (arg0->xC0) {
     case 1:
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             if (arg0->x88 != 0) {
                 n = func_8000C4A0();
             } else {
@@ -116,10 +116,10 @@ void func_80030FDC(Obj *arg0) {
         }
         break;
     case 2:
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             if (++arg0->x80 >= 3) {
                 func_80023C10(arg0->x60);
-                func_8000C874();
+                initLevel();
                 func_80088F40();
                 arg0->x64 = 500;
                 arg0->xC0 = 0;

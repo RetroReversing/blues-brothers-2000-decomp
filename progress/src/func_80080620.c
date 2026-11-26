@@ -22,24 +22,24 @@ typedef struct Actor {
 } Actor;
 void *func_80017DEC(s32);
 void *func_800232B4(s32, s32, s32, s32);
-void *func_80023874(s32, void *);
+void *findActor(s32, void *);
 s32 func_8002D260(s32);
-s32 func_8002D5CC(void *);
-void func_8002D620(void *);
-f32 func_8002D66C(void *, f32, s32);
+s32 tickActorTimer(void *);
+void syncActorPrevPos(void *);
+f32 getCameraTargetDist(void *, f32, s32);
 void func_80033DC4(void *);
 void func_800340B4(void *);
 f32 func_800385AC(void *);
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 void func_80064024(void *);
 void func_80080AF0(void *);
-void func_800899DC(void *);
+void debugPrintf(void *);
 void func_8003930C(void *);
 extern u8 D_80009734[];
 extern u8 D_80009754[];
 extern Actor *D_800B3960;
-extern s32 D_800B9ECC;
-extern Actor *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern Actor *gCameraTarget;
 
 void func_80080620(Actor *arg0) {
     Actor *o;
@@ -50,9 +50,9 @@ void func_80080620(Actor *arg0) {
         arg0->x0 = 0x900;
         arg0->x88 = 0;
     }
-    if (225.0f < func_8002D66C(arg0, 250.0f, 0)) {
+    if (225.0f < getCameraTargetDist(arg0, 250.0f, 0)) {
         arg0->x64 = 0;
-        if (D_800BD06C->x8 - arg0->x8 < -900.0f && arg0->x88 != 0
+        if (gCameraTarget->x8 - arg0->x8 < -900.0f && arg0->x88 != 0
             && D_800B3960->x9C == (Fn)func_80064024) {
             arg0->x88 = 0;
             func_80033DC4(D_800B3960);
@@ -63,26 +63,26 @@ void func_80080620(Actor *arg0) {
             o->x9C(o);
             arg0->x64 = 300;
         }
-    } else if (func_8002D5CC(arg0) != 0 && !(D_800BD06C->x8 < arg0->x8)) {
+    } else if (tickActorTimer(arg0) != 0 && !(gCameraTarget->x8 < arg0->x8)) {
         if (arg0->x88 == 0) {
-            for (o = func_80023874(0x901, NULL); o != NULL; o = func_80023874(0x901, o)) {
+            for (o = findActor(0x901, NULL); o != NULL; o = findActor(0x901, o)) {
                 if (o->x70 == arg0->x70) {
                     break;
                 }
             }
             if (o == NULL) {
-                func_800899DC(D_80009734);
+                debugPrintf(D_80009734);
             }
-            D_800BD06C->x4 = o->x4;
-            D_800BD06C->x8 = o->x8;
-            D_800BD06C->xC = o->xC;
-            for (o = func_80023874(0x902, NULL); o != NULL; o = func_80023874(0x902, o)) {
+            gCameraTarget->x4 = o->x4;
+            gCameraTarget->x8 = o->x8;
+            gCameraTarget->xC = o->xC;
+            for (o = findActor(0x902, NULL); o != NULL; o = findActor(0x902, o)) {
                 if (o->x70 == arg0->x70) {
                     break;
                 }
             }
             if (o == NULL) {
-                func_800899DC(D_80009754);
+                debugPrintf(D_80009754);
             }
             D_800B3960->x4 = o->x4;
             D_800B3960->x8 = o->x8;
@@ -90,7 +90,7 @@ void func_80080620(Actor *arg0) {
             D_800B3960->x9C = func_80064024;
             D_800B3960->xA8 = 0;
 
-            func_8002D620(D_800B3960);
+            syncActorPrevPos(D_800B3960);
             D_800B3960->x9C(D_800B3960);
         } else {
             D_800B3960->x9C = func_800340B4;
@@ -104,15 +104,15 @@ void func_80080620(Actor *arg0) {
                 func_80033DC4(D_800B3960);
                 func_800340B4(D_800B3960);
             }
-            D_800BD06C->x4 = arg0->x4;
-            D_800BD06C->xC = arg0->xC;
-            D_800BD06C->x8 = D_800BD06C->x8 + 150.0f;
+            gCameraTarget->x4 = arg0->x4;
+            gCameraTarget->xC = arg0->xC;
+            gCameraTarget->x8 = gCameraTarget->x8 + 150.0f;
         }
-        D_800BD06C->x9C = func_8003930C;
-        D_800BD06C->x64 = D_800B9ECC * 25;
-        D_800BD06C->x8 = func_800385AC(D_800BD06C);
-        D_800BD06C->x10 = func_8002D260(D_800B3960->x10 + 0x8000);
-        func_800433A8(D_800BD06C, 2, 0x100);
+        gCameraTarget->x9C = func_8003930C;
+        gCameraTarget->x64 = gCamSpeedScale * 25;
+        gCameraTarget->x8 = func_800385AC(gCameraTarget);
+        gCameraTarget->x10 = func_8002D260(D_800B3960->x10 + 0x8000);
+        actorSetAnim(gCameraTarget, 2, 0x100);
         o = func_800232B4(1, 0, 0, 0);
         o->x9C = func_80080AF0;
         o->x9C(o);

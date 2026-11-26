@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_8002492C(f32, f32);                        /* extern */
-s32 func_8004303C();                            /* extern */
+s32 animStepKeys();                            /* extern */
 s32 func_80043328(void *, s32, s32);        /* extern */
 s32 func_80081990(void *, s32, f32);                /* extern */
 s32 func_80081AC0(f32 *, s32, f32);             /* extern */
@@ -30,7 +30,7 @@ s32 func_8006B820(void *arg0) {
     temp_s0 = (*(const s32 *)((s8 *)arg0 + 0x70));
     temp = (const f32 *)((s8 *)arg0 + 0xB4);
     (*(f32 *)((s8 *)arg0 + 0xB4)) = (f32) ((*temp) + (*(const f32 *)((s8 *)arg0 + 0xAC)));
-    do { func_8004303C(); } while (0);
+    do { animStepKeys(); } while (0);
     temp_s0_2 = func_80081990(arg0 + 4, temp_s0, (*(const f32 *)((s8 *)arg0 + 0xB4)));
     func_80081AC0(&sp10, temp_s0, (*(const f32 *)((s8 *)arg0 + 0xB4)));
     (*(s32 *)((s8 *)arg0 + 0x10)) = func_8002492C(sp10, sp18);

@@ -16,8 +16,8 @@ s16 coss(s32);                                      /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 M2C_UNK func_8003C140(void *);                      /* extern */
 s16 sins(s32);                                      /* extern */
-extern s32 D_800B9EA4;
-extern void *D_800BD06C;
+extern s32 gTextWaveTime;
+extern void *gCameraTarget;
 
 void func_8000E294(void *arg0) {
     f32 dx;
@@ -31,19 +31,19 @@ void func_8000E294(void *arg0) {
     s32 a;
     s32 b;
 
-    a = (coss(((D_800B9EA4 + M2C_FIELD(arg0, s32 *, 0x8C)) * 300) & 0xFFFC) * 625) >> 11;
+    a = (coss(((gTextWaveTime + M2C_FIELD(arg0, s32 *, 0x8C)) * 300) & 0xFFFC) * 625) >> 11;
     b = (a + 0x4000) & 0xFFFF;
     M2C_FIELD(arg0, s32 *, 0x18) = a;
     M2C_FIELD(arg0, f32 *, 4) = M2C_FIELD(arg0, f32 *, 0x40) + ((coss(b) * 125) >> 13);
     t = (sins(b) * 275) >> 14;
     y = M2C_FIELD(arg0, f32 *, 0x44) - t;
-    p = D_800BD06C;
+    p = gCameraTarget;
     M2C_FIELD(arg0, f32 *, 8) = y;
     dx = M2C_FIELD(p, f32 *, 4) - M2C_FIELD(arg0, f32 *, 4);
     dz = M2C_FIELD(p, f32 *, 0xC) - M2C_FIELD(arg0, f32 *, 0xC);
     lim = 19000.0f;
     dy = M2C_FIELD(p, f32 *, 8) - y;
     if (!(lim < func_8002DD60(dx)) && !(lim < func_8002DD60(dz)) && !(lim < func_8002DD60(dy)) && ((dx * dx) + (dz * dz) + (dy * dy)) < 250000.0f) {
-        func_8003C140(D_800BD06C);
+        func_8003C140(gCameraTarget);
     }
 }

@@ -24,7 +24,7 @@ s16 func_80095F60(u16);
 s16 func_800944B0(u16);
 typedef struct { s32 count; } Cnt;
 extern Cnt D_800BD0E0;
-extern ObjZ *D_800BD06C;
+extern ObjZ *gCameraTarget;
 
 void func_80014C34(ObjZ *arg0) {
     s32 r;
@@ -36,10 +36,10 @@ void func_80014C34(ObjZ *arg0) {
     }
     arg0->y = arg0->f44 + 300.0f + (f32)((func_80095F60(arg0->f84) * 75) >> 13);
     r = (func_80095F60(arg0->f84) * 25) >> 11;
-    arg0->x = D_800BD06C->x + (f32)((r * func_800944B0(arg0->f10)) >> 15);
+    arg0->x = gCameraTarget->x + (f32)((r * func_800944B0(arg0->f10)) >> 15);
     {
         s32 t = r * func_80095F60(arg0->f10);
-        arg0->z = D_800BD06C->z + (f32)(t >> 15);
+        arg0->z = gCameraTarget->z + (f32)(t >> 15);
         arg0->f10 += 0x2000;
         arg0->f84 += 0x400;
     }

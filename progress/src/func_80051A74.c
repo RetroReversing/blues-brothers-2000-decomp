@@ -30,7 +30,7 @@ typedef struct {
     void (*f9C)();
 } Spawn51A74;
 
-Spawn51A74 *func_80023874(s32, s32);
+Spawn51A74 *findActor(s32, s32);
 void func_8002D3E4(Obj51A74 *, s32);
 f32 func_8002D858(Obj51A74 *, void *);
 void func_80043328(Obj51A74 *, s32, s32);
@@ -68,7 +68,7 @@ void func_80051A74(Obj51A74 *arg0) {
     }
     func_80083A28(arg0);
     if (arg0->f78 == 5) {
-        s = func_80023874(0x12D, 0);
+        s = findActor(0x12D, 0);
         if (s != NULL) {
             s->f9C = func_80018610;
             s->f68 = 4;

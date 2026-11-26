@@ -39,14 +39,14 @@ extern char D_8000A2B4[];
 #define Z_DATA_ERROR (-3)
 #define Z_MEM_ERROR (-4)
 #define Z_BUF_ERROR (-5)
-int func_80093240(uIntf *b, uInt n, uInt s, const uIntf *d, const uIntf *e, inflate_huft **t, uIntf *m, z_streamp zs);
+int huftBuild(uIntf *b, uInt n, uInt s, const uIntf *d, const uIntf *e, inflate_huft **t, uIntf *m, z_streamp zs);
 int func_80093D08(inflate_huft *t, z_streamp z);
 
 int func_80093908(uInt nl, uInt nd, uIntf *c, uIntf *bl, uIntf *bd, inflate_huft **tl, inflate_huft **td, z_streamp z)
 {
   int r;
 
-  if ((r = func_80093240(c, nl, 257, D_8000A000, D_8000A07C, tl, bl, z)) != Z_OK || *bl == 0)
+  if ((r = huftBuild(c, nl, 257, D_8000A000, D_8000A07C, tl, bl, z)) != Z_OK || *bl == 0)
   {
     if (r == Z_DATA_ERROR)
       z->msg = (char*)D_8000A234;
@@ -59,7 +59,7 @@ int func_80093908(uInt nl, uInt nd, uIntf *c, uIntf *bl, uIntf *bd, inflate_huft
     return r;
   }
 
-  if ((r = func_80093240(c + nl, nd, 0, D_8000A0F8, D_8000A170, td, bd, z)) != Z_OK || (*bd == 0 && nl > 257))
+  if ((r = huftBuild(c + nl, nd, 0, D_8000A0F8, D_8000A170, td, bd, z)) != Z_OK || (*bd == 0 && nl > 257))
   {
     if (r == Z_DATA_ERROR)
       z->msg = (char*)D_8000A278;

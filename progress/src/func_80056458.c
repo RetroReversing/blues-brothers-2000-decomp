@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 cameraGetMode();                                /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80050460(M2C_UNK *, M2C_UNK *);        /* extern */
@@ -29,10 +29,10 @@ extern M2C_UNK func_8005634C;
 void *func_80056458(s32 arg0) {
     void *temp_v0;
 
-    if ((func_8000C43C() == 0x24) || (func_8000C43C() == 0x20)) {
+    if ((cameraGetMode() == 0x24) || (cameraGetMode() == 0x20)) {
         return func_8005639C(arg0);
     }
-    if (func_8000C43C() == 0x3D) {
+    if (cameraGetMode() == 0x3D) {
         return func_80056BB0(arg0);
     }
     func_80050460(&func_8005634C, &D_8014AA59);
@@ -40,9 +40,9 @@ void *func_80056458(s32 arg0) {
     func_80043328(temp_v0, 0xBD, 0x100);
     M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80055E70;
     M2C_FIELD(temp_v0, s32 *, 0) = 0x1009;
-    M2C_FIELD(temp_v0, s32 *, 0x58) = func_800221C0(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
+    M2C_FIELD(temp_v0, s32 *, 0x58) = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
     func_800852CC(temp_v0, arg0);
-    if (func_8000C43C() == 0x1C) {
+    if (cameraGetMode() == 0x1C) {
         M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80056140;
         M2C_FIELD(temp_v0, s32 *, 0x7C) = 0;
     }

@@ -12,16 +12,16 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80025FF8();                                /* extern */
+s32 initControllerPaks();                                /* extern */
 s32 func_80026164(M2C_UNK);                         /* extern */
-M2C_UNK func_800261D4(M2C_UNK);                     /* extern */
+M2C_UNK refreshControllerPak(M2C_UNK);                     /* extern */
 M2C_UNK func_800263F4();                            /* extern */
 M2C_UNK func_8002642C();                            /* extern */
 M2C_UNK func_80026C04(M2C_UNK *, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80030C40(void *, M2C_UNK);             /* extern */
 M2C_UNK func_80032830();                   /* extern */
-extern s32 D_800AE174;
-extern s32 D_800AE178;
+extern s32 gPakInitWarn;
+extern s32 gPakInitError;
 extern s32 D_800AE1A0;
 extern s32 D_800B499C;
 extern s32 D_800B49A0;
@@ -36,10 +36,10 @@ void func_800333D0(void *arg0) {
 
     flag = 0;
     M2C_FIELD(arg0, void **, 0x98) = (void *) (&func_80023078 + 2);
-    D_800AE174 = 0;
-    func_800261D4(flag);
-    D_800AE178 = 0;
-    D_800B49A4 = func_80025FF8();
+    gPakInitWarn = 0;
+    refreshControllerPak(flag);
+    gPakInitError = 0;
+    D_800B49A4 = initControllerPaks();
     switch (D_800B49A4) {
     case 0:
     case 2:
@@ -58,7 +58,7 @@ void func_800333D0(void *arg0) {
         if ((D_800B49A0 == 0) && ((D_800B499C == 0x10) || ((D_800AE1A0 / 256) < 3))) {
             flag = 1;
         }
-        if (D_800AE174 != 0) {
+        if (gPakInitWarn != 0) {
             M2C_FIELD(arg0, s32 *, 0xFC) = 0;
             func_80026C04(&D_8014ABC0, 0, 0x21C);
             func_80030C40(arg0, 2);

@@ -1,4 +1,4 @@
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 f32 func_800247D0(f32, f32);
 f32 sqrtf(f32);
 
@@ -14,7 +14,7 @@ s32 func_800772FC(void *arg0) {
     if (r <= sqrtf(dx * dx + dz * dz)) {
         a = func_800247D0(dx, dz) + 3.1415926;
         a = a * 32768.0f / 3.1415926;
-        *(s32 *)((s8 *)arg0 + 0x10) = a + func_80024394(-5000, 5000);
+        *(s32 *)((s8 *)arg0 + 0x10) = a + randomRange(-5000, 5000);
         return 1;
     }
     return 0;

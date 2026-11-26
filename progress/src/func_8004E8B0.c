@@ -12,7 +12,7 @@ typedef struct Obj {
     void *unk98;
 } Obj;
 
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 extern s32 D_800B7B0C;
 extern s32 D_800B81D0;
 extern s32 D_8014A924;
@@ -25,7 +25,7 @@ void func_8004E8B0(Obj *arg0, u32 arg1) {
     D_8014A924 = 1;
     switch (arg1) {
     case 0:
-        arg0->unk58 = func_800221C0(0, 1, 0, 3, D_800B7B0C, 0, 1, 0);
+        arg0->unk58 = packDrawFlags(0, 1, 0, 3, D_800B7B0C, 0, 1, 0);
         arg0->unk98 = func_8001F26C;
         arg0->unk68 = 2;
         arg0->unk5C = 0xFF;
@@ -35,20 +35,20 @@ void func_8004E8B0(Obj *arg0, u32 arg1) {
         arg0->unk68 = -1;
         break;
     case 3:
-        arg0->unk58 = func_800221C0(0, 1, 1, 1, D_800B7B0C, 0, 1, 0);
+        arg0->unk58 = packDrawFlags(0, 1, 1, 1, D_800B7B0C, 0, 1, 0);
         arg0->unk98 = func_8001FCF0;
         arg0->unk68 = 10;
         arg0->unk5C = 0x20;
         D_8014A924 = 2;
         break;
     case 2:
-        arg0->unk58 = func_800221C0(0, 1, 1, 3, D_800B7B0C, 0, 1, 0);
+        arg0->unk58 = packDrawFlags(0, 1, 1, 3, D_800B7B0C, 0, 1, 0);
         arg0->unk68 = 10;
         arg0->unk5C = 0x80;
         D_8014A924 = 2;
         break;
     case 7:
-        arg0->unk58 = func_800221C0(0, 1, 2, 3, D_800B7B0C, 0, 1, 0);
+        arg0->unk58 = packDrawFlags(0, 1, 2, 3, D_800B7B0C, 0, 1, 0);
         arg0->unk68 = 2;
         arg0->unk5C = 0xFF;
         break;
@@ -56,8 +56,8 @@ void func_8004E8B0(Obj *arg0, u32 arg1) {
     case 5:
     case 6:
         arg0->unk94 = 0x7D00;
-        arg0->unk58 = func_800221C0(0, 1, 1, 3, D_800B7B0C, 0, 1, 0);
-        arg0->unk58 = func_800221C0(0, 1, 4, 3, D_800B7B0C, 0, 1, 0);
+        arg0->unk58 = packDrawFlags(0, 1, 1, 3, D_800B7B0C, 0, 1, 0);
+        arg0->unk58 = packDrawFlags(0, 1, 4, 3, D_800B7B0C, 0, 1, 0);
         arg0->unk98 = func_8001F9A8;
         if (D_800B81D0 == 0) {
             arg0->unk68 = 10;

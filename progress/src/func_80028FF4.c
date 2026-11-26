@@ -1,13 +1,13 @@
-extern s32 D_8010788C;
+extern s32 gTextPenX;
 extern s32 D_80107654;
-extern s32 D_80107890;
+extern s32 gTextPenY;
 extern s32 D_8014AA98;
-extern u8 D_800B2A04;
+extern u8 gGlyphPadding;
 s32 strlen(const char *s);
-s32 func_8000C43C(void);
-void func_8002710C(s32 a, s32 b, s32 c, s32 d);
+s32 cameraGetMode(void);
+void setTextColor(s32 a, s32 b, s32 c, s32 d);
 s32 func_80028694(u8 *p);
-void func_800289BC(s32 c, s32 flag);
+void drawFontChar(s32 c, s32 flag);
 
 void func_80028FF4(u8 *str, u8 *arg1)
 {
@@ -24,40 +24,40 @@ void func_80028FF4(u8 *str, u8 *arg1)
     if (D_8014AA98 == 1) {
         w = 0xF0;
     }
-    if (func_8000C43C() == 0x17) {
-        D_8010788C += 0x12;
+    if (cameraGetMode() == 0x17) {
+        gTextPenX += 0x12;
     }
     n = strlen((char *)str);
     skip = *(s32 *)(arg1 + 0x64) / 8;
     skip = n - skip;
-    saved = D_8010788C;
+    saved = gTextPenX;
     i = 0;
     while (*str != 0) {
         i++;
         if (i <= skip) {
-            func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
+            setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
             D_80107654 = 0;
         } else {
-            func_8002710C(0xFF, 0xFF, 0xFF, 0);
+            setTextColor(0xFF, 0xFF, 0xFF, 0);
             D_80107654 = 1;
         }
         if (*str == '~') {
             *str = ' ';
         }
         if (*str == ' ') {
-            if (D_8010788C == saved) {
+            if (gTextPenX == saved) {
                 str++;
                 continue;
             }
             next = str + 1;
-            if (w < D_8010788C + func_80028694(next) - D_800B2A04 + 0xD) {
+            if (w < gTextPenX + func_80028694(next) - gGlyphPadding + 0xD) {
                 str = next;
-                D_8010788C = saved;
-                D_80107890 += 15;
+                gTextPenX = saved;
+                gTextPenY += 15;
                 continue;
             }
         }
-        func_800289BC(*str, first);
+        drawFontChar(*str, first);
         if (first) {
             first = 0;
         }

@@ -12,7 +12,7 @@ typedef struct Obj {
 extern f32 func_8002D858(Obj *, s32);
 extern s32 func_8001B990(s32, s32);
 extern void func_8002A360(s32, s32);
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_8001DAD4(Obj *o) {
     f32 d;
@@ -27,14 +27,14 @@ void func_8001DAD4(Obj *o) {
         }
         break;
     case 1:
-        o->x8 += (f32)(D_800B9ECC * 10);
+        o->x8 += (f32)(gCamSpeedScale * 10);
         if (o->x44 + 2000.0f < o->x8) {
             o->xC0 = 2;
         }
         break;
     case 2:
         if (350.0f < d) {
-            o->x8 -= (f32)(D_800B9ECC * 10);
+            o->x8 -= (f32)(gCamSpeedScale * 10);
             if (o->x8 <= o->x44) {
                 o->x8 = o->x44;
                 o->xC0 = 0;

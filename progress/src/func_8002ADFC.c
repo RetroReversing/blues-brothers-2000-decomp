@@ -5,12 +5,12 @@ typedef struct Obj {
     u16 unk12;
 } Obj;
 
-s32 func_80024B0C(s32);
-s32 func_80025100(s32, s32);
+s32 isqrtS32(s32);
+s32 atan2S16(s32, s32);
 void func_8002A360(s32, s32);
 s16 sins(u16);
 extern Obj *D_800B3960;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern s32 D_800B2B60[];
 
 void func_8002ADFC(s32 ch, s32 range, Obj *src) {
@@ -20,11 +20,11 @@ void func_8002ADFC(s32 ch, s32 range, Obj *src) {
     s32 pan;
     s32 vol;
 
-    ang = func_80025100(D_800B3960->x - src->x, D_800B3960->z - src->z);
-    dx = D_800BD06C->x - src->x;
-    dy = D_800BD06C->y - src->y;
-    dz = D_800BD06C->z - src->z;
-    dist = func_80024B0C(dx * dx + dy * dy + dz * dz);
+    ang = atan2S16(D_800B3960->x - src->x, D_800B3960->z - src->z);
+    dx = gCameraTarget->x - src->x;
+    dy = gCameraTarget->y - src->y;
+    dz = gCameraTarget->z - src->z;
+    dist = isqrtS32(dx * dx + dy * dy + dz * dz);
     range = range * 5 / 4;
     if (dist < range) {
         pan = 0x80 - (sins(D_800B3960->unk12 - ang) >> 8);

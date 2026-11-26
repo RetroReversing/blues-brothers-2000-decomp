@@ -13,11 +13,11 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80027038(s32);                     /* extern */
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_800271A8(M2C_UNK, s32);                /* extern */
 M2C_UNK func_80028FF4(s32, void *);                 /* extern */
 s32 func_800291AC(s32);                             /* extern */
-M2C_UNK func_800899DC(M2C_UNK *);                   /* extern */
+M2C_UNK debugPrintf(M2C_UNK *);                   /* extern */
 extern M2C_UNK D_80008160;
 extern u32 D_800B4988;
 extern s32 D_80107684;
@@ -42,7 +42,7 @@ void func_800530C0(void *arg0) {
     temp_s0 = ((__repair_record_arg0*)arg0)->field_84 == 0;
     D_8014AA88 = temp_s2;
     func_80027038(0);
-    func_8002710C(0x20, 0x20, 0x20, 0xFF);
+    setTextColor(0x20, 0x20, 0x20, 0xFF);
     D_80107684 = 1;
     D_8014AA8C = temp_s0;
     if (temp_s0 != 0) {
@@ -63,7 +63,7 @@ void func_800530C0(void *arg0) {
     if (temp_s2 != 0) {
         func_80028FF4(temp_s2, arg0);
     } else {
-        func_800899DC(&D_80008160);
+        debugPrintf(&D_80008160);
     }
     temp_a0 = D_80177E18++;
     temp_a0->w0 = 0xE7000000;

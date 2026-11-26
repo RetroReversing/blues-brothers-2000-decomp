@@ -1,4 +1,4 @@
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 void func_80011734(void *);
 void func_8002D604(void *);
 s16 sins(u16);
@@ -23,7 +23,7 @@ typedef struct Obj {
     /* 0x88 */ u8 pad88[0x14];
     /* 0x9C */ void *f9C;
 } Obj;
-extern char D_800B9EA4[];
+extern char gTextWaveTime[];
 extern char D_8014022C[];
 extern f32 D_80000758;
 extern f32 D_8000075C;
@@ -52,12 +52,12 @@ void func_80011A38(Obj *arg0) {
     }
     func_8002D604(arg0);
     func_8002D604(arg0);
-    arg0->f18 = (sins(((*(s32 *)D_800B9EA4) * 400) & 0xFFF0) * 31) >> 8;
-    arg0->f10 = (sins(((*(s32 *)D_800B9EA4) * 200) & 0xFFF8) * 127) >> 10;
-    arg0->y = arg0->f7C + (sins(((*(s32 *)D_800B9EA4) * 500) & 0xFFFC) >> 9);
-    arg0->x = arg0->f80 + (sins(((*(s32 *)D_800B9EA4) * 250) & 0xFFFE) >> 9);
-    arg0->z = arg0->f84 + (sins(((*(s32 *)D_800B9EA4) * 125) & 0xFFFF) >> 9);
-    if (func_8000C43C() == 1) {
+    arg0->f18 = (sins(((*(s32 *)gTextWaveTime) * 400) & 0xFFF0) * 31) >> 8;
+    arg0->f10 = (sins(((*(s32 *)gTextWaveTime) * 200) & 0xFFF8) * 127) >> 10;
+    arg0->y = arg0->f7C + (sins(((*(s32 *)gTextWaveTime) * 500) & 0xFFFC) >> 9);
+    arg0->x = arg0->f80 + (sins(((*(s32 *)gTextWaveTime) * 250) & 0xFFFE) >> 9);
+    arg0->z = arg0->f84 + (sins(((*(s32 *)gTextWaveTime) * 125) & 0xFFFF) >> 9);
+    if (cameraGetMode() == 1) {
         arg0->z = D_8000076C;
     }
     t = arg0->f7C;

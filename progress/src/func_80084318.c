@@ -13,13 +13,13 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80081188(s32, s32, f32 *);                 /* extern */
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 
 s32 func_80084318(const void *arg0) {
     f32 sp10;
     s32 var_v0;
 
-    var_v0 = func_80081188(M2C_FIELD(arg0, const s32 *, 0x70), D_800BD06C + 4, &sp10);
+    var_v0 = func_80081188(M2C_FIELD(arg0, const s32 *, 0x70), gCameraTarget + 4, &sp10);
     if (!(sp10 <= M2C_FIELD(arg0, const f32 *, 0x104))) {
         var_v0 = 0;
     }

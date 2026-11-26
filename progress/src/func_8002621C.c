@@ -19,7 +19,7 @@ M2C_UNK func_8002642C();                            /* extern */
 s32 osMotorInit(M2C_UNK *, void *, s32);            /* extern */
 M2C_UNK osPfsIsPlug(M2C_UNK *, u8 *);               /* extern */
 extern M2C_UNK D_800AE154;
-extern s32 D_800AE174;
+extern s32 gPakInitWarn;
 extern u8 D_80107050;
 extern M2C_UNK D_80107058;
 extern u8 D_80107210[];
@@ -31,7 +31,7 @@ void func_8002621C(s32 arg0) {
     if (osMotorInit(&D_80107058, (arg0 * 0x68) + D_80107210, arg0) == 0) {
         func_80025D00(arg0);
         (&D_800AE154)[arg0] = 1;
-        D_800AE174 = 0;
+        gPakInitWarn = 0;
         D_80107050 &= ~(1 << arg0);
     } else {
         (&D_800AE154)[arg0] = 0;

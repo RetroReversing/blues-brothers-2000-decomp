@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_8001B990(M2C_UNK, M2C_UNK);                /* extern */
-f32 func_8002D66C(void *, f32, M2C_UNK);        /* extern */
+f32 getCameraTargetDist(void *, f32, M2C_UNK);        /* extern */
 extern f32 D_80000C80;
 extern f32 D_80000C84;
 
@@ -23,7 +23,7 @@ void func_8001C800(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0) = 0x128;
     if (func_8001B990(0x100, 3) != 0) {
         M2C_FIELD(arg0, s32 *, 0) = 0x101;
-        if ((s32) func_8002D66C(arg0, 200.0f, 0) < 0xC8) {
+        if ((s32) getCameraTargetDist(arg0, 200.0f, 0) < 0xC8) {
             temp_fv1 = M2C_FIELD(arg0, f32 *, 8);
             if (temp_fv1 < (M2C_FIELD(arg0, f32 *, 0x44) + D_80000C80)) {
                 M2C_FIELD(arg0, f32 *, 8) = (f32) (temp_fv1 + D_80000C84);

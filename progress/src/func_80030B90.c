@@ -1,13 +1,13 @@
 extern void *func_800232B4(int,int,int,int);
 extern int func_80023D58(int);
 extern float D_8000123C;
-extern int func_80030600;
+extern int drawRingEffect;
 extern int func_80030B2C;
 void *func_80030B90(void *arg0) {
     void *temp_v0;
     float k;
     temp_v0 = func_800232B4(1, 0, 0, 0);
-    *(void **)((s8*)temp_v0+0x98) = &func_80030600;
+    *(void **)((s8*)temp_v0+0x98) = &drawRingEffect;
     *(int *)((s8*)temp_v0+0x70) = 0xC8;
     *(int *)((s8*)temp_v0+0x78) = 0xFFFFFF;
     *(int *)((s8*)temp_v0+0x5C) = 0xFF;

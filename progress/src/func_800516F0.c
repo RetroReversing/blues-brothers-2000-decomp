@@ -20,14 +20,14 @@ typedef struct {
     f32 unk104;
 } Obj;
 
-s32 func_8002D204(s32, s32, s32);
+s32 approachAngle(s32, s32, s32);
 void func_8002D3E4(Obj *, s32);
 void func_8002DA80(Obj *);
-void func_8004303C(Obj *);
+void animStepKeys(Obj *);
 void func_80043328(Obj *, s32, s32);
 void func_80052B24(s32, char *, Obj *);
-extern s32 D_800B9ECC;
-extern Obj *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern Obj *gCameraTarget;
 
 s32 func_800516F0(Obj *arg0) {
     f32 range;
@@ -38,9 +38,9 @@ s32 func_800516F0(Obj *arg0) {
     char *msg = "cellpad_outofrange";
 
     range = arg0->unk104 - 2.0f;
-    arg0->unk10 = func_8002D204(arg0->unk90, arg0->unk10, D_800B9ECC << 9);
-    dx = D_800BD06C->x - arg0->unk40;
-    dz = D_800BD06C->z - arg0->unk48;
+    arg0->unk10 = approachAngle(arg0->unk90, arg0->unk10, gCamSpeedScale << 9);
+    dx = gCameraTarget->x - arg0->unk40;
+    dz = gCameraTarget->z - arg0->unk48;
     dist = sqrtf(dx * dx + dz * dz);
     f = arg0->unk100;
     if (f < 300.0f) {
@@ -66,7 +66,7 @@ s32 func_800516F0(Obj *arg0) {
         }
     }
     func_80043328(arg0, arg0->unk74 + arg0->unk78, 0x100);
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     func_8002DA80(arg0);
     dx = arg0->x - arg0->unk40;
     dz = arg0->z - arg0->unk48;

@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_8002D9B0(void *);                      /* extern */
 M2C_UNK func_8002D9F8();                            /* extern */
 extern f32 D_80000D44;
-extern s32 D_800B9EA0;
+extern s32 gFrameScale;
 
 void func_8001E0E0(void *arg0) {
     s32 temp_v0;
@@ -27,14 +27,14 @@ void func_8001E0E0(void *arg0) {
     func_8002D9F8(arg0);
     func_8002D9B0(arg0);
     if (M2C_FIELD(arg0, f32 *, 0x54) > 0.0f) {
-        temp_v0 = M2C_FIELD(arg0, s32 *, 0x14) + (D_800B9EA0 << 8);
+        temp_v0 = M2C_FIELD(arg0, s32 *, 0x14) + (gFrameScale << 8);
         M2C_FIELD(arg0, s32 *, 0x14) = temp_v0;
         if (temp_v0 < 0x3FFD) {
             return;
         }
         goto block_4;
     }
-    temp_v0_2 = M2C_FIELD(arg0, s32 *, 0x14) - (D_800B9EA0 << 8);
+    temp_v0_2 = M2C_FIELD(arg0, s32 *, 0x14) - (gFrameScale << 8);
     M2C_FIELD(arg0, s32 *, 0x14) = temp_v0_2;
     if (temp_v0_2 < -0x3FFC) {
 block_4:

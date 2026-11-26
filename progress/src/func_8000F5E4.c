@@ -14,18 +14,18 @@ typedef s32 M2C_UNK32;
 u32 func_80023088(s32);
 u32 func_800230B0(s32);
 extern void *D_800B3960;
-extern void *D_800BD06C;
-extern s32 func_8001FF64;
+extern void *gCameraTarget;
+extern s32 updateCameraView;
 extern s32 func_80023078;
-extern s32 func_8004303C;
+extern s32 animStepKeys;
 void func_8000F5E4(void) {
     u32 var_s0;
 
-    M2C_FIELD(D_800BD06C, s32 **, 0x9C) = &func_80023078 + 2;
-    M2C_FIELD(D_800B3960, s32 **, 0x9C) = &func_8001FF64;
+    M2C_FIELD(gCameraTarget, s32 **, 0x9C) = &func_80023078 + 2;
+    M2C_FIELD(D_800B3960, s32 **, 0x9C) = &updateCameraView;
     for (var_s0 = func_80023088(0); var_s0 < func_800230B0(0); var_s0 += 0x108) {
         if (M2C_FIELD(var_s0, s32 *, 0) & 0x1000) {
-            M2C_FIELD(var_s0, s32 **, 0x9C) = &func_8004303C;
+            M2C_FIELD(var_s0, s32 **, 0x9C) = &animStepKeys;
         }
     }
 }

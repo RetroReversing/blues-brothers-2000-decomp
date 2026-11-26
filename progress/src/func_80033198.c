@@ -7,13 +7,13 @@ typedef struct O33198 {
 void func_800262FC(s32);
 void func_80030C40(O33198 *, s32);
 void func_80031B54(O33198 *, s32);
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 void func_80033818(void);
 
 void func_80033198(O33198 *arg0) {
     arg0->f98 = func_80033818;
     func_80031B54(arg0, 3);
-    if (D_801070A0 & 0x9000) {
+    if (gPadPressed & 0x9000) {
         switch (arg0->f78) {
         case 0:
             func_80030C40(arg0, -2);

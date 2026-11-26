@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_80008184[];
 
 s32 func_80053750(s32 arg0, s32 *arg1) {
@@ -20,7 +20,7 @@ s32 func_80053750(s32 arg0, s32 *arg1) {
 
     temp_a1 = *arg1;
     if (((*arg1) >= 0xA) || (temp_a1 < 6)) {
-        func_800899DC(D_80008184, temp_a1);
+        debugPrintf(D_80008184, temp_a1);
     }
     return 0;
 }

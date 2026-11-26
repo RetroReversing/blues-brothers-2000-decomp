@@ -28,8 +28,8 @@ typedef struct {
 
 int abs(int);
 void func_8002A360(s32, s32);
-s32 func_8002D298(s32, s32, s32);
-s32 func_8002D5CC(Obj3CE48 *);
+s32 approachS32(s32, s32, s32);
+s32 tickActorTimer(Obj3CE48 *);
 void func_8002E7B8(s32, s32);
 void func_8003D3C8(void);
 void func_8003D558(void);
@@ -37,13 +37,13 @@ extern Entry3CE48 D_800AA134[];
 extern s32 D_800AB9B4;
 extern s32 D_800B5DD0;
 extern s32 D_800B5DD4;
-extern s32 D_800B81D8;
-extern s32 D_800B9EA0;
-extern s32 D_800B9ECC;
+extern s32 gAudioVolume;
+extern s32 gFrameScale;
+extern s32 gCamSpeedScale;
 extern State3CE48 D_800BD0E0;
 extern s32 D_800BD274;
 extern s32 D_80107040[];
-extern s32 D_801070A0[];
+extern s32 gPadPressed[];
 extern s32 D_801073B0[];
 extern s32 D_801073C0[];
 extern s32 D_80140228;
@@ -55,7 +55,7 @@ void func_8003CE48(Obj3CE48 *arg0) {
 
     flag = 0;
     e = &D_800AA134[arg0->unk90];
-    arg0->unk70 = func_8002D298(0xFF, arg0->unk70, D_800B9ECC * 8);
+    arg0->unk70 = approachS32(0xFF, arg0->unk70, gCamSpeedScale * 8);
     D_80140228 = 0;
     D_800B5DD4 = 0;
     if (abs(D_801073B0[0]) < 20) {
@@ -63,7 +63,7 @@ void func_8003CE48(Obj3CE48 *arg0) {
             arg0->unk64 = 0;
         }
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         arg0->unk64 = 0;
         if (D_801073C0[0] >= 31) {
             flag = 1;
@@ -87,7 +87,7 @@ void func_8003CE48(Obj3CE48 *arg0) {
                 arg0->unk88--;
             }
         } else {
-            arg0->unk84 -= D_800B9EA0;
+            arg0->unk84 -= gFrameScale;
         }
     }
     if (arg0->unk88 < 0) {
@@ -107,7 +107,7 @@ void func_8003CE48(Obj3CE48 *arg0) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0x94);
     }
-    if (D_801070A0[0] & 0x8000) {
+    if (gPadPressed[0] & 0x8000) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0xA3);
         if (arg0->unk8C == 0) {
@@ -124,24 +124,24 @@ void func_8003CE48(Obj3CE48 *arg0) {
             arg0->unk70 = 0;
             func_8002A360(12, 0x80);
             func_8002A360(8, 0xC);
-            func_8002A360(0, D_800B81D8 * 327);
+            func_8002A360(0, gAudioVolume * 327);
         } else {
             arg0->unk90 = arg0->unk88;
             arg0->unk8C = 0;
             arg0->unk88 = 0;
         }
-    } else if (D_801070A0[0] & 0x4000) {
+    } else if (gPadPressed[0] & 0x4000) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0xA3);
         arg0->unk8C = 1;
         arg0->unk88 = 0;
-    } else if (D_801070A0[0] & 0x1000) {
+    } else if (gPadPressed[0] & 0x1000) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0xA3);
         arg0->unk9C = func_8003D3C8;
         D_800AB9B4 = 0;
         D_800B5DD4 = 1;
-        v = D_800B81D8 * 327;
+        v = gAudioVolume * 327;
         D_80140228 = arg0->unk74;
         func_8002A360(0, v);
     }

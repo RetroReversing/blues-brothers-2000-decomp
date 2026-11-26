@@ -17,7 +17,7 @@ extern s32 D_800B396C;
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 
 void func_8007B75C(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
@@ -27,9 +27,9 @@ void func_8007B75C(void *arg0) {
         D_800B3978 = 0x40;
         D_800B396C = 0x3DE;
     }
-    if (M2C_FIELD(D_800BD06C, f32 *, 8) < -1150.0f) {
-        if (func_8003BF98(D_800BD06C) != 0) {
-            func_8003BB90(D_800BD06C);
+    if (M2C_FIELD(gCameraTarget, f32 *, 8) < -1150.0f) {
+        if (func_8003BF98(gCameraTarget) != 0) {
+            func_8003BB90(gCameraTarget);
         }
     }
 }

@@ -17,18 +17,18 @@ extern f32 m2c_fbits;
 #endif
 
 M2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
+M2C_UNK setSlotAsset(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
 s32 func_80023D58(M2C_UNK);                         /* extern */
 extern s32 D_8014AB3C;
 extern s32 D_8014AB44;
 
 void func_80054720(void) {
     func_80023A74(0xE, 0x480);
-    func_80023A98(0x45, 0x47C, 0);
-    func_80023A98(0x46, 0x47D, 0);
-    func_80023A98(0x47, 0x47D, 0);
-    func_80023A98(0x48, 0x47E, 0);
-    func_80023A98(0x49, 0x47F, 0);
+    setSlotAsset(0x45, 0x47C, 0);
+    setSlotAsset(0x46, 0x47D, 0);
+    setSlotAsset(0x47, 0x47D, 0);
+    setSlotAsset(0x48, 0x47E, 0);
+    setSlotAsset(0x49, 0x47F, 0);
     D_8014AB3C = func_80023D58(0x198);
     D_8014AB44 = func_80023D58(0x199);
 }

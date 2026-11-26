@@ -15,13 +15,13 @@ typedef s32 M2C_UNK32;
 s16 coss(s32);                                      /* extern */
 M2C_UNK func_80020B3C(void *);                      /* extern */
 M2C_UNK func_8003B828(s32, M2C_UNK);                /* extern */
-extern s32 D_800B9EA4;
-extern s32 D_800BD06C;
+extern s32 gTextWaveTime;
+extern s32 gCameraTarget;
 
 void func_80020D64(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0xC0) == 2) {
-        func_8003B828(D_800BD06C, 0);
+        func_8003B828(gCameraTarget, 0);
     }
-    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 0x44) + (f32) ((s32) (coss(((M2C_FIELD(arg0, s32 *, 0x8C) + D_800B9EA4) * 0xB4) & 0xFFFC) * 0x4B) >> 0xE));
+    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 0x44) + (f32) ((s32) (coss(((M2C_FIELD(arg0, s32 *, 0x8C) + gTextWaveTime) * 0xB4) & 0xFFFC) * 0x4B) >> 0xE));
     func_80020B3C(arg0);
 }

@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D5CC(void *);                          /* extern */
-M2C_UNK func_8002D620(void *);                      /* extern */
+s32 tickActorTimer(void *);                          /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 M2C_UNK func_80033DC4(void *);                      /* extern */
 M2C_UNK func_800340B4(void *);                      /* extern */
 M2C_UNK func_80036DB4(void *);                      /* extern */
@@ -21,9 +21,9 @@ s32 func_80075338(M2C_UNK);                         /* extern */
 f32 func_800812B4(M2C_UNK, s32, void *, M2C_UNK);   /* extern */
 s32 func_80081990(void *, M2C_UNK, f32);            /* extern */
 extern void *D_800B3960;
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 extern s32 D_80107040;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern M2C_UNK func_80023078;
 extern M2C_UNK func_80074F74;
 
@@ -41,7 +41,7 @@ void func_80074DDC(void *arg0) {
         if (M2C_FIELD(D_800B3960, M2C_UNK (**)(void *), 0x9C) != func_80036DB4) {
             M2C_FIELD(D_800B3960, M2C_UNK (**)(void *), 0x9C) = func_80036DB4;
         }
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             temp_v0 = func_80075338(0);
             if (temp_v0 != 0) {
                 ((__repair_record_arg0*)arg0)->field_A8 = temp_v0;
@@ -52,8 +52,8 @@ void func_80074DDC(void *arg0) {
         ((__repair_record_arg0*)arg0)->field_64 = 0xC8;
     }
     D_80107040 &= ~8;
-    D_801070A0 &= ~8;
-    temp_fv0 = func_800812B4(1, D_800BD06C + 4, arg0 + 0x104, 0);
+    gPadPressed &= ~8;
+    temp_fv0 = func_800812B4(1, gCameraTarget + 4, arg0 + 0x104, 0);
     ((__repair_record_arg0*)arg0)->field_100 = temp_fv0;
     ((__repair_record_arg0*)arg0)->field_DC = (f32) (temp_fv0 + 0.8f);
     if (0.21 < (f64) ((__repair_record_arg0*)arg0)->field_100) {
@@ -65,7 +65,7 @@ void func_80074DDC(void *arg0) {
     if (func_80081990(D_800B3960 + 4, 1, ((__repair_record_arg0*)arg0)->field_DC) != 0) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80074F74;
         M2C_FIELD(D_800B3960, M2C_UNK (**)(void *), 0x9C) = func_800340B4;
-        func_8002D620(D_800B3960);
+        syncActorPrevPos(D_800B3960);
         func_80033DC4(D_800B3960);
         func_800340B4(D_800B3960);
         ((__repair_record_arg0*)arg0)->field_8C = 0;

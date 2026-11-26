@@ -1,8 +1,8 @@
-void *func_80023874(s32, s32);
-void func_8002D620(void *);
+void *findActor(s32, s32);
+void syncActorPrevPos(void *);
 void func_80023078(void *);
 void func_80063DB8(void *);
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 
 typedef struct {
     u8 pad0[4];
@@ -23,12 +23,12 @@ typedef struct {
 void func_80063E50(void) {
     Obj *obj;
 
-    obj = func_80023874(0x140, 0);
+    obj = findActor(0x140, 0);
     if (obj != NULL && obj->unk9C == (void *)((s8 *)&func_80023078 + 8)) {
         obj->unk4 = 200.0f;
-        obj->unk8 = ((Obj *)D_800BD06C)->unk8 + 105.0f;
+        obj->unk8 = ((Obj *)gCameraTarget)->unk8 + 105.0f;
         obj->unkC = -500.0f;
-        func_8002D620(obj);
+        syncActorPrevPos(obj);
         obj->unk68 = 3;
         obj->unk9C = func_80063DB8;
         obj->unk4C = 0;

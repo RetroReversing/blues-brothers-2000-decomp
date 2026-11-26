@@ -13,11 +13,11 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_800113D8(M2C_UNK);                         /* extern */
-s32 func_80023874(M2C_UNK, M2C_UNK);                /* extern */
+s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
 s32 func_80023DBC(M2C_UNK);                         /* extern */
 f32 func_8002D858(void *, void *);                  /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_8004303C(void *);                      /* extern */
+M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
 M2C_UNK func_80052B24(s32, M2C_UNK *, void *);      /* extern */
 s32 func_80076080();                                /* extern */
@@ -33,7 +33,7 @@ void func_80055FD8(void *arg0) {
     s32 var_v0;
 
     if (func_80076080() == 0) {
-        func_8004303C(arg0);
+        animStepKeys(arg0);
         temp_fs0 = func_8002D858(arg0, arg0 + 0x10);
         temp_s1 = func_80023DBC(0xE87);
         if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
@@ -43,7 +43,7 @@ void func_80055FD8(void *arg0) {
                 M2C_FIELD(arg0, s32 *, 0x7C) = 1;
             }
         }
-        if ((M2C_FIELD(arg0, s32 *, 0x7C) == 1) && (func_80023874(0x801, 0) == 0)) {
+        if ((M2C_FIELD(arg0, s32 *, 0x7C) == 1) && (findActor(0x801, 0) == 0)) {
             if (func_800113D8(2) != 0) {
                 func_80052B24(temp_s1, &D_80008360, arg0);
                 var_v0 = 2;
@@ -54,11 +54,11 @@ void func_80055FD8(void *arg0) {
             M2C_FIELD(arg0, s32 *, 0x7C) = var_v0;
         }
         if (M2C_FIELD(arg0, s32 *, 0x7C) == 2) {
-            if (func_80023874(0x801, 0) == 0) {
+            if (findActor(0x801, 0) == 0) {
                 M2C_FIELD(arg0, s32 *, 0x7C) = 4;
             }
         }
-        if ((M2C_FIELD(arg0, s32 *, 0x7C) == 3) && (func_80023874(0x801, 0) == 0)) {
+        if ((M2C_FIELD(arg0, s32 *, 0x7C) == 3) && (findActor(0x801, 0) == 0)) {
             M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003D558;
             func_8002E7B8(1, 0);
             M2C_FIELD(arg0, s32 *, 0x70) = 2;

@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002D620(void *);                      /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 s32 func_80050144(void *, s32);                     /* extern */
 extern void *D_800B3964;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern M2C_UNK func_800393F4;
 
 void func_80072310(void *arg0) {
@@ -32,12 +32,12 @@ void func_80072310(void *arg0) {
     func_80050144(arg0, M2C_FIELD(arg0, s32 *, 0x70));
     temp_v0 = func_80050144(arg0, M2C_FIELD(arg0, s32 *, 0x70));
     if (temp_v0 != 0) {
-        M2C_FIELD(D_800BD06C, M2C_UNK **, 0x9C) = &func_800393F4;
+        M2C_FIELD(gCameraTarget, M2C_UNK **, 0x9C) = &func_800393F4;
     }
-    M2C_FIELD(D_800BD06C, f32 *, 4) = (f32) M2C_FIELD(arg0, f32 *, 4);
-    M2C_FIELD(D_800BD06C, f32 *, 8) = (f32) M2C_FIELD(arg0, f32 *, 8);
-    M2C_FIELD(D_800BD06C, f32 *, 0xC) = (f32) M2C_FIELD(arg0, f32 *, 0xC);
-    func_8002D620(D_800BD06C);
+    M2C_FIELD(gCameraTarget, f32 *, 4) = (f32) M2C_FIELD(arg0, f32 *, 4);
+    M2C_FIELD(gCameraTarget, f32 *, 8) = (f32) M2C_FIELD(arg0, f32 *, 8);
+    M2C_FIELD(gCameraTarget, f32 *, 0xC) = (f32) M2C_FIELD(arg0, f32 *, 0xC);
+    syncActorPrevPos(gCameraTarget);
     if (temp_v0 != 0) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
     }

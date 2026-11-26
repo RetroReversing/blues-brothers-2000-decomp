@@ -15,17 +15,17 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_80015738(void *);                      /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
-extern void *D_800BD06C;
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
+extern void *gCameraTarget;
 extern M2C_UNK func_800393F4;
 extern M2C_UNK func_8003BC40;
 
 void func_8003CB10(void) {
     s32 var_s0;
     void *temp_s1;
-    temp_s1 = D_800BD06C;
+    temp_s1 = gCameraTarget;
     M2C_FIELD(temp_s1, M2C_UNK **, 0xD8) = &func_800393F4;
-    func_800433A8(temp_s1, 0x18, 0x100);
+    actorSetAnim(temp_s1, 0x18, 0x100);
     M2C_FIELD(temp_s1, M2C_UNK **, 0x9C) = &func_8003BC40;
     func_8002A360(0xC, 0x80);
     func_8002A360(8, 0xB);

@@ -18,17 +18,17 @@ struct Obj {
 };
 
 Obj *func_800232B4(s32, s32, s32, s32);
-Obj *func_80023874(s32, s32);
+Obj *findActor(s32, s32);
 void func_80034FEC(Obj *, s32 *);
 void func_80034F50(Obj *);
 void func_800393F4(Obj *);
-void func_8004303C(Obj *);
+void animStepKeys(Obj *);
 void func_800743F8(Obj *);
 void func_8007452C(Obj *);
 extern Obj *D_800B3960;
 extern Obj *D_800B3964;
 extern s32 D_800B5DD4;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 
 void func_80074600(Obj *arg0) {
     s32 v[3];
@@ -53,7 +53,7 @@ void func_80074600(Obj *arg0) {
         v[2] = arg0->unkA8->z;
         func_80034FEC(arg0, v);
     }
-    o = func_80023874(0x121, 0);
+    o = findActor(0x121, 0);
     if (o != NULL) {
         v[0] = arg0->x - o->x;
         v[1] = arg0->y - o->y;
@@ -63,7 +63,7 @@ void func_80074600(Obj *arg0) {
     if (dist > 200.0f) {
         return;
     }
-    if (D_800BD06C->type == 3 && D_800BD06C->handler == func_800393F4) {
+    if (gCameraTarget->type == 3 && gCameraTarget->handler == func_800393F4) {
         arg0->handler = func_8007452C;
         arg0->unkC0 = 0;
         if (arg0->unkA8 != NULL) {
@@ -73,13 +73,13 @@ void func_80074600(Obj *arg0) {
         if (o != NULL) {
             o->unkA0(o);
         }
-        n = func_80023874(0x1023, 0);
+        n = findActor(0x1023, 0);
         c = D_800B3960;
         if (c->handler != func_80034F50) {
             if (n == NULL) {
                 n = arg0;
             }
-            D_800BD06C->handler = func_8004303C;
+            gCameraTarget->handler = animStepKeys;
             c->handler = func_80034F50;
             c->unkA8 = n;
             c->x = D_800B3964->x;

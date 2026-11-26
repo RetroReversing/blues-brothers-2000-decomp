@@ -35,27 +35,27 @@ struct Obj {
 
 s16 coss(u16);
 s16 sins(u16);
-Obj *func_80023874(s32, s32);
-s32 func_80024394(s32, s32);
+Obj *findActor(s32, s32);
+s32 randomRange(s32, s32);
 s32 func_8002D1A0(void);
-void func_8002D620(Obj *);
+void syncActorPrevPos(Obj *);
 f32 func_8002DD60(f32);
 void func_8003CAD4(Obj *, s32);
 void func_80043328(Obj *, s32, s32);
 void func_80075F58(s32);
 Obj *func_8007B880(s32);
-void func_80081588(s32, s32);
-void func_800899DC(char *);
+void initSpline(s32, s32);
+void debugPrintf(char *);
 extern char D_800094D0[];
 extern Obj *D_800B3960;
 extern s32 D_800B396C;
 extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
-extern s32 D_800B9EA0;
-extern Obj *D_800BD06C;
-extern Pt *D_8014A9A8[];
-void func_8001FF64(void);
+extern s32 gFrameScale;
+extern Obj *gCameraTarget;
+extern Pt *gSplineSrcPoints[];
+void updateCameraView(void);
 void func_80034F50(void);
 void func_8007ACD4(void);
 void func_8007AEBC(void);
@@ -77,33 +77,33 @@ void func_8007AFE8(Obj *arg0) {
         D_800B396C = 0x3DE;
         arg0->unk6C = NULL;
         arg0->unkC0 = 0;
-        func_80081588(1, 0);
-        func_80081588(6, 0);
+        initSpline(1, 0);
+        initSpline(6, 0);
         func_80075F58(0);
     }
     p = arg0->unk6C;
     if (p == NULL) {
-        p = func_80023874(0x120, 0);
+        p = findActor(0x120, 0);
         if (p != NULL) {
             arg0->unk6C = p;
         }
     } else {
-        dx = D_800BD06C->x - p->x;
-        dz = D_800BD06C->z - p->z;
-        dy = func_8002DD60(D_800BD06C->y - p->y);
+        dx = gCameraTarget->x - p->x;
+        dz = gCameraTarget->z - p->z;
+        dy = func_8002DD60(gCameraTarget->y - p->y);
         if (dx * dx + dz * dz < 1960000.0f && dy < 500.0f) {
-            func_8003CAD4(D_800BD06C, D_800BD06C->unk10);
-            D_800B3960->unk9C = func_8001FF64;
+            func_8003CAD4(gCameraTarget, gCameraTarget->unk10);
+            D_800B3960->unk9C = updateCameraView;
             D_800B3960->unkA8 = 0;
-            pts = D_8014A9A8[1];
+            pts = gSplineSrcPoints[1];
             if (pts == NULL) {
-                func_800899DC(D_800094D0);
+                debugPrintf(D_800094D0);
             }
             pts += 3;
             D_800B3960->x = pts->x;
             D_800B3960->y = pts->y;
             D_800B3960->z = pts->z;
-            func_8002D620(D_800B3960);
+            syncActorPrevPos(D_800B3960);
             D_800B3960->unk9C = func_80034F50;
             D_800B3960->unkA8 = 0;
             arg0->unk9C = func_8007ACD4;
@@ -115,8 +115,8 @@ void func_8007AFE8(Obj *arg0) {
             arg0->unk104 = 0;
         }
     }
-    if (D_800BD06C->unkD0 == 0x17) {
-        arg0->unk80 += D_800B9EA0;
+    if (gCameraTarget->unkD0 == 0x17) {
+        arg0->unk80 += gFrameScale;
     } else {
         arg0->unk80 = 0;
     }
@@ -125,15 +125,15 @@ void func_8007AFE8(Obj *arg0) {
         for (i = 0; i < n; i++) {
             q = func_8007B880(0);
             a = func_8002D1A0();
-            q->x = D_800BD06C->x + ((coss(a) * 75) >> 13);
-            q->y = D_800BD06C->y + 200.0f;
-            q->z = D_800BD06C->z + ((sins(a) * 75) >> 13);
+            q->x = gCameraTarget->x + ((coss(a) * 75) >> 13);
+            q->y = gCameraTarget->y + 200.0f;
+            q->z = gCameraTarget->z + ((sins(a) * 75) >> 13);
             q->unk34 = 0x60;
             q->unk38 = 0x60;
             q->unk3C = 0x60;
             q->unk9C = func_8007AEBC;
             q->unk5C = 0;
-            func_80043328(q, 0x5F, func_80024394(0x100, 0x190));
+            func_80043328(q, 0x5F, randomRange(0x100, 0x190));
             q->unk64 = 1000;
         }
         arg0->unk80 = -10000;

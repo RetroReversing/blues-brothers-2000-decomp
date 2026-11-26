@@ -1,6 +1,6 @@
 typedef struct { u32 w0, w1; } GfxW;
 void func_800270DC(s32, s32, s32, s32);
-void func_80029F8C(s32);
+void setRenderState(s32);
 extern GfxW *D_80177E18;
 
 void func_8002E5F0(s32 x, s32 y, s32 w, s32 h) {
@@ -20,5 +20,5 @@ void func_8002E5F0(s32 x, s32 y, s32 w, s32 h) {
         _g->w0 = 0xF6000000 | (((x + w) & 0x3FF) << 14) | (((y + h) & 0x3FF) << 2);
         _g->w1 = ((x & 0x3FF) << 14) | ((y & 0x3FF) << 2);
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
 }

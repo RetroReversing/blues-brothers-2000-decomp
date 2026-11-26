@@ -29,9 +29,9 @@ typedef struct {
 } Cam;
 
 s32 func_8002492C(f32, f32);
-s32 func_8002D204(s32, s32, s32);
+s32 approachAngle(s32, s32, s32);
 s32 func_8002D260(s32);
-f32 func_8002D340(f32, f32, f32);
+f32 approachF32(f32, f32, f32);
 f32 func_8002DD60(f32);
 void func_80034F50(Obj *);
 void func_8004C020(Mtx *, s32, s32, s32, s32, s32, s32, f32 *, f32 *, f32 *);
@@ -42,9 +42,9 @@ extern Cam *D_800B3960;
 extern Ctl *D_800B3964;
 extern Mtx D_800B76E0;
 extern f32 D_800B8708[];
-extern s32 D_800B9ECC;
-extern Obj *D_800BD06C;
-extern s32 D_801070A0;
+extern s32 gCamSpeedScale;
+extern Obj *gCameraTarget;
+extern s32 gPadPressed;
 extern s32 D_80140028;
 
 void func_8007FACC(Obj *arg0) {
@@ -54,12 +54,12 @@ void func_8007FACC(Obj *arg0) {
     s32 t;
     f32 rot;
 
-    if (func_8002DD60(D_800BD06C->x) < 500.0 && func_8002DD60(D_800BD06C->z) < 500.0) {
+    if (func_8002DD60(gCameraTarget->x) < 500.0 && func_8002DD60(gCameraTarget->z) < 500.0) {
         arg0->unk70 = 1;
     }
-    angle = func_8002492C(D_800BD06C->x, D_800BD06C->z) + 0x2000;
+    angle = func_8002492C(gCameraTarget->x, gCameraTarget->z) + 0x2000;
     if (arg0->unk70 != 0) {
-        t = func_8002D204(angle, arg0->unk6C, D_800B9ECC << 8);
+        t = approachAngle(angle, arg0->unk6C, gCamSpeedScale << 8);
         arg0->unk6C = t;
         if (t == angle) {
             arg0->unk70 = 0;
@@ -72,7 +72,7 @@ void func_8007FACC(Obj *arg0) {
     } else {
         arg0->unk7C = 0;
     }
-    arg0->unk100 = func_8002D340(D_800B8708[arg0->unk7C], arg0->unk100, D_800B9ECC * 16);
+    arg0->unk100 = approachF32(D_800B8708[arg0->unk7C], arg0->unk100, gCamSpeedScale * 16);
     rot = (f32)arg0->unk6C * 6.283185307179586;
     rot = rot * 1.52587890625e-05;
     m = D_800B76E0;
@@ -85,7 +85,7 @@ void func_8007FACC(Obj *arg0) {
     func_80034F50(arg0);
     D_800B3960->unkA8 = 0;
     if (D_800B3964->unk90 != 0) {
-        if (D_801070A0 & 8) {
+        if (gPadPressed & 8) {
             arg0->unk9C = func_8007F990;
             arg0->unk64 = 120;
             arg0->unk7C = 100;

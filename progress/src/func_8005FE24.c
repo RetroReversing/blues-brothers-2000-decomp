@@ -13,12 +13,12 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80043248();                                /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 
 void func_8005FE24(void *arg0) {
     if (func_80043248(arg0) != 0) {
         M2C_FIELD(arg0, s32 *, 0x9C) = (s32) M2C_FIELD(arg0, s32 *, 0xD8);
         M2C_FIELD(arg0, s32 *, 0x10) = (s32) (M2C_FIELD(arg0, s32 *, 0x10) + 0x8000);
-        func_800433A8(arg0, 0x55, 0x100);
+        actorSetAnim(arg0, 0x55, 0x100);
     }
 }

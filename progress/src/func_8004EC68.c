@@ -47,16 +47,16 @@ typedef Obj *(*ObjFn)(Obj *);
 void func_80013834(void);
 void func_80013870(s32, s32, s32, s32);
 void func_800170D8(Entry *, Obj *);
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 s32 func_8001DD94(s32, s32);
 Obj *func_80023088(s32);
 Obj *func_800230B0(s32);
 s32 func_80023D58(s32);
-s32 *func_80023E18(s32);
+s32 *getImageAsset(s32);
 void func_800242A8(s32, s32, s32);
 void func_800242DC(s32);
-void *func_800253A0(s32);
-void func_8002D620(Obj *);
+void *heapAlloc(s32);
+void syncActorPrevPos(Obj *);
 Obj *func_8002E374(s32);
 void func_80033BC0(void);
 f32 func_800385AC(Obj *);
@@ -69,7 +69,7 @@ void func_8004EC20(void);
 s32 *func_8004F63C(Obj *, s32, s32 *);
 s32 *func_8004F984(s32 *, s32);
 void func_80088F40(void);
-void func_800899DC(char *, s32);
+void debugPrintf(char *, s32);
 void func_8000F670(void);
 void func_800184B8(void);
 void func_800340B4(void);
@@ -83,10 +83,10 @@ extern ObjFn D_800B79A4[];
 extern s32 D_800B7DE0[];
 extern s32 D_800B81D0;
 extern Obj *D_800B3960;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern s32 D_800BD104;
-extern s32 D_8014A928[];
-extern Triple *D_8014A9A8[];
+extern s32 gSplinePointCount[];
+extern Triple *gSplineSrcPoints[];
 extern s32 D_8014AA20;
 
 s32 func_8004EC68(s32 arg0, s32 arg1) {
@@ -145,7 +145,7 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
     func_8004EC20();
     func_800242DC(func_80023D58(arg0 - 1));
     base = func_80023D58(arg0);
-    p = func_80023E18(base);
+    p = getImageAsset(base);
     count = *p++;
     start = p;
     for (i = 0; i < count; i++) {
@@ -234,26 +234,26 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
         if (cur[0] == 3) {
             p -= 6;
             idx = cur[1];
-            slot = &D_8014A9A8[idx];
+            slot = &gSplineSrcPoints[idx];
             cnt = cur[2];
             src = p + 3;
             if (*slot != 0) {
-                func_800899DC("path already setup %d", idx);
+                debugPrintf("path already setup %d", idx);
             }
-            *slot = func_800253A0(cnt * 12);
+            *slot = heapAlloc(cnt * 12);
             for (k = 0; k < cnt; k++) {
-                D_8014A9A8[idx][k].a = src[0];
-                D_8014A9A8[idx][k].b = src[1];
-                D_8014A9A8[idx][k].c = src[2];
+                gSplineSrcPoints[idx][k].a = src[0];
+                gSplineSrcPoints[idx][k].b = src[1];
+                gSplineSrcPoints[idx][k].c = src[2];
                 src += 3;
             }
-            cp = D_8014A928;
+            cp = gSplinePointCount;
             cp[idx] = cnt;
             p = (s32 *)((u8 *)p + (cnt * 12 + 12));
         } else {
             if (cur[0] == -1) {
                 if (found == 0 || cur[1] == D_800BD104) {
-                    o = D_800BD06C;
+                    o = gCameraTarget;
                     found = 1;
                 }
             }
@@ -277,7 +277,7 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
                 func_80013870(id0 + cur[1], cur[2], cur[3], cur[4]);
                 if (tbl[cur[1]].kind == 0x23) {
                     func_8004E8B0(o, 6);
-                    t = func_8000C43C();
+                    t = cameraGetMode();
                     if (t == 0x32 || t == 0x3C) {
                         o->f0 = 0x13B;
                     } else {
@@ -299,7 +299,7 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
                 o->f4 = cur[2];
                 o->f8 = cur[3];
                 o->fC = cur[4];
-                func_8002D620(o);
+                syncActorPrevPos(o);
                 p = func_8004F63C(o, mask, p);
             }
         }
@@ -353,40 +353,40 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
             o->f4 = cur[2];
             o->f8 = cur[3];
             o->fC = cur[4];
-            func_8002D620(o);
+            syncActorPrevPos(o);
             p = func_8004F63C(o, mask, p);
             o->f14 = 0;
             o = fn(o);
             o->f10 = obj.f10;
             o->f14 = obj.f14;
             o->f18 = obj.f18;
-            func_8002D620(o);
+            syncActorPrevPos(o);
         }
     }
-    D_800BD06C->f50 = 0;
-    D_800BD06C->fB0 = 0;
-    D_800BD06C->f14 = 0;
-    D_800BD06C->f18 = 0;
+    gCameraTarget->f50 = 0;
+    gCameraTarget->fB0 = 0;
+    gCameraTarget->f14 = 0;
+    gCameraTarget->f18 = 0;
     if (D_800B81D0 == 0) {
-        t = func_8001DD94(func_8000C43C(), D_800BD104 & 0xF);
-        D_800B3960->f4 = D_800BD06C->f4;
-        D_800B3960->f8 = D_800BD06C->f8 + 500.0f;
-        D_800B3960->fC = D_800BD06C->fC;
-        D_800B3960->f10 = D_800BD06C->f10 + t;
-        func_8002D620(D_800BD06C);
-        func_8002D620(D_800B3960);
+        t = func_8001DD94(cameraGetMode(), D_800BD104 & 0xF);
+        D_800B3960->f4 = gCameraTarget->f4;
+        D_800B3960->f8 = gCameraTarget->f8 + 500.0f;
+        D_800B3960->fC = gCameraTarget->fC;
+        D_800B3960->f10 = gCameraTarget->f10 + t;
+        syncActorPrevPos(gCameraTarget);
+        syncActorPrevPos(D_800B3960);
         func_80088F40();
         if (D_800B3960->f9C == func_800340B4 || D_800B3960->f9C == func_80033F50) {
             func_80033BC0();
         }
-        if (func_8000C43C() == 0x24) {
-            cp = D_8014A928;
-            r = func_8004E080(0, cp[0], (s32)D_8014A9A8[0], 0);
+        if (cameraGetMode() == 0x24) {
+            cp = gSplinePointCount;
+            r = func_8004E080(0, cp[0], (s32)gSplineSrcPoints[0], 0);
             r->f94 = 0;
             r->f0 = 0x108;
             func_80046F30(r);
         }
-        if (func_8000C43C() != 0x31 && func_8000C43C() != 0x18) {
+        if (cameraGetMode() != 0x31 && cameraGetMode() != 0x18) {
             for (o = func_80023088(0); o < func_800230B0(0); o++) {
                 if (o->f0 < 0x1000 || o->f0 > 0x1030) {
                     continue;
@@ -400,7 +400,7 @@ s32 func_8004EC68(s32 arg0, s32 arg1) {
                 if (y != -1000000.0) {
                     o->f8 = y;
                 }
-                func_8002D620(o);
+                syncActorPrevPos(o);
             }
         }
     }

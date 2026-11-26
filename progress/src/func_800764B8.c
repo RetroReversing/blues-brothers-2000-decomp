@@ -1,9 +1,9 @@
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void func_8002ADFC(s32, s32, void *);
 s32 func_8002D260(s32);
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 s32 func_80076080(void *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 void func_80076464();
 typedef struct Obj Obj;
 struct Obj *func_80042F00(s32, s32, s32, s32);
@@ -36,7 +36,7 @@ struct Obj {
 typedef struct { s32 a; s32 h; s32 c; } Rec;
 extern char D_80009258[];
 extern s32 D_800B7B0C;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern Rec D_800F4A00[];
 extern s32 D_800F7910[];
 extern s32 D_80140240;
@@ -58,38 +58,38 @@ void func_800764B8(Obj *arg0) {
         return;
     }
     lim = D_801700D0;
-    dy = D_800BD06C->y - arg0->y;
+    dy = gCameraTarget->y - arg0->y;
     tv = D_800F7910[arg0->fB8];
     if (lim < tv && dy < (f32)(D_800F4A00[arg0->fB8].h + 50) && 5.0f < dy) {
         arg0->f64 = 70;
-        D_800BD06C->f50 = D_80140240 * 2.12;
-        D_800BD06C->y = arg0->y + (f32)D_800F4A00[arg0->fB8].h + 52.0f;
-        func_800433A8(D_800BD06C, 5, 0x100);
-        D_800BD06C->f9C(D_800BD06C);
+        gCameraTarget->f50 = D_80140240 * 2.12;
+        gCameraTarget->y = arg0->y + (f32)D_800F4A00[arg0->fB8].h + 52.0f;
+        actorSetAnim(gCameraTarget, 5, 0x100);
+        gCameraTarget->f9C(gCameraTarget);
         if (arg0->fA8 == 0) {
             switch (arg0->f6C) {
             case 0:
                 s = func_80042F00(0x47, arg0->x, arg0->y, arg0->z);
                 if (s != 0) {
-                    func_800433A8(s, 0x14A, 0x100);
+                    actorSetAnim(s, 0x14A, 0x100);
                 }
                 break;
             case 1:
                 s = func_80042F00(0x48, arg0->x, arg0->y, arg0->z);
                 if (s != 0) {
-                    func_800433A8(s, 0x14B, 0x100);
+                    actorSetAnim(s, 0x14B, 0x100);
                 }
                 break;
             }
             if (s == 0) {
-                func_800899DC(D_80009258);
+                debugPrintf(D_80009258);
             }
             s->f9C = func_80076464;
             s->fA4 = arg0;
             s->f10 = func_8002D260(arg0->f10 + 0x8000);
             s->f14 = arg0->f14;
             s->f18 = arg0->f18;
-            s->f58 = func_800221C0(0, 1, 0, 3, D_800B7B0C, 0, 1, 0);
+            s->f58 = packDrawFlags(0, 1, 0, 3, D_800B7B0C, 0, 1, 0);
             arg0->fA8 = s;
             arg0->f68 = -1;
             func_8002ADFC(0x7F, 4000, arg0);

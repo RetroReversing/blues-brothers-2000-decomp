@@ -1,13 +1,13 @@
 void func_80023C58(s32);
 void func_80023C64(s32);
-void func_8002710C(s32, s32, s32, s32);
+void setTextColor(s32, s32, s32, s32);
 void func_8002A360(s32, s32);
-s32 func_8002D298(s32, s32, s32);
-s32 func_8002D5CC(void *);
+s32 approachS32(s32, s32, s32);
+s32 tickActorTimer(void *);
 void func_80030C40(void *, s32);
 extern s32 D_80000318;
 extern s32 D_800AE010;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 void func_80023078(void *);
 void func_800319D4(void *);
 
@@ -36,16 +36,16 @@ void func_800315D8(Obj *arg0) {
         arg0->unk98 = func_800319D4;
         arg0->unk90 = D_800AE010;
         func_80023C58(0xB9458F);
-        D_801070A0 = 0;
+        gPadPressed = 0;
         arg0->unk64 = 0x1F4;
     }
     if (arg0->unk94 != 0) {
-        arg0->unk6C = func_8002D298(0xFF, arg0->unk6C, 5);
+        arg0->unk6C = approachS32(0xFF, arg0->unk6C, 5);
     } else {
-        arg0->unk6C = func_8002D298(0, arg0->unk6C, 5);
+        arg0->unk6C = approachS32(0, arg0->unk6C, 5);
     }
     if (arg0->unk94 != 0) {
-        if (func_8002D5CC(arg0) != 0 || (D_801070A0 & 0x9000)) {
+        if (tickActorTimer(arg0) != 0 || (gPadPressed & 0x9000)) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x9F);
             arg0->unk94 = 0;
@@ -59,6 +59,6 @@ void func_800315D8(Obj *arg0) {
         func_80030C40(arg0, 1);
         func_80023C58(arg0->unk90);
         func_80023C64(0xB9458F);
-        func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
+        setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
     }
 }

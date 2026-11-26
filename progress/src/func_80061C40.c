@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
+M2C_UNK setSlotAsset(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
 extern s32 D_800B81D0;
 
 void func_80061C40(void) {
@@ -24,10 +24,10 @@ void func_80061C40(void) {
     func_80023A74(0x14, 0x2C5);
     var_a0 = 0x98;
     if (D_800B81D0 == 0) {
-        func_80023A98(0x97, 0x2C4, 0);
-        func_80023A98(0x98, 0x2C7, 0);
-        func_80023A98(0x99, 0x2C2, 0);
-        func_80023A98(0x9B, 0x2C6, 1);
+        setSlotAsset(0x97, 0x2C4, 0);
+        setSlotAsset(0x98, 0x2C7, 0);
+        setSlotAsset(0x99, 0x2C2, 0);
+        setSlotAsset(0x9B, 0x2C6, 1);
         var_a0 = 0x9A;
         var_a1 = 0x2C3;
         var_a2 = 1;
@@ -35,5 +35,5 @@ void func_80061C40(void) {
         var_a1 = 0x2C7;
         var_a2 = 0;
     }
-    func_80023A98(var_a0, var_a1, var_a2);
+    setSlotAsset(var_a0, var_a1, var_a2);
 }

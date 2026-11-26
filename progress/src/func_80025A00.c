@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 M2C_UNK func_80023BE0(s32, M2C_UNK, s32);           /* extern */
 M2C_UNK func_80025280(s32);                         /* extern */
-s32 func_800253A0(s32);                             /* extern */
+s32 heapAlloc(s32);                             /* extern */
 M2C_UNK func_800258E4();                            /* extern */
 s32 func_800259F8(s32);                             /* extern */
 M2C_UNK func_8002B410(s32, s32, s32);               /* extern */
@@ -38,7 +38,7 @@ s32 func_80025A00(s32 arg0, M2C_UNK arg1) {
     temp_s2 = M2C_FIELD(temp_v0_2, s32 *, 4);
     temp_s0 = M2C_FIELD(temp_v0_2, s32 *, 8) - temp_s1;
     sp60 = temp_s2;
-    temp_v0_3 = func_800253A0(temp_s0);
+    temp_v0_3 = heapAlloc(temp_s0);
     func_8002B410(temp_s1, temp_v0_3, temp_s0);
     func_80090DA0(arg1, &sp60, temp_v0_3, temp_s0);
     func_80023BE0(temp_v0, arg1, temp_s2);

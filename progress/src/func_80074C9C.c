@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80050460(M2C_UNK *, void *);           /* extern */
 M2C_UNK func_80074BAC();                            /* extern */
-M2C_UNK func_80081588(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK initSpline(M2C_UNK, M2C_UNK);            /* extern */
 extern s32 D_800B3974;
 extern s32 D_800B3970;
 extern s32 D_800B3978;
@@ -33,8 +33,8 @@ void func_80074C9C(void *arg0) {
     D_800B3970 = 150;
     D_800B3974 = 182;
     D_800B3978 = 0xC6;
-    func_80081588(1, 0);
-    func_80081588(6, 0);
+    initSpline(1, 0);
+    initSpline(6, 0);
     func_80074BAC();
     func_80050460(&func_80075E4C, (char *)&D_8014AA7A + 1);
     M2C_FIELD(arg0, s32 *, 0xA8) = 0;

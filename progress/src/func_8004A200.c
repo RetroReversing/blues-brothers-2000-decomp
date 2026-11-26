@@ -43,10 +43,10 @@ extern ModelTri *D_800F80E8[];
 extern ModelVtx *D_800FA860[];
 extern CollRec D_80140FF8[];
 extern RayHit D_80148CF8[];
-extern Vec3 D_8014A8F8;
-extern Vec3 D_8014A908;
+extern Vec3 gCollideMin;
+extern Vec3 gCollideMax;
 
-void func_800899DC(char *);
+void debugPrintf(char *);
 extern char D_80007D14[];
 f32 func_80094350(f32);
 f32 func_8002DD60(f32);
@@ -84,9 +84,9 @@ s32 func_8004A200(f32 x0, f32 x1, f32 y0, f32 y1, f32 z0, f32 z1, s32 flags) {
 
     prev = NULL;
     D_800B76A4 = 0;
-    if (x0 < D_8014A8F8.x || D_8014A908.x < x1 || y0 < D_8014A8F8.y || D_8014A908.y < y1
-        || z0 < D_8014A8F8.z || D_8014A908.z < z1) {
-        func_800899DC("Box outside of defined collision volume");
+    if (x0 < gCollideMin.x || gCollideMax.x < x1 || y0 < gCollideMin.y || gCollideMax.y < y1
+        || z0 < gCollideMin.z || gCollideMax.z < z1) {
+        debugPrintf("Box outside of defined collision volume");
     }
     for (i = 0; i < D_800B76A0; i++) {
         obj = D_80140FF8[i].obj;
@@ -323,7 +323,7 @@ s32 func_8004A200(f32 x0, f32 x1, f32 y0, f32 y1, f32 z0, f32 z1, s32 flags) {
         continue;
     found:
         if (D_800B76A4 >= 0x80) {
-            func_800899DC(D_80007D14);
+            debugPrintf(D_80007D14);
         }
         if (flags & 2) {
             tri->flags |= 8;

@@ -12,19 +12,19 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();
-s32 func_80023874();
-s32 func_8004303C();
+s32 cameraGetMode();
+s32 findActor();
+s32 animStepKeys();
 extern char D_800BCFB8[];
 extern void *D_8013FB74;
 extern s32 func_80023078;
 
 void func_8006B1D8(void *arg0) {
-    func_8004303C();
-    if (func_80023874(0x801, 0) == 0) {
+    animStepKeys();
+    if (findActor(0x801, 0) == 0) {
         M2C_FIELD(D_8013FB74, s32 *, 0x90) += 1;
         M2C_FIELD(arg0, void **, 0x9C) = (void *) ((s8 *)&func_80023078 + 8);
-        *(func_8000C43C() + D_800BCFB8) = 1;
+        *(cameraGetMode() + D_800BCFB8) = 1;
     }
 }
 

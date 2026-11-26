@@ -1,4 +1,4 @@
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 void func_8004E8B0(void *, s32);
 void func_800168F4(void);
 void func_800176D0(void);
@@ -55,7 +55,7 @@ s32 *func_8004F63C(Obj *arg0, s32 flags, s32 *args) {
                     if (arg0->fn9C == func_800168F4) {
                         D_8014A920 |= 2;
                     }
-                    if (func_8000C43C() == 3 && arg0->fn9C == func_800168F4) {
+                    if (cameraGetMode() == 3 && arg0->fn9C == func_800168F4) {
                         s32 v = D_800B7E70[D_8014AA20];
                         D_8014AA20++;
                         arg0->x10 = v + 0x8000;

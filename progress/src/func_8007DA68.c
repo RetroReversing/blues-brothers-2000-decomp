@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 void *func_80023920();
 s32 func_80025280();
 s32 func_80042F00();
-s32 func_800433A8();
+s32 actorSetAnim();
 s32 func_8007DA10();
 extern s32 D_800B8670;
 extern char D_800B8674[];
@@ -46,7 +46,7 @@ char *__branch___base_D_800B8674;
                        temp_v0 = func_80042F00(M2C_FIELD(var_s0, s32 *, 0xB8), 0, 0, 0);
                        { __repair_phase_temp_a0 = (temp_v0_2 - 1) * 8;
             __branch___base_D_800B8674 = D_800B8674;
-            { func_800433A8(temp_v0, M2C_FIELD((__branch___base_D_800B8674 + __repair_phase_temp_a0), s32 *, 4), 0x100); } }
+            { actorSetAnim(temp_v0, M2C_FIELD((__branch___base_D_800B8674 + __repair_phase_temp_a0), s32 *, 4), 0x100); } }
                        return temp_v0;
                    }
                    var_s0 = func_80023920(0x1000, 0x1031, var_s0);

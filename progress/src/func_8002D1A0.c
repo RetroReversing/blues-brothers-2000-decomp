@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 
 s32 func_8002D1A0(void) {
-    return func_80024394(0, 0x10) << 0xC;
+    return randomRange(0, 0x10) << 0xC;
 }

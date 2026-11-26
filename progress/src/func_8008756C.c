@@ -15,10 +15,10 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_8000C458();                            /* extern */
 M2C_UNK func_80023620(M2C_UNK);                     /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_8002D5CC(void *);                      /* extern */
+M2C_UNK tickActorTimer(void *);                      /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 extern s32 D_800B5DD4;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern M2C_UNK D_80171A70;
 extern M2C_UNK D_80171A78;
 extern void *D_80171A80;
@@ -31,7 +31,7 @@ void func_8008756C(void *arg0) {
     void **var_v1;
 
     var_s0 = 0;
-    if (D_801070A0 & 0x4000) {
+    if (gPadPressed & 0x4000) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003D558;
         func_8002E7B8(1, 0);
         D_800B5DD4 = 1;
@@ -50,7 +50,7 @@ void func_8008756C(void *arg0) {
         var_v1 += 1;
     } while (var_a0 < 4);
     if (var_s0 == 2) {
-        func_8002D5CC(arg0);
+        tickActorTimer(arg0);
     } else {
         M2C_FIELD(arg0, s32 *, 0x64) = 0x96;
     }

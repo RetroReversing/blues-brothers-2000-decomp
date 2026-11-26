@@ -1,13 +1,13 @@
 s32 func_80023D58(s32);
 s32 func_80023DE0(s32);
-u8 *func_800253A0(s32);
+u8 *heapAlloc(s32);
 void func_80025820(u8 *, s32);
 s32 func_80025A00(s32, u8 *);
 s32 func_80025AC4(s32);
 void func_80026B80(s32, s32, s32);
 s32 func_800424FC(s32, s32, u8 *, u8 *);
 void func_80048D08(u8 *, s32, s32);
-void func_800899DC(void *, ...);
+void debugPrintf(void *, ...);
 extern s8 D_80000F34[];
 extern s32 D_800F80E8[];
 extern s32 D_800F90A0[];
@@ -56,7 +56,7 @@ s32 func_80023E58(s32 arg0, s32 arg1_in, s32 arg2) {
     n3 = func_80025AC4(arg1);
     size = n3;
     n3 *= 3;
-    buf = func_800253A0(size + n3);
+    buf = heapAlloc(size + n3);
     size = func_80025A00(arg1, buf);
     D_800FB038[arg0] = func_80023D58(arg1);
     size = (size & 0x3F) ? (size & ~0x3F) + 0x40 : size;
@@ -83,7 +83,7 @@ s32 func_80023E58(s32 arg0, s32 arg1_in, s32 arg2) {
     end += count;
     func_80048D08(buf, *p9878, *p80E8);
     if (n3 < end - (s32)(buf + size)) {
-        func_800899DC(D_80000F34);
+        debugPrintf(D_80000F34);
     }
     if (excess > 0) {
         pA050 = &D_800FA050[arg0];

@@ -15,13 +15,13 @@ typedef s32 M2C_UNK32;
 s16 coss(s32);                                      /* extern */
 M2C_UNK func_80027038(M2C_UNK);                     /* extern */
 M2C_UNK func_80027060(s32, s32, s32, u32);          /* extern */
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, u32); /* extern */
-M2C_UNK func_8002713C(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, u32); /* extern */
+M2C_UNK setTextPos(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_80027158(M2C_UNK, s32);                /* extern */
 M2C_UNK func_8002E838(s32);                         /* extern */
-M2C_UNK func_8003CDA0(M2C_UNK);                     /* extern */
+M2C_UNK drawCenteredMessage(M2C_UNK);                     /* extern */
 extern s32 D_800B5DD8;
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 
 void func_8003E0BC(void *arg0) {
   u32 guard_value;
@@ -35,11 +35,11 @@ void func_8003E0BC(void *arg0) {
     func_80027038(0);
     temp_a0 = M2C_FIELD(arg0, u32 *, 0x70);
     func_8002E838((s32) (temp_a0 + (temp_a0 >> 0x1F)) >> 1);
-    func_8002710C(0xCE, 0x10, 0x25, M2C_FIELD(arg0, u32 *, 0x70));
-    func_8002713C(0xA0, 0x14);
-    func_8003CDA0(0x9A);
+    setTextColor(0xCE, 0x10, 0x25, M2C_FIELD(arg0, u32 *, 0x70));
+    setTextPos(0xA0, 0x14);
+    drawCenteredMessage(0x9A);
     func_80027158(0xA0, 0x28);
-    temp_a0_2 = 0xFF - ((s32) (((s32) (coss((D_800B9EA4 * 0x190) & 0xFFF0) * 0x7F) >> 0xF) + 0x80) / 2);
+    temp_a0_2 = 0xFF - ((s32) (((s32) (coss((gTextWaveTime * 0x190) & 0xFFF0) * 0x7F) >> 0xF) + 0x80) / 2);
     do { func_80027060(temp_a0_2, temp_a0_2, temp_a0_2, M2C_FIELD(arg0, u32 *, 0x70)); } while (0);
     for (var_s0 = 0; var_s0 < D_800B5DD8; var_s0++) {
         func_80027158(0xA0, var_s0 * 10 + 0x50);
@@ -47,15 +47,15 @@ void func_8003E0BC(void *arg0) {
         if (var_s0 == M2C_FIELD(arg0, s32 *, 0x88)) {
             var_a0 = 0xFF;
         }
-        func_8002710C(var_a0, var_a0, var_a0, M2C_FIELD(arg0, u32 *, 0x70));
+        setTextColor(var_a0, var_a0, var_a0, M2C_FIELD(arg0, u32 *, 0x70));
         switch (var_s0) {
-        case 0: func_8003CDA0(0xA4); break;
-        case 1: func_8003CDA0(0xA6); break;
-        case 2: func_8003CDA0(0xA7); break;
+        case 0: drawCenteredMessage(0xA4); break;
+        case 1: drawCenteredMessage(0xA6); break;
+        case 2: drawCenteredMessage(0xA7); break;
         }
     }
-    func_8002713C(0x96, 0xCD);
-    func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, u32 *, 0x70));
-    func_8003CDA0(0xA2);
+    setTextPos(0x96, 0xCD);
+    setTextColor(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, u32 *, 0x70));
+    drawCenteredMessage(0xA2);
 }
 

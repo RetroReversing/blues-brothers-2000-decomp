@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 s32 func_8002492C(f32, f32);
-f32 func_8002D66C(void *, f32, s32);
-void func_8004303C(void *);
+f32 getCameraTargetDist(void *, f32, s32);
+void animStepKeys(void *);
 void func_80043328(void *, s32, s32);
 void func_80058F74(void *, void *);
 void func_80081990(void *, s32, f32);
 void func_80081AC0(f32 *, s32, f32);
-extern s32 D_8014A928[];
+extern s32 gSplinePointCount[];
 extern s32 func_80058FA8;
 extern s32 func_80059058;
 
@@ -35,14 +35,14 @@ void func_80059100(void *arg0) {
         func_80058F74(arg0, &func_80059058);
         return;
     }
-    if (func_8002D66C(arg0, 400.0f, 0) < 400.0f) {
+    if (getCameraTargetDist(arg0, 400.0f, 0) < 400.0f) {
         func_80058F74(arg0, &func_80058FA8);
         return;
     }
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     t = M2C_FIELD(arg0, f32 *, 0xB4) + 0.05;
     M2C_FIELD(arg0, f32 *, 0xB4) = t;
-    lim = (f32) D_8014A928[M2C_FIELD(arg0, s32 *, 0x70)] - 1.0f;
+    lim = (f32) gSplinePointCount[M2C_FIELD(arg0, s32 *, 0x70)] - 1.0f;
     if (lim <= t) {
         M2C_FIELD(arg0, f32 *, 0xB4) = t - lim;
     }

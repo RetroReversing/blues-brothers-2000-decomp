@@ -17,7 +17,7 @@ extern void *D_800BCFB0;
 extern void *D_800BCFFC;
 extern s32 D_800BD05C;
 extern s32 D_800BD068;
-extern Obj80017F78 *D_800BD06C;
+extern Obj80017F78 *gCameraTarget;
 extern f32 D_800BD070;
 extern f32 D_800BD074;
 extern f32 D_800BD078;
@@ -43,9 +43,9 @@ void func_80017F78(void) {
         D_800BCFB0 = D_800B3960->unk9C;
         D_800B3960->unk10 = src->unk10;
         D_800B3960->unk14 = src->unk14;
-        saved = D_800BD06C->unk9C;
+        saved = gCameraTarget->unk9C;
         D_800B3960->unk9C = func_80017E34;
-        D_800BD06C->unk9C = (void *)((s8 *)func_80023078 + 8);
+        gCameraTarget->unk9C = (void *)((s8 *)func_80023078 + 8);
         D_800B3960->unk64 = 0xC8;
         D_800BCFFC = saved;
     }

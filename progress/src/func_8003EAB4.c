@@ -35,7 +35,7 @@ typedef struct Dec {
 void func_8003E780(char *, ...);
 void func_80026C04(void *, s32, s32);
 void func_8003F2A4(Dec *);
-void func_8003ECB8(Dec *, s32);
+void animSampleKeys(Dec *, s32);
 extern char D_800076C8[];
 extern char D_800076FC[];
 extern u8 D_800B5DE0[];
@@ -89,5 +89,5 @@ void func_8003EAB4(Dec *arg0, Hdr *hdr) {
     arg0->f38 = arg0->f30;
     arg0->f3C = arg0->f34;
     func_8003F2A4(arg0);
-    func_8003ECB8(arg0, 0);
+    animSampleKeys(arg0, 0);
 }

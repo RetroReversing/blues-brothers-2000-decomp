@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 func_800134F0();
 s32 func_80013550();
-s32 func_8002D620();
+s32 syncActorPrevPos();
 s32 func_8004F9D0();
 s16 sins();
 extern u16 D_800B9EA6;
@@ -36,7 +36,7 @@ void func_80016B84(void *arg0) {
     }
     M2C_FIELD(arg0, f32 *, 0x4C) = (f32) (M2C_FIELD(arg0, f32 *, 4) - M2C_FIELD(arg0, f32 *, 0x40));
     M2C_FIELD(arg0, f32 *, 0x54) = (f32) (M2C_FIELD(arg0, f32 *, 0xC) - M2C_FIELD(arg0, f32 *, 0x48));
-    func_8002D620(arg0);
+    syncActorPrevPos(arg0);
     M2C_FIELD(arg0, f32 *, 8) += (f32) ((s32) (sins(D_800B9EA6) * 0x19) >> 0xD);
     func_800134F0(arg0);
     func_80013550(arg0);

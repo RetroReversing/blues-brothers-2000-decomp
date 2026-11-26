@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800899DC();
+s32 debugPrintf();
 extern char D_800081FC[];
 
 s32 func_800538AC(s32 arg0, void *arg1) {
-    func_800899DC(D_800081FC, M2C_FIELD(arg1, s32 *, 4));
+    debugPrintf(D_800081FC, M2C_FIELD(arg1, s32 *, 4));
     return 0;
 }

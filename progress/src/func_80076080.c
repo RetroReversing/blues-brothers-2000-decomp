@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 M2C_UNK func_80025280(s32);                         /* extern */
 f32 func_8002D858(void *, M2C_UNK *);               /* extern */
 f32 func_8002DD60(f32);                             /* extern */
@@ -20,7 +20,7 @@ M2C_UNK func_8003EA18(s32);                         /* extern */
 extern f32 D_80009240;
 extern f64 D_80009248;
 extern s32 D_800B83B4;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern f32 D_801700D0;
 extern M2C_UNK D_801700D4;
 extern s32 D_801700D8;
@@ -33,7 +33,7 @@ s32 func_80076080(void *arg0) {
     s32 temp_a0_2;
 
     near = 0;
-    if (func_8000C43C() == 1) {
+    if (cameraGetMode() == 1) {
         D_801700D8 = 0x7D0;
         near = 1;
     } else {
@@ -49,7 +49,7 @@ s32 func_80076080(void *arg0) {
         return 0;
     }
     if (near != 0) {
-        dist = func_8002DD60(M2C_FIELD(arg0, f32 *, 8) - M2C_FIELD(D_800BD06C, f32 *, 8));
+        dist = func_8002DD60(M2C_FIELD(arg0, f32 *, 8) - M2C_FIELD(gCameraTarget, f32 *, 8));
         limit = limit / 3.0f;
         M2C_FIELD(arg0, s32 *, 0x68) = 4;
     } else {

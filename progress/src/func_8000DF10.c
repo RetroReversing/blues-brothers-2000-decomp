@@ -1,4 +1,4 @@
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 extern s32 D_800BD694;
 void func_8000DEB4(void);
 void func_8002F604(void);
@@ -28,7 +28,7 @@ p->unk74 = 0;
     p->unk78 = 0xFFFFFF;
     p->unk7C = 0;
     p->unk60 = g;
-    p->unk58 = func_800221C0(0, 1, 4, 3, 0, 0, 2, 0);
+    p->unk58 = packDrawFlags(0, 1, 4, 3, 0, 0, 2, 0);
     p->unk68 = 14;
     p->unk5C = 0xFF;
     return p;

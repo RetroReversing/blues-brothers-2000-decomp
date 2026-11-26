@@ -23,20 +23,20 @@ typedef struct {
     f32 range;
 } Actor;
 
-s32 func_80024B0C(s32);
-s32 func_80025100(s32, s32);
+s32 isqrtS32(s32);
+s32 atan2S16(s32, s32);
 void func_8002A360(s32, s32);
-s32 func_8002D204(s32, s32, s32);
+s32 approachAngle(s32, s32, s32);
 s32 func_8002D260();
 void func_8002D3E4(Actor *, s32);
-s32 func_8002D5CC(Actor *);
-void func_8002D620(Actor *);
+s32 tickActorTimer(Actor *);
+void syncActorPrevPos(Actor *);
 void func_8002DA80(Actor *);
 s32 func_8003C9AC(Actor *, s32, s32, s32);
-s32 func_8004303C(Actor *);
+s32 animStepKeys(Actor *);
 s32 func_80043248(Actor *);
 void func_80043328(Actor *, s32, s32);
-void func_800433A8(Actor *, s32, s32);
+void actorSetAnim(Actor *, s32, s32);
 s32 func_8004FF2C(Actor *, s32);
 s32 func_8005EBC0(Actor *);
 void func_8005F008(Actor *);
@@ -44,7 +44,7 @@ s32 func_80076080(void);
 void func_800761FC(Actor *);
 void func_80080594(Actor *, s32);
 void func_800462A0(void);
-extern Actor *D_800BD06C;
+extern Actor *gCameraTarget;
 extern s32 D_8014AB10;
 
 void func_8005DEF8(Actor *arg0) {
@@ -62,34 +62,34 @@ void func_8005DEF8(Actor *arg0) {
     }
     hx = arg0->pos[0] - arg0->home[0];
     hz = arg0->pos[2] - arg0->home[2];
-    hdist = func_80024B0C(hx * hx + hz * hz);
-    dx = D_800BD06C->pos[0] - arg0->home[0];
-    dz = D_800BD06C->pos[2] - arg0->home[2];
-    dy = D_800BD06C->pos[1] - arg0->home[1];
-    pdist = func_80024B0C(dx * dx + dz * dz);
+    hdist = isqrtS32(hx * hx + hz * hz);
+    dx = gCameraTarget->pos[0] - arg0->home[0];
+    dz = gCameraTarget->pos[2] - arg0->home[2];
+    dy = gCameraTarget->pos[1] - arg0->home[1];
+    pdist = isqrtS32(dx * dx + dz * dz);
     switch (arg0->mode) {
     case 0:
         arg0->home[0] = arg0->pos[0];
         arg0->home[1] = arg0->pos[1];
         arg0->home[2] = arg0->pos[2];
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         arg0->mode = 1;
         arg0->state = 1;
         break;
     case 1:
-        done = func_8004303C(arg0);
+        done = animStepKeys(arg0);
         switch (arg0->state) {
         case 1:
             if (abs(dy) < 150 && pdist < (s32)arg0->range) {
                 func_8002A360(0xC, 0x80);
                 func_8002A360(8, 0x10);
                 arg0->mode = 2;
-                arg0->target = func_8002D260(func_80025100(dx, dz));
+                arg0->target = func_8002D260(atan2S16(dx, dz));
                 arg0->state = 7;
                 func_80080594(arg0, 0);
             }
             if (func_8004FF2C(arg0, arg0->unk70) != 0) {
-                func_800433A8(arg0, 0xE1, 0x100);
+                actorSetAnim(arg0, 0xE1, 0x100);
                 arg0->state = 2;
             }
             arg0->home[0] = arg0->pos[0];
@@ -99,24 +99,24 @@ void func_8005DEF8(Actor *arg0) {
         case 2:
             if (done != 0) {
                 arg0->state = 1;
-                func_800433A8(arg0, 0xDF, 0x100);
+                actorSetAnim(arg0, 0xDF, 0x100);
             }
             break;
         }
         break;
     case 2:
-        done = func_8004303C(arg0);
-        dx = arg0->pos[0] - D_800BD06C->pos[0];
-        dz = arg0->pos[2] - D_800BD06C->pos[2];
-        D_8014AB10 = func_80024B0C(dx * dx + dz * dz);
+        done = animStepKeys(arg0);
+        dx = arg0->pos[0] - gCameraTarget->pos[0];
+        dz = arg0->pos[2] - gCameraTarget->pos[2];
+        D_8014AB10 = isqrtS32(dx * dx + dz * dz);
         switch (func_8005EBC0(arg0)) {
         case 1:
-            func_800433A8(arg0, 0xE4, 0x100);
+            actorSetAnim(arg0, 0xE4, 0x100);
             arg0->mode = 3;
             arg0->state = 2;
             return;
         case 2:
-            func_800433A8(arg0, 0xE3, 0x100);
+            actorSetAnim(arg0, 0xE3, 0x100);
             arg0->mode = 3;
             arg0->state = 0;
             return;
@@ -127,15 +127,15 @@ void func_8005DEF8(Actor *arg0) {
             arg0->state = 8;
             break;
         case 8:
-            arg0->angle = func_8002D260(func_80025100(-dx, -dz), arg0->angle, 0x1000);
+            arg0->angle = func_8002D260(atan2S16(-dx, -dz), arg0->angle, 0x1000);
             func_80043328(arg0, 0xE0, 0x100);
             if (arg0->range < (f32)hdist) {
-                func_800433A8(arg0, 0xDE, 0x100);
+                actorSetAnim(arg0, 0xDE, 0x100);
                 func_8002D3E4(arg0, 0);
                 arg0->state = 0xD;
             } else {
                 if (D_8014AB10 < 200) {
-                    func_800433A8(arg0, 0xE2, 0x100);
+                    actorSetAnim(arg0, 0xE2, 0x100);
                     func_8002D3E4(arg0, 0);
                     arg0->state = 9;
                     arg0->unk78 = 0;
@@ -145,7 +145,7 @@ void func_8005DEF8(Actor *arg0) {
             }
             break;
         case 9:
-            arg0->angle = func_8002D260(func_80025100(-dx, -dz), arg0->angle, 0x1000);
+            arg0->angle = func_8002D260(atan2S16(-dx, -dz), arg0->angle, 0x1000);
             if (arg0->unk78 == 0 && 5.0f <= arg0->unkDC) {
                 func_8002A360(0xC, 0x80);
                 func_8002A360(8, 0x16);
@@ -159,7 +159,7 @@ void func_8005DEF8(Actor *arg0) {
                 if (a < 200 && func_8003C9AC(arg0, 0, 1, 1) != 0) {
                     func_8002A360(0xC, 0x80);
                     func_8002A360(8, 0x2D);
-                    func_8005F008(D_800BD06C);
+                    func_8005F008(gCameraTarget);
                 }
             }
             if (done != 0) {
@@ -170,38 +170,38 @@ void func_8005DEF8(Actor *arg0) {
         case 13:
             dx = arg0->pos[0] - arg0->home[0];
             dz = arg0->pos[2] - arg0->home[2];
-            func_80024B0C(dx * dx + dz * dz);
-            arg0->target = func_8002D260(func_80025100(-dx, -dz));
+            isqrtS32(dx * dx + dz * dz);
+            arg0->target = func_8002D260(atan2S16(-dx, -dz));
             arg0->state = 0xE;
-            func_800433A8(arg0, 0xE1, 0x100);
+            actorSetAnim(arg0, 0xE1, 0x100);
             break;
         case 14:
             if (done != 0) {
                 arg0->angle = arg0->target;
-                func_800433A8(arg0, 0xDF, 0x100);
+                actorSetAnim(arg0, 0xDF, 0x100);
                 func_8002D3E4(arg0, 0x1C2);
                 arg0->state = 0xF;
             }
             break;
         case 15:
-            if (func_80024B0C(dx * dx + dz * dz) < 400) {
+            if (isqrtS32(dx * dx + dz * dz) < 400) {
                 func_8002A360(0xC, 0x80);
                 func_8002A360(8, 0x10);
                 arg0->mode = 2;
-                arg0->target = func_8002D260(func_80025100(dx, dz));
+                arg0->target = func_8002D260(atan2S16(dx, dz));
                 arg0->state = 7;
                 func_80080594(arg0, 0);
             }
             func_8002DA80(arg0);
-            if (func_80024B0C(hx * hx + hz * hz) < 25) {
+            if (isqrtS32(hx * hx + hz * hz) < 25) {
                 arg0->target = 0x7FFF;
                 func_8002D3E4(arg0, 0);
-                func_800433A8(arg0, 0xDF, 0x100);
+                actorSetAnim(arg0, 0xDF, 0x100);
                 arg0->state = 0x10;
             }
             break;
         case 16:
-            arg0->angle = func_8002D204(arg0->target, arg0->angle, 0x1000);
+            arg0->angle = approachAngle(arg0->target, arg0->angle, 0x1000);
             if (arg0->angle == arg0->target) {
                 arg0->mode = 1;
                 arg0->state = 1;
@@ -209,7 +209,7 @@ void func_8005DEF8(Actor *arg0) {
             break;
         case 17:
             func_80043328(arg0, 0xDE, 0x100);
-            if (func_8002D5CC(arg0) != 0 && done != 0) {
+            if (tickActorTimer(arg0) != 0 && done != 0) {
                 arg0->state = 8;
             }
             break;
@@ -237,7 +237,7 @@ void func_8005DEF8(Actor *arg0) {
             if (done != 0) {
                 arg0->mode = 2;
                 arg0->state = 7;
-                func_800433A8(arg0, 0xE0, 0x100);
+                actorSetAnim(arg0, 0xE0, 0x100);
                 func_8002D3E4(arg0, 0x1C2);
             }
             break;

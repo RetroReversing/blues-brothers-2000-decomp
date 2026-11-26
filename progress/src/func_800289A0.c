@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_800289BC(s32, M2C_UNK);                     /* extern */
+M2C_UNK drawFontChar(s32, M2C_UNK);                     /* extern */
 
 void func_800289A0(s32 arg0) {
-    func_800289BC(arg0, 1);
+    drawFontChar(arg0, 1);
 }

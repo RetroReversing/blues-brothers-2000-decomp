@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-f32 func_80095DC0(f32);
+f32 sinApprox(f32);
 
 f32 func_8008ECB8(void *arg0) {
     f32 ret;
@@ -23,7 +23,7 @@ f32 func_8008ECB8(void *arg0) {
     if (temp_v1 <= 0) {
         ret = 0.0f;
     } else {
-        temp_fv0 = func_80095DC0((f32) temp_v1 * M2C_FIELD(arg0, f32 *, 0xDC)) * M2C_FIELD(arg0, f32 *, 0x20);
+        temp_fv0 = sinApprox((f32) temp_v1 * M2C_FIELD(arg0, f32 *, 0xDC)) * M2C_FIELD(arg0, f32 *, 0x20);
         M2C_FIELD(arg0, f32 *, 0x68) = temp_fv0;
         ret = temp_fv0;
     }

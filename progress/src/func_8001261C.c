@@ -1,4 +1,4 @@
-s32 func_8002D5CC(void *);
+s32 tickActorTimer(void *);
 void func_8002DA80(void);
 extern f32 D_80000798;
 extern s32 D_800BD090[];
@@ -45,7 +45,7 @@ void func_8001261C(Obj12 *arg0) {
     }
     arg0->u60 = D_800BD090[f];
     arg0->y += 2.0f;
-    if (arg0->frame >= 11 || func_8002D5CC(arg0) != 0) {
+    if (arg0->frame >= 11 || tickActorTimer(arg0) != 0) {
         arg0->fn(arg0);
     }
 }

@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D5CC();
+s32 tickActorTimer();
 s32 func_80043328();
 extern f32 D_80008F7C;
 extern s32 func_8006C264;
@@ -25,7 +25,7 @@ void func_8006C1D4(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0x64) = 0x32;
         return;
     }
-    if (((f32) M2C_FIELD(arg0, s32 *, 0x90) < D_80008F7C) && (func_8002D5CC(arg0) != 0)) {
+    if (((f32) M2C_FIELD(arg0, s32 *, 0x90) < D_80008F7C) && (tickActorTimer(arg0) != 0)) {
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
         M2C_FIELD(arg0, s32 **, 0xD8) = &func_8006C264;
     }

@@ -21,9 +21,9 @@ void func_8002A360(s32, s32);
 void func_800393F4(void);
 extern Cheat D_800AA388[];
 extern s32 D_800B3968;
-extern s32 D_800B9EA0;
-extern Player14A84 *D_800BD06C;
-extern s32 D_801070A0;
+extern s32 gFrameScale;
+extern Player14A84 *gCameraTarget;
+extern s32 gPadPressed;
 
 void func_80014A84(Input14A84 *in) {
     Cheat *c;
@@ -31,8 +31,8 @@ void func_80014A84(Input14A84 *in) {
     s32 *pad;
     s32 mode;
 
-    if (D_800BD06C->state == func_800393F4) {
-        in->timer -= D_800B9EA0;
+    if (gCameraTarget->state == func_800393F4) {
+        in->timer -= gFrameScale;
         if (in->timer < 0) {
             if (in->pos != 0) {
                 for (c = D_800AA388; c->codes != NULL; c++) {
@@ -49,12 +49,12 @@ void func_80014A84(Input14A84 *in) {
                 c->active = 1;
             }
         } else {
-            do { mode = D_801070A0; } while (0);
+            do { mode = gPadPressed; } while (0);
             if (mode != 0) {
             found = 0;
             c = D_800AA388;
             if (c->codes != NULL) {
-                pad = &D_801070A0;
+                pad = &gPadPressed;
                 do {
                 if (c->active != 0) {
                     if (*pad != c->codes[in->pos]) {

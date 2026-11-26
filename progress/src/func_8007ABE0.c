@@ -1,5 +1,5 @@
 void func_80043328(void *, s32, s32);
-void func_800433A8(void *, s32, s32);
+void actorSetAnim(void *, s32, s32);
 s32 func_80075008(void *);
 extern s32 D_800B83C8;
 extern f32 D_801700D0;
@@ -24,7 +24,7 @@ void func_8007ABE0(Obj *arg0) {
 
     if (arg0->unk7C == 0) {
         arg0->unk7C = 1;
-        func_800433A8(arg0, 0x8D, 0x100);
+        actorSetAnim(arg0, 0x8D, 0x100);
         t = arg0->unk34 * 4.5f;
         arg0->unk74 = 0;
         arg0->unkBC = 0;

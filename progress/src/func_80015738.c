@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
 void *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */
 void *func_800239E0();                              /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 s32 func_8002D1A0();                                /* extern */
 M2C_UNK func_8002D4E0(void *, s32);                 /* extern */
-M2C_UNK func_8002D620(void *);                      /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 extern s32 D_800BD170;
 void func_80015870(void);
 void func_8002F8D0(void);
@@ -35,19 +35,19 @@ void *func_80015738(void *arg0) {
         M2C_FIELD(p, s32 *, 0x64) = 0xC8;
         M2C_FIELD(p, void **, 0x98) = func_8002F8D0;
         M2C_FIELD(p, s32 *, 0x60) = (s32) D_800BD170;
-        M2C_FIELD(p, s32 *, 0x70) = func_80024394(0xA, 0x32);
+        M2C_FIELD(p, s32 *, 0x70) = randomRange(0xA, 0x32);
         M2C_FIELD(p, s32 *, 0x74) = 0;
         M2C_FIELD(p, s32 *, 0x78) = 0xFFFFFF;
         M2C_FIELD(p, s32 *, 0x7C) = 1;
-        M2C_FIELD(p, s32 *, 0x58) = func_800221C0(0, 1, 4, 3, 0, 0, 1, 0);
+        M2C_FIELD(p, s32 *, 0x58) = packDrawFlags(0, 1, 4, 3, 0, 0, 1, 0);
         M2C_FIELD(p, s32 *, 0x68) = 0xE;
         M2C_FIELD(p, s32 *, 0x5C) = 0xFF;
         M2C_FIELD(p, s32 *, 0x64) = 0xC8;
         M2C_FIELD(p, void **, 0x9C) = func_80015870;
         M2C_FIELD(p, s32 *, 0x10) = func_8002D1A0();
-        M2C_FIELD(p, s32 *, 0x14) = func_80024394(0x1000, 0x4000);
-        func_8002D4E0(p, func_80024394(0x3E8, 0x7D0));
-        func_8002D620(p);
+        M2C_FIELD(p, s32 *, 0x14) = randomRange(0x1000, 0x4000);
+        func_8002D4E0(p, randomRange(0x3E8, 0x7D0));
+        syncActorPrevPos(p);
         M2C_FIELD(p, s32 *, 0x80) = 0xC8;
     }
     return p;

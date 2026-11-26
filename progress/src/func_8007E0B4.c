@@ -12,7 +12,7 @@ typedef struct Obj {
 } Obj;
 void func_8001B990(s32, s32);
 void func_80033DC4(Obj *);
-void func_8004303C(Obj *);
+void animStepKeys(Obj *);
 extern Obj *D_800B3960;
 extern Obj *D_800B3964;
 extern char func_80023078[];
@@ -22,8 +22,8 @@ void func_8007E0B4(Obj *o) {
     f32 x = o->fDC;
 
     if (x < 110.0f || 122.0f < x) {
-        func_8004303C(o);
-        func_8004303C(o->fA8);
+        animStepKeys(o);
+        animStepKeys(o->fA8);
         return;
     }
     if (D_800B3960->f9C != func_800340B4) {

@@ -24,17 +24,17 @@ typedef struct Obj {
     s32 padAC[5];
     s32 fC0;
 } Obj;
-Obj *func_80023874();
+Obj *findActor();
 s32 func_80023C64();
 s32 func_8002A360();
-s32 func_8002D5CC();
+s32 tickActorTimer();
 s32 func_8007C310();
 s32 func_8007C54C();
 s32 func_8007C780();
 extern Obj *D_800B3960;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern s32 D_800BD0E0[];
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern s32 D_8014002C;
 extern Obj *D_801700E8;
 extern s32 func_80023078;
@@ -57,51 +57,51 @@ void func_8007CB84(Obj *self) {
         self->f64 = 0x64;
         self->f8C = 0;
         D_801700E8 = self;
-        p = func_80023874(0x100B, 0);
+        p = findActor(0x100B, 0);
         while (p != 0) {
             p->f90 = 0;
-            p = func_80023874(0x100B, p);
+            p = findActor(0x100B, p);
         }
-        D_800BD06C->x = self->fA8->x;
-        D_800BD06C->z = self->fA8->z;
+        gCameraTarget->x = self->fA8->x;
+        gCameraTarget->z = self->fA8->z;
         D_800B3960->fC0 = 1;
-        D_800BD06C->f68 = -1;
+        gCameraTarget->f68 = -1;
         e = &D_800BD0E0[D_800BD0E0[8]];
         D_8014002C = 1;
         if (e[1] >= 10) {
             e[1] -= 10;
         }
-        p = func_80023874(6, 0);
+        p = findActor(6, 0);
         if (p != 0) {
             p->f68 = -1;
         }
         func_8007C54C();
         return;
     }
-    if (D_801070A0 & 0x2000) {
+    if (gPadPressed & 0x2000) {
         if (self->f90 >= 0 && self->f94 > 0) {
             self->f90 = self->f90 - 1;
             func_8007C310();
             func_8002A360(0x15, 0);
         }
     }
-    if (func_8002D5CC(self) != 0) {
+    if (tickActorTimer(self) != 0) {
         self->f64 = 0x64;
         if (self->f94 > 0 && self->f90 > 0) {
             self->f94 = self->f94 - 1;
             return;
         }
-        p = func_80023874(0x100B, 0);
+        p = findActor(0x100B, 0);
         while (p != 0) {
             if (p->f84 != 0) {
                 n++;
                 p->fC0 |= 8;
             }
-            p = func_80023874(0x100B, p);
+            p = findActor(0x100B, p);
         }
         D_8014002C = 0;
         D_800B3960->fC0 = 0;
-        D_800BD06C->f68 = 4;
+        gCameraTarget->f68 = 4;
         self->f9C = (char *)&func_8007BE88 + 8;
         self->f98 = (char *)&func_80023078 + 8;
         if (n >= 8) {
@@ -111,14 +111,14 @@ void func_8007CB84(Obj *self) {
             self->f7C = 6;
             self->fA8->f90 = 0;
         }
-        p = func_80023874(0x1008, 0);
+        p = findActor(0x1008, 0);
         while (p != 0) {
             p->f9C = (char *)&func_80023078 + 8;
             p->fA0(p);
-            p = func_80023874(0x1008, p);
+            p = findActor(0x1008, p);
         }
         func_80023C64(0x122);
-        p = func_80023874(6, 0);
+        p = findActor(6, 0);
         if (p != 0) {
             p->f68 = 0xF;
         }

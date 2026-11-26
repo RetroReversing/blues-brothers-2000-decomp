@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_800414D0();                            /* extern */
-M2C_UNK func_80045E34(void *);                      /* extern */
+M2C_UNK updateModelBoneActors(void *);                      /* extern */
 
 s32 func_80075EBC(void *arg0) {
     s32 temp_v0;
@@ -22,7 +22,7 @@ s32 func_80075EBC(void *arg0) {
     temp_v0 = M2C_FIELD(arg0, s32 *, 0x7C) + 1;
     M2C_FIELD(arg0, s32 *, 0x7C) = temp_v0;
     if (temp_v0 == 2) {
-        func_80045E34(arg0);
+        updateModelBoneActors(arg0);
     }
     return 0;
 }

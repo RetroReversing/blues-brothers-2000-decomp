@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 void *func_80017C54(s32, s32, s32, s32, s32, s32, s32); /* extern */
 void *func_800239E0();                              /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 extern s32 D_800BD0D8;
 extern s32 D_800BD168;
 
@@ -27,14 +27,14 @@ void *func_80017CF0(s32 arg0) {
     if (var_s0 != NULL) {
         return var_s0;
     }
-    if (func_80024394(0, 0x64) >= 0x33) {
-        temp_s0 = func_80024394(0, 0xFFFF);
-        var_s0 = func_80017C54(arg0, D_800BD0D8, temp_s0, func_80024394(-0x7D0, 0x7D0) + 0x2AF8, 0x3E8, 0, 0x1F4);
+    if (randomRange(0, 0x64) >= 0x33) {
+        temp_s0 = randomRange(0, 0xFFFF);
+        var_s0 = func_80017C54(arg0, D_800BD0D8, temp_s0, randomRange(-0x7D0, 0x7D0) + 0x2AF8, 0x3E8, 0, 0x1F4);
     } else {
-        temp_s0_2 = func_80024394(0, 0xFFFF);
-        var_s0 = func_80017C54(arg0, D_800BD168, temp_s0_2, func_80024394(-0x1F4, -0x7D0) + 0x4000, 0x4B0, 0, 0);
+        temp_s0_2 = randomRange(0, 0xFFFF);
+        var_s0 = func_80017C54(arg0, D_800BD168, temp_s0_2, randomRange(-0x1F4, -0x7D0) + 0x4000, 0x4B0, 0, 0);
         M2C_FIELD(var_s0, s32 *, 0x18) = 0x4000;
     }
-    M2C_FIELD(var_s0, s32 *, 0x78) = func_80024394(0, 0x7EFF81);
+    M2C_FIELD(var_s0, s32 *, 0x78) = randomRange(0, 0x7EFF81);
     return var_s0;
 }

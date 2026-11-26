@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8003ECB8(void *, f32);                 /* extern */
-extern s32 D_800B9ECC;
+M2C_UNK animSampleKeys(void *, f32);                 /* extern */
+extern s32 gCamSpeedScale;
 extern s32 D_801402F8;
 
 s32 func_8004318C(void *arg0) {
@@ -31,9 +31,9 @@ s32 func_8004318C(void *arg0) {
     temp_v0 = D_801402F8;
     temp_fv1 = M2C_FIELD(temp_s0, f32 *, 0x1C);
     D_801402F8 = temp_v0 + 1;
-    temp_fv1 = temp_fv1 + (f32) D_800B9ECC;
+    temp_fv1 = temp_fv1 + (f32) gCamSpeedScale;
     temp_fs0 = M2C_FIELD(temp_s0, f32 *, 0x1C);
-    func_8003ECB8(temp_s0, temp_fv1);
+    animSampleKeys(temp_s0, temp_fv1);
     temp_fv0 = M2C_FIELD(temp_s0, f32 *, 0x1C);
     var_v0 = 1;
     M2C_FIELD(arg0, f32 *, 0xDC) = temp_fv0;

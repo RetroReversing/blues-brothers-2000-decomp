@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_8002D9B0(void *);                      /* extern */
 M2C_UNK func_8002D9F8();                            /* extern */
 extern f32 D_80000A20;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_800172B8(void *arg0) {
     s32 temp_v1;
@@ -30,7 +30,7 @@ void func_800172B8(void *arg0) {
     tB = M2C_FIELD(arg0, s32 *, 0x80);
     M2C_FIELD(arg0, s32 *, 0x10) = (s32) (M2C_FIELD(arg0, s32 *, 0x10) + 0x1000);
     do { M2C_FIELD(arg0, s32 *, 0x80) = (s32) (tB + 0xA); } while (0);
-    temp_v1 = M2C_FIELD(arg0, s32 *, 0x5C) - (D_800B9ECC * 4);
+    temp_v1 = M2C_FIELD(arg0, s32 *, 0x5C) - (gCamSpeedScale * 4);
     M2C_FIELD(arg0, s32 *, 0x5C) = temp_v1;
     if (temp_v1 <= 0) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);

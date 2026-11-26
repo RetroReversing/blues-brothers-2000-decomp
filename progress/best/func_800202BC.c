@@ -60,8 +60,8 @@ typedef struct {
 s32 func_8001EAD0(s32);
 void func_8001EB18(s32);
 void func_8001F230(Obj *);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-void func_80022728(Obj *, f32 (*)[3], s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+void buildObjectMatrix(Obj *, f32 (*)[3], s32);
 void func_80024C68(Vec3i *, void *, s32 *);
 void func_80024FE8(f32 (*)[3]);
 extern Cam *D_800B3960;
@@ -102,7 +102,7 @@ s32 func_800202BC(Obj *arg0) {
         }
         func_80024C68(&D_800CD350[i], D_80177E28, d);
     }
-    arg0->unk58 = func_800221C0(0, 1, 1, 1, 0, 0, 1, 0);
+    arg0->unk58 = packDrawFlags(0, 1, 1, 1, 0, 0, 1, 0);
     func_8001F230(arg0);
     {
         Gfx *_g = D_80177E18++;
@@ -111,7 +111,7 @@ s32 func_800202BC(Obj *arg0) {
     }
     arg0->rot[0] = arg0->rot[1] = arg0->rot[2] = 0.0f;
     func_80024FE8(m);
-    func_80022728(arg0, m, 0);
+    buildObjectMatrix(arg0, m, 0);
     last = count - 1;
     for (i = 0; i < count; i++) {
         D_800CD170[i].x = 0;

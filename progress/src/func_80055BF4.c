@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_80081588(s32, M2C_UNK);                /* extern */
+M2C_UNK initSpline(s32, M2C_UNK);                /* extern */
 extern M2C_UNK func_80055AD4;
 
 void func_80055BF4(void *arg0) {
@@ -20,7 +20,7 @@ void func_80055BF4(void *arg0) {
 
     temp_a0 = M2C_FIELD(arg0, s32 *, 0x70);
     if (temp_a0 != 0) {
-        func_80081588(temp_a0, 1);
+        initSpline(temp_a0, 1);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80055AD4;
     }
 }

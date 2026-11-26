@@ -18,7 +18,7 @@ s32 func_800269B8(M2C_UNK *);                       /* extern */
 s32 osPfsFindFile(M2C_UNK *, M2C_UNK, M2C_UNK, s32, M2C_UNK *, M2C_UNK *); /* extern */
 extern M2C_UNK D_80001110;
 extern M2C_UNK D_80001120;
-extern s32 D_800AE174;
+extern s32 gPakInitWarn;
 extern s32 D_800AE1A4;
 extern s32 D_800AE1A8;
 extern M2C_UNK D_80107210;
@@ -40,9 +40,9 @@ s32 func_80026780(void) {
         D_800AE1A8 = 0;
     }
     if (temp_v0 == 3) {
-        D_800AE174 = 1;
+        gPakInitWarn = 1;
     } else {
-        D_800AE174 = 0;
+        gPakInitWarn = 0;
     }
     func_8002642C(temp_v0);
     return 1;

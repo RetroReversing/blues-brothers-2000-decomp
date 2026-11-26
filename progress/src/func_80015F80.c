@@ -13,21 +13,21 @@ typedef s32 M2C_UNK32;
 #endif
 
 s16 coss(s32);                                      /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 extern f32 D_8000086C;
-extern u8 D_800B9EA4[];
+extern u8 gTextWaveTime[];
 
 void func_80015F80(void *arg0) {
     M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) + D_8000086C);
     loop_goto_1:
     {
- M2C_FIELD(arg0, f32 *, 4) = (f32) (M2C_FIELD(arg0, f32 *, 0x40) + (f32) ((s32) (coss(((M2C_FIELD(arg0, s32 *, 0x8C) + *(s32 *) D_800B9EA4) * 0x320) & 0xFFE0) * 0x19) >> 0xE));
+ M2C_FIELD(arg0, f32 *, 4) = (f32) (M2C_FIELD(arg0, f32 *, 0x40) + (f32) ((s32) (coss(((M2C_FIELD(arg0, s32 *, 0x8C) + *(s32 *) gTextWaveTime) * 0x320) & 0xFFE0) * 0x19) >> 0xE));
     }
     if (0)
     {
         { goto loop_goto_1; }
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
     }
 }

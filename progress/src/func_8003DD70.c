@@ -12,14 +12,14 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 s32 func_8002A360(s32, s32);                /* extern */
 s32 func_8003D654();                                /* extern */
 extern s32 D_800AB9B4;
 extern s32 D_800B5DCC;
 extern s32 D_800B5DD4;
-extern s32 D_800B81D8;
-extern s32 D_801070A0;
+extern s32 gAudioVolume;
+extern s32 gPadPressed;
 extern s32 D_80140228;
 extern s32 func_8003D3C8;
 extern s32 func_8003D854;
@@ -49,7 +49,7 @@ void func_8003DD70(void *arg0) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x90);
     }
-    temp2 = D_801070A0 & 0x8000;
+    temp2 = gPadPressed & 0x8000;
     temp = temp2;
     if (temp) {
         temp_v1 = (*(const s32 *)((s8 *)arg0 + 0x88));
@@ -58,7 +58,7 @@ void func_8003DD70(void *arg0) {
             {
               if (temp_v1 == 2)
               {
-                if (func_8000C43C() == 0x3B) {
+                if (cameraGetMode() == 0x3B) {
                   s32 var_v0_1;
                     { (*(s32 **)((s8 *)arg0 + 0x9C)) = &func_8003DB40; }
                     { (*(s32 **)((s8 *)arg0 + 0x98)) = &func_8003E0BC; }
@@ -79,11 +79,11 @@ void func_8003DD70(void *arg0) {
             }
         }
     }
-    if (D_801070A0 & 0x4000) {
+    if (gPadPressed & 0x4000) {
         { (*(s32 **)((s8 *)arg0 + 0x9C)) = &func_8003D3C8; }
         D_800AB9B4 = 0;
         D_800B5DD4 = 1;
         D_80140228 = (*(const s32 *)((s8 *)arg0 + 0x74));
-        { func_8002A360(0, D_800B81D8 * 0x147); }
+        { func_8002A360(0, gAudioVolume * 0x147); }
     }
 }

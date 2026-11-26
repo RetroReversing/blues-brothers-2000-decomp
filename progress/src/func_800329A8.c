@@ -15,13 +15,13 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_80023C58(s32);                         /* extern */
 M2C_UNK func_80023C64(M2C_UNK);                     /* extern */
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
-s32 func_8002D298(M2C_UNK, s32, M2C_UNK);           /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
+s32 approachS32(M2C_UNK, s32, M2C_UNK);           /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8002E79C();                            /* extern */
 M2C_UNK func_80030C40(void *, M2C_UNK);             /* extern */
 extern s32 D_800AE010;
 extern s32 D_800B9C70;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern M2C_UNK func_80023078;
 extern M2C_UNK func_8003186C;
 
@@ -33,7 +33,7 @@ void func_800329A8(void *arg0) {
         M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_8003186C;
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
         M2C_FIELD(arg0, s32 *, 0x6C) = 0;
-        D_801070A0 = 0;
+        gPadPressed = 0;
         M2C_FIELD(arg0, s32 *, 0x90) = (s32) D_800AE010;
         M2C_FIELD(arg0, s32 *, 0x64) = 0x2BC;
         func_80023C58(0xB9458F);
@@ -41,14 +41,14 @@ void func_800329A8(void *arg0) {
     }
     if (M2C_FIELD(arg0, s32 *, 0x94) != 0)
     {
-      M2C_FIELD(arg0, s32 *, 0x6C) = func_8002D298(0xFF, M2C_FIELD(arg0, s32 *, 0x6C), 5);
+      M2C_FIELD(arg0, s32 *, 0x6C) = approachS32(0xFF, M2C_FIELD(arg0, s32 *, 0x6C), 5);
     }
     else
     {
-      M2C_FIELD(arg0, s32 *, 0x6C) = func_8002D298(0, M2C_FIELD(arg0, s32 *, 0x6C), 5);
+      M2C_FIELD(arg0, s32 *, 0x6C) = approachS32(0, M2C_FIELD(arg0, s32 *, 0x6C), 5);
     }
     if (M2C_FIELD(arg0, s32 *, 0x94) != 0) {
-        if ((func_8002D5CC(arg0) != 0) || (D_801070A0 & 0x9000)) {
+        if ((tickActorTimer(arg0) != 0) || (gPadPressed & 0x9000)) {
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA0);
             M2C_FIELD(arg0, s32 *, 0x94) = 0;

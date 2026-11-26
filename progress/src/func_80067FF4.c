@@ -12,21 +12,21 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023874(M2C_UNK, M2C_UNK);                /* extern */
-s32 func_80023E18(s32);                             /* extern */
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
-M2C_UNK func_800272E0(s32, s32, M2C_UNK, M2C_UNK);  /* extern */
+s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
+s32 getImageAsset(s32);                             /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
+M2C_UNK drawImage(s32, s32, M2C_UNK, M2C_UNK);  /* extern */
 extern s32 D_8014AB30;
 extern M2C_UNK func_80066628;
 
 void func_80067FF4(void *arg0) {
     void *temp_v0;
 
-    if (func_80023874(0x800, 0) == 0) {
+    if (findActor(0x800, 0) == 0) {
         temp_v0 = M2C_FIELD(arg0, void **, 0xA4);
         if ((temp_v0 != NULL) && (M2C_FIELD(temp_v0, s32 *, 0xD8) != &func_80066628)) {
-            func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x8C));
-            func_800272E0(func_80023E18(D_8014AB30), ((4 - M2C_FIELD(arg0, s32 *, 0x90)) << 5) + 0x96, 0x1E, 0);
+            setTextColor(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x8C));
+            drawImage(getImageAsset(D_8014AB30), ((4 - M2C_FIELD(arg0, s32 *, 0x90)) << 5) + 0x96, 0x1E, 0);
         }
     }
 }

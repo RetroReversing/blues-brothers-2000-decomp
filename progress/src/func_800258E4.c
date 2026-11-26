@@ -5,8 +5,8 @@ typedef struct {
 
 extern void func_800A1D20(void *, s32 *);
 extern void func_800258B0(void *);
-extern void func_800899DC(char *, ...);
-extern void *func_800253A0(s32);
+extern void debugPrintf(char *, ...);
+extern void *heapAlloc(s32);
 extern void func_8002B410(void *, void *, s32);
 extern char D_800010E0[];
 extern s32 D_800AE140;
@@ -23,9 +23,9 @@ void func_800258E4(void) {
         func_800A1D20(D_B00BD1E0, &n);
         func_800258B0(&n);
         if (n >= 0xED9) {
-            func_800899DC(D_800010E0, n, 0xED8);
+            debugPrintf(D_800010E0, n, 0xED8);
         }
-        p = func_800253A0(n * 8);
+        p = heapAlloc(n * 8);
         D_80106A44 = p;
         func_8002B410(D_B00BD1E0 + 8, p, n * 8);
         for (i = 0; i < n; i++) {

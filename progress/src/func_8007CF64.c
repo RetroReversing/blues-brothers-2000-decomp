@@ -23,7 +23,7 @@ extern s32 D_800B3974;
 extern s32 D_800B3978;
 extern s16 D_800B8490;
 extern s32 (*D_800B8494[])(void);
-extern Cam2 *D_800BD06C;
+extern Cam2 *gCameraTarget;
 extern s32 D_80107070;
 extern s32 D_80107600;
 extern s32 D_80107610;
@@ -54,9 +54,9 @@ s32 func_8007CF64(void) {
         D_801705EC = NULL;
         D_801705F6 = 1;
         func_80026C04(D_801704E0, 0, 0x108);
-        if (D_800BD06C->e0 != 0) {
-            func_80025280(D_800BD06C->e0);
-            D_800BD06C->e0 = 0;
+        if (gCameraTarget->e0 != 0) {
+            func_80025280(gCameraTarget->e0);
+            gCameraTarget->e0 = 0;
         }
         a = D_800B3970;
         b = D_800B3974;

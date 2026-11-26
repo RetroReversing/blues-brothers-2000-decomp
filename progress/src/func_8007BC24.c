@@ -17,8 +17,8 @@ typedef struct Obj {
     s32 xB8;
 } Obj;
 
-extern void func_80081588(s32, s32);
-extern Obj *func_80023874(s32, Obj *);
+extern void initSpline(s32, s32);
+extern Obj *findActor(s32, Obj *);
 extern Obj *func_8002E374(s32);
 extern void func_8007B94C(void);
 extern f32 D_80009534;
@@ -30,7 +30,7 @@ void func_8007BC24(Obj *o) {
 
     if (o->x7C == 0) {
         o->x7C = 1;
-        func_80081588(o->x70, 0);
+        initSpline(o->x70, 0);
         return;
     }
     if (o->xA8 != NULL) {
@@ -51,7 +51,7 @@ void func_8007BC24(Obj *o) {
         id = 0x121;
         break;
     }
-    c = func_80023874(id, NULL);
+    c = findActor(id, NULL);
     if (c != NULL) {
         n = func_8002E374(c->xB8);
         o->xA8 = n;

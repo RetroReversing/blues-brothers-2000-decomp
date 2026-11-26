@@ -11,12 +11,12 @@ typedef union {
 void func_8001F230(void *);
 void func_800226A0(s32);
 void func_800226E4(s32);
-void func_80022728(void *, void *, s32);
+void buildObjectMatrix(void *, void *, s32);
 void func_80024A3C(void *, void *, s32);
 void func_80024B58(void *, void *, s32);
 void func_80024BE0(void *, void *, s32);
 void func_80024FE8(void *);
-void func_80029F8C(s32);
+void setRenderState(s32);
 extern s32 D_800AB9B4;
 extern Gfx *D_80177E18;
 
@@ -41,7 +41,7 @@ s32 func_8001F878(void *arg0) {
     func_80024B58(sp38, sp10, ((__repair_record_arg0*)arg0)->field_10);
     func_80024A3C(sp10, sp38, ((__repair_record_arg0*)arg0)->field_14);
     func_80024BE0(sp38, sp10, ((__repair_record_arg0*)arg0)->field_18);
-    func_80022728(arg0, sp38, 0);
+    buildObjectMatrix(arg0, sp38, 0);
     {
         Gfx *_g = (Gfx *)(D_80177E18++);
         _g->words.w0 = 0xDE000000;
@@ -55,6 +55,6 @@ s32 func_8001F878(void *arg0) {
     if (((__repair_record_arg0*)arg0)->field_6C == 0x44444) {
         func_800226E4(0);
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
     return 1;
 }

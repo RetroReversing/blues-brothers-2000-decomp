@@ -12,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_8014A928;
-extern s32 D_8014A9A8;
-extern s32 D_801718C0;
+extern s32 gSplinePointCount;
+extern s32 gSplineSrcPoints;
+extern s32 gSplineSegs;
 
 void func_8004EC20(void) {
     char *var_a0;
@@ -23,9 +23,9 @@ void func_8004EC20(void) {
     s32 var_a2;
 
     var_a2 = 0;
-    var_a1 = &D_801718C0;
-    var_a0 = &D_8014A9A8;
-    var_v1 = &D_8014A928;
+    var_a1 = &gSplineSegs;
+    var_a0 = &gSplineSrcPoints;
+    var_v1 = &gSplinePointCount;
     do {
         *(s32 *)var_v1 = 0;
         *(s32 *)var_a0 = 0;

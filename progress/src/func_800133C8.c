@@ -16,8 +16,8 @@ typedef struct Obj {
     s32 xB8;            /* 0xB8 */
 } Obj;
 
-f32 func_8002D340(f32, f32, f32);
-extern Obj *D_800BD06C;
+f32 approachF32(f32, f32, f32);
+extern Obj *gCameraTarget;
 extern Vec3i D_800F4A00[];
 extern s32 D_80140228;
 
@@ -32,7 +32,7 @@ void func_800133C8(Obj *arg0) {
     }
     p = arg0->xA8;
     h = arg0->xB4;
-    if (p == NULL && D_800BD06C->y < h) {
+    if (p == NULL && gCameraTarget->y < h) {
         arg0->state = 0x102;
     } else {
         arg0->state = 0x10E;
@@ -45,6 +45,6 @@ void func_800133C8(Obj *arg0) {
             D_80140228 = 1;
         }
     } else {
-        arg0->y = func_8002D340(arg0->x44, arg0->y, 20.0f);
+        arg0->y = approachF32(arg0->x44, arg0->y, 20.0f);
     }
 }

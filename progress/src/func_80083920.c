@@ -8,7 +8,7 @@ typedef struct Obj {
 } Obj;
 
 extern void func_8002A360(s32, s32);
-extern s32 func_80024394(s32, s32);
+extern s32 randomRange(s32, s32);
 extern void func_8002D124(void);
 extern s16 D_800B9B1C[];
 
@@ -50,7 +50,7 @@ s32 func_80083920(Obj *o, s32 arg1) {
         return 2;
     }
     func_8002A360(0xC, 0x80);
-    func_8002A360(8, func_80024394(0, 0xA) + 0xA9);
+    func_8002A360(8, randomRange(0, 0xA) + 0xA9);
     func_8002D124();
     return 1;
 }

@@ -12,12 +12,12 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern void *D_800BD06C;
-extern M2C_UNK func_8004303C;
+extern void *gCameraTarget;
+extern M2C_UNK animStepKeys;
 
 void func_80052A30(void) {
-    M2C_FIELD(D_800BD06C, M2C_UNK **, 0x9C) = &func_8004303C;
-    M2C_FIELD(D_800BD06C, s32 *, 0) = 3;
-    M2C_FIELD(D_800BD06C, s32 *, 0x50) = 0;
-    M2C_FIELD(D_800BD06C, s32 *, 0x90) = 1;
+    M2C_FIELD(gCameraTarget, M2C_UNK **, 0x9C) = &animStepKeys;
+    M2C_FIELD(gCameraTarget, s32 *, 0) = 3;
+    M2C_FIELD(gCameraTarget, s32 *, 0x50) = 0;
+    M2C_FIELD(gCameraTarget, s32 *, 0x90) = 1;
 }

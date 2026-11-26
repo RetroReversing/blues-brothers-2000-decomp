@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_800301E8(M2C_UNK *, s32);              /* extern */
+M2C_UNK drawRotatedImage(M2C_UNK *, s32);              /* extern */
 extern M2C_UNK D_800B3980;
 extern s32 D_8013FB20;
 
 void func_8002EB98(void) {
-    func_800301E8(&D_800B3980, D_8013FB20);
+    drawRotatedImage(&D_800B3980, D_8013FB20);
 }

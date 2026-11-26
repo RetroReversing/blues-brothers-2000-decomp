@@ -13,14 +13,14 @@ s32 func_8001EAD0(void);
 s32 func_8001EB18(s32);
 void func_8001F1D0(Obj *);
 void func_8001F230(void);
-void func_80022728(Obj *, void *, s32);
-s32 func_80023E18(s32);
+void buildObjectMatrix(Obj *, void *, s32);
+s32 getImageAsset(s32);
 void func_80024A3C(void *, void *, s32);
 void func_80024B58(void *, void *, s32);
 void func_80024BE0(void *, void *, s32);
 void func_80024FE8(void *);
-void func_80029F8C(s32);
-void func_8002B880(s32, s32, s32, s32);
+void setRenderState(s32);
+void loadTextureClamped(s32, s32, s32, s32);
 extern Vtx D_800BD6C8[];
 extern Gfx *D_80177E18;
 
@@ -44,11 +44,11 @@ s32 func_800741F8(Obj *arg0) {
     func_80024B58(b, a, arg0->f10);
     func_80024A3C(a, b, arg0->f14);
     func_80024BE0(b, a, arg0->f18);
-    func_80022728(arg0, b, 1);
+    buildObjectMatrix(arg0, b, 1);
     lo = -350;
     hi = 350;
     if (arg0->f60 != 0) {
-        func_8002B880(0x20, func_80023E18(arg0->f60) + 0x10, 0, 0);
+        loadTextureClamped(0x20, getImageAsset(arg0->f60) + 0x10, 0, 0);
     }
     n = func_8001EAD0();
     D_800BD6C8[n].x = lo;
@@ -86,7 +86,7 @@ s32 func_800741F8(Obj *arg0) {
     g = D_80177E18++;
     g->w0 = 0xE7000000;
     g->w1 = 0;
-    func_80029F8C(-1);
+    setRenderState(-1);
     func_8001EB18(4);
     return 0;
 }

@@ -1,8 +1,8 @@
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 s32 func_8002A360(s32, s32);
-s32 func_8002D620(void *);
+s32 syncActorPrevPos(void *);
 void *func_80042F00(s32, s32, s32, s32);
-s32 func_800433A8(void *, s32, s32);
+s32 actorSetAnim(void *, s32, s32);
 s32 func_80050460(s32 *, s32 *);
 
 extern s32 D_800B7B0C;
@@ -16,8 +16,8 @@ void *func_80069F00(void *arg0)
   void *temp_v0;
   func_80050460(&func_80069ED0, &D_8014AA60);
   temp_v0 = func_80042F00(0x6C, 0, 0, 0);
-  func_800433A8(temp_v0, 0x125, 0x180);
-  *((s32 *) (((char *) temp_v0) + 0x58)) = func_800221C0(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
+  actorSetAnim(temp_v0, 0x125, 0x180);
+  *((s32 *) (((char *) temp_v0) + 0x58)) = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
   *((s32 **) (((char *) temp_v0) + 0x9C)) = &func_80069C7C;
   func_8002A360(0xC, 0x80);
   func_8002A360(8, 0x16);
@@ -38,7 +38,7 @@ void *func_80069F00(void *arg0)
     *((s32 *) (((char *) temp_v0) + 0x68)) = -1;
     *((s32 *) (((char *) temp_v0) + 0x64)) = 0;
   }
-  func_8002D620(temp_v0);
+  syncActorPrevPos(temp_v0);
   return temp_v0;
 }
 

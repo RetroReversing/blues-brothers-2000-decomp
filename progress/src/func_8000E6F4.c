@@ -1,12 +1,12 @@
 int abs(int);
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern void func_8000E570();
 void func_8000E6F4(void *arg0) {
     s32 dx, dz, t;
     f32 fx, fz;
 
-    fx = ((f32 *)D_800BD06C)[1] - ((f32 *)arg0)[1];
-    fz = ((f32 *)D_800BD06C)[3] - ((f32 *)arg0)[3];
+    fx = ((f32 *)gCameraTarget)[1] - ((f32 *)arg0)[1];
+    fz = ((f32 *)gCameraTarget)[3] - ((f32 *)arg0)[3];
     dx = fx;
     dz = fz;
     if (abs(dx) < 0x4A39) {

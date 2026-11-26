@@ -15,20 +15,20 @@ typedef s32 M2C_UNK32;
 s32 func_8002492C(f32, f32);                        /* extern */
 M2C_UNK func_8002ADFC(M2C_UNK, M2C_UNK, void *);    /* extern */
 s32 func_8002D260(s32);                             /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
-f32 func_8002D66C(void *, M2C_UNK, s32 *);          /* extern */
+s32 tickActorTimer(void *);                          /* extern */
+f32 getCameraTargetDist(void *, M2C_UNK, s32 *);          /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 s32 func_8005FD88(s32, void *);                     /* extern */
 M2C_UNK func_80060214(void *);                      /* extern */
 void func_8007631C(void *arg0);                     /* extern */
 s32 func_80080DE0(s32);                             /* extern */
-M2C_UNK func_80081588(s32, M2C_UNK);                /* extern */
+M2C_UNK initSpline(s32, M2C_UNK);                /* extern */
 s32 func_80081990(void *, s32, f32);                /* extern */
 M2C_UNK func_80081AC0(f32 *, s32, f32);             /* extern */
 extern f32 D_80008900;
 extern f32 D_80008904;
-extern s32 D_800BD06C;
+extern s32 gCameraTarget;
 
 #define sp10 (*(f32 *)(sp + 0x0))
 #define sp18 (*(f32 *)(sp + 0x8))
@@ -52,22 +52,22 @@ void func_800607B0(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0xBC) = 1;
         M2C_FIELD(arg0, f32 *, 0xAC) = 0.015f;
         if (func_80080DE0(temp_s2) == 0) {
-            func_80081588(M2C_FIELD(arg0, s32 *, 0x70), 0);
+            initSpline(M2C_FIELD(arg0, s32 *, 0x70), 0);
         }
     }
     func_80060214(arg0);
     if (M2C_FIELD(arg0, s32 *, 0x80) == 0) {
-        temp_fs0 = func_8002D66C(arg0, 0x43C80000, &sp20);
-        if ((func_8002D5CC(arg0) != 0) && (temp_fs0 < 200.0f)) {
+        temp_fs0 = getCameraTargetDist(arg0, 0x43C80000, &sp20);
+        if ((tickActorTimer(arg0) != 0) && (temp_fs0 < 200.0f)) {
             var_v0 = func_8002D260(sp20 - M2C_FIELD(arg0, s32 *, 0x10));
             if (var_v0 < 0) {
                 var_v0 = -var_v0;
             }
-            if ((var_v0 < 0x1000) && (func_8005FD88(D_800BD06C, arg0) != 0)) {
+            if ((var_v0 < 0x1000) && (func_8005FD88(gCameraTarget, arg0) != 0)) {
                 func_8002ADFC(0x25, 0x1F4, arg0);
                 M2C_FIELD(arg0, void (**)(void *), 0xD8) = func_800607B0;
                 M2C_FIELD(arg0, void (**)(void *), 0x9C) = func_8007631C;
-                func_800433A8(arg0, 0x56, 0x100);
+                actorSetAnim(arg0, 0x56, 0x100);
                 M2C_FIELD(arg0, s32 *, 0x74) = 1;
                 M2C_FIELD(arg0, s32 *, 0x64) = 0x96;
                 return;

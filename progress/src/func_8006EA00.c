@@ -16,17 +16,17 @@ typedef struct Rec {
     /* 0x54 */ u8 pad54[0x60];
 } Rec;
 s16 coss(u16);
-s32 func_80023E18(s32);
-void func_800270A8(s32, s32, s32);
-void func_8002710C(s32, s32, s32, s32);
+s32 getImageAsset(s32);
+void setTextColorRgb(s32, s32, s32);
+void setTextColor(s32, s32, s32, s32);
 void func_80027158(s32, s32);
-void func_800271D8(s32);
-void func_800272E0(s32, s32, s32, s32);
-void func_8003CDA0(s32);
+void drawInt(s32);
+void drawImage(s32, s32, s32, s32);
+void drawCenteredMessage(s32);
 Obj *func_8006F88C(s32, s32, s32, s32, s32);
 void func_8006E994();
 extern s32 D_800B82C0[];
-extern s32 D_800B9EA4[];
+extern s32 gTextWaveTime[];
 extern s32 D_80107040[];
 extern Rec D_8014ABC0[];
 extern s32 D_8014ADE0[];
@@ -57,16 +57,16 @@ s32 func_8006EA00(Obj *arg0) {
         o->f64 = 0x14;
         D_80107040[0] = 0;
     }
-    y = ((coss(D_800B9EA4[0] * 300) * 127) >> 15) + 128;
+    y = ((coss(gTextWaveTime[0] * 300) * 127) >> 15) + 128;
     x = 255 - y / 2;
-    func_800270A8(x, x, x);
+    setTextColorRgb(x, x, x);
     func_80027158(0xA0, 0xAA);
-    func_8003CDA0(0x5F);
+    drawCenteredMessage(0x5F);
     if (flags & 1) {
-        func_800272E0(func_80023E18(D_8014ADE8[0]), 0x28, 0x46, 0);
+        drawImage(getImageAsset(D_8014ADE8[0]), 0x28, 0x46, 0);
     }
     if (flags & 2) {
-        func_800272E0(func_80023E18(D_8014ADEC[0]), 0xF6, 0x46, 0);
+        drawImage(getImageAsset(D_8014ADEC[0]), 0xF6, 0x46, 0);
     }
     y = 0;
     for (x = 0; x < 4; x++) {
@@ -84,13 +84,13 @@ s32 func_8006EA00(Obj *arg0) {
             x++;
         }
     }
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
-    func_800272E0(func_80023E18(D_8014ADE0[arg0->f84 + 6]), 0x80, 0xA, 0);
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
+    drawImage(getImageAsset(D_8014ADE0[arg0->f84 + 6]), 0x80, 0xA, 0);
     func_80027158(0x64, 0x49);
-    func_800271D8(sum);
+    drawInt(sum);
     func_80027158(0xA0, 0x49);
-    func_800271D8(n);
+    drawInt(n);
     func_80027158(0xDC, 0x49);
-    func_800271D8(x);
+    drawInt(x);
     return 0;
 }

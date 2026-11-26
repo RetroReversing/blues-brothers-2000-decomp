@@ -37,7 +37,7 @@ extern uInt D_8000A07C[];
 extern uInt D_8000A0F8[];
 extern uInt D_8000A170[];
 voidpf func_80093AD8(voidpf q, uInt n, uInt s);
-int func_80093240(uIntf *b, uInt n, uInt s, const uIntf *d, const uIntf *e, inflate_huft **t, uIntf *m, z_streamp zs);
+int huftBuild(uIntf *b, uInt n, uInt s, const uIntf *d, const uIntf *e, inflate_huft **t, uIntf *m, z_streamp zs);
 
 int func_80093B04(uIntf *bl, uIntf *bd, inflate_huft **tl, inflate_huft **td)
 {
@@ -61,12 +61,12 @@ int func_80093B04(uIntf *bl, uIntf *bd, inflate_huft **tl, inflate_huft **td)
     for (; k < 288; k++)
       c[k] = 8;
     D_8017C5A0 = 7;
-    func_80093240(c, 288, 257, D_8000A000, D_8000A07C, &D_8017C5A8, &D_8017C5A0, &z);
+    huftBuild(c, 288, 257, D_8000A000, D_8000A07C, &D_8017C5A8, &D_8017C5A0, &z);
 
     for (k = 0; k < 30; k++)
       c[k] = 5;
     D_8017C5A4 = 5;
-    func_80093240(c, 30, 0, D_8000A0F8, D_8000A170, &D_8017C5AC, &D_8017C5A4, &z);
+    huftBuild(c, 30, 0, D_8000A0F8, D_8000A170, &D_8017C5AC, &D_8017C5A4, &z);
 
     D_800BA940 = 1;
   }

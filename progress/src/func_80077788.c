@@ -1,7 +1,7 @@
 void func_8002D858(void *, void *);
-s32 func_8004303C(void *);
+s32 animStepKeys(void *);
 void func_80043328(void *, s32, s32);
-s32 func_80023874(s32, s32);
+s32 findActor(s32, s32);
 s32 func_80023DBC(s32);
 void func_80052A30(void);
 void func_80052A5C(s32);
@@ -14,7 +14,7 @@ s32 func_80077788(u8 *obj) {
     s32 id = 0xEB1;
 
     func_8002D858(obj, obj + 0x10);
-    if (func_8004303C(obj) != 0) {
+    if (animStepKeys(obj) != 0) {
         if (*(s32 *) (obj + 0x78) == 5) {
             *(s32 *) (obj + 0x78) = 0;
         } else {
@@ -41,7 +41,7 @@ s32 func_80077788(u8 *obj) {
             }
             break;
         case 2:
-            if (func_80023874(0x800, 0) == 0) {
+            if (findActor(0x800, 0) == 0) {
                 *(s32 *) (D_800B3964 + 0x7C) += 1;
                 return 1;
             }

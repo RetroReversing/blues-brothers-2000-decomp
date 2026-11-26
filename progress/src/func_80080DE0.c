@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern M2C_UNK D_801718C0;
+extern M2C_UNK gSplineSegs;
 
 s32 func_80080DE0(s32 arg0) {
-    return (&D_801718C0)[arg0];
+    return (&gSplineSegs)[arg0];
 }

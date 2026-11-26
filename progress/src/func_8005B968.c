@@ -1,6 +1,6 @@
-s32 func_8002D298(s32, s32, s32);
-f32 func_8002D340(f32, f32, f32);
-void func_8002D620(void);
+s32 approachS32(s32, s32, s32);
+f32 approachF32(f32, f32, f32);
+void syncActorPrevPos(void);
 void func_80043328(void *, s32, s32);
 
 typedef struct Obj {
@@ -31,7 +31,7 @@ void func_8005B968(Obj *arg0) {
 
     arg0->angle = arg0->x8C;
     if (arg0->x7C == 0) {
-        func_8002D620();
+        syncActorPrevPos();
         arg0->x7C = 1;
         arg0->x88 = 1;
         func_80043328(arg0, 0xC9, 0x100);
@@ -39,9 +39,9 @@ void func_8005B968(Obj *arg0) {
         return;
     }
     speed = 90.0f;
-    arg0->x4C = func_8002D340(0.0f, arg0->x4C, speed);
-    arg0->x54 = func_8002D340(0.0f, arg0->x54, speed);
-    arg0->angle = func_8002D298(0x8000, arg0->angle, 0x5DC);
+    arg0->x4C = approachF32(0.0f, arg0->x4C, speed);
+    arg0->x54 = approachF32(0.0f, arg0->x54, speed);
+    arg0->angle = approachS32(0x8000, arg0->angle, 0x5DC);
     if (arg0->xDC >= 20.0f) {
         arg0->x5C -= 0x12;
     }

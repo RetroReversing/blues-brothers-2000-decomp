@@ -1,5 +1,5 @@
 void *func_800232B4(s32, s32, s32, s32);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 extern s32 func_8002AFC0;
 extern s32 func_8002AFFC;
 
@@ -29,7 +29,7 @@ o->unk80 = 0;
     o->unkA0 = &func_8002AFC0;
     if (arg3 == 0xBA) {
         if (o->unk70 < 0xC8) {
-            o->unk70 = func_80024394(-0x1E, 0x1E) + 0xC8;
+            o->unk70 = randomRange(-0x1E, 0x1E) + 0xC8;
         }
     }
     return o;

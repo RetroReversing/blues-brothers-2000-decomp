@@ -32,9 +32,9 @@ typedef struct Handler {
     s32 (*fn)(Obj *, s32 *);
 } Handler;
 
-extern void func_800899DC(char *);
+extern void debugPrintf(char *);
 extern void func_80023078(void);
-extern s32 func_8000C43C(void);
+extern s32 cameraGetMode(void);
 extern Obj *func_800232B4(s32, s32, s32, s32);
 extern void func_80027030(s32);
 extern s32 func_80082400(void);
@@ -50,7 +50,7 @@ extern s32 D_8014AA9C;
 extern s32 D_800AE010;
 extern Obj *D_800B3960;
 extern s32 D_800B5DD4;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 
 void func_80052EC0(Obj *o) {
     Seq *seq;
@@ -58,12 +58,12 @@ void func_80052EC0(Obj *o) {
 
     seq = o->x74;
     if (seq == NULL) {
-        func_800899DC(D_80008134);
+        debugPrintf(D_80008134);
     }
     step = (s32 *)seq->steps;
     step += o->x78 * 2;
     if (seq->count < o->x78) {
-        func_800899DC(D_80008144);
+        debugPrintf(D_80008144);
     }
     if (o->xD8 == NULL) {
         o->x98 = (s8 *)&func_80023078 + 8;
@@ -85,10 +85,10 @@ void func_80052EC0(Obj *o) {
     if (D_8014AA9C != 0) {
         D_8014AA88 = 0;
         seq->xA++;
-        if (func_80082400() == -1 && func_8000C43C() != 0) {
-            D_800BD06C->x9C = func_800393F4;
+        if (func_80082400() == -1 && cameraGetMode() != 0) {
+            gCameraTarget->x9C = func_800393F4;
         } else {
-            D_800BD06C->x9C = D_800BD06C->xD8;
+            gCameraTarget->x9C = gCameraTarget->xD8;
         }
         D_800B3960->xC0 = 0;
         D_800B3960->x9C = D_800B3960->xD8;

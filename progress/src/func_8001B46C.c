@@ -1,6 +1,6 @@
 extern s32 D_800A9548;
 void func_8002D604(void *a);
-f32 func_8002D66C(void *a, f32 b, s32 c);
+f32 getCameraTargetDist(void *a, f32 b, s32 c);
 void func_8003CCB4(void);
 void func_8002ADFC(s32 a, s32 b, void *c);
 
@@ -14,7 +14,7 @@ void func_8001B46C(void *arg0) {
         return;
     }
     func_8002D604(arg0);
-    if ((s32) func_8002D66C(arg0, 100.0f, 0) >= 100) {
+    if ((s32) getCameraTargetDist(arg0, 100.0f, 0) >= 100) {
         return;
     }
     switch (*(s32 *) ((char *) arg0 + 0x70)) {

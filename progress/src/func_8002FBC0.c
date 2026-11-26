@@ -30,19 +30,19 @@ extern char D_80001230[];
 
 s32 func_8001EF80(void *arg0, s32 arg1);
 void func_8001F230(void *arg0);
-s32 *func_80023E18(s32 arg0);
+s32 *getImageAsset(s32 arg0);
 void func_8002C3B8(s32 *);
 void func_80024FE8(void *arg0);
 void func_80024B58(void *arg0, void *arg1, s32 arg2);
 void func_80024A3C(void *arg0, void *arg1, s32 arg2);
 void func_80024BE0(void *arg0, void *arg1, s32 arg2);
-s32 func_80022728(void *obj, void *rot, s32 mul);
+s32 buildObjectMatrix(void *obj, void *rot, s32 mul);
 s32 func_8001EAD0(void);
-void func_80029F8C(s32 mode);
+void setRenderState(s32 mode);
 s32 func_8001EB18(s32 arg0);
-void func_800899DC(void *, ...);
+void debugPrintf(void *, ...);
 
-void func_8002B880(s32 type, void *img, void *pal, s32);
+void loadTextureClamped(s32 type, void *img, void *pal, s32);
 
 s32 func_8002FBC0(Unk8002FBC0 *arg0) {
     s32 size;
@@ -79,7 +79,7 @@ s32 func_8002FBC0(Unk8002FBC0 *arg0) {
         return 0;
     }
     func_8001F230(arg0);
-    tex = func_80023E18(arg0->unk60);
+    tex = getImageAsset(arg0->unk60);
     img = tex;
     if (arg0->unk74 == 0) {
         img = tex + 4;
@@ -87,25 +87,25 @@ s32 func_8002FBC0(Unk8002FBC0 *arg0) {
     w = 0x7C0;
     h = 0x7C0;
     if (arg0->unk74 == 0 && tex[2] == 32) {
-        func_8002B880(32, img, NULL, 0);
+        loadTextureClamped(32, img, NULL, 0);
     } else {
-        func_8002B880(16, img, NULL, 0);
+        loadTextureClamped(16, img, NULL, 0);
     }
     if (arg0->unk7C == 0) {
         func_80024FE8(m1);
         func_80024B58(m2, m1, arg0->unk10);
         func_80024A3C(m1, m2, arg0->unk14);
         func_80024BE0(m2, m1, arg0->unk18);
-        func_80022728(arg0, m2, 1);
+        buildObjectMatrix(arg0, m2, 1);
     } else {
         func_80024FE8(m1);
         func_80024BE0(m2, m1, arg0->unk18);
-        func_80022728(arg0, m2, 0);
+        buildObjectMatrix(arg0, m2, 0);
     }
     i = func_8001EAD0();
     idx = i;
     if (i == -1) {
-        func_800899DC(D_80001230);
+        debugPrintf(D_80001230);
         return 1;
     }
     v0 = &D_800BD6C8[i++];

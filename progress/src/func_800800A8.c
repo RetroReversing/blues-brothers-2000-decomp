@@ -26,25 +26,25 @@ typedef struct Obj800A8 {
     s32 fB4;
 } Obj800A8;
 
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 s32 func_8002D1A0(void);
 void func_8002D4E0(Obj800A8 *, s32);
 void func_8002D9B0(Obj800A8 *);
 void func_8002D9F8(Obj800A8 *);
 void func_8007FE5C(Obj800A8 *);
 extern Obj800A8 *D_800B3964;
-extern s32 D_800B9ECC;
-extern Obj800A8 *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern Obj800A8 *gCameraTarget;
 void func_8001F26C();
 
 void func_800800A8(Obj800A8 *arg0) {
     s32 t;
     if (arg0->f7C == 0) {
-        arg0->x = D_800BD06C->x;
-        arg0->y = D_800BD06C->y;
-        arg0->z = D_800BD06C->z;
+        arg0->x = gCameraTarget->x;
+        arg0->y = gCameraTarget->y;
+        arg0->z = gCameraTarget->z;
         arg0->f98 = func_8001F26C;
-        arg0->f14 = func_80024394(-0x7D0, 0x7D0) + 0x2AF8;
+        arg0->f14 = randomRange(-0x7D0, 0x7D0) + 0x2AF8;
         arg0->f10 = func_8002D1A0();
         func_8002D4E0(arg0, 0x3E8);
         t = arg0->f34 * 3;
@@ -58,8 +58,8 @@ void func_800800A8(Obj800A8 *arg0) {
     arg0->fB0 = -1000.0f;
     func_8002D9F8(arg0);
     func_8002D9B0(arg0);
-    arg0->f18 += D_800B9ECC << 8;
-    arg0->f5C -= D_800B9ECC * 2;
+    arg0->f18 += gCamSpeedScale << 8;
+    arg0->f5C -= gCamSpeedScale * 2;
     if (arg0->f5C <= 0) {
         D_800B3964->f70--;
         func_8007FE5C(arg0);

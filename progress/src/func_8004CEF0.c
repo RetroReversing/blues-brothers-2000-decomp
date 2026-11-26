@@ -3,7 +3,7 @@ typedef struct {
 } Blk40;
 
 void func_8004C78C(s32 arg0, f32 *a, f32 *b, f32 *c, f32 *d, f32 *e, f32 *f, f32 *x, f32 *y, f32 *z);
-void func_8002DD8C(f32 *out, void *m, f32 *v);
+void mtxTransformVec3(f32 *out, void *m, f32 *v);
 f32 func_8002DD60(f32);
 void func_8004BB18(f32 mf[4][4], f32 r, f32 p, f32 h);
 void func_80022EDC(Blk40 *out, s32 *rot, s32 n, f32 *v);
@@ -25,7 +25,7 @@ s32 func_8004CEF0(s32 arg0, Blk40 *arg1) {
     d[0] = x - D_800B3960[1];
     d[1] = y - D_800B3960[2];
     d[2] = z - D_800B3960[3];
-    func_8002DD8C(v, D_800CD148, d);
+    mtxTransformVec3(v, D_800CD148, d);
     lim = 8000.0f;
     if (lim < func_8002DD60(v[0])) {
         return 0;

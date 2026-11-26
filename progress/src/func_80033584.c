@@ -13,12 +13,12 @@ typedef s32 M2C_UNK32;
 #endif
 s32 func_80030C40();
 s32 func_80031B54();
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern s32 func_800336A4;
 void func_80033584(void *arg0) {
     M2C_FIELD(arg0, s32 **, 0x98) = &func_800336A4;
     func_80031B54(arg0, 2);
-    if (D_801070A0 & 0x9000) {
+    if (gPadPressed & 0x9000) {
 switch (M2C_FIELD(arg0, s32 *, 0x78)) { case 0: func_80030C40(arg0, -1); break; case 1: func_80030C40(arg0, 7); break; } M2C_FIELD(arg0, s32 *, 0x78) = 0;
     }
 }

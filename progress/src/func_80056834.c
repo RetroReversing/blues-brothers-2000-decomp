@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_80056834(void *arg0) {
     s32 temp_a0;
@@ -23,12 +23,12 @@ void func_80056834(void *arg0) {
     s32 sh;
 
     x = M2C_FIELD(arg0, s32 *, 0x70);
-    sh = D_800B9ECC << 7;
+    sh = gCamSpeedScale << 7;
     temp_v0 = x;
     x += sh;
-    do { do { do { do { temp_a0 = D_800B9ECC * 2; } while (0); } while (0); } while (0); } while (0);
+    do { do { do { do { temp_a0 = gCamSpeedScale * 2; } while (0); } while (0); } while (0); } while (0);
     M2C_FIELD(arg0, s32 *, 0x70) = x;
-    temp_lo = D_800B9ECC * temp_v0;
+    temp_lo = gCamSpeedScale * temp_v0;
     M2C_FIELD(arg0, s32 *, 0x5C) = (s32) (M2C_FIELD(arg0, s32 *, 0x5C) - temp_a0);
     temp_a0_2 = M2C_FIELD(arg0, s32 *, 0x38) - temp_a0;
     M2C_FIELD(arg0, s32 *, 0x38) = temp_a0_2;

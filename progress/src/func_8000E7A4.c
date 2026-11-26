@@ -16,12 +16,12 @@ f32 func_8002D280(f32, M2C_UNK);                    /* extern */
 M2C_UNK func_8002D9B0(void *);                      /* extern */
 M2C_UNK func_8002D9F8(void *);                      /* extern */
 extern f32 D_800004E0;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_8000E7A4(void *arg0) {
     s32 temp_v1;
 
-    temp_v1 = M2C_FIELD(arg0, s32 *, 0x5C) - D_800B9ECC;
+    temp_v1 = M2C_FIELD(arg0, s32 *, 0x5C) - gCamSpeedScale;
     M2C_FIELD(arg0, s32 *, 0x5C) = temp_v1;
     if (temp_v1 <= 0) {
         M2C_FIELD(arg0, M2C_UNK (**)(), 0xA0)();

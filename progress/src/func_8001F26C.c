@@ -1,19 +1,19 @@
 s32 func_8001EF80(void *, s32);
 s32 func_8001F0AC(void *, s32);
 void func_8001F230(void *);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-void func_8002220C(s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+void setDrawMode(s32);
 void func_80022C2C(void *, f32 *, s32);
 void func_8002338C(void *);
 void func_80027060(s32, s32, s32, s32);
-void func_80029F8C(s32);
+void setRenderState(s32);
 void func_8002DAE0(f32 *, f32 *, f32);
 void func_8002DB6C(f32 *, f32 *, f32);
 void func_8002DBF8(f32 *, f32 *, f32);
-void func_8002DC84(f32 *);
+void mtxIdentity3(f32 *);
 f32 func_8002DD60(f32);
 void func_800479B0(s32);
-f32 func_80095DC0(f32);
+f32 sinApprox(f32);
 
 typedef struct GfxW {
     u32 w0;
@@ -50,7 +50,7 @@ typedef struct Obj {
 extern f32 D_80000E50;
 extern f64 D_80000E58;
 extern s32 D_800AB408[];
-extern s32 D_800B9ECC[];
+extern s32 gCamSpeedScale[];
 extern u8 D_800BD114[];
 extern s32 D_800F7910[];
 extern s32 D_800F90A0[];
@@ -79,7 +79,7 @@ s32 func_8001F26C(Obj *arg0) {
         return 0;
     }
     f = D_800F7910[arg0->xB8];
-    f /= func_80095DC0(D_80000E50);
+    f /= sinApprox(D_80000E50);
     f += arg0->x30;
     if (f < 0.0f) {
         return 0;
@@ -94,10 +94,10 @@ s32 func_8001F26C(Obj *arg0) {
     if (arg0->x5C != 0xFF) {
         s32 a;
         s32 c;
-        a = func_800221C0(0, 1, 1, 3, 0, 0, 1, 0);
+        a = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0);
         c = arg0->x5C;
         arg0->x68 = 13;
-        func_8002220C(a);
+        setDrawMode(a);
         func_80027060(0xFF, 0xFF, 0xFF, c);
         {
             GfxW *_g = GP++;
@@ -106,7 +106,7 @@ s32 func_8001F26C(Obj *arg0) {
         }
     } else if (arg0->xF0 != 0) {
         arg0->x68 = 3;
-        func_8002220C(arg0->x58);
+        setDrawMode(arg0->x58);
         func_80027060(0xFF, 0xFF, 0xFF, arg0->xF0);
         {
             GfxW *_g = GP++;
@@ -114,7 +114,7 @@ s32 func_8001F26C(Obj *arg0) {
             _g->w1 = 0x1184FE7F;
         }
     }
-    t = arg0->xF0 - D_800B9ECC[0] * 8;
+    t = arg0->xF0 - gCamSpeedScale[0] * 8;
     arg0->xF0 = t;
     if (t <= 0) {
         arg0->xF0 = 0;
@@ -125,7 +125,7 @@ s32 func_8001F26C(Obj *arg0) {
     ry *= D_80000E58;
     rz = arg0->x18;
     rz *= D_80000E58;
-    func_8002DC84(m1);
+    mtxIdentity3(m1);
     func_8002DB6C(m2, m1, rx);
     func_8002DAE0(m1, m2, ry);
     func_8002DBF8(m2, m1, rz);
@@ -143,7 +143,7 @@ s32 func_8001F26C(Obj *arg0) {
         _g->w0 = 0xE7000000;
         _g->w1 = 0;
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
     *(s32 *)D_800BD114 += D_800F90A0[arg0->xB8];
     if (arg0->xF8 & 1) {
         func_8002338C(arg0);

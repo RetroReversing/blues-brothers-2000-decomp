@@ -1,10 +1,10 @@
 s16 coss(u16);
 s16 sins(u16);
-void *func_80023874(s32, void *);
+void *findActor(s32, void *);
 void func_8002A360(s32, s32);
 void func_80034FEC(void *, s32 *);
 s32 func_80043248(void *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 extern char D_800085EC[];
 
 typedef struct ObjK {
@@ -37,7 +37,7 @@ void func_8005BB3C(ObjK *arg0) {
 
     if (arg0->f7C == 0) {
         D_800B3964->f70 = 1;
-        t = func_80023874(0x101F, NULL);
+        t = findActor(0x101F, NULL);
         if (t == NULL) {
             arg0->fA0(arg0);
             return;
@@ -47,9 +47,9 @@ void func_8005BB3C(ObjK *arg0) {
         arg0->z = t->z + (f32)((coss(arg0->yaw) * 15) >> 11);
         arg0->y = t->y;
         arg0->f7C = 1;
-        cam = func_80023874(0x11F, NULL);
+        cam = findActor(0x11F, NULL);
         if (cam == NULL) {
-            func_800899DC(D_800085EC);
+            debugPrintf(D_800085EC);
         }
         D_800B3960->x = cam->x;
         D_800B3960->y = cam->y;
@@ -59,7 +59,7 @@ void func_8005BB3C(ObjK *arg0) {
         pos[2] = arg0->z;
         func_80034FEC(D_800B3960, pos);
     }
-    t = func_80023874(0x101F, NULL);
+    t = findActor(0x101F, NULL);
     if (t != NULL) {
         *(s32 *)&arg0->f10 = *(s32 *)&t->f10;
         arg0->x = t->x + (f32)((sins(arg0->yaw) * 15) >> 11);

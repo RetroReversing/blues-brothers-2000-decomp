@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-f32 func_8002D66C(void *, f32, s32);
+f32 getCameraTargetDist(void *, f32, s32);
 
 void func_8001E2B4(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0) = 0x101;
-    if (func_8002D66C(arg0, 200.0f, 0) < 200.0f) {
+    if (getCameraTargetDist(arg0, 200.0f, 0) < 200.0f) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
     }
 }

@@ -4,16 +4,16 @@ typedef struct Obj {
 extern s16 coss(s32);
 extern void func_8002ADFC(s32, s32, Obj *);
 extern f32 func_8002DD60(f32);
-extern void func_8004303C(Obj *);
+extern void animStepKeys(Obj *);
 extern s32 func_8006DA0C(void);
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 
 void func_8006DC44(Obj *arg0) {
     if (func_8006DA0C() == 0) {
         arg0->f10 = 0;
-        func_8004303C(arg0);
+        animStepKeys(arg0);
         if (arg0->f6C & 1) {
-            arg0->x = arg0->x40 + (f32) ((s32) (coss((D_800B9EA4 * 0xFA) & 0xFFFE) * 0x7D) >> 0xD);
+            arg0->x = arg0->x40 + (f32) ((s32) (coss((gTextWaveTime * 0xFA) & 0xFFFE) * 0x7D) >> 0xD);
         }
         if (arg0->type == 0x1008) {
             if (495.0 < (f64) func_8002DD60(arg0->x - arg0->x40)) {

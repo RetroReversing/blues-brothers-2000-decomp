@@ -1,6 +1,6 @@
 s16 coss(u16);
 s16 sins(u16);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 typedef struct Obj {
     /* 0x00 */ s32 f0;
     /* 0x04 */ f32 x;
@@ -30,10 +30,10 @@ typedef struct Obj {
 } Obj;
 Obj *func_800232B4(s32, s32, s32, s32);
 void func_8002D4E0(Obj *, s32);
-void func_8002D620(Obj *);
+void syncActorPrevPos(Obj *);
 extern f32 D_80009598;
 extern char D_800B3960[];
-extern char D_800BD06C[];
+extern char gCameraTarget[];
 extern s32 D_801700F0[];
 void func_8002FBC0(void);
 void func_8007C1C8(void);
@@ -46,14 +46,14 @@ Obj *func_8007C310(void) {
     Obj *pl;
     Obj *g;
 
-    x = (*(Obj **)D_800BD06C)->x + (f32)((sins(*(u16 *)((char *)(*(Obj **)D_800BD06C) + 0x12)) * 25) >> 14);
-    y = (*(Obj **)D_800BD06C)->y + D_80009598;
-    obj = func_800232B4(0x1008, x, y, (*(Obj **)D_800BD06C)->z + (f32)((coss(*(u16 *)((char *)(*(Obj **)D_800BD06C) + 0x12)) * 25) >> 14));
+    x = (*(Obj **)gCameraTarget)->x + (f32)((sins(*(u16 *)((char *)(*(Obj **)gCameraTarget) + 0x12)) * 25) >> 14);
+    y = (*(Obj **)gCameraTarget)->y + D_80009598;
+    obj = func_800232B4(0x1008, x, y, (*(Obj **)gCameraTarget)->z + (f32)((coss(*(u16 *)((char *)(*(Obj **)gCameraTarget) + 0x12)) * 25) >> 14));
     one = 1;
     obj->f98 = func_8002FBC0;
     obj->f60 = D_801700F0[0];
-    obj->f58 = func_800221C0(0, 0, one, 2, 0, 0, one, one);
-    pl = (*(Obj **)D_800BD06C);
+    obj->f58 = packDrawFlags(0, 0, one, 2, 0, 0, one, one);
+    pl = (*(Obj **)gCameraTarget);
     obj->f68 = 0xE;
     obj->f5C = 0xFF;
     obj->f64 = 2;
@@ -70,7 +70,7 @@ Obj *func_8007C310(void) {
     obj->f18 = 0x8000;
     obj->f9C = func_8007C1C8;
     func_8002D4E0(obj, 3000);
-    func_8002D620(obj);
+    syncActorPrevPos(obj);
     return obj;
 }
 

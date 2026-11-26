@@ -1,9 +1,9 @@
-void func_8002D620(void);
+void syncActorPrevPos(void);
 f32 func_8002E0D0(f32 *, f32 *);
 void func_8002E1CC(void *, f32 *, f32);
 void func_8002E234(f32 *, f32 *, void *);
 f32 func_800379C8(void *);
-void func_8004303C(void *);
+void animStepKeys(void *);
 void func_80043328(void *, s32, s32);
 void func_800393F4(void *);
 extern f32 D_80001824;
@@ -43,13 +43,13 @@ void func_8003C760(Obj *arg0) {
     f32 dt;
     f32 y;
 
-    func_8002D620();
+    syncActorPrevPos();
     if (arg0->x50 < D_80001824) {
         func_80043328(arg0, 0x29, 0x100);
     } else {
         func_80043328(arg0, 1, 0x100);
     }
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     none = D_80001828;
     up = D_80001830;
     v[0] = 0.0f;

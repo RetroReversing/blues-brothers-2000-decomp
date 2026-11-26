@@ -1,6 +1,6 @@
-s32 func_8002D5CC(void *);
+s32 tickActorTimer(void *);
 s32 func_8002DA80(void *);
-s32 func_8004303C();
+s32 animStepKeys();
 extern f32 D_800B9EC4;
 extern s32 func_8000EB34;
 typedef struct {
@@ -18,12 +18,12 @@ typedef struct {
 } R;
 void func_8000EB94(R *arg0) {
   f32 k = -1600.0f;
-  func_8004303C();
+  animStepKeys();
   arg0->field_10 = 0;
   arg0->field_50 += D_800B9EC4 * k;
   arg0->field_B0 = k;
   func_8002DA80(arg0);
-  if ((func_8002D5CC(arg0) != 0) || (arg0->field_C > 3226.0f)) {
+  if ((tickActorTimer(arg0) != 0) || (arg0->field_C > 3226.0f)) {
     arg0->field_9C = &func_8000EB34;
     arg0->field_64 = 0x64;
   }

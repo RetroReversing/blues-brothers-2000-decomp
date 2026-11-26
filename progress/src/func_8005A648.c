@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80050460(M2C_UNK *, M2C_UNK *);        /* extern */
 extern u8 D_800B7B10[];
 extern s32 D_800B81D0;
@@ -33,11 +33,11 @@ char *__repair_addr;
     M2C_FIELD(temp_v0, s32 *, 0) = 0x1011;
     if (D_800B81D0 != 0) {
         M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_8006DC44;
-        func_800433A8(temp_v0, 0x6C, 0x80);
+        actorSetAnim(temp_v0, 0x6C, 0x80);
         M2C_FIELD(temp_v0, s32 *, 0xBC) = 1;
     } else {
         M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_80059D80;
-        func_800433A8(temp_v0, 0x6D, 0x100);
+        actorSetAnim(temp_v0, 0x6D, 0x100);
     }
     if (arg0 != NULL) {
         M2C_FIELD(temp_v0, f32 *, 4) = (f32) M2C_FIELD(arg0, f32 *, 4);

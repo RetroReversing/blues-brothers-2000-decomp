@@ -10,23 +10,23 @@ typedef s32 M2C_UNK32;
 #define M2C_CARRY 0
 #define M2C_OVERFLOW(a) (0)
 #endif
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 void func_8002A360(s32, s32);
 void func_8002D124(void);
-f32 func_8002D340(f32, f32, f32);
+f32 approachF32(f32, f32, f32);
 void func_8002D3E4(void *, s32);
-s32 func_8002D5CC(void *);
-f32 func_8002D66C(void *, f32, s32);
+s32 tickActorTimer(void *);
+f32 getCameraTargetDist(void *, f32, s32);
 void func_8002DA80(void *);
 void func_8003BF98(void *);
-void func_8004303C(void *);
-void func_800433A8(void *, s32, s32);
+void animStepKeys(void *);
+void actorSetAnim(void *, s32, s32);
 void *func_80085650(void *);
 extern f32 D_80008E58;
 extern f32 D_80008E5C;
 extern f32 D_80008E60;
 extern void *D_800B3964[];
-extern void *D_800BD06C[];
+extern void *gCameraTarget[];
 extern s32 D_8014AB38[];
 
 typedef struct Obj {
@@ -54,33 +54,33 @@ void func_80069C7C(Obj *arg0) {
         arg0->fnA0(arg0);
         return;
     }
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     arg0->x10 = arg0->x8C;
     func_8002D3E4(arg0, arg0->x64 * 12);
     func_8002DA80(arg0);
-    arg0->x8 = func_8002D340(M2C_FIELD(D_800BD06C[0], f32 *, 8) + D_80008E58, arg0->x8, 20.0f);
+    arg0->x8 = approachF32(M2C_FIELD(gCameraTarget[0], f32 *, 8) + D_80008E58, arg0->x8, 20.0f);
     lim = D_80008E5C;
-    d = func_8002D66C(arg0, lim, 0);
+    d = getCameraTargetDist(arg0, lim, 0);
     arg0->x10 = 0x4000;
     e = func_80085650(arg0);
     e->x60 = D_8014AB38[0];
-    e->x5C = func_80024394(0xC0, 0xFF);
+    e->x5C = randomRange(0xC0, 0xFF);
     e = func_80085650(arg0);
     e->x60 = D_8014AB38[0];
-    e->x5C = func_80024394(0xC0, 0xFF);
-    e->x4 += func_80024394(-10, 10);
-    e->x8 += func_80024394(-10, 10);
-    e->xC += func_80024394(-10, 10);
-    if (d < lim && M2C_FIELD(D_800BD06C[0], f32 *, 8) <= arg0->x8 + D_80008E60) {
-        func_8003BF98(D_800BD06C[0]);
-        func_800433A8(D_800BD06C[0], 0x1F, 0x100);
+    e->x5C = randomRange(0xC0, 0xFF);
+    e->x4 += randomRange(-10, 10);
+    e->x8 += randomRange(-10, 10);
+    e->xC += randomRange(-10, 10);
+    if (d < lim && M2C_FIELD(gCameraTarget[0], f32 *, 8) <= arg0->x8 + D_80008E60) {
+        func_8003BF98(gCameraTarget[0]);
+        actorSetAnim(gCameraTarget[0], 0x1F, 0x100);
         M2C_FIELD(D_800B3964[0], s32 *, 0x6C) = 1;
         arg0->fnA0(arg0);
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x4E);
         func_8002D124();
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x4E);
         arg0->fnA0(arg0);

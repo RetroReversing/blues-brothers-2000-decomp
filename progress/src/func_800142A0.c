@@ -18,11 +18,11 @@ typedef struct Obj142A0 {
     u8 padE8[0x108 - 0xE8];
 } Obj142A0;
 
-f32 func_8002D66C(Obj142A0 *, f32, s32 *);
+f32 getCameraTargetDist(Obj142A0 *, f32, s32 *);
 void func_8002DA80(Obj142A0 *);
 void func_80017CF0(Obj142A0 *);
 s32 func_80023E3C(s32);
-void func_80048820(f32 *, f32 *, s32);
+void collectCollisionCells(f32 *, f32 *, s32);
 s32 func_80048CD8(f32, f32, f32, f32, f32, f32, s32);
 s32 func_8000F7A0(Obj142A0 *);
 Obj142A0 *func_80023088(s32);
@@ -30,9 +30,9 @@ Obj142A0 *func_800230B0(s32);
 void func_800851D8(Obj142A0 *);
 f32 func_8002DD60(f32);
 extern s32 D_800B4CE4;
-extern s32 D_800B9EA0;
-extern s32 D_800B9ECC;
-extern Obj142A0 *D_800BD06C;
+extern s32 gFrameScale;
+extern s32 gCamSpeedScale;
+extern Obj142A0 *gCameraTarget;
 
 void func_800142A0(Obj142A0 *arg0) {
     f32 sp20[3];
@@ -46,17 +46,17 @@ void func_800142A0(Obj142A0 *arg0) {
     f32 dy;
     f32 dz;
 
-    d = func_8002D66C(arg0, 8000.0f, &sp40);
-    arg0->unk10 += D_800B9ECC << 10;
+    d = getCameraTargetDist(arg0, 8000.0f, &sp40);
+    arg0->unk10 += gCamSpeedScale << 10;
     func_8002DA80(arg0);
     if (arg0->unk90 != 0) {
         func_80017CF0(arg0);
     }
     arg0->unk90 ^= 1;
-    arg0->unk8C += D_800B9EA0;
+    arg0->unk8C += gFrameScale;
     if (arg0->unk8C >= 1501 || (d < 200 && arg0->unk74 != 0)) {
-        D_800BD06C->unkB8 = 1;
-        D_800BD06C->unkE4 = func_80023E3C(1);
+        gCameraTarget->unkB8 = 1;
+        gCameraTarget->unkE4 = func_80023E3C(1);
         D_800B4CE4 = 0;
         arg0->update(arg0);
         return;
@@ -73,7 +73,7 @@ void func_800142A0(Obj142A0 *arg0) {
     sp30[1] = arg0->y + 75.0f;
     sp20[2] = arg0->z + -50.0f;
     sp30[2] = arg0->z + 50.0f;
-    func_80048820(sp20, sp30, 0);
+    collectCollisionCells(sp20, sp30, 0);
     if (func_80048CD8(sp20[0], sp30[0], sp20[1], sp30[1], sp20[2], sp30[2], 0) != 0) {
         goto hit;
     found:
@@ -81,15 +81,15 @@ void func_800142A0(Obj142A0 *arg0) {
     hit:
         arg0->update(arg0);
         D_800B4CE4 = 0;
-        D_800BD06C->unkB8 = 1;
-        D_800BD06C->unkE4 = func_80023E3C(1);
+        gCameraTarget->unkB8 = 1;
+        gCameraTarget->unkE4 = func_80023E3C(1);
         return;
     }
     if (func_8000F7A0(arg0) != 0) {
         arg0->update(arg0);
         D_800B4CE4 = 0;
-        D_800BD06C->unkB8 = 1;
-        D_800BD06C->unkE4 = func_80023E3C(1);
+        gCameraTarget->unkB8 = 1;
+        gCameraTarget->unkE4 = func_80023E3C(1);
     }
     start = func_80023088(0);
     end = func_800230B0(0);

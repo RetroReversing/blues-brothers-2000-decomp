@@ -16,7 +16,7 @@ M2C_UNK func_80023C58(M2C_UNK);                     /* extern */
 s32 func_80023D58(M2C_UNK);                         /* extern */
 M2C_UNK func_80027030(M2C_UNK);                     /* extern */
 M2C_UNK func_80030C40(void *, M2C_UNK);             /* extern */
-extern s32 D_800B28C0;
+extern s32 gFontScale;
 
 void func_80030E4C(void *arg0) {
     func_80023C58(0x10C);
@@ -24,5 +24,5 @@ void func_80030E4C(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x84) = func_80023D58(0x9E7);
     func_80027030(1);
     func_80030C40(arg0, 1);
-    D_800B28C0 = 1;
+    gFontScale = 1;
 }

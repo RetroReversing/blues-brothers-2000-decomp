@@ -24,8 +24,8 @@ struct Obj {
     /* 0xC0 */ s32 fC0;
 };
 Obj *func_800232B4(s32, s32, s32, s32);
-Obj *func_80023874(s32, s32);
-f32 func_8002D340(f32, f32, f32);
+Obj *findActor(s32, s32);
+f32 approachF32(f32, f32, f32);
 f32 func_8002DD60(f32);
 s32 func_8003C9AC(Obj *, s32, s32, s32);
 void func_80065260();
@@ -42,7 +42,7 @@ extern f32 D_80008C28;
 extern f32 D_80008C2C;
 extern char D_800B3964[];
 extern s32 D_800B5DD4[];
-extern char D_800BD06C[];
+extern char gCameraTarget[];
 extern s32 D_80140214[];
 
 void func_80064F08(Obj *arg0) {
@@ -59,16 +59,16 @@ void func_80064F08(Obj *arg0) {
     if ((*(Obj **)D_800B3964)->fC0 == 2) {
         return;
     }
-    ax = func_8002DD60(arg0->x - (*(Obj **)D_800BD06C)->x);
-    az = func_8002DD60(arg0->z - (*(Obj **)D_800BD06C)->z);
-    d1 = func_8002DD60((f32)arg0->f8C - (*(Obj **)D_800BD06C)->y);
-    d2 = func_8002DD60((f32)arg0->f90 - (*(Obj **)D_800BD06C)->y);
+    ax = func_8002DD60(arg0->x - (*(Obj **)gCameraTarget)->x);
+    az = func_8002DD60(arg0->z - (*(Obj **)gCameraTarget)->z);
+    d1 = func_8002DD60((f32)arg0->f8C - (*(Obj **)gCameraTarget)->y);
+    d2 = func_8002DD60((f32)arg0->f90 - (*(Obj **)gCameraTarget)->y);
     lim = D_80008C10;
     if (arg0->fC0 == 2) {
-        if (!((*(Obj **)D_800BD06C)->z >= D_80008C14)) {
+        if (!((*(Obj **)gCameraTarget)->z >= D_80008C14)) {
             return;
         }
-        if ((*(Obj **)D_800BD06C)->f10 < -0x6D60 || (*(Obj **)D_800BD06C)->f10 > 0x6D60) {
+        if ((*(Obj **)gCameraTarget)->f10 < -0x6D60 || (*(Obj **)gCameraTarget)->f10 > 0x6D60) {
             return;
         }
         arg0->fC0 = 0;
@@ -85,9 +85,9 @@ void func_80064F08(Obj *arg0) {
         d1 = arg0->f8C;
     }
     if (d1 != arg0->y) {
-        arg0->y = func_8002D340(d1, arg0->y, 100.0f);
-    } else if ((*(Obj **)D_800BD06C)->z >= D_80008C18 && ax < D_80008C1C && func_8003C9AC(arg0, 1, 1, 1) != 0) {
-        p = *(Obj **)D_800BD06C;
+        arg0->y = approachF32(d1, arg0->y, 100.0f);
+    } else if ((*(Obj **)gCameraTarget)->z >= D_80008C18 && ax < D_80008C1C && func_8003C9AC(arg0, 1, 1, 1) != 0) {
+        p = *(Obj **)gCameraTarget;
         if (p->f10 < -0x6D60 || p->f10 > 0x6D60) {
             p->f9C = func_8006542C;
             p->fA4 = arg0;
@@ -115,7 +115,7 @@ void func_80064F08(Obj *arg0) {
         o = func_800232B4(0x101, arg0->x, arg0->y + k, arg0->z - k);
         o->f9C = func_80065770;
         o->fA4 = arg0;
-        o = func_80023874(6, 0);
+        o = findActor(6, 0);
         if (o != 0) {
             o->f68 = -1;
         }

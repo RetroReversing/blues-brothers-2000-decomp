@@ -15,17 +15,17 @@ typedef s32 M2C_UNK32;
 s32 func_8001E8B0();                                /* extern */
 M2C_UNK func_800340B4(void *);                      /* extern */
 M2C_UNK func_80036FB8(void *, M2C_UNK);             /* extern */
-extern s32 D_800B4ABC;
+extern s32 cameraDistTable;
 extern s32 D_80107040;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 
 void func_800350F4(void *arg0) {
     if (func_8001E8B0() != 0) {
         M2C_FIELD(arg0, s32 *, 0x6C) = 0;
-        M2C_FIELD(arg0, s32 *, 0x7C) = (s32) D_800B4ABC;
+        M2C_FIELD(arg0, s32 *, 0x7C) = (s32) cameraDistTable;
         func_80036FB8(arg0, 0xF);
         D_80107040 &= ~0x40F;
-        D_801070A0 &= ~0x40F;
+        gPadPressed &= ~0x40F;
     }
     func_800340B4(arg0);
 }

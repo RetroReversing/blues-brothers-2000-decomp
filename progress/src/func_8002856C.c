@@ -1,6 +1,6 @@
-extern s32 D_800B28C0;
-extern char D_800B2904[];
-extern char D_800B2A04[];
+extern s32 gFontScale;
+extern char gCharToGlyph[];
+extern char gGlyphPadding[];
 
 u8 *func_8002856C(u8 *arg0, s32 arg1) {
     u8 *word;
@@ -23,10 +23,10 @@ u8 *func_8002856C(u8 *arg0, s32 arg1) {
         if (c == 0) {
             goto out;
         }
-        tbl = (u8 *) D_800B2904;
-        base = (u8 *) D_800B2A04;
+        tbl = (u8 *) gCharToGlyph;
+        base = (u8 *) gGlyphPadding;
         c = tbl[c];
-        total += 2 + (0xB - base[c - 0x20]) / D_800B28C0;
+        total += 2 + (0xB - base[c - 0x20]) / gFontScale;
         if (total <= arg1) {
             goto loop_goto_1;
         }

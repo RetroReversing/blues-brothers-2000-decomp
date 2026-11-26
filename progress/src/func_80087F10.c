@@ -18,7 +18,7 @@ typedef struct O87F10 {
     u8 padA0[0xBC - 0xA0];
     s32 fBC;
 } O87F10;
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 O87F10 *func_800232B4(s32, s32, s32, s32);
 extern s32 D_80171A68[];
 void func_8002F2C0(void);
@@ -36,7 +36,7 @@ o->f74 = 0;
 o->f78 = 0xFFFFFF;
     o->f7C = 1;
     o->f5C = 0xFF;
-    o->f58 = func_800221C0(0, 1, 0, 2, 0, 0, 1, 0);
+    o->f58 = packDrawFlags(0, 1, 0, 2, 0, 0, 1, 0);
     o->f68 = 14;
     o->f9C = func_80087B68;
     o->f84 = arg0;

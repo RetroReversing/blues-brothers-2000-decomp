@@ -16,10 +16,10 @@ typedef struct Obj {
 } Obj;
 void func_8002A360(s32, s32);
 void func_8002ADFC(s32, s32, Obj *);
-s32 func_8002D5CC(Obj *);
+s32 tickActorTimer(Obj *);
 f32 func_8002DD60(f32);
 s32 func_8003C9AC(Obj *, s32, s32, s32);
-s32 func_8004303C(Obj *);
+s32 animStepKeys(Obj *);
 void func_80043328(Obj *, s32, s32);
 void func_8005F470(Obj *);
 s32 func_80076080(void);
@@ -35,7 +35,7 @@ extern f32 D_800088A8;
 extern f32 D_800088AC;
 extern f32 D_800088B0;
 extern s32 D_800B4CF0[];
-extern char D_800BD06C[];
+extern char gCameraTarget[];
 extern s32 D_80140200[];
 
 void func_8005F4E0(Obj *arg0) {
@@ -47,9 +47,9 @@ void func_8005F4E0(Obj *arg0) {
     if (func_80076080() != 0) {
         return;
     }
-    dx = (*(Obj **)D_800BD06C)->x - arg0->x;
-    dy = ((*(Obj **)D_800BD06C)->y + D_80008840) - arg0->y;
-    s = func_8004303C(arg0);
+    dx = (*(Obj **)gCameraTarget)->x - arg0->x;
+    dy = ((*(Obj **)gCameraTarget)->y + D_80008840) - arg0->y;
+    s = animStepKeys(arg0);
     switch (arg0->f90) {
     case 0:
         arg0->f10 = 0x8000;
@@ -64,7 +64,7 @@ void func_8005F4E0(Obj *arg0) {
         if (s != 0) {
             func_8002ADFC(0x4A, 0x3E8, arg0);
         }
-        if (func_8002D5CC(arg0) == 0) {
+        if (tickActorTimer(arg0) == 0) {
             break;
         }
         if (func_8002DD60(dy) < 400.0f && func_8003C9AC(arg0, 1, 0, 0) != 0) {
@@ -81,7 +81,7 @@ void func_8005F4E0(Obj *arg0) {
     case 2:
         switch (arg0->f8C) {
         case 0:
-            if ((*(Obj **)D_800BD06C)->fD0 == 0x16) {
+            if ((*(Obj **)gCameraTarget)->fD0 == 0x16) {
                 break;
             }
             if (dx >= 0.0f) {
@@ -123,12 +123,12 @@ void func_8005F4E0(Obj *arg0) {
         case 3:
             arg0->f64 = 0x23;
             lim = D_800088AC;
-            if (func_8002DD60(arg0->y - (*(Obj **)D_800BD06C)->y + lim) < lim || D_800088B0 < func_8002DD60(dx)) {
+            if (func_8002DD60(arg0->y - (*(Obj **)gCameraTarget)->y + lim) < lim || D_800088B0 < func_8002DD60(dx)) {
                 arg0->f90 = 1;
                 arg0->f8C = 0;
                 break;
             }
-            func_8005F470(*(Obj **)D_800BD06C);
+            func_8005F470(*(Obj **)gCameraTarget);
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0x2D);
             arg0->f8C = 4;

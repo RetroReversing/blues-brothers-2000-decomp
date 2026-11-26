@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
-s32 func_800253A0(M2C_UNK);                         /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 heapAlloc(M2C_UNK);                         /* extern */
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_800477F0(s32, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80047824(s32, M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
 M2C_UNK func_80047864(s32, M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
@@ -41,7 +41,7 @@ void *func_8007F01C(s32 arg0) {
 
     func_80050460(&func_8007DEA0, &D_8014AA40);
     temp_v0 = func_80042F00(0x2A, 0, 0, 0);
-    func_800433A8(temp_v0, 0x1A7, 0x100);
+    actorSetAnim(temp_v0, 0x1A7, 0x100);
     func_800852CC(temp_v0, arg0);
     M2C_FIELD(temp_v0, s32 *, 0x74) = 0x1A7;
     M2C_FIELD(temp_v0, s32 *, 0) = 0x102D;
@@ -60,10 +60,10 @@ void *func_8007F01C(s32 arg0) {
     M2C_FIELD(&D_800B86CC, s32 *, 0) = 4;
     M2C_FIELD(&D_800B86CC, s32 *, 4) = 0x14;
     M2C_FIELD(&D_800B86CC, s32 *, 8) = 0x12;
-    M2C_FIELD(temp_v0, s32 *, 0x8C) = func_800253A0(0x80);
+    M2C_FIELD(temp_v0, s32 *, 0x8C) = heapAlloc(0x80);
     M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_8007EF74;
     M2C_FIELD(temp_v0, M2C_UNK **, 0xA0) = &func_80065D2C;
-    M2C_FIELD(temp_v0, s32 *, 0x58) = func_800221C0(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
+    M2C_FIELD(temp_v0, s32 *, 0x58) = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
     M2C_FIELD(temp_v0, s32 *, 0xFC) = 5;
     M2C_FIELD(temp_v0, s32 *, 0x34) = (M2C_FIELD(temp_v0, s32 *, 0x34) * 2) / 3;
     M2C_FIELD(temp_v0, s32 *, 0x38) = M2C_FIELD(temp_v0, s32 *, 0x34);
@@ -72,9 +72,9 @@ void *func_8007F01C(s32 arg0) {
     M2C_FIELD(temp_v0_3, s32 *, 0) = 0x102E;
     M2C_FIELD(temp_v0, void **, 0xA8) = temp_v0_3;
     M2C_FIELD(temp_v0_3, void **, 0xA4) = temp_v0;
-    func_800433A8(temp_v0_3, 0x1AE, 0x100);
+    actorSetAnim(temp_v0_3, 0x1AE, 0x100);
     func_800852CC(temp_v0_3, arg0);
-    M2C_FIELD(temp_v0_3, s32 *, 0x58) = func_800221C0(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
+    M2C_FIELD(temp_v0_3, s32 *, 0x58) = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
     M2C_FIELD(temp_v0_3, s32 *, 0x34) = (s32) M2C_FIELD(temp_v0, s32 *, 0x34);
     M2C_FIELD(temp_v0_3, s32 *, 0x38) = (s32) M2C_FIELD(temp_v0, s32 *, 0x34);
     M2C_FIELD(temp_v0_3, s32 *, 0x3C) = (s32) M2C_FIELD(temp_v0, s32 *, 0x34);

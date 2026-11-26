@@ -12,14 +12,14 @@ typedef s32 M2C_UNK32;
 #endif
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 
-s32 func_80025FF8();
+s32 initControllerPaks();
 s32 osContInit();
 s32 osCreateMesgQueue();
 s32 osCreateThread();
 s32 osPfsIsPlug();
 s32 osSetEventMesg();
 s32 osStartThread();
-extern s32 D_800AE178;
+extern s32 gPakInitError;
 extern char D_80106A54[];
 extern char D_80106A60[];
 extern char D_80107010[];
@@ -39,7 +39,7 @@ void func_80025F20(void) {
     { osStartThread(D_80106A60); }
     osContInit(D_80107058, D_801071F0, D_80107010);
     osPfsIsPlug(D_80107058, D_80107050);
-    D_800AE178 = 0;
-    func_80025FF8();
+    gPakInitError = 0;
+    initControllerPaks();
 }
 

@@ -15,9 +15,9 @@ typedef struct Def {
     u16 f0;
     u16 flags;
 } Def;
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 Obj *func_800232B4(s32, s32, s32, s32);
-Def *func_80023E18(s32);
+Def *getImageAsset(s32);
 s32 func_80023E3C(s32);
 extern s32 D_800B7B0C;
 extern s32 D_800FB038[];
@@ -27,15 +27,15 @@ Obj *func_8002E374(s32 id) {
     Def *def;
     Obj *o;
 
-    def = func_80023E18(D_800FB038[id]);
+    def = getImageAsset(D_800FB038[id]);
     o = func_800232B4(1, 0, 0, 0);
     o->fD0 = -1;
     o->fE4 = func_80023E3C(id);
     o->fB8 = id;
     if (def->flags & 2) {
-        o->f58 = func_800221C0(1, 1, 0, 3, D_800B7B0C, 0, 1, 0);
+        o->f58 = packDrawFlags(1, 1, 0, 3, D_800B7B0C, 0, 1, 0);
     } else {
-        o->f58 = func_800221C0(0, 1, 0, 3, D_800B7B0C, 0, 1, 0);
+        o->f58 = packDrawFlags(0, 1, 0, 3, D_800B7B0C, 0, 1, 0);
     }
     o->f94 = 30000;
     o->f98 = func_8001F26C;

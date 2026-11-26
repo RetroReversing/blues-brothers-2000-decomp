@@ -29,10 +29,10 @@ void func_8002D3E4(Actor58820 *, s32);
 s32 func_8002D5E8(Actor58820 *);
 void func_8002DA80(Actor58820 *);
 f32 func_8002DD60(f32);
-s32 func_8004303C(Actor58820 *);
+s32 animStepKeys(Actor58820 *);
 s32 func_800772FC(Actor58820 *);
 f32 sqrtf(f32);
-extern Pos58820 *D_800BD06C;
+extern Pos58820 *gCameraTarget;
 extern f32 D_801700D0;
 
 s32 func_80058820(Actor58820 *a) {
@@ -46,7 +46,7 @@ s32 func_80058820(Actor58820 *a) {
     if (a->hp <= 0) {
         return 1;
     }
-    ok = func_8004303C(a);
+    ok = animStepKeys(a);
     if (a->unkDC > 9.0f && a->unkDC < 33.0f) {
         func_8002D3E4(a, 200);
     } else {
@@ -63,10 +63,10 @@ s32 func_80058820(Actor58820 *a) {
         a->unk90 = 150;
     }
     if (a->unk8C == 0) {
-        dx = D_800BD06C->x - a->x;
-        dz = D_800BD06C->z - a->z;
+        dx = gCameraTarget->x - a->x;
+        dz = gCameraTarget->z - a->z;
         dist = sqrtf(dx * dx + dz * dz);
-        dy = D_800BD06C->y - a->y;
+        dy = gCameraTarget->y - a->y;
         if (dist < a->range && func_8002DD60(dy) < 300.0f) {
             return 2;
         }

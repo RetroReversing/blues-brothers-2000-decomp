@@ -14,7 +14,7 @@ typedef struct O43248 {
     f32 fDC;
     Anim43248 *fE0;
 } O43248;
-void func_8003ECB8(Anim43248 *, f32);
+void animSampleKeys(Anim43248 *, f32);
 extern f32 D_800B9EC4;
 extern s32 D_801402F8;
 
@@ -35,11 +35,11 @@ s32 func_80043248(O43248 *arg0) {
     D_801402F8++;
     last = a->f0->f2 - 1;
     if (last < frame) {
-        func_8003ECB8(a, last);
+        animSampleKeys(a, last);
         arg0->fDC = a->f1C;
         return 1;
     } else {
-        func_8003ECB8(a, frame);
+        animSampleKeys(a, frame);
         arg0->fDC = a->f1C;
         return 0;
     }

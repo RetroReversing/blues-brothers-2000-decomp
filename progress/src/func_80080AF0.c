@@ -13,8 +13,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D298(M2C_UNK, s32, s32);               /* extern */
-extern s32 D_800B9ECC;
+s32 approachS32(M2C_UNK, s32, s32);               /* extern */
+extern s32 gCamSpeedScale;
 extern M2C_UNK func_80080A08;
 
 void func_80080AF0(void *arg0) {
@@ -30,13 +30,13 @@ void func_80080AF0(void *arg0) {
     }
     if (M2C_FIELD(arg0, const s32 *, 0xC0) == 0) {
       s32 temp_v0;
-        temp_v0 = func_8002D298(0xFF, M2C_FIELD(arg0, const s32 *, 0x70), D_800B9ECC * 8);
+        temp_v0 = approachS32(0xFF, M2C_FIELD(arg0, const s32 *, 0x70), gCamSpeedScale * 8);
         M2C_FIELD(arg0, s32 *, 0x70) = temp_v0;
         if (temp_v0 == 0xFF) {
             M2C_FIELD(arg0, s32 *, 0xC0) = (s32) (M2C_FIELD(arg0, const s32 *, 0xC0) + 1);
         }
     } else {
-        temp_v0_2 = func_8002D298(0, M2C_FIELD(arg0, const s32 *, 0x70), D_800B9ECC * 8);
+        temp_v0_2 = approachS32(0, M2C_FIELD(arg0, const s32 *, 0x70), gCamSpeedScale * 8);
         M2C_FIELD(arg0, s32 *, 0x70) = temp_v0_2;
         if (temp_v0_2 == 0) {
             M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);

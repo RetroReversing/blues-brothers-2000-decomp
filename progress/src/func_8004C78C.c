@@ -19,7 +19,7 @@ f32 func_80024984(f32);
 f32 func_8004BC74(Matrix4 *);
 void func_8004DC38(Matrix4 *, Matrix4 *);
 void func_8004DD58(Matrix4 *, Matrix4 *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 
 void func_8004C78C(Matrix4 *mat, f32 *sx, f32 *sy, f32 *sz, f32 *ry, f32 *rz, f32 *rx, f32 *tx, f32 *ty, f32 *tz) {
     Matrix4 locmat;
@@ -64,7 +64,7 @@ void func_8004C78C(Matrix4 *mat, f32 *sx, f32 *sy, f32 *sz, f32 *ry, f32 *rz, f3
     pmat.element[2][3] = 0.0f;
     pmat.element[3][3] = 1.0f;
     if (func_8004BC74(&pmat) == 0.0) {
-        func_800899DC(D_80007DC4);
+        debugPrintf(D_80007DC4);
     }
     if (locmat.element[0][3] != 0 || locmat.element[1][3] != 0 || locmat.element[2][3] != 0) {
         prhs.x = locmat.element[0][3];

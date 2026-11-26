@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D204();
-s32 func_8002D298();
+s32 approachAngle();
+s32 approachS32();
 s32 func_8002D858();
-s32 func_8004303C();
+s32 animStepKeys();
 s32 func_80043328();
 s32 func_80058F74();
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 func_800548C0;
 
 void func_80054E24(void *arg0) {
@@ -30,9 +30,9 @@ void func_80054E24(void *arg0) {
         return;
     }
     do { func_8002D858(arg0, &sp10); } while (0);
-    M2C_FIELD(arg0, s32 *, 0x10) = func_8002D204(sp10, M2C_FIELD(arg0, s32 *, 0x10), D_800B9ECC << 0xA);
-    M2C_FIELD(arg0, s32 *, 0x5C) = func_8002D298(0x80, M2C_FIELD(arg0, s32 *, 0x5C), D_800B9ECC * 2);
-    if (func_8004303C(arg0) != 0) {
+    M2C_FIELD(arg0, s32 *, 0x10) = approachAngle(sp10, M2C_FIELD(arg0, s32 *, 0x10), gCamSpeedScale << 0xA);
+    M2C_FIELD(arg0, s32 *, 0x5C) = approachS32(0x80, M2C_FIELD(arg0, s32 *, 0x5C), gCamSpeedScale * 2);
+    if (animStepKeys(arg0) != 0) {
         func_80058F74(arg0, &func_800548C0);
     }
 }

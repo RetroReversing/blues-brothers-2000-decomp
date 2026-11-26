@@ -1,4 +1,4 @@
-s32 func_800899DC(char *);
+s32 debugPrintf(char *);
 extern char D_80000C44[];
 extern s32 D_800BD0B8[];
 
@@ -8,7 +8,7 @@ s32 func_8001B990(s32 arg0, u32 arg1) {
     s32 ret;
 
     if (arg1 >= 0x44) {
-        return func_800899DC(D_80000C44);
+        return debugPrintf(D_80000C44);
     }
     mask = 1 << (arg1 & 0x1F);
     idx = arg1 >> 5;

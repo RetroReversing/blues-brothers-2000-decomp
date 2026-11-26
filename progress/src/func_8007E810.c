@@ -29,10 +29,10 @@ s16 sins(u16);
 void func_8002ADFC(s32, s32, Obj8E *);
 void func_8003BF98(Obj8E *);
 s32 func_80043248(Obj8E *);
-void func_800433A8(Obj8E *, s32, s32);
+void actorSetAnim(Obj8E *, s32, s32);
 f32 sqrtf(f32);
 extern s32 D_800B4CE0;
-extern Obj8E *D_800BD06C;
+extern Obj8E *gCameraTarget;
 
 s32 func_8007E810(Obj8E *arg0) {
     s32 v[3];
@@ -69,21 +69,21 @@ s32 func_8007E810(Obj8E *arg0) {
         p[0] = arg0->x + r[0];
         p[1] = arg0->y + r[1];
         p[2] = arg0->z + r[2];
-        dx = D_800BD06C->x - p[0];
-        dz = D_800BD06C->z - p[2];
-        dy = D_800BD06C->y - p[1];
+        dx = gCameraTarget->x - p[0];
+        dz = gCameraTarget->z - p[2];
+        dy = gCameraTarget->y - p[1];
         d = sqrtf(dx * dx + dy * dy + dz * dz);
         arg0->unkB4 = d;
         if (d < 1400.0f) {
             D_800B4CE0 = 1;
-            func_8003BF98(D_800BD06C);
+            func_8003BF98(gCameraTarget);
             D_800B4CE0 = 0;
-            func_800433A8(D_800BD06C, 0x10, 0x100);
-            D_800BD06C->unk94 = 0x1388;
-            D_800BD06C->unk90 = 0;
-            D_800BD06C->unk10 = arg0->unk10;
-            D_800BD06C->unk50 += 900.0f;
-            D_800BD06C->y += 600.0f;
+            actorSetAnim(gCameraTarget, 0x10, 0x100);
+            gCameraTarget->unk94 = 0x1388;
+            gCameraTarget->unk90 = 0;
+            gCameraTarget->unk10 = arg0->unk10;
+            gCameraTarget->unk50 += 900.0f;
+            gCameraTarget->y += 600.0f;
             arg0->unk88++;
         }
     }

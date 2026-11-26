@@ -1,8 +1,8 @@
 s32 func_80013784(void *);
 s32 func_8001B990(s32, s32);
 void func_8002ADFC(s32, s32, void *);
-f32 func_8002D340(f32, f32, f32);
-f32 func_8002D66C(void *, f32, void *);
+f32 approachF32(f32, f32, f32);
+f32 getCameraTargetDist(void *, f32, void *);
 
 typedef struct {
     s32 unk0;
@@ -21,9 +21,9 @@ void func_8001C1DC(Obj8001C1DC *arg0) {
 
     arg0->unk0 = 0x10E;
     if (func_8001B990(0x100, arg0->unk70) == 0) {
-        arg0->unk8 = func_8002D340(arg0->unk44, arg0->unk8, 5.0f);
+        arg0->unk8 = approachF32(arg0->unk44, arg0->unk8, 5.0f);
     }
-    d = func_8002D66C(arg0, 200.0f, 0);
+    d = getCameraTargetDist(arg0, 200.0f, 0);
     if (arg0->unk90 != 0 && func_80013784(arg0) != 0 && d < 0xC8) {
         arg0->unk8 = arg0->unk44 - 240.0f;
         func_8001B990(0x200, arg0->unk70);

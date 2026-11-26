@@ -19,7 +19,7 @@ typedef struct O5C860 {
 s16 coss(u16);
 s16 sins(u16);
 void func_8002A360(s32, s32);
-void func_800433A8(O5C860 *, s32, s32);
+void actorSetAnim(O5C860 *, s32, s32);
 void func_800393F4(void);
 
 void func_8005C860(O5C860 *arg0) {
@@ -30,7 +30,7 @@ void func_8005C860(O5C860 *arg0) {
         arg0->f8 = arg0->fA4->f8 + 400.0f;
         arg0->fC = arg0->fA4->fC + ((coss(arg0->fA4->u10.s.f12) * 195) >> 14);
         arg0->u10.f10 = arg0->fA4->u10.f10;
-        func_800433A8(arg0, 0x10, 0x100);
+        actorSetAnim(arg0, 0x10, 0x100);
         arg0->f94 = 2000;
         arg0->f9C = func_800393F4;
         arg0->f98 = arg0->fA4->f88;

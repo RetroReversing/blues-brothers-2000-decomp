@@ -36,7 +36,7 @@ void func_8000F670(Obj *);
 void func_80039240(Obj *);
 void func_800729C4(Obj *);
 extern Spawn D_800AA564[];
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern s32 D_800BD274;
 
 s32 func_8001DD94(s32 arg0) {
@@ -80,16 +80,16 @@ s32 func_8001DD94(s32 arg0) {
                 best = r;
             }
             if (r->id == D_800BD274) {
-                D_800BD06C->x = r->x;
-                D_800BD06C->y = r->y;
-                D_800BD06C->z = r->z;
-                D_800BD06C->angle = r->angle;
+                gCameraTarget->x = r->x;
+                gCameraTarget->y = r->y;
+                gCameraTarget->z = r->z;
+                gCameraTarget->angle = r->angle;
                 dir = r->dir;
                 if (r->flags & 4) {
-                    D_800BD06C->handler = func_80039240;
+                    gCameraTarget->handler = func_80039240;
                 }
                 if (r->flags & 2) {
-                    D_800BD06C->handler = func_80039240;
+                    gCameraTarget->handler = func_80039240;
                 }
                 found = 1;
             }
@@ -106,16 +106,16 @@ s32 func_8001DD94(s32 arg0) {
     }
     if (found == 0) {
         r = best;
-        D_800BD06C->x = r->x;
-        D_800BD06C->y = r->y;
-        D_800BD06C->z = r->z;
-        D_800BD06C->angle = r->angle;
+        gCameraTarget->x = r->x;
+        gCameraTarget->y = r->y;
+        gCameraTarget->z = r->z;
+        gCameraTarget->angle = r->angle;
         dir = r->dir;
         if (r->flags & 4) {
-            D_800BD06C->handler = func_80039240;
+            gCameraTarget->handler = func_80039240;
         }
         if (r->flags & 2) {
-            D_800BD06C->handler = func_80039240;
+            gCameraTarget->handler = func_80039240;
         }
     }
     return dir << 15;

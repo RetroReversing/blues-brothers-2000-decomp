@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 
 void *func_80042F00();
-s32 func_800433A8();
+s32 actorSetAnim();
 s32 func_80050460();
 s32 func_80076BF0(s32);
 s32 func_80085244();
@@ -33,7 +33,7 @@ void *func_80056CC0(s32 arg0) {
     }
     func_80050460(&func_80056C30, &D_8014AA38);
     temp_v0 = func_80042F00(0x24, 0, 0, 0);
-    func_800433A8(temp_v0, 0xD1, 0x100);
+    actorSetAnim(temp_v0, 0xD1, 0x100);
     func_800852CC(temp_v0, arg0);
     func_80085244(temp_v0, arg0);
     (*(s32 *)((s8 *)temp_v0 + 0)) = 0x1007;

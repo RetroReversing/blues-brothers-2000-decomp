@@ -12,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002713C(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK setTextPos(M2C_UNK, M2C_UNK);            /* extern */
 
 void func_800191F8(void) {
     volatile u64 scratch[8];
-    func_8002713C(0xA0, 0xD2);
+    setTextPos(0xA0, 0xD2);
 }

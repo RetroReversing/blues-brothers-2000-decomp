@@ -14,7 +14,7 @@ typedef struct Obj {
 
 typedef struct Info { s16 x0; s16 h; } Info;
 
-s32 func_8004303C(Obj *);
+s32 animStepKeys(Obj *);
 f32 func_8002D858(Obj *, s32 *);
 void func_8002D3E4(Obj *, s32);
 void func_8002DA80(Obj *);
@@ -26,7 +26,7 @@ s32 func_80083EDC(Obj *arg0) {
     f32 dx;
     f32 dz;
 
-    func_8004303C(arg0);
+    animStepKeys(arg0);
     d = func_8002D858(arg0, &tmp);
     arg0->x10 = tmp;
     func_8002D3E4(arg0, 0x22B);

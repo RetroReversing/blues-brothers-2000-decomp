@@ -1,10 +1,10 @@
 #define FLD(e, T, off) (*(T *)((u8 *)(e) + (off)))
-void *func_80023874(s32, s32);
+void *findActor(s32, s32);
 s32 func_80082400(void);
 void func_80027030(s32, s32);
 void func_8000C5E4(void);
-u8 *func_80023E18(s32);
-void func_800899DC(char *, ...);
+u8 *getImageAsset(s32);
+void debugPrintf(char *, ...);
 void func_800242A8(s32, s32, s32);
 void *func_800232B4(s32, s32, s32, s32);
 void func_80053EF0(u8 *);
@@ -13,10 +13,10 @@ void func_80043328(u8 *, s32, s32);
 void func_80053C94(void);
 void func_80053CE0(void);
 void func_80052EC0(void);
-void func_8004303C(void);
+void animStepKeys(void);
 extern char D_800080F0[];
 extern char D_8000811C[];
-extern u8 *D_800BD06C;
+extern u8 *gCameraTarget;
 extern u8 *D_800B3960;
 extern s32 D_800AE010;
 extern s32 D_8014AA90;
@@ -25,7 +25,7 @@ extern s32 D_8014AA98;
 extern s32 D_8014AA9C;
 extern s32 D_8014AAA0;
 extern s32 D_800B5DD4;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern s32 D_80107040;
 extern s32 D_80140228;
 
@@ -40,10 +40,10 @@ s32 func_80052B24(s32 arg0, char *arg1, f32 *arg2) {
     s32 old;
     u8 *pl;
 
-    if (func_80023874(0x800, 0) != 0) {
+    if (findActor(0x800, 0) != 0) {
         return 0;
     }
-    p = D_800BD06C;
+    p = gCameraTarget;
     i = 0;
     if (FLD(p, s32, 0) == 3) {
         if (FLD(p, f32, 0x50) <= 0.0f) {
@@ -59,26 +59,26 @@ s32 func_80052B24(s32 arg0, char *arg1, f32 *arg2) {
     D_8014AA9C = 0;
     D_8014AA94 = 0;
     D_800B5DD4 = 0;
-    D_801070A0 = 0;
+    gPadPressed = 0;
     D_80107040 = 0;
     D_800AE010 = 0x12345678;
     func_80027030(2, D_8014AA90);
     D_80140228 = 0;
-    do { func_8000C5E4(); pl = D_800B3960; FLD(pl, s32, 0xC0) = 2; lvl = func_80023E18(arg0); } while (0);
+    do { func_8000C5E4(); pl = D_800B3960; FLD(pl, s32, 0xC0) = 2; lvl = getImageAsset(arg0); } while (0);
     if (lvl == NULL) {
-        func_800899DC(D_800080F0);
+        debugPrintf(D_800080F0);
     }
     func_800242A8(0x88, 0x560, 0);
     if (D_8014AAA0 != 0) {
         func_800242A8(0x89, D_8014AAA0, 0);
     }
-    if (func_80023874(0x801, 0) == NULL) {
+    if (findActor(0x801, 0) == NULL) {
         FLD(func_800232B4(0x801, 0, 0, 0), void *, 0x9C) = func_80053C94;
     }
-    if (func_80023874(0x802, 0) == NULL) {
+    if (findActor(0x802, 0) == NULL) {
         FLD(func_800232B4(0x802, 0, 0, 0), void *, 0x9C) = func_80053CE0;
     }
-    obj = func_80023874(0x803, 0);
+    obj = findActor(0x803, 0);
     if (obj == NULL) {
         FLD(func_800232B4(0x803, 0, 0, 0), void *, 0x9C) = func_80053CE0;
     } else {
@@ -101,14 +101,14 @@ s32 func_80052B24(s32 arg0, char *arg1, f32 *arg2) {
                     }
                     pl = D_800B3960;
                     FLD(pl, s32, 0xD8) = FLD(pl, s32, 0x9C);
-                    p = D_800BD06C;
+                    p = gCameraTarget;
                     FLD(obj, u8 *, 0x70) = lvl;
                     FLD(obj, u8 *, 0x74) = rec;
                     FLD(obj, void *, 0x9C) = func_80052EC0;
                     FLD(obj, s32, 0x64) = 0xC8;
                     FLD(obj, s32, 0xD8) = 0;
                     old = FLD(p, s32, 0x9C);
-                    FLD(p, void *, 0x9C) = func_8004303C;
+                    FLD(p, void *, 0x9C) = animStepKeys;
                     FLD(p, s32, 0x4C) = 0;
                     FLD(p, s32, 0x50) = 0;
                     FLD(p, s32, 0x54) = 0;
@@ -120,7 +120,7 @@ s32 func_80052B24(s32 arg0, char *arg1, f32 *arg2) {
         }
     }
     if (found == 0) {
-        func_800899DC(D_8000811C, arg1);
+        debugPrintf(D_8000811C, arg1);
     }
     q = FLD(rec, s32 *, 4);
     while (q[0] != -1) {

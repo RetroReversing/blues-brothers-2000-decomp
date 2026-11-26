@@ -8,13 +8,13 @@ typedef struct Cred {
     s32 f80;
 } Cred;
 s32 func_80024380();
-s32 func_8002710C();
+s32 setTextColor();
 s32 func_800289A0();
 s32 func_8007D6DC();
 extern u8 *D_800B8650[];
 extern s32 D_80107684;
-extern s32 D_8010788C;
-extern s32 D_80107890;
+extern s32 gTextPenX;
+extern s32 gTextPenY;
 extern s32 D_80107898;
 extern Cred D_801704E0;
 
@@ -47,8 +47,8 @@ s32 func_8007D420(void) {
         return 1;
     }
     c->f70 = 0;
-    D_8010788C = 0x1E;
-    D_80107890 = 0x1E;
+    gTextPenX = 0x1E;
+    gTextPenY = 0x1E;
     ch = *p;
     while (ch != 0) {
         switch (func_80024380(c->f74 - c->f70)) {
@@ -81,20 +81,20 @@ s32 func_8007D420(void) {
             D_80107684 = 1;
             break;
         case 0xA:
-            D_8010788C = 0x1E;
+            gTextPenX = 0x1E;
             c->f70 = c->f70 + 1;
-            v1 = D_80107890;
-            D_80107890 = v1 + 0xF;
+            v1 = gTextPenY;
+            gTextPenY = v1 + 0xF;
             if ((fp & 0xFF) != 0) {
-                D_8010788C = 0x2D;
+                gTextPenX = 0x2D;
             }
             if (D_80107684 != 0) {
-                D_80107890 = v1 + 0xC;
+                gTextPenY = v1 + 0xC;
             }
             D_80107684 = 0;
             break;
         default:
-            func_8002710C(s6, s5, s7, s3);
+            setTextColor(s6, s5, s7, s3);
             func_800289A0(ch);
             break;
         }

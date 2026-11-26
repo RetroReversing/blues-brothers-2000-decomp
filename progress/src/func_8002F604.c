@@ -34,14 +34,14 @@ s32 func_8001EAD0();
 s32 func_8001EB18();
 s32 func_8001EF80();
 s32 func_8001F230();
-s32 func_80022728();
-u8 *func_80023E18();
+s32 buildObjectMatrix();
+u8 *getImageAsset();
 s32 func_80024A3C();
 s32 func_80024B58();
 s32 func_80024BE0();
 s32 func_80024FE8();
-s32 func_8002B880();
-s32 func_800899DC();
+s32 loadTextureClamped();
+s32 debugPrintf();
 extern char D_80001230[];
 extern Vtx D_800BD6C8[];
 extern Gfx *D_80177E18;
@@ -84,7 +84,7 @@ s32 func_8002F604(Obj *obj) {
         return 0;
     }
     func_8001F230(obj);
-    p = func_80023E18(obj->f60);
+    p = getImageAsset(obj->f60);
     q = p;
     if (obj->f74 == 0) {
         q = p + 0x10;
@@ -92,24 +92,24 @@ s32 func_8002F604(Obj *obj) {
     sMax = 0x7C0;
     tMax = sMax;
     if (obj->f74 == 0 && *(s32 *)(p + 8) == 0x20) {
-        func_8002B880(0x20, q, 0, 0);
+        loadTextureClamped(0x20, q, 0, 0);
     } else {
-        func_8002B880(0x10, q, 0, 0);
+        loadTextureClamped(0x10, q, 0, 0);
     }
     if (obj->f7C == 0) {
         func_80024FE8(sp10);
         func_80024B58(sp38, sp10, obj->f10);
         func_80024A3C(sp10, sp38, obj->f14);
         func_80024BE0(sp38, sp10, obj->f18);
-        func_80022728(obj, sp38, 1);
+        buildObjectMatrix(obj, sp38, 1);
     } else {
         func_80024FE8(sp10);
-        func_80022728(obj, sp10, 0);
+        buildObjectMatrix(obj, sp10, 0);
     }
     idx = func_8001EAD0();
     start = idx;
     if (idx == -1) {
-        func_800899DC(D_80001230);
+        debugPrintf(D_80001230);
         return 1;
     }
     v0 = &D_800BD6C8[idx++];

@@ -69,24 +69,24 @@ extern char D_80008ACC[];
 
 void func_80023C58(s32);
 void func_8002E7B8(s32, s32);
-void *func_800253A0(s32);
+void *heapAlloc(s32);
 void func_80026C04(void *, s32, s32);
 void func_80023A74(s32, s32);
-void func_80023A98(s32, s32, s32);
+void setSlotAsset(s32, s32, s32);
 void func_800242A8(s32, s32, s32);
 s32 *func_8002E374(s32);
 Obj *func_80042F00(s32, s32, s32, s32);
-void func_800433A8(Obj *, s32, s32);
+void actorSetAnim(Obj *, s32, s32);
 Obj *func_8004811C(void *, Scene *);
 Obj *func_80048248(void *);
-Model *func_80023E18(s32);
+Model *getImageAsset(s32);
 s32 func_80026B50(u8 *, char *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 void func_8004BA40(Mtx *, f32, f32, f32);
 void func_80088F40(void);
 void func_8002A360(s32, s32);
-void func_8001FF64(Obj *);
-void func_8004303C(Obj *);
+void updateCameraView(Obj *);
+void animStepKeys(Obj *);
 void func_80062D64(Obj *);
 void func_80062DA0(Obj *);
 
@@ -99,20 +99,20 @@ void func_80062280(void) {
     func_80023C58(0x10F);
     func_8002E7B8(0, 0);
     D_800B9C70 = 1;
-    D_800B7FE0 = func_800253A0(0x400);
+    D_800B7FE0 = heapAlloc(0x400);
     func_80026C04(D_800B7FE0, 0, 0x400);
     func_80023A74(0x5E, 0x865);
-    func_80023A98(0x165, 0x866, 1);
+    setSlotAsset(0x165, 0x866, 1);
     func_80023A74(0x5F, 0x863);
-    func_80023A98(0x166, 0x864, 1);
+    setSlotAsset(0x166, 0x864, 1);
     func_80023A74(0x60, 0x867);
-    func_80023A98(0x167, 0x868, 1);
+    setSlotAsset(0x167, 0x868, 1);
     func_80023A74(0x61, 0x861);
-    func_80023A98(0x168, 0x862, 1);
+    setSlotAsset(0x168, 0x862, 1);
     func_80023A74(0x62, 0x869);
-    func_80023A98(0x169, 0x86A, 1);
+    setSlotAsset(0x169, 0x86A, 1);
     func_80023A74(0x63, 0x86B);
-    func_80023A98(0x16A, 0x86C, 1);
+    setSlotAsset(0x16A, 0x86C, 1);
     func_800242A8(0xA9, 0x86D, 0x10);
     D_800B3960->x = 0.0f;
     D_800B3960->y = 400.0f;
@@ -120,27 +120,27 @@ void func_80062280(void) {
     D_800B3960->rot = 0;
     D_800B3960->unk14 = 0;
     D_800B3960->unk18 = 0;
-    D_800B3960->cb9C = func_8001FF64;
+    D_800B3960->cb9C = updateCameraView;
     p = func_8002E374(0xA9);
     D_800B7FE0->unk0 = p;
     *p = 0x102;
     D_800B7FE0->unk4 = func_80042F00(0x5E, 0, 0, 0);
-    func_800433A8(D_800B7FE0->unk4, 0x165, 0xEB);
+    actorSetAnim(D_800B7FE0->unk4, 0x165, 0xEB);
     o = func_80042F00(0x5F, 0, 0, 0);
-    func_800433A8(o, 0x166, 0xEB);
-    o->cb9C = func_8004303C;
+    actorSetAnim(o, 0x166, 0xEB);
+    o->cb9C = animStepKeys;
     o = func_80042F00(0x60, 0, 0, 0);
-    func_800433A8(o, 0x167, 0xEB);
-    o->cb9C = func_8004303C;
+    actorSetAnim(o, 0x167, 0xEB);
+    o->cb9C = animStepKeys;
     o = func_80042F00(0x61, 0, 0, 0);
-    o->cb9C = func_8004303C;
-    func_800433A8(o, 0x168, 0xEB);
+    o->cb9C = animStepKeys;
+    actorSetAnim(o, 0x168, 0xEB);
     o = func_80042F00(0x62, 0, 0, 0);
-    o->cb9C = func_8004303C;
-    func_800433A8(o, 0x169, 0xEB);
+    o->cb9C = animStepKeys;
+    actorSetAnim(o, 0x169, 0xEB);
     o = func_80042F00(0x63, 0, 0, 0);
-    o->cb9C = func_8004303C;
-    func_800433A8(o, 0x16A, 0xEB);
+    o->cb9C = animStepKeys;
+    actorSetAnim(o, 0x16A, 0xEB);
     D_800B7FE0->unk4->cb9C = func_80062D64;
     D_800B7FE0->unk4->cb98 = func_80062DA0;
     D_800B7FE0->unk8 = func_8004811C(0, D_800B7FE0);
@@ -165,14 +165,14 @@ void func_80062280(void) {
     D_800B7FE0->unk10->unk80 = 50000;
     D_800B7FE0->unk10->unk84 = 0;
     D_800B7FE0->unk3F4 = 0;
-    D_800B7FE0->model = func_80023E18(D_800FB038[D_800B7FE0->unk4->model]);
+    D_800B7FE0->model = getImageAsset(D_800FB038[D_800B7FE0->unk4->model]);
     for (i = 0; i < D_800B7FE0->model->count; i++) {
         if (func_80026B50(D_800B7FE0->model->nodes[i].name, D_800089D0) == 0) {
             break;
         }
     }
     if (i >= D_800B7FE0->model->count) {
-        func_800899DC(D_800089DC);
+        debugPrintf(D_800089DC);
     }
     D_800B7FE0->node[0] = i;
     for (i = 0; i < D_800B7FE0->model->count; i++) {
@@ -181,7 +181,7 @@ void func_80062280(void) {
         }
     }
     if (i >= D_800B7FE0->model->count) {
-        func_800899DC(D_80008A10);
+        debugPrintf(D_80008A10);
     }
     D_800B7FE0->node[1] = i;
     for (i = 0; i < D_800B7FE0->model->count; i++) {
@@ -190,7 +190,7 @@ void func_80062280(void) {
         }
     }
     if (i >= D_800B7FE0->model->count) {
-        func_800899DC(D_80008A40);
+        debugPrintf(D_80008A40);
     }
     D_800B7FE0->node[2] = i;
     for (i = 0; i < D_800B7FE0->model->count; i++) {
@@ -199,7 +199,7 @@ void func_80062280(void) {
         }
     }
     if (i >= D_800B7FE0->model->count) {
-        func_800899DC(D_80008A70);
+        debugPrintf(D_80008A70);
     }
     D_800B7FE0->node[3] = i;
     for (i = 0; i < D_800B7FE0->model->count; i++) {
@@ -208,7 +208,7 @@ void func_80062280(void) {
         }
     }
     if (i >= D_800B7FE0->model->count) {
-        func_800899DC(D_80008A9C);
+        debugPrintf(D_80008A9C);
     }
     D_800B7FE0->node[4] = i;
     for (i = 0; i < D_800B7FE0->model->count; i++) {
@@ -217,7 +217,7 @@ void func_80062280(void) {
         }
     }
     if (i >= D_800B7FE0->model->count) {
-        func_800899DC(D_80008ACC);
+        debugPrintf(D_80008ACC);
     }
     D_800B7FE0->node[5] = i;
     func_8004BA40(&D_800B7FE0->mtx[0], 0.0f, 1000.0f, -1000.0f);

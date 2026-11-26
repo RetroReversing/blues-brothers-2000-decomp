@@ -56,11 +56,11 @@ extern Vtx D_800BD6C8[];
 void func_8001F230(Emitter *);
 void func_8001F1D0(Emitter *);
 void func_80024FE8(void *);
-s32 func_80022728(Emitter *, void *, s32);
-Image *func_80023E18(s32);
+s32 buildObjectMatrix(Emitter *, void *, s32);
+Image *getImageAsset(s32);
 s32 func_8001EAD0(void);
 s32 func_8001EB18(s32);
-void func_80029F8C(s32);
+void setRenderState(s32);
 s16 sins(u16);
 s16 coss(u16);
 
@@ -114,8 +114,8 @@ void func_80021818(Emitter *obj) {
     }
     alpha = fade;
     func_80024FE8(m);
-    func_80022728(obj, m, 1);
-    img = func_80023E18(obj->image);
+    buildObjectMatrix(obj, m, 1);
+    img = getImageAsset(obj->image);
     h = img->height;
     w = img->width;
     bpp = img->bpp;
@@ -214,7 +214,7 @@ void func_80021818(Emitter *obj) {
         func_8001EB18(4);
         p++;
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
 }
 
 

@@ -1,8 +1,8 @@
 s16 coss(u16);
 s16 sins(u16);
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 s32 func_8001B990(s32, s32);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 s32 func_8002D1A0(void);
 void func_8000E7A4(void);
 
@@ -25,9 +25,9 @@ typedef struct ObjL {
     s32 fB8;
 } ObjL;
 
-ObjL *func_80023874(s32, ObjL *);
+ObjL *findActor(s32, ObjL *);
 void func_8002D4E0(ObjL *, s32);
-void func_8002D620(ObjL *);
+void syncActorPrevPos(ObjL *);
 ObjL *func_8002E374(s32);
 
 void func_8000E874(ObjL *arg0) {
@@ -37,11 +37,11 @@ void func_8000E874(ObjL *arg0) {
     s32 a;
 
     p = NULL;
-    if (func_8000C43C() == 0x30 && func_8001B990(0x100, 0x43) != 0) {
+    if (cameraGetMode() == 0x30 && func_8001B990(0x100, 0x43) != 0) {
         arg0->fA0(arg0);
         return;
     }
-    if (func_80023874(0x109, p) == NULL) {
+    if (findActor(0x109, p) == NULL) {
         return;
     }
     kind = arg0->fB8;
@@ -55,15 +55,15 @@ void func_8000E874(ObjL *arg0) {
         p->z = arg0->z;
         p->x += (f32)((sins(a) * 25) >> 12);
         p->z += (f32)((coss(a) * 25) >> 12);
-        p->f38 = p->f34 = func_80024394(0x40, 0x80);
-        p->f14 = func_80024394(0x2000, 0x3E80);
-        func_8002D4E0(p, func_80024394(0x1F4, 0x3E8));
+        p->f38 = p->f34 = randomRange(0x40, 0x80);
+        p->f14 = randomRange(0x2000, 0x3E80);
+        func_8002D4E0(p, randomRange(0x1F4, 0x3E8));
         p->f0 = 0x10D;
         p->f9C = func_8000E7A4;
         p->f58 = arg0->f58;
-        func_8002D620(p);
+        syncActorPrevPos(p);
     }
-    if (func_8000C43C() == 0x30) {
+    if (cameraGetMode() == 0x30) {
         func_8001B990(0x200, 0x43);
     }
     arg0->fA0(arg0);

@@ -1,5 +1,5 @@
-extern u8 D_800B2904[];
-extern u8 D_800B2A04[];
+extern u8 gCharToGlyph[];
+extern u8 gGlyphPadding[];
 
 s32 func_80028694(u8 *s) {
     s32 i;
@@ -21,7 +21,7 @@ s32 func_80028694(u8 *s) {
             return w;
         }
         i++;
-        c = D_800B2904[c];
-        w += 13 - D_800B2A04[c - 0x20];
+        c = gCharToGlyph[c];
+        w += 13 - gGlyphPadding[c - 0x20];
     }
 }

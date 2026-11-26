@@ -15,13 +15,13 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_80023C58(M2C_UNK);                     /* extern */
 M2C_UNK func_80023C64(M2C_UNK);                     /* extern */
 M2C_UNK func_80030C40(void *, M2C_UNK);             /* extern */
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern M2C_UNK func_80023078;
 
 void func_80030EAC(void *arg0) {
     func_80023C64(0x10C);
     func_80023C58(0);
     M2C_FIELD(arg0, void **, 0x98) = (void *) (&func_80023078 + 2);
-    D_801070A0 = 0;
+    gPadPressed = 0;
     func_80030C40(arg0, 1);
 }

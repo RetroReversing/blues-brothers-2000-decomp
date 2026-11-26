@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002220C(s32);                         /* extern */
-M2C_UNK func_80029F8C(M2C_UNK);                     /* extern */
+M2C_UNK setDrawMode(s32);                         /* extern */
+M2C_UNK setRenderState(M2C_UNK);                     /* extern */
 
 void func_8001F230(void *arg0) {
-    func_80029F8C(-1);
-    func_80029F8C(0x57);
-    func_8002220C(M2C_FIELD(arg0, s32 *, 0x58));
+    setRenderState(-1);
+    setRenderState(0x57);
+    setDrawMode(M2C_FIELD(arg0, s32 *, 0x58));
 }

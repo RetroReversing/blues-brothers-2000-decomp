@@ -7,16 +7,16 @@ struct G {
     f32 fDC; u8 pa[0x18]; s32 fF8; u8 pb[0xD0];
 };
 extern s32 func_80080DE0(s32);
-extern void func_80081588(s32, s32);
+extern void initSpline(s32, s32);
 extern s32 func_80081990(Vec *, s32, f32);
 extern void func_80081AC0(Vec *, s32, s32);
 extern s32 func_8002492C(f32, f32);
-extern void func_8002D620(G *);
+extern void syncActorPrevPos(G *);
 extern void func_800768E8(G *);
 extern void func_800134F0(G *);
 extern void func_80013550(G *);
 typedef struct D6 { u8 p0[0xD0]; s32 fD0; } D6;
-extern D6 *D_800BD06C;
+extern D6 *gCameraTarget;
 
 void func_80072824(G *arg0) {
     Vec sp;
@@ -30,7 +30,7 @@ void func_80072824(G *arg0) {
         arg0->f7C = 1;
         arg0->fF8 = arg0->fF8 | 8;
         if (func_80080DE0(arg0->f70) == 0) {
-            func_80081588(arg0->f70, 0);
+            initSpline(arg0->f70, 0);
         }
         arg0->fDC = 0.0f;
         arg0->fAC = 0.05f;
@@ -50,7 +50,7 @@ void func_80072824(G *arg0) {
         if (arg0->f0 == 0x10E) {
             arg0->f4C = 0.0f;
             arg0->f54 = 0.0f;
-            func_8002D620(arg0);
+            syncActorPrevPos(arg0);
             func_800134F0(arg0);
             func_80013550(arg0);
         }
@@ -60,8 +60,8 @@ void func_80072824(G *arg0) {
         if (arg0->f0 == 0x10E) {
             arg0->f4C = arg0->pos.x - arg0->f40;
             arg0->f54 = arg0->pos.z - arg0->f48;
-            func_8002D620(arg0);
-            if (D_800BD06C->fD0 != 5) {
+            syncActorPrevPos(arg0);
+            if (gCameraTarget->fD0 != 5) {
                 func_800134F0(arg0);
             }
             func_80013550(arg0);

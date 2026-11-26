@@ -12,12 +12,12 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
-M2C_UNK func_8000C874(s16);                         /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
-f32 func_8002D66C(void *, f32, s32 *);            /* extern */
+s32 cameraGetMode();                                /* extern */
+M2C_UNK initLevel(s16);                         /* extern */
+s32 tickActorTimer(void *);                          /* extern */
+f32 getCameraTargetDist(void *, f32, s32 *);            /* extern */
 extern u8 D_800BCFB8[];
-extern s32 *D_800BD06C;
+extern s32 *gCameraTarget;
 typedef struct { s16 x0; u16 x2; u16 x4; u16 x6; u16 x8; s16 xA; } Snd;
 extern Snd D_801700B8;
 extern M2C_UNK func_80023078;
@@ -41,13 +41,13 @@ void func_800729C4(void *arg0) {
             return;
         }
     }
-    if ((M2C_FIELD(arg0, s32 *, 0x88) == 0) && (func_8002D5CC(arg0) != 0)) {
-        if (*D_800BD06C != 3) {
+    if ((M2C_FIELD(arg0, s32 *, 0x88) == 0) && (tickActorTimer(arg0) != 0)) {
+        if (*gCameraTarget != 3) {
             M2C_FIELD(arg0, s32 *, 0xC0) = 0;
             return;
         }
         r = 200.0f;
-        f = func_8002D66C(arg0, r, 0);
+        f = getCameraTargetDist(arg0, r, 0);
         M2C_FIELD(arg0, s32 *, 0x64) = 0;
         if (r <= f) {
             M2C_FIELD(arg0, s32 *, 0xC0) = 1;
@@ -59,13 +59,13 @@ void func_800729C4(void *arg0) {
             D_801700B8.x6 = M2C_FIELD(arg0, u16 *, 0x7A);
             D_801700B8.x8 = M2C_FIELD(arg0, u16 *, 0x7E);
             D_801700B8.x2 = M2C_FIELD(arg0, u16 *, 0x82);
-            D_800BCFB8[func_8000C43C()] = 1;
+            D_800BCFB8[cameraGetMode()] = 1;
             v = ((D_801700B8.x4 & 7) << 9) | ((D_801700B8.x6 & 0xF) << 5) | ((M2C_FIELD(arg0, u16 *, 0x72) & 0xF) * 2);
             if (D_801700B8.x2 != 0) {
                 v |= 1;
             }
             D_801700B8.xA = v;
-            func_8000C874(v);
+            initLevel(v);
         }
     }
 }

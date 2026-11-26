@@ -13,14 +13,14 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80013654();                                /* extern */
-s32 func_8004303C(void *);                          /* extern */
+s32 animStepKeys(void *);                          /* extern */
 
 void func_8007A780(void *arg0) {
     if (func_80013654() != 0) {
         M2C_FIELD(arg0, s32 *, 0x80) = 1;
     }
     if (M2C_FIELD(arg0, s32 *, 0x80) != 0) {
-        M2C_FIELD(arg0, s32 *, 0x80) = (s32) (func_8004303C(arg0) == 0);
+        M2C_FIELD(arg0, s32 *, 0x80) = (s32) (animStepKeys(arg0) == 0);
     } else {
         M2C_FIELD(arg0, s32 *, 0xDC) = 0;
     }

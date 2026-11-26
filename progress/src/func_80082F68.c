@@ -17,7 +17,7 @@ s32 *func_80081BF0(s32, s32, s32);
 s32 func_800833D0(s32);
 
 extern Pair D_800B9000[];
-extern s32 D_801070A0[];
+extern s32 gPadPressed[];
 extern s32 D_801073B0[];
 extern s32 D_801073C0[];
 extern s32 D_80171960[];
@@ -52,20 +52,20 @@ void func_80082F68(s32 p) {
         sy = 0;
     }
     if (sx > 20 && D_80171960[p] <= 20) {
-        D_801070A0[p] |= 0x100;
+        gPadPressed[p] |= 0x100;
     }
     if (sx < -20 && D_80171960[p] >= -20) {
-        D_801070A0[p] |= 0x200;
+        gPadPressed[p] |= 0x200;
     }
     if (sy > 20 && D_80171970[p] <= 20) {
-        D_801070A0[p] |= 0x800;
+        gPadPressed[p] |= 0x800;
     }
     if (sy < -20 && D_80171970[p] >= -20) {
-        D_801070A0[p] |= 0x400;
+        gPadPressed[p] |= 0x400;
     }
     D_80171960[p] = sx;
     D_80171970[p] = sy;
-    btn = D_801070A0[p];
+    btn = gPadPressed[p];
     if (btn != 0) {
         if (btn == seq[D_801719E0[p].x8]) {
             D_801719E0[p].x10[D_801719E0[p].x8] = 1;

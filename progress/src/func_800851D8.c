@@ -1,4 +1,4 @@
-void func_800899DC();
+void debugPrintf();
 extern char D_80009A7C[];
 extern char D_800B7B10[];
 extern char D_800B9B30[];
@@ -8,7 +8,7 @@ char *func_800851D8(void *arg0) {
 
     base = D_800B7B10;
     if (arg0 == NULL) {
-        func_800899DC(D_80009A7C);
+        debugPrintf(D_80009A7C);
     }
     if (*(s32 *)((s8 *)arg0 + 0xB8) < 0xA9) {
         v = *(s32 *)((s8 *)arg0 + 0xB8) - 0xA;

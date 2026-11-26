@@ -17,13 +17,13 @@ M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 extern s32 D_800B5DD4;
 extern s32 D_800B81D4;
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 extern M2C_UNK func_8003D558;
 extern M2C_UNK func_8003D854;
 extern M2C_UNK func_8003DEF0;
 
 void func_8003D7A8(void *arg0) {
-    if (D_801070A0 & 0x8000) {
+    if (gPadPressed & 0x8000) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003D558;
         func_8002E7B8(1, 0);
         D_800B5DD4 = 1;
@@ -33,7 +33,7 @@ void func_8003D7A8(void *arg0) {
         func_8002A360(8, 0x9D);
         func_8001AFD4();
     }
-    if (D_801070A0 & 0x4000) {
+    if (gPadPressed & 0x4000) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003D854;
         M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_8003DEF0;
     }

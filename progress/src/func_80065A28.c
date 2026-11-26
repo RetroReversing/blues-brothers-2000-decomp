@@ -11,7 +11,7 @@ typedef struct ObjV {
 } ObjV;
 
 f32 func_8002DD60(f32);
-extern ObjV *D_800BD06C;
+extern ObjV *gCameraTarget;
 extern s32 D_80140210;
 extern s32 D_80140214;
 
@@ -23,25 +23,25 @@ void func_80065A28(ObjV *arg0) {
 
     arg0->f0 = 0x101;
     if (arg0->fC0 == 0) {
-        dx = func_8002DD60(D_800BD06C->x - arg0->x);
-        dy = func_8002DD60(D_800BD06C->y - arg0->y);
-        dz = func_8002DD60(D_800BD06C->z - arg0->z);
-        if (dx < 100.0f && dy < 175.0f && (D_800BD06C->f10 >= -0x2AF7 && D_800BD06C->f10 <= 0x2AF7)) {
+        dx = func_8002DD60(gCameraTarget->x - arg0->x);
+        dy = func_8002DD60(gCameraTarget->y - arg0->y);
+        dz = func_8002DD60(gCameraTarget->z - arg0->z);
+        if (dx < 100.0f && dy < 175.0f && (gCameraTarget->f10 >= -0x2AF7 && gCameraTarget->f10 <= 0x2AF7)) {
             arg0->fC0 = 1;
             D_80140214 = 0;
             D_80140210 = 1;
-            arg0->f84 = D_800BD06C->x;
+            arg0->f84 = gCameraTarget->x;
         }
     } else {
         lim = arg0->x + 50.0f;
-        if (lim < D_800BD06C->x) {
-            D_800BD06C->x = lim;
+        if (lim < gCameraTarget->x) {
+            gCameraTarget->x = lim;
         }
         lim = arg0->x - 50.0f;
-        if (D_800BD06C->x < lim) {
-            D_800BD06C->x = lim;
+        if (gCameraTarget->x < lim) {
+            gCameraTarget->x = lim;
         }
-        if (D_800BD06C->z <= 190.0f && !(D_800BD06C->f10 >= -0x2AF7 && D_800BD06C->f10 <= 0x2AF7)) {
+        if (gCameraTarget->z <= 190.0f && !(gCameraTarget->f10 >= -0x2AF7 && gCameraTarget->f10 <= 0x2AF7)) {
             D_80140214 = 1;
             D_80140210 = 0;
             arg0->fC0 = 0;

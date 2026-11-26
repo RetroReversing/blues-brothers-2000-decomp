@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_8002A360();
-s32 func_8002D5CC();
+s32 tickActorTimer();
 s32 func_80043328();
 extern f32 D_80008D00;
 extern f32 D_80008D04;
@@ -62,7 +62,7 @@ s32 func_800672A0(void *arg0) {
             ((__repair_record_arg0*)arg0)->field_80 = (s32) ((f32) ((__repair_record_arg0*)arg0)->field_80 + 8.0f);
         }
     }
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         ((__repair_record_arg0*)arg0)->field_7C = 0;
         ((__repair_record_arg0*)arg0)->field_D8 = &func_80067474;
     }

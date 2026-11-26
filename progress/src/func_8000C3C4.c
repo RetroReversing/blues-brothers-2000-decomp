@@ -3,7 +3,7 @@ typedef s32 M2C_UNK;
 #define M2C_FIELD_PTR(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
 
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 extern f32 D_80000474;
 extern void func_800393F4(void);
 
@@ -17,6 +17,6 @@ s32 func_8000C3C4(void) {
     M2C_FIELD(temp_v0, s32 *, 0) = 3;
     M2C_FIELD(temp_v0, f32 *, 8) = D_80000474;
     M2C_FIELD(temp_v0, f32 *, 0x44) = D_80000474;
-    func_800433A8(temp_v0, 1, 0x100);
+    actorSetAnim(temp_v0, 1, 0x100);
     return (s32) temp_v0;
 }

@@ -12,24 +12,24 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 M2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
+M2C_UNK setSlotAsset(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
 
 void func_80075E4C(void) {
     M2C_UNK var_a0;
     M2C_UNK var_a1;
 
-    if (func_8000C43C() == 0x32) {
+    if (cameraGetMode() == 0x32) {
         func_80023A74(0x7A, 0xD3C);
         var_a0 = 0x1C2;
         var_a1 = 0xD3D;
     } else {
         func_80023A74(0x7A, 0xCF5);
-        func_80023A98(0x1C2, 0xCF6, 0);
+        setSlotAsset(0x1C2, 0xCF6, 0);
         func_80023A74(0x7B, 0xD9A);
         var_a0 = 0x1C3;
         var_a1 = 0xD9B;
     }
-    func_80023A98(var_a0, var_a1, 0);
+    setSlotAsset(var_a0, var_a1, 0);
 }

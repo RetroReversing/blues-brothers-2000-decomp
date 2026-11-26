@@ -13,7 +13,7 @@ typedef struct Obj {
 void func_8002D9B0(Obj *);
 void func_8002D9F8(Obj *);
 void func_8003BF98(Obj *);
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 void func_80013308(void);
 
 void func_800131F8(Obj *o) {
@@ -28,9 +28,9 @@ void func_800131F8(Obj *o) {
     if (o->y < o->f44 - 5000.0f) {
         o->f9C = func_80013308;
     }
-    dx = D_800BD06C->x - o->x;
-    dz = D_800BD06C->z - o->z;
-    if (abs(dx) < 201 && abs(dz) < 201 && abs((s32)(o->y - 400.0f - D_800BD06C->y + 200.0f)) < 400) {
+    dx = gCameraTarget->x - o->x;
+    dz = gCameraTarget->z - o->z;
+    if (abs(dx) < 201 && abs(dz) < 201 && abs((s32)(o->y - 400.0f - gCameraTarget->y + 200.0f)) < 400) {
         func_8003BF98(o);
     }
 }

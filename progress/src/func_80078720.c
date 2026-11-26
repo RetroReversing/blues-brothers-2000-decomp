@@ -5,22 +5,22 @@ typedef struct Obj {
     s32 x80;
 } Obj;
 
-extern s32 func_80024394(s32, s32);
-extern Obj *func_80023874(s32, Obj *);
-extern s32 D_8014A928[];
+extern s32 randomRange(s32, s32);
+extern Obj *findActor(s32, Obj *);
+extern s32 gSplinePointCount[];
 
 void func_80078720(Obj *o) {
     s32 r;
     s32 pair;
     Obj *c;
 
-    r = func_80024394(0, (D_8014A928[o->x70] - 1) * 100);
+    r = randomRange(0, (gSplinePointCount[o->x70] - 1) * 100);
     if (o->x70 & 1) {
         pair = o->x70 + 1;
     } else {
         pair = o->x70 - 1;
     }
-    for (c = func_80023874(0x102F, NULL); c != NULL; c = func_80023874(0x102F, c)) {
+    for (c = findActor(0x102F, NULL); c != NULL; c = findActor(0x102F, c)) {
         if (c->x70 == pair) {
             if (c->x80 != 0) {
                 o->x80 = c->x80;

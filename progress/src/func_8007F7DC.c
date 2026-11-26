@@ -12,10 +12,10 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_80023874();
-f32 func_8002D340(f32, f32, f32);      /* extern */
-s32 func_8002D620();
-s32 func_800899DC();
+void *findActor();
+f32 approachF32(f32, f32, f32);      /* extern */
+s32 syncActorPrevPos();
+s32 debugPrintf();
 extern char D_800096B8[];
 extern f32 D_800096D4;
 
@@ -26,21 +26,21 @@ void func_8007F7DC(void *arg0) {
     if ((*(s32 *)((s8 *)arg0 + 0x7C)) == 0) {
         (*(s32 *)((s8 *)arg0 + 0x7C)) = 1;
         (*(s32 *)((s8 *)arg0 + 0x84)) = 0;
-        do { func_8002D620(); } while (0);
+        do { syncActorPrevPos(); } while (0);
         temp = *(f32 *)((s8 *)arg0 + 0x48);
         (*(f32 *)((s8 *)arg0 + 0xC)) = (f32) (temp + 600.0f);
     }
     if ((*(s32 *)((s8 *)arg0 + 0x84)) >= 0xB) {
-        func_800899DC(D_800096B8);
+        debugPrintf(D_800096B8);
     }
     temp_v0 = (*(void **)((s8 *)arg0 + 0xA4));
     if (temp_v0 == NULL) {
-        (*(void **)((s8 *)arg0 + 0xA4)) = func_80023874(0x102D, 0);
+        (*(void **)((s8 *)arg0 + 0xA4)) = findActor(0x102D, 0);
         (*(s32 *)((s8 *)arg0 + 0x84)) += 1;
         return;
     }
     if ((*(s32 *)((s8 *)temp_v0 + 0xFC)) < (*(s32 *)((s8 *)arg0 + 0x70))) {
-        (*(f32 *)((s8 *)arg0 + 0xC)) = func_8002D340((*(f32 *)((s8 *)arg0 + 0x48)), (*(f32 *)((s8 *)arg0 + 0xC)), 8.0f);
+        (*(f32 *)((s8 *)arg0 + 0xC)) = approachF32((*(f32 *)((s8 *)arg0 + 0x48)), (*(f32 *)((s8 *)arg0 + 0xC)), 8.0f);
     }
 }
 

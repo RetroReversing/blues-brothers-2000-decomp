@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80093240();
+s32 huftBuild();
 s32 func_80093D08();
 extern char D_8000A1E8[];
 extern char D_8000A210[];
@@ -21,7 +21,7 @@ s32 func_80093858(s32 arg0, s32 *arg1, s32 *arg2, void *arg3) {
     s32 var_v0;
     s32 var_v1;
 
-    var_v1 = func_80093240(arg0, 0x13, 0x13, 0, 0, arg2, arg1, arg3);
+    var_v1 = huftBuild(arg0, 0x13, 0x13, 0, 0, arg2, arg1, arg3);
     if (var_v1 == -3) {
         M2C_FIELD(arg3, s32 **, 0x18) = D_8000A1E8;
         goto block_5;

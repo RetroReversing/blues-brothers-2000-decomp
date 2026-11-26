@@ -6,14 +6,14 @@ typedef struct {
     Vec3f pos;
 } Obj;
 f32 __cosf(f32);
-f32 func_80095DC0(f32);
+f32 sinApprox(f32);
 void func_8002DAE0(void *, void *, f32);
 void func_8002DB6C(void *, void *, f32);
-void func_8002DC84(void *);
-void func_8002DD8C(Vec3f *, void *, Vec3f *);
-s32 func_80035364(Vec3f *, Vec3f *, s32);
-extern Vec3f D_800B4B84[];
-extern Obj *D_800BD06C;
+void mtxIdentity3(void *);
+void mtxTransformVec3(Vec3f *, void *, Vec3f *);
+s32 raycastCollision(Vec3f *, Vec3f *, s32);
+extern Vec3f cameraRayDirs[];
+extern Obj *gCameraTarget;
 
 s32 func_800369EC(Obj *arg0, s32 dist, s32 yaw, s32 pitch) {
     Vec3f cam;
@@ -36,26 +36,26 @@ s32 func_800369EC(Obj *arg0, s32 dist, s32 yaw, s32 pitch) {
     pos.x = arg0->pos.x;
     pos.y = arg0->pos.y;
     pos.z = arg0->pos.z;
-    cam.x = D_800BD06C->pos.x;
-    cam.y = D_800BD06C->pos.y + 200.0f;
-    cam.z = D_800BD06C->pos.z;
-    func_8002DC84(m1);
-    func_8002DC84(m2);
+    cam.x = gCameraTarget->pos.x;
+    cam.y = gCameraTarget->pos.y + 200.0f;
+    cam.z = gCameraTarget->pos.z;
+    mtxIdentity3(m1);
+    mtxIdentity3(m2);
     func_8002DB6C(m1, m2, a);
     func_8002DAE0(m2, m1, -b);
     t = d * __cosf(b);
-    t *= func_80095DC0(a);
+    t *= sinApprox(a);
     pos.x = cam.x - t;
-    pos.y = cam.y - d * func_80095DC0(b);
+    pos.y = cam.y - d * sinApprox(b);
     u = d * __cosf(b);
     u *= __cosf(a);
     pos.z = cam.z - u;
     for (i = 1; i < 5; i++) {
-        func_8002DD8C(&pt, m2, &D_800B4B84[i]);
+        mtxTransformVec3(&pt, m2, &cameraRayDirs[i]);
         pt.x += pos.x;
         pt.y += pos.y;
         pt.z += pos.z;
-        if (func_80035364(&cam, &pt, 0) != 0) {
+        if (raycastCollision(&cam, &pt, 0) != 0) {
             return 0;
         }
     }

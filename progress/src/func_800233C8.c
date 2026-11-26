@@ -10,7 +10,7 @@ typedef struct Obj {
 void func_80046310(void *, f32, s32);
 extern Obj *D_800AB9BC;
 extern Obj *D_800AB9C0;
-extern u8 *D_800BD06C;
+extern u8 *gCameraTarget;
 extern s32 D_800DA840;
 
 void func_800233C8(void) {
@@ -18,9 +18,9 @@ void func_800233C8(void) {
     Obj *p;
 
     for (i = 0; i < 16; i++) {
-        if (i == 13 && D_800BD06C != NULL && *(s32 *)(D_800BD06C + 0x68) != -1 && *(s32 *)D_800BD06C == 3 &&
-            !(*(s32 *)(D_800BD06C + 0xF8) & 0x40)) {
-            func_80046310(D_800BD06C + 4, 125.0f, 0);
+        if (i == 13 && gCameraTarget != NULL && *(s32 *)(gCameraTarget + 0x68) != -1 && *(s32 *)gCameraTarget == 3 &&
+            !(*(s32 *)(gCameraTarget + 0xF8) & 0x40)) {
+            func_80046310(gCameraTarget + 4, 125.0f, 0);
             D_800DA840 = 0;
         }
         for (p = D_800AB9BC; p < D_800AB9C0; p++) {

@@ -6,7 +6,7 @@ inline static int __repair_inline(s32 a, s32 b)
 s32 alSynStopVoice();
 s32 func_8008C380();
 s32 func_8008DDAC();
-s32 func_8008E1E0();
+s32 playSeqChannelNote();
 s32 func_8008E644();
 s32 func_8008E6D4();
 s32 func_8008E834(s32 *, s32, f32);
@@ -61,7 +61,7 @@ s32 func_8008DF5C(void)
             loop_8:
             if ((*((s32 *) (((char *) ((void *) (var_s1 + 0xAA))) + (-0xA6)))) != 0)
             {
-              func_8008E1E0(var_s1, var_s2);
+              playSeqChannelNote(var_s1, var_s2);
               if (((*((s32 *) (((char *) ((void *) (var_s1 + 0xAA))) + (-0x6E)))) - (*((s32 *) (((char *) ((void *) (var_s1 + 0xAA))) + (-0x9E))))) >= 0)
               {
                 goto block_10;

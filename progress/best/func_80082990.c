@@ -22,9 +22,9 @@ typedef struct {
     f32 frame;
 } Obj;
 
-s32 func_80024394(s32, s32);
-s32 func_8002D5CC(Obj *);
-void func_800433A8(Obj *, s32, s32);
+s32 randomRange(s32, s32);
+s32 tickActorTimer(Obj *);
+void actorSetAnim(Obj *, s32, s32);
 s32 func_80082400(void);
 s32 func_80082688(s32, s32);
 void func_80082F68(s32);
@@ -32,7 +32,7 @@ void func_80083354(s32);
 void func_80083604(void);
 void func_800826B4(Obj *);
 extern Info D_800B9000[];
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 D_80171980;
 extern s32 D_80171994;
 extern Obj *D_801719A8;
@@ -54,13 +54,13 @@ void func_80082990(Obj *o)
     if (D_801719AC->anim == 0x18B) {
         f = *(volatile f32 *)&D_801719AC->frame;
     }
-    D_80171980 += D_800B9ECC;
+    D_80171980 += gCamSpeedScale;
     m = D_80171980 % 144;
     func_80082F68(0);
     if (D_80171994 != 0) {
         func_80082F68(1);
-    } else if (func_8002D5CC(o) != 0) {
-        if (func_80024394(0, 100) >= 91) {
+    } else if (tickActorTimer(o) != 0) {
+        if (randomRange(0, 100) >= 91) {
             func_80083354(1);
         }
         o->timer = 10;
@@ -101,6 +101,6 @@ void func_80082990(Obj *o)
     if (any) {
         func_80083604();
     }
-    func_800433A8(D_801719A8, snd[0], 0x100);
-    func_800433A8(D_801719AC, snd[1], 0x100);
+    actorSetAnim(D_801719A8, snd[0], 0x100);
+    actorSetAnim(D_801719AC, snd[1], 0x100);
 }

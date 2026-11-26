@@ -1,10 +1,10 @@
 s16 coss(s32);
 s16 sins(s32);
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 void func_80034F1C(void *);
 extern void *D_800B3960;
-extern s32 D_800B4ABC[];
-extern void *D_800BD06C;
+extern s32 cameraDistTable[];
+extern void *gCameraTarget;
 extern s32 D_8013FFA4;
 extern s32 D_8013FFA8;
 extern s32 D_8014002C;
@@ -23,23 +23,23 @@ void func_80033BDC(s32 arg0) {
     D_8014002C = 0;
     F(p, s32, 0x6C) = arg0;
     F(p, s32, 0xC0) = 0;
-    if (func_8000C43C() == 0x36 || func_8000C43C() == 0x23) {
-        D_800B4ABC[0] = 800;
-        D_800B4ABC[2] = 1000;
-        D_800B4ABC[4] = 1200;
-        D_800B4ABC[6] = 1000;
-        D_800B4ABC[8] = 800;
+    if (cameraGetMode() == 0x36 || cameraGetMode() == 0x23) {
+        cameraDistTable[0] = 800;
+        cameraDistTable[2] = 1000;
+        cameraDistTable[4] = 1200;
+        cameraDistTable[6] = 1000;
+        cameraDistTable[8] = 800;
     } else {
-        D_800B4ABC[0] = 800;
-        D_800B4ABC[2] = 1200;
-        D_800B4ABC[4] = 1600;
-        D_800B4ABC[6] = 1200;
-        D_800B4ABC[8] = 800;
+        cameraDistTable[0] = 800;
+        cameraDistTable[2] = 1200;
+        cameraDistTable[4] = 1600;
+        cameraDistTable[6] = 1200;
+        cameraDistTable[8] = 800;
     }
     func_80034F1C(p);
     a1 = F(p, s32, 0x10);
     a2 = F(p, s32, 0x80);
-    q = D_800BD06C;
+    q = gCameraTarget;
     F(p, s32, 0x78) = F(p, s32, 0x7C);
     F(p, s32, 0x74) = a1;
     F(p, s32, 0x14) = a2;

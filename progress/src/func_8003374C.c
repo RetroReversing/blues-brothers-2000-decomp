@@ -12,29 +12,29 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023E18(s32);                             /* extern */
+s32 getImageAsset(s32);                             /* extern */
 M2C_UNK func_80027038(M2C_UNK);                     /* extern */
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80027158(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_800294D0(s32);                         /* extern */
-M2C_UNK func_80031C70(void *, M2C_UNK);             /* extern */
-M2C_UNK func_8003CDA0(M2C_UNK);                     /* extern */
+M2C_UNK setSlotTextColor(void *, M2C_UNK);             /* extern */
+M2C_UNK drawCenteredMessage(M2C_UNK);                     /* extern */
 M2C_UNK func_80081E1C(s32, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 
 void func_8003374C(void *arg0) {
     func_80027038(1);
-    func_800294D0(func_80023E18(M2C_FIELD(arg0, s32 *, 0x84)));
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
+    func_800294D0(getImageAsset(M2C_FIELD(arg0, s32 *, 0x84)));
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
     func_80081E1C(M2C_FIELD(arg0, s32 *, 0x60), 0xA0, 0x14, 2);
     func_80027158(0xA0, 0x46);
-    func_8003CDA0(0x50);
-    func_8003CDA0(0x2A);
-    func_8003CDA0(0x62);
-    func_8003CDA0(0x2B);
-    func_80031C70(arg0, 0);
-    func_8003CDA0(0x28);
-    func_80031C70(arg0, 1);
-    func_8003CDA0(0x2C);
-    func_80031C70(arg0, 2);
-    func_8003CDA0(0x29);
+    drawCenteredMessage(0x50);
+    drawCenteredMessage(0x2A);
+    drawCenteredMessage(0x62);
+    drawCenteredMessage(0x2B);
+    setSlotTextColor(arg0, 0);
+    drawCenteredMessage(0x28);
+    setSlotTextColor(arg0, 1);
+    drawCenteredMessage(0x2C);
+    setSlotTextColor(arg0, 2);
+    drawCenteredMessage(0x29);
 }

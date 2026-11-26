@@ -7,8 +7,8 @@ extern s32 func_800291AC(u8 *);
 extern void func_800271A8(s32, s32);
 extern void func_80028410(s32, s32, s32, s32);
 extern s32 D_800B4988;
-extern s32 D_800B9C74;
-extern s32 D_800B9C78;
+extern s32 gScreenWidth;
+extern s32 gScreenHeight;
 extern u8 *D_8014AA88;
 extern s32 D_8014AA8C;
 extern s32 D_8014AA98;
@@ -43,11 +43,11 @@ s32 func_80053B34(Obj *o) {
     if (D_800B4988 != 0) {
         w = 0x23;
     }
-    y = D_800B9C74 - 0x1E;
+    y = gScreenWidth - 0x1E;
     if (D_8014AA98 == 0) {
         func_80028410(0x1E, w, y, w + o->x74);
     } else {
-        x = D_800B9C78 - w;
+        x = gScreenHeight - w;
         func_80028410(0x1E, x - o->x74, y, x);
     }
     return 0;

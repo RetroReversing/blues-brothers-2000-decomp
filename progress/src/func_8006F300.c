@@ -1,4 +1,4 @@
-s32 func_8002D5CC(void *);
+s32 tickActorTimer(void *);
 s32 func_8006DAA0(s32, s32);
 s32 func_8006DAE8(s32);
 void func_8002A360(s32, s32);
@@ -6,9 +6,9 @@ typedef struct { u8 pad[0x9C]; void *f9C; } Obj232B4;
 Obj232B4 *func_800232B4(s32, s32, s32, s32);
 s32 func_80026188(s32);
 void func_8006D8E0(void *);
-void func_8002710C(s32, s32, s32, s32);
-s32 func_80023E18(s32);
-void func_800272E0(s32, s32, s32, s32);
+void setTextColor(s32, s32, s32, s32);
+s32 getImageAsset(s32);
+void drawImage(s32, s32, s32, s32);
 void func_8006FEEC(void);
 void func_8006DBB8(void);
 void func_8006EFF8(void);
@@ -30,7 +30,7 @@ s32 func_8006F300(u8 *arg0) {
     s32 c;
 
     res = 0;
-    have = func_8002D5CC(arg0) != 0;
+    have = tickActorTimer(arg0) != 0;
     k = *(s32 *)(arg0 + 0xBC);
     if (k != 0) {
         flags = D_800B81F4[k].f4;
@@ -100,15 +100,15 @@ s32 func_8006F300(u8 *arg0) {
         return;
     }
     if (*(s32 *)(arg0 + 0x88) == 0) {
-        func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
-        func_800272E0(func_80023E18(p->f10), 0x60, 0x1E, 0);
+        setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
+        drawImage(getImageAsset(p->f10), 0x60, 0x1E, 0);
         c = 0x80;
     } else {
-        func_8002710C(0x80, 0x80, 0x80, 0x80);
-        func_800272E0(func_80023E18(p->f10), 0x60, 0x1E, 0);
+        setTextColor(0x80, 0x80, 0x80, 0x80);
+        drawImage(getImageAsset(p->f10), 0x60, 0x1E, 0);
         c = 0xFF;
     }
-    func_8002710C(c, c, c, c);
-    func_800272E0(func_80023E18(p->f14), 0x60, 0x37, 0);
+    setTextColor(c, c, c, c);
+    drawImage(getImageAsset(p->f14), 0x60, 0x37, 0);
     return 0;
 }

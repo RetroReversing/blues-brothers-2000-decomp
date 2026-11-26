@@ -5,7 +5,7 @@ typedef struct {
 
 extern s32 D_801070A8;
 extern s32 D_80107048;
-extern Unk801070A0 D_801070A0;
+extern Unk801070A0 gPadPressed;
 extern s32 D_800AA1F8;
 extern s32 D_800AA1FC;
 extern s32 D_800AA200;
@@ -13,13 +13,13 @@ extern s32 D_800AA204;
 extern char D_800007A4[];
 extern char D_800007AC[];
 
-s32 func_8002D5CC(void *arg0);
+s32 tickActorTimer(void *arg0);
 void func_80027038(s32);
 void func_800226A0(s32);
-void func_800270A8(s32, s32, s32);
+void setTextColorRgb(s32, s32, s32);
 void func_80027158(s32, s32);
-void func_8002889C(char *);
-void func_800271D8(s32);
+void drawText(char *);
+void drawInt(s32);
 void func_8002A360(s32, s32);
 
 void func_80012CD8(void *arg0) {
@@ -28,7 +28,7 @@ void func_80012CD8(void *arg0) {
     s32 other;
     Unk801070A0 *pad;
 
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         *(s32 *)((u8 *)arg0 + 0x64) = 15;
         if (D_801070A8 & 0x200) {
             D_800AA1F8++;
@@ -63,16 +63,16 @@ void func_80012CD8(void *arg0) {
     }
     func_80027038(0);
     func_800226A0(0);
-    func_800270A8(0x60, 0x60, 0xFF);
+    setTextColorRgb(0x60, 0x60, 0xFF);
     func_80027158(30, 90);
-    func_8002889C(D_800007A4);
+    drawText(D_800007A4);
     func_80027158(120, 90);
-    func_800271D8(D_800AA1F8);
+    drawInt(D_800AA1F8);
     func_80027158(30, 110);
-    func_8002889C(D_800007AC);
+    drawText(D_800007AC);
     func_80027158(120, 110);
-    func_800271D8(D_800AA1FC);
-    pad = &D_801070A0;
+    drawInt(D_800AA1FC);
+    pad = &gPadPressed;
     if (pad->unk8 & 0x8000) {
         func_8002A360(9, D_800AA1F8);
     }

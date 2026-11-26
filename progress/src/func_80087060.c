@@ -12,14 +12,14 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
 M2C_UNK func_8003BD74(s32, f32, f32, f32);  /* extern */
 extern f64 D_80009BB8;
 extern f64 D_80009BC0;
 extern f64 D_80009BC8;
 extern s32 D_800AB9B4;
 extern f32 D_800B9EC4;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 
 void func_80087060(void *arg0) {
     f32 temp_ft0_2;
@@ -33,12 +33,12 @@ void func_80087060(void *arg0) {
         var_a3 = 0xFF;
     }
     if (D_800AB9B4 == 0) {
-        func_8002710C(0xFF, 0xFF, 0xFF, var_a3);
+        setTextColor(0xFF, 0xFF, 0xFF, var_a3);
         func_8003BD74(M2C_FIELD(arg0, s32 *, 0x60), 160.0f, 120.0f, M2C_FIELD(arg0, f32 *, 0x40));
         temp_ft0 = (f64) M2C_FIELD(arg0, f32 *, 0x44);
         temp_ft1 = (f32) (((f64) M2C_FIELD(arg0, f32 *, 0x40) - D_80009BB8) * D_80009BC0);
         temp_ft0_2 = (f32) (temp_ft0 + ((f64) D_800B9EC4 * ((f64) temp_ft1 - (temp_ft0 * D_80009BC8))));
-        temp_v1 = M2C_FIELD(arg0, s32 *, 0x5C) - (D_800B9ECC * 4);
+        temp_v1 = M2C_FIELD(arg0, s32 *, 0x5C) - (gCamSpeedScale * 4);
         M2C_FIELD(arg0, s32 *, 0x5C) = temp_v1;
         M2C_FIELD(arg0, f32 *, 0x48) = temp_ft1;
         M2C_FIELD(arg0, f32 *, 0x44) = temp_ft0_2;

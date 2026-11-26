@@ -15,15 +15,15 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
 M2C_UNK func_8002D604();                            /* extern */
-M2C_UNK func_8002D620(void *);                      /* extern */
-f32 func_8002D66C(void *, M2C_UNK, M2C_UNK);        /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
+f32 getCameraTargetDist(void *, M2C_UNK, M2C_UNK);        /* extern */
 extern M2C_UNK func_80014C34;
 
 void func_80014DDC(void *arg0) {
     void *temp_a0;
 
     func_8002D604();
-    if ((s32) func_8002D66C(arg0, 0x43480000, 0) < 0xC8) {
+    if ((s32) getCameraTargetDist(arg0, 0x43480000, 0) < 0xC8) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0xA5);
         func_8002D124();
@@ -32,6 +32,6 @@ void func_80014DDC(void *arg0) {
             M2C_FIELD(temp_a0, M2C_UNK (**)(void *), 0xA0)(temp_a0);
         }
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_80014C34;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
     }
 }

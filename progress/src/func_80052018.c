@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80050460(M2C_UNK *, M2C_UNK *);        /* extern */
 extern M2C_UNK D_8014AA76;
-extern M2C_UNK func_8004303C;
+extern M2C_UNK animStepKeys;
 extern M2C_UNK func_80051FF8;
 
 void *func_80052018(void *arg0) {
@@ -23,7 +23,7 @@ void *func_80052018(void *arg0) {
 
     func_80050460(&func_80051FF8, &D_8014AA76);
     temp_v0 = func_80042F00(9, 0, 0, 0);
-    M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_8004303C;
+    M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &animStepKeys;
     if (arg0 != NULL) {
         M2C_FIELD(temp_v0, f32 *, 4) = (f32) M2C_FIELD(arg0, f32 *, 4);
         M2C_FIELD(temp_v0, f32 *, 8) = (f32) M2C_FIELD(arg0, f32 *, 8);

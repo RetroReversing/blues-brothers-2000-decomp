@@ -25,20 +25,20 @@ extern char D_800099F8[];
 extern char D_80009A0C[];
 
 s32 func_80080DE0(s32 arg0);
-void func_80081588(s32 idx, s32 closed);
-void func_8002D620(void *arg0);
-s32 func_80024394(s32 arg0, s32 arg1);
+void initSpline(s32 idx, s32 closed);
+void syncActorPrevPos(void *arg0);
+s32 randomRange(s32 arg0, s32 arg1);
 s32 func_80076080(void *arg0);
-s32 func_8002D5CC(void *arg0);
+s32 tickActorTimer(void *arg0);
 s32 func_800853E8(void *arg0);
 s32 func_80080594(void *arg0, s32 arg1);
 s32 func_8002444C(void);
 void func_80043328(void *arg0, s32 arg1, s32 arg2);
-void func_800899DC(void *, ...);
+void debugPrintf(void *, ...);
 void func_80083A28(void *);
 s32 func_80084368(Unk80084504 *);
 s32 func_80083CC4(Unk80084504 *);
-s32 func_800847E8(Unk80084504 *);
+s32 updatePursuitVehicle(Unk80084504 *);
 s32 func_8006BB14(Unk80084504 *);
 s32 func_80083E98(Unk80084504 *);
 
@@ -48,11 +48,11 @@ void func_80084504(Unk80084504 *arg0) {
     result = 1;
     if (arg0->unk7C == 0) {
         if (func_80080DE0(arg0->unk70) == 0) {
-            func_80081588(arg0->unk70, D_800B9B18);
+            initSpline(arg0->unk70, D_800B9B18);
         }
         arg0->unk7C = 1;
         arg0->unk78 = 0;
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         arg0->unkD8 = NULL;
         if (arg0->unkAC == 0.0f) {
             arg0->unkAC = 0.015f;
@@ -62,12 +62,12 @@ void func_80084504(Unk80084504 *arg0) {
         }
         arg0->unkB4 = 0.0f;
         arg0->unkBC = 1;
-        arg0->unk64 = func_80024394(25, 30) * 100;
+        arg0->unk64 = randomRange(25, 30) * 100;
     }
     if (func_80076080(arg0) != 0) {
         return;
     }
-    func_8002D5CC(arg0);
+    tickActorTimer(arg0);
     if (arg0->unkD8 != NULL) {
         result = arg0->unkD8(arg0);
     }
@@ -90,11 +90,11 @@ void func_80084504(Unk80084504 *arg0) {
                 break;
             case 3:
                 arg0->unk78 = 2;
-                arg0->unkD8 = func_800847E8;
+                arg0->unkD8 = updatePursuitVehicle;
                 func_80080594(arg0, 0);
                 break;
             default:
-                func_800899DC(D_800099F8);
+                debugPrintf(D_800099F8);
                 break;
             }
             break;
@@ -111,11 +111,11 @@ void func_80084504(Unk80084504 *arg0) {
                 break;
             case 3:
                 arg0->unk78 = 2;
-                arg0->unkD8 = func_800847E8;
+                arg0->unkD8 = updatePursuitVehicle;
                 func_80080594(arg0, 0);
                 break;
             case 4:
-                arg0->unk64 = func_80024394(25, 30) * 100;
+                arg0->unk64 = randomRange(25, 30) * 100;
                 arg0->unk78 = 0;
                 arg0->unkD8 = func_80083E98;
                 if (func_8002444C() & 1) {
@@ -125,7 +125,7 @@ void func_80084504(Unk80084504 *arg0) {
                 }
                 break;
             default:
-                func_800899DC(D_80009A0C);
+                debugPrintf(D_80009A0C);
                 break;
             }
             break;

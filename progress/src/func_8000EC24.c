@@ -1,12 +1,12 @@
 s16 coss(u16);
 s16 sins(u16);
 void func_80015C30(void *);
-void *func_80023874(s32, void *);
+void *findActor(s32, void *);
 void func_8002A360(s32, s32);
-s32 func_8002D204(s32, s32, s32);
-void func_8002D620(void *, void *);
-f32 func_8002D66C(void *, f32, s32 *);
-void func_800433A8(void *, s32, s32);
+s32 approachAngle(s32, s32, s32);
+void syncActorPrevPos(void *, void *);
+f32 getCameraTargetDist(void *, f32, s32 *);
+void actorSetAnim(void *, s32, s32);
 void func_8000EB94(void *);
 
 typedef struct Obj {
@@ -41,9 +41,9 @@ extern f32 D_800004FC;
 extern f32 D_80000500;
 extern f32 D_80000504;
 extern Obj *D_800B3964[];
-extern s32 D_800B9ECC[];
-extern u8 D_800BD06C[];
-#define BD (*(Obj **)D_800BD06C)
+extern s32 gCamSpeedScale[];
+extern u8 gCameraTarget[];
+#define BD (*(Obj **)gCameraTarget)
 
 void func_8000EC24(Obj *arg0) {
     s32 ang;
@@ -55,7 +55,7 @@ void func_8000EC24(Obj *arg0) {
     Obj *e;
 
     lim = D_800004EC;
-    d = func_8002D66C(arg0, lim, &ang);
+    d = getCameraTargetDist(arg0, lim, &ang);
     if (lim <= d) {
         return;
     }
@@ -70,9 +70,9 @@ void func_8000EC24(Obj *arg0) {
     }
     speed = (s32)(lim - d);
     speed *= 20;
-    speed = (D_800B9ECC[0] * speed) / 600;
+    speed = (gCamSpeedScale[0] * speed) / 600;
     if (D_800004F0 <= d) {
-        BD->x10 = func_8002D204(ang + 0x8000, BD->x10, D_800B9ECC[0] << 9);
+        BD->x10 = approachAngle(ang + 0x8000, BD->x10, gCamSpeedScale[0] << 9);
         BD->xC += (speed * coss(ang - 0x8000)) >> 15;
         BD->x4 += (speed * sins(ang - 0x8000)) >> 15;
         return;
@@ -88,13 +88,13 @@ void func_8000EC24(Obj *arg0) {
             BD->x8 = D_800004F8;
         }
         BD->xC = D_800004FC;
-        e = func_80023874(0x1021, 0);
+        e = findActor(0x1021, 0);
         while (e != 0) {
             if (e->x70 == arg0->x70) {
                 BD->x4 = e->x4;
                 break;
             }
-            e = func_80023874(0x1021, e);
+            e = findActor(0x1021, e);
         }
         if (e != 0) {
             D_800B3964[0]->x70 = e->x70;
@@ -103,13 +103,13 @@ void func_8000EC24(Obj *arg0) {
         BD->x50 = 0.0f;
         BD->x54 = D_80000500;
         BD->x10 = 0x8000;
-        func_8002D620(BD, e);
+        syncActorPrevPos(BD, e);
         BD->fn9C = func_8000EB94;
         BD->xAC = 0;
         BD->xB0 = 0;
         BD->xB4 = 0;
         BD->x64 = 300;
         BD->x50 = D_80000504;
-        func_800433A8(BD, 0x10, 0x100);
+        actorSetAnim(BD, 0x10, 0x100);
     }
 }

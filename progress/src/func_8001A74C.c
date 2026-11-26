@@ -13,8 +13,8 @@ typedef s32 M2C_UNK32;
 #endif
 
 s16 coss(s32);                                      /* extern */
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 
 void func_8001A74C(void *arg0) {
-    M2C_FIELD(arg0, f32 *, 4) = (f32) ((f32) ((s32) (coss((D_800B9EA4 * 0x32) & 0xFFFE) * 0x7D) >> 0xD) + M2C_FIELD(arg0, f32 *, 0x40));
+    M2C_FIELD(arg0, f32 *, 4) = (f32) ((f32) ((s32) (coss((gTextWaveTime * 0x32) & 0xFFFE) * 0x7D) >> 0xD) + M2C_FIELD(arg0, f32 *, 0x40));
 }

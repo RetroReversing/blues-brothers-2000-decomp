@@ -13,23 +13,23 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
+M2C_UNK setSlotAsset(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
 
 void func_8007DEA0(void) {
     func_80023A74(0x2A, 0xCCE);
-    func_80023A98(0x1A7, 0xCD0, 0);
-    func_80023A98(0x1A8, 0xCD4, 0);
-    func_80023A98(0x1A9, 0xCCF, 0);
-    func_80023A98(0x1AA, 0xCD5, 1);
-    func_80023A98(0x1AB, 0xCD2, 0);
-    func_80023A98(0x1AC, 0xCD3, 0);
-    func_80023A98(0x1AD, 0xCD1, 1);
+    setSlotAsset(0x1A7, 0xCD0, 0);
+    setSlotAsset(0x1A8, 0xCD4, 0);
+    setSlotAsset(0x1A9, 0xCCF, 0);
+    setSlotAsset(0x1AA, 0xCD5, 1);
+    setSlotAsset(0x1AB, 0xCD2, 0);
+    setSlotAsset(0x1AC, 0xCD3, 0);
+    setSlotAsset(0x1AD, 0xCD1, 1);
     func_80023A74(0x77, 0xCC6);
-    func_80023A98(0x1AE, 0xCC8, 0);
-    func_80023A98(0x1AF, 0xCCC, 0);
-    func_80023A98(0x1B0, 0xCC7, 0);
-    func_80023A98(0x1B1, 0xCCD, 1);
-    func_80023A98(0x1B2, 0xCCA, 0);
-    func_80023A98(0x1B3, 0xCCB, 0);
-    func_80023A98(0x1B4, 0xCC9, 1);
+    setSlotAsset(0x1AE, 0xCC8, 0);
+    setSlotAsset(0x1AF, 0xCCC, 0);
+    setSlotAsset(0x1B0, 0xCC7, 0);
+    setSlotAsset(0x1B1, 0xCCD, 1);
+    setSlotAsset(0x1B2, 0xCCA, 0);
+    setSlotAsset(0x1B3, 0xCCB, 0);
+    setSlotAsset(0x1B4, 0xCC9, 1);
 }

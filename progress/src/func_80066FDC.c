@@ -13,12 +13,12 @@ typedef s32 M2C_UNK32;
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 
 s16 coss();
-s32 func_80023874();
+s32 findActor();
 s32 func_8002A360();
 s32 func_80043328();
-s32 func_800433A8();
+s32 actorSetAnim();
 s16 sins();
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern s32 func_80066764;
 extern s32 func_800672A0;
 
@@ -34,7 +34,7 @@ char *__repair_addr;
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0xD3);
     }
-    if (func_80023874(0x800, 0) != 0) {
+    if (findActor(0x800, 0) != 0) {
         ((__repair_record_arg0*)arg0)->field_74 = 0;
         return;
     }
@@ -44,8 +44,8 @@ char *__repair_addr;
     if (((__repair_record_arg0*)arg0)->field_C0 & 0x18) {
         ((__repair_record_arg0*)arg0)->field_D8 = &func_800672A0;
         ((__repair_record_arg0*)arg0)->field_7C = 0;
-        __base_D_800BD06C = &D_800BD06C;
-        func_800433A8((*__base_D_800BD06C), 0x1A, 0x100);
+        __base_D_800BD06C = &gCameraTarget;
+        actorSetAnim((*__base_D_800BD06C), 0x1A, 0x100);
         M2C_FIELD((*__base_D_800BD06C), f32 *, 4) = (f32) (M2C_FIELD((*__base_D_800BD06C), f32 *, 4) - (f32) ((s32) (sins(((__repair_record_arg0*)arg0)->field_12) * 0x4B) >> 0xE));
         M2C_FIELD((*__base_D_800BD06C), f32 *, 0xC) = (f32) (M2C_FIELD((*__base_D_800BD06C), f32 *, 0xC) - (f32) ((s32) (coss(((__repair_record_arg0*)arg0)->field_12) * 0x4B) >> 0xE));
         return;

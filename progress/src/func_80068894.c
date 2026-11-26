@@ -12,24 +12,24 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D5CC(void *);                          /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 s32 func_80069050(void *);                          /* extern */
 s32 func_80069520(s32);                     /* extern */
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 
 void func_80068894(void *arg0) {
     void *temp_a0;
     void *temp_a0_gc;
     void *temp_s0;
 
-    if (func_8002DD60(*(f32 *)((s8 *)D_800BD06C + 4)) < 730.0f) {
-        if (550.0f < *(f32 *)((s8 *)D_800BD06C + 0xC)) {
-            *(f32 *)((s8 *)D_800BD06C + 0xC) = 550.0f;
+    if (func_8002DD60(*(f32 *)((s8 *)gCameraTarget + 4)) < 730.0f) {
+        if (550.0f < *(f32 *)((s8 *)gCameraTarget + 0xC)) {
+            *(f32 *)((s8 *)gCameraTarget + 0xC) = 550.0f;
         }
     }
-    if (func_8002D5CC(arg0) != 0) {
-        (*(s32 *)((s8 *)arg0 + 0x90)) = func_80069050(D_800BD06C);
+    if (tickActorTimer(arg0) != 0) {
+        (*(s32 *)((s8 *)arg0 + 0x90)) = func_80069050(gCameraTarget);
         (*(s32 *)((s8 *)arg0 + 0x64)) = 0;
         temp_a0 = (*(void **)((s8 *)arg0 + 0x84));
         if (temp_a0 != NULL) {

@@ -12,17 +12,17 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 s32 func_8002D260(s32);                             /* extern */
 M2C_UNK func_8002D3E4(void *, M2C_UNK);             /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8002DA80(void *);                      /* extern */
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_8004303C(void *);                      /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK animStepKeys(void *);                      /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_8007DB44();                            /* extern */
 extern void *D_800B3960;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern void *D_801705EC;
 extern void *D_801705F0;
 extern s16 D_801705F4;
@@ -35,28 +35,28 @@ s32 func_8007D860(void) {
 
     if (D_801705F0 == NULL) {
         var_s0 = func_80042F00(1, 0, 0, 0);
-        { M2C_FIELD(var_s0, f32 *, 4) = (f32) M2C_FIELD(D_800BD06C, const f32 *, 4); }
-        M2C_FIELD(var_s0, f32 *, 8) = (f32) M2C_FIELD(D_800BD06C, const f32 *, 8);
+        { M2C_FIELD(var_s0, f32 *, 4) = (f32) M2C_FIELD(gCameraTarget, const f32 *, 4); }
+        M2C_FIELD(var_s0, f32 *, 8) = (f32) M2C_FIELD(gCameraTarget, const f32 *, 8);
         D_801705F0 = var_s0;
-        M2C_FIELD(var_s0, f32 *, 0xC) = (f32) M2C_FIELD(D_800BD06C, const f32 *, 0xC);
-        func_800433A8(var_s0, 4, 0x100);
-        M2C_FIELD(var_s0, s32 *, 0x8C) = func_80024394(1, 4);
+        M2C_FIELD(var_s0, f32 *, 0xC) = (f32) M2C_FIELD(gCameraTarget, const f32 *, 0xC);
+        actorSetAnim(var_s0, 4, 0x100);
+        M2C_FIELD(var_s0, s32 *, 0x8C) = randomRange(1, 4);
         M2C_FIELD(var_s0, s32 *, 0x10) = (s32) (M2C_FIELD(D_800B3960, const s32 *, 0x10) + 0x4000);
     } else {
         var_s0 = D_801705F0;
     }
     if (D_801705F6 != 0) {
-        func_800433A8(var_s0, 4, 0x100);
+        actorSetAnim(var_s0, 4, 0x100);
         M2C_FIELD(var_s0, s32 *, 0x90) = 8;
         M2C_FIELD(var_s0, s32 *, 0x10) = (s32) (M2C_FIELD(D_800B3960, const s32 *, 0x10) + 0x4000);
         func_8002D3E4(var_s0, 0x190);
         D_801705F4 = 0;
     }
-    { func_8004303C(var_s0);
+    { animStepKeys(var_s0);
     do { func_8002DA80(var_s0); M2C_FIELD(var_s0, M2C_UNK (**)(void *), 0x98)(var_s0); } while (0);
     }
     if (!(M2C_FIELD(var_s0, const s32 *, 0xF8) & 4)) {
-        if (func_8002D5CC(var_s0) != 0) {
+        if (tickActorTimer(var_s0) != 0) {
             M2C_FIELD(var_s0, s32 *, 0x64) = 0x8C;
             M2C_FIELD(var_s0, s32 *, 0x90) = (s32) -M2C_FIELD(var_s0, const s32 *, 0x90);
             M2C_FIELD(var_s0, s32 *, 0x10) = func_8002D260(M2C_FIELD(var_s0, const s32 *, 0x10) + 0x8000);

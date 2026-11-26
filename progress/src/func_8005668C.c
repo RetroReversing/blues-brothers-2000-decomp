@@ -2,13 +2,13 @@ typedef struct G G;
 struct G {
     u8 p0[0x10]; s32 f10; u8 p1[0x54]; s32 f68; u8 p2[0x10]; s32 f7C; u8 p3[8]; s32 f88; u8 p4[0x1C]; G *fA8;
 };
-extern f32 func_8002D66C(G *, f32, s32);
+extern f32 getCameraTargetDist(G *, f32, s32);
 extern s32 func_80023DBC(s32);
 extern void func_80052A5C(s32);
 extern s32 func_80052B24(s32, void *, G *);
-extern s32 func_80023874(s32, s32);
+extern s32 findActor(s32, s32);
 extern void func_8001B990(s32, s32);
-extern void func_8004303C(G *);
+extern void animStepKeys(G *);
 extern void func_8007A2E8(G *);
 extern u8 D_80008398[];
 extern u8 D_800083A0[];
@@ -32,7 +32,7 @@ void func_8005668C(G *arg0) {
         }
     }
     temp_fs1 = 400.0f;
-    temp_fs0 = func_8002D66C(arg0, temp_fs1, 0);
+    temp_fs0 = getCameraTargetDist(arg0, temp_fs1, 0);
     temp_s2 = func_80023DBC(0xE99);
     if (arg0->f7C == 0) {
         if (temp_fs0 < temp_fs1) {
@@ -43,7 +43,7 @@ void func_8005668C(G *arg0) {
         }
     }
     temp_s1 = arg0->f7C;
-    if ((temp_s1 == 1) && (func_80023874(0x801, 0) == 0)) {
+    if ((temp_s1 == 1) && (findActor(0x801, 0) == 0)) {
         if (D_800BCFED == temp_s1) {
             func_8001B990(0x200, 0x1F);
             func_80052B24(temp_s2, D_800083A0, arg0);
@@ -55,14 +55,14 @@ void func_8005668C(G *arg0) {
         arg0->f7C = var_v0;
     }
     if (arg0->f7C == 2) {
-        if (func_80023874(0x801, 0) == 0) {
+        if (findActor(0x801, 0) == 0) {
             arg0->f7C = 5;
         }
     }
-    if ((arg0->f7C == 3) && (func_80023874(0x801, 0) == 0)) {
+    if ((arg0->f7C == 3) && (findActor(0x801, 0) == 0)) {
         arg0->f7C = 5;
     }
-    func_8004303C(arg0);
-    func_8004303C(arg0->fA8);
+    animStepKeys(arg0);
+    animStepKeys(arg0->fA8);
     func_8007A2E8(arg0);
 }

@@ -6,13 +6,13 @@ typedef struct O33604 {
 } O33604;
 void func_80030C40(O33604 *, s32);
 void func_80031B54(O33604 *, s32);
-extern s32 D_801070A0;
+extern s32 gPadPressed;
 void func_8003374C(void);
 
 void func_80033604(O33604 *arg0) {
     arg0->f98 = func_8003374C;
     func_80031B54(arg0, 3);
-    if (D_801070A0 & 0x9000) {
+    if (gPadPressed & 0x9000) {
         switch (arg0->f78) {
         case 0:
             func_80030C40(arg0, -6);

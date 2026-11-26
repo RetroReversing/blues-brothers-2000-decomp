@@ -13,13 +13,13 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-extern M2C_UNK func_80018BF4;
+extern M2C_UNK drawHud;
 
 void func_8000D44C(void) {
     void *temp_v0;
 
     temp_v0 = func_800232B4(6, 0, 0, 0);
-    M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_80018BF4;
+    M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &drawHud;
     M2C_FIELD(temp_v0, s32 *, 0x68) = 0xF;
     M2C_FIELD(temp_v0, s32 *, 0x64) = 0x64;
 }

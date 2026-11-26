@@ -3,7 +3,7 @@ typedef struct { s32 m[16]; } Mtx_;
 void func_80034FEC(void *, s32 *);
 void func_800414D0(u8 *);
 void guMtxL2F(MtxF_ *, Mtx_ *);
-void func_8001FF64(void);
+void updateCameraView(void);
 extern u8 *D_800B3960;
 extern s32 D_800B74E4;
 extern s32 D_80140260[];
@@ -39,5 +39,5 @@ void func_800522C0(u8 *arg0) {
     pos[1] += *(f32 *)(arg0 + 8);
     pos[2] += *(f32 *)(arg0 + 0xC);
     func_80034FEC(D_800B3960, pos);
-    *(void **)(D_800B3960 + 0x9C) = func_8001FF64;
+    *(void **)(D_800B3960 + 0x9C) = updateCameraView;
 }

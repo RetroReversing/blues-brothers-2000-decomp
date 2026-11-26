@@ -1,4 +1,4 @@
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern char D_801719E0[];
 inline static s16 inline_fn(void *arg0)
 {
@@ -24,7 +24,7 @@ void func_8008203C(s32 arg0, s32 arg1)
   {
     if (temp_v0 >= 0x81)
     {
-      temp_v0_2 = ((u16) (s16) (*((s16 *) (((char *) temp_a1) + 0x18)))) - (D_800B9ECC * 3);
+      temp_v0_2 = ((u16) (s16) (*((s16 *) (((char *) temp_a1) + 0x18)))) - (gCamSpeedScale * 3);
       *((s16 *) (((char *) temp_a1) + 0x18)) = temp_v0_2;
       if (temp_v0_2 < 0x80)
       {
@@ -37,7 +37,7 @@ void func_8008203C(s32 arg0, s32 arg1)
       block_4:
       if ((s16) (*((s16 *) (((char *) temp_a1) + 0x18))) < 0x80)
       {
-        temp_v0_3 = ((u16) (s16) (*((s16 *) (((char *) temp_a1) + 0x18)))) + (D_800B9ECC * 3);
+        temp_v0_3 = ((u16) (s16) (*((s16 *) (((char *) temp_a1) + 0x18)))) + (gCamSpeedScale * 3);
         *((s16 *) (((char *) temp_a1) + 0x18)) = temp_v0_3;
         if (temp_v0_3 >= 0x81)
         {

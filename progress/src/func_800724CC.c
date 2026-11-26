@@ -12,7 +12,7 @@ typedef struct {
 
 s32 func_8001B990(s32, s32);
 s32 func_80023DBC(s32);
-s32 func_8002D5CC(void *);
+s32 tickActorTimer(void *);
 void func_80034F1C(void *);
 void func_80052A30(void);
 void func_80052A5C(s32);
@@ -24,7 +24,7 @@ extern s32 D_800B3970;
 extern s32 D_800B3974;
 extern s32 D_800B3978;
 extern s32 D_800B5DD4;
-extern void *D_800BD06C;
+extern void *gCameraTarget;
 extern s32 D_800BD0FC;
 
 void func_800724CC(Obj800724CC *arg0) {
@@ -53,14 +53,14 @@ void func_800724CC(Obj800724CC *arg0) {
         func_80052A30();
         D_800B5DD4 = 0;
         id = func_80023DBC(0xE63);
-        if (func_80052A68(id, name) == 0 && func_8002D5CC(arg0) != 0) {
+        if (func_80052A68(id, name) == 0 && tickActorTimer(arg0) != 0) {
             func_80052A5C(0);
             func_80052B24(id, name, arg0);
             arg0->f7C = 1;
             func_8001B990(0x200, 0x28);
         }
     }
-    if (1000.0f < ((f32 *)D_800BD06C)[2]) {
+    if (1000.0f < ((f32 *)gCameraTarget)[2]) {
         if (arg0->f6C == 0) {
             arg0->f6C = 1;
             D_800B3960->f6C = 2;

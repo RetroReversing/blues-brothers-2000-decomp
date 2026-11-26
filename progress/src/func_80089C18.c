@@ -28,7 +28,7 @@ extern u16 D_801771C4;
 extern LightDirW D_800B9F00[];
 extern s32 D_800B9E88;
 extern s32 D_80179A30;
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 extern f32 D_800B9EAC;
 extern f32 D_800B9EB0;
 extern f32 D_800B9EB4;
@@ -41,7 +41,7 @@ void guLookAtHilite(MtxW *m, LookAtW *l, HiliteW *h, f32 xEye, f32 yEye, f32 zEy
 void guLookAtReflectMtx(MtxW *m, LookAtW *l, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp,
                         f32 yUp, f32 zUp);
 f32 __cosf(f32);
-f32 func_80095DC0(f32);
+f32 sinApprox(f32);
 
 void func_80089C18(void) {
     s32 lx;
@@ -59,8 +59,8 @@ void func_80089C18(void) {
     k = 0.0061359182f;
     if (D_80179A30 != 0) {
         D_800B9EB4 = 0.0f;
-        D_800B9EB0 = __cosf(D_800B9EA4 * k);
-        D_800B9EAC = func_80095DC0(D_800B9EA4 * k);
+        D_800B9EB0 = __cosf(gTextWaveTime * k);
+        D_800B9EAC = sinApprox(gTextWaveTime * k);
     }
     guLookAtReflectMtx(&D_80178238->refl[D_800B9EC0], &D_80178238->reflLookAt[D_800B9EC0], 0.0f, 0.0f, 0.0f, 0.0f,
                        0.0f, 100.0f, D_800B9EAC, D_800B9EB0, D_800B9EB4);

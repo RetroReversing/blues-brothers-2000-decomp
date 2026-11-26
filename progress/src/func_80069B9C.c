@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_8002D620(void *);                      /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 M2C_UNK func_80065630(void *);                      /* extern */
 extern s32 D_8014AB70;
 extern M2C_UNK func_80069AA0;
@@ -38,9 +38,9 @@ void *func_80069B9C(void *arg0) {
         ((__repair_record_temp_v0*)temp_v0)->field_C = (f32) M2C_FIELD(arg0, f32 *, 0xC);
     }
     /*__repair_pointer_balance*/if ((unsigned long)temp_v0 & 0x100) {
-func_8002D620(temp_v0);
+syncActorPrevPos(temp_v0);
 } else {
-func_8002D620(temp_v0);
+syncActorPrevPos(temp_v0);
 }
     ((__repair_record_temp_v0*)temp_v0)->field_64 = 0x55;
     return temp_v0;

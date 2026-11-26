@@ -79,7 +79,7 @@ typedef struct {
     PipeSync(pkt); \
 }
 
-void func_80029F8C(s32);
+void setRenderState(s32);
 extern GfxW *D_80177E18;
 
 void func_8002C3B8(TexHeader *tex) {
@@ -98,8 +98,8 @@ void func_8002C3B8(TexHeader *tex) {
     width = tex->width;
     type = tex->type;
     height = tex->height;
-    if (type == 4) { LTB4_A(D_80177E18++, img, 2, width, height, 0, cm, cm, mask, mask, 0, 0); LTB4_B(D_80177E18++, img, 2, width, height, 0, cm, cm, mask, mask, 0, 0); LoadTLUT(D_80177E18++, pal, 15); func_80029F8C(0x60); }
-    if (type == 8) { do { if (pal != NULL) { LTB_A(D_80177E18++, img, 2, 1, 2, 1, 1, 1, 1, width, height, 0, cm, cm, mask, mask, 0, 0); do { LTB_B(D_80177E18++, img, 2, 1, 2, 1, 1, 1, 1, width, height, 0, cm, cm, mask, mask, 0, 0); LoadTLUT(D_80177E18++, pal, 255); func_80029F8C(0x60); } while (0); } else { LTB_A(D_80177E18++, img, 4, 1, 2, 1, 1, 1, 1, width, height, 0, cm, cm, mask, mask, 0, 0); LTB_B(D_80177E18++, img, 4, 1, 2, 1, 1, 1, 1, width, height, 0, cm, cm, mask, mask, 0, 0); func_80029F8C(0x50); } } while (0); }
-    if (type == 16) { LTB_A(D_80177E18++, img, 0, 2, 2, 0, 0, 2, 2, width, height, 0, cm, cm, mask, mask, 0, 0); LTB_B(D_80177E18++, img, 0, 2, 2, 0, 0, 2, 2, width, height, 0, cm, cm, mask, mask, 0, 0); func_80029F8C(0x50); }
-    if (type == 32) { LTB_A(D_80177E18++, img, 0, 3, 3, 0, 0, 4, 2, width, height, 0, cm, cm, mask, mask, 0, 0); LTB_B(D_80177E18++, img, 0, 3, 3, 0, 0, 4, 2, width, height, 0, cm, cm, mask, mask, 0, 0); func_80029F8C(0x50); }
+    if (type == 4) { LTB4_A(D_80177E18++, img, 2, width, height, 0, cm, cm, mask, mask, 0, 0); LTB4_B(D_80177E18++, img, 2, width, height, 0, cm, cm, mask, mask, 0, 0); LoadTLUT(D_80177E18++, pal, 15); setRenderState(0x60); }
+    if (type == 8) { do { if (pal != NULL) { LTB_A(D_80177E18++, img, 2, 1, 2, 1, 1, 1, 1, width, height, 0, cm, cm, mask, mask, 0, 0); do { LTB_B(D_80177E18++, img, 2, 1, 2, 1, 1, 1, 1, width, height, 0, cm, cm, mask, mask, 0, 0); LoadTLUT(D_80177E18++, pal, 255); setRenderState(0x60); } while (0); } else { LTB_A(D_80177E18++, img, 4, 1, 2, 1, 1, 1, 1, width, height, 0, cm, cm, mask, mask, 0, 0); LTB_B(D_80177E18++, img, 4, 1, 2, 1, 1, 1, 1, width, height, 0, cm, cm, mask, mask, 0, 0); setRenderState(0x50); } } while (0); }
+    if (type == 16) { LTB_A(D_80177E18++, img, 0, 2, 2, 0, 0, 2, 2, width, height, 0, cm, cm, mask, mask, 0, 0); LTB_B(D_80177E18++, img, 0, 2, 2, 0, 0, 2, 2, width, height, 0, cm, cm, mask, mask, 0, 0); setRenderState(0x50); }
+    if (type == 32) { LTB_A(D_80177E18++, img, 0, 3, 3, 0, 0, 4, 2, width, height, 0, cm, cm, mask, mask, 0, 0); LTB_B(D_80177E18++, img, 0, 3, 3, 0, 0, 4, 2, width, height, 0, cm, cm, mask, mask, 0, 0); setRenderState(0x50); }
 }

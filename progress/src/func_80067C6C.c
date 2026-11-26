@@ -13,11 +13,11 @@ typedef struct Obj67C6C {
 
 s16 sins(u16);
 s16 coss(u16);
-s32 func_80024B0C(s32);
+s32 isqrtS32(s32);
 void func_8002A360(s32, s32);
-void func_800433A8(Obj67C6C *, s32, s32);
+void actorSetAnim(Obj67C6C *, s32, s32);
 f32 sqrtf(f32);
-extern Obj67C6C *D_800BD06C;
+extern Obj67C6C *gCameraTarget;
 extern s32 D_80140240;
 
 s32 func_80067C6C(Obj67C6C *arg0) {
@@ -31,25 +31,25 @@ s32 func_80067C6C(Obj67C6C *arg0) {
     f32 fz;
     f32 d;
 
-    dy = D_800BD06C->y - arg0->y;
+    dy = gCameraTarget->y - arg0->y;
     if (dy > 0) {
         if (arg0->unkD0 == 0xF7 || arg0->unkD0 == 0xF8) {
             x = arg0->x + (f32)(-(sins(arg0->angle) * 250) >> 15);
             z = arg0->z + (f32)(-(coss(arg0->angle) * 250) >> 15);
-            dx2 = D_800BD06C->x - (f32)x;
-            dz2 = D_800BD06C->z - (f32)z;
-            if (func_80024B0C(dx2 * dx2 + dz2 * dz2) < 251) {
-                if (D_800BD06C->unkD0 >= 43) {
+            dx2 = gCameraTarget->x - (f32)x;
+            dz2 = gCameraTarget->z - (f32)z;
+            if (isqrtS32(dx2 * dx2 + dz2 * dz2) < 251) {
+                if (gCameraTarget->unkD0 >= 43) {
                     arg0->unkC0 |= 4;
                 }
-                if (D_800BD06C->unk50 < 0.0f && dy < 150) {
-                    D_800BD06C->unk50 = (D_80140240 * 3) / 2;
+                if (gCameraTarget->unk50 < 0.0f && dy < 150) {
+                    gCameraTarget->unk50 = (D_80140240 * 3) / 2;
                     t = arg0->y + 75.0f;
-                    if (D_800BD06C->y < t) {
-                        D_800BD06C->y = t;
+                    if (gCameraTarget->y < t) {
+                        gCameraTarget->y = t;
                     }
-                    D_800BD06C->y += 1.0f;
-                    func_800433A8(D_800BD06C, 5, 0x100);
+                    gCameraTarget->y += 1.0f;
+                    actorSetAnim(gCameraTarget, 5, 0x100);
                     func_8002A360(12, 0x80);
                     func_8002A360(8, 2);
                     return 0;
@@ -58,12 +58,12 @@ s32 func_80067C6C(Obj67C6C *arg0) {
         }
         return 0;
     }
-    fx = (arg0->x - D_800BD06C->x) + (f32)(-(sins(arg0->angle) * 150) >> 15);
-    fz = (arg0->z - D_800BD06C->z) + (f32)(-(coss(arg0->angle) * 150) >> 15);
+    fx = (arg0->x - gCameraTarget->x) + (f32)(-(sins(arg0->angle) * 150) >> 15);
+    fz = (arg0->z - gCameraTarget->z) + (f32)(-(coss(arg0->angle) * 150) >> 15);
     d = sqrtf(fx * fx + fz * fz);
     if (d <= 400.0f) {
-        D_800BD06C->x += fx * (d - 400.0f) / d;
-        D_800BD06C->z += fz * (d - 400.0f) / d;
+        gCameraTarget->x += fx * (d - 400.0f) / d;
+        gCameraTarget->z += fz * (d - 400.0f) / d;
     }
     return 0;
 }

@@ -30,9 +30,9 @@ struct Obj {
 };
 s16 coss(u16);
 s16 sins(u16);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 Obj *func_800232B4(s32, s32, s32, s32);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 s32 func_8002D1A0(void);
 void func_80015B34();
 void func_8002F8D0();
@@ -53,7 +53,7 @@ Obj *func_80015C30(Obj *arg0) {
     o->f7C = 1;
     o->f74 = 0;
     o->f78 = 0xFFFFFF;
-    o->f58 = func_800221C0(0, 1, 1, 3, 0, 0, 2, 0);
+    o->f58 = packDrawFlags(0, 1, 1, 3, 0, 0, 2, 0);
     o->f68 = 0xE;
     o->f5C = 0xFF;
     o->f18 = 0xC000;
@@ -61,12 +61,12 @@ Obj *func_80015C30(Obj *arg0) {
     o->f10 = arg0->f10 + 0x8000;
     o->f84 = 3;
     o->y += D_80000864;
-    o->f18 = func_80024394(0, 0xFFFF);
+    o->f18 = randomRange(0, 0xFFFF);
     a = func_8002D1A0();
     o->x += (sins(a) * 15) >> 13;
     o->z += (coss(a) * 15) >> 13;
-    o->y += func_80024394(0, 10);
-    o->f80 = -func_80024394(0, 3);
+    o->y += randomRange(0, 10);
+    o->f80 = -randomRange(0, 3);
     o->f4C = arg0->f4C;
     o->f54 = arg0->f54;
     o->f9C = o->fA0;

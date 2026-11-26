@@ -15,13 +15,13 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D3B0(void *);                      /* extern */
 M2C_UNK func_8002D4E0(void *, M2C_UNK);             /* extern */
-s32 func_8002D5CC(void *);                          /* extern */
+s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_80034FEC(void *, s32 *);               /* extern */
-M2C_UNK func_80048820(f32 *, f32 *, M2C_UNK);       /* extern */
+M2C_UNK collectCollisionCells(f32 *, f32 *, M2C_UNK);       /* extern */
 s32 func_80048CD8(f32, f32, f32, f32, f32, f32, s32); /* extern */
 extern void *D_800B3960[];
-extern s32 D_800B9ECC;
-extern void *D_800BD06C;
+extern s32 gCamSpeedScale;
+extern void *gCameraTarget;
 
 extern f32 D_80009174;
 extern f32 D_80009178;
@@ -45,9 +45,9 @@ s32 func_80073DC8(void *arg0, s32 arg1) {
         M2C_FIELD(arg0, s32 *, 0x64) = 350;
         M2C_FIELD(arg0, s32 *, 0x3C) = M2C_FIELD(arg0, s32 *, 0x34);
         if (arg1 != 0) {
-            pos[0] = M2C_FIELD(D_800BD06C, f32 *, 4);
-            pos[1] = M2C_FIELD(D_800BD06C, f32 *, 8) + D_80009174;
-            pos[2] = M2C_FIELD(D_800BD06C, f32 *, 0xC);
+            pos[0] = M2C_FIELD(gCameraTarget, f32 *, 4);
+            pos[1] = M2C_FIELD(gCameraTarget, f32 *, 8) + D_80009174;
+            pos[2] = M2C_FIELD(gCameraTarget, f32 *, 0xC);
             func_80034FEC(arg0, pos);
         } else {
             src = D_800B3960[0];
@@ -71,7 +71,7 @@ s32 func_80073DC8(void *arg0, s32 arg1) {
     hi[1] = M2C_FIELD(arg0, f32 *, 8) + D_80009184;
     lo[2] = M2C_FIELD(arg0, f32 *, 0xC) + D_80009178;
     hi[2] = M2C_FIELD(arg0, f32 *, 0xC) + D_80009180;
-    func_80048820(lo, hi, 0);
+    collectCollisionCells(lo, hi, 0);
     if (func_80048CD8(lo[0], hi[0], lo[1], hi[1], lo[2], hi[2], 0) != 0) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0x9B);
@@ -79,8 +79,8 @@ s32 func_80073DC8(void *arg0, s32 arg1) {
         return 1;
     }
     func_8002D3B0(arg0);
-    M2C_FIELD(arg0, s32 *, 0x14) += D_800B9ECC << 11;
-    if (func_8002D5CC(arg0) != 0) {
+    M2C_FIELD(arg0, s32 *, 0x14) += gCamSpeedScale << 11;
+    if (tickActorTimer(arg0) != 0) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
         return 1;
     }

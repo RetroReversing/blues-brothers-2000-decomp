@@ -43,13 +43,13 @@ f32 func_8002DD60(f32);
 Vec3 *func_8002E018(Vec3 *, Vec3 *, Vec3 *);
 f32 func_8002E0D0(Vec3 *, Vec3 *);
 Vec3 *func_8002E1CC(Vec3 *, Vec3 *, f32);
-Vec3 *func_8002E1FC(Vec3 *, Vec3 *, Vec3 *);
+Vec3 *vec3Sub(Vec3 *, Vec3 *, Vec3 *);
 Vec3 *func_8002E234(Vec3 *, Vec3 *, Vec3 *);
 void func_8002E26C(Vec3 *, Vec3 *, Vec3 *, Vec3 *);
 void func_80037050(f32 *, f32 *);
 void func_80037064(s32 *, s32 *, s32, s32, s32);
 void func_800370B4(s32 *, s32 *, s32 *);
-void func_80048820(Vec3 *, Vec3 *, s32);
+void collectCollisionCells(Vec3 *, Vec3 *, s32);
 
 extern Vec3 D_800B4C1C;
 extern s32 D_800B76A0;
@@ -153,8 +153,8 @@ f32 func_800379C8(Probe *o) {
     if (lo.z > hi.z) {
         func_80037050(&lo.z, &hi.z);
     }
-    func_80048820(&lo, &hi, 9);
-    func_8002E1FC(&dir, &p1, &p0);
+    collectCollisionCells(&lo, &hi, 9);
+    vec3Sub(&dir, &p1, &p0);
     D_80140140 = -1000000;
     bestT = 2.0f;
     ndir.x = -dir.x;
@@ -181,23 +181,23 @@ f32 func_800379C8(Probe *o) {
       c2.z = verts[tri[2]].z + owner->z;
       func_8002E26C(&n, &c0, &c1, &c2);
       if (n.y < 0.0 && o->f50 > 0.0f) {
-          d0 = func_8002E0D0(&n, func_8002E1FC(&tmp, &q0, &c0));
-          d1 = func_8002E0D0(&n, func_8002E1FC(&tmp, &q1, &c0));
+          d0 = func_8002E0D0(&n, vec3Sub(&tmp, &q0, &c0));
+          d1 = func_8002E0D0(&n, vec3Sub(&tmp, &q1, &c0));
           if (d0 >= 0.0f) {
               if (d1 < 0.0) {
                   t = d0 - d1;
                   if (func_8002DD60(t) > 1e-07) {
                       t = d0 / t;
                       if (t >= 0.0f && t <= 1.0) {
-                          func_8002E1FC(&tmp, &p1, &p0);
+                          vec3Sub(&tmp, &p1, &p0);
                           func_8002E1CC(&hit, &tmp, t);
                           func_8002E234(&hit, &hit, &p0);
-                          func_8002E018(&e0, func_8002E1FC(&tmp, &c1, &c0), &ndir);
-                          func_8002E018(&e1, func_8002E1FC(&tmp, &c2, &c1), &ndir);
-                          func_8002E018(&e2, func_8002E1FC(&tmp, &c0, &c2), &ndir);
-                          s0 = func_8002E0D0(&e0, func_8002E1FC(&tmp, &hit, &c0));
-                          d0 = func_8002E0D0(&e1, func_8002E1FC(&tmp, &hit, &c1));
-                          d1 = func_8002E0D0(&e2, func_8002E1FC(&tmp, &hit, &c2));
+                          func_8002E018(&e0, vec3Sub(&tmp, &c1, &c0), &ndir);
+                          func_8002E018(&e1, vec3Sub(&tmp, &c2, &c1), &ndir);
+                          func_8002E018(&e2, vec3Sub(&tmp, &c0, &c2), &ndir);
+                          s0 = func_8002E0D0(&e0, vec3Sub(&tmp, &hit, &c0));
+                          d0 = func_8002E0D0(&e1, vec3Sub(&tmp, &hit, &c1));
+                          d1 = func_8002E0D0(&e2, vec3Sub(&tmp, &hit, &c2));
                           if (s0 >= 0.0f) {
                               if (d0 >= 0.0f && d1 >= 0.0f) {
                                   o->f50 = 0.0f;
@@ -208,23 +208,23 @@ f32 func_800379C8(Probe *o) {
               }
           }
       }
-      d0 = func_8002E0D0(&n, func_8002E1FC(&tmp, &p0, &c0));
-      d1 = func_8002E0D0(&n, func_8002E1FC(&tmp, &p1, &c0));
+      d0 = func_8002E0D0(&n, vec3Sub(&tmp, &p0, &c0));
+      d1 = func_8002E0D0(&n, vec3Sub(&tmp, &p1, &c0));
       if (d0 >= 0.0f) {
           if (d1 < 0.0) {
               t = d0 - d1;
               if (func_8002DD60(t) > 1e-07) {
                   t = d0 / t;
                   if (t >= 0.0f && t <= 1.0) {
-                      func_8002E1FC(&tmp, &p1, &p0);
+                      vec3Sub(&tmp, &p1, &p0);
                       func_8002E1CC(&hit, &tmp, t);
                       func_8002E234(&hit, &hit, &p0);
-                      func_8002E018(&e0, func_8002E1FC(&tmp, &c1, &c0), &dir);
-                      func_8002E018(&e1, func_8002E1FC(&tmp, &c2, &c1), &dir);
-                      func_8002E018(&e2, func_8002E1FC(&tmp, &c0, &c2), &dir);
-                      s0 = func_8002E0D0(&e0, func_8002E1FC(&tmp, &hit, &c0));
-                      d0 = func_8002E0D0(&e1, func_8002E1FC(&tmp, &hit, &c1));
-                      d1 = func_8002E0D0(&e2, func_8002E1FC(&tmp, &hit, &c2));
+                      func_8002E018(&e0, vec3Sub(&tmp, &c1, &c0), &dir);
+                      func_8002E018(&e1, vec3Sub(&tmp, &c2, &c1), &dir);
+                      func_8002E018(&e2, vec3Sub(&tmp, &c0, &c2), &dir);
+                      s0 = func_8002E0D0(&e0, vec3Sub(&tmp, &hit, &c0));
+                      d0 = func_8002E0D0(&e1, vec3Sub(&tmp, &hit, &c1));
+                      d1 = func_8002E0D0(&e2, vec3Sub(&tmp, &hit, &c2));
                       if (s0 >= 0.0f) {
                           if (d0 >= 0.0f && d1 >= 0.0f) {
                               if (owner->kind == 0x13B) {

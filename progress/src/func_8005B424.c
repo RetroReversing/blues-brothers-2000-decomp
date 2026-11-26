@@ -25,11 +25,11 @@ typedef struct Actor {
 void func_8002A360(s32, s32);
 f32 func_8002DD60(f32);
 void func_80043328(Actor *, s32, s32);
-void func_800899DC(char *, ...);
+void debugPrintf(char *, ...);
 extern char D_800085AC[];
 extern Actor *D_800AB9BC;
 extern Actor *D_800AB9C0;
-extern Actor *D_800BD06C;
+extern Actor *gCameraTarget;
 void func_8001D54C(void);
 void func_8005B638(void);
 
@@ -55,14 +55,14 @@ s32 func_8005B424(Actor *arg0) {
         return 0;
     }
     if (arg0->state == 1 && arg0->target == NULL) {
-        func_800899DC(D_800085AC);
+        debugPrintf(D_800085AC);
     }
     if (arg0->alpha < 0xF4) {
         arg0->alpha += 0x12;
         if (arg0->alpha >= 0xF5) {
             arg0->alpha = 0xFF;
         }
-    } else if (func_8002DD60(D_800BD06C->x - arg0->x) < 950.0f) {
+    } else if (func_8002DD60(gCameraTarget->x - arg0->x) < 950.0f) {
         if (arg0->anim == 0xC6) {
             func_80043328(arg0, 0xC8, 0x100);
             if (arg0->target != NULL) {

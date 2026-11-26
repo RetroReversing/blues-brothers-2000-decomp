@@ -23,7 +23,7 @@ s32 func_80068AE8(Obj68E0C *);
 s32 func_80068B38(Obj68E0C *);
 s32 func_80068BF8(Obj68E0C *);
 s32 func_80068DE0(Obj68E0C *);
-void func_800899DC(char *);
+void debugPrintf(char *);
 extern char D_80008DCC[];
 extern u8 *D_800B3960;
 extern u8 *D_800B3964;
@@ -92,7 +92,7 @@ void func_80068E0C(Obj68E0C *arg0) {
             arg0->fn = func_80068DE0;
             break;
         default:
-            func_800899DC(D_80008DCC);
+            debugPrintf(D_80008DCC);
             break;
         case 5:
             return;

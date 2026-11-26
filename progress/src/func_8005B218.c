@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_80023874(M2C_UNK, void *);               /* extern */
+void *findActor(M2C_UNK, void *);               /* extern */
 f32 func_8002DD60(f32);                    /* extern */
 extern f32 D_8000859C;
 extern f32 D_800085A0;
@@ -24,7 +24,7 @@ s32 func_8005B218(void *arg0) {
     f32 temp_fv0;
     void *var_s0;
 
-    var_s0 = func_80023874(0x129, NULL);
+    var_s0 = findActor(0x129, NULL);
     if (var_s0 != NULL) {
         temp_fs2 = D_8000859C;
         temp_fs1 = D_800085A0;
@@ -38,7 +38,7 @@ s32 func_8005B218(void *arg0) {
                     }
                 }
             }
-            var_s0 = func_80023874(0x129, var_s0);
+            var_s0 = findActor(0x129, var_s0);
         } while (var_s0 != NULL);
     }
     return 0;

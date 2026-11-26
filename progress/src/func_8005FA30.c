@@ -12,17 +12,17 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8000C43C();                                /* extern */
+s32 cameraGetMode();                                /* extern */
 M2C_UNK func_80013F24(void *);                      /* extern */
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK func_8002D3E4(void *, M2C_UNK);             /* extern */
-M2C_UNK func_8002D620(void *);                      /* extern */
+M2C_UNK syncActorPrevPos(void *);                      /* extern */
 void *func_80042F00(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800433A8(void *, M2C_UNK, M2C_UNK);    /* extern */
+M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK func_80050460(void *, void *);              /* extern */
 M2C_UNK func_800852CC(void *, void *);              /* extern */
-M2C_UNK func_800899DC(M2C_UNK *);                   /* extern */
+M2C_UNK debugPrintf(M2C_UNK *);                   /* extern */
 extern M2C_UNK D_800088C0;
 extern M2C_UNK D_800088D0;
 extern s32 D_800B7B0C;
@@ -46,11 +46,11 @@ void *func_8005FA30(void *arg0) {
     }
     func_80050460((char *)&func_8005F9AC + 4, (char *)&D_8014AA3E + 1);
     temp_s0 = func_80042F00(0x10, 0, 0, 0);
-    M2C_FIELD(temp_s0, s32 *, 0x58) = func_800221C0(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
+    M2C_FIELD(temp_s0, s32 *, 0x58) = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
     M2C_FIELD(temp_s0, s32 *, 0) = 0x1018;
-    func_800433A8(temp_s0, 0x55, 0x100);
+    actorSetAnim(temp_s0, 0x55, 0x100);
     func_800852CC(temp_s0, arg0);
-    if (func_8000C43C() != 0x20) {
+    if (cameraGetMode() != 0x20) {
         switch (var_s1) {                           /* irregular */
         case 0:
             var_v0 = &func_80060418;
@@ -64,11 +64,11 @@ void *func_8005FA30(void *arg0) {
             goto block_18;
         case 3:
             M2C_FIELD(temp_s0, M2C_UNK **, 0x9C) = &func_80060574;
-            func_800899DC(&D_800088C0);
+            debugPrintf(&D_800088C0);
             break;
         default:
             M2C_FIELD(temp_s0, M2C_UNK **, 0x9C) = &func_80060418;
-            func_800899DC(&D_800088D0);
+            debugPrintf(&D_800088D0);
             break;
         }
     } else {
@@ -76,8 +76,8 @@ void *func_8005FA30(void *arg0) {
 block_18:
         M2C_FIELD(temp_s0, M2C_UNK **, 0x9C) = var_v0;
     }
-    func_8002D620(temp_s0);
-    temp_v0 = func_80024394(0, 8) << 0xD;
+    syncActorPrevPos(temp_s0);
+    temp_v0 = randomRange(0, 8) << 0xD;
     M2C_FIELD(temp_s0, s32 *, 0x10) = temp_v0;
     M2C_FIELD(temp_s0, s32 *, 0x88) = temp_v0;
     func_8002D3E4(temp_s0, 0x96);

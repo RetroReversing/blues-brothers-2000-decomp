@@ -53,26 +53,26 @@ typedef struct {
     s32 flags;
 } Obj;
 
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-void func_8002220C(s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+void setDrawMode(s32);
 void func_80022EDC(Mtx *, f32 (*)[3], s32, f32 *);
-Model *func_80023E18(s32);
-s32 func_80024394(s32, s32);
+Model *getImageAsset(s32);
+s32 randomRange(s32, s32);
 void func_80024A3C(f32 (*)[3], f32 (*)[3], s32);
 void func_80024B58(f32 (*)[3], f32 (*)[3], s32);
 void func_80024BE0(f32 (*)[3], f32 (*)[3], s32);
 void func_80024FE8(f32 (*)[3]);
-Mtx *func_800253A0(s32);
+Mtx *heapAlloc(s32);
 void func_80027060(s32, s32, s32, s32);
-void func_80029F8C(s32);
+void setRenderState(s32);
 f32 func_8002DD60(f32);
-void func_8002DD8C(f32 *, void *, f32 *);
-void func_8003ECB8(Anim *, f32);
-void func_80040F10(Model *, s32, s32, Xform *, s32, Mtx *);
+void mtxTransformVec3(f32 *, void *, f32 *);
+void animSampleKeys(Anim *, f32);
+void buildBoneMatrices(Model *, s32, s32, Xform *, s32, Mtx *);
 Anim *func_80041418(Model *);
-void func_800433A8(Obj *, s32, s32);
+void actorSetAnim(Obj *, s32, s32);
 void func_800479B0(s32);
-void func_800899DC(char *, s32);
+void debugPrintf(char *, s32);
 void guMtxCatL(Mtx *, Mtx *, Mtx *);
 
 extern char D_800078C4[];
@@ -80,7 +80,7 @@ extern f32 *D_800B3960;
 extern s32 D_800B74E4;
 extern s32 D_800B74E8;
 extern s32 D_800B9EB8;
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 D_800BD058;
 extern s32 D_800BD114;
 extern s32 D_800CD148;
@@ -109,7 +109,7 @@ void func_800414D0(Obj *arg0) {
     s32 i;
     s32 j;
 
-    model = func_80023E18(D_800FB038[arg0->type]);
+    model = getImageAsset(D_800FB038[arg0->type]);
     n = model->count;
     d[0] = arg0->pos[0] - D_800B3960[1];
     d[1] = arg0->pos[1] - D_800B3960[2];
@@ -118,7 +118,7 @@ void func_800414D0(Obj *arg0) {
     if (fdist < func_8002DD60(d[0]) || fdist < func_8002DD60(d[1]) || fdist < func_8002DD60(d[2])) {
         goto hide;
     }
-    func_8002DD8C(arg0->view, &D_800CD148, d);
+    mtxTransformVec3(arg0->view, &D_800CD148, d);
     if (fdist < func_8002DD60(arg0->view[0]) || fdist < func_8002DD60(arg0->view[1]) || fdist < func_8002DD60(arg0->view[2])) {
         goto hide;
     }
@@ -131,13 +131,13 @@ void func_800414D0(Obj *arg0) {
             goto hide;
         }
     }
-    func_80029F8C(-1);
-    func_80029F8C(0x57);
+    setRenderState(-1);
+    setRenderState(0x57);
     if ((f32)(dist - 1000) < arg0->view[2]) {
-        r = func_800221C0(1, 1, 1, 3, 0, 0, 1, 0);
+        r = packDrawFlags(1, 1, 1, 3, 0, 0, 1, 0);
         alpha = (f32)arg0->unk5C * (fdist - arg0->view[2]) / 1000.0f;
         arg0->unk68 = 0xD;
-        func_8002220C(r);
+        setDrawMode(r);
         func_80027060(0xFF, 0xFF, 0xFF, alpha);
         {
             Gfx *_g = D_80177E18++;
@@ -147,10 +147,10 @@ void func_800414D0(Obj *arg0) {
     } else {
         alpha = arg0->unk5C;
         if (alpha != 0xFF) {
-            r = func_800221C0(1, 1, 1, 3, 0, 0, 1, 0);
+            r = packDrawFlags(1, 1, 1, 3, 0, 0, 1, 0);
             alpha = arg0->unk5C;
             arg0->unk68 = 0xD;
-            func_8002220C(r);
+            setDrawMode(r);
             func_80027060(0xFF, 0xFF, 0xFF, alpha);
             {
                 Gfx *_g = D_80177E18++;
@@ -158,14 +158,14 @@ void func_800414D0(Obj *arg0) {
                 _g->w1 = 0xFF67FFFF;
             }
         } else if (arg0->unkF0 != 0) {
-            r = func_800221C0(1, 1, 2, 3, 0, 0, 1, 0);
+            r = packDrawFlags(1, 1, 2, 3, 0, 0, 1, 0);
             arg0->unk68 = 3;
             {
                 Gfx *_g = D_80177E18++;
                 _g->w0 = 0xE3000A01;
                 _g->w1 = 0;
             }
-            func_8002220C(r);
+            setDrawMode(r);
             if (arg0->flags & 2) {
                 func_80027060(0, 0xFF, 0xFF, arg0->unkF0);
                 lit = 1;
@@ -184,31 +184,31 @@ void func_800414D0(Obj *arg0) {
             }
         } else {
             arg0->unk68 = 3;
-            func_8002220C(arg0->unk58);
+            setDrawMode(arg0->unk58);
             arg0->unk5C = alpha;
         }
     }
     if (arg0->unk0 == 0x101) {
-        arg0->unkF0 -= D_800B9ECC;
+        arg0->unkF0 -= gCamSpeedScale;
     } else {
-        arg0->unkF0 -= D_800B9ECC * 4;
+        arg0->unkF0 -= gCamSpeedScale * 4;
     }
     if (arg0->unkF0 <= 0) {
         arg0->unkF0 = 0;
         arg0->flags &= ~2;
     }
     if (arg0->anim == NULL) {
-        Model *m = func_80023E18(D_800FB038[arg0->type]);
+        Model *m = getImageAsset(D_800FB038[arg0->type]);
         if (m == NULL) {
-            func_800899DC(D_800078C4, arg0->type);
+            debugPrintf(D_800078C4, arg0->type);
         }
         anim = func_80041418(m);
         arg0->anim = anim;
-        func_800433A8(arg0, arg0->unkD0, 0x100);
-        func_8003ECB8(anim, func_80024394(0, 5));
+        actorSetAnim(arg0, arg0->unkD0, 0x100);
+        animSampleKeys(anim, randomRange(0, 5));
     }
     if (arg0->mtx == NULL) {
-        mtxs = func_800253A0(model->count << 7);
+        mtxs = heapAlloc(model->count << 7);
         arg0->mtx = mtxs;
     }
     func_80024FE8(m1);
@@ -232,9 +232,9 @@ void func_800414D0(Obj *arg0) {
     xf.scale[1] *= 0.00390625;
     xf.scale[2] *= 0.00390625;
     if (anim != NULL) {
-        func_80040F10(model, anim->unk20, -1, &xf, 0, &mtxs[n * D_800B9EB8]);
+        buildBoneMatrices(model, anim->unk20, -1, &xf, 0, &mtxs[n * D_800B9EB8]);
     } else {
-        func_80040F10(model, 0, -1, &xf, 0, &mtxs[n * D_800B9EB8]);
+        buildBoneMatrices(model, 0, -1, &xf, 0, &mtxs[n * D_800B9EB8]);
     }
     for (i = 0; i < model->count; i++) {
         for (j = 0; j < D_800B74E4; j++) {
@@ -260,7 +260,7 @@ void func_800414D0(Obj *arg0) {
         _g->w0 = 0xDE000000;
         _g->w1 = arg0->unkE4;
     }
-    func_80029F8C(-1);
+    setRenderState(-1);
     D_800B74E4 = 0;
     D_800BD058++;
     D_800BD114 += D_800F90A0[arg0->type];

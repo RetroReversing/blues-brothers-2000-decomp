@@ -33,9 +33,9 @@ typedef struct Unk800579E0 {
     f32 unk100;
 } Unk800579E0;
 
-extern Unk800BD06C_579E0 *D_800BD06C;
+extern Unk800BD06C_579E0 *gCameraTarget;
 
-s32 func_8004303C(void *arg0_in);
+s32 animStepKeys(void *arg0_in);
 s32 func_80083920(void *o, s32 arg1);
 s16 sins(u16);
 s16 coss(u16);
@@ -44,11 +44,11 @@ void func_8002A360(s32, s32);
 void func_8002D124(void);
 void func_80043328(void *arg0, s32 arg1, s32 arg2);
 s32 func_8002492C(f32, f32);
-void func_800433A8(void *arg0, s32 arg1, s32 arg2);
-f32 func_8002D66C(void *o, f32 r, s32 *ang);
+void actorSetAnim(void *arg0, s32 arg1, s32 arg2);
+f32 getCameraTargetDist(void *o, f32 r, s32 *ang);
 s16 *func_800851D8(void *arg0);
 s32 func_800571F4(void *arg0);
-s32 func_80024394(s32 arg0, s32 arg1);
+s32 randomRange(s32 arg0, s32 arg1);
 s32 func_8005738C(Unk800579E0 *);
 s32 func_800571B0(Unk800579E0 *);
 s32 func_80057858(Unk800579E0 *);
@@ -66,13 +66,13 @@ void func_800579E0(Unk800579E0 *arg0) {
         arg0->unk6C = 1;
         arg0->unkD8 = func_8005738C;
     }
-    done = func_8004303C(arg0);
+    done = animStepKeys(arg0);
     flags = arg0->unkC0;
     result = func_80083920(arg0, arg0->unk7C);
     switch (result) {
     case 1:
-        arg0->unk4 += (f32)((sins(D_800BD06C->unk12) * 5) >> 14);
-        arg0->unkC += (f32)((coss(D_800BD06C->unk12) * 5) >> 14);
+        arg0->unk4 += (f32)((sins(gCameraTarget->unk12) * 5) >> 14);
+        arg0->unkC += (f32)((coss(gCameraTarget->unk12) * 5) >> 14);
         arg0->unk7C = result;
         if (flags & 0x40) {
             func_8002ADFC(0xAE, 6000, arg0);
@@ -85,9 +85,9 @@ void func_800579E0(Unk800579E0 *arg0) {
         done = 0;
         break;
     case 2:
-        arg0->unk10 = func_8002492C(D_800BD06C->unk4 - arg0->unk4, D_800BD06C->unkC - arg0->unkC);
+        arg0->unk10 = func_8002492C(gCameraTarget->unk4 - arg0->unk4, gCameraTarget->unkC - arg0->unkC);
         arg0->unk9C = func_800571B0;
-        func_800433A8(arg0, 0xC3, 0x100);
+        actorSetAnim(arg0, 0xC3, 0x100);
         return;
     }
     if (arg0->unk7C != 0) {
@@ -96,7 +96,7 @@ void func_800579E0(Unk800579E0 *arg0) {
         }
         return;
     }
-    dist = func_8002D66C(arg0, 2000.0f, &angle);
+    dist = getCameraTargetDist(arg0, 2000.0f, &angle);
     arg0->unk100 = dist;
     arg0->unk90 = angle;
     if (dist < func_800851D8(arg0)[1]) {
@@ -117,19 +117,19 @@ void func_800579E0(Unk800579E0 *arg0) {
     case 0xC1:
         if (done == 1) {
             arg0->unkD8 = func_80057858;
-            arg0->unk64 = func_80024394(180, 400);
+            arg0->unk64 = randomRange(180, 400);
         } else {
             arg0->unkD8 = func_80057658;
         }
         break;
     case 0xC5:
         arg0->unkD8 = func_80057858;
-        arg0->unk64 = func_80024394(180, 400);
+        arg0->unk64 = randomRange(180, 400);
         break;
     case 0xC0:
         if (done == 1) {
             arg0->unkD8 = func_800574D8;
-            arg0->unk64 = func_80024394(100, 200);
+            arg0->unk64 = randomRange(100, 200);
         } else {
             arg0->unkD8 = func_80057658;
         }

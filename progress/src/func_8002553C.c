@@ -11,8 +11,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 s32 func_800255DC();
-extern s32 D_800B9C74;
-extern s32 D_800B9C78;
+extern s32 gScreenWidth;
+extern s32 gScreenHeight;
 extern s32 D_80106A30;
 extern s32 D_80106A34;
 extern s32 D_80106A38;
@@ -34,11 +34,11 @@ void func_8002553C(s32 arg0, s32 arg1) {
     temp_a1_3 = ((temp_lo - 0x10) & ~7) | 1;
     *(u32 *)temp_a0 = temp_a1_3;
     *(s32 *)((s8 *)(((temp_a1_3 >> 2) * 4) + temp_a0) + 8) = -2;
-    __base_D_800B9C74 = &D_800B9C74;
+    __base_D_800B9C74 = &gScreenWidth;
     if ((*__base_D_800B9C74) == 0x140) {
         s32 temp;
-        temp = D_800B9C78 * 2;
-        temp2 = temp * D_800B9C74;
+        temp = gScreenHeight * 2;
+        temp2 = temp * gScreenWidth;
         temp_lo = temp2;
         func_800255DC(0x80200000 - (temp_lo * 2), temp_lo * 6);
     }

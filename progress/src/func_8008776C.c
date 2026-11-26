@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_800880FC(s32, M2C_UNK);                /* extern */
+M2C_UNK loadSlotAssetSet(s32, M2C_UNK);                /* extern */
 extern s32 D_80171994;
 extern M2C_UNK D_80171A70;
 extern M2C_UNK func_800877C8;
@@ -22,6 +22,6 @@ void func_8008776C(void *arg0) {
     M2C_FIELD(&D_80171A70, s32 *, 4) = 4;
     M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800877C8;
     D_80171994 = 0;
-    func_800880FC(M2C_FIELD(&D_80171A70, s32 *, 0), 0x17B);
-    func_800880FC(M2C_FIELD(&D_80171A70, s32 *, 4), 0x18B);
+    loadSlotAssetSet(M2C_FIELD(&D_80171A70, s32 *, 0), 0x17B);
+    loadSlotAssetSet(M2C_FIELD(&D_80171A70, s32 *, 4), 0x18B);
 }

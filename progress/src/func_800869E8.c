@@ -17,11 +17,11 @@ typedef struct Rec {
 } Rec;
 void func_80023DBC(s32);
 void func_80026C04(void *, s32, s32);
-f32 func_8002D340(f32, f32, f32);
-void func_800433A8(Obj *, s32, s32);
+f32 approachF32(f32, f32, f32);
+void actorSetAnim(Obj *, s32, s32);
 s32 func_80082400(void);
 extern s32 D_800B9000[];
-extern s32 D_800B9ECC;
+extern s32 gCamSpeedScale;
 extern s32 D_80171980;
 extern Obj *D_801719A8;
 extern Obj *D_801719AC;
@@ -38,13 +38,13 @@ void func_800869E8(Obj *o) {
 
     idx = func_80082400();
     func_80023DBC(0xE33);
-    D_80171A30->f4 = func_8002D340(20.0f, D_80171A30->f4, 4.0f);
-    D_80171980 += D_800B9ECC;
+    D_80171A30->f4 = approachF32(20.0f, D_80171A30->f4, 4.0f);
+    D_80171980 += gCamSpeedScale;
     if (o->f74 + 0x120 < D_80171980) {
         D_80171980 = 0;
-        func_800433A8(D_801719A8, 0x16B, 0x100);
+        actorSetAnim(D_801719A8, 0x16B, 0x100);
         D_801719A8->f10 = 0x8000;
-        func_800433A8(D_801719AC, 0x18B, 0x100);
+        actorSetAnim(D_801719AC, 0x18B, 0x100);
         D_80171A50 = 0;
         D_80171A34 = 0;
         D_801719AC->f10 = 0x4000;

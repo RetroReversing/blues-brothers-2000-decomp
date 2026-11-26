@@ -2,8 +2,8 @@ f32 func_8002D858(void *, s32 *);
 s32 func_8002D260(s32);
 void func_80043328(void *, s32, s32);
 void func_8003BF98(void *);
-s32 func_8004303C(void *);
-s32 func_80024394(s32, s32);
+s32 animStepKeys(void *);
+s32 randomRange(s32, s32);
 s32 func_80043248(void *);
 
 s32 func_8006A7A0(u8 *obj) {
@@ -32,8 +32,8 @@ s32 func_8006A7A0(u8 *obj) {
     t = func_8002D260(angle - *(s32 *) (obj + 0x10));
     d = abs(t);
     d = d < 0x4000;
-    if (func_8004303C(obj) != 0) {
-        *(s32 *) (obj + 0x64) = func_80024394(0x32, 0x8C);
+    if (animStepKeys(obj) != 0) {
+        *(s32 *) (obj + 0x64) = randomRange(0x32, 0x8C);
         if (!d) {
             return 3;
         }

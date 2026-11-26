@@ -53,12 +53,12 @@ void func_8008DC04(void *);
 s32 func_8008D320(s32);
 s32 func_8008D3A8(s32, s32, s32, s32, s32);
 void func_8008D904(s32, s32);
-s32 func_8000C43C(void);
+s32 cameraGetMode(void);
 s32 func_8008D6D0(s32);
 void func_8008D72C(s32, s32);
 void func_8008D790(s32, s32);
-s32 func_8002D5CC(SfxObj *);
-s32 func_80024394(s32, s32);
+s32 tickActorTimer(SfxObj *);
+s32 randomRange(s32, s32);
 void func_8008D804(s32, f32);
 void func_8008DD34(s32);
 void func_8008D9D0(void *);
@@ -134,14 +134,14 @@ void func_8002A3C8(void) {
             if (arg < 0xDC) {
                 func_8008DC04(D_801078C0);
                 h = func_8008D3A8(arg, D_801078B0, D_801078B4, 0, -1);
-                func_8008D904(h, D_800B2ED0[func_8000C43C()]);
+                func_8008D904(h, D_800B2ED0[cameraGetMode()]);
             }
             break;
         case 8:
             if (arg < 0xDC) {
                 func_8008DC04(D_801078C0);
                 h = func_8008D3A8(arg, D_800B2B60[arg], D_801078B4, 0, -1);
-                func_8008D904(h, D_800B2ED0[func_8000C43C()]);
+                func_8008D904(h, D_800B2ED0[cameraGetMode()]);
                 if (arg == 3) {
                     D_800B3830 = h;
                 }
@@ -190,13 +190,13 @@ void func_8002A3C8(void) {
                 } else if (func_8008D6D0(sfx->handle) != 0) {
                     func_8008D72C(sfx->handle, sfx->vol2);
                     func_8008D790(sfx->handle, sfx->pan);
-                } else if (func_8002D5CC(sfx) != 0) {
+                } else if (tickActorTimer(sfx) != 0) {
                     func_8008DC04(D_801078C0);
                     sfx->handle = func_8008D3A8(sfx->id, sfx->vol2, sfx->pan, 0, -1);
-                    sfx->unk64 = sfx->unk70 * (func_80024394(0, 0x28) + 0x50);
+                    sfx->unk64 = sfx->unk70 * (randomRange(0, 0x28) + 0x50);
                 }
-                if (sfx->volume < D_800B2ED0[func_8000C43C()]) {
-                    sfx->volume = D_800B2ED0[func_8000C43C()];
+                if (sfx->volume < D_800B2ED0[cameraGetMode()]) {
+                    sfx->volume = D_800B2ED0[cameraGetMode()];
                 }
                 func_8008D904(sfx->handle, sfx->volume);
                 func_8008D804(sfx->handle, sfx->pitch / 10);
@@ -216,7 +216,7 @@ void func_8002A3C8(void) {
         case 19:
             func_8008DC04(D_801078C0);
             D_800B381C = func_8008D320(0x4B);
-            func_8008D904(D_800B381C, D_800B2ED0[func_8000C43C()]);
+            func_8008D904(D_800B381C, D_800B2ED0[cameraGetMode()]);
             break;
         case 20:
             if (D_800B381C != 0) {
@@ -228,7 +228,7 @@ void func_8002A3C8(void) {
             func_8008DC04(D_801078C0);
             h = func_8008D320(0x2F);
             func_8008D804(h, 10.0f);
-            func_8008D904(h, D_800B2ED0[func_8000C43C()]);
+            func_8008D904(h, D_800B2ED0[cameraGetMode()]);
             break;
         case 22:
             if (D_800B3834 == 0) {
@@ -245,7 +245,7 @@ void func_8002A3C8(void) {
         case 24:
             func_8008DC04(D_801078C0);
             D_800B3820 = func_8008D320(0x49);
-            func_8008D904(D_800B3820, D_800B2ED0[func_8000C43C()]);
+            func_8008D904(D_800B3820, D_800B2ED0[cameraGetMode()]);
             break;
         case 25:
             if (D_800B3820 != 0) {
@@ -256,7 +256,7 @@ void func_8002A3C8(void) {
         case 26:
             func_8008DC04(D_801078C0);
             D_800B3824 = func_8008D320(0x4F);
-            func_8008D904(D_800B3824, D_800B2ED0[func_8000C43C()]);
+            func_8008D904(D_800B3824, D_800B2ED0[cameraGetMode()]);
             break;
         case 27:
             if (D_800B3824 != 0) {

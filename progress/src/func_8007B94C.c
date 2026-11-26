@@ -38,14 +38,14 @@ typedef struct Unk8007B94C {
 } Unk8007B94C;
 
 extern s32 D_800BD100;
-extern Unk800BD06C *D_800BD06C;
+extern Unk800BD06C *gCameraTarget;
 extern f32 D_800B9EC4;
-extern s32 D_800B9ECC;
-extern s32 D_8014A928[];
+extern s32 gCamSpeedScale;
+extern s32 gSplinePointCount[];
 
 s32 func_80081990(f32 *out, s32 i, f32 t);
-void func_8002D620(void *arg0);
-s32 func_8002D5CC(void *arg0);
+void syncActorPrevPos(void *arg0);
+s32 tickActorTimer(void *arg0);
 s32 func_80081AC0(f32 *out, s32 i, f32 t);
 s32 func_8002492C(f32, f32);
 f32 func_8002D8F4(void *arg0, s32 *arg1);
@@ -70,14 +70,14 @@ void func_8007B94C(Unk8007B94C *arg0) {
     switch (arg0->unk6C) {
     case 0:
         func_80081990(&arg0->unk4, idx, arg0->unkB4);
-        func_8002D620(arg0);
+        syncActorPrevPos(arg0);
         arg0->unk68 = -1;
         arg0->unk64 = 200;
         arg0->unk6C++;
         arg0->unk8 += 2000.0f;
         break;
     case 1:
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             arg0->unk68 = 4;
             arg0->unk6C++;
         }
@@ -94,7 +94,7 @@ void func_8007B94C(Unk8007B94C *arg0) {
     default:
         sum = arg0->unkB4 + arg0->unkAC;
         arg0->unkB4 = sum;
-        t = (f32)D_8014A928[idx] - 1.1f;
+        t = (f32)gSplinePointCount[idx] - 1.1f;
         if (t <= sum) {
             arg0->unkA4->unkA8 = 0;
             arg0->unkA0(arg0);
@@ -104,25 +104,25 @@ void func_8007B94C(Unk8007B94C *arg0) {
         if (arg0->unk7C == 4) {
             func_80081AC0(vec, idx, arg0->unkB4);
             arg0->unk10 = func_8002492C(vec[0], vec[2]);
-            arg0->unk14 += D_800B9ECC << 10;
+            arg0->unk14 += gCamSpeedScale << 10;
         } else if (arg0->unk70 < 7) {
-            arg0->unk18 += D_800B9ECC << 10;
+            arg0->unk18 += gCamSpeedScale << 10;
         } else {
-            arg0->unk14 -= D_800B9ECC << 10;
+            arg0->unk14 -= gCamSpeedScale << 10;
         }
         dist = func_8002D8F4(arg0, NULL);
         do { do { mode = D_800BD100; } while (0); } while (0);
         if (mode == 1) {
             if (dist < 500.0) {
-                if (D_800BD06C->unk0 == 3) {
-                    func_8003B980(D_800BD06C);
+                if (gCameraTarget->unk0 == 3) {
+                    func_8003B980(gCameraTarget);
                 }
             }
         } else if (dist < 425.0f) {
-            if (flag && D_800BD06C->unk0 == 3) {
-                func_8003B980(D_800BD06C);
+            if (flag && gCameraTarget->unk0 == 3) {
+                func_8003B980(gCameraTarget);
             } else {
-                func_8003BF98(D_800BD06C);
+                func_8003BF98(gCameraTarget);
             }
         }
         break;

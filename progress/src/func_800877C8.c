@@ -24,22 +24,22 @@ struct Obj {
     s32 unkF8;
 };
 
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-Obj *func_80023874(s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+Obj *findActor(s32, s32);
 s32 func_80023D58(s32);
 s32 func_80023DBC(s32);
 void func_80026C04(void *, s32, s32);
 void func_8002A360(s32, s32);
 void func_80033BC0(void);
-void func_800433A8(Obj *, s32, s32);
+void actorSetAnim(Obj *, s32, s32);
 void func_80052A5C(s32);
 s32 func_80052B24(s32, void *, Obj *);
-void func_80081588(s32, s32);
+void initSpline(s32, s32);
 Obj *func_80087FE4(s32);
 extern u8 D_80009BD8[];
 extern Obj *D_800B3960;
 extern s32 D_800B5DD4;
-extern Obj *D_800BD06C;
+extern Obj *gCameraTarget;
 extern s32 D_80171988[];
 extern s32 D_80171990;
 extern s32 D_80171994;
@@ -59,7 +59,7 @@ extern s32 D_80171A40;
 extern s32 D_80171A4C;
 extern s32 D_80171A70[];
 extern u8 func_80023078[];
-void func_800349E4(void);
+void updateFollowCamera(void);
 void func_8004318C(void);
 void func_80082EF8(void);
 
@@ -67,11 +67,11 @@ void func_800877C8(Obj *arg0) {
     Obj *o;
 
     D_800B3960->unk70 = 1;
-    func_80081588(1, 0);
-    func_80081588(2, 1);
-    func_80081588(3, 1);
-    func_80081588(4, 1);
-    func_80081588(5, 1);
+    initSpline(1, 0);
+    initSpline(2, 1);
+    initSpline(3, 1);
+    initSpline(4, 1);
+    initSpline(5, 1);
     func_80026C04(D_801719B0, 0, 0x14);
     func_80026C04(D_801719C8, 0, 0x14);
     arg0->unk80 = 0;
@@ -86,7 +86,7 @@ void func_800877C8(Obj *arg0) {
     arg0->unkA8 = o;
     o->unk0 = 0x1023;
     o->unkF8 |= 1;
-    func_800433A8(o, 0x18A, 0x100);
+    actorSetAnim(o, 0x18A, 0x100);
     o = func_80087FE4(D_80171A70[1]);
     D_801719AC = o;
     o->unk10 = 0x8000;
@@ -96,17 +96,17 @@ void func_800877C8(Obj *arg0) {
     o->z = -567.0f;
     o->unk0 = 0x1023;
     o->unkF8 |= 1;
-    o->unk58 = func_800221C0(1, 1, 2, 3, 0, 0, 1, 0);
-    func_800433A8(o, 0x19A, 0x100);
-    D_800BD06C->unk9C = func_80023078 + 8;
-    D_800BD06C->unk68 = -1;
-    D_800BD06C->x = 0.0f;
-    D_800BD06C->y = 293.0f;
-    D_800BD06C->z = -567.0f;
-    D_800BD06C->unk50 = 0;
-    D_800BD06C->unk90 = 1;
-    D_800BD06C->unkF8 |= 0x40;
-    o = func_80023874(6, 0);
+    o->unk58 = packDrawFlags(1, 1, 2, 3, 0, 0, 1, 0);
+    actorSetAnim(o, 0x19A, 0x100);
+    gCameraTarget->unk9C = func_80023078 + 8;
+    gCameraTarget->unk68 = -1;
+    gCameraTarget->x = 0.0f;
+    gCameraTarget->y = 293.0f;
+    gCameraTarget->z = -567.0f;
+    gCameraTarget->unk50 = 0;
+    gCameraTarget->unk90 = 1;
+    gCameraTarget->unkF8 |= 0x40;
+    o = findActor(6, 0);
     if (o != NULL) {
         o->unk68 = -1;
     }
@@ -123,7 +123,7 @@ void func_800877C8(Obj *arg0) {
     arg0->unk94 = 0x24;
     func_8002A360(0xE, 0x83);
     func_80033BC0();
-    D_800B3960->unk9C = func_800349E4;
+    D_800B3960->unk9C = updateFollowCamera;
     if (D_80171994 == 0) {
         func_80052A5C(0x56B);
         func_80052B24(func_80023DBC(0xE81), D_80009BD8, arg0);

@@ -33,7 +33,7 @@ extern void __osLeoResume(void),__osLeoAbnormalResume(void);
  * starts the next DMA into the block's DRAM buffer, and marks the block's
  * errStatus. Returns 1 while the transfer is still running, 0 when the drive
  * has finished, and resumes or aborts the LEO command when it is done. */
-s32 __osLeoInterrupt(void) {
+/* Disk drive (LEO) interrupt step: advances the current read or seek transfer and returns 1 while it is still running. */ s32 __osLeoInterrupt(void) {
     volatile s32 pi_status;
     s32 status;
     u32 bm_ctl;

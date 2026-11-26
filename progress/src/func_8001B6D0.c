@@ -12,8 +12,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D5CC(void *);                          /* extern */
-extern s32 D_800B9ECC;
+s32 tickActorTimer(void *);                          /* extern */
+extern s32 gCamSpeedScale;
 extern s32 func_80023078;
 
 void func_8001B6D0(void *arg0) {
@@ -29,7 +29,7 @@ void func_8001B6D0(void *arg0) {
         (*(u32 *)((s8 *)arg0 + 0xC0)) = (u32) ((*(u32 *)((s8 *)arg0 + 0xC0)) + 1);
         return;
     case 1:
-        temp_v0 = (*(s32 *)((s8 *)arg0 + 0x5C)) + (D_800B9ECC * 2);
+        temp_v0 = (*(s32 *)((s8 *)arg0 + 0x5C)) + (gCamSpeedScale * 2);
         (*(s32 *)((s8 *)arg0 + 0x5C)) = temp_v0;
         if (temp_v0 >= 0xFF) {
             (*(s32 *)((s8 *)arg0 + 0x5C)) = 0xFF;
@@ -42,7 +42,7 @@ return;
     default:
         return;
     case 2:
-        if (func_8002D5CC(arg0) != 0) {
+        if (tickActorTimer(arg0) != 0) {
             {
 (*(u32 *)((s8 *)arg0 + 0xC0)) = (u32) ((*(u32 *)((s8 *)arg0 + 0xC0)) + 1);
 return;
@@ -50,7 +50,7 @@ return;
         }
         break;
     case 3:
-        temp_v1_2 = (*(s32 *)((s8 *)arg0 + 0x5C)) - (D_800B9ECC * 2);
+        temp_v1_2 = (*(s32 *)((s8 *)arg0 + 0x5C)) - (gCamSpeedScale * 2);
         (*(s32 *)((s8 *)arg0 + 0x5C)) = temp_v1_2;
         if (temp_v1_2 <= 0) {
             (*(s32 *)((s8 *)arg0 + 0x5C)) = 0;

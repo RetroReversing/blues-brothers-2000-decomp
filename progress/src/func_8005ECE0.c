@@ -22,9 +22,9 @@ typedef struct O5ECE0 {
     void (*f98)(void);
     void (*f9C)(void);
 } O5ECE0;
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 O5ECE0 *func_800232B4(s32, s32, s32, s32);
-s32 func_80024394(s32, s32);
+s32 randomRange(s32, s32);
 extern s32 D_8014AB14;
 void func_8002F8D0(void);
 void func_8005EE10(void);
@@ -44,11 +44,11 @@ o->f8C = 0;
 o->f8 += 250.0f;
 o->f60 = D_8014AB14;
     while (o->f88 == 0) {
-        o->f88 = func_80024394(-1, 1);
+        o->f88 = randomRange(-1, 1);
     }
     o->f5C = 0xB0;
-    o->f58 = func_800221C0(0, 1, 1, 3, 0, 0, 2, 0);
-    o->f4 += func_80024394(-100, -50);
+    o->f58 = packDrawFlags(0, 1, 1, 3, 0, 0, 2, 0);
+    o->f4 += randomRange(-100, -50);
     o->f68 = 13;
     return o;
 }

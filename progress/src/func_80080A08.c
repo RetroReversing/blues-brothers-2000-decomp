@@ -1,6 +1,6 @@
 typedef struct { u32 w0, w1; } GfxW;
 typedef struct { u8 pad[0x70]; s32 f70; } Obj;
-s32 func_8002710C(s32, s32, s32, s32);
+s32 setTextColor(s32, s32, s32, s32);
 extern GfxW *D_80177E18;
 
 s32 func_80080A08(Obj *o) {
@@ -24,7 +24,7 @@ s32 func_80080A08(Obj *o) {
         _g->w0 = 0xE2001E01;
         _g->w1 = 0;
     }
-    func_8002710C(0, 0, 0, o->f70);
+    setTextColor(0, 0, 0, o->f70);
     {
         GfxW *_g = (GfxW *)(D_80177E18++);
         _g->w0 = 0xFCFFFFFF;

@@ -2,9 +2,9 @@ typedef struct { u8 pad[0x30]; } Key;
 f32 func_80080DFC(Key *, f32);
 f32 func_80080E38(Key *, f32);
 f32 func_80080E74(Key *, f32);
-extern s32 D_8014A928[];
-extern u8 D_80171938[];
-extern Key *D_801718C0[];
+extern s32 gSplinePointCount[];
+extern u8 gSplineClosed[];
+extern Key *gSplineSegs[];
 
 s32 func_80081990(f32 *out, s32 i, f32 t) {
     f32 len;
@@ -12,7 +12,7 @@ s32 func_80081990(f32 *out, s32 i, f32 t) {
     s32 n;
     Key *key;
 
-    len = (f32)D_8014A928[i] - 1.0 + D_80171938[i];
+    len = (f32)gSplinePointCount[i] - 1.0 + gSplineClosed[i];
     clamped = 0;
     if (t < 0.0f) {
         t = 0.0f;
@@ -24,7 +24,7 @@ s32 func_80081990(f32 *out, s32 i, f32 t) {
     }
     n = t;
     t -= n;
-    key = D_801718C0[i] + n;
+    key = gSplineSegs[i] + n;
     out[0] = func_80080DFC(key, t);
     out[1] = func_80080E38(key, t);
     out[2] = func_80080E74(key, t);

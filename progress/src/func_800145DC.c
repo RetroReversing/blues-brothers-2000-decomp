@@ -14,11 +14,11 @@ typedef s32 M2C_UNK32;
 
 void *func_80013110(s32);                           /* extern */
 extern f32 D_80000840;
-extern s32 D_800BD06C[];
+extern s32 gCameraTarget[];
 
 void func_800145DC(void) {
     void *temp_v0;
 
-    temp_v0 = func_80013110(D_800BD06C[0]);
+    temp_v0 = func_80013110(gCameraTarget[0]);
     M2C_FIELD(temp_v0, f32 *, 8) = (f32) (M2C_FIELD(temp_v0, f32 *, 8) + D_80000840);
 }

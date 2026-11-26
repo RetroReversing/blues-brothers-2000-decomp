@@ -23,16 +23,16 @@ struct Obj {
 
 s32 func_8001B990(s32, s32);
 Obj *func_80022028(s32);
-s32 func_80024394(s32, s32);
-s32 func_8002D5CC(Obj *);
+s32 randomRange(s32, s32);
+s32 tickActorTimer(Obj *);
 f32 func_8002D858(Obj *, s32);
 void func_8003A9A8(Obj *, s32);
 s32 func_80043248(Obj *);
 void func_80043328(Obj *, s32, s32);
 s16 sins(u16);
 int abs(int);
-extern s32 D_800B9EA4;
-extern Obj *D_800BD06C;
+extern s32 gTextWaveTime;
+extern Obj *gCameraTarget;
 extern Vec3i D_800F4A00[];
 
 void func_80078048(Obj *arg0) {
@@ -53,8 +53,8 @@ void func_80078048(Obj *arg0) {
     hit = func_8001B990(0x100, arg0->unk70);
     if (arg0->unkA4 != NULL) {
         p = arg0->unkA4;
-        p->unk80 = func_80024394(-10000, 8000) + 0x3000;
-        p->unk70 = (sins((D_800B9EA4 * 200) & 0xFFF8) >> 12) + 15;
+        p->unk80 = randomRange(-10000, 8000) + 0x3000;
+        p->unk70 = (sins((gTextWaveTime * 200) & 0xFFF8) >> 12) + 15;
     }
     if (200.0f < dist && hit != 0 && arg0->unk84 != 0) {
         goto end;
@@ -86,14 +86,14 @@ void func_80078048(Obj *arg0) {
     if (arg0->unk84 == 0) {
         return;
     }
-    D_800F4A00[arg0->unkB8].y = abs((sins((D_800B9EA4 * 150) & 0xFFFE) * 225) >> 14) + 150;
+    D_800F4A00[arg0->unkB8].y = abs((sins((gTextWaveTime * 150) & 0xFFFE) * 225) >> 14) + 150;
     if (dist < 140.0f && arg0->unkA8 != 0) {
-        func_80043328(D_800BD06C, 0x20, 0x100);
+        func_80043328(gCameraTarget, 0x20, 0x100);
         arg0->unk64 = 50;
         return;
     }
 end:
-    if (D_800BD06C->unkD0 == 0x20 && func_8002D5CC(arg0) != 0) {
-        func_8003A9A8(D_800BD06C, 1);
+    if (gCameraTarget->unkD0 == 0x20 && tickActorTimer(arg0) != 0) {
+        func_8003A9A8(gCameraTarget, 1);
     }
 }

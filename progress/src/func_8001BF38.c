@@ -14,11 +14,11 @@ typedef s32 M2C_UNK32;
 
 s32 func_8001B990(M2C_UNK, s32);                    /* extern */
 s32 func_8001BF08(s32);                             /* extern */
-s32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
+s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
 s32 func_80023E3C(M2C_UNK);                         /* extern */
 M2C_UNK func_8002ADFC(M2C_UNK, M2C_UNK, void *);    /* extern */
 M2C_UNK func_8002D604(void *);                      /* extern */
-f32 func_8002D66C(void *, M2C_UNK, M2C_UNK);        /* extern */
+f32 getCameraTargetDist(void *, M2C_UNK, M2C_UNK);        /* extern */
 extern M2C_UNK func_8001F5A4;
 
 void func_8001BF38(void *arg0) {
@@ -31,9 +31,9 @@ void func_8001BF38(void *arg0) {
     if (func_8001B990(0x100, M2C_FIELD(arg0, s32 *, 0x70)) == 0) {
         M2C_FIELD(arg0, s32 *, 0xB8) = 0x96;
         M2C_FIELD(arg0, s32 *, 0xE4) = func_80023E3C(0x96);
-        M2C_FIELD(arg0, s32 *, 0x58) = func_800221C0(1, 1, 0, 2, 0, 1, 1, 0);
+        M2C_FIELD(arg0, s32 *, 0x58) = packDrawFlags(1, 1, 0, 2, 0, 1, 1, 0);
         func_8002D604(arg0);
-        if ((s32) func_8002D66C(arg0, 0x42C80000, 0) < 0x64) {
+        if ((s32) getCameraTargetDist(arg0, 0x42C80000, 0) < 0x64) {
             func_8002ADFC(0xB, 0x3E8, arg0);
             func_8001B990(0x200, M2C_FIELD(arg0, s32 *, 0x70));
             goto block_5;

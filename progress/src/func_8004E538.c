@@ -11,8 +11,8 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 *func_800253A0(s32 size);
-s32 func_800899DC(s32 *);
+s32 *heapAlloc(s32 size);
+s32 debugPrintf(s32 *);
 extern char D_80007E98[];
 
 void func_8004E538(void *arg0, s32 arg1, s32 *arg2, s32 arg3) {
@@ -26,10 +26,10 @@ void func_8004E538(void *arg0, s32 arg1, s32 *arg2, s32 arg3) {
     s32 temp_v0_2;
 
     if (arg1 < 4) {
-        func_800899DC((s32 *) D_80007E98);
+        debugPrintf((s32 *) D_80007E98);
     }
     M2C_FIELD(arg0, s32 *, 0x70) = arg1;
-    temp_a1 = func_800253A0(arg1 * 0xC);
+    temp_a1 = heapAlloc(arg1 * 0xC);
     i = 0;
     if (M2C_FIELD(arg0, s32 *, 0x70) > 0) {
         do {
@@ -40,7 +40,7 @@ void func_8004E538(void *arg0, s32 arg1, s32 *arg2, s32 arg3) {
         } while (i < M2C_FIELD(arg0, s32 *, 0x70));
     }
     M2C_FIELD(arg0, s32 **, 0x74) = temp_a1;
-    temp_a3 = func_800253A0((arg1 + 4) * 4);
+    temp_a3 = heapAlloc((arg1 + 4) * 4);
     temp_v0_2 = arg1 + 3;
     i = 0;
     if (temp_v0_2 >= 0) {

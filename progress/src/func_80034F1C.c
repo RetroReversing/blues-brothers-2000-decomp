@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-extern char D_800B4ABC[];
+extern char cameraDistTable[];
 
 void func_80034F1C(void *arg0) {
     char *__base_D_800B4ABC;
-    __base_D_800B4ABC = D_800B4ABC;
+    __base_D_800B4ABC = cameraDistTable;
     M2C_FIELD(arg0, s32 *, 0x7C) = (s32) *(s32 *)((M2C_FIELD(arg0, s32 *, 0x6C) * 8) + __base_D_800B4ABC);
     M2C_FIELD(arg0, s32 *, 0x80) = (s32) M2C_FIELD(((M2C_FIELD(arg0, s32 *, 0x6C) * 8) + __base_D_800B4ABC), s32 *, 4);
 }

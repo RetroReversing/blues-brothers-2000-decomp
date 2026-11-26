@@ -20,13 +20,13 @@ typedef struct Obj {
 s16 coss(u16);
 s16 sins(u16);
 void func_80011734(Obj *);
-extern s32 D_800B9EA4;
+extern s32 gTextWaveTime;
 
 void func_800118A4(Obj *arg0) {
     s32 t;
     u16 ang;
 
-    t = D_800B9EA4 + arg0->f8C;
+    t = gTextWaveTime + arg0->f8C;
     if (arg0->f7C == 0) {
         arg0->f94 /= 4;
         arg0->f7C = 1;
@@ -37,6 +37,6 @@ void func_800118A4(Obj *arg0) {
     arg0->f3C = (sins(ang) >> 11) + 0x100;
     arg0->f34 = (sins(ang) >> 11) + 0x100;
     arg0->f10 = (((sins((t * 100) & 0xFFFC) * 45) >> 12) * 0xFFFF) / 360;
-    arg0->y = arg0->y0 + ((sins((D_800B9EA4 * 100) & 0xFFFC) * 25) >> 15);
+    arg0->y = arg0->y0 + ((sins((gTextWaveTime * 100) & 0xFFFC) * 25) >> 15);
     func_80011734(arg0);
 }

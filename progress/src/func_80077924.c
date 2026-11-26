@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002D5CC();
+s32 tickActorTimer();
 s32 func_8002D858();
 s32 func_80043248();
 
 void func_80077924(s32 arg0) {
     func_8002D858(arg0, arg0 + 0x10);
-    if (func_8002D5CC(arg0) != 0) {
+    if (tickActorTimer(arg0) != 0) {
         func_80043248(arg0);
     }
 }

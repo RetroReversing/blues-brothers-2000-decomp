@@ -12,16 +12,16 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_80023E18(s32);                             /* extern */
-M2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
-M2C_UNK func_800272E0(s32, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+s32 getImageAsset(s32);                             /* extern */
+M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK drawImage(s32, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 extern s32 D_800AB9B4;
 
 s32 func_80073328(void *arg0) {
     if (D_800AB9B4 != 0) {
         return 0;
     }
-    func_8002710C(0xFF, 0xFF, 0xFF, 0xFF);
-    func_800272E0(func_80023E18(M2C_FIELD(arg0, s32 *, 0x60)), 0x90, 0x68, 0);
+    setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
+    drawImage(getImageAsset(M2C_FIELD(arg0, s32 *, 0x60)), 0x90, 0x68, 0);
     return 1;
 }

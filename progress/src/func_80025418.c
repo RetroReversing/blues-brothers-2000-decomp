@@ -4,7 +4,7 @@ typedef struct Blk25418 {
 } Blk25418;
 void func_8002553C(void *, s32);
 void func_80025728(s32);
-void func_800899DC(void *);
+void debugPrintf(void *);
 extern s32 D_80001090;
 extern s32 D_800AE010;
 extern s32 D_800AE130;
@@ -35,7 +35,7 @@ void *func_80025418(s32 size) {
 
         if (sz < 0) {
             func_80025728(sz);
-            func_800899DC(&D_80001090);
+            debugPrintf(&D_80001090);
             return NULL;
         }
         if (w ) {

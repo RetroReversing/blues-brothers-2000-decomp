@@ -13,13 +13,13 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_8001602C(void *);                      /* extern */
-s32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */
-s32 func_8002D5CC();                                /* extern */
+s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
+s32 tickActorTimer();                                /* extern */
 
 void func_8001E4BC(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x68) = -1;
-    if (func_8002D5CC() != 0) {
+    if (tickActorTimer() != 0) {
         func_8001602C(arg0);
-        M2C_FIELD(arg0, s32 *, 0x64) = func_80024394(0x64, 0x12C);
+        M2C_FIELD(arg0, s32 *, 0x64) = randomRange(0x64, 0x12C);
     }
 }

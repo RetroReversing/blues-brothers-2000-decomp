@@ -1,8 +1,8 @@
 s16 coss(u16);
 s16 sins(u16);
-s32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);
-s32 func_80024394(s32, s32);
-void *func_800253A0(s32);
+s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 randomRange(s32, s32);
+void *heapAlloc(s32);
 s32 func_8002D1A0(void);
 
 typedef struct Part {
@@ -22,7 +22,7 @@ typedef struct Obj {
     Part *xC4;
 } Obj;
 
-extern s32 D_800B9EA0;
+extern s32 gFrameScale;
 extern s32 D_801073C0;
 
 void func_80021060(Obj *arg0) {
@@ -34,36 +34,36 @@ void func_80021060(Obj *arg0) {
 
     if (arg0->xC4 == 0) {
         arg0->x68 = 13;
-        p = func_800253A0(arg0->x84 * sizeof(Part));
+        p = heapAlloc(arg0->x84 * sizeof(Part));
         arg0->xC4 = p;
         for (i = 0; i < arg0->x84; i++) {
-            p[i].x = func_80024394(-1000, 1000);
-            p[i].y = func_80024394(-1000, 1000);
-            p[i].z = func_80024394(-1000, 1000);
+            p[i].x = randomRange(-1000, 1000);
+            p[i].y = randomRange(-1000, 1000);
+            p[i].z = randomRange(-1000, 1000);
             p[i].vx = 0;
             p[i].vy = 0;
             p[i].vz = 0;
         }
-        arg0->x58 = func_800221C0(0, 1, 1, 3, 0, 0, 1, 0);
+        arg0->x58 = packDrawFlags(0, 1, 1, 3, 0, 0, 1, 0);
     }
     p = arg0->xC4;
     for (i = 0; i < arg0->x84; i++) {
-        p[i].x += (p[i].vx * D_800B9EA0) / 100;
-        p[i].y += (p[i].vy * D_800B9EA0) / 100;
-        p[i].z += (p[i].vz * D_800B9EA0) / 100;
+        p[i].x += (p[i].vx * gFrameScale) / 100;
+        p[i].y += (p[i].vy * gFrameScale) / 100;
+        p[i].z += (p[i].vz * gFrameScale) / 100;
         if (i == arg0->x88) {
             spd = (D_801073C0 * 3000) / 80;
             a = func_8002D1A0();
-            b = func_80024394(0x2000, 0x2FA0);
+            b = randomRange(0x2000, 0x2FA0);
             p[i].vx = (((spd * sins(a)) >> 15) * coss(b)) >> 15;
             p[i].vz = (((spd * coss(a)) >> 15) * coss(b)) >> 15;
             p[i].vy = (spd * sins(b)) >> 15;
-            p[i].vy = func_80024394(100, 200);
+            p[i].vy = randomRange(100, 200);
             p[i].vx = 0;
             p[i].vz = 0;
             p[i].y = 10;
-            p[i].x = func_80024394(-100, 100);
-            p[i].z = func_80024394(-100, 100);
+            p[i].x = randomRange(-100, 100);
+            p[i].z = randomRange(-100, 100);
         }
     }
     if (++arg0->x88 >= 100) {
