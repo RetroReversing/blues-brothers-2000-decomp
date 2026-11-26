@@ -8833,24 +8833,6 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
  },
  {
-  "function": "drawFlaggedTriangles",
-  "text": "op65: saved 105 (default profile) = instructions identical, only s0/s1 swapped between the object cursor o (target s0) and the %hi(D_80177E18) pseudo that lives from the first six Gfx commands to the loop preheader copy t2 (target s1). Source: debug collision-triangle drawer: 6 setup Gfx (E7/D9D0F9FA/D9FFFFFF,200205/E3000A01/E200001C,504E50/FCFFFFFF,FFFDF6FB), o = func_80023088(0); end = func_800230B0(0); for (; o <= end; o++) if (o->x0 == 0x102 && D_800F80E8[o->xB8]) { vtx = D_800FA860[o->xB8]; DA380003 matrix o->xEC + 0x80000000; for i < D_800F90A0[o->xB8]: Tri (u16 v[3], u8 flags) & mask -> FA000000 colour by flag 8/4/2/1/else, FA000000 0xFF3C, three 0x0100100x vertex loads vtx + v*16, 05000204 }; closing E7/FA 0/E3000A01. Each Gfx as { GfxW *_g = D_80177E18++; ... }. Tried: declaration order of o/end, register o, continue form, early return, char[] GP via (*(GfxW **)), prove_chain all (40 children): all 105.",
-  "by": "manual-aeeb5be5af9d41ed",
-  "created_at": 1795573123.23038,
-  "score_before": 15205,
-  "score_after": 105,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:1e9f3d5f21b4cb7f5ab9647ddd98b11388e72b469f9a1e74a2b2d5957f93b328"
- },
- {
-  "function": "drawFlaggedTriangles",
-  "text": "105: s0/s1 swap between loop cursor and %hi(gfx pointer); see note",
-  "by": "manual-aeeb5be5af9d41ed",
-  "created_at": 1795573124.2510998,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:1e9f3d5f21b4cb7f5ab9647ddd98b11388e72b469f9a1e74a2b2d5957f93b328"
- },
- {
   "function": "updatePathWalker",
   "text": "op65: best 35 under sn-n64-281 -G8 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (trial f2d6af5fa2c707ea21b5, diagnostic; same source 1075 under the default profile, saved). Source = plain path follower: Vec3i path from D_8014AA1C, init block when xC0 == 0, dx/dz to the waypoint, dist = sqrtf, x10 = func_8002D204(func_8002492C(dx, dz), x10, D_800B9ECC << 9), spd = D_800B9EC4 * D_80000C10 and ((s32)spd * sins(x10)) >> 15, waypoint advance (++xBC >= D_8014A99C[0] - 1 with D_8014A99C as s32[] so its load stays after the store), then an object scan: start = func_80023088(0); end = func_800230B0(0); o = start; if (o <= end) { lim = D_80000C18; do { ... o++; } while (o <= end); } with dx, dy, dz in that order and the four-way func_80024394(0, 5) if-chain. KEY wins: dx/dy/dz order (giv at +0xC), the explicit guard with lim inside it, start temp. Only rows left: the first sqrtf result. Target computes it into f0 and copies it to f22 (fs1, the dx register) AFTER the mov.s fa0, dx for func_8002492C; ours writes dist straight to f24. Tried: inline wrapper, temp copy, separate r for the call, dist merged with the loop dx (gives the f0 copy but copy before the arg: 250), dz/spd merges (45/260).",
   "by": "manual-aeeb5be5af9d41ed",
@@ -12664,5 +12646,23 @@
   "created_at": 1795699301.6797109,
   "score_before": 0,
   "score_after": 0
+ },
+ {
+  "function": "drawFlaggedTriangles",
+  "text": "op65: saved 105 (default profile) = instructions identical, only s0/s1 swapped between the object cursor o (target s0) and the %hi(D_80177E18) pseudo that lives from the first six Gfx commands to the loop preheader copy t2 (target s1). Source: debug collision-triangle drawer: 6 setup Gfx (E7/D9D0F9FA/D9FFFFFF,200205/E3000A01/E200001C,504E50/FCFFFFFF,FFFDF6FB), o = func_80023088(0); end = func_800230B0(0); for (; o <= end; o++) if (o->x0 == 0x102 && D_800F80E8[o->xB8]) { vtx = D_800FA860[o->xB8]; DA380003 matrix o->xEC + 0x80000000; for i < D_800F90A0[o->xB8]: Tri (u16 v[3], u8 flags) & mask -> FA000000 colour by flag 8/4/2/1/else, FA000000 0xFF3C, three 0x0100100x vertex loads vtx + v*16, 05000204 }; closing E7/FA 0/E3000A01. Each Gfx as { GfxW *_g = D_80177E18++; ... }. Tried: declaration order of o/end, register o, continue form, early return, char[] GP via (*(GfxW **)), prove_chain all (40 children): all 105.",
+  "by": "manual-aeeb5be5af9d41ed",
+  "created_at": 1795573123.23038,
+  "score_before": 15205,
+  "score_after": 105,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:1e9f3d5f21b4cb7f5ab9647ddd98b11388e72b469f9a1e74a2b2d5957f93b328"
+ },
+ {
+  "function": "drawFlaggedTriangles",
+  "text": "105: s0/s1 swap between loop cursor and %hi(gfx pointer); see note",
+  "by": "manual-aeeb5be5af9d41ed",
+  "created_at": 1795573124.2510998,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:1e9f3d5f21b4cb7f5ab9647ddd98b11388e72b469f9a1e74a2b2d5957f93b328"
  }
 ]
