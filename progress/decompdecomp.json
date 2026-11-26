@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700087.967592,
- "revision": 5608,
+ "saved_at": 1795700102.510504,
+ "revision": 5610,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15094,8 +15094,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "550952:2148031528": {
    "vram": 2148031528,
@@ -15120,8 +15119,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "85664:2147566240": {
    "vram": 2147566240,
@@ -21273,10 +21271,10 @@
    "matched_by": "permuter-158913790613",
    "readable": false
   },
-  "func_80030FDC": {
+  "updateStageSequence": {
    "vram": 2147684316,
    "matched_by": "manual-291cac6721ed4aac",
-   "readable": false
+   "readable": true
   },
   "func_8003130C": {
    "vram": 2147685132,
@@ -24638,10 +24636,10 @@
    "matched_by": "permuter-158913791274",
    "readable": false
   },
-  "func_8006EA00": {
+  "drawSaveSummary": {
    "vram": 2147936768,
    "matched_by": "manual-114e6296bf42426c",
-   "readable": false
+   "readable": true
   },
   "func_8006ED34": {
    "vram": 2147937588,
@@ -33690,7 +33688,7 @@
    "status": "open"
   },
   {
-   "name": "func_80030FDC",
+   "name": "updateStageSequence",
    "vram": 2147684316,
    "size": 816,
    "status": "open"
@@ -37752,7 +37750,7 @@
    "status": "open"
   },
   {
-   "name": "func_8006EA00",
+   "name": "drawSaveSummary",
    "vram": 2147936768,
    "size": 820,
    "status": "open"
@@ -43550,6 +43548,12 @@
    "kind": "func"
   },
   {
+   "name": "updateStageSequence",
+   "address": 2147684316,
+   "size": 816,
+   "kind": "func"
+  },
+  {
    "name": "updateMenuScroll",
    "address": 2147686968,
    "size": 284,
@@ -43829,6 +43833,12 @@
    "name": "pollMenuInput",
    "address": 2147932904,
    "size": 208,
+   "kind": "func"
+  },
+  {
+   "name": "drawSaveSummary",
+   "address": 2147936768,
+   "size": 820,
    "kind": "func"
   },
   {
@@ -46066,6 +46076,16 @@
    "source": "match"
   },
   {
+   "address": 2147487312,
+   "type": "f32",
+   "source": "match"
+  },
+  {
+   "address": 2147487320,
+   "type": "f64",
+   "source": "match"
+  },
+  {
    "address": 2147487376,
    "type": "char[]",
    "source": "match"
@@ -47067,12 +47087,12 @@
   },
   {
    "address": 2148245156,
-   "type": "s32",
+   "type": "s32[]",
    "source": "match"
   },
   {
    "address": 2148245196,
-   "type": "s32",
+   "type": "s32[]",
    "source": "match"
   },
   {
@@ -47197,7 +47217,7 @@
   },
   {
    "address": 2148838336,
-   "type": "Slot[]",
+   "type": "Rec[]",
    "source": "match"
   },
   {

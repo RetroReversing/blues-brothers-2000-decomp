@@ -33,28 +33,28 @@ extern s32 D_8014ADE0[];
 extern s32 D_8014ADE8[];
 extern s32 D_8014ADEC[];
 
-s32 func_8006EA00(Obj *arg0) {
-    s32 flags;
+/* Save-slot summary screen: spawns its menu items on first entry, pulses the title color, and draws the selected slot's image and stats. */ s32 drawSaveSummary(Obj *screen) {
+    s32 slotFlags;
     s32 x;
     s32 y;
     s32 sum;
-    s32 n;
-    Obj *o;
+    s32 entryCount;
+    Obj *obj;
     s32 buf[2];
 
-    flags = D_800B82C0[arg0->f84];
-    if (arg0->f7C != 10) {
-        arg0->f7C = 10;
-        o = func_8006F88C(0x95, -0x6E, 0x77, 0x22B, 0x80);
-        o->f9C = func_8006E994;
-        o->f64 = 0x14;
-        o = func_8006F88C(0x98, 0, 0x77, 0x22B, 0x80);
-        o->f9C = func_8006E994;
-        o->f64 = 0x14;
-        o = func_8006F88C(0x1D6, 0x6E, 0x77, 0x22B, 0x80);
-        o->f7C = 1;
-        o->f9C = func_8006E994;
-        o->f64 = 0x14;
+    slotFlags = D_800B82C0[screen->f84];
+    if (screen->f7C != 10) {
+        screen->f7C = 10;
+        obj = func_8006F88C(0x95, -0x6E, 0x77, 0x22B, 0x80);
+        obj->f9C = func_8006E994;
+        obj->f64 = 0x14;
+        obj = func_8006F88C(0x98, 0, 0x77, 0x22B, 0x80);
+        obj->f9C = func_8006E994;
+        obj->f64 = 0x14;
+        obj = func_8006F88C(0x1D6, 0x6E, 0x77, 0x22B, 0x80);
+        obj->f7C = 1;
+        obj->f9C = func_8006E994;
+        obj->f64 = 0x14;
         D_80107040[0] = 0;
     }
     y = ((coss(gTextWaveTime[0] * 300) * 127) >> 15) + 128;
@@ -62,34 +62,34 @@ s32 func_8006EA00(Obj *arg0) {
     setTextColorRgb(x, x, x);
     func_80027158(0xA0, 0xAA);
     drawCenteredMessage(0x5F);
-    if (flags & 1) {
+    if (slotFlags & 1) {
         drawImage(getImageAsset(D_8014ADE8[0]), 0x28, 0x46, 0);
     }
-    if (flags & 2) {
+    if (slotFlags & 2) {
         drawImage(getImageAsset(D_8014ADEC[0]), 0xF6, 0x46, 0);
     }
     y = 0;
     for (x = 0; x < 4; x++) {
-        y += gSaveSlots[arg0->f84].f18[x];
+        y += gSaveSlots[screen->f84].f18[x];
     }
     sum = y;
     for (y = 0, x = 0; y < 40; y++) {
-        if (gSaveSlots[arg0->f84].f28[y] != 0) {
+        if (gSaveSlots[screen->f84].f28[y] != 0) {
             x++;
         }
     }
-    n = x;
+    entryCount = x;
     for (y = 0, x = 0; y < 8; y++) {
-        if ((gSaveSlots[arg0->f84].f50 >> y) & 1) {
+        if ((gSaveSlots[screen->f84].f50 >> y) & 1) {
             x++;
         }
     }
     setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
-    drawImage(getImageAsset(D_8014ADE0[arg0->f84 + 6]), 0x80, 0xA, 0);
+    drawImage(getImageAsset(D_8014ADE0[screen->f84 + 6]), 0x80, 0xA, 0);
     func_80027158(0x64, 0x49);
     drawInt(sum);
     func_80027158(0xA0, 0x49);
-    drawInt(n);
+    drawInt(entryCount);
     func_80027158(0xDC, 0x49);
     drawInt(x);
     return 0;

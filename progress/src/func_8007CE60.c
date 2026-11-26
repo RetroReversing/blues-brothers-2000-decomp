@@ -8,7 +8,7 @@ typedef struct {
     u8 pad[0x9C];
     void (*fn)(void);
 } Obj3;
-void func_80030FDC(void);
+void updateStageSequence(void);
 extern Obj3 *D_8013FB74;
 extern s32 D_800AE17C;
 extern s32 D_80107070;
@@ -23,7 +23,7 @@ s32 func_8007CE60(void) {
     s32 n;
 
     n = 0;
-    if (D_8013FB74->fn != func_80030FDC) {
+    if (D_8013FB74->fn != updateStageSequence) {
         return 0;
     }
     if (D_800AE17C != 0) {

@@ -38,7 +38,7 @@ void sendCommand(s32, s32);
 void func_80032830(void);
 void func_80032980(void);
 void drawCenteredMessage(s32);
-void func_8006EA00(Menu *);
+void drawSaveSummary(Menu *);
 extern s32 D_800A9540;
 extern s32 D_800A9548;
 extern s32 gPakInitWarn;
@@ -122,7 +122,7 @@ void func_8006CF34(Menu *arg0) {
         }
         break;
     case 2:
-        func_8006EA00(arg0);
+        drawSaveSummary(arg0);
         if (gPadPressed & 0x8000) {
             D_800B81C0 = 1;
             D_800B81C8 = arg0->unk84;
