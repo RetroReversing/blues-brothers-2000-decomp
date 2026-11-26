@@ -37,29 +37,32 @@ void drawAudioOptionsMenu(void);
 void func_8006CEF8(void);
 void func_8006DBB8(void);
 
-void func_8003D854(Obj *arg0) {
-    s32 moved;
+/* Main menu input: moves the cursor with up/down, clamps it to the item count, and
+   on A runs the selected item (start, options, and so on) by setting the next state
+   and its draw/update callbacks. Left/right and Start also adjust the menu value. */
+void updateMainMenu(Obj *menu) {
+    s32 selectionMoved;
 
-    moved = func_8003D654();
-    if (arg0->unk88 < 0) {
-        arg0->unk88 = 0;
-        moved = 0;
+    selectionMoved = func_8003D654();
+    if (menu->unk88 < 0) {
+        menu->unk88 = 0;
+        selectionMoved = 0;
     }
-    if (arg0->unk88 >= D_800B5DD8) {
-        arg0->unk88 = D_800B5DD8 - 1;
-        moved = 0;
+    if (menu->unk88 >= D_800B5DD8) {
+        menu->unk88 = D_800B5DD8 - 1;
+        selectionMoved = 0;
     }
-    if (moved != 0) {
+    if (selectionMoved != 0) {
         sendCommand(0xC, 0x80);
         sendCommand(8, 0x90);
     }
     if (gPadPressed & 0x8000) {
-        switch (arg0->unk88) {
+        switch (menu->unk88) {
         case 0:
-            arg0->unk9C = func_8003D3C8;
+            menu->unk9C = func_8003D3C8;
             D_800AB9B4 = 0;
             D_800B5DD4 = 1;
-            D_80140228 = arg0->unk74;
+            D_80140228 = menu->unk74;
             func_800256A4(0x12345678);
             sendCommand(0, gAudioVolume * 0x147);
             sendCommand(0xC, 0x80);
@@ -67,49 +70,49 @@ void func_8003D854(Obj *arg0) {
             gTextWaveTime = D_80140250;
             return;
         case 1:
-            arg0->unk94 = 1;
-            arg0->unk98 = func_8006CEF8;
-            arg0->unk80 = 0;
-            arg0->unk9C = func_80023078 + 8;
+            menu->unk94 = 1;
+            menu->unk98 = func_8006CEF8;
+            menu->unk80 = 0;
+            menu->unk9C = func_80023078 + 8;
             sendCommand(0xC, 0x80);
             sendCommand(8, 0xA3);
             break;
         case 2:
-            arg0->unk9C = func_8003DD70;
-            arg0->unk98 = drawAudioOptionsMenu;
-            arg0->unk88 = 0;
+            menu->unk9C = func_8003DD70;
+            menu->unk98 = drawAudioOptionsMenu;
+            menu->unk88 = 0;
             D_800B5DCC = 2;
             sendCommand(0xC, 0x80);
             sendCommand(8, 0xA2);
             break;
         case 3:
-            arg0->unk9C = func_8003D558;
+            menu->unk9C = func_8003D558;
             func_8002E7B8(1, 0);
             D_800B5DD4 = 1;
-            arg0->unk70 = 2;
+            menu->unk70 = 2;
             D_800B81D4 = 1;
             sendCommand(0xC, 0x80);
             sendCommand(8, 0x9D);
             break;
         case 4:
-            arg0->unk98 = func_8006DBB8;
-            arg0->unk9C = func_8003D7A8;
+            menu->unk98 = func_8006DBB8;
+            menu->unk9C = func_8003D7A8;
             sendCommand(0xC, 0x80);
             sendCommand(8, 0xA3);
             break;
         }
     }
     if ((gPadPressed & 0x200) || (gStickX < -30)) {
-        arg0->unk7C--;
+        menu->unk7C--;
     }
     if ((gPadPressed & 0x100) || (gStickX >= 31)) {
-        arg0->unk7C++;
+        menu->unk7C++;
     }
     if (gPadPressed & 0x1000) {
-        arg0->unk9C = func_8003D3C8;
+        menu->unk9C = func_8003D3C8;
         D_800AB9B4 = 0;
         D_800B5DD4 = 1;
-        D_80140228 = arg0->unk74;
+        D_80140228 = menu->unk74;
         sendCommand(0, gAudioVolume * 0x147);
         gTextWaveTime = D_80140250;
     }

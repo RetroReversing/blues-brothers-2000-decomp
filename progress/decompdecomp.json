@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700355.528528,
- "revision": 5637,
+ "saved_at": 1795700365.949464,
+ "revision": 5638,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16141,8 +16141,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "402432:2147883008": {
    "vram": 2147883008,
@@ -17061,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "129168:2147609744": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "buildMeshDisplayList",
-   "vram": 2147609744
   }
  },
  "instructions": "",
@@ -18015,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_B780": "common_main_text_B780.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -21934,10 +21916,10 @@
    "matched_by": "permuter-158913790743",
    "readable": false
   },
-  "func_8003D854": {
+  "updateMainMenu": {
    "vram": 2147735636,
    "matched_by": "manual-83d32b880ea94c1c",
-   "readable": false
+   "readable": true
   },
   "func_8003DB40": {
    "vram": 2147736384,
@@ -34486,7 +34468,7 @@
    "status": "open"
   },
   {
-   "name": "func_8003D854",
+   "name": "updateMainMenu",
    "vram": 2147735636,
    "size": 748,
    "status": "open"
@@ -43722,6 +43704,12 @@
    "kind": "func"
   },
   {
+   "name": "updateMainMenu",
+   "address": 2147735636,
+   "size": 748,
+   "kind": "func"
+  },
+  {
    "name": "drawAudioOptionsMenu",
    "address": 2147738232,
    "size": 1280,
@@ -45944,7 +45932,7 @@
   {
    "name": "gStickX",
    "address": 2148561840,
-   "size": 0,
+   "size": 4,
    "kind": "data"
   },
   {
@@ -47360,7 +47348,7 @@
   },
   {
    "address": 2148561056,
-   "type": "s32[]",
+   "type": "s32",
    "source": "match"
   },
   {
@@ -47370,7 +47358,7 @@
   },
   {
    "address": 2148561840,
-   "type": "s32[]",
+   "type": "s32",
    "source": "match"
   },
   {

@@ -28,7 +28,7 @@ extern s32 gCamSpeedScale;
 extern s32 gPadPressed;
 extern s32 D_8013FB20;
 extern s32 D_80140250;
-extern M2C_UNK func_8003D854;
+extern M2C_UNK updateMainMenu;
 extern M2C_UNK func_8003DB40;
 extern M2C_UNK func_8003DEF0;
 extern M2C_UNK func_8003E0BC;
@@ -66,7 +66,7 @@ void func_8003D3C8(void *arg0) {
             } else {
                 D_800B5DCC = 5;
                 D_800B5DD8 = 5;
-                M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003D854;
+                M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &updateMainMenu;
                 D_800AB9B4 = 1;
                 M2C_FIELD(arg0, s32 *, 0x68) = 0xE;
                 do { var_v0 = &func_8003DEF0; } while (0);

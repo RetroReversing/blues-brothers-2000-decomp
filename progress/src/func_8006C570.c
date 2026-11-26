@@ -33,7 +33,7 @@ void func_8002E79C(void);
 void func_8002E838(s32);
 void saveCurrentSlot(void);
 void drawCenteredMessage(s32);
-void func_8003D854(void);
+void updateMainMenu(void);
 void func_8003DEF0(void);
 extern s32 D_800A9550;
 extern s32 gPakInitWarn;
@@ -341,7 +341,7 @@ void func_8006C570(Menu *arg0) {
     case 13:
         if (D_800A9550 == 0) {
             arg0->unk98 = func_8003DEF0;
-            arg0->unk9C = func_8003D854;
+            arg0->unk9C = updateMainMenu;
         } else {
             func_8002E79C();
             arg0->unk98 = (void *)((u8 *)func_80023078 + 8);

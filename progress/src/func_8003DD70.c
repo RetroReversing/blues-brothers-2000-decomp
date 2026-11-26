@@ -22,7 +22,7 @@ extern s32 gAudioVolume;
 extern s32 gPadPressed;
 extern s32 D_80140228;
 extern s32 func_8003D3C8;
-extern s32 func_8003D854;
+extern s32 updateMainMenu;
 extern s32 func_8003DB40;
 extern s32 func_8003DEF0;
 extern s32 func_8003E0BC;
@@ -66,7 +66,7 @@ void func_8003DD70(void *arg0) {
                   D_800B5DCC = var_v0_1;
                 } else {
                   s32 var_v0_2;
-                    { (*(s32 **)((s8 *)arg0 + 0x9C)) = &func_8003D854; }
+                    { (*(s32 **)((s8 *)arg0 + 0x9C)) = &updateMainMenu; }
                     { (*(s32 **)((s8 *)arg0 + 0x98)) = &func_8003DEF0; }
                     var_v0_2 = 4;
                   D_800B5DCC = var_v0_2;

@@ -19,7 +19,7 @@ extern s32 D_800B5DD4;
 extern s32 D_800B81D4;
 extern s32 gPadPressed;
 extern M2C_UNK func_8003D558;
-extern M2C_UNK func_8003D854;
+extern M2C_UNK updateMainMenu;
 extern M2C_UNK func_8003DEF0;
 
 void func_8003D7A8(void *arg0) {
@@ -34,7 +34,7 @@ void func_8003D7A8(void *arg0) {
         func_8001AFD4();
     }
     if (gPadPressed & 0x4000) {
-        M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003D854;
+        M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &updateMainMenu;
         M2C_FIELD(arg0, M2C_UNK **, 0x98) = &func_8003DEF0;
     }
 }
