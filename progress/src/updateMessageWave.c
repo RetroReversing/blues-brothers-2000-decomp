@@ -20,7 +20,7 @@ extern f32 D_800B9EC4;
 extern s32 D_80107654;
 extern s32 D_8014AA9C;
 
-void func_80053990(void *arg0) {
+void updateMessageWave(void *arg0) {
     s32 *__base_D_800B9EA4;
     f32 temp_ft1;
     f32 temp_fv0;

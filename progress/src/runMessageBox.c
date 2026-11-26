@@ -7,8 +7,8 @@ s32 tickActorTimer(void *);
 Obj *func_8002E374(s32);
 s32 strlen(const char *);
 void func_8001FE50();
-void func_800530C0();
-void func_80053990();
+void drawMessageText();
+void updateMessageWave();
 struct Obj {
     /* 0x00 */ s32 f0;
     /* 0x04 */ u8 pad4[0x24];
@@ -46,11 +46,11 @@ extern char D_8014AA98[];
 #define gMode (*(s32 *)D_8014AA98)
 extern f32 D_80008180;
 
-s32 func_800532BC(Obj *arg0, Msg *arg1) {
+/* Runs one frame of a message box: the first call lays out the text and spawns its text object; later calls wait for the timer or a button press. Returns 1 while open, 0 when closed. */ s32 runMessageBox(Obj *arg0, Msg *arg1) {
     u8 *text;
     s32 len;
     s32 pad;
-    Obj *o;
+    Obj *textObj;
     s32 n;
     s32 x;
     s32 m;
@@ -70,12 +70,12 @@ s32 func_800532BC(Obj *arg0, Msg *arg1) {
         arg0->f68 = 0xE;
         arg0->f64 = len * 8;
         arg0->f88 = text;
-        arg0->f98 = func_800530C0;
+        arg0->f98 = drawMessageText;
         if (gFlag != 0) {
             pad = 20;
         }
-        o = func_8002E374(0x87);
-        o->f28 = 0;
+        textObj = func_8002E374(0x87);
+        textObj->f28 = 0;
         if (gMode == 0) {
             func_800271A8(0x3E, pad / 20 + 1);
         } else {
@@ -88,24 +88,24 @@ s32 func_800532BC(Obj *arg0, Msg *arg1) {
         }
         n *= 20;
         if (gMode != 0) {
-            o->f2C = pad - 0x6A;
+            textObj->f2C = pad - 0x6A;
         } else {
             x = 0x2A - n;
             x -= pad;
-            o->f2C = x;
+            textObj->f2C = x;
         }
-        o->f34 = 0;
-        o->f38 = 0;
-        o->f3C = 0;
-        o->f30 = D_80008180;
-        o->f58 = packDrawFlags(0, 1, 0, 3, 0, 0, 1, 0);
-        o->f9C = func_80053990;
-        o->fA4 = arg0;
-        o->f78 = arg0->f78;
-        o->f98 = func_8001FE50;
-        o->f68 = 0xD;
-        o->f90 = 1;
-        o->f0 = 0x80F;
+        textObj->f34 = 0;
+        textObj->f38 = 0;
+        textObj->f3C = 0;
+        textObj->f30 = D_80008180;
+        textObj->f58 = packDrawFlags(0, 1, 0, 3, 0, 0, 1, 0);
+        textObj->f9C = updateMessageWave;
+        textObj->fA4 = arg0;
+        textObj->f78 = arg0->f78;
+        textObj->f98 = func_8001FE50;
+        textObj->f68 = 0xD;
+        textObj->f90 = 1;
+        textObj->f0 = 0x80F;
     }
     if (arg0->f80 != 0) {
         arg0->f80 = 0;

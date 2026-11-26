@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700863.911637,
- "revision": 5683,
+ "saved_at": 1795700913.927441,
+ "revision": 5686,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -8379,7 +8379,7 @@
   },
   "345488:2147826064": {
    "vram": 2147826064,
-   "function": "func_80053990",
+   "function": "updateMessageWave",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -14406,7 +14406,7 @@
   },
   "343740:2147824316": {
    "vram": 2147824316,
-   "function": "func_800532BC",
+   "function": "runMessageBox",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -16348,8 +16348,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "316300:2147796876": {
    "vram": 2147796876,
@@ -16910,8 +16909,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "274684:2147755260": {
    "vram": 2147755260,
@@ -22803,7 +22801,7 @@
    "matched_by": "manual-3572b8f795c14e2c",
    "readable": false
   },
-  "func_800530C0": {
+  "drawMessageText": {
    "vram": 2147823808,
    "matched_by": "manual-fa4a82564c8649a5",
    "readable": false
@@ -22813,10 +22811,10 @@
    "matched_by": "manual-fa4a82564c8649a5",
    "readable": false
   },
-  "func_800532BC": {
+  "runMessageBox": {
    "vram": 2147824316,
    "matched_by": "manual-3572b8f795c14e2c",
-   "readable": false
+   "readable": true
   },
   "func_8005358C": {
    "vram": 2147825036,
@@ -22873,7 +22871,7 @@
    "matched_by": "manual-83be59bdd3ca4ed7",
    "readable": false
   },
-  "func_80053990": {
+  "updateMessageWave": {
    "vram": 2147826064,
    "matched_by": "manual-ebd70633d90b426d",
    "readable": false
@@ -29169,7 +29167,7 @@
   "func_80052760": "local_source_158913790912",
   "func_80052A5C": "local_source_158913790915",
   "startStoryDialog": "local_source_158913790917",
-  "func_800532BC": "local_source_158913790922",
+  "runMessageBox": "local_source_158913790922",
   "func_8005358C": "local_source_158913790923",
   "func_80053714": "local_source_158913790925",
   "func_80053750": "local_source_158913790926",
@@ -35538,7 +35536,7 @@
    "status": "open"
   },
   {
-   "name": "func_800530C0",
+   "name": "drawMessageText",
    "vram": 2147823808,
    "size": 348,
    "status": "open"
@@ -35550,7 +35548,7 @@
    "status": "open"
   },
   {
-   "name": "func_800532BC",
+   "name": "runMessageBox",
    "vram": 2147824316,
    "size": 720,
    "status": "open"
@@ -35622,7 +35620,7 @@
    "status": "open"
   },
   {
-   "name": "func_80053990",
+   "name": "updateMessageWave",
    "vram": 2147826064,
    "size": 420,
    "status": "open"
@@ -43910,6 +43908,24 @@
    "kind": "func"
   },
   {
+   "name": "drawMessageText",
+   "address": 2147823808,
+   "size": 348,
+   "kind": "func"
+  },
+  {
+   "name": "runMessageBox",
+   "address": 2147824316,
+   "size": 720,
+   "kind": "func"
+  },
+  {
+   "name": "updateMessageWave",
+   "address": 2147826064,
+   "size": 420,
+   "kind": "func"
+  },
+  {
    "name": "updateTargetContact",
    "address": 2147832516,
    "size": 800,
@@ -46865,6 +46881,11 @@
    "source": "match"
   },
   {
+   "address": 2147516800,
+   "type": "f32",
+   "source": "match"
+  },
+  {
    "address": 2147517024,
    "type": "char[]",
    "source": "match"
@@ -47696,7 +47717,7 @@
   },
   {
    "address": 2148561056,
-   "type": "s32",
+   "type": "char[]",
    "source": "match"
   },
   {

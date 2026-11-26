@@ -27,7 +27,7 @@ typedef struct { s32 w0; s32 w1; } CursorRec8;
 extern CursorRec8 *D_80177E18;
 
 typedef struct { unsigned char pad_0[104]; int field_68; unsigned char pad_6C[24]; int field_84; int field_88; } __repair_record_arg0;
-void func_800530C0(void *arg0) {
+void drawMessageText(void *arg0) {
     M2C_UNK var_a0;
     s32 temp_s0;
     s32 temp_s1;
