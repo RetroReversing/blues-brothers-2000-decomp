@@ -9384,7 +9384,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:ae139fd03f5706be342bfc94719006850e7eda9fcff98e25a697444b6f9bea65"
  },
  {
-  "function": "func_8008FEBC",
+  "function": "setDelayFxParams",
   "text": "op76: this is libultra alFxNew (drvrnew.c) adapted to preallocated pools: r = D_8017B260->unk34 (ALFx), r->delay = D_8017B270, r->base = r->input = D_8017B274, d->rs/state from D_8017B278[0..1], d->lp/fstate from D_8017B278[2..3] (s5 = s4 + 8), outputRate = D_8017B260->unk44, final call alFxFillDecay(d->lp) in place of _init_lpfilter; u16 i, j, k as in the reference. A reference-shaped source scores 2875 under sn-n64-272-0001 -G0 -mips2 -O2 (9505 under 0001 -G8, 15124 under 0004, 9345 under 0006, 9665 under the current sn-n64-281): blocked because 0001 writes lwc1 pairs where the target has ldc1 (CONVERT and 2^32 doubles), which needs the sn-n64-272-0001-as0004 pack that is merged but not installed in this app. Also left: the target addresses r's fields through s3 = r + 0x20 (lw 0x14/0x1c/0x20, lbu 0x24) and reads param words with lw then sb. Source kept in the session only; retry once the pack is installed.",
   "by": "manual-f86831e3bb304d6a",
   "created_at": 1795620913.159283,

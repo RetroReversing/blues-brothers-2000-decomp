@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #endif
 /* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */
 
-s32 func_8008FEBC();
+s32 setDelayFxParams();
 s32 func_8009B074();
 extern s32 D_800BA900;
 extern char D_800BA904[];
-extern void *D_8017B260;
+extern void *gFxSynth;
 
 s32 func_80090238(s32 arg0) {
     s32 temp_a2;
@@ -24,8 +24,8 @@ s32 func_80090238(s32 arg0) {
     if (arg0 >= D_800BA900) {
         return 1;
     }
-    func_8008FEBC(*(s32 *)(D_800BA904 + (arg0 * 4)));
-    temp_a2 = M2C_FIELD(D_8017B260, s32 *, 0x34);
+    setDelayFxParams(*(s32 *)(D_800BA904 + (arg0 * 4)));
+    temp_a2 = M2C_FIELD(gFxSynth, s32 *, 0x34);
     func_8009B074(temp_a2 + 0x20, 1, temp_a2);
     return 0;
 }

@@ -13,12 +13,12 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 alHeapDBAlloc();
-s32 func_8008FEBC();
+s32 setDelayFxParams();
 s32 func_800901B0();
 s32 func_800901F4();
 s32 func_8009A8C0();
-extern s32 D_8017B270;
-extern s32 D_8017B274;
+extern s32 gFxDelayLines;
+extern s32 gFxSampleBuffers;
 extern s32 D_8017B278;
 extern s32 D_8017B27C;
 extern s32 D_8017B280;
@@ -31,11 +31,11 @@ void func_8008FD64(void *arg0, void *arg1, s32 arg2) {
     func_8009A8C0(arg0, 0, &func_8009B074, 5);
     M2C_FIELD(arg0, s32 **, 4) = &alFxPull;
     M2C_FIELD(arg0, s32 **, 0x28) = &alFxParamHdl;
-    D_8017B270 = alHeapDBAlloc(0, 0, arg2, func_800901B0(), 0x28);
-    D_8017B274 = alHeapDBAlloc(0, 0, arg2, func_800901F4(), 2);
+    gFxDelayLines = alHeapDBAlloc(0, 0, arg2, func_800901B0(), 0x28);
+    gFxSampleBuffers = alHeapDBAlloc(0, 0, arg2, func_800901F4(), 2);
     D_8017B278 = alHeapDBAlloc(0, 0, arg2, 1, 0x34);
     D_8017B27C = alHeapDBAlloc(0, 0, arg2, 1, 0x20);
     D_8017B280 = alHeapDBAlloc(0, 0, arg2, 1, 0x30);
     D_8017B284 = alHeapDBAlloc(0, 0, arg2, 1, 8);
-    func_8008FEBC(M2C_FIELD(arg1, s32 *, 0x20));
+    setDelayFxParams(M2C_FIELD(arg1, s32 *, 0x20));
 }

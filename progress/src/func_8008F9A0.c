@@ -15,13 +15,13 @@ typedef s32 M2C_UNK32;
 M2C_UNK func_8008F9FC(s32, M2C_UNK);                /* extern */
 M2C_UNK func_80090198(M2C_UNK);                     /* extern */
 extern s32 D_800BB530;
-extern s32 D_8017B260;
+extern s32 gFxSynth;
 
 void func_8008F9A0(s32 arg0, M2C_UNK arg1) {
     if (D_800BB530 == 0) {
         D_800BB530 = arg0;
         func_80090198(arg1);
-        D_8017B260 = D_800BB530;
+        gFxSynth = D_800BB530;
         func_8008F9FC(D_800BB530, arg1);
     }
 }

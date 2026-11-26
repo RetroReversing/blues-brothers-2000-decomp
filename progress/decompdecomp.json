@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700663.797929,
- "revision": 5663,
+ "saved_at": 1795700704.552682,
+ "revision": 5665,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16591,7 +16591,7 @@
   },
   "592572:2148073148": {
    "vram": 2148073148,
-   "function": "func_8008FEBC",
+   "function": "setDelayFxParams",
    "toolchain": "sn-n64-272-0001-as0004",
    "flags": [
     "-G0",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "537268:2148017844": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "resolveComboBeat",
-   "vram": 2148017844
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_7E820": "common_main_text_7E820.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -27248,10 +27231,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8008FEBC": {
+  "setDelayFxParams": {
    "vram": 2148073148,
    "matched_by": "manual-c8a368d866d34405",
-   "readable": false
+   "readable": true
   },
   "func_80090198": {
    "vram": 2148073880,
@@ -29623,7 +29606,7 @@
   "func_8008F68C": "local_source_158913791780",
   "func_8008F760": "local_source_158913791781",
   "func_8008F944": "local_source_158913791782",
-  "func_8008FEBC": "local_source_158913791787",
+  "setDelayFxParams": "local_source_158913791787",
   "func_80090238": "local_source_158913791791",
   "func_800902A0": "local_source_158913791792",
   "func_800904F0": "local_source_158913791794",
@@ -40905,7 +40888,7 @@
    "status": "open"
   },
   {
-   "name": "func_8008FEBC",
+   "name": "setDelayFxParams",
    "vram": 2148073148,
    "size": 732,
    "status": "open"
@@ -44279,6 +44262,12 @@
    "kind": "func"
   },
   {
+   "name": "setDelayFxParams",
+   "address": 2148073148,
+   "size": 732,
+   "kind": "func"
+  },
+  {
    "name": "zInflate",
    "address": 2148077732,
    "size": 1520,
@@ -46325,6 +46314,24 @@
    "kind": "data"
   },
   {
+   "name": "gFxSynth",
+   "address": 2149036640,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gFxDelayLines",
+   "address": 2149036656,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gFxSampleBuffers",
+   "address": 2149036660,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "monitorInstalled",
    "address": 2149041584,
    "size": 4,
@@ -47810,6 +47817,21 @@
   {
    "address": 2148997760,
    "type": "Obj87B68 *[]",
+   "source": "match"
+  },
+  {
+   "address": 2149036640,
+   "type": "ALSynX *",
+   "source": "match"
+  },
+  {
+   "address": 2149036656,
+   "type": "ALDelayX *[]",
+   "source": "match"
+  },
+  {
+   "address": 2149036660,
+   "type": "s16 *[]",
    "source": "match"
   },
   {
