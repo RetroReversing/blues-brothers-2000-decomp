@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK syncActorPrevPos(void *);                      /* extern */
-s32 func_80050144(void *, s32);                     /* extern */
+s32 stepSplinePath(void *, s32);                     /* extern */
 extern void *D_800B3964;
 extern void *gCameraTarget;
 extern M2C_UNK func_800393F4;
@@ -26,11 +26,11 @@ void func_80072310(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0x80) = 1;
         M2C_FIELD(D_800B3964, s32 *, 0x70) = (s32) M2C_FIELD(arg0, s32 *, 0x70);
     }
-    func_80050144(arg0, M2C_FIELD(arg0, s32 *, 0x70));
-    func_80050144(arg0, M2C_FIELD(arg0, s32 *, 0x70));
-    func_80050144(arg0, M2C_FIELD(arg0, s32 *, 0x70));
-    func_80050144(arg0, M2C_FIELD(arg0, s32 *, 0x70));
-    temp_v0 = func_80050144(arg0, M2C_FIELD(arg0, s32 *, 0x70));
+    stepSplinePath(arg0, M2C_FIELD(arg0, s32 *, 0x70));
+    stepSplinePath(arg0, M2C_FIELD(arg0, s32 *, 0x70));
+    stepSplinePath(arg0, M2C_FIELD(arg0, s32 *, 0x70));
+    stepSplinePath(arg0, M2C_FIELD(arg0, s32 *, 0x70));
+    temp_v0 = stepSplinePath(arg0, M2C_FIELD(arg0, s32 *, 0x70));
     if (temp_v0 != 0) {
         M2C_FIELD(gCameraTarget, M2C_UNK **, 0x9C) = &func_800393F4;
     }

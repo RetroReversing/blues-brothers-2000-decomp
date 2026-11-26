@@ -31,7 +31,7 @@ void func_8002DB6C(void *, void *, f32);
 void mtxIdentity3(void *);
 void mtxTransformVec3(void *, void *, void *, ...);
 Obj72DA4 *func_8003B980(Obj72DA4 *);
-s32 func_80050144(Obj72DA4 *, s32);
+s32 stepSplinePath(Obj72DA4 *, s32);
 extern s32 D_800B8398[];
 extern Obj72DA4 *gCameraTarget;
 extern Vec3i gPlatformMaxOffsets[];

@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700618.544878,
- "revision": 5659,
+ "saved_at": 1795700641.383619,
+ "revision": 5661,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16070,7 +16070,7 @@
   },
   "331076:2147811652": {
    "vram": 2147811652,
-   "function": "func_80050144",
+   "function": "stepSplinePath",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "80088:2147560664": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "updateSoundTestMenu",
-   "vram": 2147560664
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_B780": "common_main_text_B780.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -22498,10 +22481,10 @@
    "matched_by": "manual-83d32b880ea94c1c",
    "readable": false
   },
-  "func_80050144": {
+  "stepSplinePath": {
    "vram": 2147811652,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "func_80050430": {
    "vram": 2147812400,
@@ -29142,7 +29125,7 @@
   "func_8004F9D0": "local_source_158913790853",
   "func_8004FC60": "local_source_158913790854",
   "func_8004FF2C": "local_source_158913790855",
-  "func_80050144": "local_source_158913790856",
+  "stepSplinePath": "local_source_158913790856",
   "func_80050430": "local_source_158913790857",
   "func_800504FC": "local_source_158913790860",
   "func_80050558": "local_source_158913790862",
@@ -35169,7 +35152,7 @@
    "status": "open"
   },
   {
-   "name": "func_80050144",
+   "name": "stepSplinePath",
    "vram": 2147811652,
    "size": 736,
    "status": "open"
@@ -43211,6 +43194,12 @@
    "kind": "data"
   },
   {
+   "name": "splineNoPointsMsg",
+   "address": 2147516372,
+   "size": 32,
+   "kind": "data"
+  },
+  {
    "name": "gBumpRadius",
    "address": 2147518684,
    "size": 4,
@@ -43874,6 +43863,12 @@
    "name": "applyActorArgs",
    "address": 2147808828,
    "size": 840,
+   "kind": "func"
+  },
+  {
+   "name": "stepSplinePath",
+   "address": 2147811652,
+   "size": 736,
    "kind": "func"
   },
   {
@@ -46751,6 +46746,11 @@
    "source": "match"
   },
   {
+   "address": 2147516372,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
    "address": 2147516656,
    "type": "char[]",
    "source": "match"
@@ -47542,7 +47542,7 @@
   },
   {
    "address": 2148245196,
-   "type": "s32[]",
+   "type": "s32",
    "source": "match"
   },
   {
@@ -47672,7 +47672,7 @@
   },
   {
    "address": 2148837800,
-   "type": "Ent *[]",
+   "type": "Vec3i_50144 *[]",
    "source": "match"
   },
   {
