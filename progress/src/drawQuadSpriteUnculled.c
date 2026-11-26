@@ -47,7 +47,7 @@ void loadTextureClamped(s32 type, void *img, void *pal, s32);
 /* Same sprite quad as drawQuadSprite, but without the range test: it sets the
    render mode first and always emits the quad. Returns 0 on success
    and 1 when no vertex slots are free. */
-s32 drawQuadSpriteUnculled(Unk8002FEDC *obj) {
+/* Same sprite quad as drawQuadSprite without the range test: sets the render mode, then emits the quad. Always returns 1. */ s32 drawQuadSpriteUnculled(Unk8002FEDC *obj) {
     s32 halfWidth;
     s32 colorR;
     s32 colorG;
