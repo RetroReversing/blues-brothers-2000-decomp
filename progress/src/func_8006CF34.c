@@ -34,7 +34,7 @@ void func_8002642C(void);
 s32 func_80026848(s32);
 void setTextColorRgb(s32, s32, s32);
 void func_80027158(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_80032830(void);
 void func_80032980(void);
 void drawCenteredMessage(s32);
@@ -93,8 +93,8 @@ void func_8006CF34(Menu *arg0) {
         drawCenteredMessage(0x56);
         drawCenteredMessage(0x7A);
         if (gPadPressed & 0x8000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             arg0->state = 4;
         }
         if (gPadPressed & 0x4000) {
@@ -116,8 +116,8 @@ void func_8006CF34(Menu *arg0) {
                 }
             }
             D_800A9548 = 0;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9C);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9C);
             arg0->state = 5;
         }
         break;
@@ -155,8 +155,8 @@ void func_8006CF34(Menu *arg0) {
                 D_800BD1F0[i] = gSaveSlots[D_800B81C8].name[i];
             }
             D_800A9548 = gSaveSlots[D_800B81C8].unk50;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             arg0->state = 5;
         }
         break;
@@ -171,13 +171,13 @@ void func_8006CF34(Menu *arg0) {
         drawCenteredMessage(0x56);
         drawCenteredMessage(0x7A);
         if (gPadPressed & 0x8000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             arg0->state = 4;
         }
         if (gPadPressed & 0x4000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9C);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9C);
             arg0->state = 0xD;
         }
         break;
@@ -219,13 +219,13 @@ void func_8006CF34(Menu *arg0) {
         drawCenteredMessage(0x56);
         drawCenteredMessage(0x81);
         if (gPadPressed & 0x8000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             arg0->state = 6;
         }
         if (gPadPressed & 0x4000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9C);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9C);
             arg0->state = 0xD;
         }
         break;
@@ -249,14 +249,14 @@ void func_8006CF34(Menu *arg0) {
         drawCenteredMessage(0x56);
         drawCenteredMessage(0x7A);
         if (gPadPressed & 0x8000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             arg0->state = 0xF;
         }
         if (gPadPressed & 0x4000) {
             func_800262FC(0);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9C);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9C);
             arg0->state = 1;
         }
         break;
@@ -269,14 +269,14 @@ void func_8006CF34(Menu *arg0) {
         drawCenteredMessage(0x89);
         drawCenteredMessage(0x8A);
         if (gPadPressed & 0x8000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             arg0->state = 8;
         }
         if (gPadPressed & 0x4000) {
             func_800262FC(0);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9C);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9C);
             arg0->state = 1;
         }
         break;
@@ -300,14 +300,14 @@ void func_8006CF34(Menu *arg0) {
         drawCenteredMessage(0);
         if (gPadPressed & 0x8000) {
             func_800262FC(0);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             arg0->state = 1;
         }
         if (gPadPressed & 0x4000) {
             func_800262FC(0);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             arg0->state = 0;
         }
         break;

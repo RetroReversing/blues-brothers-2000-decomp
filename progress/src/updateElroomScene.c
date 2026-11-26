@@ -26,7 +26,7 @@ typedef struct Actor64130 {
 
 s32 cameraGetMode(void);
 s32 func_8001B990(s32, s32);
-void func_800232B4(s32, s32, s32, s32);
+void spawnEffectObj(s32, s32, s32, s32);
 Actor64130 *findActor(s32, s32);
 s32 func_80023DBC(s32);
 s32 func_8002D260(s32);
@@ -100,7 +100,7 @@ extern s32 gPadPressed;
         scene->unk7C++;
         gCameraTarget->unk68 = -1;
         gCameraTarget->unk9C = animStepKeys;
-        func_800232B4(0x801, 0, 0, 0);
+        spawnEffectObj(0x801, 0, 0, 0);
         break;
     case 2:
         *func_80052444(0) = 0x13D;

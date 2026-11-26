@@ -14,7 +14,7 @@ typedef struct Obj {
 } Obj;
 
 void func_800256A4(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002E7B8(s32, s32);
 s32 func_8003D654(void);
 extern s32 D_800AB9B4;
@@ -50,8 +50,8 @@ void func_8003D854(Obj *arg0) {
         moved = 0;
     }
     if (moved != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x90);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x90);
     }
     if (gPadPressed & 0x8000) {
         switch (arg0->unk88) {
@@ -61,9 +61,9 @@ void func_8003D854(Obj *arg0) {
             D_800B5DD4 = 1;
             D_80140228 = arg0->unk74;
             func_800256A4(0x12345678);
-            func_8002A360(0, gAudioVolume * 0x147);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9C);
+            sendCommand(0, gAudioVolume * 0x147);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9C);
             gTextWaveTime = D_80140250;
             return;
         case 1:
@@ -71,16 +71,16 @@ void func_8003D854(Obj *arg0) {
             arg0->unk98 = func_8006CEF8;
             arg0->unk80 = 0;
             arg0->unk9C = func_80023078 + 8;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             break;
         case 2:
             arg0->unk9C = func_8003DD70;
             arg0->unk98 = drawAudioOptionsMenu;
             arg0->unk88 = 0;
             D_800B5DCC = 2;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA2);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA2);
             break;
         case 3:
             arg0->unk9C = func_8003D558;
@@ -88,14 +88,14 @@ void func_8003D854(Obj *arg0) {
             D_800B5DD4 = 1;
             arg0->unk70 = 2;
             D_800B81D4 = 1;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9D);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9D);
             break;
         case 4:
             arg0->unk98 = func_8006DBB8;
             arg0->unk9C = func_8003D7A8;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             break;
         }
     }
@@ -110,7 +110,7 @@ void func_8003D854(Obj *arg0) {
         D_800AB9B4 = 0;
         D_800B5DD4 = 1;
         D_80140228 = arg0->unk74;
-        func_8002A360(0, gAudioVolume * 0x147);
+        sendCommand(0, gAudioVolume * 0x147);
         gTextWaveTime = D_80140250;
     }
 }

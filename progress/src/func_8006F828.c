@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_800232B4(s32, s32, s32, s32);
+void *spawnEffectObj(s32, s32, s32, s32);
 extern void *gCameraRig;
 extern void *D_800B3964;
 extern s32 func_8006F644;
@@ -22,7 +22,7 @@ void func_8006F828(void)
     void *temp_v0;
     s32 var_a0;
 
-    temp_v0 = func_800232B4(1, 0, 0, 0);
+    temp_v0 = spawnEffectObj(1, 0, 0, 0);
     M2C_FIELD(temp_v0, s32 *, 0x68) = 0xA;
     M2C_FIELD(temp_v0, s32 *, 0xBC) = M2C_FIELD(D_800B3964, s32 *, 0xBC);
     var_a0 = M2C_FIELD(gCameraRig, s32 *, 0x74);

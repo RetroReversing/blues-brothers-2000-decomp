@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002A360(s32, s32);            /* extern */
+s32 sendCommand(s32, s32);            /* extern */
 s32 tickActorTimer(void *);                          /* extern */
 s32 strlen(s32);                                    /* extern */
 extern s32 gPadPressed;
@@ -40,14 +40,14 @@ do {
     if (tickActorTimer(arg0) != 0) {
         (*(s32 *)((s8 *)arg0 + 0x64)) = -1;
         if (gPadPressed & 0x8000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             return 0;
         }
     }
     if (((*(s32 *)((s8 *)arg0 + 0x64)) < ((temp_s2 * 0xE) - 0x32)) && (gPadPressed & 0x8000)) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xA3);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xA3);
         (*(s32 *)((s8 *)arg0 + 0x64)) = -1;
         (*(s32 *)((s8 *)arg0 + 0x80)) = 1;
     }

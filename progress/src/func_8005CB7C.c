@@ -35,7 +35,7 @@ typedef struct Actor {
 s32 func_8002444C(void);
 s32 isqrtS32(s32);
 s32 atan2S16(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002ADFC(s32, s32, Actor *);
 s32 approachAngle(s32, s32, s32);
 s32 func_8002D260();
@@ -113,8 +113,8 @@ void func_8005CB7C(Actor *arg0) {
             break;
         case 1:
             if (abs(dy) < 150 && abs(dz) < 75 && abs(dx) < 600) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x10);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x10);
                 arg0->mode = 2;
                 if (dx < 0) {
                     arg0->target = -0x4000;
@@ -149,10 +149,10 @@ void func_8005CB7C(Actor *arg0) {
         }
         switch (arg0->state) {
         case 0:
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x47);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x48);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x47);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x48);
             actorSetAnim(arg0, 0xE6, 0x100);
             if (link != NULL) {
                 link->unk70 = 1;
@@ -207,16 +207,16 @@ void func_8005CB7C(Actor *arg0) {
             break;
         case 4:
             if (5.0 <= arg0->unkDC) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x16);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x16);
                 arg0->state = 5;
             }
             break;
         case 5:
             if (7.0 <= arg0->unkDC && arg0->unkDC <= 10.0 && 8.0 <= arg0->unkDC &&
                 gCameraTarget->anim != 5 && gCameraTarget->anim != 0x16 && abs(dx) < 200) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x2D);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x2D);
                 func_8005F008(gCameraTarget);
             }
             if (done != 0) {

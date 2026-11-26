@@ -23,7 +23,7 @@ typedef struct ObjU {
     void *f9C;
 } ObjU;
 
-ObjU *func_800232B4(s32, s32, s32, s32);
+ObjU *spawnEffectObj(s32, s32, s32, s32);
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void func_8002CE84(s32, s32);
 s32 randomRange(s32, s32);
@@ -38,7 +38,7 @@ extern ObjU *gCameraTarget;
 ObjU *func_80012474(s32 arg0, s32 arg1, s32 arg2) {
     ObjU *o;
 
-    o = func_800232B4(0x101, arg0, arg1, arg2);
+    o = spawnEffectObj(0x101, arg0, arg1, arg2);
     o->f98 = func_8002F8D0;
     o->f9C = func_80012418;
     o->f70 = 90;

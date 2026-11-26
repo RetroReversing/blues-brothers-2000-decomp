@@ -31,7 +31,7 @@ typedef struct {
 
 Obj *getObjPoolStart(s32);
 Obj *getObjPoolEnd(s32);
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 void func_8000F670(Obj *);
 void func_80039240(Obj *);
 void func_800729C4(Obj *);
@@ -95,7 +95,7 @@ s32 func_8001DD94(s32 arg0) {
             }
         }
         if (r->flags & 2) {
-            Obj *n = func_800232B4(0x13C, r->x, r->y, r->z);
+            Obj *n = spawnEffectObj(0x13C, r->x, r->y, r->z);
 
             n->angle = r->angle;
             n->handler = func_8000F670;

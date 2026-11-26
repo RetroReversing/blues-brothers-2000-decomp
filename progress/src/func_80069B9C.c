@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+void *spawnEffectObj(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK syncActorPrevPos(void *);                      /* extern */
 M2C_UNK func_80065630(void *);                      /* extern */
 extern s32 D_8014AB70;
@@ -24,7 +24,7 @@ void *func_80069B9C(void *arg0) {
     void *temp_v0;
     s32 dv;
 
-    temp_v0 = func_800232B4(1, 0, 0, 0);
+    temp_v0 = spawnEffectObj(1, 0, 0, 0);
     do { func_80065630(temp_v0); } while (0);
     ((__repair_record_temp_v0*)temp_v0)->field_70 = 0x28;
     *(s32 *)((char *)temp_v0 + 0x8C) = 0;

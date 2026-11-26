@@ -18,14 +18,14 @@ typedef struct O5C860 {
 } O5C860;
 s16 coss(u16);
 s16 sins(u16);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void actorSetAnim(O5C860 *, s32, s32);
 void func_800393F4(void);
 
 void func_8005C860(O5C860 *arg0) {
     if (arg0->fA4->fDC >= 85.0f) {
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0x1C);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0x1C);
         arg0->f4 = arg0->fA4->f4 + ((sins(arg0->fA4->u10.s.f12) * 195) >> 14);
         arg0->f8 = arg0->fA4->f8 + 400.0f;
         arg0->fC = arg0->fA4->fC + ((coss(arg0->fA4->u10.s.f12) * 195) >> 14);

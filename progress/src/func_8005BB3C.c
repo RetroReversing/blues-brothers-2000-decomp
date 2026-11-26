@@ -1,7 +1,7 @@
 s16 coss(u16);
 s16 sins(u16);
 void *findActor(s32, void *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_80034FEC(void *, s32 *);
 s32 func_80043248(void *);
 void debugPrintf(char *);
@@ -69,8 +69,8 @@ void func_8005BB3C(ObjK *arg0) {
     func_80043248(arg0);
     if (arg0->fDC > 50.0f) {
         if (arg0->f80 == 0) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x56);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x56);
             arg0->f80 = 1;
         }
         arg0->f5C -= 15;

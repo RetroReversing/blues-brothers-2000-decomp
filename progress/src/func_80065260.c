@@ -1,4 +1,4 @@
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 f32 approachF32(f32, f32, f32);
 f32 func_8002DD60(f32);
 void debugPrintf(char *);
@@ -59,7 +59,7 @@ void func_80065260(Obj *arg0) {
         }
         arg0->x7C = 1;
         arg0->xC0 = 1;
-        func_8002A360(0x18, 0);
+        sendCommand(0x18, 0);
     }
     if (arg0->x88 == 0) {
         debugPrintf(D_80008C30);

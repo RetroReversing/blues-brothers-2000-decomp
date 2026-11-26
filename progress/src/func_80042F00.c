@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 packDrawFlags();
-void *func_800232B4();
+void *spawnEffectObj();
 void *getImageAsset();
 s32 func_80023E3C();
 s32 syncActorPrevPos();
@@ -40,7 +40,7 @@ void *func_80042F00(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     { temp_s0_2 = temp + __base_D_800FB038; }
     temp_s5 = getImageAsset(*temp_s0_2);
     temp_s1 = getImageAsset(*temp_s0_2);
-    temp_s0 = func_800232B4(1, arg1, arg2, arg3);
+    temp_s0 = spawnEffectObj(1, arg1, arg2, arg3);
     M2C_FIELD(temp_s0, s32 *, 0x58) = packDrawFlags(1, 1, 0, 3, D_800B7B0C, 0, 1, 0);
     M2C_FIELD(temp_s0, s32 *, 0xD0) = -1;
     M2C_FIELD(temp_s0, s32 **, 0xA0) = &func_80042EA4;

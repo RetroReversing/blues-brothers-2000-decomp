@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s16 coss();
 s32 findActor();
-s32 func_8002A360();
+s32 sendCommand();
 s32 func_80043328();
 s32 actorSetAnim();
 s16 sins();
@@ -31,8 +31,8 @@ char *__repair_addr;
         func_80043328(arg0, 0xFD, 0x100);
         ((__repair_record_arg0*)arg0)->field_74 = 1;
         ((__repair_record_arg0*)arg0)->field_7C = 1;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xD3);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xD3);
     }
     if (findActor(0x800, 0) != 0) {
         ((__repair_record_arg0*)arg0)->field_74 = 0;
@@ -51,8 +51,8 @@ char *__repair_addr;
         return;
     }
     if (((__repair_record_arg0*)arg0)->field_70 != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xD2);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xD2);
         ((__repair_record_arg0*)arg0)->field_D8 = &wardenChase;
         ((__repair_record_arg0*)arg0)->field_7C = 0;
     }

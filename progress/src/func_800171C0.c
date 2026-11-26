@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
-void *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */
+void *spawnEffectObj(M2C_UNK, s32, s32, s32);        /* extern */
 s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK syncActorPrevPos(void *);                      /* extern */
 extern s32 D_800BD170;
@@ -23,7 +23,7 @@ extern M2C_UNK func_8002F8D0;
 s32 func_800171C0(void *arg0) {
     void *temp_v0;
 
-    temp_v0 = func_800232B4(1, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
+    temp_v0 = spawnEffectObj(1, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
     M2C_FIELD(temp_v0, s32 *, 0x64) = 0xC8;
     M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_8002F8D0;
     M2C_FIELD(temp_v0, s32 *, 0x60) = (s32) D_800BD170;

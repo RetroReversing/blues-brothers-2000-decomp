@@ -29,7 +29,7 @@ struct Obj {
 s16 coss(u16);
 s16 sins(u16);
 s32 func_8002492C(f32, f32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 approachS32(s32, s32, s32);
 s32 tickActorTimer(Obj *);
 f32 func_8002D858(Obj *, void *);
@@ -81,8 +81,8 @@ s32 updateChaseVehicle(Obj *veh) {
     dist = func_8002D858(veh, &veh->unk10);
     if (dist < D_80008F3C) {
         func_80043328(veh, veh->unk74 + 4, 0x100);
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x16);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x16);
         if (veh->unkD0 == veh->unk74 + 4 && veh->unkDC > D_80008F40 && veh->unkDC < D_80008F44 && veh->unk80 == 0) {
             veh->unk80 = 1;
             func_8003BF98(veh);

@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_800232B4(s32, s32, s32, s32);
+void *spawnEffectObj(s32, s32, s32, s32);
 void func_80072CA8(void);
 extern s32 gSplinePointCount[];
 extern s32 *gSplineSrcPoints[];
@@ -28,7 +28,7 @@ void func_800723EC(void) {
     for (i = 20; i < 30; i++) {
         if (gSplinePointCount[i] != 0) {
             found = 1;
-            o = func_800232B4(1, 0, 0, 0);
+            o = spawnEffectObj(1, 0, 0, 0);
             *(s32 **)((s8 *)o + 0x9C) = &func_80073224;
             *(s32 *)((s8 *)o + 0x70) = i;
             p = gSplineSrcPoints[i];

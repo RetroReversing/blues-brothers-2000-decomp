@@ -31,7 +31,7 @@ s32 func_80013784(Obj *);
 void func_80017F78();
 void func_8001B990(s32, s32);
 void updateCameraView(Obj *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void getCameraTargetDist(Obj *, f32, s32);
 void func_8001D2C0(Obj *);
 extern s32 func_80023078;
@@ -72,8 +72,8 @@ void func_8001D30C(Obj *o)
     if (o->y < lo) {
         func_8001B990(0x200, o->id);
         o->y = lo;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xF);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xF);
         if (cameraGetMode() == 7) {
             func_8001B990(0x200, o->id);
             if (D_800A954C == 0) {
@@ -92,8 +92,8 @@ void func_8001D30C(Obj *o)
                 p->w14 = q->w14;
                 p->w18 = q->w18;
                 updateCameraView(p);
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x72);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x72);
                 o->cb = (void *)func_8001D2C0;
                 o->timer = 300;
                 return;

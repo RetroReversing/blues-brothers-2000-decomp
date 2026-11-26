@@ -1,6 +1,6 @@
 s32 func_8000C5B4();
 s32 findActor(s32, s32);
-s32 func_8002A360(s32, s32);
+s32 sendCommand(s32, s32);
 s32 func_8002D124();
 extern s32 D_800B4D2C;
 extern s32 D_800B5DD4;
@@ -33,8 +33,8 @@ s32 func_8003C140(void)
   ((__repair_record_D_800BD06C *) gCameraTarget)->field_0 = 0x101;
   ((__repair_record_D_800BD06C *) gCameraTarget)->field_C0 = 2;
   *((s32 **) (((char *) gCameraTarget) + 0x9C)) = &func_8003C37C;
-  func_8002A360(0xC, 0x80);
-  func_8002A360(8, 0x7D);
+  sendCommand(0xC, 0x80);
+  sendCommand(8, 0x7D);
   func_8002D124();
   return 0;
 }

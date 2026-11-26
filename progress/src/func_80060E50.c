@@ -40,7 +40,7 @@ extern Cam60 *gCameraTarget;
 extern s32 D_8014AB20;
 s32 isqrtS32(s32);
 s32 atan2S16(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 s32 approachAngle(s32, s32, s32);
 s32 func_8002D260(s32);
@@ -120,8 +120,8 @@ void func_80060E50(Obj60 *obj) {
                     func_80061730(obj);
                 }
                 if (hit == 1) {
-                    func_8002A360(0xC, 0x80);
-                    func_8002A360(8, 0x2E);
+                    sendCommand(0xC, 0x80);
+                    sendCommand(8, 0x2E);
                     func_8002D124();
                 }
             }
@@ -133,8 +133,8 @@ void func_80060E50(Obj60 *obj) {
             if (obj->xD0 != 0x9D) {
                 actorSetAnim(obj, 0x9D, 0x100);
             }
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x3C);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x3C);
             obj->x8C = 1;
             break;
         case 1:
@@ -174,8 +174,8 @@ void func_80060E50(Obj60 *obj) {
                     actorSetAnim(obj, 0x9D, 0x100);
                     obj->x8C = 5;
                 }
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x2D);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x2D);
             }
             if (d >= 0x96) {
                 if (obj->xD0 != 0x9D) {
@@ -224,8 +224,8 @@ void func_80060E50(Obj60 *obj) {
             obj->x8C = 1;
             break;
         case 1:
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x3D);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x3D);
             actorSetAnim(obj, 0x9F, 0x100);
             obj->x8C = 2;
             break;

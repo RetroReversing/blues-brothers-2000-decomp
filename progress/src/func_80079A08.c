@@ -6,7 +6,7 @@ struct G {
 extern void func_800853E8();
 extern f32 func_8002D858(G *, s32);
 extern void func_800799A8(G *);
-extern void func_8002A360(s32, s32);
+extern void sendCommand(s32, s32);
 extern void func_8003BF98(G *);
 extern void func_80043328(G *, s32, s32);
 extern void actorSetAnim(G *, s32, s32);
@@ -27,8 +27,8 @@ void func_80079A08(G *arg0) {
         if (!(temp_fv1_2 < 30.0f)) {
             if (arg0->fC0 & ~1) {
                 arg0->f9C = func_800799A8;
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 9);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 9);
                 return;
             }
         } else if ((arg0->f80 == 0) && (19.0f < temp_fv1_2)) {

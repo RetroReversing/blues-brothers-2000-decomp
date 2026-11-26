@@ -40,7 +40,7 @@ s32 func_80083920(void *o, s32 arg1);
 s16 sins(u16);
 s16 coss(u16);
 void func_8002ADFC(s32 ch, s32 range, void *src);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 void func_80043328(void *arg0, s32 arg1, s32 arg2);
 s32 func_8002492C(f32, f32);
@@ -77,8 +77,8 @@ void func_800579E0(Unk800579E0 *arg0) {
         if (flags & 0x40) {
             func_8002ADFC(0xAE, 6000, arg0);
         } else {
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x2E);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x2E);
             func_8002D124();
         }
         func_80043328(arg0, 0xC4, 0x100);
@@ -100,8 +100,8 @@ void func_800579E0(Unk800579E0 *arg0) {
     arg0->unk100 = dist;
     arg0->unk90 = angle;
     if (dist < func_800851D8(arg0)[1]) {
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0x4C);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0x4C);
         if (func_800571F4(arg0) == 0) {
             return;
         }

@@ -12,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 
 void func_8002AD9C(void) {
-    func_8002A360(0xC, 0x80);
-    func_8002A360(8, 0xA7);
+    sendCommand(0xC, 0x80);
+    sendCommand(8, 0xA7);
 }

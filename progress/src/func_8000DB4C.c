@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 f32 getCameraTargetDist(void *, M2C_UNK, M2C_UNK);        /* extern */
 s32 func_8003C9AC(void *, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_8003CAD4(void *, s32);                 /* extern */
@@ -27,8 +27,8 @@ void func_8000DB4C(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x58) = packDrawFlags(1, 1, 0, 3, D_800B7B0C, 0, 1, 0);
     M2C_FIELD(arg0, s32 *, 0) = 0x139;
     if (((s32) getCameraTargetDist(arg0, 0x43160000, 0) < 0x96) && (func_8003C9AC(gCameraTarget, 0, 1, 0) != 0)) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 4);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 4);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8000DAEC;
         M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;
         M2C_FIELD(arg0, s32 *, 0x58) = packDrawFlags(1, 1, 1, 3, D_800B7B0C, 0, 1, 0);

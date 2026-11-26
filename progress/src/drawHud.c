@@ -24,7 +24,7 @@ void setTextColor(s32, s32, s32, s32);
 void func_80027158(s32, s32);
 void drawImage(s32, s32, s32, s32);
 void func_80028710(char *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 approachS32(s32, s32, s32);
 void func_8003CA98(void *);
 void func_80081E1C(s32, s32, s32, s32);
@@ -126,8 +126,8 @@ extern s32 D_80140028;
         }
         if (D_80140028 != 0) {
             if (D_80140028 == 8) {
-                func_8002A360(12, 128);
-                func_8002A360(8, 66);
+                sendCommand(12, 128);
+                sendCommand(8, 66);
             }
             drawImage(getImageAsset(D_800BD118), 270, 180, 0);
             D_80140028 -= gCamSpeedScale;

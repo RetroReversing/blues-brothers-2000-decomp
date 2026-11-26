@@ -13,12 +13,12 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_8001B990(M2C_UNK, M2C_UNK);            /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 extern s32 D_800BD1DC;
 
 void func_8001C4A0(void) {
-    func_8002A360(0xC, 0x80);
-    func_8002A360(8, 0x15);
+    sendCommand(0xC, 0x80);
+    sendCommand(8, 0x15);
     func_8001B990(0x300, 5);
     func_8001B990(0x300, 6);
     func_8001B990(0x300, 7);

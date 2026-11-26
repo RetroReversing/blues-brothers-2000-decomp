@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 s32 approachS32(M2C_UNK, s32, M2C_UNK);           /* extern */
 extern f32 D_80008E68;
 extern s32 D_800B3964[];
@@ -50,8 +50,8 @@ block_9:
     }
     if (M2C_FIELD(arg0, s32 *, 0x8C) != 0) {
         if (M2C_FIELD(arg0, s32 *, 0x78) != 0) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xB5);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xB5);
             M2C_FIELD(arg0, s32 *, 0x78) = 0;
         }
         temp_fv1 = M2C_FIELD(arg0, f32 *, 8) - (f32) M2C_FIELD(arg0, s32 *, 0x88);

@@ -27,7 +27,7 @@ struct Actor {
 s32 randomRange(s32, s32);
 s32 isqrtS32(s32);
 s32 atan2S16(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 s32 approachAngle(s32, s32, s32);
 s32 tickActorTimer(Actor *);
@@ -79,8 +79,8 @@ void func_800593D0(Actor *arg0)
             a->unk68 = 13;
             a->unk90 = 2;
             a->unk8C = 0;
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x18);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x18);
         }
         break;
     case 2:
@@ -89,16 +89,16 @@ void func_800593D0(Actor *arg0)
         r = func_80083920(a, a->unk90 == 3 && a->unk8C == 1);
         switch (r) {
         case 1:
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x2E);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x2E);
             func_8002D124();
             actorSetAnim(a, 0x3B, 0x100);
             a->unk90 = 3;
             a->unk8C = r;
             return;
         case 2:
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x17);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x17);
             func_8002D124();
             actorSetAnim(a, 0x3C, 0x100);
             a->unk90 = 3;
@@ -124,12 +124,12 @@ void func_800593D0(Actor *arg0)
             }
             if (D_8014AAE0 < 1000) {
                 if (randomRange(0, 100) > 50) {
-                    func_8002A360(12, 0x80);
-                    func_8002A360(8, 0x16);
+                    sendCommand(12, 0x80);
+                    sendCommand(8, 0x16);
                     actorSetAnim(a, 0x3E, 0x100);
                 } else {
-                    func_8002A360(12, 0x80);
-                    func_8002A360(8, 0x16);
+                    sendCommand(12, 0x80);
+                    sendCommand(8, 0x16);
                     actorSetAnim(a, 0x3D, 0x100);
                 }
                 D_800B7FB0 = 0;
@@ -145,23 +145,23 @@ void func_800593D0(Actor *arg0)
             break;
         case 3:
             if (D_800B7FB0 == 0 && a->unkD0 == 0x3D && 13.0f <= a->unkDC && a->unkDC <= 19.0f) {
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0x2D);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0x2D);
                 D_800B7FB0 = 1;
             }
             r = func_80083920(a, a->unk90 == 3 && a->unk8C == 1);
             switch (r) {
             case 1:
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0x2E);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0x2E);
                 func_8002D124();
                 actorSetAnim(a, 0x3B, 0x100);
                 a->unk90 = 3;
                 a->unk8C = r;
                 return;
             case 2:
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0x17);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0x17);
                 func_8002D124();
                 actorSetAnim(a, 0x3C, 0x100);
                 a->unk90 = 3;
@@ -172,8 +172,8 @@ void func_800593D0(Actor *arg0)
             if (a->unkD0 == 0x3E && 13.0f <= a->unkDC && a->unkDC <= 15.0f && (u32)(D_8014AAE0 - 176) < 299) {
                 if (D_800B7FB0 == 0) {
                     D_800B7FB0 = 1;
-                    func_8002A360(12, 0x80);
-                    func_8002A360(8, 0x2D);
+                    sendCommand(12, 0x80);
+                    sendCommand(8, 0x2D);
                 }
                 if (func_8003C9AC(a, 0, 1, 0) != 0) {
                     func_8003BF98(gCameraTarget);
@@ -184,8 +184,8 @@ void func_800593D0(Actor *arg0)
             if (a->unkD0 == 0x3D && 13.0f <= a->unkDC && a->unkDC <= 19.0f && (u32)(D_8014AAE0 - 176) < 299) {
                 if (D_800B7FB0 == 0) {
                     D_800B7FB0 = 1;
-                    func_8002A360(12, 0x80);
-                    func_8002A360(8, 0x2D);
+                    sendCommand(12, 0x80);
+                    sendCommand(8, 0x2D);
                 }
                 func_8003B980(gCameraTarget);
                 a->unk8C = 4;

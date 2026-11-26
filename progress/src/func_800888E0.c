@@ -1,4 +1,4 @@
-void *func_800232B4(s32, s32, s32, s32);
+void *spawnEffectObj(s32, s32, s32, s32);
 s32 strlen(char *);
 extern char *D_800B4D30[];
 extern s32 D_8014AA98;
@@ -17,7 +17,7 @@ typedef struct {
 void *func_800888E0(s32 arg0) {
     ObjM *o;
 
-    o = func_800232B4(1, 0, 0, 0);
+    o = spawnEffectObj(1, 0, 0, 0);
     o->f98 = func_80088778;
     o->f70 = arg0;
     o->f68 = 0xE;

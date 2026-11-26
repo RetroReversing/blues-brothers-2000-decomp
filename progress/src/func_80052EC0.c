@@ -35,7 +35,7 @@ typedef struct Handler {
 extern void debugPrintf(char *);
 extern void func_80023078(void);
 extern s32 cameraGetMode(void);
-extern Obj *func_800232B4(s32, s32, s32, s32);
+extern Obj *spawnEffectObj(s32, s32, s32, s32);
 extern void func_80027030(s32);
 extern s32 func_80082400(void);
 extern void func_800393F4(void);
@@ -92,7 +92,7 @@ void func_80052EC0(Obj *o) {
         }
         gCameraRig->xC0 = 0;
         gCameraRig->x9C = gCameraRig->xD8;
-        func_800232B4(1, 0, 0, 0)->x9C = func_80054140;
+        spawnEffectObj(1, 0, 0, 0)->x9C = func_80054140;
         D_800B5DD4 = 1;
         D_800AE010 = D_8014AA90;
         func_80027030(1);

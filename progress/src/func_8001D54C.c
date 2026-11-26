@@ -26,7 +26,7 @@ struct ObjE {
 s32 cameraGetMode(void);
 s32 func_8001B990(s32, s32);
 void updateCameraView(ObjE *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 f32 approachF32(f32, f32, f32);
 void syncActorPrevPos(ObjE *);
 extern ObjE *gCameraRig;
@@ -73,8 +73,8 @@ void func_8001D54C(ObjE *arg0) {
         } else {
             *cur = approachF32(*tgt - 500.0f, *cur, gCamSpeedScale * 20);
             if (*cur == *tgt - 500.0f) {
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0x72);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0x72);
                 arg0->fC0 = 0;
             }
         }

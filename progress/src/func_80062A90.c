@@ -11,7 +11,7 @@ typedef s32 M2C_UNK32;
 #define M2C_CARRY 0
 #define M2C_OVERFLOW(a) (0)
 #endif
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);
 M2C_UNK func_8004BDCC();
 M2C_UNK func_8004C004();
 M2C_UNK func_8004DE9C();
@@ -85,7 +85,7 @@ s32 func_80062A90(void) {
     func_8004DE9C(gCameraRig, m);
     D_800B7FE0->f3F8 = D_800B7FE0->f3F8 + 1;
     if (D_800B7FE0->f3F8 >= 0x5E6) {
-        func_8002A360(0x1D, 0);
+        sendCommand(0x1D, 0);
         if (D_800B7FE0->f3F4 == 0) {
             D_800B7FE0->f3F4 = 1;
         }

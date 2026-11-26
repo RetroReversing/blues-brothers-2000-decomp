@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 extern void *gCameraRig;
@@ -24,8 +24,8 @@ void func_8003BB90(void *arg0) {
     M2C_UNK *temp_a0;
 
     if (M2C_FIELD(arg0, s32 *, 0xD0) != 0x17) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x19);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x19);
         func_8002D124();
         if (M2C_FIELD(gCameraRig, M2C_UNK **, 0xD8) == NULL) {
             temp_a0 = M2C_FIELD(gCameraRig, M2C_UNK **, 0x9C);

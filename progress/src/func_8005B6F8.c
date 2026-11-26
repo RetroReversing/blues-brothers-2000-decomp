@@ -22,7 +22,7 @@ typedef struct Obj {
 
 Obj *getObjPoolStart(s32);
 Obj *getObjPoolEnd(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 void func_8002D3E4(Obj *, s32);
 f32 func_8002DD60(f32);
@@ -86,8 +86,8 @@ s32 func_8005B6F8(Obj *arg0) {
     if (arg0->unkC0 != 0) {
         arg0->unk7C = 0;
         if (arg0->unkC0 & 1) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xAD);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xAD);
             func_8002D124();
             func_8003BF98(gCameraTarget);
             arg0->unkD8 = func_8005B968;

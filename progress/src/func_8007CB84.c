@@ -26,7 +26,7 @@ typedef struct Obj {
 } Obj;
 Obj *findActor();
 s32 func_80023C64();
-s32 func_8002A360();
+s32 sendCommand();
 s32 tickActorTimer();
 s32 func_8007C310();
 s32 func_8007C54C();
@@ -82,7 +82,7 @@ void func_8007CB84(Obj *self) {
         if (self->f90 >= 0 && self->f94 > 0) {
             self->f90 = self->f90 - 1;
             func_8007C310();
-            func_8002A360(0x15, 0);
+            sendCommand(0x15, 0);
         }
     }
     if (tickActorTimer(self) != 0) {

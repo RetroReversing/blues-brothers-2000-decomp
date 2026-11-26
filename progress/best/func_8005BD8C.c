@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 void *findActor();
-s32 func_8002A360();
+s32 sendCommand();
 s32 func_8002D3E4();
 s32 syncActorPrevPos();
 s32 func_8002DA80();
@@ -81,8 +81,8 @@ block_10:
     if (M2C_FIELD(D_800B3964, s32 *, 0x74) != 0) {
         func_8002D3E4(arg0, 0x258);
         if (M2C_FIELD(D_800B3964, s32 *, 0xFC) == 0) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x55);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x55);
             M2C_FIELD(D_800B3964, s32 *, 0xFC) = 1;
         }
         func_80043328(arg0, 0xC7, 0x100);

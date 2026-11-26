@@ -1,5 +1,5 @@
 void actorSetAnim(void *, s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 void func_8003BC40(void *);
 extern s32 D_800BD170[];
@@ -29,8 +29,8 @@ void func_8003CCB4(void) {
         actorSetAnim(p, 0x1A, 0x100);
         p->unk9C = func_8003BC40;
         p->unk0 = 0x101;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xB);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xB);
         func_8002D124();
     }
     for (i = 0; i < 15; i++) {

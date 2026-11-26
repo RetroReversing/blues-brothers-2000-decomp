@@ -17,7 +17,7 @@ struct Obj {
     s32 unkC0;
 };
 
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 Obj *findActor(s32, s32);
 void func_80034FEC(Obj *, s32 *);
 void func_80034F50(Obj *);
@@ -39,7 +39,7 @@ void func_80074600(Obj *arg0) {
 
     dist = 30000.0f;
     if (arg0->unk7C == 0) {
-        o = func_800232B4(1, 0, 0, 0);
+        o = spawnEffectObj(1, 0, 0, 0);
         o->handler = func_800743F8;
         o->unk70 = arg0->unk70;
         arg0->unk7C = 1;

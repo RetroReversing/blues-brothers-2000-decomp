@@ -28,7 +28,7 @@ typedef struct {
 
 s32 isqrtS32(s32);
 s32 atan2S16(s32, s32);
-void func_8002A360(s32, void *);
+void sendCommand(s32, void *);
 s16 sins(u16);
 void func_8002AFC0(void *);
 extern Obj *gCameraRig;
@@ -73,12 +73,12 @@ void func_8002AFFC(Snd *o)
         if (t) {
             o->vol = D_800B2B60[ch];
         }
-        func_8002A360(0x11, o);
+        sendCommand(0x11, o);
     } else if (o->active != 0) {
         o->unk94 = -1;
         t = o->unk70 * 100;
         o->unk64 = t;
-        func_8002A360(0x11, o);
+        sendCommand(0x11, o);
         o->active = 0;
     }
 }

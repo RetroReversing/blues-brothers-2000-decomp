@@ -50,7 +50,7 @@ s32 atan2S16(s32, s32);
 s32 func_8002D260(s32);
 s32 approachAngle(s32, s32, s32);
 s32 isqrtS32(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void actorSetAnim(Obj58 *, s32, s32);
 void func_80043328(Obj58 *, s32, s32);
 f32 func_8002DD60(f32);
@@ -102,8 +102,8 @@ float sqrtf(float);
                     D_8014AAC0 = other;
                     break;
                 }
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x15);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x15);
             }
             if (isqrtS32(dxSq + dzSq) < 0x190) {
                 if (other->x8 < bomb->x8 && !(other->xC0 & 4)) {
@@ -123,8 +123,8 @@ float sqrtf(float);
             bomb->x8C = 1;
             bomb->x10 = bomb->x88 = func_8002D260(atan2S16(-dx, -dz));
             actorSetAnim(bomb, 0x7B, 0x600);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x3A);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x3A);
             D_8014AAC0->xC0 |= 1;
             bomb->x84 = 1;
             break;
@@ -147,15 +147,15 @@ float sqrtf(float);
         switch (bomb->x8C) {
         case 0:
             func_80043328(bomb, 0x7E, 0x100);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x3A);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x3A);
             bomb->x8C = 1;
             break;
         case 1:
             if (tick != 0) {
                 func_80043328(bomb, 0x7E, 0x100);
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x3A);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x3A);
             }
             break;
         case 2:

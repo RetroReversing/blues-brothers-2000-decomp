@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 cameraGetMode(void);                          /* extern */
 s32 func_8000F5E4();                            /* extern */
-s32 func_8002A360(s32, s32);            /* extern */
+s32 sendCommand(s32, s32);            /* extern */
 s32 tickActorTimer(arg0);                            /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 extern f32 D_80000608;
@@ -50,7 +50,7 @@ void func_8000F670(void *arg0) {
             D_800B3838 = 0;
             D_800B5DD4 = 0;
             if (cameraGetMode() == 1) {
-                func_8002A360(0x19, 0);
+                sendCommand(0x19, 0);
             }
         }
     }

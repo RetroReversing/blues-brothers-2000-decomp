@@ -21,7 +21,7 @@ typedef struct Obj73644 {
 
 s16 sins(u16);
 s16 coss(u16);
-Obj73644 *func_800232B4(s32, s32, s32, s32);
+Obj73644 *spawnEffectObj(s32, s32, s32, s32);
 s32 func_80023D58(s32);
 void func_800242A8(s32, s32, s32, ...);
 void syncActorPrevPos(Obj73644 *);
@@ -74,7 +74,7 @@ void cameraRigUpdate(Obj73644 *rig) {
         rig->unk60 = func_80023D58(0x210);
         rig->unk98 = func_800739D4;
         rig->unk68 = 14;
-        func_800232B4(1, 0, 0, 0)->unk9C = func_80073394;
+        spawnEffectObj(1, 0, 0, 0)->unk9C = func_80073394;
         obj = func_8006B43C(0);
         obj->x = 20.0f;
         obj->y = 1281.0f;
@@ -88,7 +88,7 @@ void cameraRigUpdate(Obj73644 *rig) {
         rig->y = obj->y + 500.0f;
         rig->z = obj->z - 2000.0f;
         for (i = 0; i < 8; i++) {
-            marker = func_800232B4(1, obj->x, obj->y, obj->z);
+            marker = spawnEffectObj(1, obj->x, obj->y, obj->z);
             angle = (s32)((f32)i * 45.0f * D_80009138 / D_80009140) & 0xFFFF;
             marker->x += (sins(angle) * 75) >> 12;
             marker->z += (coss(angle) * 75) >> 12;
@@ -96,7 +96,7 @@ void cameraRigUpdate(Obj73644 *rig) {
             marker->y = 365.0f;
         }
         for (i = 1; i < 6; i++) {
-            obj = func_800232B4(1, 0, 0, 0);
+            obj = spawnEffectObj(1, 0, 0, 0);
             obj->unk70 = i;
             obj->unk9C = func_800743F8;
         }

@@ -28,7 +28,7 @@ typedef struct Obj {
     /* 0xA0 */ u8 padA0[0x20];
     /* 0xC0 */ s32 fC0;
 } Obj;
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 void func_8002D4E0(Obj *, s32);
 void syncActorPrevPos(Obj *);
 extern f32 D_80009598;
@@ -48,7 +48,7 @@ Obj *func_8007C310(void) {
 
     x = (*(Obj **)gCameraTarget)->x + (f32)((sins(*(u16 *)((char *)(*(Obj **)gCameraTarget) + 0x12)) * 25) >> 14);
     y = (*(Obj **)gCameraTarget)->y + D_80009598;
-    obj = func_800232B4(0x1008, x, y, (*(Obj **)gCameraTarget)->z + (f32)((coss(*(u16 *)((char *)(*(Obj **)gCameraTarget) + 0x12)) * 25) >> 14));
+    obj = spawnEffectObj(0x1008, x, y, (*(Obj **)gCameraTarget)->z + (f32)((coss(*(u16 *)((char *)(*(Obj **)gCameraTarget) + 0x12)) * 25) >> 14));
     one = 1;
     obj->f98 = func_8002FBC0;
     obj->f60 = gMeterPipImage[0];

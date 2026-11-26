@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699963.7268329,
- "revision": 5596,
+ "saved_at": 1795700030.9566238,
+ "revision": 5602,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15164,8 +15164,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "525464:2148006040": {
    "vram": 2148006040,
@@ -17061,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "523292:2148003868": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "spawnActorPairWithLinks",
-   "vram": 2148003868
   }
  },
  "instructions": "",
@@ -18015,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_7E820": "common_main_text_7E820.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -19989,7 +19971,7 @@
    "matched_by": "permuter-158913790355",
    "readable": false
   },
-  "func_800232B4": {
+  "spawnEffectObj": {
    "vram": 2147627700,
    "matched_by": "manual-d25a051a3e9340c6",
    "readable": false
@@ -20739,7 +20721,7 @@
    "matched_by": "manual-461c95cc9a664e58",
    "readable": false
   },
-  "func_8002A360": {
+  "sendCommand": {
    "vram": 2147656544,
    "matched_by": "permuter-158913790506",
    "readable": false
@@ -24504,7 +24486,7 @@
    "matched_by": "manual-8486f82c73be483e",
    "readable": false
   },
-  "func_8006D8E0": {
+  "stepFadeUp": {
    "vram": 2147932384,
    "matched_by": "permuter-158913791245",
    "readable": false
@@ -24524,12 +24506,12 @@
    "matched_by": "manual-8597c92a643c4261",
    "readable": false
   },
-  "func_8006DAA0": {
+  "isEntryDisabled": {
    "vram": 2147932832,
    "matched_by": "permuter-158913791249",
    "readable": false
   },
-  "func_8006DAE8": {
+  "pollMenuInput": {
    "vram": 2147932904,
    "matched_by": "manual-02d61035baaa4f41",
    "readable": false
@@ -24684,10 +24666,10 @@
    "matched_by": "permuter-158913791280",
    "readable": false
   },
-  "func_8006F300": {
+  "updateOptionMenu": {
    "vram": 2147939072,
    "matched_by": "manual-7e5a9721641f4b28",
-   "readable": false
+   "readable": true
   },
   "func_8006F644": {
    "vram": 2147939908,
@@ -32140,7 +32122,7 @@
    "status": "open"
   },
   {
-   "name": "func_800232B4",
+   "name": "spawnEffectObj",
    "vram": 2147627700,
    "size": 216,
    "status": "open"
@@ -33046,7 +33028,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002A360",
+   "name": "sendCommand",
    "vram": 2147656544,
    "size": 104,
    "status": "open"
@@ -37588,7 +37570,7 @@
    "status": "open"
   },
   {
-   "name": "func_8006D8E0",
+   "name": "stepFadeUp",
    "vram": 2147932384,
    "size": 48,
    "status": "open"
@@ -37612,13 +37594,13 @@
    "status": "open"
   },
   {
-   "name": "func_8006DAA0",
+   "name": "isEntryDisabled",
    "vram": 2147932832,
    "size": 72,
    "status": "open"
   },
   {
-   "name": "func_8006DAE8",
+   "name": "pollMenuInput",
    "vram": 2147932904,
    "size": 208,
    "status": "open"
@@ -37804,7 +37786,7 @@
    "status": "open"
   },
   {
-   "name": "func_8006F300",
+   "name": "updateOptionMenu",
    "vram": 2147939072,
    "size": 836,
    "status": "open"
@@ -43296,6 +43278,12 @@
    "kind": "func"
   },
   {
+   "name": "spawnEffectObj",
+   "address": 2147627700,
+   "size": 216,
+   "kind": "func"
+  },
+  {
    "name": "findActor",
    "address": 2147629172,
    "size": 88,
@@ -43437,6 +43425,12 @@
    "name": "setRenderState",
    "address": 2147655564,
    "size": 848,
+   "kind": "func"
+  },
+  {
+   "name": "sendCommand",
+   "address": 2147656544,
+   "size": 104,
    "kind": "func"
   },
   {
@@ -43797,6 +43791,30 @@
    "name": "updateChaseVehicle",
    "address": 2147924828,
    "size": 1196,
+   "kind": "func"
+  },
+  {
+   "name": "stepFadeUp",
+   "address": 2147932384,
+   "size": 48,
+   "kind": "func"
+  },
+  {
+   "name": "isEntryDisabled",
+   "address": 2147932832,
+   "size": 72,
+   "kind": "func"
+  },
+  {
+   "name": "pollMenuInput",
+   "address": 2147932904,
+   "size": 208,
+   "kind": "func"
+  },
+  {
+   "name": "updateOptionMenu",
+   "address": 2147939072,
+   "size": 836,
    "kind": "func"
   },
   {
@@ -46973,7 +46991,7 @@
   },
   {
    "address": 2148219232,
-   "type": "Obj *",
+   "type": "u8 *",
    "source": "match"
   },
   {

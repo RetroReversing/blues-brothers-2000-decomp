@@ -17,7 +17,7 @@ typedef struct Obj {
 
 extern s32 func_80043248(Obj *);
 extern Obj *findActor(s32, Obj *);
-extern s32 func_800232B4(s32, s32, s32, s32);
+extern s32 spawnEffectObj(s32, s32, s32, s32);
 extern void actorSetAnim(Obj *, s32, s32);
 extern void debugPrintf(void *, ...);
 extern void func_80023848(void);
@@ -35,7 +35,7 @@ c->x68 = 4;
 c->xD8 = 0;
 c->x10 = gCameraRig->x10 + 0x8000;
 c->x9C = func_80023848;
-            gCameraRig->xA8 = func_800232B4(1, c->x4, c->x8, c->xC);
+            gCameraRig->xA8 = spawnEffectObj(1, c->x4, c->x8, c->xC);
         } else {
             debugPrintf(&D_8000914C);
         }

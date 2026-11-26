@@ -14,7 +14,7 @@ extern void setTextPos(s32, s32);
 extern void func_80027158(s32, s32);
 extern void drawCenteredMessage(s32);
 extern void drawMessage(s32);
-extern void func_8002A360(s32, s32);
+extern void sendCommand(s32, s32);
 extern void drawText(void *);
 extern u8 D_800B5DDC[];
 extern s32 gAudioVolume[];
@@ -98,7 +98,7 @@ void drawAudioOptionsMenu(ObjE278 *menu) {
                 } else if (v_arm_arm < 16) {
                     v_arm_arm = 16;
                 }
-                func_8002A360(0, v_arm_arm * 327);
+                sendCommand(0, v_arm_arm * 327);
             }
             func_80027158(0x50, y);
             drawMessage(0x23);
@@ -147,9 +147,9 @@ void drawAudioOptionsMenu(ObjE278 *menu) {
                     v_arm_arm = 0;
                 }
                 gAudioVolume[1] = v_arm_arm;
-                func_8002A360(1, v_arm_arm * 327);
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0x42);
+                sendCommand(1, v_arm_arm * 327);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0x42);
             }
             func_80027158(0x50, y);
             drawMessage(0x24);

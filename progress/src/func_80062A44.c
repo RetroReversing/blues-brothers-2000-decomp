@@ -17,7 +17,7 @@ M2C_UNK func_80023620(M2C_UNK);                     /* extern */
 M2C_UNK func_8002369C(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_80023C58(M2C_UNK);                     /* extern */
 M2C_UNK func_80023C64(M2C_UNK);                     /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 
 void func_80062A44(void) {
     func_80023620(1);
@@ -25,5 +25,5 @@ void func_80062A44(void) {
     func_8000C458();
     func_80023C64(0x10F);
     func_80023C58(0);
-    func_8002A360(0x1D, 0);
+    sendCommand(0x1D, 0);
 }

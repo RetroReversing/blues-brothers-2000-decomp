@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002A360(s32, s32);            /* extern */
+s32 sendCommand(s32, s32);            /* extern */
 s32 func_80030C40(void *, s32);             /* extern */
 extern s32 D_800B3968;
 extern s32 gFrameScale;
@@ -42,8 +42,8 @@ void func_80030D6C(void *arg0) {
     temp_v1 = M2C_FIELD(arg0, s32 *, 0x64) + gFrameScale;
     M2C_FIELD(arg0, s32 *, 0x64) = temp_v1;
     if ((temp_v1 >= 0xBB9) || (var_a0 != 0)) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x9F);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x9F);
         M2C_FIELD(arg0, s32 **, 0x98) = (s32 *) ((s8 *) &func_80023078 + 8);
         gPadPressed = 0;
         func_80030C40(arg0, 1);

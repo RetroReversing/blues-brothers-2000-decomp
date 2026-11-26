@@ -1,4 +1,4 @@
-s32 func_8002A360(s32, s32);
+s32 sendCommand(s32, s32);
 
 typedef struct {
     u8 pad[0xCC];
@@ -31,8 +31,8 @@ s32 func_80068CBC(ObjH *arg0) {
         }
         if ((a | b | c) != 0) {
             if (arg0->cc == 0) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0xB6);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0xB6);
                 arg0->cc = 1;
             }
         } else {

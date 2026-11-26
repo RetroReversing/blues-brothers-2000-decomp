@@ -12,9 +12,9 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+s32 spawnEffectObj(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 extern s32 D_800B3964;
 
 void func_80012C6C(void) {
-    D_800B3964 = func_800232B4(5, 0, 0, 0);
+    D_800B3964 = spawnEffectObj(5, 0, 0, 0);
 }

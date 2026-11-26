@@ -28,7 +28,7 @@ void func_80052A30(void);
 s32 startStoryDialog(s32, char *, Obj *);
 void func_800664A8(Obj *);
 Obj *findActor(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8000F670(Obj *);
 void func_800462A0(Obj *);
 extern s32 D_80140228;
@@ -60,8 +60,8 @@ s32 func_800674E4(Obj *arg0) {
     } else {
         if (arg0->unk7C == 2) {
             if (findActor(0x800, 0) == NULL) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x5B);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x5B);
                 func_80043328(arg0, 0xF7, 0x100);
                 arg0->unk74 = 1;
                 arg0->unk70 = 0;
@@ -74,8 +74,8 @@ s32 func_800674E4(Obj *arg0) {
         }
         if (arg0->unk7C == 3 && arg0->unkDC > 32.0f && arg0->unkDC < 34.0f) {
             D_80140228 = 1;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xD6);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xD6);
         }
         if (arg0->unk7C == 3 && arg0->unk70 != 0) {
             D_80140228 = 0;

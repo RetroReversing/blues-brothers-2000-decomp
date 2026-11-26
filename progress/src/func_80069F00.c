@@ -1,5 +1,5 @@
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-s32 func_8002A360(s32, s32);
+s32 sendCommand(s32, s32);
 s32 syncActorPrevPos(void *);
 void *func_80042F00(s32, s32, s32, s32);
 s32 actorSetAnim(void *, s32, s32);
@@ -19,8 +19,8 @@ void *func_80069F00(void *arg0)
   actorSetAnim(temp_v0, 0x125, 0x180);
   *((s32 *) (((char *) temp_v0) + 0x58)) = packDrawFlags(1, 1, 2, 3, D_800B7B0C, 0, 1, 0);
   *((s32 **) (((char *) temp_v0) + 0x9C)) = &func_80069C7C;
-  func_8002A360(0xC, 0x80);
-  func_8002A360(8, 0x16);
+  sendCommand(0xC, 0x80);
+  sendCommand(8, 0x16);
   *((s32 *) (((char *) temp_v0) + 0x64)) = 0x104;
   if (arg0 != NULL)
   {

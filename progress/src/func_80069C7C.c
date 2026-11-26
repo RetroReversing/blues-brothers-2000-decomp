@@ -11,7 +11,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 s32 randomRange(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 f32 approachF32(f32, f32, f32);
 void func_8002D3E4(void *, s32);
@@ -76,13 +76,13 @@ void func_80069C7C(Obj *arg0) {
         actorSetAnim(gCameraTarget[0], 0x1F, 0x100);
         M2C_FIELD(D_800B3964[0], s32 *, 0x6C) = 1;
         arg0->fnA0(arg0);
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x4E);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x4E);
         func_8002D124();
     }
     if (tickActorTimer(arg0) != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x4E);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x4E);
         arg0->fnA0(arg0);
     }
 }

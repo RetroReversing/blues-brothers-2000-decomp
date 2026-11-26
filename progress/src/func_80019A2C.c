@@ -12,7 +12,7 @@ typedef struct Obj19A2C {
 } Obj19A2C;
 
 s32 tickActorTimer(Obj19A2C *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_80027038(s32);
 void setTextColor(s32, s32, s32, s32);
 s32 getImageAsset(s32);
@@ -34,8 +34,8 @@ void func_80019A2C(Obj19A2C *arg0) {
     if (tickActorTimer(arg0) != 0) {
         arg0->unk64 = 101;
         if (D_800AB9B4 == 0) {
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x75);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x75);
         }
     }
     func_80027038(0);

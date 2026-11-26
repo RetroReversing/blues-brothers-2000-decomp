@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+void *spawnEffectObj(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 s32 tickActorTimer();                                /* extern */
 extern void *gCameraRig;
 extern s32 D_80107040;
@@ -25,7 +25,7 @@ s32 func_8006F284(s32 arg0) {
     if ((tickActorTimer(arg0) != 0) && (D_80107040 & 0x9000)) {
         M2C_FIELD(gCameraRig, s32 *, 0x74) = 1;
         M2C_FIELD(gCameraRig, s32 *, 0x7C) = 0;
-        temp_v0 = func_800232B4(1, 0, 0, 0);
+        temp_v0 = spawnEffectObj(1, 0, 0, 0);
         M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_8006E938;
         M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_800700DC;
         M2C_FIELD(temp_v0, s32 *, 0x68) = 9;

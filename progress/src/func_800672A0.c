@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002A360();
+s32 sendCommand();
 s32 tickActorTimer();
 s32 func_80043328();
 extern f32 D_80008D00;
@@ -34,8 +34,8 @@ s32 func_800672A0(void *arg0) {
         ((__repair_record_arg0*)arg0)->field_7C = 1;
         ((__repair_record_arg0*)arg0)->field_70 = 0;
         ((__repair_record_arg0*)arg0)->field_64 = 0x3E8;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xD6);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xD6);
         return;
     }
     if (((__repair_record_arg0*)arg0)->field_70 != 0) {
@@ -44,8 +44,8 @@ s32 func_800672A0(void *arg0) {
         if (32.0f < ((__repair_record_arg0*)arg0)->field_DC) {
             D_80140228 = 1;
             if (((__repair_record_arg0*)arg0)->field_DC < 34.0f) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0xD6);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0xD6);
             }
         }
     }

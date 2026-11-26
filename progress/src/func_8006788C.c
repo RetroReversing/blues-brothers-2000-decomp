@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 
 s16 coss(u16);                                      /* extern */
 s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
-void *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */
+void *spawnEffectObj(M2C_UNK, s32, s32, s32);        /* extern */
 s32 randomRange(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK func_8002ADFC(M2C_UNK, M2C_UNK, void *);    /* extern */
 s16 sins(u16);                                      /* extern */
@@ -69,7 +69,7 @@ void *func_8006788C(Obj *arg0, s32 arg1) {
     Obj *o;
     Src *p;
 
-    o = func_800232B4(1, (s32) arg0->x, (s32) (arg0->y + 250.0f), (s32) arg0->z);
+    o = spawnEffectObj(1, (s32) arg0->x, (s32) (arg0->y + 250.0f), (s32) arg0->z);
     o->f64 = 0x3E8;
     o->f98 = &func_8002F8D0;
     p = (Src *) arg0->f8C;

@@ -16,7 +16,7 @@ s32 cameraGetMode();                                /* extern */
 M2C_UNK func_80014A84(void *);                      /* extern */
 s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
 M2C_UNK func_80025D00(M2C_UNK);                     /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002CE84(M2C_UNK, M2C_UNK);            /* extern */
 s32 approachS32(M2C_UNK, s32, s32);               /* extern */
 extern s32 D_800AB9B4;
@@ -47,9 +47,9 @@ void func_8003D3C8(void *arg0) {
         }
         if (gPadPressed & 0x1000) {
             M2C_FIELD(arg0, s32 *, 0x88) = 0;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
-            func_8002A360(0, 0x3E8);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
+            sendCommand(0, 0x3E8);
             func_8002CE84(5, 0);
             gPadPressed = 0;
             D_80140250 = gTextWaveTime;

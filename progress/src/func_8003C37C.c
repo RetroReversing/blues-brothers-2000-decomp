@@ -1,8 +1,8 @@
 typedef struct Obj Obj;
 void func_8000DC80(Obj *);
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 s32 func_80023D58(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 tickActorTimer(Obj *);
 void func_80035238(void);
 void func_8003BCC4(Obj *);
@@ -99,7 +99,7 @@ void func_8003C37C(Obj *arg0) {
         arg0->f9C = func_80023078 + 8;
         arg0->f98 = func_80023078 + 8;
         arg0->f68 = -1;
-        o = func_800232B4(0x13F, 0, 0, 0);
+        o = spawnEffectObj(0x13F, 0, 0, 0);
         o->f9C = func_8003BF4C;
         o->f98 = func_8003BE2C;
         o->f68 = 0xE;
@@ -107,9 +107,9 @@ void func_8003C37C(Obj *arg0) {
         D_800A9540 = 2;
         gCameraRig->f9C = updateCameraView;
         D_80140244 = func_80023D58(0xD9E);
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x13);
-        func_8002A360(4, 0);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x13);
+        sendCommand(4, 0);
         D_800B5DD4 = 0;
         break;
     }

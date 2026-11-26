@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 s32 coss(s32);                                      /* extern */
 M2C_UNK func_80014EF8(void *);                      /* extern */
 M2C_UNK func_80014FDC(void *);                      /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 s32 tickActorTimer(void *);                          /* extern */
 s32 sins(s32);                                      /* extern */
 extern s32 gTextWaveTime;
@@ -28,8 +28,8 @@ void func_800150B8(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x3C) = (s32) (((s32) (sins(temp_s0) << 0x10) >> 0x1B) + 0x100);
     M2C_FIELD(arg0, s32 *, 0x34) = (s32) (((s32) (sins(temp_s0) << 0x10) >> 0x1B) + 0x100);
     if (tickActorTimer(arg0) != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x39);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x39);
         func_80014FDC(arg0);
         func_80014EF8(arg0);
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);

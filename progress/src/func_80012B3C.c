@@ -4,7 +4,7 @@ typedef struct Obj {
     u8 p3[4]; s32 f70; s32 f74; s32 f78; s32 f7C; u8 p4[0x18]; void *f98; void *f9C;
 } Obj;
 extern s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-extern Obj *func_800232B4(s32, s32, s32, s32);
+extern Obj *spawnEffectObj(s32, s32, s32, s32);
 extern s32 randomRange(s32, s32);
 extern void syncActorPrevPos(Obj *);
 extern s32 D_800BCFAC;
@@ -14,7 +14,7 @@ extern void func_8002F8D0(void);
 Obj *func_80012B3C(Pos *arg0) {
     Obj *o;
 
-    o = func_800232B4(1, (s32) arg0->x, (s32) arg0->y, (s32) arg0->z);
+    o = spawnEffectObj(1, (s32) arg0->x, (s32) arg0->y, (s32) arg0->z);
     o->f64 = 0xC8;
     o->f98 = func_8002F8D0;
     o->f9C = func_8001292C;

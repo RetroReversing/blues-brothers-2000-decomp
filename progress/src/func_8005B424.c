@@ -22,7 +22,7 @@ typedef struct Actor {
     /* 0x0D8 */ void *next;
     /* 0x0DC */ u8 padDC[0x2C];
 } Actor;
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 f32 func_8002DD60(f32);
 void func_80043328(Actor *, s32, s32);
 void debugPrintf(char *, ...);
@@ -74,8 +74,8 @@ s32 func_8005B424(Actor *arg0) {
         } else if (arg0->target != NULL && arg0->target->vC0 == 0) {
             arg0->next = func_8005B638;
             arg0->state = 0;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x21);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x21);
         }
     }
 }

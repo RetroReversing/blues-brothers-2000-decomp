@@ -13,7 +13,7 @@ typedef struct Obj {
 } Obj;
 Obj *func_800171C0(Obj *);
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D15C(s32);
 Obj *func_80042F00(s32, s32, s32, s32);
 void actorSetAnim(Obj *, s32, s32);
@@ -43,8 +43,8 @@ Obj *func_8003B828(Obj *o, s32 arg1) {
         o->f0 = 0x101;
         n = func_800171C0(o);
         n->y += 300.0f;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x58);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x58);
         func_8002D15C(0x32);
         return n;
     }

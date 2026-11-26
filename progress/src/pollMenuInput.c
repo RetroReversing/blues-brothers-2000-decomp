@@ -10,7 +10,7 @@ extern s32 D_80107040;
 extern s32 gStickX;
 extern s32 gStickY;
 
-s32 func_8006DAE8(s32 arg0) {
+s32 pollMenuInput(s32 arg0) {
     s32 i;
     s32 r = 0;
 

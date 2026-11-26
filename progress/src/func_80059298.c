@@ -13,8 +13,8 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
-void *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+void *spawnEffectObj(M2C_UNK, s32, s32, s32);        /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D3E4(void *, M2C_UNK);             /* extern */
 M2C_UNK func_8003BF98(s32);                         /* extern */
 extern s32 gCameraTarget;
@@ -26,7 +26,7 @@ typedef struct { unsigned char pad_0[16]; int field_10; unsigned char pad_14[4];
 void *func_80059298(void *arg0) {
     void *temp_v0;
 
-    temp_v0 = func_800232B4(1, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
+    temp_v0 = spawnEffectObj(1, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
     M2C_FIELD(temp_v0, M2C_UNK **, 0x98) = &func_8002F8D0;
     M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &func_8005923C;
     ((__repair_record_temp_v0*)temp_v0)->field_70 = 0x32;
@@ -42,8 +42,8 @@ void *func_80059298(void *arg0) {
     ((__repair_record_temp_v0*)temp_v0)->field_64 = 0xC8;
     { { { ((__repair_record_temp_v0*)temp_v0)->field_10 = (s32) (M2C_FIELD(arg0, s32 *, 0x10) + 0x8000);
     func_8002D3E4(temp_v0, 0x1E); } } }
-    func_8002A360(0xC, 0x80);
-    func_8002A360(8, 0x15);
+    sendCommand(0xC, 0x80);
+    sendCommand(8, 0x15);
     func_8003BF98(gCameraTarget);
     return temp_v0;
 }

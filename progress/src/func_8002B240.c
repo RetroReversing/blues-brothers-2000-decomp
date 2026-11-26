@@ -1,4 +1,4 @@
-void *func_800232B4(s32, s32, s32, s32);
+void *spawnEffectObj(s32, s32, s32, s32);
 s32 randomRange(s32, s32);
 extern s32 func_8002AFC0;
 extern s32 func_8002AFFC;
@@ -19,7 +19,7 @@ void *func_8002B240(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) 
     Obj8002B240 *o;
 
     arg4 = arg4 * 5 / 4;
-    o = func_800232B4(0x118, arg0, arg1, arg2);
+    o = spawnEffectObj(0x118, arg0, arg1, arg2);
 o->unk70 = arg5;
 o->unk74 = arg3;
 o->unk78 = arg4;

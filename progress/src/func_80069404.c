@@ -13,7 +13,7 @@ typedef struct Obj {
     void *x9C;
 } Obj;
 
-extern Obj *func_800232B4(s32, s32, s32, s32);
+extern Obj *spawnEffectObj(s32, s32, s32, s32);
 extern void func_80065630(Obj *);
 extern void func_800694A0(void);
 extern s32 D_8014AB48[];
@@ -22,7 +22,7 @@ Obj *func_80069404(Obj *o) {
     Obj *c;
     s32 v;
 
-    c = func_800232B4(0x101, o->x4, o->x8 + 200.0f, o->xC);
+    c = spawnEffectObj(0x101, o->x4, o->x8 + 200.0f, o->xC);
     func_80065630(c);
     v = D_8014AB48[o->x70];
     c->x7C = 0;

@@ -86,7 +86,7 @@ s32 func_80023E3C(s32);
 void func_800242A8(s32, s32, s32);
 void func_80025D00(s32);
 void func_80027030(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void syncActorPrevPos(Actor_C874 *);
 void func_8002E7B8(s32, s32);
 void func_80034E40(s32);
@@ -266,11 +266,11 @@ void func_800414D0(void);
     gFrameScale = 0;
     func_8002E7B8(0, 0);
     func_8004145C();
-    func_8002A360(0, gAudioVolume[0] * 0x147);
-    func_8002A360(1, gAudioVolume[1] * 0x147);
-    func_8002A360(0xC, 0x80);
+    sendCommand(0, gAudioVolume[0] * 0x147);
+    sendCommand(1, gAudioVolume[1] * 0x147);
+    sendCommand(0xC, 0x80);
     if (level->unk38 != -1) {
-        func_8002A360(3, level->unk38);
+        sendCommand(3, level->unk38);
     }
     func_80088ED0();
     func_8000C5B4();

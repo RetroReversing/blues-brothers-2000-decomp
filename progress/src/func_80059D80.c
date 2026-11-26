@@ -28,7 +28,7 @@ typedef struct {
 
 s32 isqrtS32(s32);
 s32 atan2S16(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 s32 func_8002D1A0(void);
 s32 approachAngle(s32, s32, s32);
@@ -138,8 +138,8 @@ void func_80059D80(Actor *arg0) {
                 arg0->state = 0;
                 func_8002D3E4(arg0, 0);
                 if (r == 1 || r == 2) {
-                    func_8002A360(0xC, 0x80);
-                    func_8002A360(8, 0xCE);
+                    sendCommand(0xC, 0x80);
+                    sendCommand(8, 0xCE);
                     func_8002D124();
                 }
             } else {
@@ -167,8 +167,8 @@ void func_80059D80(Actor *arg0) {
             } else if (isqrtS32(sq) < 250) {
                 func_8002D3E4(arg0, 0);
                 func_80043328(arg0, 0x6E, 0x100);
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0xCF);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0xCF);
                 arg0->state = 2;
                 arg0->unk80 = 0;
             }
@@ -183,8 +183,8 @@ void func_80059D80(Actor *arg0) {
                 if ((a || b) && func_8003BF98(gCameraTarget) != 0) {
                     arg0->unk80 = 1;
                     func_8005A9CC(arg0);
-                    func_8002A360(0xC, 0x80);
-                    func_8002A360(8, 0x2E);
+                    sendCommand(0xC, 0x80);
+                    sendCommand(8, 0x2E);
                     arg0->state = 3;
                 }
             }
@@ -227,8 +227,8 @@ void func_80059D80(Actor *arg0) {
         switch (arg0->state) {
         case 0:
             if (animStepKeys(arg0) != 0) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x17);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x17);
                 func_80043328(arg0, 0x70, 0x100);
                 arg0->state = 1;
             }

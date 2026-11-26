@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 void *func_80017CF0(void *);                        /* extern */
 s32 func_80023DBC(M2C_UNK);                         /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 f32 func_8002D858(void *, M2C_UNK);                 /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 M2C_UNK func_80052A5C(M2C_UNK);                     /* extern */
@@ -47,8 +47,8 @@ void func_80053FB0(void *arg0) {
             temp_v0 = startStoryDialog(M2C_FIELD(arg0, s32 *, 0xBC), sp10, arg0);
             M2C_FIELD(arg0, s32 *, 0x84) = temp_v0;
             if (temp_v0 != 0) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x22);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x22);
                 ((__repair_record_D_800BD06C*)gCameraTarget)->field_4 = (f32) M2C_FIELD(arg0, f32 *, 4);
                 ((__repair_record_D_800BD06C*)gCameraTarget)->field_8 = (f32) M2C_FIELD(arg0, f32 *, 8);
                 ((__repair_record_D_800BD06C*)gCameraTarget)->field_C = (f32) M2C_FIELD(arg0, f32 *, 0xC);

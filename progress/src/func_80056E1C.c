@@ -1,6 +1,6 @@
 s32 randomRange(s32, s32);
 s32 func_8002492C(f32, f32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 tickActorTimer(void *);
 void animStepKeys(void *);
 void actorSetAnim(void *, s32, s32);

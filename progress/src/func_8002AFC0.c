@@ -13,10 +13,10 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80023848(void *);                      /* extern */
-M2C_UNK func_8002A360(M2C_UNK, void *);             /* extern */
+M2C_UNK sendCommand(M2C_UNK, void *);             /* extern */
 
 void func_8002AFC0(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0x94) = -1;
-    func_8002A360(0x11, arg0);
+    sendCommand(0x11, arg0);
     func_80023848(arg0);
 }

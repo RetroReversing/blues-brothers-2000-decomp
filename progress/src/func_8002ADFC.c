@@ -7,7 +7,7 @@ typedef struct Obj {
 
 s32 isqrtS32(s32);
 s32 atan2S16(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s16 sins(u16);
 extern Obj *gCameraRig;
 extern Obj *gCameraTarget;
@@ -41,8 +41,8 @@ void func_8002ADFC(s32 ch, s32 range, Obj *src) {
         if (D_800B2B60[ch] < vol) {
             vol = D_800B2B60[ch];
         }
-        func_8002A360(0xB, vol);
-        func_8002A360(0xC, pan);
-        func_8002A360(7, ch);
+        sendCommand(0xB, vol);
+        sendCommand(0xC, pan);
+        sendCommand(7, ch);
     }
 }

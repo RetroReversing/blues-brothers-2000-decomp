@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s16 coss(u16);                                      /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 s32 tickActorTimer(void *);                 /* extern */
 M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
@@ -25,8 +25,8 @@ extern M2C_UNK func_800672A0;
 void func_80067150(void *arg0) {
     void **__base_D_800BD06C;
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x21);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x21);
         M2C_FIELD(arg0, s32 *, 0x64) = 0x190;
         func_80043328(arg0, 0xF6, 0x100);
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
@@ -41,8 +41,8 @@ void func_80067150(void *arg0) {
         return;
     }
     if (tickActorTimer(arg0) != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xD2);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xD2);
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
         M2C_FIELD(arg0, M2C_UNK **, 0xD8) = &wardenChase;
     }

@@ -14,7 +14,7 @@ typedef struct {
     s32 z;
 } Pt;
 void func_80015C30(Obj *);
-s32 func_800232B4(s32, s32, s32, s32);
+s32 spawnEffectObj(s32, s32, s32, s32);
 f32 getCameraTargetDist(Obj *, f32, s32 *);
 void actorSetAnim(Obj *, s32, s32);
 void animStepKeys(void);
@@ -37,7 +37,7 @@ void func_800721A8(Obj *o) {
         dx = pt->x - o->x;
         dz = pt->z - o->z;
         if (sqrtf(dx * dx + dz * dz) < 3000.0f) {
-            n = (Obj *)func_800232B4(1, 0, 0, 0);
+            n = (Obj *)spawnEffectObj(1, 0, 0, 0);
             n->f9C = func_80072310;
             n->f70 = i;
             D_800B3964->f64 = 300;

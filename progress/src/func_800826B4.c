@@ -32,7 +32,7 @@ s32 tickActorTimer(void *arg0);
 s32 func_80082688(s32, s32);
 void func_800836CC(void);
 s32 randomRange(s32 arg0, s32 arg1);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void actorSetAnim(s32 arg0, s32 arg1, s32 arg2);
 void func_80087160(s32);
 void func_80082990(void);
@@ -62,8 +62,8 @@ void func_800826B4(Unk800826B4 *arg0) {
     if (gComboSlots[0].unk4 > gComboSlots[1].unk4) {
         arg0->unk64 = 400;
         arg0->unk9C = func_8008250C;
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0x78);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0x78);
         actorSetAnim(D_801719A8, 0x188, 0x100);
         actorSetAnim(D_801719AC, 0x199, 0x100);
         D_801719B0[arg0->unk80] = 1;

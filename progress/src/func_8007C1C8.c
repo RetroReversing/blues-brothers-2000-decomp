@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8002DA40(void *);                      /* extern */
 extern f64 D_80009590;
@@ -25,20 +25,20 @@ void func_8007C1C8(void *arg0) {
     if (M2C_FIELD(arg0, s32 *, 0xC0) & 2) {
         { M2C_FIELD(arg0, f32 *, 0x50) = (f32) ((f64) M2C_FIELD(arg0, f32 *, 0x50) * D_80009590); }
         { { M2C_FIELD(arg0, s32 *, 0xC0) = (s32) ((M2C_FIELD(arg0, s32 *, 0xC0) | 4) & ~2); } }
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 2);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 2);
     }
     if (M2C_FIELD(arg0, s32 *, 0xC0) & 1) {
         { M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0); }
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 9);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 9);
         M2C_FIELD(D_801700E8, s32 *, 0x8C) = (s32) (M2C_FIELD(D_801700E8, s32 *, 0x8C) + 1);
         return;
     }
     if (M2C_FIELD(arg0, f32 *, 8) < (f32) M2C_FIELD(arg0, s32 *, 0x94)) {
         { M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0); }
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x19);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x19);
         return;
     }
     { func_8002DA40(arg0); }

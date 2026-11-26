@@ -23,7 +23,7 @@ struct Obj {
     /* 0xAC */ u8 padAC[0x14];
     /* 0xC0 */ s32 fC0;
 };
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 Obj *findActor(s32, s32);
 f32 approachF32(f32, f32, f32);
 f32 func_8002DD60(f32);
@@ -110,10 +110,10 @@ void elevatorActorUpdate(Obj *arg0) {
         arg0->f7C = 0;
         arg0->f88 = 0;
         offset = D_80008C2C;
-        spawned = func_800232B4(0x101, arg0->x, arg0->y + D_80008C28, arg0->z - offset);
+        spawned = spawnEffectObj(0x101, arg0->x, arg0->y + D_80008C28, arg0->z - offset);
         spawned->f9C = func_800656B4;
         spawned->fA4 = arg0;
-        spawned = func_800232B4(0x101, arg0->x, arg0->y + offset, arg0->z - offset);
+        spawned = spawnEffectObj(0x101, arg0->x, arg0->y + offset, arg0->z - offset);
         spawned->f9C = func_80065770;
         spawned->fA4 = arg0;
         spawned = findActor(6, 0);

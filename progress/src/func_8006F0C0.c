@@ -9,8 +9,8 @@ s32 func_80023D58(s32);
 s32 getImageAsset(s32);
 void setTextColor(s32, s32, s32, s32);
 void drawImage(s32, s32, s32, s32);
-void func_8006D8E0(s32 *);
-s32 func_8006DAA0(s32);
+void stepFadeUp(s32 *);
+s32 isEntryDisabled(s32);
 extern Obj *D_800B3964;
 extern s32 D_800B81E0[];
 extern Rec D_800B81F4[];
@@ -25,7 +25,7 @@ s32 func_8006F0C0(Obj *arg0) {
     } else {
         D_800B81F4[1].id = func_80023D58(D_800B81E0[D_800B3964->fBC]);
     }
-    func_8006D8E0(&arg0->f80);
+    stepFadeUp(&arg0->f80);
     setTextColor(0xFF, 0xFF, 0xFF, arg0->f80);
     if (D_800B81F4[arg0->fBC].flags & 1) {
         drawImage(getImageAsset(D_8014ADE0[2]), 0x6E, 0x82, 0);
@@ -33,7 +33,7 @@ s32 func_8006F0C0(Obj *arg0) {
     if (D_800B81F4[arg0->fBC].flags & 2) {
         drawImage(getImageAsset(D_8014ADE0[3]), 0xAA, 0x82, 0);
     }
-    if (func_8006DAA0(arg0->fBC) != 0) {
+    if (isEntryDisabled(arg0->fBC) != 0) {
         drawImage(getImageAsset(D_8014ADE0[0]), 0x5E, 0xBE, 0);
         drawImage(getImageAsset(D_8014ADE0[1]), 0xAA, 0xBE, 0);
     }

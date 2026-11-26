@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8002A360();
+s32 sendCommand();
 s32 func_80043328();
 extern s32 wardenChase;
 
@@ -23,8 +23,8 @@ void func_80067474(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0x70) = 0;
     }
     if (M2C_FIELD(arg0, s32 *, 0x70) != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xD2);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xD2);
         M2C_FIELD(arg0, s32 **, 0xD8) = &wardenChase;
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
     }

@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 cameraGetMode();                                /* extern */
-s32 func_8002A360(s32, s32);                /* extern */
+s32 sendCommand(s32, s32);                /* extern */
 s32 func_8003D654();                                /* extern */
 extern s32 D_800AB9B4;
 extern s32 D_800B5DCC;
@@ -46,8 +46,8 @@ void func_8003DD70(void *arg0) {
         { (*(s32 *)((s8 *)arg0 + 0x88)) = (s32) D_800B5DCC; }
     }
     if (var_a0 != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x90);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x90);
     }
     temp2 = gPadPressed & 0x8000;
     temp = temp2;
@@ -73,8 +73,8 @@ void func_8003DD70(void *arg0) {
                 }
                 
                 { (*(s32 *)((s8 *)arg0 + 0x88)) = 0; }
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x9C);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x9C);
             }
             }
         }
@@ -84,6 +84,6 @@ void func_8003DD70(void *arg0) {
         D_800AB9B4 = 0;
         D_800B5DD4 = 1;
         D_80140228 = (*(const s32 *)((s8 *)arg0 + 0x74));
-        { func_8002A360(0, gAudioVolume * 0x147); }
+        { sendCommand(0, gAudioVolume * 0x147); }
     }
 }

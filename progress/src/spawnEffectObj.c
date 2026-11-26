@@ -2,7 +2,7 @@ void *func_80023124();
 s32 func_80026C04(void *, s32, s32);
 extern s32 func_80023078;
 extern s32 func_80023848;
-s32 func_800232B4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+s32 spawnEffectObj(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     void *temp_a0;
     void *temp_v0;
     f32 temp_f;

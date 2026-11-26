@@ -14,7 +14,7 @@ typedef struct Obj {
     /* 0xD4 */ u8 padD4[8];
     /* 0xDC */ f32 fDC;
 } Obj;
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002ADFC(s32, s32, Obj *);
 s32 tickActorTimer(Obj *);
 f32 func_8002DD60(f32);
@@ -86,13 +86,13 @@ extern s32 D_80140200[];
             }
             if (dxToPlayer >= 0.0f) {
                 func_80043328(enemy, 0x75, 0x100);
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x16);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x16);
                 enemy->f8C = 1;
             } else {
                 func_80043328(enemy, 0x76, 0x100);
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x16);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x16);
                 enemy->f8C = 2;
             }
             break;
@@ -129,8 +129,8 @@ extern s32 D_80140200[];
                 break;
             }
             func_8005F470(*(Obj **)gCameraTarget);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x2D);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x2D);
             enemy->f8C = 4;
             break;
         case 4:

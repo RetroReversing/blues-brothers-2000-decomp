@@ -1,4 +1,4 @@
-s32 func_8002A360(s32, s32);
+s32 sendCommand(s32, s32);
 s32 func_80043248(void *);
 s32 func_80069F00();
 extern f32 D_80008DAC;
@@ -9,8 +9,8 @@ s32 func_80068B38(void *arg0)
   {
     *((s32 *) (((char *) arg0) + 0x88)) = 1;
     func_80069F00();
-    func_8002A360(0xC, 0x80);
-    func_8002A360(8, 0x50);
+    sendCommand(0xC, 0x80);
+    sendCommand(8, 0x50);
   }
   if (func_80043248(arg0) != 0)
   {

@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80023AE8();
-s32 func_8002A360();
+s32 sendCommand();
 s32 func_8002D124();
 s32 func_80043328();
 s32 actorSetAnim();
@@ -28,8 +28,8 @@ void func_80061B44(void *arg0) {
     switch (temp_v0) {                              /* irregular */
     case 1:
         if (func_80023AE8(M2C_FIELD(arg0, s32 *, 0x74) + 4) == temp_v0) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x2E);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x2E);
             func_8002D124();
             M2C_FIELD(arg0, s32 *, 0xF0) = 0xFF;
             M2C_FIELD(arg0, s32 *, 0x78) = 4;

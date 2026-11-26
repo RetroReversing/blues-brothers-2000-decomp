@@ -1,7 +1,7 @@
 s32 func_80013654(void *);
 s32 func_80015C30(void *);
 s32 func_8001B990(s32, s32);
-s32 func_8002A360(s32, s32);
+s32 sendCommand(s32, s32);
 f32 getCameraTargetDist(void *, f32, s32);
 void *func_80051384(void *);
 extern void *gCameraTarget;
@@ -41,8 +41,8 @@ void func_8001BA54(void *arg0)
   block_8:
   if ((*((s32 *) (((char *) arg0) + 0xC0))) & 2)
   {
-    func_8002A360(0xC, 0x80);
-    func_8002A360(8, 0xA);
+    sendCommand(0xC, 0x80);
+    sendCommand(8, 0xA);
     temp_v0 = func_80051384(arg0);
     var_s0 = 0;
     *((f32 *) (((char *) temp_v0) + 4)) = *((f32 *) (((char *) arg0) + 4));

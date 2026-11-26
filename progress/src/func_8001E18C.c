@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 func_80013654(void *);                          /* extern */
 s32 func_8001B990(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 extern f32 D_80000D48;
 extern f32 D_80000D4C;
@@ -38,8 +38,8 @@ block_4:
     temp_fs0 = D_80000D48;
     temp_fs1 = M2C_FIELD(arg0, f32 *, 0xC) - M2C_FIELD(*(void **) gCameraTarget, f32 *, 0xC);
     if ((func_8002DD60(M2C_FIELD(arg0, f32 *, 4) - M2C_FIELD(*(void **) gCameraTarget, f32 *, 4)) < temp_fs0) && (func_8002DD60(temp_fs1) < temp_fs0) && (func_80013654(arg0) != 0)) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x28);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x28);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8001E0E0;
         func_8001B990(0x200, 0x12);
         if (temp_fs1 > 0.0f) {

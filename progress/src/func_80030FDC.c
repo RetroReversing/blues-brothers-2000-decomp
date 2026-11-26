@@ -6,7 +6,7 @@ void setupStage(void);
 void func_8000D394(void);
 void func_80023C10(s32);
 s32 func_80023D58(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 tickActorTimer(void *);
 void func_8002E7B8(s32, s32);
 void func_80030C40(void *, s32);
@@ -60,9 +60,9 @@ void func_80030FDC(Obj *arg0) {
             D_800AB408 = 0;
             D_800B5DD4 = 0;
             arg0->x90 = 0;
-            func_8002A360(4, 0);
-            func_8002A360(0x1F, 0);
-            func_8002A360(2, 0);
+            sendCommand(4, 0);
+            sendCommand(0x1F, 0);
+            sendCommand(2, 0);
             func_8000CDF0();
             func_8000D394();
             func_80030C6C(arg0, func_8003130C);
@@ -70,9 +70,9 @@ void func_80030FDC(Obj *arg0) {
             return;
         }
         if (arg0->x90 == 1) {
-            func_8002A360(4, 0);
-            func_8002A360(0x1F, 0);
-            func_8002A360(2, 0);
+            sendCommand(4, 0);
+            sendCommand(0x1F, 0);
+            sendCommand(2, 0);
             D_800B5DD4 = 0;
             arg0->x90 = 0;
             arg0->x64 = 0;
@@ -98,9 +98,9 @@ void func_80030FDC(Obj *arg0) {
             }
             arg0->x84 = n * 3;
             arg0->x80 = 0;
-            func_8002A360(4, 0);
-            func_8002A360(0x1F, 0);
-            func_8002A360(2, 0);
+            sendCommand(4, 0);
+            sendCommand(0x1F, 0);
+            sendCommand(2, 0);
             func_8000CDF0();
             func_80088F40();
             arg0->x64 = 300;

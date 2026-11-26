@@ -27,7 +27,7 @@ typedef struct {
 } Actor;
 
 void func_80012718(Actor *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002ACAC(void);
 void func_8002D124(void);
 f32 func_8002DD60(f32);
@@ -66,8 +66,8 @@ extern f32 D_80140248;
         func_80012718(actor);
         func_80012718(actor);
         func_80012718(actor);
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0x83);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0x83);
         func_8002D124();
         gCameraRig->unk6C = 0;
         actor->unk6C = 0;
@@ -104,8 +104,8 @@ extern f32 D_80140248;
                 func_80012718(actor);
                 func_80012718(actor);
                 func_80012718(actor);
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0x84);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0x84);
                 func_8002D124();
             } else {
                 func_80043328(actor, 0x2D, 0x100);
@@ -117,8 +117,8 @@ extern f32 D_80140248;
                 func_80012718(actor);
                 func_80012718(actor);
                 func_80012718(actor);
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0x84);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0x84);
                 func_8002D124();
             }
         } else {
@@ -133,8 +133,8 @@ extern f32 D_80140248;
             func_80012718(actor);
             func_80012718(actor);
             func_80012718(actor);
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x84);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x84);
             func_8002D124();
         }
         break;
@@ -144,8 +144,8 @@ extern f32 D_80140248;
             actor->unk50 = D_80140240 * 3 / 2;
             actor->unk8 += 1.0f;
             actorSetAnim(actor, 0x10, 0x100);
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x7B);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x7B);
             func_8002D124();
             break;
         }
@@ -155,8 +155,8 @@ extern f32 D_80140248;
         actor->unk84 = 0;
         actor->unk90 = 1;
         actor->unk94 = 0;
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0x35);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0x35);
         func_8002D124();
         func_80012718(actor);
         func_80012718(actor);
@@ -190,13 +190,13 @@ extern f32 D_80140248;
             actorSetAnim(actor, 0x23, 0x100);
         }
         if (D_800B3838 != 0) {
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x19);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x19);
             func_8002D124();
             D_800B3838 = 0;
         } else {
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x34);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x34);
             func_8002D124();
         }
         func_80012718(actor);

@@ -16,7 +16,7 @@ typedef struct Def {
     u16 flags;
 } Def;
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 Def *getImageAsset(s32);
 s32 func_80023E3C(s32);
 extern s32 D_800B7B0C;
@@ -28,7 +28,7 @@ Obj *func_8002E374(s32 id) {
     Obj *o;
 
     def = getImageAsset(D_800FB038[id]);
-    o = func_800232B4(1, 0, 0, 0);
+    o = spawnEffectObj(1, 0, 0, 0);
     o->fD0 = -1;
     o->fE4 = func_80023E3C(id);
     o->fB8 = id;

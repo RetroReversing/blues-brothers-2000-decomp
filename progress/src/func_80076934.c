@@ -1,6 +1,6 @@
 #define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))
 s32 randomRange(s32, s32);
-s32 func_8002A360(s32, s32);
+s32 sendCommand(s32, s32);
 s32 func_8002D124();
 s32 func_8002D260(s32);
 s32 tickActorTimer(void *);
@@ -65,8 +65,8 @@ void func_80076934(void *arg0) {
                 return;
             }
             if ((f32)(M2C_FIELD(arg0, s32 *, 0x84) - 7) < M2C_FIELD(arg0, f32 *, 0xDC) && M2C_FIELD(arg0, s32 *, 0xCC) == 0) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x16);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x16);
                 M2C_FIELD(arg0, s32 *, 0xCC) = 1;
             }
             if (M2C_FIELD(arg0, s32 *, 0x80) == 0 && f < 475.0f) {
@@ -77,11 +77,11 @@ void func_80076934(void *arg0) {
                     }
                     if (v < 0x800) {
                         if (M2C_FIELD(arg0, s32 *, 0xD0) == 0x14E) {
-                            func_8002A360(0xC, 0x80);
-                            func_8002A360(8, 0xB6);
+                            sendCommand(0xC, 0x80);
+                            sendCommand(8, 0xB6);
                         } else {
-                            func_8002A360(0xC, 0x80);
-                            func_8002A360(8, 0xB7);
+                            sendCommand(0xC, 0x80);
+                            sendCommand(8, 0xB7);
                         }
                         func_8002D124();
                         func_8003BF98(arg0);

@@ -24,7 +24,7 @@ void syncActorPrevPos(Actor71B08 *);
 void func_80033BDC(s32);
 f32 func_800379C8(Actor71B08 *);
 void actorSetAnim(Actor71B08 *, s32, s32);
-Actor71B08 *func_800232B4(s32, s32, s32, s32);
+Actor71B08 *spawnEffectObj(s32, s32, s32, s32);
 void func_80071ACC(Actor71B08 *);
 void func_80080AF0(Actor71B08 *);
 extern Actor71B08 *gCameraRig;
@@ -87,7 +87,7 @@ extern Actor71B08 *gCameraTarget;
             syncActorPrevPos(gCameraTarget);
             gCameraTarget->y = func_800379C8(gCameraTarget);
             actorSetAnim(gCameraTarget, 1, 0x100);
-            a = func_800232B4(1, 0, 0, 0);
+            a = spawnEffectObj(1, 0, 0, 0);
             a->unk9C = func_80080AF0;
             a->unk9C(a);
         }
@@ -107,7 +107,7 @@ extern Actor71B08 *gCameraTarget;
             gCameraTarget->y = func_800379C8(gCameraTarget);
             actorSetAnim(gCameraTarget, 1, 0x100);
             syncActorPrevPos(gCameraTarget);
-            a = func_800232B4(1, 0, 0, 0);
+            a = spawnEffectObj(1, 0, 0, 0);
             a->unk9C = func_80080AF0;
             a->unk9C(a);
         }

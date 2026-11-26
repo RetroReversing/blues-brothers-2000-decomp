@@ -3293,7 +3293,7 @@
   "score_after": 40
  },
  {
-  "function": "func_800232B4",
+  "function": "spawnEffectObj",
   "text": "hk114: start 190 (saved best, its draft failed to compile: func_80023848 undeclared, fixed by declaring it extern). Best 70 submitted (00143be364db79c85cb9): the float conversion of arg3 is a local computed right after the arg2 store (temp_f = (f32) arg3; then the 0xC store reads temp_f). That made the mtc1/cvt for s4 come before the lui pairs (190 -> 70). Left, 4 rows: the target copies s0 into v0 right after the func_80026C04 call and stores the floats and the rest through v0; ours stores through s0 and moves late. Tried, no change from 70: a copied pointer for all later stores (also with a fence on the copy, and with return of the copy); a permute of the copy and the two float stores (6 orders, best 70). A float computed at the top of the function: 1019 (frame changes). Needs: a rule for a call-result copy kept in v0 after a call that clobbers it when the pointer is a callee-saved value.",
   "by": "manual-0546647e40784188",
   "created_at": 1795547078.4886541,
@@ -3698,7 +3698,7 @@
   "handoff_inputs": "e458c04b33ff5a4fd5da19704f17839c9f69d4cb3644ae87e3f5813c33ec4048:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:8c9bc1f96ea09c0b645fc943e64589a6e3717bc4430731c141c1f82877290de4"
  },
  {
-  "function": "func_800232B4",
+  "function": "spawnEffectObj",
   "text": "Matched 70 -> 0 (op15). The saved best fence do{temp_a0=...}while(0) put a loop note between the call and the stores; the return copy move $v0,$s0 cannot rise above it, so the stores at 4/8 used $s0. With no fence, the target order is only a matter of the independent field-store order (sched1 backward with birthing boost + sched2). Found by an annealing search over store order and float-temp sharing with native gcc-2.8.1-pm cc1 -msplit-addresses as proxy (proxy rows agreed with the judge).",
   "by": "manual-d25a051a3e9340c6",
   "created_at": 1795547924.379356,
@@ -12662,6 +12662,14 @@
   "text": "[Released without compiling it once; notes not checked by a compile.] libultra device manager thread; C is a copy of the library version and already has a descriptive name. Its garbled duplicate comments and goto labels are part of the match, so a safe readable rewrite needs a dedicated pass.\n\n[Released without compiling it once; notes not checked by a compile.] Same as before: libultra device manager, already named; needs a dedicated pass to clean the duplicate comments without changing the goto/volatile shape. claim_readable keeps returning it, so the queue is not advancing past it.",
   "by": "claude-haiku-25",
   "created_at": 1795699301.6797109,
+  "score_before": 0,
+  "score_after": 0
+ },
+ {
+  "function": "updateOptionMenu",
+  "text": "[Released without compiling it once; notes not checked by a compile.] Pause/menu-like screen update: returns a flag, moves a selection index in arg0+0x88 with clamping, draws two images with text colours. Needs names for func_8006DAE8 (input read), func_8006DAA0, D_800B81F4 table and the state struct at arg0 before a make_readable pass. Not started.",
+  "by": "claude-haiku-25",
+  "created_at": 1795699967.050567,
   "score_before": 0,
   "score_after": 0
  }

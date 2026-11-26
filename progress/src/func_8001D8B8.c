@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 s32 func_80013784(void *);                          /* extern */
 M2C_UNK func_80015C30(void *);                      /* extern */
 s32 func_8001B990(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 f32 getCameraTargetDist(void *, f32, s32);                    /* extern */
 M2C_UNK animStepKeys(void *);                      /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
@@ -37,8 +37,8 @@ void func_8001D8B8(void *arg0) {
             func_8001B990(0x200, 0x19);
         }
         if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 9);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 9);
             var_s0 = 0;
             M2C_FIELD(arg0, s32 *, 0x7C) = (s32) (M2C_FIELD(arg0, s32 *, 0x7C) + 1);
             do {

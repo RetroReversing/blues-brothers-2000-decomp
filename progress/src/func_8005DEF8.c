@@ -25,7 +25,7 @@ typedef struct {
 
 s32 isqrtS32(s32);
 s32 atan2S16(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 approachAngle(s32, s32, s32);
 s32 func_8002D260();
 void func_8002D3E4(Actor *, s32);
@@ -81,8 +81,8 @@ void func_8005DEF8(Actor *arg0) {
         switch (arg0->state) {
         case 1:
             if (abs(dy) < 150 && pdist < (s32)arg0->range) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x10);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x10);
                 arg0->mode = 2;
                 arg0->target = func_8002D260(atan2S16(dx, dz));
                 arg0->state = 7;
@@ -147,8 +147,8 @@ void func_8005DEF8(Actor *arg0) {
         case 9:
             arg0->angle = func_8002D260(atan2S16(-dx, -dz), arg0->angle, 0x1000);
             if (arg0->unk78 == 0 && 5.0f <= arg0->unkDC) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x16);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x16);
                 arg0->unk78 = 1;
             }
             if (7.0f < arg0->unkDC && arg0->unkDC < 13.0f) {
@@ -157,8 +157,8 @@ void func_8005DEF8(Actor *arg0) {
                     a = -a;
                 }
                 if (a < 200 && func_8003C9AC(arg0, 0, 1, 1) != 0) {
-                    func_8002A360(0xC, 0x80);
-                    func_8002A360(8, 0x2D);
+                    sendCommand(0xC, 0x80);
+                    sendCommand(8, 0x2D);
                     func_8005F008(gCameraTarget);
                 }
             }
@@ -185,8 +185,8 @@ void func_8005DEF8(Actor *arg0) {
             break;
         case 15:
             if (isqrtS32(dx * dx + dz * dz) < 400) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x10);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x10);
                 arg0->mode = 2;
                 arg0->target = func_8002D260(atan2S16(dx, dz));
                 arg0->state = 7;

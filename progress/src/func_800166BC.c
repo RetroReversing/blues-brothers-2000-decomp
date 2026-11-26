@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 typedef struct { s32 a; s32 b; s32 c; } Rec12;
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 f32 approachF32(f32, f32, f32);
 void syncActorPrevPos(void *);
 f32 getCameraTargetDist(void *, f32, s32);
@@ -34,8 +34,8 @@ void func_800166BC(void *arg0) {
     }
     if (M2C_FIELD(arg0, s32 *, 0xC0) == 0x29A) {
         if (M2C_FIELD(arg0, s32 *, 0x84) == 0) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x45);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x45);
             M2C_FIELD(arg0, s32 *, 0x84) = 1;
         }
         go = 1;

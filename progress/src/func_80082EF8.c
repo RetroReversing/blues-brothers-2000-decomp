@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 findActor(M2C_UNK, M2C_UNK);                /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 extern void *D_801719A8;
 extern void *D_801719AC;
 extern s32 D_80171A54;
@@ -24,7 +24,7 @@ extern M2C_UNK func_80082D00;
 void func_80082EF8(void *arg0) {
     D_80171A54 = 0;
     if (findActor(0x800, 0) == 0) {
-        func_8002A360(4, 0);
+        sendCommand(4, 0);
         M2C_FIELD_PTR(arg0, M2C_UNK **, 0x9C) = &func_80082D00;
         M2C_FIELD(D_801719A8, M2C_UNK **, 0x9C) = &func_8004318C;
         M2C_FIELD(D_801719AC, M2C_UNK **, 0x9C) = &func_8004318C;

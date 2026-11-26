@@ -25,7 +25,7 @@ s32 func_80082400(void);
 s32 func_80023DBC(s32);
 s32 func_80023D58(s32);
 void func_80026C04(void *, s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 tickActorTimer(Obj *);
 void actorSetAnim(s32, s32, s32);
 void startStoryDialog(s32, char *, Obj *);
@@ -63,8 +63,8 @@ void func_80086028(Obj *o)
     }
     gComboSlots[0].type = 0;
     actorSetAnim(D_801719A8, 0x178, 0x100);
-    func_8002A360(0xC, 0x80);
-    func_8002A360(8, 0x78);
+    sendCommand(0xC, 0x80);
+    sendCommand(8, 0x78);
     D_80171A54++;
     if (D_80171A54 >= D_800B9B40[idx]) {
         o->cb = &func_80085F58 + 2;

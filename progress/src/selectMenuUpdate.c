@@ -27,7 +27,7 @@ typedef struct {
 } State3CE48;
 
 int abs(int);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 approachS32(s32, s32, s32);
 s32 tickActorTimer(Obj3CE48 *);
 void func_8002E7B8(s32, s32);
@@ -105,12 +105,12 @@ void selectMenuUpdate(Obj3CE48 *menu) {
         menu->unk88 = 3;
     }
     if (changed != 0) {
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0x94);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0x94);
     }
     if (gPadPressed[0] & 0x8000) {
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0xA3);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0xA3);
         if (menu->unk8C == 0) {
             D_800BD0E0.unk24 = D_800BD0E0.unk1C;
             if (D_800BD0E0.unk20 != menu->unk90) {
@@ -123,27 +123,27 @@ void selectMenuUpdate(Obj3CE48 *menu) {
             func_8002E7B8(1, 0);
             D_800B5DD4 = 1;
             menu->unk70 = 0;
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0xC);
-            func_8002A360(0, gAudioVolume * 327);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0xC);
+            sendCommand(0, gAudioVolume * 327);
         } else {
             menu->unk90 = menu->unk88;
             menu->unk8C = 0;
             menu->unk88 = 0;
         }
     } else if (gPadPressed[0] & 0x4000) {
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0xA3);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0xA3);
         menu->unk8C = 1;
         menu->unk88 = 0;
     } else if (gPadPressed[0] & 0x1000) {
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0xA3);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0xA3);
         menu->unk9C = func_8003D3C8;
         D_800AB9B4 = 0;
         D_800B5DD4 = 1;
         volume = gAudioVolume * 327;
         D_80140228 = menu->unk74;
-        func_8002A360(0, volume);
+        sendCommand(0, volume);
     }
 }

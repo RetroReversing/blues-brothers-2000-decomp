@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
 M2C_UNK func_8002D604();                            /* extern */
 M2C_UNK syncActorPrevPos(void *);                      /* extern */
@@ -24,8 +24,8 @@ void func_80014DDC(void *arg0) {
 
     func_8002D604();
     if ((s32) getCameraTargetDist(arg0, 0x43480000, 0) < 0xC8) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xA5);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xA5);
         func_8002D124();
         temp_a0 = M2C_FIELD(arg0, void **, 0xA4);
         if (temp_a0 != NULL) {

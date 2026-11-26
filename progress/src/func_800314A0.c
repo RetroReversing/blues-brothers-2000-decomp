@@ -1,7 +1,7 @@
 void func_80023C58(s32);
 void func_80023C64(s32);
 void setTextColor(s32, s32, s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 approachS32(s32, s32, s32);
 s32 tickActorTimer(void *);
 void func_80030C40(void *, s32);
@@ -43,8 +43,8 @@ void func_800314A0(Obj *arg0) {
     }
     if (arg0->unk94 != 0) {
         if (tickActorTimer(arg0) != 0 || (arg0->unk64 < 0x1F4 && (gPadPressed & 0x9000))) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9F);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9F);
             arg0->unk94 = 0;
         }
         if (arg0->unk94 != 0) {

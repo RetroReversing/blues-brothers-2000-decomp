@@ -11,7 +11,7 @@ typedef struct Obj {
 
 extern f32 func_8002D858(Obj *, s32);
 extern s32 func_8001B990(s32, s32);
-extern void func_8002A360(s32, s32);
+extern void sendCommand(s32, s32);
 extern s32 gCamSpeedScale;
 
 void func_8001DAD4(Obj *o) {
@@ -21,8 +21,8 @@ void func_8001DAD4(Obj *o) {
     switch (o->xC0) {
     case 0:
         if (d < 250.0f && func_8001B990(0x100, o->x70) != 0) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x72);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x72);
             o->xC0 = 1;
         }
         break;

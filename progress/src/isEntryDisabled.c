@@ -15,7 +15,7 @@ typedef s32 M2C_UNK32;
 extern char D_800B81F4[];
 extern char D_800BCFB8[];
 
-s32 func_8006DAA0(s32 arg0) {
+s32 isEntryDisabled(s32 arg0) {
     char *__base_D_800B81F4;
     s32 temp_v1;
     s32 var_a0;

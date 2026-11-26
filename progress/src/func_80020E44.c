@@ -1,5 +1,5 @@
 s32 func_80020D64(void *);
-void *func_800232B4(s32, s32, s32, s32);
+void *spawnEffectObj(s32, s32, s32, s32);
 s32 randomRange(s32, s32);
 s32 heapAlloc(s32);
 extern s32 func_800202BC;
@@ -9,7 +9,7 @@ extern s32 func_80020E08;
 s32 func_80020E44(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     void *p;
 
-    p = func_800232B4(1, 0, 0, 0);
+    p = spawnEffectObj(1, 0, 0, 0);
     F(p, void *, 0x9C) = func_80020D64;
     F(p, void *, 0x98) = &func_800202BC;
     F(p, f32, 4) = arg0;

@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_8000C5E4();
-void *func_800232B4();
+void *spawnEffectObj();
 void *findActor();
 void *getImageAsset();
 s32 func_800242A8();
@@ -78,16 +78,16 @@ s32 func_80052BD4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s3
         func_800242A8(0x89, D_8014AAA0, 0);
     }
     if (findActor(0x801, 0) == NULL) {
-        M2C_FIELD(func_800232B4(0x801, 0, 0, 0), s32 **, 0x9C) = &func_80053C94;
+        M2C_FIELD(spawnEffectObj(0x801, 0, 0, 0), s32 **, 0x9C) = &func_80053C94;
     }
     if (findActor(0x802, 0) == NULL) {
-        M2C_FIELD(func_800232B4(0x802, 0, 0, 0), s32 **, 0x9C) = &func_80053CE0;
+        M2C_FIELD(spawnEffectObj(0x802, 0, 0, 0), s32 **, 0x9C) = &func_80053CE0;
     }
     temp_v0_2 = findActor(0x803, 0);
     if (temp_v0_2 != NULL) {
         M2C_FIELD(temp_v0_2, s32 *, 0x7C) = 0;
     } else {
-        M2C_FIELD(func_800232B4(0x803, 0, 0, 0), s32 **, 0x9C) = &func_80053CE0;
+        M2C_FIELD(spawnEffectObj(0x803, 0, 0, 0), s32 **, 0x9C) = &func_80053CE0;
     }
     func_80053EF0(temp_v0);
     var_s1 = M2C_FIELD(temp_v0, s32 **, 8);
@@ -103,7 +103,7 @@ loop_17:
                 }
             } else {
                 var_s6 = 1;
-                temp_a3 = func_800232B4(0x800, 0, 0, 0);
+                temp_a3 = spawnEffectObj(0x800, 0, 0, 0);
                 if (saved_reg_s3 != NULL) {
                     M2C_FIELD(temp_a3, f32 *, 4) = (f32) M2C_FIELD(saved_reg_s3, f32 *, 4);
                     M2C_FIELD(temp_a3, f32 *, 8) = (f32) M2C_FIELD(saved_reg_s3, f32 *, 8);

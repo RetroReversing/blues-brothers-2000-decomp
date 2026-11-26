@@ -1,6 +1,6 @@
 extern s32 D_800BD0E0[];
 extern u8 D_800BD1F0[];
-void *func_800232B4(s32, s32, s32, s32);
+void *spawnEffectObj(s32, s32, s32, s32);
 s32 getObjPoolStart(s32);
 s32 getObjPoolEnd(s32);
 void func_8000C614(void);
@@ -21,7 +21,7 @@ void func_8000C75C(void) {
     Ent *end;
     Ent *start;
 
-    o = func_800232B4(0x101, 0, 0, 0);
+    o = spawnEffectObj(0x101, 0, 0, 0);
     *(void (**)(void))(o + 0x98) = func_8000C614;
     *(s32 *)(o + 0x68) = 0xF;
     *(s32 *)(o + 0x64) = 0x190;

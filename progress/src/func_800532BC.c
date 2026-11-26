@@ -2,7 +2,7 @@ typedef struct Obj Obj;
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void func_800271A8(s32, s32);
 s32 func_800291AC(u8 *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 tickActorTimer(void *);
 Obj *func_8002E374(s32);
 s32 strlen(const char *);
@@ -116,14 +116,14 @@ s32 func_800532BC(Obj *arg0, Msg *arg1) {
             return 0;
         }
         if (gPad & 0x8000) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA3);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA3);
             return 0;
         }
     }
     if (arg0->f64 < len * 14 - 50 && (gPad & 0x8000)) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xA3);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xA3);
         arg0->f64 = -1;
         arg0->f80 = 1;
     }

@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
 
 void func_800854C4(s32 *arg0) {
@@ -22,15 +22,15 @@ void func_800854C4(s32 *arg0) {
     temp_a0 = *arg0;
     if (temp_a0 != 0x1006) {
         if (temp_a0 == 0x102B) {
-            func_8002A360(0xC, 0x80);
+            sendCommand(0xC, 0x80);
             var_a1 = 0xB6;
-            func_8002A360(8, var_a1);
+            sendCommand(8, var_a1);
             func_8002D124();
         }
     } else {
-        func_8002A360(0xC, 0x80);
+        sendCommand(0xC, 0x80);
         var_a1 = 0xD7;
-        func_8002A360(8, var_a1);
+        sendCommand(8, var_a1);
         func_8002D124();
     }
 }

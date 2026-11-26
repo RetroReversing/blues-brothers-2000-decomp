@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80015738(void *);                      /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 extern M2C_UNK func_800393F4;
@@ -27,8 +27,8 @@ void func_8003BCC4(void *arg0) {
         M2C_FIELD(arg0, M2C_UNK **, 0xD8) = &func_800393F4;
         actorSetAnim(arg0, 0x18, 0x100);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003BC40;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xB);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xB);
         var_s0 = 0;
         func_8002D124();
         M2C_FIELD(arg0, s32 *, 0) = 0x101;

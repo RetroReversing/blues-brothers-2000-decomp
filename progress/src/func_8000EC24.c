@@ -2,7 +2,7 @@ s16 coss(u16);
 s16 sins(u16);
 void func_80015C30(void *);
 void *findActor(s32, void *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 approachAngle(s32, s32, s32);
 void syncActorPrevPos(void *, void *);
 f32 getCameraTargetDist(void *, f32, s32 *);
@@ -78,8 +78,8 @@ void func_8000EC24(Obj *arg0) {
         return;
     }
     if (d < D_800004F0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x57);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x57);
         for (i = 0; i < 4; i++) {
             func_80015C30(arg0);
         }

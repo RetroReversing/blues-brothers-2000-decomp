@@ -13,11 +13,11 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80015A90(M2C_UNK);                     /* extern */
-s32 func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+s32 spawnEffectObj(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80023C58(M2C_UNK);                     /* extern */
 s32 func_80023D58(s32);                             /* extern */
 M2C_UNK func_800242A8(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */
-M2C_UNK func_8002A360(M2C_UNK, s32);                /* extern */
+M2C_UNK sendCommand(M2C_UNK, s32);                /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_80032D5C();                            /* extern */
 M2C_UNK func_8004EC68(M2C_UNK);                     /* extern */
@@ -51,11 +51,11 @@ void func_80070318(void *arg0) {
 
     i = 1;
     M2C_FIELD(arg0, s32 *, 0x78) = 0;
-    func_8002A360(0x1F, 0);
-    func_8002A360(4, 0);
-    func_8002A360(0, gAudioVolume[0] * 327);
-    func_8002A360(1, gAudioVolume[1] * 327);
-    func_8002A360(0xC, 0x80);
+    sendCommand(0x1F, 0);
+    sendCommand(4, 0);
+    sendCommand(0, gAudioVolume[0] * 327);
+    sendCommand(1, gAudioVolume[1] * 327);
+    sendCommand(0xC, 0x80);
     D_800AB408 = 0;
     D_800BD274 = 0x41;
     D_800AB9C8 = 0;
@@ -69,7 +69,7 @@ void func_80070318(void *arg0) {
     D_800B3970 = 0;
     D_800B3974 = 0;
     D_800B7B0C = 0;
-    gCameraTarget = func_800232B4(1, 0, 0, 0);
+    gCameraTarget = spawnEffectObj(1, 0, 0, 0);
     func_8004EC68(0xABE);
     func_800242A8(0x9C, 0x458, 0);
     func_800242A8(0x87, 0xCE3, 0);
@@ -99,5 +99,5 @@ void func_80070318(void *arg0) {
     func_80088F40();
     gFrameScale = 2;
     gCamSpeedScale = 2;
-    func_8002A360(3, 8);
+    sendCommand(3, 8);
 }

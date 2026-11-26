@@ -31,7 +31,7 @@ struct Obj {
 s16 coss(u16);
 s16 sins(u16);
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 s32 randomRange(s32, s32);
 s32 func_8002D1A0(void);
 void func_80015B34();
@@ -44,7 +44,7 @@ Obj *func_80015C30(Obj *arg0) {
     Obj *o;
     u16 a;
 
-    o = func_800232B4(0x101, arg0->x, arg0->y, arg0->z);
+    o = spawnEffectObj(0x101, arg0->x, arg0->y, arg0->z);
     o->f64 = 200;
     o->f98 = func_8002F8D0;
     o->f60 = D_800BD090[0];

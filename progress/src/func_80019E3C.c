@@ -53,12 +53,12 @@ Obj *func_80017DEC(s32);
 void actorSetAnim(Obj *, s32, s32);
 void debugPrintf(char *);
 Obj *findActor(s32, s32);
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 s32 approachAngle(s32, s32, s32);
 s32 func_8002D260(s32);
 s32 func_80023DBC(s32);
 void startStoryDialog(s32, void *, Obj *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 f32 sqrtf(f32);
 void func_80019A2C(Obj *);
 void func_80023078(Obj *);
@@ -125,7 +125,7 @@ void func_80019E3C(Obj *obj) {
     case 1:
         if (findActor(0x800, 0) != NULL) {
             obj->state++;
-            found = func_800232B4(0x101, 0, 0, 0);
+            found = spawnEffectObj(0x101, 0, 0, 0);
             obj->child = found;
             found->unk68 = -1;
             found->cb98 = func_80019A2C;
@@ -261,8 +261,8 @@ void func_80019E3C(Obj *obj) {
         obj->state = 99;
         break;
     case 6:
-        func_8002A360(12, 0x80);
-        func_8002A360(8, 0x54);
+        sendCommand(12, 0x80);
+        sendCommand(8, 0x54);
         obj->child->unk68 = -1;
         startStoryDialog(func_80023DBC(0xE21), &D_80000B78, obj);
         found = findActor(0x1013, 0);

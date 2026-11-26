@@ -1,7 +1,7 @@
 typedef struct Obj Obj;
 s32 cameraGetMode(void);
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 s32 func_80023DBC(s32);
 s32 heapAlloc(s32);
 void syncActorPrevPos(Obj *);
@@ -96,7 +96,7 @@ Obj *func_80065D68(Obj *arg0) {
         }
     }
     for (i = 0; i < 4; i++) {
-        p = func_800232B4(1, 0, 0, 0);
+        p = spawnEffectObj(1, 0, 0, 0);
         p->f90 = i + 1;
         p->fA4 = o;
         p->f9C = func_8006808C;

@@ -14,7 +14,7 @@ typedef struct Obj68E0C {
     s32 count;          /* 0xFC */
 } Obj68E0C;
 
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 f32 func_8002D858(void *, s32 *);
 s32 func_80043248(Obj68E0C *);
@@ -46,13 +46,13 @@ void func_80068E0C(Obj68E0C *arg0) {
         if (--arg0->count != 0) {
             arg0->state = 2;
             arg0->fn = func_80043248;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x52);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x52);
         } else {
             arg0->state = 5;
             arg0->fn = func_80068BF8;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x51);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x51);
         }
         func_8002D124();
         arg0->fF0 = 0xFA;
@@ -79,8 +79,8 @@ void func_80068E0C(Obj68E0C *arg0) {
                 arg0->fn = func_80068DE0;
                 break;
             case 2:
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x53);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x53);
                 arg0->state = 4;
                 arg0->fn = func_80043248;
                 break;

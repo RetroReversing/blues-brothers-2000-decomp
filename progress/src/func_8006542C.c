@@ -25,7 +25,7 @@ void animStepKeys(ObjL *);
 void actorSetAnim(ObjL *, s32, s32);
 s32 approachAngle(s32, s32, s32);
 f32 approachF32(f32, f32, f32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 func_80043248(ObjL *);
 void func_800393F4(void);
 extern char D_80008C4C[];
@@ -58,7 +58,7 @@ void func_8006542C(ObjL *arg0) {
         }
     } else {
         if (t->f74 == 0) {
-            func_8002A360(0x19, 0);
+            sendCommand(0x19, 0);
             func_80043328(arg0, 0x1A, 0x100);
             t->f74 = 1;
         } else {

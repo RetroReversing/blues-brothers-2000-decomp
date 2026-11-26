@@ -12,13 +12,13 @@ typedef struct {
     void *unk98;
     void *unk9C;
 } Obj;
-Obj *func_800232B4(s32, s32, s32, s32);
+Obj *spawnEffectObj(s32, s32, s32, s32);
 
 Obj *func_8000DF10(f32 *pos) {
     Obj *p;
     s32 g;
 
-    p = func_800232B4(0x101, pos[1], pos[2], pos[3]);
+    p = spawnEffectObj(0x101, pos[1], pos[2], pos[3]);
 g = D_800BD694;
 p->unk64 = 50;
 p->unk98 = func_8002F604;

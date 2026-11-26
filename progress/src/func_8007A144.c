@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 func_8001B990(M2C_UNK, M2C_UNK);                /* extern */
 void *findActor(M2C_UNK, M2C_UNK);              /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 f32 func_800385AC(void *);                          /* extern */
 M2C_UNK animStepKeys();                            /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
@@ -34,8 +34,8 @@ void func_8007A144(void *arg0) {
         var_s2 = M2C_FIELD(temp_s0, s32 *, 0xC0) == 1;
     }
     if ((temp_v1 != 0) || (var_s2 != 0)) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x6B);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x6B);
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8007A04C;
         actorSetAnim(arg0, 0x101, 0xC0);
     }

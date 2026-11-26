@@ -12,14 +12,14 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+void *spawnEffectObj(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 extern void *gCameraRig;
 extern M2C_UNK updateCameraView;
 
 void func_80012C9C(void) {
     void *temp_v0;
 
-    temp_v0 = func_800232B4(0x8001, 0, 0, 0);
+    temp_v0 = spawnEffectObj(0x8001, 0, 0, 0);
     M2C_FIELD(temp_v0, M2C_UNK **, 0x9C) = &updateCameraView;
     gCameraRig = temp_v0;
 }

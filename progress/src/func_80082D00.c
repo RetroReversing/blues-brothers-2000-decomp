@@ -1,6 +1,6 @@
 s32 func_80023D58(s32);
 void func_80026C04(void *, s32, s32, void *);
-void func_8002A360(s32, void *);
+void sendCommand(s32, void *);
 void func_80033BC0(void);
 void actorSetAnim(s32, s32, s32);
 void func_80081C10(void);
@@ -52,10 +52,10 @@ void func_80082D00(Obj *arg0) {
     func_80081C10();
     D_800B87E4 = 0;
     D_800B87EC = 0;
-    func_8002A360(4, 0);
-    func_8002A360(0x1F, 0);
-    func_8002A360(0x16, func_800823F0);
-    func_8002A360(0x1E, 0);
+    sendCommand(4, 0);
+    sendCommand(0x1F, 0);
+    sendCommand(0x16, func_800823F0);
+    sendCommand(0x1E, 0);
     arg0->fn9C = func_80082BE0;
     actorSetAnim(D_801719A8, 0x18A, 0x100);
     actorSetAnim(D_801719AC, 0x19A, 0x100);

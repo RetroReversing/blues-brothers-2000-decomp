@@ -1,6 +1,6 @@
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-void *func_800232B4(s32, s32, s32, s32);
-void func_8002A360(s32, s32);
+void *spawnEffectObj(s32, s32, s32, s32);
+void sendCommand(s32, s32);
 s32 func_8002D260(s32);
 void func_8002FEDC(void *);
 void func_8007C4CC(void *);
@@ -49,7 +49,7 @@ extern s32 D_801700F8[];
 Obj *func_8007C54C(void) {
     Obj *o;
 
-    o = func_800232B4(0x1008, 0, 0, 0);
+    o = spawnEffectObj(0x1008, 0, 0, 0);
     o->x98 = func_8002FEDC;
     o->x28 = D_8000959C;
     o->x2C = D_800095A0;
@@ -69,7 +69,7 @@ Obj *func_8007C54C(void) {
     o->x14 = B60->x14;
     o->x18 = 0x8000;
     o->x9C = func_8007C544;
-    o = func_800232B4(0x1008, 0, 0, 0);
+    o = spawnEffectObj(0x1008, 0, 0, 0);
     o->x98 = func_8002FEDC;
     o->x28 = D_800095A8;
     o->x2C = D_800095AC;
@@ -89,7 +89,7 @@ Obj *func_8007C54C(void) {
     o->x14 = B60->x14;
     o->x18 = 0;
     o->x9C = func_8007C4CC;
-    func_8002A360(0xC, 0x80);
-    func_8002A360(8, 0x42);
+    sendCommand(0xC, 0x80);
+    sendCommand(8, 0x42);
     return o;
 }

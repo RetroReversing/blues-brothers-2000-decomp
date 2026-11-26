@@ -23,7 +23,7 @@ typedef struct O5ECE0 {
     void (*f9C)(void);
 } O5ECE0;
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-O5ECE0 *func_800232B4(s32, s32, s32, s32);
+O5ECE0 *spawnEffectObj(s32, s32, s32, s32);
 s32 randomRange(s32, s32);
 extern s32 D_8014AB14;
 void func_8002F8D0(void);
@@ -32,7 +32,7 @@ void func_8005EE10(void);
 O5ECE0 *func_8005ECE0(O5ECE0 *arg0) {
     O5ECE0 *o;
 
-    o = func_800232B4(1, (s32)arg0->f4, (s32)arg0->f8, (s32)arg0->fC);
+    o = spawnEffectObj(1, (s32)arg0->f4, (s32)arg0->f8, (s32)arg0->fC);
     o->f64 = 200;
     o->f98 = func_8002F8D0;
     o->f9C = func_8005EE10;

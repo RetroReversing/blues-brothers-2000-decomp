@@ -1220,7 +1220,7 @@
 <g><title>func_800231FC: {&#x27;matched&#x27;: 1}</title>
 <rect x="20.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800232B4: {&#x27;matched&#x27;: 1}</title>
+<g><title>spawnEffectObj: {&#x27;matched&#x27;: 1}</title>
 <rect x="30.000" y="210" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002338C: {&#x27;matched&#x27;: 1}</title>
@@ -1670,7 +1670,7 @@
 <g><title>func_8002A2E0: {&#x27;matched&#x27;: 1}</title>
 <rect x="720.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002A360: {&#x27;matched&#x27;: 1}</title>
+<g><title>sendCommand: {&#x27;matched&#x27;: 1}</title>
 <rect x="730.000" y="220" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002A3C8: {&#x27;matched&#x27;: 1}</title>
@@ -3881,7 +3881,7 @@
 <g><title>func_8006CF34: {&#x27;matched&#x27;: 1}</title>
 <rect x="90.000" y="320" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8006D8E0: {&#x27;matched&#x27;: 1}</title>
+<g><title>stepFadeUp: {&#x27;matched&#x27;: 1}</title>
 <rect x="100.000" y="320" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8006D910: {&#x27;matched&#x27;: 1}</title>
@@ -3893,10 +3893,10 @@
 <g><title>func_8006DA0C: {&#x27;matched&#x27;: 1}</title>
 <rect x="130.000" y="320" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8006DAA0: {&#x27;matched&#x27;: 1}</title>
+<g><title>isEntryDisabled: {&#x27;matched&#x27;: 1}</title>
 <rect x="140.000" y="320" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8006DAE8: {&#x27;matched&#x27;: 1}</title>
+<g><title>pollMenuInput: {&#x27;matched&#x27;: 1}</title>
 <rect x="150.000" y="320" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8006DBB8: {&#x27;matched&#x27;: 1}</title>
@@ -3989,7 +3989,7 @@
 <g><title>func_8006F284: {&#x27;matched&#x27;: 1}</title>
 <rect x="450.000" y="320" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8006F300: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateOptionMenu: {&#x27;matched&#x27;: 1}</title>
 <rect x="460.000" y="320" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8006F644: {&#x27;matched&#x27;: 1}</title>

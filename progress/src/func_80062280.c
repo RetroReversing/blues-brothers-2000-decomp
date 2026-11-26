@@ -84,7 +84,7 @@ s32 func_80026B50(u8 *, char *);
 void debugPrintf(char *);
 void func_8004BA40(Mtx *, f32, f32, f32);
 void func_80088F40(void);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void updateCameraView(Obj *);
 void animStepKeys(Obj *);
 void func_80062D64(Obj *);
@@ -227,8 +227,8 @@ void func_80062280(void) {
     func_8004BA40(&D_800B7FE0->mtx[4], 0.0f, 2000.0f, 0.0f);
     func_8004BA40(&D_800B7FE0->mtx[5], 0.0f, 0.0f, 0.0f);
     func_80088F40();
-    func_8002A360(4, 0);
-    func_8002A360(0x1F, 0);
-    func_8002A360(0x1C, 0);
+    sendCommand(4, 0);
+    sendCommand(0x1F, 0);
+    sendCommand(0x1C, 0);
     D_800B7FE0->unk3F8 = 0;
 }

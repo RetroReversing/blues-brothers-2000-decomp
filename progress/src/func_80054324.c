@@ -1,4 +1,4 @@
-void *func_800232B4();
+void *spawnEffectObj();
 s32 findActor();
 void *getImageAsset();
 s32 func_80026CB4();
@@ -40,7 +40,7 @@ void func_80054324(s32 arg0, s32 arg1)
                 do {
                     if (func_80026CB4(*var_s1, arg1) == 0) {
                         var_s3 = 1;
-                        temp_v0_2 = func_800232B4(0x800, 0, 0, 0);
+                        temp_v0_2 = spawnEffectObj(0x800, 0, 0, 0);
                         *((void **) ((char *) temp_v0_2 + 0x70)) = temp_v0;
                         *((s32 **) ((char *) temp_v0_2 + 0x74)) = var_s1;
                         *((s32 *) ((char *) temp_v0_2 + 0x9C)) = (s32) &func_800541C0;

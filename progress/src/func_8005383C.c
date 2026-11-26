@@ -12,13 +12,13 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002A360(M2C_UNK, s32);                /* extern */
+M2C_UNK sendCommand(M2C_UNK, s32);                /* extern */
 s32 tickActorTimer(void *);                          /* extern */
 
 s32 func_8005383C(void *arg0, void *arg1) {
     if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, M2C_FIELD(arg1, s32 *, 4));
+        sendCommand(0xC, 0x80);
+        sendCommand(8, M2C_FIELD(arg1, s32 *, 4));
         M2C_FIELD(arg0, s32 *, 0x7C) = 1;
         M2C_FIELD(arg0, s32 *, 0x64) = 0x32;
     }

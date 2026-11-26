@@ -29,7 +29,7 @@ Obj *findActor(s32, s32);
 s32 func_80023D58(s32);
 s32 func_80023DBC(s32);
 void func_80026C04(void *, s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_80033BC0(void);
 void actorSetAnim(Obj *, s32, s32);
 void func_80052A5C(s32);
@@ -121,7 +121,7 @@ void func_80082EF8(void);
     D_80171A4C = func_80023D58(0x1FF);
     D_801719A0 = func_80023D58(0x1FC);
     sceneObj->unk94 = 0x24;
-    func_8002A360(0xE, 0x83);
+    sendCommand(0xE, 0x83);
     func_80033BC0();
     gCameraRig->unk9C = updateFollowCamera;
     if (D_80171994 == 0) {

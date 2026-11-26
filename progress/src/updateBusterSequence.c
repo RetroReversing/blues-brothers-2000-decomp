@@ -28,12 +28,12 @@ extern void func_80052A30(void);
 extern void func_80052A5C(s32);
 extern void func_800242A8(s32, s32, s32);
 extern void func_80017ECC(s32, f32, f32, f32, s32, s32, s32);
-extern Act364 *func_800232B4(s32, s32, s32, s32);
+extern Act364 *spawnEffectObj(s32, s32, s32, s32);
 extern Act364 *findActor(s32, Act364 *);
 extern s32 func_80023DBC(s32);
 extern s32 startStoryDialog(s32, u8 *, Act364 *);
 extern f32 approachF32(f32, f32, f32);
-extern void func_8002A360(s32, s32);
+extern void sendCommand(s32, s32);
 extern void func_80034F50();
 extern void func_8007FD48();
 extern void func_8007FACC();
@@ -99,7 +99,7 @@ static inline f32 len364(f32 x, f32 z) {
         GS32(D_800B83B0)++;
         func_80017ECC(1, 0.0f, 0.0f, 0.0f, 0x4FA, -0xAAA, 0);
         o->c74 = 0;
-        func_800232B4(0x127, 0, 0, 0)->fn = func_8007FD48;
+        spawnEffectObj(0x127, 0, 0, 0)->fn = func_8007FD48;
         break;
     case 1:
         PLAYER->x = CAM->x;
@@ -116,8 +116,8 @@ static inline f32 len364(f32 x, f32 z) {
         clampedZ = approachF32(actor->z - D_800096A0, PLAYER->z, 28.5f);
         PLAYER->z = clampedZ;
         if (clampedZ == actor->z - D_800096A0) {
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x2F);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x2F);
             o->state++;
         }
         break;

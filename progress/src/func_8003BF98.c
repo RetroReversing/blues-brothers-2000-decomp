@@ -1,5 +1,5 @@
 void func_8000C5B4(void);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 void func_8002D3E4(void *, s32);
 void func_8003C5B4(void);
@@ -45,8 +45,8 @@ s32 func_8003BF98(void) {
         F(gCameraTarget, s32, 0x3C) = 0x100;
         F(gCameraTarget, s32, 0) = 0x101;
         func_8003C5B4();
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x7D);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x7D);
         func_8002D124();
     } else if (D_800B4CE0 != 0) {
         F(gCameraTarget, s32, 0xF0) = 0x80;

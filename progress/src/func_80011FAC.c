@@ -1,4 +1,4 @@
-s32 func_8002A360(s32, s32);
+s32 sendCommand(s32, s32);
 typedef struct ObjN {
     u8 pad0[4];
     f32 x;
@@ -20,8 +20,8 @@ void func_80011FAC(ObjN *arg0) {
     dz = arg0->z - gCameraTarget->z;
     dy = arg0->y - gCameraTarget->y;
     if (ABS(dx) < 0xB4 && ABS(dy) < 0x168 && ABS(dz) < 0xB4) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x3B);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x3B);
         arg0->fn(arg0);
     }
 }

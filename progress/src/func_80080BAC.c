@@ -5,7 +5,7 @@ struct G {
     u8 p3[0x1C]; Fn f9C;
 };
 extern G *func_80017DEC(s32);
-extern G *func_800232B4(s32, s32, s32, s32);
+extern G *spawnEffectObj(s32, s32, s32, s32);
 extern G *findActor(s32, G *);
 extern s32 func_8002D260(s32);
 extern s32 tickActorTimer(G *);
@@ -65,7 +65,7 @@ void func_80080BAC(G *arg0) {
         gCameraTarget->f8 = func_800385AC(gCameraTarget);
         gCameraTarget->f10 = func_8002D260(gCameraRig->f10 + 0x8000);
         actorSetAnim(gCameraTarget, 2, 0x100);
-        temp_v0_2 = func_800232B4(1, 0, 0, 0);
+        temp_v0_2 = spawnEffectObj(1, 0, 0, 0);
         temp_v0_2->f9C = func_80080AF0;
         temp_v0_2->f9C(temp_v0_2);
         arg0->f64 = 0x64;

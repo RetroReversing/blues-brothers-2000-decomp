@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80024380(s32);                             /* extern */
-s32 func_8002A360(s32, s32);            /* extern */
+s32 sendCommand(s32, s32);            /* extern */
 f32 approachF32(f32, f32, f32);                   /* extern */
 s32 func_80035238();                            /* extern */
 extern s32 gCamSpeedScale;
@@ -44,8 +44,8 @@ block_4:
     if (M2C_FIELD(arg0, s32 *, 0xC0) == 2) {
         M2C_FIELD(arg0, f32 *, 8) = approachF32(M2C_FIELD(arg0, f32 *, 0x44), M2C_FIELD(arg0, f32 *, 8), (f32) gCamSpeedScale * 6.0f);
         if (M2C_FIELD(arg0, s32 *, 0x90) == 0) {
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x45);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x45);
             M2C_FIELD(arg0, s32 *, 0x90) = 1;
         }
     }

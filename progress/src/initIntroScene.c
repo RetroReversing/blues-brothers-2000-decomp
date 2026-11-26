@@ -42,7 +42,7 @@ typedef struct {
 } Player68378;
 
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
-Obj68378 *func_800232B4(s32, s32, s32, s32);
+Obj68378 *spawnEffectObj(s32, s32, s32, s32);
 Obj68378 *findActor(s32, Obj68378 *);
 void func_800242A8(s32, s32, s32);
 void syncActorPrevPos(Obj68378 *);
@@ -127,7 +127,7 @@ extern Player68378 *gCameraTarget;
         actor->y = 726.0f;
         actor->z = 1870.0f;
         scene->unk10 = 0x7000;
-        actor = func_800232B4(1, 0, 0, 0);
+        actor = spawnEffectObj(1, 0, 0, 0);
         actor->unk9C = func_800646C0;
         actor->unk70 = 4;
         actor->y = 800.0f;

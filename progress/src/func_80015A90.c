@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
-void *func_800232B4(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
+void *spawnEffectObj(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_800242A8(M2C_UNK, s32, M2C_UNK);       /* extern */
 void *func_8002E374(M2C_UNK);                       /* extern */
 extern M2C_UNK func_80015980;
@@ -22,7 +22,7 @@ void *func_80015A90(s32 arg0) {
     void *temp_v0;
 
     if (arg0 == 0) {
-        return func_800232B4(1, 0, 0, 0);
+        return spawnEffectObj(1, 0, 0, 0);
     }
     func_800242A8(0x9A, arg0, 0);
     temp_v0 = func_8002E374(0x9A);

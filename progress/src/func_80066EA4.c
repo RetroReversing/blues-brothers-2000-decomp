@@ -23,7 +23,7 @@ typedef struct Obj {
 } Obj;
 extern void *func_80042F00();
 extern s32 actorSetAnim();
-extern s32 func_8002A360();
+extern s32 sendCommand();
 extern s32 func_80047898();
 extern s32 func_80047864();
 extern Obj *gCameraTarget;
@@ -53,8 +53,8 @@ void func_80066EA4(Obj *o) {
         n->fa4 = o;
         n->f9c = func_80066CA8;
         actorSetAnim(n, 0xFF, 0x100);
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xD4);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xD4);
         n->fe8 = func_80047898();
         func_80047864(n->fe8, 0, 0, -0x78, 0);
         func_80047864(n->fe8, 0, 0, -0x78, 0);

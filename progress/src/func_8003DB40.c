@@ -9,7 +9,7 @@ typedef struct Obj {
     /* 0x9C */ void *f9C;
 } Obj;
 void func_800256A4(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002E7B8(s32, s32);
 s32 func_8003D654(Obj *);
 void func_8003D3C8();
@@ -39,8 +39,8 @@ void func_8003DB40(Obj *arg0) {
         moved = 0;
     }
     if (moved) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x90);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x90);
     }
     if (gPadPressed & 0x8000) {
         switch (arg0->f88) {
@@ -50,9 +50,9 @@ void func_8003DB40(Obj *arg0) {
             D_800B5DD4 = 1;
             D_80140228 = arg0->f74;
             func_800256A4(0x12345678);
-            func_8002A360(0, gAudioVolume * 327);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9C);
+            sendCommand(0, gAudioVolume * 327);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9C);
             gTextWaveTime = D_80140250;
             return;
         case 1:
@@ -60,16 +60,16 @@ void func_8003DB40(Obj *arg0) {
             arg0->f98 = drawAudioOptionsMenu;
             arg0->f88 = 0;
             D_800B5DCC = 2;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xA2);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xA2);
             break;
         case 2:
             arg0->f9C = func_8003D558;
             func_8002E7B8(1, 0);
             D_800B5DD4 = 1;
             arg0->f70 = 0;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x9D);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x9D);
             break;
         }
     }
@@ -78,7 +78,7 @@ void func_8003DB40(Obj *arg0) {
         D_800AB9B4 = 0;
         D_800B5DD4 = 1;
         D_80140228 = arg0->f74;
-        func_8002A360(0, gAudioVolume * 327);
+        sendCommand(0, gAudioVolume * 327);
         gTextWaveTime = D_80140250;
     }
 }

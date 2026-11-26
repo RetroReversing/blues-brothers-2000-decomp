@@ -12,11 +12,11 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8006D8E0(s32);                         /* extern */
+M2C_UNK stepFadeUp(s32);                         /* extern */
 extern void *D_800B3964;
 
 void func_800700DC(void *arg0) {
-    func_8006D8E0(arg0 + 0x80);
+    stepFadeUp(arg0 + 0x80);
     if (M2C_FIELD(D_800B3964, s32 *, 0xBC) != 0) {
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
     }

@@ -1,4 +1,4 @@
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void actorSetAnim(void *, s32, s32, s32);
 void func_8005EB70(void *);
 int abs(int);
@@ -13,8 +13,8 @@ s32 func_8005EEDC(O *arg0, O *arg1) {
         arg0->x50 = D_80140240;
         arg0->y += 1.0f;
         actorSetAnim(arg0, 5, 0x100, dy);
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 2);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 2);
         func_8005EB70(arg1);
         arg1->xF0 = 0xFF;
         return 1;

@@ -22,7 +22,7 @@ Obj *func_8002E374(s32);
 void func_8002D858(void *, void *);
 s32 func_80043248(void *);
 Obj *func_8006B020(void *);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 s32 func_80023DBC(s32);
 s32 startStoryDialog(s32, char *, void *);
@@ -60,8 +60,8 @@ void func_8006ABD8(Obj *arg0)
         c = func_8006B020(arg0);
         actorSetAnim(c, 0xB6, 0x100);
         c->y = (f32)D_800B4C28;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x34);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x34);
         func_8002D124();
         if (startStoryDialog(func_80023DBC(0xE0F), "cab_caf4", arg0) != 0) {
             c->unk9C = func_8006B0C8;

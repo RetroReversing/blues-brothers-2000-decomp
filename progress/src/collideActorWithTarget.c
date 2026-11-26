@@ -14,7 +14,7 @@ typedef struct Obj67C6C {
 s16 sins(u16);
 s16 coss(u16);
 s32 isqrtS32(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void actorSetAnim(Obj67C6C *, s32, s32);
 f32 sqrtf(f32);
 extern Obj67C6C *gCameraTarget;
@@ -54,8 +54,8 @@ extern s32 D_80140240;
                     }
                     gCameraTarget->y += 1.0f;
                     actorSetAnim(gCameraTarget, 5, 0x100);
-                    func_8002A360(12, 0x80);
-                    func_8002A360(8, 2);
+                    sendCommand(12, 0x80);
+                    sendCommand(8, 2);
                     return 0;
                 }
             }

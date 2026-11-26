@@ -38,7 +38,7 @@ typedef struct Name {
 
 s32 func_80023D58(s32);
 s32 func_80023DBC(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 f32 approachF32(f32, f32, f32);
 void actorSetAnim(void *, s32, s32);
 void startStoryDialog(s32, char *, void *);
@@ -111,8 +111,8 @@ extern u8 D_80171A50[];
             startStoryDialog(fontId, buf, owner);
             (*(Obj * *)D_80171A30)->x68 = -1;
             actorSetAnim((*(Obj * *)D_801719A8), 0x178, 0x100);
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x78);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x78);
             return;
         }
         owner->x64 = 100;

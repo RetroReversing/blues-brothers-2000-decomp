@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_80023DBC();
-s32 func_8002A360();
+s32 sendCommand();
 s32 tickActorTimer();
 s32 actorSetAnim();
 s32 startStoryDialog();
@@ -51,8 +51,8 @@ void func_80086550(void *arg0) {
         startStoryDialog(temp_s1, sp10, arg0);
         M2C_FIELD(arg0, s32 **, 0x9C) = &func_800864B8;
         actorSetAnim(D_801719A8, 0x178, 0x100);
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x78);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x78);
         M2C_FIELD_PTR(arg0, s32 *, 0x64) = 0x12C;
         M2C_FIELD(D_80171A30, s32 *, 0x68) = -1;
     }

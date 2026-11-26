@@ -3,7 +3,7 @@ s32 func_8000F294(void *);
 void func_80023620(s32);
 void func_80023730(void *, s32, s32);
 void *findActor(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002E79C(void);
 void func_8002E7B8(s32, s32);
 void func_8002E944(void);
@@ -105,9 +105,9 @@ void func_8000F310(Obj *arg0) {
     case 5:
         D_800A9550 = 0;
         D_800AB9C8 = 0;
-        func_8002A360(4, 0);
-        func_8002A360(0x1F, 0);
-        func_8002A360(2, 0);
+        sendCommand(4, 0);
+        sendCommand(0x1F, 0);
+        sendCommand(2, 0);
         D_800AA1B4 = 0;
         arg0->f78 = D_800BCFA4;
         arg0->f98 = D_800BCFA0;

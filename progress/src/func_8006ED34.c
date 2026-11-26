@@ -1,7 +1,7 @@
 s32 tickActorTimer(void *);
-s32 func_8006DAE8(s32);
+s32 pollMenuInput(s32);
 s32 approachS32(s32, s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_80023C10(s32);
 void func_8006DDD4(void *);
 extern void *gCameraRig;
@@ -30,7 +30,7 @@ void func_8006ED34(void *arg0) {
     }
     if (F(arg0, s32, 0x80) == 2) {
         if (tickActorTimer(arg0) != 0) {
-            var_s1 = func_8006DAE8(D_800B82C0[F(arg0, s32, 0x84)]);
+            var_s1 = pollMenuInput(D_800B82C0[F(arg0, s32, 0x84)]);
         }
     }
     if (var_s1 & 1) {
@@ -57,8 +57,8 @@ void func_8006ED34(void *arg0) {
     }
     if (F(arg0, s32, 0x84) != F(arg0, s32, 0x74)) {
         F(arg0, s32, 0x74) = F(arg0, s32, 0x84);
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xA0);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xA0);
     }
     {
         void *q = D_800B3964;

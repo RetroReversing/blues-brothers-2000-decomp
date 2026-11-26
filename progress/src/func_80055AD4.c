@@ -1,6 +1,6 @@
 s32 randomRange(s32, s32);
 s32 func_8002492C(f32, f32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 tickActorTimer(void *);
 void animStepKeys(void *);
 void actorSetAnim(void *, s32, s32);
@@ -40,8 +40,8 @@ void func_80055AD4(Obj *arg0) {
         return;
     }
     if (tickActorTimer(arg0) != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x6A);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x6A);
         arg0->unk64 = randomRange(0xC8, 0x1F4);
     }
     animStepKeys(arg0);

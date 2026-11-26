@@ -25,7 +25,7 @@ struct Obj {
 };
 
 Obj *findActor(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D3B0(Obj *);
 void func_8002D4E0(Obj *, s32);
 s32 tickActorTimer(Obj *);
@@ -57,8 +57,8 @@ void func_8007FE90(Obj *arg0) {
         arg0->unk7C++;
         arg0->unkA8 = findActor(0x102E, 0);
         func_8002D4E0(arg0, 200);
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xD8);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xD8);
         syncActorPrevPos(arg0);
     }
     D_80107040 &= ~0x2000;
@@ -75,8 +75,8 @@ void func_8007FE90(Obj *arg0) {
         other = findActor(0x102D, 0);
         if (other != NULL && other->unk78 == 5) {
             D_800B3964->unk88 = 1;
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0xB7);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0xB7);
         }
         D_800B3964->unk70--;
         func_8007FE5C(arg0);

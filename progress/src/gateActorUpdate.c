@@ -29,7 +29,7 @@ typedef struct { s32 x; s32 pad; s32 z; } Bound;
 ObjY *func_80012718(ObjY *);
 void func_80013384(ObjY *);
 s32 func_8001B990(s32, s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 void func_8002D4E0(ObjY *, s32);
 s32 tickActorTimer(ObjY *);
@@ -64,7 +64,7 @@ void gateActorUpdate(ObjY *gate) {
     if (gate->f90 != 0 && gate->y == gate->f44 && switchMask != 0) {
         if (gate->f88 == 0) {
             gate->f88 = 1;
-            func_8002A360(0x1A, 0);
+            sendCommand(0x1A, 0);
         }
         if (tickActorTimer(gate) != 0) {
             gate->f50 = 3100.0f;
@@ -101,7 +101,7 @@ void gateActorUpdate(ObjY *gate) {
         gate->fB0 = -1600.0f;
         gate->f50 += D_800B9EC4 * -1600.0f;
         if (gate->f88 != 0) {
-            func_8002A360(0x1B, 0);
+            sendCommand(0x1B, 0);
             gate->f88 = 0;
         }
     }

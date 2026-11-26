@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK initLevel(void);                       /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002E7B8(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_80088F40();                            /* extern */
 extern s32 D_800AB9B4;
@@ -36,9 +36,9 @@ void func_8003D558(void *arg0) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_8003D3C8;
         D_800AB9B4 = 0;
         M2C_FIELD(arg0, void **, 0x98) = (void *) (&func_80023078 + 2);
-        func_8002A360(4, 0);
-        func_8002A360(0x1F, 0);
-        func_8002A360(2, 0);
+        sendCommand(4, 0);
+        sendCommand(0x1F, 0);
+        sendCommand(2, 0);
         D_800B3838 = 0;
         if (D_800B5DD0 != 0) {
             D_800B5DD0 = 0;

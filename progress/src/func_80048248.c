@@ -11,7 +11,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-void *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */
+void *spawnEffectObj(M2C_UNK, s32, s32, s32);        /* extern */
 s32 heapAlloc(M2C_UNK);                         /* extern */
 M2C_UNK func_80026C04(s32, M2C_UNK, M2C_UNK);       /* extern */
 M2C_UNK func_80048534(void *);                      /* extern */
@@ -21,9 +21,9 @@ void *func_80048248(void *arg0) {
     void *temp_s0;
     s32 temp_v0;
     if (arg0 != NULL) {
-        temp_s0 = func_800232B4(1, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
+        temp_s0 = spawnEffectObj(1, (s32) M2C_FIELD(arg0, f32 *, 4), (s32) M2C_FIELD(arg0, f32 *, 8), (s32) M2C_FIELD(arg0, f32 *, 0xC));
     } else {
-        temp_s0 = func_800232B4(1, 0, 0, 0);
+        temp_s0 = spawnEffectObj(1, 0, 0, 0);
     }
     temp_v0 = heapAlloc(8);
     M2C_FIELD(temp_s0, s32 *, 0xE8) = temp_v0;

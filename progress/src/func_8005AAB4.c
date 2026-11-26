@@ -1,7 +1,7 @@
 s16 coss(s32);
 s16 sins(s32);
 s32 isqrtS32(s32);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void actorSetAnim(void *, s32, s32);
 extern s32 D_80140240;
 
@@ -31,8 +31,8 @@ s32 func_8005AAB4(void *arg0, void *arg1) {
             F(arg0, f32, 8) += 1.0f;
             actorSetAnim(arg0, 5, 0x100);
             actorSetAnim(arg1, 0x71, 0x100);
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 2);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 2);
         }
     }
     return 0;

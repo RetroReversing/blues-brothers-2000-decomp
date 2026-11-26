@@ -1,6 +1,6 @@
 s16 coss(u16);
 s16 sins(u16);
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_8002D124(void);
 f32 approachF32(f32, f32, f32);
 s32 func_80043248(void *);
@@ -45,8 +45,8 @@ void func_80066CA8(void *arg0) {
     func_800660CC(arg0, 0x6D6, 0);
     F(o, s32, 0x10) = F(arg0, s32, 0x10);
     if (F(arg0, s32, 0x8C) == 0 && F(arg0, f32, 0xDC) >= D_80008CF0 && F(arg0, f32, 0xDC) <= D_80008CF8) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x89);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x89);
         func_8002D124();
         F(arg0, s32, 0x8C) = 1;
     }

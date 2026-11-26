@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D3B0(void *);                      /* extern */
 M2C_UNK func_8002D4E0(void *, M2C_UNK);             /* extern */
 s32 tickActorTimer(void *);                          /* extern */
@@ -73,8 +73,8 @@ s32 func_80073DC8(void *arg0, s32 arg1) {
     hi[2] = M2C_FIELD(arg0, f32 *, 0xC) + D_80009180;
     collectCollisionCells(lo, hi, 0);
     if (func_80048CD8(lo[0], hi[0], lo[1], hi[1], lo[2], hi[2], 0) != 0) {
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x9B);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x9B);
         M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);
         return 1;
     }

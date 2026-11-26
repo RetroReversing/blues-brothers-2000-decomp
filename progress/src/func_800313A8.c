@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-M2C_UNK func_8002A360(M2C_UNK, s32);                /* extern */
+M2C_UNK sendCommand(M2C_UNK, s32);                /* extern */
 M2C_UNK func_80030C40();             /* extern */
 M2C_UNK func_80062280();                            /* extern */
 M2C_UNK func_80062A44();                            /* extern */
@@ -29,8 +29,8 @@ void func_800313A8(void *arg0) {
             func_80030C40(arg0, 1);
             return;
         }
-        func_8002A360(0, M2C_FIELD(&gAudioVolume, s32 *, 0) * 0x147);
-        func_8002A360(1, M2C_FIELD(&gAudioVolume, s32 *, 4) * 0x147);
+        sendCommand(0, M2C_FIELD(&gAudioVolume, s32 *, 0) * 0x147);
+        sendCommand(1, M2C_FIELD(&gAudioVolume, s32 *, 4) * 0x147);
         func_80062280();
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
         M2C_FIELD(arg0, s32 *, 0x90) = 0;
@@ -40,7 +40,7 @@ void func_800313A8(void *arg0) {
 block_4:
     if (func_80062A90() != 0) {
         func_80062A44();
-        func_8002A360(0x1D, 0);
+        sendCommand(0x1D, 0);
         func_80030C40(arg0, 1);
         D_80107040 = 0;
         gPadPressed = 0;

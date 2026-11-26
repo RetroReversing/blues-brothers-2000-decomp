@@ -18,7 +18,7 @@ typedef struct Obj87B68 {
     s32 unkE8;
 } Obj87B68;
 
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 s32 tickActorTimer(Obj87B68 *);
 void func_8002D604(Obj87B68 *);
 void func_80047824(s32, s32, s32, s32, s32);
@@ -50,8 +50,8 @@ extern Obj87B68 *gIntroActors[];
                     goto dec;
                 }
                 selector->unk64 = 25;
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0x9F);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0x9F);
             }
             if ((gPadPressed[selector->unkBC] & 0x100) || gStickX[selector->unkBC] >= 31) {
             inc:
@@ -60,8 +60,8 @@ extern Obj87B68 *gIntroActors[];
                     goto inc;
                 }
                 selector->unk64 = 25;
-                func_8002A360(12, 0x80);
-                func_8002A360(8, 0xA0);
+                sendCommand(12, 0x80);
+                sendCommand(8, 0xA0);
             }
         }
         selector->unk70 = 80;
@@ -72,8 +72,8 @@ extern Obj87B68 *gIntroActors[];
         func_8002D604(selector);
         func_8002D604(selector);
         if (gPadPressed[selector->unkBC] & 0x9000) {
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0xA5);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0xA5);
             selectedActor = gIntroActors[selector->unk84];
             selector->unkC0 = 1;
             func_80047864(selectedActor->unkE8, 0, 0, 120, -100);
@@ -91,8 +91,8 @@ extern Obj87B68 *gIntroActors[];
         selector->unk70 = 100;
         selector->unk10 = 0;
         if (gPadPressed[selector->unkBC] & 0x9000) {
-            func_8002A360(12, 0x80);
-            func_8002A360(8, 0x9C);
+            sendCommand(12, 0x80);
+            sendCommand(8, 0x9C);
             selectedActor = gIntroActors[selector->unk84];
             func_80047864(selectedActor->unkE8, 0, 100, 0, -100);
             func_80047864(selectedActor->unkE8, 0, 100, 0, -100);

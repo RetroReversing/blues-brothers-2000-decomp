@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 func_800171C0(void *);                      /* extern */
 s32 func_8001B990(s32, s32);            /* extern */
-void *func_800232B4(s32, s32, s32, s32); /* extern */
+void *spawnEffectObj(s32, s32, s32, s32); /* extern */
 extern f32 D_80000CB4;
 extern s32 gCamSpeedScale;
 extern s32 func_8001C964;
@@ -37,7 +37,7 @@ void func_8001CB68(void *arg0) {
         M2C_FIELD(arg0, void **, 0x9C) = (void *) (__base_func_80023078 + 0x2);
         M2C_FIELD(arg0, s32 *, 0) = 0x101;
         func_800171C0(arg0);
-        temp_v0 = func_800232B4(1, 0, 0, 0);
+        temp_v0 = spawnEffectObj(1, 0, 0, 0);
         M2C_FIELD(temp_v0, s32 **, 0x9C) = &func_8001C964;
         M2C_FIELD(temp_v0, s32 *, 0x70) = (s32) M2C_FIELD(arg0, s32 *, 0x70);
     }

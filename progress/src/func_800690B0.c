@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 func_80013784(void *);                          /* extern */
 s32 packDrawFlags(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002D124();                            /* extern */
 f32 func_8002DD60(f32);                             /* extern */
 s32 func_80069050();                                /* extern */
@@ -58,8 +58,8 @@ void func_800690B0(void *arg0) {
 block_13:
             if (var_s2 != 0) {
 block_15:
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 7);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 7);
                 func_8002D124();
                 func_800692C0(arg0);
                 M2C_FIELD(arg0, s32 *, 0x8C) = 1;

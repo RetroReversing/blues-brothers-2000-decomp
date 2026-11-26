@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 func_8002492C(f32, f32);                        /* extern */
-s32 func_8002A360(s32, s32);            /* extern */
+s32 sendCommand(s32, s32);            /* extern */
 void *func_80075F58(void *);                        /* extern */
 void *func_80075FEC(void *);                        /* extern */
 s32 func_80080DE0(s32);                         /* extern */
@@ -49,8 +49,8 @@ void func_800754B8(void *arg0) {
                 func_80081AC0(&sp118, 1, (*(f32 *)((s8 *)arg0 + 0x100)));
                 (*(s32 *)((s8 *)var_s1 + 0x10)) = func_8002492C(sp118, sp120);
                 (*(s32 (**)(void *))((s8 *)arg0 + 0xA0))(arg0);
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0xA);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0xA);
             }
         }
     }

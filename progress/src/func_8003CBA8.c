@@ -5,7 +5,7 @@ struct G {
 };
 extern void actorSetAnim(G *, s32, s32);
 extern void func_8003BC40(G *);
-extern void func_8002A360(s32, s32);
+extern void sendCommand(s32, s32);
 extern void func_8002D124();
 extern G *func_80015738(G *);
 extern G *gCameraTarget;
@@ -23,8 +23,8 @@ void func_8003CBA8(void) {
         actorSetAnim(temp_s0, 0x18, 0x100);
         temp_s0->f9C = func_8003BC40;
         temp_s0->f0 = 0x101;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0xB);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0xB);
         func_8002D124();
     }
     var_s1 = 0;

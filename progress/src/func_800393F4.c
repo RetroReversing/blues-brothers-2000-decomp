@@ -24,7 +24,7 @@ s32 func_80024AC4(s32, M2C_UNK);                    /* extern */
 s32 func_80024AE8(s32, M2C_UNK);                    /* extern */
 s32 isqrtS32(s32);                             /* extern */
 s32 atan2S16(s32, s32);                        /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_8002ABCC();                            /* extern */
 M2C_UNK func_8002ACAC();                            /* extern */
 M2C_UNK func_8002ACFC();                            /* extern */
@@ -252,8 +252,8 @@ void func_800393F4(Actor *arg0) {
             func_8000C5B4();
             if (arg0->fD0 != 0x1A) {
                 actorSetAnim(arg0, 0x1A, 0x100);
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x1E);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x1E);
                 func_8002D124();
             }
         }
@@ -481,13 +481,13 @@ block_102:
             if (var_s0_2 != 0) {
                 func_8003A9A8(arg0, var_s0_2);
                 if (D_800B3838 != 0) {
-                    func_8002A360(0xC, 0x80);
-                    func_8002A360(8, 0x19);
+                    sendCommand(0xC, 0x80);
+                    sendCommand(8, 0x19);
                     func_8002D124();
                     D_800B3838 = 0;
                 } else {
-                    func_8002A360(0xC, 0x80);
-                    func_8002A360(8, 0x34);
+                    sendCommand(0xC, 0x80);
+                    sendCommand(8, 0x34);
                     func_8002D124();
                 }
             }
@@ -497,8 +497,8 @@ block_102:
                 D_8014020C = 0x64;
                 arg0->fB8 = 2;
                 arg0->fE4 = func_80023E3C(2);
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x7E);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x7E);
                 func_8002D124();
                 temp_v0_9 = func_8002E374(0x7C);
                 M2C_FIELD(temp_v0_9, s32 *, 0x68) = (s32) (arg0->f68 + 1);
@@ -535,13 +535,13 @@ block_102:
             } else {
 block_181:
                 if (D_800B3838 != 0) {
-                    func_8002A360(0xC, 0x80);
-                    func_8002A360(8, 0x19);
+                    sendCommand(0xC, 0x80);
+                    sendCommand(8, 0x19);
                     func_8002D124();
                     D_800B3838 = 0;
                 } else {
-                    func_8002A360(0xC, 0x80);
-                    func_8002A360(8, 0x34);
+                    sendCommand(0xC, 0x80);
+                    sendCommand(8, 0x34);
                     func_8002D124();
                 }
                 func_8003A9A8(arg0, var_s0_2);
@@ -600,8 +600,8 @@ block_202:
             break;
         case 17:
             if (var_s0_2 != 0) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x35);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x35);
                 func_8002D124();
                 func_8003A9A8(arg0, var_s0_2);
             }
@@ -640,7 +640,7 @@ block_211:
             if (!(D_80107040[arg0->fBC] & 0x10)) {
                 func_80043328(arg0, 0x26, 0x100);
                 var_s2 = 0;
-                func_8002A360(0x20, 0);
+                sendCommand(0x20, 0);
             } else if ((D_80140200 <= 0) && (var_s0_2 != 0)) {
                 func_80043328(arg0, 0x24, 0x100);
                 var_s2 = 0;
@@ -649,8 +649,8 @@ block_211:
             if (2.0 <= temp_fv1_8) {
                 if (temp_fv1_8 <= ((f64) gCamSpeedScale + 2.0)) {
                     if ((var_s2 != 0) && (arg0->fCC == 0)) {
-                        func_8002A360(0xC, 0x80);
-                        func_8002A360(8, 3);
+                        sendCommand(0xC, 0x80);
+                        sendCommand(8, 3);
                         arg0->fCC = 1;
                     }
                 } else {
@@ -714,8 +714,8 @@ block_211:
                 handleActorHit(arg0, D_8014022C, 0);
             }
             if (((f64) D_80140140 != -1000000.0) && (arg0->f8 < (f32) (D_80140140 - 0xC8))) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x19);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x19);
                 func_8002D124();
                 arg0->f8 = (f32) (D_80140140 - 0xC8);
                 func_80043328(arg0, 0x17, 0x100);

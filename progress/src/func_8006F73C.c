@@ -13,8 +13,8 @@ typedef s32 M2C_UNK32;
 #endif
 
 s32 tickActorTimer(void *);                          /* extern */
-M2C_UNK func_8006D8E0(void *);                      /* extern */
-s32 func_8006DAE8(M2C_UNK);                         /* extern */
+M2C_UNK stepFadeUp(void *);                      /* extern */
+s32 pollMenuInput(M2C_UNK);                         /* extern */
 extern void *gCameraRig;
 extern void *D_800B3964;
 extern s32 D_80107040;
@@ -24,7 +24,7 @@ void func_8006F73C(void *arg0) {
         M2C_FIELD(arg0, M2C_UNK (**)(), 0xA0)();
         return;
     }
-    func_8006D8E0(arg0 + 0x6C);
+    stepFadeUp(arg0 + 0x6C);
     if (M2C_FIELD(D_800B3964, s32 *, 0xBC) != M2C_FIELD(arg0, s32 *, 0xBC)) {
         M2C_FIELD(arg0, s32 *, 0x68) = -1;
     }
@@ -32,7 +32,7 @@ void func_8006F73C(void *arg0) {
         M2C_FIELD(arg0, s32 *, 0x68) = -1;
     }
     if ((M2C_FIELD(arg0, s32 *, 0x68) != -1) && (tickActorTimer(arg0) != 0)) {
-        if (func_8006DAE8(0x14) != 0) {
+        if (pollMenuInput(0x14) != 0) {
             M2C_FIELD(gCameraRig, s32 *, 0x74) = (s32) (M2C_FIELD(gCameraRig, s32 *, 0x74) + 1);
         }
         if (D_80107040 & 0x9000) {

@@ -17,7 +17,7 @@ extern char D_8013EA28[];
 extern s32 D_8013F414;
 extern char D_8013F418[];
 
-void func_8002A360(s32 arg0, s32 arg1) {
+void sendCommand(s32 arg0, s32 arg1) {
     s32 temp_v0_2;
     void *temp_v0;
 

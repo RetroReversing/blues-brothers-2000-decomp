@@ -6,7 +6,7 @@ void func_8000C5E4(void);
 u8 *getImageAsset(s32);
 void debugPrintf(char *, ...);
 void func_800242A8(s32, s32, s32);
-void *func_800232B4(s32, s32, s32, s32);
+void *spawnEffectObj(s32, s32, s32, s32);
 void func_80053EF0(u8 *);
 s32 func_80026B50(char *, char *);
 void func_80043328(u8 *, s32, s32);
@@ -73,14 +73,14 @@ extern s32 D_80140228;
         func_800242A8(0x89, D_8014AAA0, 0);
     }
     if (findActor(0x801, 0) == NULL) {
-        FLD(func_800232B4(0x801, 0, 0, 0), void *, 0x9C) = func_80053C94;
+        FLD(spawnEffectObj(0x801, 0, 0, 0), void *, 0x9C) = func_80053C94;
     }
     if (findActor(0x802, 0) == NULL) {
-        FLD(func_800232B4(0x802, 0, 0, 0), void *, 0x9C) = func_80053CE0;
+        FLD(spawnEffectObj(0x802, 0, 0, 0), void *, 0x9C) = func_80053CE0;
     }
     dialogActor = findActor(0x803, 0);
     if (dialogActor == NULL) {
-        FLD(func_800232B4(0x803, 0, 0, 0), void *, 0x9C) = func_80053CE0;
+        FLD(spawnEffectObj(0x803, 0, 0, 0), void *, 0x9C) = func_80053CE0;
     } else {
         FLD(dialogActor, s32, 0x7C) = 0;
     }
@@ -91,7 +91,7 @@ extern s32 D_80140228;
             for (i = 0; i < FLD(storyData, s16, 4); i++, storyRecord += 12) {
                 if (func_80026B50(storyName, FLD(storyRecord, char *, 0)) == 0) {
                     found = 1;
-                    dialogActor = func_800232B4(0x800, 0, 0, 0);
+                    dialogActor = spawnEffectObj(0x800, 0, 0, 0);
                     if (startPos != NULL) {
                         FLD(dialogActor, f32, 4) = startPos[1];
                         FLD(dialogActor, f32, 8) = startPos[2];

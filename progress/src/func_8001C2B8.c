@@ -14,7 +14,7 @@ typedef s32 M2C_UNK32;
 
 s32 cameraGetMode();                                /* extern */
 s32 func_8001B990(s32, s32);                    /* extern */
-s32 func_8002A360(s32, s32);            /* extern */
+s32 sendCommand(s32, s32);            /* extern */
 extern s32 func_8007F7DC;
 
 void func_8001C2B8(void *arg0) {
@@ -34,8 +34,8 @@ block_4:
         if ((*(s32 *)((s8 *)arg0 + 0x74)) != 0) {
             s32 var_v0_a1;
             if ((*(s32 *)((s8 *)arg0 + 0x78)) == 0) {
-                func_8002A360(0xC, 0x80);
-                func_8002A360(8, 0x11);
+                sendCommand(0xC, 0x80);
+                sendCommand(8, 0x11);
             }
             (*(s32 *)((s8 *)arg0 + 0x78)) = 1;
             var_v0_a1 = (*(s32 *)((s8 *)arg0 + 0x74)) + 0xA;

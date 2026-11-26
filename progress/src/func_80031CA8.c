@@ -20,7 +20,7 @@ M2C_UNK func_80027038(M2C_UNK);                     /* extern */
 M2C_UNK setTextColor(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK func_80027158(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK func_800294D0(s32);                         /* extern */
-M2C_UNK func_8002A360(M2C_UNK, M2C_UNK);            /* extern */
+M2C_UNK sendCommand(M2C_UNK, M2C_UNK);            /* extern */
 M2C_UNK drawCenteredMessage(M2C_UNK);                     /* extern */
 M2C_UNK func_80081E1C(s32, M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 extern s32 gPakInitWarn;
@@ -43,8 +43,8 @@ void func_80031CA8(void *arg0) {
     drawCenteredMessage(0x60);
     if (gPadPressed & 0x1000) {
         M2C_FIELD(arg0, s32 *, 0x94) = 1;
-        func_8002A360(0xC, 0x80);
-        func_8002A360(8, 0x9F);
+        sendCommand(0xC, 0x80);
+        sendCommand(8, 0x9F);
         return;
     }
     gPakInitWarn = 0;

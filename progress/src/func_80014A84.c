@@ -17,7 +17,7 @@ typedef struct {
     s32 pos;
 } Input14A84;
 
-void func_8002A360(s32, s32);
+void sendCommand(s32, s32);
 void func_800393F4(void);
 extern Cheat D_800AA388[];
 extern s32 D_800B3968;
@@ -38,8 +38,8 @@ void func_80014A84(Input14A84 *in) {
                 for (c = D_800AA388; c->codes != NULL; c++) {
                     if (c->active != 0 && c->codes[in->pos] == 0 && D_800B3968 >= c->level) {
                         c->fn();
-                        func_8002A360(12, 0x80);
-                        func_8002A360(8, 0x12);
+                        sendCommand(12, 0x80);
+                        sendCommand(8, 0x12);
                     }
                 }
             }

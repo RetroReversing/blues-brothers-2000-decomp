@@ -14,9 +14,9 @@ typedef s32 M2C_UNK32;
 
 s16 coss();
 void *func_80017344();
-void *func_800232B4();
+void *spawnEffectObj();
 s32 func_80023E3C();
-s32 func_8002A360();
+s32 sendCommand();
 s32 func_8002D1A0();
 s32 func_8002D3E4();
 f32 getCameraTargetDist(void *, f32, s32 *);
@@ -64,7 +64,7 @@ void func_8007148C(void *arg0) {
             M2C_FIELD(q, s32 *, 0xB8) = t;
             M2C_FIELD(gCameraTarget[0], s32 *, 0xE4) = func_80023E3C(t);
         } while (i < 8);
-        p = func_800232B4(0x101, 0, 0, 0);
+        p = spawnEffectObj(0x101, 0, 0, 0);
         M2C_FIELD(p, s32 **, 0x9C) = func_80071300;
         M2C_FIELD(p, s32 *, 0x64) = 3000;
         M2C_FIELD(arg0, s32 *, 0x64) = 3000;
@@ -76,16 +76,16 @@ void func_8007148C(void *arg0) {
         }
         switch (M2C_FIELD(arg0, s32 *, 0x90)) {
         case 1:
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x81);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x81);
             break;
         case 2:
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x87);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x87);
             break;
         case 3:
-            func_8002A360(0xC, 0x80);
-            func_8002A360(8, 0x85);
+            sendCommand(0xC, 0x80);
+            sendCommand(8, 0x85);
             break;
         }
     }

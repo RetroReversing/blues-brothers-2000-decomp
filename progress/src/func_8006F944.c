@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 
-s32 func_8006DAA0(s32);                             /* extern */
+s32 isEntryDisabled(s32);                             /* extern */
 void *func_8006F828();                        /* extern */
 void *func_8006F88C(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */
 extern void *gCameraRig;
@@ -21,7 +21,7 @@ extern M2C_UNK drawStatusScreen;
 extern M2C_UNK func_8006EF70;
 extern M2C_UNK func_8006F0C0;
 extern M2C_UNK func_8006F284;
-extern M2C_UNK func_8006F300;
+extern M2C_UNK updateOptionMenu;
 extern M2C_UNK func_8006F73C;
 
 void func_8006F944(void) {
@@ -33,8 +33,8 @@ void func_8006F944(void) {
 
     if (M2C_FIELD(D_800B3964, s32 *, 0xBC) == 0) {
         if (M2C_FIELD(gCameraRig, s32 *, 0x74) != 0) {
-            M2C_FIELD(func_8006F828(), M2C_UNK **, 0x98) = &func_8006F300;
-            if (func_8006DAA0(M2C_FIELD(D_800B3964, s32 *, 0xBC)) != 0) {
+            M2C_FIELD(func_8006F828(), M2C_UNK **, 0x98) = &updateOptionMenu;
+            if (isEntryDisabled(M2C_FIELD(D_800B3964, s32 *, 0xBC)) != 0) {
                 M2C_FIELD(func_8006F88C(0x87, 0, -0x78, 0x19C, 0x20), M2C_UNK **, 0x98) = &func_8006EF70;
             }
         } else {
@@ -57,10 +57,10 @@ void func_8006F944(void) {
         temp_v0_2 = func_8006F828();
         M2C_FIELD(temp_v0_2, M2C_UNK **, 0x98) = &func_8006F0C0;
         M2C_FIELD(temp_v0_2, s32 *, 0x6C) = 1;
-        M2C_FIELD(func_8006F828(temp_v0_2), M2C_UNK **, 0x98) = &func_8006F300;
+        M2C_FIELD(func_8006F828(temp_v0_2), M2C_UNK **, 0x98) = &updateOptionMenu;
         var_a0 = M2C_FIELD(D_800B3964, s32 *, 0xBC);
 block_8:
-        if (func_8006DAA0(var_a0) != 0) {
+        if (isEntryDisabled(var_a0) != 0) {
             func_8006F88C(0x87, 0, -0x78, 0x19C, 0x20);
         }
     }
