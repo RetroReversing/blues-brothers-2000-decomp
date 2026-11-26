@@ -13,8 +13,8 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80026C04(M2C_UNK *, M2C_UNK, M2C_UNK); /* extern */
-extern M2C_UNK D_8014ABC0;
+extern M2C_UNK gSaveSlots;
 
 void func_80032980(void) {
-    func_80026C04(&D_8014ABC0, 0, 0x21C);
+    func_80026C04(&gSaveSlots, 0, 0x21C);
 }

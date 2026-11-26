@@ -23,7 +23,7 @@ void func_80043328(Obj *, s32, s32);
 s32 func_8006DA0C(Obj *);
 extern u8 *D_800B3964;
 extern f32 D_80009020;
-extern Rec D_8014ABC0[];
+extern Rec gSaveSlots[];
 
 void func_8006E4B8(Obj *o) {
     s32 *info;
@@ -51,7 +51,7 @@ o->f3C = o->f34;
     n = info[1];
     mask = 1 << (n & 0x1F);
     word = n / 32;
-    if (!(D_8014ABC0[*(s32 *)(D_800B3964 + 0x84)].flags[word] & mask)) {
+    if (!(gSaveSlots[*(s32 *)(D_800B3964 + 0x84)].flags[word] & mask)) {
         o->f68 = -1;
         if (o->fA8 == NULL) {
             o->fA8 = func_80013110(o);

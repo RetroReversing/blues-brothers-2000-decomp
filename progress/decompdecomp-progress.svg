@@ -2057,7 +2057,7 @@
 <g><title>func_80032454: {&#x27;matched&#x27;: 1}</title>
 <rect x="410.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8003245C: {&#x27;matched&#x27;: 1}</title>
+<g><title>saveCurrentSlot: {&#x27;matched&#x27;: 1}</title>
 <rect x="420.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80032820: {&#x27;matched&#x27;: 1}</title>
@@ -5033,7 +5033,7 @@
 <g><title>func_80086550: {&#x27;matched&#x27;: 1}</title>
 <rect x="730.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8008662C: {&#x27;matched&#x27;: 1}</title>
+<g><title>updateComboRound: {&#x27;matched&#x27;: 1}</title>
 <rect x="740.000" y="360" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_800869E8: {&#x27;matched&#x27;: 1}</title>

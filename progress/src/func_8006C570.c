@@ -31,7 +31,7 @@ s32 tickActorTimer(Menu *);
 void func_8002E6E4(void);
 void func_8002E79C(void);
 void func_8002E838(s32);
-void func_8003245C(void);
+void saveCurrentSlot(void);
 void drawCenteredMessage(s32);
 void func_8003D854(void);
 void func_8003DEF0(void);
@@ -98,7 +98,7 @@ void func_8006C570(Menu *arg0) {
         break;
     case 2:
         if (gPakInitWarn == 0) {
-            func_8003245C();
+            saveCurrentSlot();
             func_800263F4();
             func_80026848(1);
             func_8002642C();

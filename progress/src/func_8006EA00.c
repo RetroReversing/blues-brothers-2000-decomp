@@ -28,7 +28,7 @@ void func_8006E994();
 extern s32 D_800B82C0[];
 extern s32 gTextWaveTime[];
 extern s32 D_80107040[];
-extern Rec D_8014ABC0[];
+extern Rec gSaveSlots[];
 extern s32 D_8014ADE0[];
 extern s32 D_8014ADE8[];
 extern s32 D_8014ADEC[];
@@ -70,17 +70,17 @@ s32 func_8006EA00(Obj *arg0) {
     }
     y = 0;
     for (x = 0; x < 4; x++) {
-        y += D_8014ABC0[arg0->f84].f18[x];
+        y += gSaveSlots[arg0->f84].f18[x];
     }
     sum = y;
     for (y = 0, x = 0; y < 40; y++) {
-        if (D_8014ABC0[arg0->f84].f28[y] != 0) {
+        if (gSaveSlots[arg0->f84].f28[y] != 0) {
             x++;
         }
     }
     n = x;
     for (y = 0, x = 0; y < 8; y++) {
-        if ((D_8014ABC0[arg0->f84].f50 >> y) & 1) {
+        if ((gSaveSlots[arg0->f84].f50 >> y) & 1) {
             x++;
         }
     }

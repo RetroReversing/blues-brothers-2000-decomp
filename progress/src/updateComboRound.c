@@ -69,7 +69,7 @@ extern u8 D_80171A30[];
 extern u8 D_80171A34[];
 extern u8 D_80171A50[];
 
-void func_8008662C(Obj *arg0) {
+void updateComboRound(Obj *arg0) {
     char buf[0x20];
     s32 idx;
     s32 font;

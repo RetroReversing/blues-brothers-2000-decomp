@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699273.647443,
- "revision": 5539,
+ "saved_at": 1795699288.7448142,
+ "revision": 5541,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -15298,7 +15298,7 @@
   },
   "553516:2148034092": {
    "vram": 2148034092,
-   "function": "func_8008662C",
+   "function": "updateComboRound",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G8",
@@ -17060,22 +17060,6 @@
     "-mhard-float",
     "-mfp32"
    ]
-  },
-  "165300:2147645876": {
-   "toolchain": "sn-n64-281",
-   "flags": [
-    "-G0",
-    "-mips3",
-    "-O2",
-    "-mgas",
-    "-meb",
-    "-mcpu=VR4300",
-    "-mhard-float",
-    "-mfp64"
-   ],
-   "timeout": 20,
-   "function": "drawImageTiles",
-   "vram": 2147645876
   }
  },
  "instructions": "",
@@ -18014,8 +17998,7 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "local_source_158913792199": "common_local_source_158913792199.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -21393,10 +21376,10 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8003245C": {
+  "saveCurrentSlot": {
    "vram": 2147689564,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_80032820": {
    "vram": 2147690528,
@@ -26453,7 +26436,7 @@
    "matched_by": "permuter-158913791628",
    "readable": false
   },
-  "func_8008662C": {
+  "updateComboRound": {
    "vram": 2148034092,
    "matched_by": "manual-aeeb5be5af9d41ed",
    "readable": false
@@ -29546,7 +29529,7 @@
   "func_80085A5C": "local_source_158913791620",
   "func_80085C28": "local_source_158913791622",
   "func_800864B8": "local_source_158913791627",
-  "func_8008662C": "local_source_158913791629",
+  "updateComboRound": "local_source_158913791629",
   "func_80086B3C": "local_source_158913791631",
   "initStageScene": "local_source_158913791632",
   "func_80087160": "local_source_158913791634",
@@ -33831,7 +33814,7 @@
    "status": "open"
   },
   {
-   "name": "func_8003245C",
+   "name": "saveCurrentSlot",
    "vram": 2147689564,
    "size": 964,
    "status": "open"
@@ -39939,7 +39922,7 @@
    "status": "open"
   },
   {
-   "name": "func_8008662C",
+   "name": "updateComboRound",
    "vram": 2148034092,
    "size": 956,
    "status": "open"
@@ -43505,6 +43488,12 @@
    "kind": "func"
   },
   {
+   "name": "saveCurrentSlot",
+   "address": 2147689564,
+   "size": 964,
+   "kind": "func"
+  },
+  {
    "name": "updateFollowCamera",
    "address": 2147699172,
    "size": 1116,
@@ -43754,6 +43743,12 @@
    "name": "updateChaseAI",
    "address": 2148027596,
    "size": 1292,
+   "kind": "func"
+  },
+  {
+   "name": "updateComboRound",
+   "address": 2148034092,
+   "size": 956,
    "kind": "func"
   },
   {
@@ -45545,6 +45540,12 @@
    "kind": "data"
   },
   {
+   "name": "gSaveBuffer",
+   "address": 2148793208,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "gCameraSnapshot",
    "address": 2148794328,
    "size": 0,
@@ -45571,6 +45572,12 @@
   {
    "name": "gSplineSrcPoints",
    "address": 2148837800,
+   "size": 0,
+   "kind": "data"
+  },
+  {
+   "name": "gSaveSlots",
+   "address": 2148838336,
    "size": 0,
    "kind": "data"
   },
@@ -45900,6 +45907,11 @@
   },
   {
    "address": 2147488304,
+   "type": "char[]",
+   "source": "match"
+  },
+  {
+   "address": 2147488396,
    "type": "char[]",
    "source": "match"
   },
@@ -46654,6 +46666,11 @@
    "source": "match"
   },
   {
+   "address": 2148793208,
+   "type": "u8[]",
+   "source": "match"
+  },
+  {
    "address": 2148794328,
    "type": "State349E4",
    "source": "match"
@@ -46676,6 +46693,11 @@
   {
    "address": 2148837800,
    "type": "Vec3i *[]",
+   "source": "match"
+  },
+  {
+   "address": 2148838336,
+   "type": "Slot[]",
    "source": "match"
   },
   {

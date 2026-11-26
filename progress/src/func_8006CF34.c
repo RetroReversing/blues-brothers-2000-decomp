@@ -51,7 +51,7 @@ extern s32 D_800B81D4;
 extern u8 D_800BCFB8[0x40];
 extern Blob20 D_800BD0B8;
 extern u8 D_800BD1F0[0x28];
-extern SaveRec D_8014ABC0[];
+extern SaveRec gSaveSlots[];
 extern u32 gPadPressed;
 
 void func_8006CF34(Menu *arg0) {
@@ -103,7 +103,7 @@ void func_8006CF34(Menu *arg0) {
             func_80032980();
             D_800B81D4 = 0;
             D_800A9540 = 2;
-            D_800BD0B8 = *&D_8014ABC0[D_800B81C8].sub54;
+            D_800BD0B8 = *&gSaveSlots[D_800B81C8].sub54;
             {
                 u8 *p;
                 u8 *q;
@@ -126,13 +126,13 @@ void func_8006CF34(Menu *arg0) {
         if (gPadPressed & 0x8000) {
             D_800B81C0 = 1;
             D_800B81C8 = arg0->unk84;
-            if (D_8014ABC0[D_800B81C8].unk14 != 0) {
+            if (gSaveSlots[D_800B81C8].unk14 != 0) {
                 D_800B81D4 = 1;
             } else {
                 D_800B81D4 = 0;
             }
             D_800A9540 = 2;
-            D_800BD0B8 = *&D_8014ABC0[D_800B81C8].sub54;
+            D_800BD0B8 = *&gSaveSlots[D_800B81C8].sub54;
             if (func_8001B990(0x100, 0x32) != 0) {
                 D_800A9540++;
             }
@@ -149,12 +149,12 @@ void func_8006CF34(Menu *arg0) {
                 D_800A9540++;
             }
             for (i = 0; i < 0x40; i++) {
-                D_800BCFB8[i] = D_8014ABC0[D_800B81C8].data74[i];
+                D_800BCFB8[i] = gSaveSlots[D_800B81C8].data74[i];
             }
             for (i = 0; i < 0x28; i++) {
-                D_800BD1F0[i] = D_8014ABC0[D_800B81C8].name[i];
+                D_800BD1F0[i] = gSaveSlots[D_800B81C8].name[i];
             }
-            D_800A9548 = D_8014ABC0[D_800B81C8].unk50;
+            D_800A9548 = gSaveSlots[D_800B81C8].unk50;
             func_8002A360(0xC, 0x80);
             func_8002A360(8, 0xA3);
             arg0->state = 5;

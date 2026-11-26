@@ -29,7 +29,7 @@ extern Rec gComboSlots;
 extern Obj *D_80171A30;
 extern s32 D_80171A34;
 extern s32 D_80171A50;
-void func_8008662C(void);
+void updateComboRound(void);
 
 void func_800869E8(Obj *o) {
     s32 idx;
@@ -48,7 +48,7 @@ void func_800869E8(Obj *o) {
         D_80171A50 = 0;
         D_80171A34 = 0;
         D_801719AC->f10 = 0x4000;
-        o->f9C = func_8008662C;
+        o->f9C = updateComboRound;
         func_80026C04(&gComboSlots, 0, 0x50);
         gComboSlots.f0 = idx;
         t = gComboDefs[idx * 3];

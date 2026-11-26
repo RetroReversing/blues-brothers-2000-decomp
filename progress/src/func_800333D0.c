@@ -27,7 +27,7 @@ extern s32 D_800B499C;
 extern s32 D_800B49A0;
 extern s32 D_800B49A4;
 extern s32 D_800B49A8;
-extern M2C_UNK D_8014ABC0;
+extern M2C_UNK gSaveSlots;
 extern M2C_UNK func_80023078;
 
 typedef struct { unsigned char pad_0[152]; void * field_98; unsigned char pad_9C[96]; int field_FC; } __repair_record_arg0;
@@ -53,14 +53,14 @@ void func_800333D0(void *arg0) {
         if (D_800B499C != 0) {
             func_80032830();
         } else {
-            func_80026C04(&D_8014ABC0, 0, 0x21C);
+            func_80026C04(&gSaveSlots, 0, 0x21C);
         }
         if ((D_800B49A0 == 0) && ((D_800B499C == 0x10) || ((D_800AE1A0 / 256) < 3))) {
             flag = 1;
         }
         if (gPakInitWarn != 0) {
             M2C_FIELD(arg0, s32 *, 0xFC) = 0;
-            func_80026C04(&D_8014ABC0, 0, 0x21C);
+            func_80026C04(&gSaveSlots, 0, 0x21C);
             func_80030C40(arg0, 2);
         } else if (flag != 0) {
             func_80030C40(arg0, 6);
