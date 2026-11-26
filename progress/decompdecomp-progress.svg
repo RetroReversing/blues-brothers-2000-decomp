@@ -5747,7 +5747,7 @@
 <g><title>osCreateThread: {&#x27;matched&#x27;: 1}</title>
 <rect x="710.000" y="390" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800962D0: {&#x27;aside&#x27;: 1}</title>
+<g><title>excVectorStub: {&#x27;aside&#x27;: 1}</title>
 <rect x="720.000" y="390" width="8.000" height="8" fill="#b54747"/>
 </g>
 <g><title>func_80096CCC: {&#x27;aside&#x27;: 1}</title>
@@ -5780,22 +5780,22 @@
 <g><title>func_80097250: {&#x27;aside&#x27;: 1}</title>
 <rect x="20.000" y="400" width="8.000" height="8" fill="#b54747"/>
 </g>
-<g><title>func_80097260: {&#x27;matched&#x27;: 1}</title>
+<g><title>initHardware: {&#x27;matched&#x27;: 1}</title>
 <rect x="30.000" y="400" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80097580: {&#x27;matched&#x27;: 1}</title>
 <rect x="40.000" y="400" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_80097590: {&#x27;aside&#x27;: 1}</title>
+<g><title>getCop0Status: {&#x27;aside&#x27;: 1}</title>
 <rect x="50.000" y="400" width="8.000" height="8" fill="#b54747"/>
 </g>
 <g><title>osInvalICache: {&#x27;aside&#x27;: 1}</title>
 <rect x="60.000" y="400" width="8.000" height="8" fill="#b54747"/>
 </g>
-<g><title>func_80097620: {&#x27;aside&#x27;: 1}</title>
+<g><title>setFpcCsr: {&#x27;aside&#x27;: 1}</title>
 <rect x="70.000" y="400" width="8.000" height="8" fill="#b54747"/>
 </g>
-<g><title>func_80097630: {&#x27;aside&#x27;: 1}</title>
+<g><title>setCop0Status: {&#x27;aside&#x27;: 1}</title>
 <rect x="80.000" y="400" width="8.000" height="8" fill="#b54747"/>
 </g>
 <g><title>osWritebackDCache: {&#x27;aside&#x27;: 1}</title>
@@ -6137,13 +6137,13 @@
 <g><title>osViBlack: {&#x27;matched&#x27;: 1}</title>
 <rect x="410.000" y="410" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8009D860: {&#x27;matched&#x27;: 1}</title>
+<g><title>siRawReadIo: {&#x27;matched&#x27;: 1}</title>
 <rect x="420.000" y="410" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8009D8B0: {&#x27;matched&#x27;: 1}</title>
 <rect x="430.000" y="410" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8009D8D0: {&#x27;matched&#x27;: 1}</title>
+<g><title>siRawWriteIo: {&#x27;matched&#x27;: 1}</title>
 <rect x="440.000" y="410" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>osContStartReadData: {&#x27;matched&#x27;: 1}</title>

@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700132.637932,
- "revision": 5614,
+ "saved_at": 1795700191.8603609,
+ "revision": 5616,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16171,8 +16171,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "198592:2147679168": {
    "vram": 2147679168,
@@ -16704,7 +16703,7 @@
   },
   "622176:2148102752": {
    "vram": 2148102752,
-   "function": "func_80097260",
+   "function": "initHardware",
    "toolchain": "gcc-2.7.2-kmc",
    "flags": [
     "-G0",
@@ -27592,10 +27591,10 @@
    "best_score": 40,
    "best_by": "autopilot"
   },
-  "func_80097260": {
+  "initHardware": {
    "vram": 2148102752,
    "matched_by": "manual-e1735ae6904a41cb",
-   "readable": false
+   "readable": true
   },
   "func_80097580": {
    "vram": 2148103552,
@@ -28087,7 +28086,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8009D860": {
+  "siRawReadIo": {
    "vram": 2148128864,
    "matched_by": "autopilot",
    "readable": false
@@ -28097,7 +28096,7 @@
    "matched_by": "permuter-158913791998",
    "readable": false
   },
-  "func_8009D8D0": {
+  "siRawWriteIo": {
    "vram": 2148128976,
    "matched_by": "autopilot",
    "readable": false
@@ -29639,7 +29638,7 @@
   "func_80094350": "local_source_158913791840",
   "guLookAtReflectF": "local_source_158913791843",
   "guPerspectiveF": "local_source_158913791855",
-  "func_80097260": "local_source_158913791876",
+  "initHardware": "local_source_158913791876",
   "send": "local_source_158913791884",
   "kdebugserver": "local_source_158913791885",
   "_pullSubFrame": "local_source_158913791921",
@@ -41357,7 +41356,7 @@
    "status": "open"
   },
   {
-   "name": "func_800962D0",
+   "name": "excVectorStub",
    "vram": 2148098768,
    "size": 2556,
    "status": "asm"
@@ -41423,7 +41422,7 @@
    "status": "asm"
   },
   {
-   "name": "func_80097260",
+   "name": "initHardware",
    "vram": 2148102752,
    "size": 800,
    "status": "open"
@@ -41435,7 +41434,7 @@
    "status": "open"
   },
   {
-   "name": "func_80097590",
+   "name": "getCop0Status",
    "vram": 2148103568,
    "size": 12,
    "status": "asm"
@@ -41447,13 +41446,13 @@
    "status": "asm"
   },
   {
-   "name": "func_80097620",
+   "name": "setFpcCsr",
    "vram": 2148103712,
    "size": 16,
    "status": "asm"
   },
   {
-   "name": "func_80097630",
+   "name": "setCop0Status",
    "vram": 2148103728,
    "size": 16,
    "status": "asm"
@@ -42137,7 +42136,7 @@
    "status": "open"
   },
   {
-   "name": "func_8009D860",
+   "name": "siRawReadIo",
    "vram": 2148128864,
    "size": 76,
    "status": "open"
@@ -42149,7 +42148,7 @@
    "status": "open"
   },
   {
-   "name": "func_8009D8D0",
+   "name": "siRawWriteIo",
    "vram": 2148128976,
    "size": 72,
    "status": "open"
@@ -44191,6 +44190,12 @@
    "kind": "func"
   },
   {
+   "name": "excVectorStub",
+   "address": 2148098768,
+   "size": 2556,
+   "kind": "func"
+  },
+  {
    "name": "__osEnqueueThread",
    "address": 2148101828,
    "size": 72,
@@ -44215,9 +44220,33 @@
    "kind": "func"
   },
   {
+   "name": "initHardware",
+   "address": 2148102752,
+   "size": 800,
+   "kind": "func"
+  },
+  {
+   "name": "getCop0Status",
+   "address": 2148103568,
+   "size": 12,
+   "kind": "func"
+  },
+  {
    "name": "osInvalICache",
    "address": 2148103584,
    "size": 116,
+   "kind": "func"
+  },
+  {
+   "name": "setFpcCsr",
+   "address": 2148103712,
+   "size": 16,
+   "kind": "func"
+  },
+  {
+   "name": "setCop0Status",
+   "address": 2148103728,
+   "size": 16,
    "kind": "func"
   },
   {
@@ -44770,6 +44799,18 @@
    "name": "osViBlack",
    "address": 2148128768,
    "size": 92,
+   "kind": "func"
+  },
+  {
+   "name": "siRawReadIo",
+   "address": 2148128864,
+   "size": 76,
+   "kind": "func"
+  },
+  {
+   "name": "siRawWriteIo",
+   "address": 2148128976,
+   "size": 72,
    "kind": "func"
   },
   {
@@ -45745,6 +45786,12 @@
    "kind": "data"
   },
   {
+   "name": "osCounterRate",
+   "address": 2148250120,
+   "size": 4,
+   "kind": "data"
+  },
+  {
    "name": "gCameraTarget",
    "address": 2148257900,
    "size": 4,
@@ -45970,6 +46017,12 @@
    "name": "gIntroActors",
    "address": 2148997760,
    "size": 16,
+   "kind": "data"
+  },
+  {
+   "name": "monitorInstalled",
+   "address": 2149041584,
+   "size": 4,
    "kind": "data"
   }
  ],
@@ -47160,6 +47213,11 @@
    "source": "match"
   },
   {
+   "address": 2148250120,
+   "type": "u32",
+   "source": "match"
+  },
+  {
    "address": 2148257900,
    "type": "Player_552C4 *",
    "source": "match"
@@ -47347,6 +47405,11 @@
   {
    "address": 2148997760,
    "type": "Obj87B68 *[]",
+   "source": "match"
+  },
+  {
+   "address": 2149041584,
+   "type": "s32",
    "source": "match"
   }
  ],
@@ -47684,7 +47747,7 @@
    "asm_code": "Verified SDK assembly; excluded from C matching."
   },
   {
-   "name": "func_800962D0",
+   "name": "excVectorStub",
    "vram": 2148098768,
    "asm_code": "uses coprocessor 0 (the system's: mfc0, mtc0, rfe, eret): no C compiler emits it"
   },
@@ -47869,7 +47932,7 @@
    }
   },
   {
-   "name": "func_80097590",
+   "name": "getCop0Status",
    "vram": 2148103568,
    "asm_code": "Verified SDK assembly; excluded from C matching.",
    "verified_assembly": {
@@ -47915,7 +47978,7 @@
    "asm_code": "Verified SDK assembly; excluded from C matching."
   },
   {
-   "name": "func_80097620",
+   "name": "setFpcCsr",
    "vram": 2148103712,
    "verified_assembly": {
     "name": "__osSetFpcCsr",
@@ -47938,7 +48001,7 @@
    "asm_code": "Verified SDK assembly; excluded from C matching."
   },
   {
-   "name": "func_80097630",
+   "name": "setCop0Status",
    "vram": 2148103728,
    "asm_code": "Verified SDK assembly; excluded from C matching.",
    "verified_assembly": {

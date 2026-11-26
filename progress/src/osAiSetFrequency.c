@@ -5337,7 +5337,7 @@ extern int __osDpDeviceBusy(void);
 
 
  
-extern s32 D_800BB208;
+extern s32 osCounterRate;
 
 
 
@@ -5348,7 +5348,7 @@ s32 func_8009C7C0(u32 frequency) {
 
 
 
-    f = D_800BB208 / (float)frequency + .5f;
+    f = osCounterRate / (float)frequency + .5f;
     dacRate = f;
 
     if (dacRate < 132 ) {
@@ -5366,5 +5366,5 @@ s32 func_8009C7C0(u32 frequency) {
 
     (*(vu32*)((u32)(  (0x04500000  + 0x08)   )|0xA0000000) =(u32)(  1  )) ;
 
-    return D_800BB208 / (s32)dacRate;
+    return osCounterRate / (s32)dacRate;
 }

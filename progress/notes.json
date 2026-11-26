@@ -9730,7 +9730,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:f0517c6323f92cff4e15d25293fa9ffac4228cfe392571dcbaf32ad5096c4543"
  },
  {
-  "function": "func_80097260",
+  "function": "initHardware",
   "text": "ap14: KEY FINDING: this is libultra __osInitialize_common built by gcc-2.7.2-kmc (-G0 -mips3 -mgp32 -mfp32 -O2), NOT sn-n64-281: same source scores 8400 under the function profile, 3335 under sn-n64-272-0001 and 2170 under gcc-2.7.2-kmc (its epilogue jr ra; addiu sp, 3+1-word struct copies and 0x28 frame all agree; 0004/0006/970404/281 are far worse). Not exact, so no suggest possible yet. Source (all pieces matched in the diff): clock = 0 first (sw zero,0x14(sp) in the delay slot of the first jal); func_80097630(func_80097590() | 0x20000000); func_80097620(0x01000800); while (func_8009D860(0x1FC007FC, &pifdata)); while (func_8009D8D0(0x1FC007FC, pifdata | 8)); four Vec4 struct copies *(Vec4 *)0x80000000/80/100/180 = func_800962D0 (Vec4 = 4 u32); osWritebackDCache/osInvalICache(0x80000000, 0x190); func_800976C0(); func_800A1D20(4, &clock); clock &= ~0xF; if (clock != 0) D_800BB200 = clock (u64); D_800BB200 = func_800A8D90(D_800BB200 * 3, 4) (u64 call: a0:a1 = x*3 as shifts/adds, a2:a3 = 0:4); if (D_8000030C == 0) bzero(D_8000031C, 0x40); osTvType D_80000300: 0 -> 0x02F5B2D2, 2 -> 0x02E6025C, else 0x02E6D354 into D_800BB208; if (D_8017C5B0 == 0) { stat = (u32 *)0xBFF08004; kmc = (u32 *)0xBFF00000; if (*kmc == 0x4B4D4300) { copy words +0x10,+0x14,+0x18,+0x24,+0x28,+0x2C of func_800962D0 into D_80000180/184/188/194/198/19C through a walking volatile u32 *p (p++, p++, *p; p += 3, p++, *p, p[1]); osWritebackDCache/osInvalICache(0x80000180, 0x24); D_8017C5B0 = 1; if ((*stat & 0x10) == 0) { entry = *(u32 **)0xBFF00004; if (entry != kmc) { dst = (u32 *)((u32)entry | 0x20000000); n = 0x800; src = (u32 *)0xBFF00000; do *dst++ = *src++; while (--n != 0); } ((void (*)(u32, u32))(entry + 2))(0x4B4D4300, 0); } } }. Rows left under KMC (about 5): ori s0,0xBFF08004 sits before the 0x4B4D4300 compare in the target (ours after), lui a0,0x8000 position, and the last two copy loads: target keeps lw v0,4(v0) for D_8000019C (relative to the walking pointer, no addiu after the 198 load) while ours turns it into an absolute lui/lw of func_800962D0+0x2c or an extra addiu v0,4; branch offsets differ by one word from that. Needs a suggest to gcc-2.7.2-kmc once exact. Source saved at /tmp/dd-ap14/best_80097260_kmc.c (session folder, removed at stop).",
   "by": "manual-57bb4eaaaa484af6",
   "created_at": 1795629071.601548,
@@ -9739,7 +9739,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d7c171670dea41eaa1bc557d90bbdaacb0f6216f1d320cc7b72863c4ce3af806"
  },
  {
-  "function": "func_80097260",
+  "function": "initHardware",
   "text": "KMC compiler finding in note",
   "by": "manual-57bb4eaaaa484af6",
   "created_at": 1795629088.778008,
