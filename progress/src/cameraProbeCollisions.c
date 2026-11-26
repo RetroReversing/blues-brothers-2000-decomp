@@ -18,7 +18,8 @@ extern f32 D_800B4B48[][3];
 extern f32 cameraRayDirs[][3];
 extern f32 D_800B4BC0[][3];
 
-s32 func_800364B0(Obj *obj, s32 mode) {
+/* Casts four probe rays from the object's rotated direction set (mode picks the table) and returns a bitmask of the rays that hit collision. */
+s32 cameraProbeCollisions(Obj *obj, s32 mode) {
     f32 spare[4];
     f32 pos[4];
     f32 m1[10];

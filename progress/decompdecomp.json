@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700844.401057,
- "revision": 5680,
+ "saved_at": 1795700855.041197,
+ "revision": 5682,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -16213,8 +16213,7 @@
     "-O2",
     "-mgp32",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "151656:2147632232": {
    "vram": 2147632232,
@@ -16338,7 +16337,7 @@
   },
   "225456:2147706032": {
    "vram": 2147706032,
-   "function": "func_800364B0",
+   "function": "cameraProbeCollisions",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -21602,10 +21601,10 @@
    "matched_by": "manual-837241761e9b48f2",
    "readable": true
   },
-  "func_800364B0": {
+  "cameraProbeCollisions": {
    "vram": 2147706032,
    "matched_by": "manual-57bb4eaaaa484af6",
-   "readable": false
+   "readable": true
   },
   "func_80036780": {
    "vram": 2147706752,
@@ -29049,7 +29048,7 @@
   "clipCameraToTrack": "local_source_158913790677",
   "cameraPushFromWalls": "local_source_158913790678",
   "cameraAvoidWalls": "local_source_158913790679",
-  "func_800364B0": "local_source_158913790680",
+  "cameraProbeCollisions": "local_source_158913790680",
   "func_80036780": "local_source_158913790681",
   "func_800369EC": "local_source_158913790682",
   "initBoundsToSegment": "local_source_158913790684",
@@ -34085,7 +34084,7 @@
    "status": "open"
   },
   {
-   "name": "func_800364B0",
+   "name": "cameraProbeCollisions",
    "vram": 2147706032,
    "size": 720,
    "status": "open"
@@ -43753,6 +43752,12 @@
    "kind": "func"
   },
   {
+   "name": "cameraProbeCollisions",
+   "address": 2147706032,
+   "size": 720,
+   "kind": "func"
+  },
+  {
    "name": "expandBoundsToSegment",
    "address": 2147707856,
    "size": 296,
@@ -47599,7 +47604,7 @@
   },
   {
    "address": 2148223876,
-   "type": "Vec3[]",
+   "type": "f32[][3]",
    "source": "match"
   },
   {

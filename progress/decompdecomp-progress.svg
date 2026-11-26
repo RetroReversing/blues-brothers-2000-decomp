@@ -2192,7 +2192,7 @@
 <g><title>cameraAvoidWalls: {&#x27;matched&#x27;: 1}</title>
 <rect x="60.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_800364B0: {&#x27;matched&#x27;: 1}</title>
+<g><title>cameraProbeCollisions: {&#x27;matched&#x27;: 1}</title>
 <rect x="70.000" y="250" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_80036780: {&#x27;matched&#x27;: 1}</title>
