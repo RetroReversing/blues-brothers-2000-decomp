@@ -55,52 +55,54 @@ s32 func_80061B00(Unk80061800 *);
 s32 func_8002D260(s32 arg0);
 void func_80061B44(void *arg0);
 
-void updateSpiderAi(Unk80061800 *arg0) {
-    s32 result;
-    s32 i;
+/* Per-frame spider AI: runs the current behaviour state and, when it returns a
+   result, switches to the next state. Clears the pending-event flag at the end. */
+void updateSpiderAi(Unk80061800 *spider) {
+    s32 stepResult;
+    s32 stateIndex;
 
-    result = 1;
-    if (arg0->unk7C == 0) {
-        arg0->unk7C = 1;
-        arg0->unk78 = 0;
-        arg0->unkD8 = NULL;
-        syncActorPrevPos(arg0);
-        if (arg0->unkAC == 0.0f) {
-            arg0->unkAC = 0.015f;
+    stepResult = 1;
+    if (spider->unk7C == 0) {
+        spider->unk7C = 1;
+        spider->unk78 = 0;
+        spider->unkD8 = NULL;
+        syncActorPrevPos(spider);
+        if (spider->unkAC == 0.0f) {
+            spider->unkAC = 0.015f;
         }
-        if (arg0->unk104 == 0.0f) {
-            arg0->unk104 = 700.0f;
+        if (spider->unk104 == 0.0f) {
+            spider->unk104 = 700.0f;
         }
-        arg0->unk64 = randomRange(25, 30) * 100;
+        spider->unk64 = randomRange(25, 30) * 100;
     }
-    if (func_80076080(arg0) != 0) {
+    if (func_80076080(spider) != 0) {
         return;
     }
-    tickActorTimer(arg0);
-    if (arg0->unkD8 != NULL) {
-        result = arg0->unkD8(arg0);
+    tickActorTimer(spider);
+    if (spider->unkD8 != NULL) {
+        stepResult = spider->unkD8(spider);
     }
-    func_800853E8(arg0);
-    if (result != 0) {
-        arg0->unk8C = 0;
-        for (i = 0; D_800B7FC0[i] != NULL; i++) {
-            if (D_800B7FC0[i] == arg0->unkD8) {
+    func_800853E8(spider);
+    if (stepResult != 0) {
+        spider->unk8C = 0;
+        for (stateIndex = 0; D_800B7FC0[stateIndex] != NULL; stateIndex++) {
+            if (D_800B7FC0[stateIndex] == spider->unkD8) {
                 break;
             }
         }
-        switch (i) {
+        switch (stateIndex) {
         case 0:
         case 1:
         case 2:
         case 3:
-            switch (result) {
+            switch (stepResult) {
             case 1:
-                arg0->unk78 = 1;
-                arg0->unkD8 = func_80083B04;
+                spider->unk78 = 1;
+                spider->unkD8 = func_80083B04;
                 break;
             case 2:
-                arg0->unk78 = 2;
-                arg0->unkD8 = func_80083CC4;
+                spider->unk78 = 2;
+                spider->unkD8 = func_80083CC4;
                 break;
             default:
                 debugPrintf(D_80008978);
@@ -108,36 +110,36 @@ void updateSpiderAi(Unk80061800 *arg0) {
             }
             break;
         case 4:
-            arg0->unk78 = 2;
-            arg0->unkD8 = func_80083CC4;
-            arg0->unk8C = 0;
+            spider->unk78 = 2;
+            spider->unkD8 = func_80083CC4;
+            spider->unk8C = 0;
             break;
         case 5:
-            switch (result) {
+            switch (stepResult) {
             case 1:
-                arg0->unk64 = randomRange(25, 30) * 100;
-                arg0->unk78 = 0;
-                arg0->unkD8 = func_80083E98;
+                spider->unk64 = randomRange(25, 30) * 100;
+                spider->unk78 = 0;
+                spider->unkD8 = func_80083E98;
                 if (func_8002444C() & 1) {
-                    func_80080594(arg0, 2);
+                    func_80080594(spider, 2);
                 } else {
-                    func_80080594(arg0, 1);
+                    func_80080594(spider, 1);
                 }
                 break;
             case 2:
-                arg0->unk78 = 1;
-                arg0->unkD8 = func_80083EDC;
-                func_80080594(arg0, 0);
+                spider->unk78 = 1;
+                spider->unkD8 = func_80083EDC;
+                func_80080594(spider, 0);
                 break;
             case 3:
-                arg0->unk78 = 1;
-                arg0->unkD8 = func_80061B00;
-                arg0->unk6C = func_8002D260(arg0->unk10 + 0x8000);
+                spider->unk78 = 1;
+                spider->unkD8 = func_80061B00;
+                spider->unk6C = func_8002D260(spider->unk10 + 0x8000);
                 break;
             case 5:
-                arg0->unk78 = 2;
-                arg0->unkD8 = func_80083CC4;
-                arg0->unk8C = 0;
+                spider->unk78 = 2;
+                spider->unkD8 = func_80083CC4;
+                spider->unk8C = 0;
                 break;
             default:
                 debugPrintf(D_80008990);
@@ -145,12 +147,12 @@ void updateSpiderAi(Unk80061800 *arg0) {
             }
             break;
         default:
-            arg0->unk78 = 1;
-            arg0->unkD8 = func_80083B04;
+            spider->unk78 = 1;
+            spider->unkD8 = func_80083B04;
             break;
         }
-        func_80043328(arg0, arg0->unk74 + arg0->unk78, 0x100);
+        func_80043328(spider, spider->unk74 + spider->unk78, 0x100);
     }
-    arg0->unkC0 &= ~4;
-    func_80061B44(arg0);
+    spider->unkC0 &= ~4;
+    func_80061B44(spider);
 }
