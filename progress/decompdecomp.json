@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699481.0205178,
- "revision": 5565,
+ "saved_at": 1795699665.136281,
+ "revision": 5566,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -17062,6 +17062,19 @@
     "-mhard-float",
     "-mfp32"
    ]
+  },
+  "630836:2148111412": {
+   "toolchain": "gcc-2.7.2-kmc",
+   "flags": [
+    "-G0",
+    "-mips3",
+    "-mgp32",
+    "-mfp32",
+    "-O2"
+   ],
+   "timeout": 20,
+   "function": "alRaw16Pull",
+   "vram": 2148111412
   }
  },
  "instructions": "",
@@ -18000,7 +18013,8 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h"
+  "local_source_158913792199": "common_local_source_158913792199.h",
+  "code_8008C378": "common_code_8008C378.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -27701,7 +27715,7 @@
   "alRaw16Pull": {
    "vram": 2148111412,
    "matched_by": "autopilot",
-   "readable": false
+   "readable": true
   },
   "alLoadParam": {
    "vram": 2148112336,

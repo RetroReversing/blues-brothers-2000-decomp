@@ -1178,15 +1178,6 @@
   "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:7c1fe0e32ee27306e745160464f8d5586764d827dc28ee17027332f519eb3f14"
  },
  {
-  "function": "alRaw16Pull",
-  "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 924-byte function fingerprint fe63548d44329e193d290899bd97e9575f564597; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
-  "by": "autopilot",
-  "created_at": 1795274760.807229,
-  "score_before": 0,
-  "score_after": 0,
-  "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:fce6d7005484ce817298f0ca5a4927008a4b0100aaac2e208665358a1e68badb"
- },
- {
   "function": "alLoadParam",
   "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 428-byte function fingerprint 3a4cfb05a808056c79c82a98681d7e7a268e9a2f; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
   "by": "autopilot",
@@ -12664,5 +12655,14 @@
   "score_before": null,
   "score_after": null,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:da8ae21b9e98d139bfec3d94c6f7288c7aedb75a6f4add58b598476976be84a0"
+ },
+ {
+  "function": "alRaw16Pull",
+  "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 924-byte function fingerprint fe63548d44329e193d290899bd97e9575f564597; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
+  "by": "autopilot",
+  "created_at": 1795274760.807229,
+  "score_before": 0,
+  "score_after": 0,
+  "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:fce6d7005484ce817298f0ca5a4927008a4b0100aaac2e208665358a1e68badb"
  }
 ]
