@@ -51,15 +51,15 @@ typedef struct {
 
 extern Gfx *D_80177E18;
 extern Camera *volatile gCameraRig;
-extern Vtx D_800BD6C8[];
+extern Vtx spriteVerts[];
 
 void func_8001F230(Emitter *);
 void func_8001F1D0(Emitter *);
 void func_80024FE8(void *);
 s32 buildObjectMatrix(Emitter *, void *, s32);
 Image *getImageAsset(s32);
-s32 func_8001EAD0(void);
-s32 func_8001EB18(s32);
+s32 getVertexSlot(void);
+s32 bumpVertexCount(s32);
 void setRenderState(s32);
 s16 sins(u16);
 s16 coss(u16);
@@ -143,7 +143,7 @@ void func_80021818(Emitter *obj) {
         G(0xE3001001, 0);
         break;
     }
-    v = &D_800BD6C8[func_8001EAD0()];
+    v = &spriteVerts[getVertexSlot()];
     r = obj->size;
     y1 = -r;
     x1 = ((y1 * coss(gCameraRig->yaw)) >> 15) + ((y1 * sins(gCameraRig->yaw)) >> 15);
@@ -211,7 +211,7 @@ void func_80021818(Emitter *obj) {
         v++;
         G(0x01004008, (u32)(v - 4));
         G(0x07000204, 0x406);
-        func_8001EB18(4);
+        bumpVertexCount(4);
         p++;
     }
     setRenderState(-1);

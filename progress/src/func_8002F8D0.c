@@ -24,11 +24,11 @@ typedef struct {
     s32 unk7C;
 } Unk8002F8D0;
 
-extern VtxW D_800BD6C8[];
+extern VtxW spriteVerts[];
 extern GfxW *D_80177E18;
 extern char D_80001230[];
 
-s32 func_8001EF80(void *arg0, s32 arg1);
+s32 isObjectInRange(void *arg0, s32 arg1);
 void func_8001F230(void *arg0);
 s32 *getImageAsset(s32 arg0);
 void func_8002C3B8(s32 *);
@@ -37,9 +37,9 @@ void func_80024B58(void *arg0, void *arg1, s32 arg2);
 void func_80024A3C(void *arg0, void *arg1, s32 arg2);
 void func_80024BE0(void *arg0, void *arg1, s32 arg2);
 s32 buildObjectMatrix(void *obj, void *rot, s32 mul);
-s32 func_8001EAD0(void);
+s32 getVertexSlot(void);
 void setRenderState(s32 mode);
-s32 func_8001EB18(s32 arg0);
+s32 bumpVertexCount(s32 arg0);
 void debugPrintf(void *, ...);
 
 s32 func_8002F8D0(Unk8002F8D0 *arg0) {
@@ -65,7 +65,7 @@ s32 func_8002F8D0(Unk8002F8D0 *arg0) {
     b >>= 16;
     g &= 0xFF;
     b &= 0xFF;
-    if (func_8001EF80(arg0, 10000) == 0) {
+    if (isObjectInRange(arg0, 10000) == 0) {
         return 0;
     }
     if (arg0->unk30 < (f32)-arg0->unk70) {
@@ -87,43 +87,43 @@ s32 func_8002F8D0(Unk8002F8D0 *arg0) {
         func_80024BE0(m2, m1, arg0->unk18);
         buildObjectMatrix(arg0, m2, 0);
     }
-    idx = func_8001EAD0();
+    idx = getVertexSlot();
     if (idx == -1) {
         debugPrintf(D_80001230);
         return 1;
     }
     w >>= 6;
     h >>= 6;
-    D_800BD6C8[idx].ob[0] = size;
-    D_800BD6C8[idx].ob[1] = size;
-    D_800BD6C8[idx].ob[2] = 0;
-    D_800BD6C8[idx + 1].ob[0] = size;
-    D_800BD6C8[idx + 1].ob[1] = -size;
-    D_800BD6C8[idx + 1].ob[2] = 0;
-    D_800BD6C8[idx + 2].ob[0] = -size;
-    D_800BD6C8[idx + 2].ob[1] = -size;
-    D_800BD6C8[idx + 2].ob[2] = 0;
-    D_800BD6C8[idx + 3].ob[0] = -size;
-    D_800BD6C8[idx + 3].ob[1] = size;
-    D_800BD6C8[idx + 3].ob[2] = 0;
-    D_800BD6C8[idx].tc[0] = 0;
-    D_800BD6C8[idx].tc[1] = 0;
-    D_800BD6C8[idx + 1].tc[0] = w << 6;
-    D_800BD6C8[idx + 1].tc[1] = 0;
-    D_800BD6C8[idx + 2].tc[0] = w << 6;
-    D_800BD6C8[idx + 2].tc[1] = h << 6;
-    D_800BD6C8[idx + 3].tc[0] = 0;
-    D_800BD6C8[idx + 3].tc[1] = h << 6;
+    spriteVerts[idx].ob[0] = size;
+    spriteVerts[idx].ob[1] = size;
+    spriteVerts[idx].ob[2] = 0;
+    spriteVerts[idx + 1].ob[0] = size;
+    spriteVerts[idx + 1].ob[1] = -size;
+    spriteVerts[idx + 1].ob[2] = 0;
+    spriteVerts[idx + 2].ob[0] = -size;
+    spriteVerts[idx + 2].ob[1] = -size;
+    spriteVerts[idx + 2].ob[2] = 0;
+    spriteVerts[idx + 3].ob[0] = -size;
+    spriteVerts[idx + 3].ob[1] = size;
+    spriteVerts[idx + 3].ob[2] = 0;
+    spriteVerts[idx].tc[0] = 0;
+    spriteVerts[idx].tc[1] = 0;
+    spriteVerts[idx + 1].tc[0] = w << 6;
+    spriteVerts[idx + 1].tc[1] = 0;
+    spriteVerts[idx + 2].tc[0] = w << 6;
+    spriteVerts[idx + 2].tc[1] = h << 6;
+    spriteVerts[idx + 3].tc[0] = 0;
+    spriteVerts[idx + 3].tc[1] = h << 6;
     for (i = 0; i < 4; i++) {
-        D_800BD6C8[idx + i].cn[0] = r;
-        D_800BD6C8[idx + i].cn[1] = g;
-        D_800BD6C8[idx + i].cn[2] = b;
-        D_800BD6C8[idx + i].cn[3] = a;
+        spriteVerts[idx + i].cn[0] = r;
+        spriteVerts[idx + i].cn[1] = g;
+        spriteVerts[idx + i].cn[2] = b;
+        spriteVerts[idx + i].cn[3] = a;
     }
     {
         GfxW *gp = D_80177E18++;
         gp->w0 = 0x01004008;
-        gp->w1 = (u32)&D_800BD6C8[idx];
+        gp->w1 = (u32)&spriteVerts[idx];
     }
     {
         GfxW *gp = D_80177E18++;
@@ -141,6 +141,6 @@ s32 func_8002F8D0(Unk8002F8D0 *arg0) {
         gp->w1 = 0;
     }
     setRenderState(-1);
-    func_8001EB18(4);
+    bumpVertexCount(4);
     return 1;
 }

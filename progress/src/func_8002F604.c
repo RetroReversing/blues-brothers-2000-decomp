@@ -30,9 +30,9 @@ typedef struct Obj {
     s32 f78;
     s32 f7C;
 } Obj;
-s32 func_8001EAD0();
-s32 func_8001EB18();
-s32 func_8001EF80();
+s32 getVertexSlot();
+s32 bumpVertexCount();
+s32 isObjectInRange();
 s32 func_8001F230();
 s32 buildObjectMatrix();
 u8 *getImageAsset();
@@ -43,7 +43,7 @@ s32 func_80024FE8();
 s32 loadTextureClamped();
 s32 debugPrintf();
 extern char D_80001230[];
-extern Vtx D_800BD6C8[];
+extern Vtx spriteVerts[];
 extern Gfx *D_80177E18;
 
 s32 func_8002F604(Obj *obj) {
@@ -77,7 +77,7 @@ s32 func_8002F604(Obj *obj) {
     b = b >> 16;
     g &= 0xFF;
     b &= 0xFF;
-    if (func_8001EF80(obj, 0x7530) == 0) {
+    if (isObjectInRange(obj, 0x7530) == 0) {
         return 0;
     }
     if (obj->f30 < (f32) -obj->f70) {
@@ -106,16 +106,16 @@ s32 func_8002F604(Obj *obj) {
         func_80024FE8(sp10);
         buildObjectMatrix(obj, sp10, 0);
     }
-    idx = func_8001EAD0();
+    idx = getVertexSlot();
     start = idx;
     if (idx == -1) {
         debugPrintf(D_80001230);
         return 1;
     }
-    v0 = &D_800BD6C8[idx++];
-    v1 = &D_800BD6C8[idx++];
-    v2 = &D_800BD6C8[idx++];
-    v3 = &D_800BD6C8[idx++];
+    v0 = &spriteVerts[idx++];
+    v1 = &spriteVerts[idx++];
+    v2 = &spriteVerts[idx++];
+    v3 = &spriteVerts[idx++];
     v0->x = size;
     v0->z = size;
     v0->y = 0;
@@ -153,11 +153,11 @@ s32 func_8002F604(Obj *obj) {
     v3->s = 0;
     v3->t = tMax;
     g1 = D_80177E18++;
-    g1->w1 = (u32) &D_800BD6C8[idx - 4];
+    g1->w1 = (u32) &spriteVerts[idx - 4];
     g1->w0 = 0x01004008;
     g2 = D_80177E18++;
     g2->w0 = 0x07000204;
     g2->w1 = 0x406;
-    func_8001EB18(idx - start, g1);
+    bumpVertexCount(idx - start, g1);
     return 1;
 }

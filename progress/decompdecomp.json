@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700191.8603609,
- "revision": 5616,
+ "saved_at": 1795700245.5864708,
+ "revision": 5621,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -6824,7 +6824,7 @@
   },
   "128792:2147609368": {
    "vram": 2147609368,
-   "function": "func_8001EB18",
+   "function": "bumpVertexCount",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -11678,7 +11678,7 @@
   },
   "129920:2147610496": {
    "vram": 2147610496,
-   "function": "func_8001EF80",
+   "function": "isObjectInRange",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16175,7 +16175,7 @@
   },
   "198592:2147679168": {
    "vram": 2147679168,
-   "function": "func_8002FBC0",
+   "function": "drawQuadSprite",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16711,8 +16711,7 @@
     "-mgp32",
     "-mfp32",
     "-O2"
-   ],
-   "timeout": 20
+   ]
   },
   "325736:2147806312": {
    "vram": 2147806312,
@@ -19747,12 +19746,12 @@
    "matched_by": "permuter-158913790311",
    "readable": false
   },
-  "func_8001EAD0": {
+  "getVertexSlot": {
    "vram": 2147609296,
    "matched_by": "permuter-158913790313",
    "readable": false
   },
-  "func_8001EB18": {
+  "bumpVertexCount": {
    "vram": 2147609368,
    "matched_by": "permuter-158913790314",
    "readable": false
@@ -19777,7 +19776,7 @@
    "matched_by": "manual-807f4e416fb04e7d",
    "readable": false
   },
-  "func_8001EF80": {
+  "isObjectInRange": {
    "vram": 2147610496,
    "matched_by": "manual-a7b51e3b3e704687",
    "readable": false
@@ -21202,10 +21201,10 @@
    "matched_by": "manual-f86831e3bb304d6a",
    "readable": false
   },
-  "func_8002FBC0": {
+  "drawQuadSprite": {
    "vram": 2147679168,
    "matched_by": "manual-f86831e3bb304d6a",
-   "readable": false
+   "readable": true
   },
   "func_8002FEDC": {
    "vram": 2147679964,
@@ -28914,8 +28913,8 @@
   "func_8001E724": "local_source_158913790301",
   "func_8001E8B0": "local_source_158913790309",
   "func_8001E994": "local_source_158913790310",
-  "func_8001EB18": "local_source_158913790314",
-  "func_8001EF80": "local_source_158913790318",
+  "bumpVertexCount": "local_source_158913790314",
+  "isObjectInRange": "local_source_158913790318",
   "func_8001F0AC": "local_source_158913790319",
   "drawActorModel": "local_source_158913790322",
   "func_8001F5A4": "local_source_158913790323",
@@ -29010,7 +29009,7 @@
   "drawBillboardSprite": "local_source_158913790597",
   "func_8002F604": "local_source_158913790598",
   "func_8002F8D0": "local_source_158913790599",
-  "func_8002FBC0": "local_source_158913790600",
+  "drawQuadSprite": "local_source_158913790600",
   "drawRingEffect": "local_source_158913790603",
   "func_80030B90": "local_source_158913790605",
   "func_80030C6C": "local_source_158913790607",
@@ -31853,13 +31852,13 @@
    "status": "asm"
   },
   {
-   "name": "func_8001EAD0",
+   "name": "getVertexSlot",
    "vram": 2147609296,
    "size": 72,
    "status": "open"
   },
   {
-   "name": "func_8001EB18",
+   "name": "bumpVertexCount",
    "vram": 2147609368,
    "size": 88,
    "status": "open"
@@ -31889,7 +31888,7 @@
    "status": "open"
   },
   {
-   "name": "func_8001EF80",
+   "name": "isObjectInRange",
    "vram": 2147610496,
    "size": 300,
    "status": "open"
@@ -33605,7 +33604,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002FBC0",
+   "name": "drawQuadSprite",
    "vram": 2147679168,
    "size": 796,
    "status": "open"
@@ -43237,6 +43236,24 @@
    "kind": "func"
   },
   {
+   "name": "getVertexSlot",
+   "address": 2147609296,
+   "size": 72,
+   "kind": "func"
+  },
+  {
+   "name": "bumpVertexCount",
+   "address": 2147609368,
+   "size": 88,
+   "kind": "func"
+  },
+  {
+   "name": "isObjectInRange",
+   "address": 2147610496,
+   "size": 300,
+   "kind": "func"
+  },
+  {
    "name": "drawActorModel",
    "address": 2147611244,
    "size": 824,
@@ -43534,6 +43551,12 @@
    "name": "drawBillboardSprite",
    "address": 2147676864,
    "size": 836,
+   "kind": "func"
+  },
+  {
+   "name": "drawQuadSprite",
+   "address": 2147679168,
+   "size": 796,
    "kind": "func"
   },
   {
@@ -45805,6 +45828,12 @@
    "kind": "data"
   },
   {
+   "name": "spriteVerts",
+   "address": 2148259528,
+   "size": 0,
+   "kind": "data"
+  },
+  {
    "name": "gPlatformMaxOffsets",
    "address": 2148485632,
    "size": 0,
@@ -47226,6 +47255,11 @@
   {
    "address": 2148259504,
    "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148259528,
+   "type": "VtxW[]",
    "source": "match"
   },
   {

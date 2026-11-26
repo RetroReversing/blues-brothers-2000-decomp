@@ -57,15 +57,15 @@ typedef struct {
         _g->w1 = (u32)(v);                                                                \
     }
 
-s32 func_8001EAD0(s32);
-void func_8001EB18(s32);
+s32 getVertexSlot(s32);
+void bumpVertexCount(s32);
 void func_8001F230(Obj *);
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void buildObjectMatrix(Obj *, f32 (*)[3], s32);
 void func_80024C68(Vec3i *, void *, s32 *);
 void func_80024FE8(f32 (*)[3]);
 extern Cam *gCameraRig;
-extern Vtx D_800BD6C8[];
+extern Vtx spriteVerts[];
 extern Vec3i D_800CD170[];
 extern Vec3i D_800CD350[];
 extern Gfx *D_80177E18;
@@ -118,9 +118,9 @@ s32 func_800202BC(Obj *arg0) {
         D_800CD170[i].y = -100;
         D_800CD170[i].z = 0;
     }
-    base = func_8001EAD0(last);
+    base = getVertexSlot(last);
     for (i = k = 0; i < count; i++) {
-        Vtx *v = &D_800BD6C8[k++ + base];
+        Vtx *v = &spriteVerts[k++ + base];
         Vtx *v2;
         Vtx *v3;
         u8 alpha;
@@ -131,7 +131,7 @@ s32 func_800202BC(Obj *arg0) {
         v->cn[1] = 0;
         v->cn[2] = 0xFF;
         v->cn[3] = 0;
-        v2 = &D_800BD6C8[k++ + base];
+        v2 = &spriteVerts[k++ + base];
         v2->ob[0] = D_800CD350[i].x;
         v2->ob[1] = D_800CD350[i].y;
         value = 0xFF;
@@ -141,7 +141,7 @@ s32 func_800202BC(Obj *arg0) {
         v2->cn[2] = 0xFF;
         alpha = 0x80;
         v2->cn[3] = alpha;
-        v3 = &D_800BD6C8[k++ + base];
+        v3 = &spriteVerts[k++ + base];
         v3->ob[0] = D_800CD350[i].x - D_800CD170[i].x;
         v3->ob[1] = D_800CD350[i].y - D_800CD170[i].y;
         v3->ob[2] = D_800CD350[i].z - D_800CD170[i].z;
@@ -153,7 +153,7 @@ s32 func_800202BC(Obj *arg0) {
         v3->cn[3] = alpha;
     }
     nv = k;
-    gSPVertex(D_80177E18++, &D_800BD6C8[base], nv, 0);
+    gSPVertex(D_80177E18++, &spriteVerts[base], nv, 0);
     for (i = 0; i < count - 1; i++) {
         base = i * 3;
         a = base;
@@ -169,7 +169,7 @@ s32 func_800202BC(Obj *arg0) {
         gSP1Quadrangle(D_80177E18++, a, k, c, e, a);
         gSP1Quadrangle(D_80177E18++, e, c, k, a, a);
     }
-    func_8001EB18(nv);
+    bumpVertexCount(nv);
     return 1;
 }
 

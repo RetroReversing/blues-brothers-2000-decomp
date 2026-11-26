@@ -8,11 +8,11 @@ typedef struct {
     u32 w0;
     u32 w1;
 } Gwords;
-s32 func_8001EAD0(void);
-s32 func_8001EB18(s32);
+s32 getVertexSlot(void);
+s32 bumpVertexCount(s32);
 void debugPrintf(char *, ...);
 extern char D_80000E78[];
-extern Vtx_t D_800BD6C8[];
+extern Vtx_t spriteVerts[];
 extern Gwords *D_80177E18;
 
 void drawTextureRect(s32 x0, s32 y0, s32 x1, s32 y1, s32 s, s32 t, s32 alpha) {
@@ -23,15 +23,15 @@ void drawTextureRect(s32 x0, s32 y0, s32 x1, s32 y1, s32 s, s32 t, s32 alpha) {
     Vtx_t *v2;
     Vtx_t *v3;
 
-    start = i = func_8001EAD0();
+    start = i = getVertexSlot();
     if (i == -1) {
         debugPrintf(D_80000E78);
         return;
     }
-    v0 = &D_800BD6C8[i++];
-    v1 = &D_800BD6C8[i++];
-    v2 = &D_800BD6C8[i++];
-    v3 = &D_800BD6C8[i++];
+    v0 = &spriteVerts[i++];
+    v1 = &spriteVerts[i++];
+    v2 = &spriteVerts[i++];
+    v3 = &spriteVerts[i++];
     v0->ob[0] = x0;
     v0->ob[1] = y0;
     v0->ob[2] = 0;
@@ -71,7 +71,7 @@ void drawTextureRect(s32 x0, s32 y0, s32 x1, s32 y1, s32 s, s32 t, s32 alpha) {
     {
         Gwords *g = D_80177E18++;
         g->w0 = 0x01004008;
-        g->w1 = (u32)&D_800BD6C8[i - 4];
+        g->w1 = (u32)&spriteVerts[i - 4];
     }
     {
         Gwords *g = D_80177E18++;
@@ -83,5 +83,5 @@ void drawTextureRect(s32 x0, s32 y0, s32 x1, s32 y1, s32 s, s32 t, s32 alpha) {
         g->w0 = 0x07000604;
         g->w1 = 0x402;
     }
-    func_8001EB18(i - start);
+    bumpVertexCount(i - start);
 }

@@ -1091,10 +1091,10 @@
 <g><title>func_8001EAC8: {&#x27;aside&#x27;: 1}</title>
 <rect x="390.000" y="200" width="8.000" height="8" fill="#b54747"/>
 </g>
-<g><title>func_8001EAD0: {&#x27;matched&#x27;: 1}</title>
+<g><title>getVertexSlot: {&#x27;matched&#x27;: 1}</title>
 <rect x="400.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8001EB18: {&#x27;matched&#x27;: 1}</title>
+<g><title>bumpVertexCount: {&#x27;matched&#x27;: 1}</title>
 <rect x="410.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8001EB70: {&#x27;matched&#x27;: 1}</title>
@@ -1106,7 +1106,7 @@
 <g><title>func_8001EC90: {&#x27;matched&#x27;: 1}</title>
 <rect x="440.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8001EF80: {&#x27;matched&#x27;: 1}</title>
+<g><title>isObjectInRange: {&#x27;matched&#x27;: 1}</title>
 <rect x="450.000" y="200" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8001F0AC: {&#x27;matched&#x27;: 1}</title>
@@ -1952,7 +1952,7 @@
 <g><title>func_8002F8D0: {&#x27;matched&#x27;: 1}</title>
 <rect x="60.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8002FBC0: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawQuadSprite: {&#x27;matched&#x27;: 1}</title>
 <rect x="70.000" y="240" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8002FEDC: {&#x27;matched&#x27;: 1}</title>

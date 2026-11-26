@@ -1,6 +1,6 @@
-s32 func_8001EAD0(void);
-void func_8001EB18(s32);
-s32 func_8001EF80(void *, s32);
+s32 getVertexSlot(void);
+void bumpVertexCount(s32);
+s32 isObjectInRange(void *, s32);
 void func_8001F230(void *);
 void buildObjectMatrix(void *, f32 *, s32);
 s32 *getImageAsset(s32);
@@ -41,7 +41,7 @@ typedef struct Obj {
 } Obj;
 
 extern char D_80001230[];
-extern Vtx D_800BD6C8[];
+extern Vtx spriteVerts[];
 extern u8 D_80177E18[];
 #define GP (*(GfxW **)D_80177E18)
 
@@ -78,7 +78,7 @@ s32 drawBillboardSprite(Obj *obj) {
     c2 >>= 16;
     c1 &= 0xFF;
     c2 &= 0xFF;
-    if (func_8001EF80(obj, 100000) == 0) {
+    if (isObjectInRange(obj, 100000) == 0) {
         return 0;
     }
     if (obj->x30 < (f32)-obj->x70) {
@@ -118,15 +118,15 @@ s32 drawBillboardSprite(Obj *obj) {
         func_80024FE8(m1);
         buildObjectMatrix(obj, m1, 0);
     }
-    firstVtx = vtxIndex = func_8001EAD0();
+    firstVtx = vtxIndex = getVertexSlot();
     if (vtxIndex == -1) {
         debugPrintf(D_80001230);
         return 1;
     }
-    v0 = &D_800BD6C8[vtxIndex++];
-    v1 = &D_800BD6C8[vtxIndex++];
-    v2 = &D_800BD6C8[vtxIndex++];
-    v3 = &D_800BD6C8[vtxIndex++];
+    v0 = &spriteVerts[vtxIndex++];
+    v1 = &spriteVerts[vtxIndex++];
+    v2 = &spriteVerts[vtxIndex++];
+    v3 = &spriteVerts[vtxIndex++];
     v0->ob[0] = -halfSize;
     v0->ob[1] = -halfSize;
     v0->ob[2] = 0;
@@ -166,7 +166,7 @@ s32 drawBillboardSprite(Obj *obj) {
     {
         GfxW *_g = GP++;
         _g->w0 = 0x01004008;
-        _g->w1 = (u32)&D_800BD6C8[vtxIndex - 4];
+        _g->w1 = (u32)&spriteVerts[vtxIndex - 4];
     }
     {
         GfxW *_g = GP++;
@@ -178,6 +178,6 @@ s32 drawBillboardSprite(Obj *obj) {
         _g->w0 = 0x07000604;
         _g->w1 = 0x402;
     }
-    func_8001EB18(vtxIndex - firstVtx);
+    bumpVertexCount(vtxIndex - firstVtx);
     return 1;
 }

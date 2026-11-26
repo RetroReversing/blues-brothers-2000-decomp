@@ -22,7 +22,7 @@ typedef struct {
 } Obj;
 
 Img *getImageAsset(s32);
-s32 func_8001EF80(Obj *, s32);
+s32 isObjectInRange(Obj *, s32);
 void func_8001F230(Obj *);
 void func_80024FE8(s32 *);
 void func_80024BE0(s32 *, s32 *, s32);
@@ -58,7 +58,7 @@ s32 drawImageObject(Obj *obj) {
 
     halfSize = obj->unk70;
     img = getImageAsset(obj->unk60);
-    if (func_8001EF80(obj, 30000) == 0) {
+    if (isObjectInRange(obj, 30000) == 0) {
         return 0;
     }
     func_8001F230(obj);

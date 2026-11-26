@@ -17,7 +17,7 @@ M2C_UNK mtxTransformVec3(void *, M2C_UNK *, f32 *);    /* extern */
 extern void *gCameraRig;
 extern M2C_UNK D_800CD148;
 
-s32 func_8001EF80(void *arg0, s32 arg1) {
+s32 isObjectInRange(void *arg0, s32 arg1) {
     f32 sp10[3];
 
     sp10[0] = M2C_FIELD(arg0, f32 *, 4) - M2C_FIELD(gCameraRig, f32 *, 4);

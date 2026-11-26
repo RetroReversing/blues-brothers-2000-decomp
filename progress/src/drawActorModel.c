@@ -1,4 +1,4 @@
-s32 func_8001EF80(void *, s32);
+s32 isObjectInRange(void *, s32);
 s32 func_8001F0AC(void *, s32);
 void func_8001F230(void *);
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
@@ -72,7 +72,7 @@ s32 drawActorModel(Obj *obj) {
     obj->xF8 &= ~4;
     param = obj->x94;
     if (D_800AB408[0] == 0) {
-        visible = func_8001EF80(obj, param);
+        visible = isObjectInRange(obj, param);
     } else {
         visible = func_8001F0AC(obj, 0x12C0);
     }

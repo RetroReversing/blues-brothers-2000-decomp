@@ -40,9 +40,9 @@ typedef struct {
 
 s16 sins(u16);
 s16 coss(u16);
-s32 func_8001EAD0(void);
-void func_8001EB18(s32);
-s32 func_8001EF80(void *, s32);
+s32 getVertexSlot(void);
+void bumpVertexCount(s32);
+s32 isObjectInRange(void *, s32);
 void func_8001F230(void *);
 s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void buildObjectMatrix(void *, void *, s32);
@@ -54,7 +54,7 @@ void func_80024FE8(void *);
 void loadTexture(s32, void *, s32, s32);
 void debugPrintf(char *);
 extern char D_80001230[];
-extern Vtx30600 D_800BD6C8[];
+extern Vtx30600 spriteVerts[];
 extern GfxW30600 *D_80177E18;
 
 /* Draws a ring-shaped effect around an object: loads its texture, builds a cylinder of vertices and quads, and submits it to the display list. */
@@ -88,7 +88,7 @@ s32 drawRingEffect(Obj30600 *obj) {
     texHeight = 0x7C0;
     cr = 0xD1;
     cg = 0xBD;
-    if (func_8001EF80(obj, 100000) == 0) {
+    if (isObjectInRange(obj, 100000) == 0) {
         return 0;
     }
     if (obj->unk30 < (f32)-obj->unk70) {
@@ -122,7 +122,7 @@ s32 drawRingEffect(Obj30600 *obj) {
     func_80024A3C(mtxA, mtxB, obj->unk14);
     func_80024BE0(mtxB, mtxA, obj->unk18);
     buildObjectMatrix(obj, mtxB, 1);
-    vtxIdx = func_8001EAD0();
+    vtxIdx = getVertexSlot();
     vtxBase = vtxIdx;
     if (vtxIdx == -1) {
         debugPrintf(D_80001230);
@@ -131,38 +131,38 @@ s32 drawRingEffect(Obj30600 *obj) {
     segments = 14;
     for (i = 0, t = 0; i <= segments; i++) {
         ang = (i << 16) / segments;
-        D_800BD6C8[vtxIdx].ob[0] = (radiusTop * sins(ang)) >> 15;
-        D_800BD6C8[vtxIdx].ob[2] = (radiusTop * coss(ang)) >> 15;
-        D_800BD6C8[vtxIdx].ob[1] = 100;
-        D_800BD6C8[vtxIdx].cn[0] = cb;
-        D_800BD6C8[vtxIdx].cn[1] = cr;
-        D_800BD6C8[vtxIdx].cn[2] = cg;
-        D_800BD6C8[vtxIdx].cn[3] = 0;
-        D_800BD6C8[vtxIdx].tc[0] = t;
-        D_800BD6C8[vtxIdx].tc[1] = texHeight;
+        spriteVerts[vtxIdx].ob[0] = (radiusTop * sins(ang)) >> 15;
+        spriteVerts[vtxIdx].ob[2] = (radiusTop * coss(ang)) >> 15;
+        spriteVerts[vtxIdx].ob[1] = 100;
+        spriteVerts[vtxIdx].cn[0] = cb;
+        spriteVerts[vtxIdx].cn[1] = cr;
+        spriteVerts[vtxIdx].cn[2] = cg;
+        spriteVerts[vtxIdx].cn[3] = 0;
+        spriteVerts[vtxIdx].tc[0] = t;
+        spriteVerts[vtxIdx].tc[1] = texHeight;
         vtxIdx++;
-        D_800BD6C8[vtxIdx].ob[0] = (radiusBottom * sins(ang)) >> 15;
-        D_800BD6C8[vtxIdx].ob[2] = (radiusBottom * coss(ang)) >> 15;
-        D_800BD6C8[vtxIdx].cn[0] = cb;
-        D_800BD6C8[vtxIdx].ob[1] = 0;
-        D_800BD6C8[vtxIdx].cn[1] = cr;
-        D_800BD6C8[vtxIdx].cn[2] = cg;
-        D_800BD6C8[vtxIdx].cn[3] = 0x60;
-        D_800BD6C8[vtxIdx].tc[0] = t;
-        D_800BD6C8[vtxIdx].tc[1] = 0;
+        spriteVerts[vtxIdx].ob[0] = (radiusBottom * sins(ang)) >> 15;
+        spriteVerts[vtxIdx].ob[2] = (radiusBottom * coss(ang)) >> 15;
+        spriteVerts[vtxIdx].cn[0] = cb;
+        spriteVerts[vtxIdx].ob[1] = 0;
+        spriteVerts[vtxIdx].cn[1] = cr;
+        spriteVerts[vtxIdx].cn[2] = cg;
+        spriteVerts[vtxIdx].cn[3] = 0x60;
+        spriteVerts[vtxIdx].tc[0] = t;
+        spriteVerts[vtxIdx].tc[1] = 0;
         vtxIdx++;
         t += texStep;
     }
     {
         GfxW30600 *_g = D_80177E18++;
         _g->w0 = 0x01000000 | ((segments * 2 + 2) << 12) | ((segments * 2 + 2) << 1);
-        _g->w1 = (u32)&D_800BD6C8[vtxBase];
+        _g->w1 = (u32)&spriteVerts[vtxBase];
     }
     for (i = 0; i < segments * 2; i += 2) {
         QUAD(D_80177E18++, i, i + 1, i + 3, i + 2, i);
         QUAD(D_80177E18++, i, i + 2, i + 3, i + 1, i);
     }
-    func_8001EB18(vtxIdx - vtxBase);
+    bumpVertexCount(vtxIdx - vtxBase);
     {
         GfxW30600 *_g = D_80177E18++;
         _g->w0 = 0xE7000000;

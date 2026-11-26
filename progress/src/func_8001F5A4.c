@@ -12,7 +12,7 @@ typedef s32 M2C_UNK32;
 #define M2C_OVERFLOW(a) (0)
 #endif
 typedef struct { u32 w0; u32 w1; } Gfx;
-s32 func_8001EF80();
+s32 isObjectInRange();
 s32 func_8001F0AC();
 s32 func_8001F230();
 s32 func_80022C2C();
@@ -77,7 +77,7 @@ s32 func_8001F5A4(Act *self) {
     b = c[2];
     self->fF8 &= ~4;
     if (D_800AB408 == 0) {
-        ok = func_8001EF80(self, v94);
+        ok = isObjectInRange(self, v94);
     } else {
         ok = func_8001F0AC(self, 0x12C0);
     }

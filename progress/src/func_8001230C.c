@@ -3,7 +3,7 @@ void *spawnEffectObj(s32, s32, s32, s32);
 s32 func_8002B240(s32, s32, s32, s32, s32, s32);
 extern s32 D_800BD218[];
 extern void func_80012228(void);
-extern s32 func_8002FBC0;
+extern s32 drawQuadSprite;
 
 #define F(p, T, o) (*(T *)((s8 *)(p) + (o)))
 
@@ -12,7 +12,7 @@ void *func_8001230C(void *arg0) {
     s32 g;
 
     temp_v0 = spawnEffectObj(1, (s32) F(arg0, f32, 4), (s32) F(arg0, f32, 8), (s32) F(arg0, f32, 0xC));
-    F(temp_v0, void *, 0x98) = &func_8002FBC0;
+    F(temp_v0, void *, 0x98) = &drawQuadSprite;
     g = D_800BD218[0];
     F(temp_v0, void *, 0x9C) = &func_80012228;
     F(temp_v0, s32, 0x70) = 0x5A;

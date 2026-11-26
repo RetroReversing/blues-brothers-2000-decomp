@@ -35,7 +35,7 @@ extern f32 D_80009598;
 extern char gCameraRig[];
 extern char gCameraTarget[];
 extern s32 gMeterPipImage[];
-void func_8002FBC0(void);
+void drawQuadSprite(void);
 void func_8007C1C8(void);
 
 Obj *func_8007C310(void) {
@@ -50,7 +50,7 @@ Obj *func_8007C310(void) {
     y = (*(Obj **)gCameraTarget)->y + D_80009598;
     obj = spawnEffectObj(0x1008, x, y, (*(Obj **)gCameraTarget)->z + (f32)((coss(*(u16 *)((char *)(*(Obj **)gCameraTarget) + 0x12)) * 25) >> 14));
     one = 1;
-    obj->f98 = func_8002FBC0;
+    obj->f98 = drawQuadSprite;
     obj->f60 = gMeterPipImage[0];
     obj->f58 = packDrawFlags(0, 0, one, 2, 0, 0, one, one);
     pl = (*(Obj **)gCameraTarget);
