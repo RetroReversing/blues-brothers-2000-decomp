@@ -2,7 +2,7 @@ s32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);
 void *spawnEffectObj(s32, s32, s32, s32);
 void sendCommand(s32, s32);
 s32 func_8002D260(s32);
-void func_8002FEDC(void *);
+void drawQuadSpriteUnculled(void *);
 void func_8007C4CC(void *);
 void func_8007C544(void *);
 
@@ -50,7 +50,7 @@ Obj *func_8007C54C(void) {
     Obj *o;
 
     o = spawnEffectObj(0x1008, 0, 0, 0);
-    o->x98 = func_8002FEDC;
+    o->x98 = drawQuadSpriteUnculled;
     o->x28 = D_8000959C;
     o->x2C = D_800095A0;
     o->x30 = D_800095A4;
@@ -70,7 +70,7 @@ Obj *func_8007C54C(void) {
     o->x18 = 0x8000;
     o->x9C = func_8007C544;
     o = spawnEffectObj(0x1008, 0, 0, 0);
-    o->x98 = func_8002FEDC;
+    o->x98 = drawQuadSpriteUnculled;
     o->x28 = D_800095A8;
     o->x2C = D_800095AC;
     o->x30 = D_800095B0;

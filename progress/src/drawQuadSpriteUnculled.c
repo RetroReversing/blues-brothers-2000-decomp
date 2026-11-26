@@ -44,7 +44,7 @@ void debugPrintf(void *, ...);
 
 void loadTextureClamped(s32 type, void *img, void *pal, s32);
 
-s32 func_8002FEDC(Unk8002FEDC *arg0) {
+s32 drawQuadSpriteUnculled(Unk8002FEDC *arg0) {
     s32 size;
     s32 r;
     s32 g;

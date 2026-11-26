@@ -43,38 +43,41 @@ struct Obj {
     /* 0xE8 */ u8 padE8[8];
     /* 0xF0 */ s32 fF0;
 };
-extern f32 D_800AA1EC[3];
+extern f32 gTargetOffset[3];
 extern Obj *gCameraRig;
 extern s32 gTextWaveTime;
 extern Obj *gCameraTarget;
 extern s32 D_800BD100;
 extern u8 D_800BD1F0[];
 
-void func_80011420(Obj *arg0) {
-    f32 dz;
-    f32 dy;
-    f32 lim;
+/* Proximity trigger: once the camera target is within range, runs the trigger
+   behaviour and marks it used for this stage; otherwise it updates the idle wave
+   animation. */
+void updateProximityTrigger(Obj *self) {
+    f32 offZ;
+    f32 offY;
+    f32 range;
 
-    if (arg0->f7C == 0) {
-        if (D_800BD1F0[D_800BD100 * 10 + arg0->f70] == 1) {
-            arg0->fA0(arg0);
+    if (self->f7C == 0) {
+        if (D_800BD1F0[D_800BD100 * 10 + self->f70] == 1) {
+            self->fA0(self);
             return;
         }
-        arg0->f58 = packDrawFlags(1, 1, 0, 2, 0, 1, 1, 0);
-        arg0->f0 = 0x101;
-        arg0->f7C = 1;
-        arg0->fB8 = 0x98;
-        arg0->fE4 = func_80023E3C(0x98);
-        if (arg0->f74 == 0) {
-            arg0->fA8 = func_8002B240(arg0->x, arg0->y, arg0->z, 0xBF, 3000, 0);
+        self->f58 = packDrawFlags(1, 1, 0, 2, 0, 1, 1, 0);
+        self->f0 = 0x101;
+        self->f7C = 1;
+        self->fB8 = 0x98;
+        self->fE4 = func_80023E3C(0x98);
+        if (self->f74 == 0) {
+            self->fA8 = func_8002B240(self->x, self->y, self->z, 0xBF, 3000, 0);
         }
     }
-    D_800AA1EC[0] = arg0->x - gCameraTarget->x;
-    D_800AA1EC[1] = dz = arg0->z - gCameraTarget->z;
-    D_800AA1EC[2] = dy = arg0->y - gCameraTarget->y;
-    lim = 180.0f;
-    if (func_8002DD60(D_800AA1EC[0]) < lim && func_8002DD60(dy) < 360.0f && func_8002DD60(dz) < lim) {
-        func_8002ADFC(6, 1000, arg0);
+    gTargetOffset[0] = self->x - gCameraTarget->x;
+    gTargetOffset[1] = offZ = self->z - gCameraTarget->z;
+    gTargetOffset[2] = offY = self->y - gCameraTarget->y;
+    range = 180.0f;
+    if (func_8002DD60(gTargetOffset[0]) < range && func_8002DD60(offY) < 360.0f && func_8002DD60(offZ) < range) {
+        func_8002ADFC(6, 1000, self);
         if (gCameraTarget->f90 == 1) {
             gCameraTarget->fF0 = 0xFF;
             gCameraTarget->ang = gCameraRig->ang + 0x8000;
@@ -85,16 +88,16 @@ void func_80011420(Obj *arg0) {
         } else {
             gCameraTarget->f6C = 2;
         }
-        D_800BD1F0[D_800BD100 * 10 + arg0->f70] = 1;
+        D_800BD1F0[D_800BD100 * 10 + self->f70] = 1;
         func_8001B91C();
-        if (arg0->fA8 != 0) {
-            arg0->fA8->fA0(arg0->fA8);
+        if (self->fA8 != 0) {
+            self->fA8->fA0(self->fA8);
         }
-        arg0->fA0(arg0);
+        self->fA0(self);
         return;
     }
-    func_8002D604(arg0);
-    arg0->f38 = (coss((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
-    arg0->f3C = (sins((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
-    arg0->f34 = (sins((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
+    func_8002D604(self);
+    self->f38 = (coss((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
+    self->f3C = (sins((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
+    self->f34 = (sins((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;
 }

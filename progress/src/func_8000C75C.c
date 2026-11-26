@@ -4,7 +4,7 @@ void *spawnEffectObj(s32, s32, s32, s32);
 s32 getObjPoolStart(s32);
 s32 getObjPoolEnd(s32);
 void func_8000C614(void);
-void func_80011420(void);
+void updateProximityTrigger(void);
 
 typedef struct Ent {
     s32 active;
@@ -28,7 +28,7 @@ void func_8000C75C(void) {
     start = (Ent *)getObjPoolStart(0);
     end = (Ent *)getObjPoolEnd(0);
     do { for (p = start; p <= end; p++) {
-        if (p->active != 0 && p->update == func_80011420) {
+        if (p->active != 0 && p->update == updateProximityTrigger) {
             *(s32 *)(o + 0x70) += 1;
             if (D_800BD1F0[D_800BD0E0[8] * 10 + p->slot] == 1) {
                 *(s32 *)(o + 0x74) += 1;

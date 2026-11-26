@@ -7994,7 +7994,7 @@
    "unit": "main_text_B780",
    "mode": "rom"
   },
-  "func_80011420": {
+  "updateProximityTrigger": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -8004,10 +8004,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "da9ad90c2f291578d4ea5a9e6b251170d0ecc3e4f8f514c669947abba3907d04",
-   "recorded_at": 1795696831.093741,
-   "attempt_id": 158913861761,
-   "source_sha256": "dcbb2ca5df996db5255f02d26723f6a64bed83f335a19fea474e9cbdafb71f1f",
+   "symbols_sha256": "4802341045e85e30803d0af9a443ba8e1c044e04a8d9ffc4c034df86b284dd44",
+   "recorded_at": 1795700262.8240588,
+   "attempt_id": 158913862082,
+   "source_sha256": "4f62592a58bd3fd3d5f5438d7138109f719438474b7eab5f085693acf9cc6ba9",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 747,
    "compiler": {
@@ -8049,7 +8049,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -8058,32 +8058,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G0",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913790053",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -59186,7 +59160,7 @@
    "unit": "local_source_158913790600",
    "mode": "rom"
   },
-  "func_8002FEDC": {
+  "drawQuadSpriteUnculled": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -197542,7 +197516,7 @@
   "35373202f3a453bea8eab0be6f528cc4803a5ed622240a64d5824a850c4c4ff0": "f32 func_8002DD60(f32);\n\ns32 func_8000FA40(f32 arg0, f32 arg1, f32 arg2, f32 arg3)\n{\n    f32 temp_fs1;\n    f32 temp_fs0;\n\n    temp_fs1 = func_8002DD60(((arg0 + arg1) - arg2) - arg3);\n    temp_fs0 = func_8002DD60(arg0 - arg1);\n    if ((temp_fs0 + func_8002DD60(arg2 - arg3)) < temp_fs1)\n    {\n        return 0;\n    }\n    return 1;\n}\n",
   "4064c4b35b041ad779f1775cd40d7ee7e79f941d807d28b8aeab01ff9027f256": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nextern s32 D_800BD100;\n\nextern s32 D_800BD100;\nextern u8 D_800BD1F0[];\n\ns32 func_80011388(void) {\n    s32 a1;\n    u8 *p;\n    s32 base;\n\n    a1 = 0;\n    p = D_800BD1F0;\n    base = D_800BD100 * 0xA;\n    for (a1 = 0; a1 < 0xA; a1++) {\n        if (((u8 *)(base + a1) + 0)[(s32)p] == 0) {\n            return 0;\n        }\n    }\n    return 1;\n}\n",
   "4db3c7f22810f15fbc18fbac50834a0dfee153e35e9778fcb7d0a9f8d3289596": "extern u8 D_800BD1F0[];\n\ns32 func_800113D8(s32 arg0)\n{\n    s32 i;\n    s32 p;\n    s32 base;\n\n    i = 0;\n    p = (s32)D_800BD1F0;\n    base = arg0 * 0xA;\n    for (; i < 0xA; i++)\n    {\n        if (*(u8 *)(base + i + p) == 0)\n        {\n            return 0;\n        }\n    }\n    return 1;\n}\n",
-  "dcbb2ca5df996db5255f02d26723f6a64bed83f335a19fea474e9cbdafb71f1f": "s16 coss(u16);\ns16 sins(u16);\nvoid *func_8001B91C(void);\ns32 func_800221C0(s32, s32, s32, s32, s32, s32, s32, s32);\ns32 func_80023E3C(s32);\nvoid func_8002ADFC(s32, s32, void *);\nvoid *func_8002B240(s32, s32, s32, s32, s32, s32);\nvoid func_8002D604(void *);\nf32 func_8002DD60(f32);\nvoid func_800433A8(void *, s32, s32);\nvoid func_8003BC40();\ntypedef struct Obj Obj;\ntypedef void (*Fn)(Obj *);\nstruct Obj {\n    /* 0x00 */ s32 f0;\n    /* 0x04 */ f32 x;\n    /* 0x08 */ f32 y;\n    /* 0x0C */ f32 z;\n    /* 0x10 */ s32 ang;\n    /* 0x14 */ u8 pad14[0x20];\n    /* 0x34 */ s32 f34;\n    /* 0x38 */ s32 f38;\n    /* 0x3C */ s32 f3C;\n    /* 0x40 */ u8 pad40[0x18];\n    /* 0x58 */ s32 f58;\n    /* 0x5C */ u8 pad5C[0x10];\n    /* 0x6C */ s32 f6C;\n    /* 0x70 */ s32 f70;\n    /* 0x74 */ s32 f74;\n    /* 0x78 */ s32 f78;\n    /* 0x7C */ s32 f7C;\n    /* 0x80 */ u8 pad80[0x10];\n    /* 0x90 */ s32 f90;\n    /* 0x94 */ u8 pad94[8];\n    /* 0x9C */ void *f9C;\n    /* 0xA0 */ Fn fA0;\n    /* 0xA4 */ s32 fA4;\n    /* 0xA8 */ Obj *fA8;\n    /* 0xAC */ u8 padAC[0xC];\n    /* 0xB8 */ s32 fB8;\n    /* 0xBC */ u8 padBC[0x28];\n    /* 0xE4 */ s32 fE4;\n    /* 0xE8 */ u8 padE8[8];\n    /* 0xF0 */ s32 fF0;\n};\nextern f32 D_800AA1EC[3];\nextern Obj *D_800B3960;\nextern s32 D_800B9EA4;\nextern Obj *D_800BD06C;\nextern s32 D_800BD100;\nextern u8 D_800BD1F0[];\n\nvoid func_80011420(Obj *arg0) {\n    f32 dz;\n    f32 dy;\n    f32 lim;\n\n    if (arg0->f7C == 0) {\n        if (D_800BD1F0[D_800BD100 * 10 + arg0->f70] == 1) {\n            arg0->fA0(arg0);\n            return;\n        }\n        arg0->f58 = func_800221C0(1, 1, 0, 2, 0, 1, 1, 0);\n        arg0->f0 = 0x101;\n        arg0->f7C = 1;\n        arg0->fB8 = 0x98;\n        arg0->fE4 = func_80023E3C(0x98);\n        if (arg0->f74 == 0) {\n            arg0->fA8 = func_8002B240(arg0->x, arg0->y, arg0->z, 0xBF, 3000, 0);\n        }\n    }\n    D_800AA1EC[0] = arg0->x - D_800BD06C->x;\n    D_800AA1EC[1] = dz = arg0->z - D_800BD06C->z;\n    D_800AA1EC[2] = dy = arg0->y - D_800BD06C->y;\n    lim = 180.0f;\n    if (func_8002DD60(D_800AA1EC[0]) < lim && func_8002DD60(dy) < 360.0f && func_8002DD60(dz) < lim) {\n        func_8002ADFC(6, 1000, arg0);\n        if (D_800BD06C->f90 == 1) {\n            D_800BD06C->fF0 = 0xFF;\n            D_800BD06C->ang = D_800B3960->ang + 0x8000;\n            func_800433A8(D_800BD06C, 0x1A, 0x100);\n            D_800BD06C->f9C = func_8003BC40;\n            D_800BD06C->fF0 = 0xFF;\n            D_800BD06C->f0 = 0x101;\n        } else {\n            D_800BD06C->f6C = 2;\n        }\n        D_800BD1F0[D_800BD100 * 10 + arg0->f70] = 1;\n        func_8001B91C();\n        if (arg0->fA8 != 0) {\n            arg0->fA8->fA0(arg0->fA8);\n        }\n        arg0->fA0(arg0);\n        return;\n    }\n    func_8002D604(arg0);\n    arg0->f38 = (coss((D_800B9EA4 * 2000) & 0xFFF0) >> 11) + 0x100;\n    arg0->f3C = (sins((D_800B9EA4 * 2000) & 0xFFF0) >> 11) + 0x100;\n    arg0->f34 = (sins((D_800B9EA4 * 2000) & 0xFFF0) >> 11) + 0x100;\n}\n",
+  "4f62592a58bd3fd3d5f5438d7138109f719438474b7eab5f085693acf9cc6ba9": "s16 coss(u16);\ns16 sins(u16);\nvoid *func_8001B91C(void);\ns32 packDrawFlags(s32, s32, s32, s32, s32, s32, s32, s32);\ns32 func_80023E3C(s32);\nvoid func_8002ADFC(s32, s32, void *);\nvoid *func_8002B240(s32, s32, s32, s32, s32, s32);\nvoid func_8002D604(void *);\nf32 func_8002DD60(f32);\nvoid actorSetAnim(void *, s32, s32);\nvoid func_8003BC40();\ntypedef struct Obj Obj;\ntypedef void (*Fn)(Obj *);\nstruct Obj {\n    /* 0x00 */ s32 f0;\n    /* 0x04 */ f32 x;\n    /* 0x08 */ f32 y;\n    /* 0x0C */ f32 z;\n    /* 0x10 */ s32 ang;\n    /* 0x14 */ u8 pad14[0x20];\n    /* 0x34 */ s32 f34;\n    /* 0x38 */ s32 f38;\n    /* 0x3C */ s32 f3C;\n    /* 0x40 */ u8 pad40[0x18];\n    /* 0x58 */ s32 f58;\n    /* 0x5C */ u8 pad5C[0x10];\n    /* 0x6C */ s32 f6C;\n    /* 0x70 */ s32 f70;\n    /* 0x74 */ s32 f74;\n    /* 0x78 */ s32 f78;\n    /* 0x7C */ s32 f7C;\n    /* 0x80 */ u8 pad80[0x10];\n    /* 0x90 */ s32 f90;\n    /* 0x94 */ u8 pad94[8];\n    /* 0x9C */ void *f9C;\n    /* 0xA0 */ Fn fA0;\n    /* 0xA4 */ s32 fA4;\n    /* 0xA8 */ Obj *fA8;\n    /* 0xAC */ u8 padAC[0xC];\n    /* 0xB8 */ s32 fB8;\n    /* 0xBC */ u8 padBC[0x28];\n    /* 0xE4 */ s32 fE4;\n    /* 0xE8 */ u8 padE8[8];\n    /* 0xF0 */ s32 fF0;\n};\nextern f32 gTargetOffset[3];\nextern Obj *gCameraRig;\nextern s32 gTextWaveTime;\nextern Obj *gCameraTarget;\nextern s32 D_800BD100;\nextern u8 D_800BD1F0[];\n\n/* Proximity trigger: once the camera target is within range, runs the trigger\n   behaviour and marks it used for this stage; otherwise it updates the idle wave\n   animation. */\nvoid updateProximityTrigger(Obj *self) {\n    f32 offZ;\n    f32 offY;\n    f32 range;\n\n    if (self->f7C == 0) {\n        if (D_800BD1F0[D_800BD100 * 10 + self->f70] == 1) {\n            self->fA0(self);\n            return;\n        }\n        self->f58 = packDrawFlags(1, 1, 0, 2, 0, 1, 1, 0);\n        self->f0 = 0x101;\n        self->f7C = 1;\n        self->fB8 = 0x98;\n        self->fE4 = func_80023E3C(0x98);\n        if (self->f74 == 0) {\n            self->fA8 = func_8002B240(self->x, self->y, self->z, 0xBF, 3000, 0);\n        }\n    }\n    gTargetOffset[0] = self->x - gCameraTarget->x;\n    gTargetOffset[1] = offZ = self->z - gCameraTarget->z;\n    gTargetOffset[2] = offY = self->y - gCameraTarget->y;\n    range = 180.0f;\n    if (func_8002DD60(gTargetOffset[0]) < range && func_8002DD60(offY) < 360.0f && func_8002DD60(offZ) < range) {\n        func_8002ADFC(6, 1000, self);\n        if (gCameraTarget->f90 == 1) {\n            gCameraTarget->fF0 = 0xFF;\n            gCameraTarget->ang = gCameraRig->ang + 0x8000;\n            actorSetAnim(gCameraTarget, 0x1A, 0x100);\n            gCameraTarget->f9C = func_8003BC40;\n            gCameraTarget->fF0 = 0xFF;\n            gCameraTarget->f0 = 0x101;\n        } else {\n            gCameraTarget->f6C = 2;\n        }\n        D_800BD1F0[D_800BD100 * 10 + self->f70] = 1;\n        func_8001B91C();\n        if (self->fA8 != 0) {\n            self->fA8->fA0(self->fA8);\n        }\n        self->fA0(self);\n        return;\n    }\n    func_8002D604(self);\n    self->f38 = (coss((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;\n    self->f3C = (sins((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;\n    self->f34 = (sins((gTextWaveTime * 2000) & 0xFFF0) >> 11) + 0x100;\n}",
   "6423adccb76f916a14fcff695ca0fb69445b008871eca269e378ee17a55fc9b4": "void func_8000C5B4(void);\nvoid func_8002ADFC(s32, s32, void *);\nf32 func_8002DD60(f32);\nextern s32 D_800A9540;\nextern void *D_800BD06C;\ntypedef struct { u8 pad[0x14]; s32 value; } Counter14;\nextern Counter14 D_800BD0E0;\nvoid func_80011734(void *arg0)\n{\n  f32 dx;\n  f32 dy;\n  f32 dz;\n  void *sub;\n  f32 pos[3];\n\n  dx = *(f32 *)((s8 *)arg0 + 4) - *(f32 *)((s8 *)D_800BD06C + 4);\n  dz = *(f32 *)((s8 *)arg0 + 0xC) - *(f32 *)((s8 *)D_800BD06C + 0xC);\n  if (18000.0f < func_8002DD60(dx)) return;\n  if (18000.0f < func_8002DD60(dz)) return;\n  dy = *(f32 *)((s8 *)arg0 + 8) - *(f32 *)((s8 *)D_800BD06C + 8);\n  if (func_8002DD60(dx) < 250.0f && func_8002DD60(dy) < 500.0f && func_8002DD60(dz) < 250.0f) {\n    *(s32 *)((s8 *)D_800BD06C + 0xF0) = 0xFF;\n    *(s32 *)((s8 *)D_800BD06C + 0xF8) |= 2;\n    func_8000C5B4();\n    D_800BD0E0.value++;\n    if (D_800A9540 < D_800BD0E0.value) {\n      D_800BD0E0.value = D_800A9540;\n    }\n    func_8002ADFC(1, 0x3E8, arg0);\n    sub = *(void **)((s8 *)arg0 + 0xA8);\n    if (sub != NULL) {\n      (*(void (**)(void *))((s8 *)sub + 0xA0))(sub);\n    }\n    (*(void (**)(void *))((s8 *)arg0 + 0xA0))(arg0);\n  }\n}\n",
   "3d542caaa6e5ef539bd808598a2139770b883bc0f89e7543a3cdf32e9871e3d2": "typedef struct Obj {\n    /* 0x00 */ s32 f0;\n    /* 0x04 */ f32 x;\n    /* 0x08 */ f32 y;\n    /* 0x0C */ f32 z;\n    /* 0x10 */ s32 f10;\n    /* 0x14 */ u8 pad14[0x20];\n    /* 0x34 */ s32 f34;\n    /* 0x38 */ s32 f38;\n    /* 0x3C */ s32 f3C;\n    /* 0x40 */ f32 x0;\n    /* 0x44 */ f32 y0;\n    /* 0x48 */ u8 pad48[0x34];\n    /* 0x7C */ s32 f7C;\n    /* 0x80 */ u8 pad80[0xC];\n    /* 0x8C */ s32 f8C;\n    /* 0x90 */ u8 pad90[4];\n    /* 0x94 */ s32 f94;\n} Obj;\ns16 coss(u16);\ns16 sins(u16);\nvoid func_80011734(Obj *);\nextern s32 D_800B9EA4;\n\nvoid func_800118A4(Obj *arg0) {\n    s32 t;\n    u16 ang;\n\n    t = D_800B9EA4 + arg0->f8C;\n    if (arg0->f7C == 0) {\n        arg0->f94 /= 4;\n        arg0->f7C = 1;\n        arg0->f0 = 0x101;\n    }\n    ang = t * 1500;\n    arg0->f38 = (coss(ang) >> 11) + 0x100;\n    arg0->f3C = (sins(ang) >> 11) + 0x100;\n    arg0->f34 = (sins(ang) >> 11) + 0x100;\n    arg0->f10 = (((sins((t * 100) & 0xFFFC) * 45) >> 12) * 0xFFFF) / 360;\n    arg0->y = arg0->y0 + ((sins((D_800B9EA4 * 100) & 0xFFFC) * 25) >> 15);\n    func_80011734(arg0);\n}\n",
   "375c5c7aab77222924e058b6031785fbdc505e28e8b0838846660b7e604f41b9": "s32 func_8000C43C(void);\nvoid func_80011734(void *);\nvoid func_8002D604(void *);\ns16 sins(u16);\nvoid func_80011CA4();\ntypedef struct Obj {\n    /* 0x00 */ s32 f0;\n    /* 0x04 */ f32 x;\n    /* 0x08 */ f32 y;\n    /* 0x0C */ f32 z;\n    /* 0x10 */ s32 f10;\n    /* 0x14 */ s32 f14;\n    /* 0x18 */ s32 f18;\n    /* 0x1C */ u8 pad1C[0x34];\n    /* 0x50 */ f32 f50;\n    /* 0x54 */ u8 pad54[0x10];\n    /* 0x64 */ s32 f64;\n    /* 0x68 */ s32 f68;\n    /* 0x6C */ u8 pad6C[0x10];\n    /* 0x7C */ s32 f7C;\n    /* 0x80 */ s32 f80;\n    /* 0x84 */ s32 f84;\n    /* 0x88 */ u8 pad88[0x14];\n    /* 0x9C */ void *f9C;\n} Obj;\nextern char D_800B9EA4[];\nextern char D_8014022C[];\nextern f32 D_80000758;\nextern f32 D_8000075C;\nextern f32 D_80000760;\nextern f32 D_80000764;\nextern f32 D_80000768;\nextern f32 D_8000076C;\n\nvoid func_80011A38(Obj *arg0) {\n    f32 lim;\n    f32 t;\n    f32 v;\n\n    lim = (*(f32 *)D_8014022C) + D_80000758;\n    if (arg0->f7C == 0) {\n        arg0->f64 = 100;\n        arg0->f7C = arg0->y;\n        arg0->f80 = arg0->x;\n        arg0->f84 = arg0->z;\n        arg0->f50 = D_80000760;\n        arg0->f50 = D_8000075C;\n    }\n    v = arg0->f50;\n    if (D_80000764 < v) {\n        arg0->f50 = v - D_80000768;\n    }\n    func_8002D604(arg0);\n    func_8002D604(arg0);\n    arg0->f18 = (sins(((*(s32 *)D_800B9EA4) * 400) & 0xFFF0) * 31) >> 8;\n    arg0->f10 = (sins(((*(s32 *)D_800B9EA4) * 200) & 0xFFF8) * 127) >> 10;\n    arg0->y = arg0->f7C + (sins(((*(s32 *)D_800B9EA4) * 500) & 0xFFFC) >> 9);\n    arg0->x = arg0->f80 + (sins(((*(s32 *)D_800B9EA4) * 250) & 0xFFFE) >> 9);\n    arg0->z = arg0->f84 + (sins(((*(s32 *)D_800B9EA4) * 125) & 0xFFFF) >> 9);\n    if (func_8000C43C() == 1) {\n        arg0->z = D_8000076C;\n    }\n    t = arg0->f7C;\n    if (lim < t) {\n        arg0->f7C = t + arg0->f50;\n    }\n    if (arg0->y <= lim) {\n        arg0->f9C = func_80011CA4;\n        arg0->y = lim;\n        arg0->f80 = 50;\n        arg0->f7C = arg0->f68;\n    }\n    func_80011734(arg0);\n}\n",

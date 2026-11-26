@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795700245.5864708,
- "revision": 5621,
+ "saved_at": 1795700267.02558,
+ "revision": 5625,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14191,7 +14191,7 @@
   },
   "73760:2147554336": {
    "vram": 2147554336,
-   "function": "func_80011420",
+   "function": "updateProximityTrigger",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16186,8 +16186,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "567320:2148047896": {
    "vram": 2148047896,
@@ -18452,10 +18451,10 @@
    "matched_by": "manual-300e45cd3eb84e7b",
    "readable": false
   },
-  "func_80011420": {
+  "updateProximityTrigger": {
    "vram": 2147554336,
    "matched_by": "manual-3572b8f795c14e2c",
-   "readable": false
+   "readable": true
   },
   "func_80011734": {
    "vram": 2147555124,
@@ -21207,7 +21206,7 @@
    "matched_by": "manual-f86831e3bb304d6a",
    "readable": true
   },
-  "func_8002FEDC": {
+  "drawQuadSpriteUnculled": {
    "vram": 2147679964,
    "matched_by": "manual-f86831e3bb304d6a",
    "readable": false
@@ -28808,7 +28807,7 @@
   "func_8000F670": "local_source_158913790046",
   "func_8000F7A0": "local_source_158913790047",
   "func_8000FA40": "local_source_158913790049",
-  "func_80011420": "local_source_158913790053",
+  "updateProximityTrigger": "local_source_158913790053",
   "func_80011734": "local_source_158913790054",
   "func_800118A4": "local_source_158913790055",
   "func_80011A38": "local_source_158913790056",
@@ -30293,7 +30292,7 @@
    "status": "open"
   },
   {
-   "name": "func_80011420",
+   "name": "updateProximityTrigger",
    "vram": 2147554336,
    "size": 788,
    "status": "open"
@@ -33611,7 +33610,7 @@
    "status": "open"
   },
   {
-   "name": "func_8002FEDC",
+   "name": "drawQuadSpriteUnculled",
    "vram": 2147679964,
    "size": 780,
    "status": "open"
@@ -43195,6 +43194,12 @@
    "kind": "func"
   },
   {
+   "name": "updateProximityTrigger",
+   "address": 2147554336,
+   "size": 788,
+   "kind": "func"
+  },
+  {
    "name": "updateProjectile",
    "address": 2147566240,
    "size": 828,
@@ -43558,6 +43563,12 @@
    "name": "drawQuadSprite",
    "address": 2147679168,
    "size": 796,
+   "kind": "func"
+  },
+  {
+   "name": "drawQuadSpriteUnculled",
+   "address": 2147679964,
+   "size": 780,
    "kind": "func"
   },
   {
@@ -45661,6 +45672,12 @@
    "kind": "func"
   },
   {
+   "name": "gTargetOffset",
+   "address": 2148180460,
+   "size": 12,
+   "kind": "data"
+  },
+  {
    "name": "gPakInitWarn",
    "address": 2148196724,
    "size": 4,
@@ -47129,6 +47146,11 @@
    "source": "match"
   },
   {
+   "address": 2148180460,
+   "type": "f32[3]",
+   "source": "match"
+  },
+  {
    "address": 2148196724,
    "type": "s32",
    "source": "match"
@@ -47185,7 +47207,7 @@
   },
   {
    "address": 2148219232,
-   "type": "Obj *[]",
+   "type": "Obj *",
    "source": "match"
   },
   {
@@ -47235,7 +47257,7 @@
   },
   {
    "address": 2148245156,
-   "type": "s32[]",
+   "type": "s32",
    "source": "match"
   },
   {
@@ -47250,7 +47272,7 @@
   },
   {
    "address": 2148257900,
-   "type": "Player_552C4 *",
+   "type": "Obj *",
    "source": "match"
   },
   {
