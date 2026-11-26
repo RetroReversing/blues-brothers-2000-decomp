@@ -940,15 +940,6 @@
   "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:a0e2ebc1092c9aee10056169c59b92005bb9ecdd33bce0f102b5e102dc52d4ec"
  },
  {
-  "function": "__osDevMgrMain",
-  "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 952-byte function fingerprint 2851b5dcdc01ec081d4ffd0c95c76d924e8e87f6; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
-  "by": "autopilot",
-  "created_at": 1795274275.8628092,
-  "score_before": 0,
-  "score_after": 0,
-  "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:e781a1889f3357720872da94cbb0c1f2609b037d3e613595595f7541a20f3c08"
- },
- {
   "function": "__osResetGlobalIntMask",
   "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 72-byte function fingerprint 3238a0f8a3f8c7812678321a473bc58835d86e55; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
   "by": "autopilot",
@@ -12654,6 +12645,23 @@
   "text": "[Released without compiling it once; notes not checked by a compile.] Menu/list drawer with two goto loops and __repair_* locals. make_readable needs those kept verbatim, so a readable rewrite is hard to get past the judge. Left as-is; a smaller polish of locals only might work.\n\n[Released without compiling it once; notes not checked by a compile.] Same blocker as the previous release: goto loops and __repair_* locals must stay verbatim, and make_readable can't get past the judge. Needs a hand-written polish of locals only, or skip.",
   "by": "claude-haiku-25",
   "created_at": 1795698627.8883462,
+  "score_before": 0,
+  "score_after": 0
+ },
+ {
+  "function": "__osDevMgrMain",
+  "text": "exact relocation-normalized SDK signature. Exact relocation-normalized 952-byte function fingerprint 2851b5dcdc01ec081d4ffd0c95c76d924e8e87f6; one name across selected SDK signatures, unique target fingerprint. Libraries: built in / decompals/ultralib e24c836796df. Name inferred from library code; not a verified C match.",
+  "by": "autopilot",
+  "created_at": 1795274275.8628092,
+  "score_before": 0,
+  "score_after": 0,
+  "handoff_inputs": "53ac714285bdfe5afde383645032da10a8c0fb56f2e548b3c101c0a14735fe69:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:e781a1889f3357720872da94cbb0c1f2609b037d3e613595595f7541a20f3c08"
+ },
+ {
+  "function": "__osDevMgrMain",
+  "text": "[Released without compiling it once; notes not checked by a compile.] libultra device manager thread; C is a copy of the library version and already has a descriptive name. Its garbled duplicate comments and goto labels are part of the match, so a safe readable rewrite needs a dedicated pass.\n\n[Released without compiling it once; notes not checked by a compile.] Same as before: libultra device manager, already named; needs a dedicated pass to clean the duplicate comments without changing the goto/volatile shape. claim_readable keeps returning it, so the queue is not advancing past it.",
+  "by": "claude-haiku-25",
+  "created_at": 1795699301.6797109,
   "score_before": 0,
   "score_after": 0
  }

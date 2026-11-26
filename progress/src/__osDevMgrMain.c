@@ -94,27 +94,27 @@ typedef struct {
 /* Device manager thread: takes PI requests off the command queue. 64DD (type 2) block
    transfers run here, with retries and the access-queue handshake; everything else goes
    through the dma/edma hooks of the device manager. Replies go to each request's queue. */
-/* Device manager thread: services PI requests from the command queue, running 64DD block transfers with retries and DMA/EDMA requests through the device hooks. */ void __osDevMgrMain(void* arg) {
-    OSIoMesg* io_msg;
-    OSMesg event_msg;
-    OSMesg acs_msg;
+/* Device manager thread: takes PI requests off the command queue, runs 64DD block transfers with retries, and forwards DMA/EDMA requests through the device hooks. */ /* Device manager thread: services PI requests from the command queue, running 64DD block transfers with retries and DMA/EDMA requests through the device hooks. */ void __osDevMgrMain(void* threadArg) {
+    OSIoMesg* ioMsg;
+    OSMesg eventMsg;
+    OSMesg acsMsg;
     s32 result;
-    OSDevMgr* devmgr;
-    s32 retry_read = 0;
+    OSDevMgr* devMgr;
+    s32 retryRead = 0;
 
-    devmgr = (OSDevMgr*)arg;
-    io_msg = 0;
+    devMgr = (OSDevMgr*)threadArg;
+    ioMsg = 0;
     result = 0;
 
     while (1) {
-        osRecvMesg(devmgr->cmdQueue, (OSMesg)&io_msg, 1);
+        osRecvMesg(devMgr->cmdQueue, (OSMesg)&ioMsg, 1);
 
-        if (io_msg->piHandle != 0 && io_msg->piHandle->type == 2 &&
-            (io_msg->piHandle->transferInfo.cmdType == 0 ||
-             io_msg->piHandle->transferInfo.cmdType == 1)) {
+        if (ioMsg->piHandle != 0 && ioMsg->piHandle->type == 2 &&
+            (ioMsg->piHandle->transferInfo.cmdType == 0 ||
+             ioMsg->piHandle->transferInfo.cmdType == 1)) {
             __OSBlockInfo* blockInfo;
             __OSTranxInfo* info;
-            info = &io_msg->piHandle->transferInfo;
+            info = &ioMsg->piHandle->transferInfo;
             blockInfo = &info->block[info->blockNum];
             info->sectorNum = -1;
 
@@ -122,29 +122,29 @@ typedef struct {
                 blockInfo->dramAddr = (void*)((u32)blockInfo->dramAddr - blockInfo->sectorSize);
             }
 
-            if (info->transferMode == 2 && io_msg->piHandle->transferInfo.cmdType == 0) {
-                retry_read = 1;
+            if (info->transferMode == 2 && ioMsg->piHandle->transferInfo.cmdType == 0) {
+                retryRead = 1;
             } else {
-                retry_read = 0;
+                retryRead = 0;
             }
 
-            osRecvMesg(devmgr->acsQueue, &acs_msg, 1);
+            osRecvMesg(devMgr->acsQueue, &acsMsg, 1);
             __osResetGlobalIntMask(LEO_INTR_MASK);
-            func_800A3320(io_msg->piHandle, LEO_BM_CTL_REG, (info->bmCtlShadow | LEO_BM_CTL_FAST));
+            func_800A3320(ioMsg->piHandle, LEO_BM_CTL_REG, (info->bmCtlShadow | LEO_BM_CTL_FAST));
 
         readblock1:
-            osRecvMesg(devmgr->evtQueue, &event_msg, 1);
-            info = &io_msg->piHandle->transferInfo;
+            osRecvMesg(devMgr->evtQueue, &eventMsg, 1);
+            info = &ioMsg->piHandle->transferInfo;
             blockInfo = &info->block[info->blockNum];
 
             if (blockInfo->errStatus == LEO_ERR_SECTOR_SKIP) {
                 u32 piStat;
-                func_800A3320(io_msg->piHandle, LEO_BM_CTL_REG, info->bmCtlShadow | LEO_BM_CTL_RESET);
-                func_800A3320(io_msg->piHandle, LEO_BM_CTL_REG, info->bmCtlShadow);
-                func_800A31D0(io_msg->piHandle, LEO_STATUS_REG, &piStat);
+                func_800A3320(ioMsg->piHandle, LEO_BM_CTL_REG, info->bmCtlShadow | LEO_BM_CTL_RESET);
+                func_800A3320(ioMsg->piHandle, LEO_BM_CTL_REG, info->bmCtlShadow);
+                func_800A31D0(ioMsg->piHandle, LEO_STATUS_REG, &piStat);
 
                 if (piStat & LEO_BM_STAT_BUSY) {
-                    func_800A3320(io_msg->piHandle, LEO_BM_CTL_REG, info->bmCtlShadow | LEO_BM_CTL_STOP);
+                    func_800A3320(ioMsg->piHandle, LEO_BM_CTL_REG, info->bmCtlShadow | LEO_BM_CTL_STOP);
                 }
 
                 blockInfo->errStatus = 4;
@@ -152,37 +152,37 @@ typedef struct {
                 __osSetGlobalIntMask(LEO_INTR_MASK | 0x00000800);
             }
 
-            osSendMesg(io_msg->hdr.retQueue, io_msg, 0);
+            osSendMesg(ioMsg->hdr.retQueue, ioMsg, 0);
 
-            if (retry_read == 1 && io_msg->piHandle->transferInfo.block[0].errStatus == 0) {
-                retry_read = 0;
+            if (retryRead == 1 && ioMsg->piHandle->transferInfo.block[0].errStatus == 0) {
+                retryRead = 0;
                 goto readblock1;
             }
 
-            osSendMesg(devmgr->acsQueue, 0, 0);
-            if (io_msg->piHandle->transferInfo.blockNum == 1) {
+            osSendMesg(devMgr->acsQueue, 0, 0);
+            if (ioMsg->piHandle->transferInfo.blockNum == 1) {
                 osYieldThread();
             }
         } else {
-            switch (io_msg->hdr.type) {
+            switch (ioMsg->hdr.type) {
                 case OS_MESG_TYPE_DMAREAD:
-                    osRecvMesg(devmgr->acsQueue, &acs_msg, 1);
-                    result = devmgr->dma(0, io_msg->devAddr, io_msg->dramAddr, io_msg->size);
+                    osRecvMesg(devMgr->acsQueue, &acsMsg, 1);
+                    result = devMgr->dma(0, ioMsg->devAddr, ioMsg->dramAddr, ioMsg->size);
                     break;
                 case OS_MESG_TYPE_DMAWRITE:
-                    osRecvMesg(devmgr->acsQueue, &acs_msg, 1);
-                    result = devmgr->dma(1, io_msg->devAddr, io_msg->dramAddr, io_msg->size);
+                    osRecvMesg(devMgr->acsQueue, &acsMsg, 1);
+                    result = devMgr->dma(1, ioMsg->devAddr, ioMsg->dramAddr, ioMsg->size);
                     break;
                 case OS_MESG_TYPE_EDMAREAD:
-                    osRecvMesg(devmgr->acsQueue, &acs_msg, 1);
-                    result = devmgr->edma(io_msg->piHandle, 0, io_msg->devAddr, io_msg->dramAddr, io_msg->size);
+                    osRecvMesg(devMgr->acsQueue, &acsMsg, 1);
+                    result = devMgr->edma(ioMsg->piHandle, 0, ioMsg->devAddr, ioMsg->dramAddr, ioMsg->size);
                     break;
                 case OS_MESG_TYPE_EDMAWRITE:
-                    osRecvMesg(devmgr->acsQueue, &acs_msg, 1);
-                    result = devmgr->edma(io_msg->piHandle, 1, io_msg->devAddr, io_msg->dramAddr, io_msg->size);
+                    osRecvMesg(devMgr->acsQueue, &acsMsg, 1);
+                    result = devMgr->edma(ioMsg->piHandle, 1, ioMsg->devAddr, ioMsg->dramAddr, ioMsg->size);
                     break;
                 case OS_MESG_TYPE_LOOPBACK:
-                    osSendMesg(io_msg->hdr.retQueue, io_msg, 0);
+                    osSendMesg(ioMsg->hdr.retQueue, ioMsg, 0);
                     result = -1;
                     break;
                 default:
@@ -191,9 +191,9 @@ typedef struct {
             }
 
             if (result == 0) {
-                osRecvMesg(devmgr->evtQueue, &event_msg, 1);
-                osSendMesg(io_msg->hdr.retQueue, io_msg, 0);
-                osSendMesg(devmgr->acsQueue, 0, 0);
+                osRecvMesg(devMgr->evtQueue, &eventMsg, 1);
+                osSendMesg(ioMsg->hdr.retQueue, ioMsg, 0);
+                osSendMesg(devMgr->acsQueue, 0, 0);
             }
         }
     }

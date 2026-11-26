@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699296.833471,
- "revision": 5542,
+ "saved_at": 1795699320.151846,
+ "revision": 5545,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -17077,6 +17077,19 @@
    "timeout": 20,
    "function": "saveCurrentSlot",
    "vram": 2147689564
+  },
+  "670000:2148150576": {
+   "toolchain": "gcc-2.7.2-kmc",
+   "flags": [
+    "-G0",
+    "-mips3",
+    "-mgp32",
+    "-mfp32",
+    "-O2"
+   ],
+   "timeout": 20,
+   "function": "__osDevMgrMain",
+   "vram": 2148150576
   }
  },
  "instructions": "",
@@ -18016,7 +18029,8 @@
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
   "local_source_158913792199": "common_local_source_158913792199.h",
-  "main_text_27750": "common_main_text_27750.h"
+  "main_text_27750": "common_main_text_27750.h",
+  "code_8008C378": "common_code_8008C378.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -28322,7 +28336,7 @@
   "__osDevMgrMain": {
    "vram": 2148150576,
    "matched_by": "autopilot",
-   "readable": false
+   "readable": true
   },
   "__osResetGlobalIntMask": {
    "vram": 2148151536,
