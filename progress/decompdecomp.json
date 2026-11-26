@@ -17060,6 +17060,22 @@
     "-mhard-float",
     "-mfp32"
    ]
+  },
+  "255060:2147735636": {
+   "toolchain": "sn-n64-281",
+   "flags": [
+    "-G0",
+    "-mips3",
+    "-O2",
+    "-mgas",
+    "-meb",
+    "-mcpu=VR4300",
+    "-mhard-float",
+    "-mfp64"
+   ],
+   "timeout": 20,
+   "function": "updateMainMenu",
+   "vram": 2147735636
   }
  },
  "instructions": "",
@@ -17998,7 +18014,8 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h"
+  "local_source_158913792199": "common_local_source_158913792199.h",
+  "main_text_27750": "common_main_text_27750.h"
  },
  "functions": {
   "func_8000AB80": {
