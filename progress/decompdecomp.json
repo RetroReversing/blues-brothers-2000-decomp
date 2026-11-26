@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699772.174539,
- "revision": 5577,
+ "saved_at": 1795699782.794396,
+ "revision": 5578,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -17061,6 +17061,22 @@
     "-mhard-float",
     "-mfp32"
    ]
+  },
+  "252488:2147733064": {
+   "toolchain": "sn-n64-281",
+   "flags": [
+    "-G0",
+    "-mips3",
+    "-O2",
+    "-mgas",
+    "-meb",
+    "-mcpu=VR4300",
+    "-mhard-float",
+    "-mfp64"
+   ],
+   "timeout": 20,
+   "function": "selectMenuUpdate",
+   "vram": 2147733064
   }
  },
  "instructions": "",
@@ -17999,7 +18015,8 @@
   "local_source_158913792183": "common_local_source_158913792183.h",
   "local_source_158913792184": "common_local_source_158913792184.h",
   "local_source_158913792189": "common_local_source_158913792189.h",
-  "local_source_158913792199": "common_local_source_158913792199.h"
+  "local_source_158913792199": "common_local_source_158913792199.h",
+  "main_text_27750": "common_main_text_27750.h"
  },
  "functions": {
   "func_8000AB80": {
@@ -21885,7 +21902,7 @@
   "selectMenuUpdate": {
    "vram": 2147733064,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_8003D1B4": {
    "vram": 2147733940,
@@ -45549,7 +45566,7 @@
   {
    "name": "gAudioVolume",
    "address": 2148237784,
-   "size": 0,
+   "size": 4,
    "kind": "data"
   },
   {
@@ -45579,7 +45596,7 @@
   {
    "name": "gFrameScale",
    "address": 2148245152,
-   "size": 0,
+   "size": 4,
    "kind": "data"
   },
   {

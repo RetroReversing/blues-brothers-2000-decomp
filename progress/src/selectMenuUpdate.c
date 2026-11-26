@@ -48,101 +48,102 @@ extern s32 gStickX[];
 extern s32 gStickY[];
 extern s32 D_80140228;
 
-void selectMenuUpdate(Obj3CE48 *arg0) {
-    s32 flag;
-    s32 v;
-    Entry3CE48 *e;
+/* Selection menu update: the stick moves the selection (up/down change the entry index, left/right change the column); the A button confirms and the B button goes back; the start button opens a sub-screen. Each change plays a menu sound. */
+void selectMenuUpdate(Obj3CE48 *menu) {
+    s32 changed;
+    s32 volume;
+    Entry3CE48 *entry;
 
-    flag = 0;
-    e = &D_800AA134[arg0->unk90];
-    arg0->unk70 = approachS32(0xFF, arg0->unk70, gCamSpeedScale * 8);
+    changed = 0;
+    entry = &D_800AA134[menu->unk90];
+    menu->unk70 = approachS32(0xFF, menu->unk70, gCamSpeedScale * 8);
     D_80140228 = 0;
     D_800B5DD4 = 0;
     if (abs(gStickX[0]) < 20) {
         if (abs(gStickY[0]) < 20) {
-            arg0->unk64 = 0;
+            menu->unk64 = 0;
         }
     }
-    if (tickActorTimer(arg0) != 0) {
-        arg0->unk64 = 0;
+    if (tickActorTimer(menu) != 0) {
+        menu->unk64 = 0;
         if (gStickY[0] >= 31) {
-            flag = 1;
-            arg0->unk64 = 15;
-            arg0->unk88--;
+            changed = 1;
+            menu->unk64 = 15;
+            menu->unk88--;
         }
         if (gStickY[0] < -30) {
-            flag = 1;
-            arg0->unk64 = 15;
-            arg0->unk88++;
+            changed = 1;
+            menu->unk64 = 15;
+            menu->unk88++;
         }
-        if (arg0->unk84 <= 0) {
+        if (menu->unk84 <= 0) {
             if (D_80107040[0] & 0x400) {
-                flag = 1;
-                arg0->unk84 = 15;
-                arg0->unk88++;
+                changed = 1;
+                menu->unk84 = 15;
+                menu->unk88++;
             }
             if (D_80107040[0] & 0x800) {
-                flag = 1;
-                arg0->unk84 = 15;
-                arg0->unk88--;
+                changed = 1;
+                menu->unk84 = 15;
+                menu->unk88--;
             }
         } else {
-            arg0->unk84 -= gFrameScale;
+            menu->unk84 -= gFrameScale;
         }
     }
-    if (arg0->unk88 < 0) {
-        flag = 0;
-        arg0->unk88 = 0;
+    if (menu->unk88 < 0) {
+        changed = 0;
+        menu->unk88 = 0;
     }
-    if (arg0->unk8C == 0) {
-        if (arg0->unk88 >= e->unk18) {
-            flag = 0;
-            arg0->unk88 = e->unk18 - 1;
+    if (menu->unk8C == 0) {
+        if (menu->unk88 >= entry->unk18) {
+            changed = 0;
+            menu->unk88 = entry->unk18 - 1;
         }
-    } else if (arg0->unk88 >= 4) {
-        flag = 0;
-        arg0->unk88 = 3;
+    } else if (menu->unk88 >= 4) {
+        changed = 0;
+        menu->unk88 = 3;
     }
-    if (flag != 0) {
+    if (changed != 0) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0x94);
     }
     if (gPadPressed[0] & 0x8000) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0xA3);
-        if (arg0->unk8C == 0) {
+        if (menu->unk8C == 0) {
             D_800BD0E0.unk24 = D_800BD0E0.unk1C;
-            if (D_800BD0E0.unk20 != arg0->unk90) {
+            if (D_800BD0E0.unk20 != menu->unk90) {
                 D_800BD274 = 0x41;
             }
-            D_800BD0E0.unk20 = arg0->unk90;
+            D_800BD0E0.unk20 = menu->unk90;
             D_800B5DD0 = 1;
-            D_800BD0E0.unk1C = arg0->unk88;
-            arg0->unk9C = func_8003D558;
+            D_800BD0E0.unk1C = menu->unk88;
+            menu->unk9C = func_8003D558;
             func_8002E7B8(1, 0);
             D_800B5DD4 = 1;
-            arg0->unk70 = 0;
+            menu->unk70 = 0;
             func_8002A360(12, 0x80);
             func_8002A360(8, 0xC);
             func_8002A360(0, gAudioVolume * 327);
         } else {
-            arg0->unk90 = arg0->unk88;
-            arg0->unk8C = 0;
-            arg0->unk88 = 0;
+            menu->unk90 = menu->unk88;
+            menu->unk8C = 0;
+            menu->unk88 = 0;
         }
     } else if (gPadPressed[0] & 0x4000) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0xA3);
-        arg0->unk8C = 1;
-        arg0->unk88 = 0;
+        menu->unk8C = 1;
+        menu->unk88 = 0;
     } else if (gPadPressed[0] & 0x1000) {
         func_8002A360(12, 0x80);
         func_8002A360(8, 0xA3);
-        arg0->unk9C = func_8003D3C8;
+        menu->unk9C = func_8003D3C8;
         D_800AB9B4 = 0;
         D_800B5DD4 = 1;
-        v = gAudioVolume * 327;
-        D_80140228 = arg0->unk74;
-        func_8002A360(0, v);
+        volume = gAudioVolume * 327;
+        D_80140228 = menu->unk74;
+        func_8002A360(0, volume);
     }
 }
