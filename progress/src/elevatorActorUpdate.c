@@ -45,25 +45,26 @@ extern s32 D_800B5DD4[];
 extern char gCameraTarget[];
 extern s32 D_80140214[];
 
+/* Elevator actor update: it stays put while the camera target is on the elevator (its f10 yaw is outside the +/-0x6D60 window) and otherwise moves toward its nearer floor. When the camera target is close and high enough, it takes the target as a rider; when it reaches the floor it spawns two markers and clears the target's flag. */
 void elevatorActorUpdate(Obj *arg0) {
-    f32 ax;
-    f32 az;
-    f32 d1;
-    f32 d2;
-    f32 lim;
+    f32 dxCam;
+    f32 dzCam;
+    f32 dyFloorA;
+    f32 dyFloorB;
+    f32 limit;
     f32 t;
-    f32 k;
-    Obj *p;
-    Obj *o;
+    f32 offset;
+    Obj *camActor;
+    Obj *spawned;
 
     if ((*(Obj **)D_800B3964)->fC0 == 2) {
         return;
     }
-    ax = func_8002DD60(arg0->x - (*(Obj **)gCameraTarget)->x);
-    az = func_8002DD60(arg0->z - (*(Obj **)gCameraTarget)->z);
-    d1 = func_8002DD60((f32)arg0->f8C - (*(Obj **)gCameraTarget)->y);
-    d2 = func_8002DD60((f32)arg0->f90 - (*(Obj **)gCameraTarget)->y);
-    lim = D_80008C10;
+    dxCam = func_8002DD60(arg0->x - (*(Obj **)gCameraTarget)->x);
+    dzCam = func_8002DD60(arg0->z - (*(Obj **)gCameraTarget)->z);
+    dyFloorA = func_8002DD60((f32)arg0->f8C - (*(Obj **)gCameraTarget)->y);
+    dyFloorB = func_8002DD60((f32)arg0->f90 - (*(Obj **)gCameraTarget)->y);
+    limit = D_80008C10;
     if (arg0->fC0 == 2) {
         if (!((*(Obj **)gCameraTarget)->z >= D_80008C14)) {
             return;
@@ -73,27 +74,27 @@ void elevatorActorUpdate(Obj *arg0) {
         }
         arg0->fC0 = 0;
     }
-    if (lim < ax) {
+    if (limit < dxCam) {
         return;
     }
-    if (lim < d1 && lim < d2) {
+    if (limit < dyFloorA && limit < dyFloorB) {
         return;
     }
-    if (d2 < d1) {
-        d1 = arg0->f90;
+    if (dyFloorB < dyFloorA) {
+        dyFloorA = arg0->f90;
     } else {
-        d1 = arg0->f8C;
+        dyFloorA = arg0->f8C;
     }
-    if (d1 != arg0->y) {
-        arg0->y = approachF32(d1, arg0->y, 100.0f);
-    } else if ((*(Obj **)gCameraTarget)->z >= D_80008C18 && ax < D_80008C1C && func_8003C9AC(arg0, 1, 1, 1) != 0) {
-        p = *(Obj **)gCameraTarget;
-        if (p->f10 < -0x6D60 || p->f10 > 0x6D60) {
-            p->f9C = func_8006542C;
-            p->fA4 = arg0;
+    if (dyFloorA != arg0->y) {
+        arg0->y = approachF32(dyFloorA, arg0->y, 100.0f);
+    } else if ((*(Obj **)gCameraTarget)->z >= D_80008C18 && dxCam < D_80008C1C && func_8003C9AC(arg0, 1, 1, 1) != 0) {
+        camActor = *(Obj **)gCameraTarget;
+        if (camActor->f10 < -0x6D60 || camActor->f10 > 0x6D60) {
+            camActor->f9C = func_8006542C;
+            camActor->fA4 = arg0;
             D_80140214[0] = 0;
-            p->z = D_80008C20;
-            arg0->fA8 = p;
+            camActor->z = D_80008C20;
+            arg0->fA8 = camActor;
             arg0->f74 = 0;
         }
     }
@@ -103,21 +104,21 @@ void elevatorActorUpdate(Obj *arg0) {
     if (arg0->f90 < arg0->y) {
         arg0->y = arg0->f90;
     }
-    if (ax < D_80008C24 && az < D_80008C24) {
+    if (dxCam < D_80008C24 && dzCam < D_80008C24) {
         D_800B5DD4[0] = 0;
         arg0->f9C = func_80065260;
         arg0->f7C = 0;
         arg0->f88 = 0;
-        k = D_80008C2C;
-        o = func_800232B4(0x101, arg0->x, arg0->y + D_80008C28, arg0->z - k);
-        o->f9C = func_800656B4;
-        o->fA4 = arg0;
-        o = func_800232B4(0x101, arg0->x, arg0->y + k, arg0->z - k);
-        o->f9C = func_80065770;
-        o->fA4 = arg0;
-        o = findActor(6, 0);
-        if (o != 0) {
-            o->f68 = -1;
+        offset = D_80008C2C;
+        spawned = func_800232B4(0x101, arg0->x, arg0->y + D_80008C28, arg0->z - offset);
+        spawned->f9C = func_800656B4;
+        spawned->fA4 = arg0;
+        spawned = func_800232B4(0x101, arg0->x, arg0->y + offset, arg0->z - offset);
+        spawned->f9C = func_80065770;
+        spawned->fA4 = arg0;
+        spawned = findActor(6, 0);
+        if (spawned != 0) {
+            spawned->f68 = -1;
         }
     }
 }
