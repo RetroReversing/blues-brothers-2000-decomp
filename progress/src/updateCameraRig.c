@@ -41,7 +41,7 @@ typedef struct Cam {
 } Cam;
 extern Cam *D_800B7FE0;
 
-/* Aims the two camera rig parts along their view vectors, updates the rig matrix, and sends the end-of-intro command once the frame counter passes 1510. Returns the done flag. */
+/* Re-aims the two camera rig parts at their targets, updates the rig matrix each frame, and after 1510 frames sends command 0x1D once and latches the done flag. Returns that flag. */
 s32 updateCameraRig(void) {
     f32 a[4];
     f32 b[4];
