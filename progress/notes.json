@@ -8851,24 +8851,6 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:1e9f3d5f21b4cb7f5ab9647ddd98b11388e72b469f9a1e74a2b2d5957f93b328"
  },
  {
-  "function": "updatePathWalker",
-  "text": "op65: best 35 under sn-n64-281 -G8 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (trial f2d6af5fa2c707ea21b5, diagnostic; same source 1075 under the default profile, saved). Source = plain path follower: Vec3i path from D_8014AA1C, init block when xC0 == 0, dx/dz to the waypoint, dist = sqrtf, x10 = func_8002D204(func_8002492C(dx, dz), x10, D_800B9ECC << 9), spd = D_800B9EC4 * D_80000C10 and ((s32)spd * sins(x10)) >> 15, waypoint advance (++xBC >= D_8014A99C[0] - 1 with D_8014A99C as s32[] so its load stays after the store), then an object scan: start = func_80023088(0); end = func_800230B0(0); o = start; if (o <= end) { lim = D_80000C18; do { ... o++; } while (o <= end); } with dx, dy, dz in that order and the four-way func_80024394(0, 5) if-chain. KEY wins: dx/dy/dz order (giv at +0xC), the explicit guard with lim inside it, start temp. Only rows left: the first sqrtf result. Target computes it into f0 and copies it to f22 (fs1, the dx register) AFTER the mov.s fa0, dx for func_8002492C; ours writes dist straight to f24. Tried: inline wrapper, temp copy, separate r for the call, dist merged with the loop dx (gives the f0 copy but copy before the arg: 250), dz/spd merges (45/260).",
-  "by": "manual-aeeb5be5af9d41ed",
-  "created_at": 1795573929.016407,
-  "score_before": 8775,
-  "score_after": 1075,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3901ce7a2a587900a157111801661adef2fe16e9c5725c3f06f6aba860715466"
- },
- {
-  "function": "updatePathWalker",
-  "text": "35 under -G8 -mips3 -mfp32 (diagnostic); one f-reg copy order left; see note",
-  "by": "manual-aeeb5be5af9d41ed",
-  "created_at": 1795573929.940653,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3901ce7a2a587900a157111801661adef2fe16e9c5725c3f06f6aba860715466"
- },
- {
   "function": "initSpline",
   "text": "op65: best 160 under sn-n64-281 -G8 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (trial ab2c6098fde7f9325b86, diagnostic; same source 795 under default, saved). Source: track spline builder: n = D_8014A928[idx], src = D_8014A9A8[idx], segs = func_800253A0(n*0x30), pts = func_800253A0(n*12); error prints via func_800899DC(fmt, idx, file, line 382/387); pts[i] = (f32)src[i]; tangents: i = 1; if (i < n - 1) { k = D_80009830; do { func_8002E1FC(&D_80170600[i], &pts[i+1], &pts[i-1]); D_80170600[i] *= k; i++; } while (i < n - 1); } (explicit guard puts the k load after it); closed: ends with D_80009834 and func_80081074(&segs[i], &pts[i], &pts[(i+1)%n], &D[i], &D[(i+1)%n]) for i <= n-1; open: D_80009838 and func_80080F64(&segs[i], &pts[i], &D[i]) for i <= n-2. Only rows left: in both end-tangent blocks the target loads D_80170600[0].x before k = D_8000983x (lwc1 ft0 then lui at/lwc1 fs0); ours loads k first. Tried: k assigned inside the multiply expression, separate k per branch: no change.",
   "by": "manual-aeeb5be5af9d41ed",
@@ -12656,5 +12638,23 @@
   "created_at": 1795698627.8883462,
   "score_before": 0,
   "score_after": 0
+ },
+ {
+  "function": "updatePathWalker",
+  "text": "op65: best 35 under sn-n64-281 -G8 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (trial f2d6af5fa2c707ea21b5, diagnostic; same source 1075 under the default profile, saved). Source = plain path follower: Vec3i path from D_8014AA1C, init block when xC0 == 0, dx/dz to the waypoint, dist = sqrtf, x10 = func_8002D204(func_8002492C(dx, dz), x10, D_800B9ECC << 9), spd = D_800B9EC4 * D_80000C10 and ((s32)spd * sins(x10)) >> 15, waypoint advance (++xBC >= D_8014A99C[0] - 1 with D_8014A99C as s32[] so its load stays after the store), then an object scan: start = func_80023088(0); end = func_800230B0(0); o = start; if (o <= end) { lim = D_80000C18; do { ... o++; } while (o <= end); } with dx, dy, dz in that order and the four-way func_80024394(0, 5) if-chain. KEY wins: dx/dy/dz order (giv at +0xC), the explicit guard with lim inside it, start temp. Only rows left: the first sqrtf result. Target computes it into f0 and copies it to f22 (fs1, the dx register) AFTER the mov.s fa0, dx for func_8002492C; ours writes dist straight to f24. Tried: inline wrapper, temp copy, separate r for the call, dist merged with the loop dx (gives the f0 copy but copy before the arg: 250), dz/spd merges (45/260).",
+  "by": "manual-aeeb5be5af9d41ed",
+  "created_at": 1795573929.016407,
+  "score_before": 8775,
+  "score_after": 1075,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3901ce7a2a587900a157111801661adef2fe16e9c5725c3f06f6aba860715466"
+ },
+ {
+  "function": "updatePathWalker",
+  "text": "35 under -G8 -mips3 -mfp32 (diagnostic); one f-reg copy order left; see note",
+  "by": "manual-aeeb5be5af9d41ed",
+  "created_at": 1795573929.940653,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:3901ce7a2a587900a157111801661adef2fe16e9c5725c3f06f6aba860715466"
  }
 ]
