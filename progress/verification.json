@@ -151568,10 +151568,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "1cbac7047d15b97d436de6c32a3d4886b2af62a58ceaff50d0bca8dabe2259f4",
-   "recorded_at": 1795628035.761826,
-   "attempt_id": 158913852662,
-   "source_sha256": "618093bf2cec818056818f8438035d508b7190f96d1155010eb6e37807ec1171",
+   "symbols_sha256": "98be52a589b6df595c9983a27a5bab2dc8dd88f30832c8845c223b7f1d553425",
+   "recorded_at": 1795699218.245635,
+   "attempt_id": 158913861982,
+   "source_sha256": "632a05e3c6db3911a53f8d14cfbb5bfdae915c0fb43dbea4e49bbdbc75b9b421",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 1,
    "compiler": {
@@ -151590,7 +151590,7 @@
    },
    "compiler_identity": {
     "toolchain": "sn-n64-281",
-    "registry_sha256": "14e28e8f96d57fb28d493fc5d8ff869e8cf1dc291e1c8adaf0233952948aed40",
+    "registry_sha256": "8eb23176b1932cb664777fba69b2915c713b60c625fc11f9ad0c22d12f3e9115",
     "install_sha256": "d949422c5b7c39402c79d468bd890710d5bd3eb8ba3929116a8a5543a4a7191f",
     "executables": {
      "cc1n64.exe": "d90df1028c46d826e37146dbcc3e3385f78c59e05a9ddd952daa94c9ad379d9c"
@@ -151613,7 +151613,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -151622,32 +151622,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G0",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp64"
-    ],
-    "language": "c",
     "context_unit": "",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -200704,7 +200678,8 @@
   "01f368f6107d9678a3186f5e99b4ac1f363f45568be461ab158372d5949ce31d": "void func_800899DC();\nextern s32 D_80007880;\nextern s32 D_80007898;\nextern s32 D_800078B0;\n\nvoid func_800413C0(s32 arg0) {\n    if (arg0 >= 0) {\n        func_800899DC(&D_80007880, arg0, &D_80007898);\n    }\n    if ((u32) arg0 > 0x80400000U) {\n        func_800899DC(&D_800078B0, arg0);\n    }\n}\n",
   "5d1a4d69c1868a3ebaebcbe66337fbc477b574810f9f84d218a11fa98372e9c0": "/* machine draft (m2c) for sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp64, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_80023A74(M2C_UNK, M2C_UNK);            /* extern */\nM2C_UNK func_80023A98(M2C_UNK, M2C_UNK, M2C_UNK);   /* extern */\ns32 func_80023D58(M2C_UNK);                         /* extern */\nextern s32 D_8014AB3C;\nextern s32 D_8014AB44;\n\nvoid func_80054720(void) {\n    func_80023A74(0xE, 0x480);\n    func_80023A98(0x45, 0x47C, 0);\n    func_80023A98(0x46, 0x47D, 0);\n    func_80023A98(0x47, 0x47D, 0);\n    func_80023A98(0x48, 0x47E, 0);\n    func_80023A98(0x49, 0x47F, 0);\n    D_8014AB3C = func_80023D58(0x198);\n    D_8014AB44 = func_80023D58(0x199);\n}\n",
   "941e7a9fc706dfeb689913fd8ad42dc4d7371a10e26497455a7075d0dc657542": "typedef struct Actor {\n    u8 pad0[0x5C];\n    s32 unk5C;\n    u8 pad60[0x70 - 0x60];\n    s32 unk70;\n    s32 unk74;\n    u8 pad78[0x8C - 0x78];\n    s32 unk8C;\n    s32 unk90;\n    u8 pad94[0xA0 - 0x94];\n    void (*unkA0)(struct Actor *);\n    struct Actor *unkA4;\n    s32 unkA8;\n} Actor;\n\ns32 func_80043248(Actor *);\nextern s32 D_800B9ECC;\n\nvoid func_8005CAB0(Actor *arg0) {\n    s32 temp_v1;\n    Actor *temp_s1;\n\n    temp_s1 = arg0->unkA4;\n    if (arg0->unk70 == 0) {\n        if ((temp_s1 == NULL) || ((temp_s1->unk90 >= 2) && (temp_s1->unk8C >= 2))) {\n            arg0->unk70 = 1;\n        }\n        if (arg0->unk70 != 0) {\n            goto block_6;\n        }\n    } else {\nblock_6:\n        if (func_80043248(arg0) != 0) {\n            arg0->unk74 = 1;\n        }\n    }\n    if (arg0->unk74 != 0) {\n        temp_v1 = arg0->unk5C - (D_800B9ECC * 0xC);\n        arg0->unk5C = temp_v1;\n        if (temp_v1 < 0xA) {\n            if (temp_s1 != NULL) {\n                temp_s1->unkA8 = 0;\n            }\n            arg0->unkA0(arg0);\n        }\n    }\n}\n",
-  "2939e63b2ab06c87e2bf660dd057c5fedfaf3a19bbbfdb2f0dc47953e1e27b91": "#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\ns32 func_80023D58(s32);\ns32 func_80023E18(s32);\nvoid func_8002710C(s32, s32, s32, s32);\nvoid drawImage(s32, s32, s32, s32);\ns32 tickActorTimer(void *);\nextern s32 D_800B9ECC;\n\nvoid func_80063C40(void *arg0) {\n    s32 temp_v0;\n    s32 temp_v0_2;\n\n    temp_v0 = M2C_FIELD(arg0, s32 *, 0x5C) + (M2C_FIELD(arg0, s32 *, 0x70) * D_800B9ECC);\n    M2C_FIELD(arg0, s32 *, 0x5C) = temp_v0;\n    if (temp_v0 >= 0x100) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;\n    }\n    if (M2C_FIELD(arg0, s32 *, 0x5C) < 0) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0;\n    }\n    func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x5C));\n    temp_v0_2 = func_80023D58(0x218);\n    M2C_FIELD(arg0, s32 *, 0x60) = temp_v0_2;\n    drawImage(func_80023E18(temp_v0_2), 0, 0, 0);\n    if ((tickActorTimer(arg0) != 0) || (M2C_FIELD(arg0, s32 *, 0x5C) == 0)) {\n        M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);\n    }\n}\n"
+  "2939e63b2ab06c87e2bf660dd057c5fedfaf3a19bbbfdb2f0dc47953e1e27b91": "#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_BITS_F32(expr) (m2c_bits = (u32)(expr), *(f32 *)&m2c_bits)\nextern u32 m2c_bits;\n#define M2C_PTR_FROM_F32(type, expr) ((type)(m2c_fbits = (expr), *(u32 *)&m2c_fbits))\nextern f32 m2c_fbits;\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\ns32 func_80023D58(s32);\ns32 func_80023E18(s32);\nvoid func_8002710C(s32, s32, s32, s32);\nvoid drawImage(s32, s32, s32, s32);\ns32 tickActorTimer(void *);\nextern s32 D_800B9ECC;\n\nvoid func_80063C40(void *arg0) {\n    s32 temp_v0;\n    s32 temp_v0_2;\n\n    temp_v0 = M2C_FIELD(arg0, s32 *, 0x5C) + (M2C_FIELD(arg0, s32 *, 0x70) * D_800B9ECC);\n    M2C_FIELD(arg0, s32 *, 0x5C) = temp_v0;\n    if (temp_v0 >= 0x100) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0xFF;\n    }\n    if (M2C_FIELD(arg0, s32 *, 0x5C) < 0) {\n        M2C_FIELD(arg0, s32 *, 0x5C) = 0;\n    }\n    func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x5C));\n    temp_v0_2 = func_80023D58(0x218);\n    M2C_FIELD(arg0, s32 *, 0x60) = temp_v0_2;\n    drawImage(func_80023E18(temp_v0_2), 0, 0, 0);\n    if ((tickActorTimer(arg0) != 0) || (M2C_FIELD(arg0, s32 *, 0x5C) == 0)) {\n        M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);\n    }\n}\n",
+  "632a05e3c6db3911a53f8d14cfbb5bfdae915c0fb43dbea4e49bbdbc75b9b421": "typedef struct ComboSlot {\n    s32 type;\n    s32 acc;\n    s32 step;\n    s32 done;\n    u8 hit[8];\n    s16 flash[8];\n} ComboSlot;\n\ntypedef struct ComboDef {\n    s32 startStep;\n    s32 sound;\n    s32 meterGain;\n} ComboDef;\n\ns32 *getComboSequence(s32, s32, s32);\ns32 checkComboWindow(s32);\n\nextern ComboDef gComboDefs[];\nextern s32 gPadPressed[];\nextern s32 gStickX[];\nextern s32 gStickY[];\nextern s32 gPrevStickX[];\nextern s32 gPrevStickY[];\nextern s32 gComboBeat;\nextern ComboSlot gComboSlots[];\nextern s32 D_80171A54;\nextern s32 D_80171A70[];\n\n/* Reads one player's stick and buttons and advances or resets their combo sequence. */\nvoid updateComboInput(s32 player) {\n    s32 phase;\n    s32 *seq;\n    s32 stickX;\n    s32 stickY;\n    s32 buttons;\n    s32 i;\n\n    phase = gComboBeat % 144;\n    seq = getComboSequence(gComboSlots[player].type, D_80171A70[player], D_80171A54);\n    stickX = gStickX[player];\n    stickY = gStickY[player];\n    if (abs(stickX) * 2 > abs(stickY)) {\n        stickY = 0;\n    }\n    if (abs(stickX) < abs(stickY) * 2) {\n        stickX = 0;\n    }\n    if (abs(stickX) < 10) {\n        stickX = 0;\n    }\n    if (abs(stickY) < 10) {\n        stickY = 0;\n    }\n    if (stickX > 20 && gPrevStickX[player] <= 20) {\n        gPadPressed[player] |= 0x100;\n    }\n    if (stickX < -20 && gPrevStickX[player] >= -20) {\n        gPadPressed[player] |= 0x200;\n    }\n    if (stickY > 20 && gPrevStickY[player] <= 20) {\n        gPadPressed[player] |= 0x800;\n    }\n    if (stickY < -20 && gPrevStickY[player] >= -20) {\n        gPadPressed[player] |= 0x400;\n    }\n    gPrevStickX[player] = stickX;\n    gPrevStickY[player] = stickY;\n    buttons = gPadPressed[player];\n    if (buttons != 0) {\n        if (buttons == seq[gComboSlots[player].step]) {\n            gComboSlots[player].hit[gComboSlots[player].step] = 1;\n            gComboSlots[player].flash[gComboSlots[player].step] = 0xFF;\n            gComboSlots[player].step++;\n            gComboSlots[player].done = checkComboWindow(player);\n        } else {\n            for (i = gComboSlots[player].step; i > 0; i--) {\n                gComboSlots[player].hit[i] = 0;\n                gComboSlots[player].flash[i] = 0x76;\n            }\n            gComboSlots[player].step = gComboDefs[gComboSlots[player].type].startStep;\n        }\n    }\n    if (gComboSlots[player].done == 0 && phase >= 31 && phase < 36) {\n        for (i = gComboSlots[player].step; i > 0; i--) {\n            gComboSlots[player].hit[i] = 0;\n            gComboSlots[player].flash[i] = 0x76;\n        }\n        gComboSlots[player].step = gComboDefs[gComboSlots[player].type].startStep;\n    }\n}\n"
  },
  "headers": {
   "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b": "/* context.h for BLUES BROTHERS 2000: shared by every function. Agents grow it with edit_context:\n * add a prototype or struct the moment you work one out, so the next function benefits. */\n\ntypedef signed char s8;\ntypedef unsigned char u8;\ntypedef signed short s16;\ntypedef unsigned short u16;\ntypedef signed int s32;\ntypedef unsigned int u32;\ntypedef signed long long s64;\ntypedef unsigned long long u64;\ntypedef float f32;\ntypedef double f64;\ntypedef volatile u8 vu8;\ntypedef volatile u16 vu16;\ntypedef volatile u32 vu32;\ntypedef volatile s32 vs32;\ntypedef int s32_bool;\n\n#define NULL ((void *)0)\n#define TRUE 1\n#define FALSE 0\n#define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))\n",
