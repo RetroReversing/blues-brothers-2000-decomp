@@ -72,47 +72,47 @@ extern s32 D_80171A50;
 extern s32 D_80171A54;
 extern s32 D_80171A70[];
 
-void func_80086C98(Obj86C98 *arg0) {
-    s32 idx;
-    Entry86C98 *e;
-    Entry86C98 *tbl;
-    Obj86C98 *o;
+/* Sets up the stage: spawns the two brother actors and camera, and loads the stage's assets and sounds. */ void initStageScene(Obj86C98 *owner) {
+    s32 stageIndex;
+    Entry86C98 *stageEntry;
+    Entry86C98 *stageTable;
+    Obj86C98 *actor;
 
     func_80082400();
     D_80171A54 = 0;
-    idx = func_80082400();
-    tbl = D_800B8720;
-    e = &tbl[idx];
-    func_80023A74(9, e->unk0);
-    setSlotAsset(0x18B, e->unkC, 0);
-    setSlotAsset(0x18C, e->unk10, 0);
+    stageIndex = func_80082400();
+    stageTable = D_800B8720;
+    stageEntry = &stageTable[stageIndex];
+    func_80023A74(9, stageEntry->unk0);
+    setSlotAsset(0x18B, stageEntry->unkC, 0);
+    setSlotAsset(0x18C, stageEntry->unk10, 0);
     D_80171A34 = 30;
     D_80171A50 = 0;
-    o = func_8000C3C4();
-    D_801719A8 = o;
-    o->unk10 = 0x8000;
-    o->unk9C = func_8004318C;
-    o->x = 200.0f;
-    o->y = 293.0f;
-    o->z = -567.0f;
-    arg0->unkA8 = o;
-    o->kind = 0x1023;
-    o->unkF8 |= 1;
-    actorSetAnim(o, 1, 0x100);
-    o = func_80042F00(9, 0, 0, 0);
-    D_801719AC = o;
-    o->unk9C = func_800430F4;
-    o->unk10 = 0x8000;
-    o->x = -200.0f;
-    if (idx == 5) {
-        o->unk9C = func_8004318C;
+    actor = func_8000C3C4();
+    D_801719A8 = actor;
+    actor->unk10 = 0x8000;
+    actor->unk9C = func_8004318C;
+    actor->x = 200.0f;
+    actor->y = 293.0f;
+    actor->z = -567.0f;
+    owner->unkA8 = actor;
+    actor->kind = 0x1023;
+    actor->unkF8 |= 1;
+    actorSetAnim(actor, 1, 0x100);
+    actor = func_80042F00(9, 0, 0, 0);
+    D_801719AC = actor;
+    actor->unk9C = func_800430F4;
+    actor->unk10 = 0x8000;
+    actor->x = -200.0f;
+    if (stageIndex == 5) {
+        actor->unk9C = func_8004318C;
     }
-    o->y = 293.0f;
-    o->z = -567.0f;
-    o->kind = 0x1023;
-    o->unkF8 |= 1;
-    o->unk58 = packDrawFlags(1, 1, 2, 3, 0, 0, 1, 0);
-    actorSetAnim(o, 0x18B, 0x100);
+    actor->y = 293.0f;
+    actor->z = -567.0f;
+    actor->kind = 0x1023;
+    actor->unkF8 |= 1;
+    actor->unk58 = packDrawFlags(1, 1, 2, 3, 0, 0, 1, 0);
+    actorSetAnim(actor, 0x18B, 0x100);
     gCameraTarget->unk9C = (u8 *)func_80023078 + 8;
     gCameraTarget->unk68 = -1;
     gCameraTarget->x = 0.0f;
@@ -120,10 +120,10 @@ void func_80086C98(Obj86C98 *arg0) {
     gCameraTarget->z = -567.0f;
     gCameraTarget->kind = 1;
     gCameraTarget->unkF8 |= 0x40;
-    arg0->unkC0 = 1;
-    o = findActor(6, NULL);
-    if (o != NULL) {
-        o->unk68 = -1;
+    owner->unkC0 = 1;
+    actor = findActor(6, NULL);
+    if (actor != NULL) {
+        actor->unk68 = -1;
     }
     D_80171A38 = func_80023D58(0x221);
     D_80171A3C = func_80023D58(0x222);
@@ -142,15 +142,15 @@ void func_80086C98(Obj86C98 *arg0) {
     func_8002A360(0x1E, NULL);
     func_80033BC0();
     D_800B3960->unk9C = updateFollowCamera;
-    func_80052A5C(e->unk4);
-    func_80052B24(func_80023DBC(0xE33), e->unk8, arg0);
-    o = func_800232B4(0x101, 0x14, 0x28, 0);
-    D_80171A30 = o;
-    o->unk98 = func_800820E8;
-    *(s32 *)((u8 *)o + 0x70) = 0;
-    *(s32 *)((u8 *)o + 0x68) = -1;
-    gComboSlots = idx;
-    arg0->unk9C = func_80086B3C;
+    func_80052A5C(stageEntry->unk4);
+    func_80052B24(func_80023DBC(0xE33), stageEntry->unk8, owner);
+    actor = func_800232B4(0x101, 0x14, 0x28, 0);
+    D_80171A30 = actor;
+    actor->unk98 = func_800820E8;
+    *(s32 *)((u8 *)actor + 0x70) = 0;
+    *(s32 *)((u8 *)actor + 0x68) = -1;
+    gComboSlots = stageIndex;
+    owner->unk9C = func_80086B3C;
     D_801719A8->unk10 = -0x4000;
     D_801719AC->unk10 = 0x4000;
     D_80171A70[0] = 0;

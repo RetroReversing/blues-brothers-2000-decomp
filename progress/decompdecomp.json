@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699250.804787,
- "revision": 5537,
+ "saved_at": 1795699273.647443,
+ "revision": 5539,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -14872,8 +14872,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "330540:2147811116": {
    "vram": 2147811116,
@@ -15184,7 +15183,7 @@
   },
   "555160:2148035736": {
    "vram": 2148035736,
-   "function": "func_80086C98",
+   "function": "initStageScene",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -20617,10 +20616,10 @@
    "matched_by": "manual-d63c73bc233f434b",
    "readable": false
   },
-  "func_800279B4": {
+  "drawImageTiles": {
    "vram": 2147645876,
    "matched_by": "manual-aeeb5be5af9d41ed",
-   "readable": false
+   "readable": true
   },
   "func_80027D7C": {
    "vram": 2147646844,
@@ -26452,10 +26451,10 @@
    "matched_by": "manual-2dfb81dab5284277",
    "readable": false
   },
-  "func_80086C98": {
+  "initStageScene": {
    "vram": 2148035736,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_80087060": {
    "vram": 2148036704,
@@ -29532,7 +29531,7 @@
   "func_800864B8": "local_source_158913791627",
   "func_8008662C": "local_source_158913791629",
   "func_80086B3C": "local_source_158913791631",
-  "func_80086C98": "local_source_158913791632",
+  "initStageScene": "local_source_158913791632",
   "func_80087160": "local_source_158913791634",
   "func_800871C0": "local_source_158913792199",
   "func_8008756C": "local_source_158913791636",
@@ -32903,7 +32902,7 @@
    "status": "open"
   },
   {
-   "name": "func_800279B4",
+   "name": "drawImageTiles",
    "vram": 2147645876,
    "size": 968,
    "status": "open"
@@ -39941,7 +39940,7 @@
    "status": "open"
   },
   {
-   "name": "func_80086C98",
+   "name": "initStageScene",
    "vram": 2148035736,
    "size": 968,
    "status": "open"
@@ -43357,6 +43356,12 @@
    "kind": "func"
   },
   {
+   "name": "drawImageTiles",
+   "address": 2147645876,
+   "size": 968,
+   "kind": "func"
+  },
+  {
    "name": "drawText",
    "address": 2147649692,
    "size": 100,
@@ -43732,6 +43737,12 @@
    "name": "updateChaseAI",
    "address": 2148027596,
    "size": 1292,
+   "kind": "func"
+  },
+  {
+   "name": "initStageScene",
+   "address": 2148035736,
+   "size": 968,
    "kind": "func"
   },
   {
@@ -45585,7 +45596,7 @@
   {
    "name": "gComboSlots",
    "address": 2148997600,
-   "size": 0,
+   "size": 4,
    "kind": "data"
   }
  ],
@@ -46577,7 +46588,7 @@
   },
   {
    "address": 2148257900,
-   "type": "char[]",
+   "type": "Obj86C98 *",
    "source": "match"
   },
   {
@@ -46682,7 +46693,7 @@
   },
   {
    "address": 2148997600,
-   "type": "ComboSlot[]",
+   "type": "s32",
    "source": "match"
   }
  ],

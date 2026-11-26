@@ -4,7 +4,7 @@ void func_80026C04(void *, s32, s32);
 void setTextColor(s32, s32, s32, s32);
 void setTextPos(s32, s32);
 void drawImage(s32, s32, s32, s32);
-void func_800279B4(s32, s32, s32, s32, s32, s32);
+void drawImageTiles(s32, s32, s32, s32, s32, s32);
 void func_8002E838(s32);
 void drawCenteredMessage(s32);
 s16 coss(u16);
@@ -76,7 +76,7 @@ void func_80032E40(Obj *arg0) {
             drawImage(getImageAsset(D_800BD07C), 160 + i * 15 - w, 20, 0);
         }
     }
-    func_800279B4(getImageAsset(D_8013FF9C), 0x100, 0x2A, 0x30, 0x98, 0);
+    drawImageTiles(getImageAsset(D_8013FF9C), 0x100, 0x2A, 0x30, 0x98, 0);
     for (i = 0; i < 10; i++) {
         if (D_800BD1F0[(D_800B3964->xBC - 1) * 10 + i] != 0) {
             setTextColor(0xFF, 0xFF, 0, 0xFF);
