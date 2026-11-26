@@ -34,7 +34,7 @@ void syncActorPrevPos(Obj *);
 extern f32 D_80009598;
 extern char gCameraRig[];
 extern char gCameraTarget[];
-extern s32 D_801700F0[];
+extern s32 gMeterPipImage[];
 void func_8002FBC0(void);
 void func_8007C1C8(void);
 
@@ -51,7 +51,7 @@ Obj *func_8007C310(void) {
     obj = func_800232B4(0x1008, x, y, (*(Obj **)gCameraTarget)->z + (f32)((coss(*(u16 *)((char *)(*(Obj **)gCameraTarget) + 0x12)) * 25) >> 14));
     one = 1;
     obj->f98 = func_8002FBC0;
-    obj->f60 = D_801700F0[0];
+    obj->f60 = gMeterPipImage[0];
     obj->f58 = packDrawFlags(0, 0, one, 2, 0, 0, one, one);
     pl = (*(Obj **)gCameraTarget);
     obj->f68 = 0xE;

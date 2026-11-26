@@ -39,7 +39,7 @@ extern s32 D_8014002C;
 extern Obj *D_801700E8;
 extern s32 func_80023078;
 extern s32 func_8007BE88;
-extern s32 func_8007C80C;
+extern s32 drawMeterPips;
 
 void func_8007CB84(Obj *self) {
     s32 n;
@@ -49,7 +49,7 @@ void func_8007CB84(Obj *self) {
     n = 0;
     if (self->f7C == 0) {
         func_8007C780();
-        self->f98 = &func_8007C80C;
+        self->f98 = &drawMeterPips;
         self->f68 = 0xD;
         self->f7C = 1;
         self->f90 = 0x1D;

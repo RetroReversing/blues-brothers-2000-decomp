@@ -41,7 +41,7 @@ extern ObjY *gCameraTarget;
 extern Bound gPlatformMaxOffsets[];
 extern Bound gPlatformMinOffsets[];
 
-void func_8001CC2C(ObjY *arg0) {
+void gateActorUpdate(ObjY *arg0) {
     s32 flags;
     f32 dx;
     f32 dz;

@@ -17,7 +17,7 @@ s32 tickActorTimer(void *);                          /* extern */
 M2C_UNK func_8002DA40(void *);                      /* extern */
 extern f64 D_80009590;
 extern void *D_801700E8;
-extern M2C_UNK D_801700F0;
+extern M2C_UNK gMeterPipImage;
 
 void func_8007C1C8(void *arg0) {
     s32 temp_v0;
@@ -46,7 +46,7 @@ void func_8007C1C8(void *arg0) {
         { M2C_FIELD(arg0, s32 *, 0x64) = 2; }
         temp_v0 = M2C_FIELD(arg0, s32 *, 0x80) ^ 1;
         M2C_FIELD(arg0, s32 *, 0x80) = temp_v0;
-        M2C_FIELD(arg0, s32 *, 0x60) = (s32) (&D_801700F0)[temp_v0];
+        M2C_FIELD(arg0, s32 *, 0x60) = (s32) (&gMeterPipImage)[temp_v0];
     }
 }
 

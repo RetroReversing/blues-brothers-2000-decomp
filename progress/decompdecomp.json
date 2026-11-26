@@ -1,7 +1,7 @@
 {
  "format": 2,
- "saved_at": 1795699713.958699,
- "revision": 5570,
+ "saved_at": 1795699731.081265,
+ "revision": 5572,
  "title": "BLUES BROTHERS 2000",
  "platform": "n64",
  "game": {
@@ -13200,7 +13200,7 @@
   },
   "120876:2147601452": {
    "vram": 2147601452,
-   "function": "func_8001CC2C",
+   "function": "gateActorUpdate",
    "toolchain": "sn-n64-281",
    "flags": [
     "-G0",
@@ -16699,8 +16699,7 @@
     "-mcpu=VR4300",
     "-mhard-float",
     "-mfp32"
-   ],
-   "timeout": 20
+   ]
   },
   "622176:2148102752": {
    "vram": 2148102752,
@@ -19537,7 +19536,7 @@
    "matched_by": "autopilot",
    "readable": false
   },
-  "func_8001CC2C": {
+  "gateActorUpdate": {
    "vram": 2147601452,
    "matched_by": "manual-56199151d2a74de9",
    "readable": false
@@ -25767,10 +25766,10 @@
    "matched_by": "permuter-158913791496",
    "readable": false
   },
-  "func_8007C80C": {
+  "drawMeterPips": {
    "vram": 2147993612,
    "matched_by": "manual-7740c92ed85f4923",
-   "readable": false
+   "readable": true
   },
   "func_8007CB84": {
    "vram": 2147994500,
@@ -28904,7 +28903,7 @@
   "func_8001C6D8": "local_source_158913790262",
   "func_8001C898": "local_source_158913790267",
   "func_8001C964": "local_source_158913790268",
-  "func_8001CC2C": "local_source_158913790270",
+  "gateActorUpdate": "local_source_158913790270",
   "func_8001CF9C": "local_source_158913790271",
   "func_8001D0F4": "local_source_158913790274",
   "func_8001D30C": "local_source_158913790277",
@@ -31595,7 +31594,7 @@
    "status": "open"
   },
   {
-   "name": "func_8001CC2C",
+   "name": "gateActorUpdate",
    "vram": 2147601452,
    "size": 880,
    "status": "open"
@@ -39113,7 +39112,7 @@
    "status": "open"
   },
   {
-   "name": "func_8007C80C",
+   "name": "drawMeterPips",
    "vram": 2147993612,
    "size": 888,
    "status": "open"
@@ -43219,6 +43218,12 @@
    "kind": "func"
   },
   {
+   "name": "gateActorUpdate",
+   "address": 2147601452,
+   "size": 880,
+   "kind": "func"
+  },
+  {
    "name": "updateCameraView",
    "address": 2147614564,
    "size": 396,
@@ -43738,6 +43743,12 @@
    "name": "updateTruckPlatform",
    "address": 2147965468,
    "size": 1072,
+   "kind": "func"
+  },
+  {
+   "name": "drawMeterPips",
+   "address": 2147993612,
+   "size": 888,
    "kind": "func"
   },
   {
@@ -45703,6 +45714,18 @@
    "kind": "data"
   },
   {
+   "name": "gMeterPipImage",
+   "address": 2148991216,
+   "size": 4,
+   "kind": "data"
+  },
+  {
+   "name": "gMeterBackgroundImage",
+   "address": 2148991232,
+   "size": 4,
+   "kind": "data"
+  },
+  {
    "name": "gSplineTangents",
    "address": 2148992512,
    "size": 0,
@@ -46953,6 +46976,16 @@
   {
    "address": 2148838336,
    "type": "Slot[]",
+   "source": "match"
+  },
+  {
+   "address": 2148991216,
+   "type": "s32",
+   "source": "match"
+  },
+  {
+   "address": 2148991232,
+   "type": "s32",
    "source": "match"
   },
   {

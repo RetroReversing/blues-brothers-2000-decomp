@@ -1489,7 +1489,7 @@
   "score_after": 2200
  },
  {
-  "function": "func_8001CC2C",
+  "function": "gateActorUpdate",
   "text": "Range check #213: is this part of the game built by GCC 2.8.1 + SN ASN64 2.56 -G0 -mips3 -mgp32 -mfp32 -O2? An agent's C for a function next to func_8001CC2C matches with it. Match func_8001CC2C as usual; then try_compiler(\"func_8001CC2C\", \"gcc-2.8.1-pm-sn-as\", \"-G0 -mips3 -mgp32 -mfp32 -O2\"). Matching with GCC 2.8.1 + SN ASN64 2.56 -G0 -mips3 -mgp32 -mfp32 -O2 and not with the project's compiler confirms the range; matching with the project's compiler only shows it was a quirk. Either answer helps.",
   "by": "autopilot",
   "created_at": 1795513811.883359,
@@ -1542,7 +1542,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:63ed05439500907a199c6a0b97ece9bacd954ba6e34cf39fb1b2ad1a96e1ed7c"
  },
  {
-  "function": "func_8001CC2C",
+  "function": "gateActorUpdate",
   "text": "hk14 handover. Best recorded in app: 380 (default profile, revision 9e870329f3923bde21fb), from 1720 saved. Edits in order (score after each, isolated/app): (1) D_80000CB8/CBC/CC0/CC4/CC8 inlined as float literals 3100.0f, 300.0f, -1600.0f, 8000.0f, -600.0f (1720 -> 1720 alone, but the lui $at form now matches); (2) the temp_fs0/temp_fs2 literal temporaries inlined at their uses (1720 -> 1220); (3) func_8002DD60 is f32(f32) (fabs): prototype fixed and calls func_8002DD60(temp_fs0_2) and func_8002DD60(temp_fs1) (1220 -> 1165); (4) table index in a block-local, base pointer hoisted: temp_v1 = D_800F4A00; then temp_v1 = (char*)temp_v1 + temp_idx (1165 -> 1035 under -mfp32 only; with the index moved to a fresh temp it was 1045, so the base-before-index order matters); (5) two float subtractions as single expressions: temp_fs0_2 = (*(f32*)(D_800BD06C+4)) - field_4, temp_fs1 likewise with +0xC and field_C (default 1165 -> 380 after combined with (4); under -mfp32 1035 -> 230). PROFILE: the default compile is -mfp64 (sn-n64-281 flags); the target uses even FP registers for single loads ($f2,$f4,$f24,$f26), which is the -mfp32 fingerprint. compiler_experiments trial 40820bbc238933c8ad2d (-G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32) scored the earlier 1165 candidate at 1035 (diagnostic, not applied). Under -mfp32 the best (edits 1-5) is 230 in fast_judge (isolated, not app-verified). Left: 10 register rows in the table walk (target: base pointer in $v1, index in $a0; ours swapped) and 6 scheduling rows (the final 0x8000/field_4 store block: target loads field_4 after the ori/sw; swapping those two C lines was worse, 810/660). Tried and worse: index in a fresh temp before base (1045), base in a do-while (425), index in do-while (425), inline index expression (no), block-local base pointer (230 = same), swapping final stores (660-810). Scaffolding: inline_fn helper and __repair_* typedefs from the saved best (not new).",
   "by": "manual-2e980e3fcc614831",
   "created_at": 1795514177.21561,
@@ -1551,7 +1551,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
  },
  {
-  "function": "func_8001CC2C",
+  "function": "gateActorUpdate",
   "text": "[Released without compiling it once; notes not checked by a compile.] hk18: on the skip list (220 insns, needs -mfp32 profile; saved best 380). Released to take another function.",
   "by": "manual-d3ca8a838c4047d4",
   "created_at": 1795514233.103092,
@@ -2193,7 +2193,7 @@
   "score_after": 30
  },
  {
-  "function": "func_8001CC2C",
+  "function": "gateActorUpdate",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap3 compiler-flag sweep (sched flags, O1/O3, fp32/64, G, mips2, pairs): no improvement over saved best.",
   "by": "manual-f065f986deb14778",
   "created_at": 1795519479.4726348,
@@ -7257,7 +7257,7 @@
   "score_after": null
  },
  {
-  "function": "func_8001CC2C",
+  "function": "gateActorUpdate",
   "text": "[Released without compiling it once; notes not checked by a compile.] see note",
   "by": "manual-d1f65424b73c4204",
   "created_at": 1795553929.223126,
@@ -8086,7 +8086,7 @@
   "score_after": 100
  },
  {
-  "function": "func_8001CC2C",
+  "function": "gateActorUpdate",
   "text": "op46: plain struct rewrite (Bound {x,pad,z} tables, chained fB0 = f50 = 0.0f, flags = a & b in one expression, table base set before the byte offset: lo = D_800F4A00; off = fB8 * 12; lo += off bytes) saved at 200 (fp64 profile); trial 2e33351320cf6f18e1cb under sn-n64-281 -mfp32 = 50, only rows left: table base/offset registers swapped (target lui base into v1, index/offset in a0; ours idx v1, base a0). Native gcc-2.8.1-pm -mfp32 proxy reproduces ours: local-alloc gives idx (3 refs/8 insns) v1 before base hi (2 refs/6 insns). Tried in proxy without change: off spellings (*12, *3*4, sizeof, u32), fences around base or offset, base/offset order, embedded assignment. Next: make the base hi pseudo outrank idx (shorter life) or give idx fewer refs.",
   "by": "manual-d815639955454bd3",
   "created_at": 1795557746.619358,
@@ -8095,7 +8095,7 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:0bc40307225c09940f924b3d37a9489b9c74ee9546e8049e32a73d1f647445c2"
  },
  {
-  "function": "func_8001CC2C",
+  "function": "gateActorUpdate",
   "text": "plain struct rewrite (Bound {x,pad,z} tables, chained fB0 = f50 = 0.0f, flags = a & b in one expression, table base set before the byte offset: lo = D_800F4A00; off = fB8 * 12; lo += off bytes) saved at 200 (fp64 profile); trial 2e33351320cf6f18e1cb under sn-n64-281 -mfp32 = 50, only rows left: table base/offset registers swapped (target lui base into v1, index/offset in a0; ours idx v1, base a0). Native gcc-2.8.1-pm -mfp32 proxy reproduces ours: local-alloc gives idx (3 refs/8 insns) v1 before base hi (2 refs/6 insns). Tried in proxy without change: off spellings (*12, *3*4, sizeof, u32), fences around base or offset, base/offset order, embedded assignment. Next: make the base hi pseudo outrank idx (shorter life) or give idx fewer refs.",
   "by": "manual-d815639955454bd3",
   "created_at": 1795557747.316687,
@@ -8815,6 +8815,24 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:51652aa4f09010bd9534af55aa4c4f73c8697049ca203b302b5e7cd3f6ce3489"
  },
  {
+  "function": "cameraRigUpdate",
+  "text": "op64: best 90 under per-function -mfp32 (compiler_experiments trial c40b049cbeb6346856d3; 240 on the current fp64 profile; saved as best). Source: plain rewrite. Keys: func_800242A8 gets a 4th arg D_800B83B0+1 ($a3 live): id = D_800B83B0; ...; D_800B83B0 = id + 1; func_800242A8(arg0->unk6C, 0xDAA, 0, id + 1). Second loop reuses the first object local o (s2). Floats 20,1281,-5818,181,500,2000,45,365 are li.s literals (lui $at); the two doubles must be named f64 D_80009138/D_80009140 (literal doubles get padded to 8 in our pool, the target pool starts 4 mod 8). One row left: lui $t0,%hi(D_800B83B0) must sit at the block top (after move a2,zero); ours lands after the D_800B3978 store. Tried: move-one-line hill climb and all 720 orders of the first six statements, ++D_800B83B0 / assignment inside the call / reread as arg (all 90 or worse). cc1n64 -dS shows sched1 places the lui after the x90 store, so it is a scheduler priority question.",
+  "by": "manual-7740c92ed85f4923",
+  "created_at": 1795573086.564497,
+  "score_before": 4540,
+  "score_after": 240,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
+ },
+ {
+  "function": "cameraRigUpdate",
+  "text": "near-match 90 with -mfp32; see note",
+  "by": "manual-7740c92ed85f4923",
+  "created_at": 1795573087.666498,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
+ },
+ {
   "function": "drawFlaggedTriangles",
   "text": "op65: saved 105 (default profile) = instructions identical, only s0/s1 swapped between the object cursor o (target s0) and the %hi(D_80177E18) pseudo that lives from the first six Gfx commands to the loop preheader copy t2 (target s1). Source: debug collision-triangle drawer: 6 setup Gfx (E7/D9D0F9FA/D9FFFFFF,200205/E3000A01/E200001C,504E50/FCFFFFFF,FFFDF6FB), o = func_80023088(0); end = func_800230B0(0); for (; o <= end; o++) if (o->x0 == 0x102 && D_800F80E8[o->xB8]) { vtx = D_800FA860[o->xB8]; DA380003 matrix o->xEC + 0x80000000; for i < D_800F90A0[o->xB8]: Tri (u16 v[3], u8 flags) & mask -> FA000000 colour by flag 8/4/2/1/else, FA000000 0xFF3C, three 0x0100100x vertex loads vtx + v*16, 05000204 }; closing E7/FA 0/E3000A01. Each Gfx as { GfxW *_g = D_80177E18++; ... }. Tried: declaration order of o/end, register o, continue form, early return, char[] GP via (*(GfxW **)), prove_chain all (40 children): all 105.",
   "by": "manual-aeeb5be5af9d41ed",
@@ -8975,6 +8993,15 @@
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:7851d3609cfc6057831a43f8d1584868d318e87f602b046897e549bf05601b69"
  },
  {
+  "function": "cameraRigUpdate",
+  "text": "op68: best 15 under -mfp32 (G0 default flags + -mfp32), saved revision f32d3a2b25cc8713a15c (165 on fp64). Edits: id = D_800B83B0 as the first statement, arg0->unk7C = 1 before D_800B3978 = 0, and the loop counter i used for id. Only rows left: id in s3 (i crosses calls) instead of a3. Mechanism: sched1 birthing_insn_p bumps a set-once pseudo (the lw of D_800B83B0) next to its consumers and drags lui t0 down; with a multi-set variable (REG_N_SETS>1) the lw is not bumped, sched1 keeps lui+lw at the top, sched2 moves only the lw down as in the target. Need a multi-set id variable that does not cross calls. Tried: own id 90; id++ then store 560-730; angle var a 90/210; id reused for func_80023D58 result or D_800BD06C->unk10 arg 210; for D_800BD68C - 500 top matches but tail 630; s32 *q = &D_800B83B0 90.",
+  "by": "manual-b6b12924c41b4c9e",
+  "created_at": 1795606937.954571,
+  "score_before": 240,
+  "score_after": 165,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
+ },
+ {
   "function": "drawRotatedImage",
   "text": "op68: still 745 (default and -mfp32 alike). Tried: k = 0x1000 just before func_8002710C (745), colour in a u8 local c set before the vertex block (745), -size in its own local ns (940). The remaining rows are local/global-alloc order in the vertex block: target gives the 0xFF colour pseudo t6 (allocated after the Gfx constants and lhu temps) and -size v1.",
   "by": "manual-b6b12924c41b4c9e",
@@ -8999,6 +9026,24 @@
   "score_before": 480,
   "score_after": 340,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:bcb566ef5c93e4a32df6c8005f4320d5e88804e550cf8730830cf95d8cc71e30"
+ },
+ {
+  "function": "cameraRigUpdate",
+  "text": "op70: best 10 under -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (160 on fp64, saved). Edit: a NEW local id (not i) also used for the entry test: `id = arg0->unk7C; if (id == 0) { id = D_800B83B0; ...}`. That makes id multi-set (a set combine cannot fold away), so the lui/lw schedule is the target one and id/id+1 are a3. Only rows left: the entry `lw/bnez` uses a3 (id is one global pseudo) where the target uses v0. Same 10 with the second set in the else branch (`id = arg0->unk7C; if (id == 3)`: v1 in target). Mechanism: sched1 birthing_insn_p needs REG_N_SETS(id)>1 after combine; second sets that feed an argument (id = o->z before func_800232B4, id = 0 args, unused 4th parameter, s32 id = 0 init) are folded/deleted and give 210. Also 210-640: id += 1 / ++id / D_800B83B0++ spellings (560), volatile read (210/2130), -G8 flag sets (4745). Needs: a second live set of id in a place where the target already holds it in a3 that survives combine; none found.",
+  "by": "manual-30d0b17e5a18415e",
+  "created_at": 1795607915.340204,
+  "score_before": 165,
+  "score_after": 160,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
+ },
+ {
+  "function": "cameraRigUpdate",
+  "text": "best 10 under -mfp32 trial flags, see note",
+  "by": "manual-30d0b17e5a18415e",
+  "created_at": 1795607916.187573,
+  "score_before": null,
+  "score_after": null,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
  },
  {
   "function": "drawRotatedImage",
@@ -9496,6 +9541,15 @@
   "score_before": 11132,
   "score_after": 10632,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:48ad4be740fbb861969579a271bf574b6ad9748e5e3e56d45a5c35d493e01258"
+ },
+ {
+  "function": "cameraRigUpdate",
+  "text": "ap13: unchanged 160 (10 under -mfp32; only the entry lw/bnez a3 vs v0). New: separate temp t for the entry test and id = D_800B83B0 inside, with id++; D_800B83B0 = id; call(.., id) (the target's addiu a3,a3,1 in a3): entry test lands in v0 as in the target but the schedule moves (560); exhaustive 5040-order search of the 7 leading store units in that shape: best 410. id + 1 passed twice (210). Needs a second set of id that is not the entry test and keeps the sched1 shape.",
+  "by": "manual-d8adb74680f54138",
+  "created_at": 1795626553.6606731,
+  "score_before": 160,
+  "score_after": 160,
+  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
  },
  {
   "function": "func_80023E58",
@@ -10143,6 +10197,14 @@
   "score_after": 29782
  },
  {
+  "function": "cameraRigUpdate",
+  "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '10 30920cb81f5465c05987 sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
+  "by": "manual-fa253f9ceee84c1b",
+  "created_at": 1795635817.53502,
+  "score_before": 160,
+  "score_after": 160
+ },
+ {
   "function": "func_80082990",
   "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '310 2f42e4bc2115af5d6260 sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
   "by": "manual-fa253f9ceee84c1b",
@@ -10438,6 +10500,14 @@
   "score_after": 680
  },
  {
+  "function": "cameraRigUpdate",
+  "text": "op86 (in progress, claim kept for return): mechanism read from 2.8.1 sched.c: birthing_insn_p boosts a set-once live pseudo; the 10 form works because id has 2 sets (entry test + D_800B83B0 load) so the lw is not boosted and the lui t0 stays at the block top; that makes id one global pseudo so the entry test lands in a3. Separate entry var + T = id + 1: 210 (lw boosted, lui dragged). id++/++id/D=++id/id+=1 in the call argument: 560 (in-place inc not birthing, move a0 picked first at T-1 by luid). A second set of id as the loop call converted arg (id = o->z; func(1,x,y,id)): folded by combine (REG_N_SETS-- in try_combine), 210. Needed: a second set of id that survives flow and combine and sits where the target already uses a3.",
+  "by": "manual-d52de911be6641da",
+  "created_at": 1795637855.275591,
+  "score_before": 160,
+  "score_after": 160
+ },
+ {
   "function": "func_800493A0",
   "text": "op85 (Opus): clean typed rewrite, 61191 -> 20544 under the function's current profile (sn-n64-281 -mfp64), and 7 under sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (compiler_experiments trial on rev 989603a6: 352; the recorded best rev scores 7 locally with the app's judge-worker). The target is fp32 (mtc1 $zero,$fs3 / $fs3f pairs for 0.0 doubles). Profile NOT changed (not exact).\nSource shape (all in the saved best): Vec3 locals in frame order p0 0x10, p1 0x20, min 0x30, max 0x40, dir 0x50, hit 0x60, world 0x70, tv[3] 0x80, normal 0xA8, e0 0xB8, e1 0xC8, RayHit best 0xD8 (0x38: kind, height, normal, t, world, hit, obj, tri, the D_80148CF8 record), tmp 0x110, c0/c1/c2 0x120/0x130/0x140; 0x150+ are reload spills. Everything inline (no helper calls): sqrtf() builtin (its fallback call is func_80094350), the empty box test written in full (8 compares, empty body: GCC keeps the first 4 and two loads), `for (k = 0; k < 3; k++) tv[k].x = verts[tri->v[k]].x ...` (ModelVtx s16 x,y,z stride 16; ModelTri u16 v[3], u8 flags at 6), string literal \"intersections array overflow!\" and literals 1.0f, -1.0f, 1.0f, 1.0 (the pool D_80007D14..D_80007D40).\nSteps that moved it (fp32 scores): typed rewrite 7567; drop the hand NaN fallback (builtin does it) 6437; box test in full 4832; one `ent` pointer per site instead of reusing the end pointer `e` 2544; one len per sqrt site 1594; hit.z before obj/tri stores 1385, division orders x,y,z in source (compiler emits x,z,y) and `min.y > tv[1].y` operand order 1312; end copies obj/tri before the sqrt 632; ent->normal x,y,z then t 352; loop entry written as D_80148CF8[D_800B76A4].field (no pointer local) 11; loop normal division x,y,z 7.\nLeft (7): stack slots only. Target: t 0x158, the hoisted &tv 0x15C, an unused 8-byte slot 0x160, sign 0x168. Ours: t 0x158, sign 0x15C, &tv 0x160. In ours `sign` (pseudo 97, 10 weighted refs / 169) gets no FP register in global.c (every even FPR is taken in its range) and is given an initial slot; the target's layout says sign (and an 8-byte, probably DF, pseudo) got a hard register and were evicted when reload spilled $f22/$f26 (slots after the loop-made &tv). Tried: sign declaration at every position, assignment early/late/if-else, operand order of sign * dot, do-while weights (7400+, scheduling), user pointer for the tv loop (1238+), random declaration orders (160, none < 7), prove_chain all families under fp32 (40 and all children).\nLibrary: decomp-repair element_pointer_direct_index (PR #1729) gives the 352 -> 11 step as its only child. Next: find what takes the FP registers in sign's range (passes/greg dumps under -mfp32: cc1n64 under wibo with -dl -dg) and the spelling that frees one (a block-local temp in $f22 within the edge tests).",
   "by": "manual-f1378353c5fb4a43",
@@ -10490,6 +10560,14 @@
   "score_before": null,
   "score_after": null,
   "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:911bddf4c343dfbc3621f31a668b85f83853f796f2f4dc0e601aa71a64d1ce52"
+ },
+ {
+  "function": "cameraRigUpdate",
+  "text": "[Released without compiling it once; notes not checked by a compile.] op86: unchanged 160 saved (10 under -G0 -mips3 -O2 -mfp32; not applied, not exact). Mechanism (2.8.1 sched.c birthing_insn_p + local-alloc): the 10 form needs REG_N_SETS(id)==2 so the lw of D_800B83B0 is not boosted (lui t0 stays at the block top); the entry test as id gives that but makes id one global pseudo in a3 (target v0). Separate entry var + T=id+1 (birthing): 210. In-place increment (id++, ++id, id+=1, D=++id, in or out of the call arg): regs right but the inc loses T-1 to the a0 move by INSN_LUID, 560. Second sets that feed only a call arg (id=o->z, id=0 args, unused 4th param) are folded by combine (try_combine decrements REG_N_SETS): 210. Volatile load with the separate entry: 210 / 560. Identical-arm tricks n/a. Needed: a second set of id that survives flow and combine where the target already uses a3. Full write-up: docs/learnings/experiment/multi-set-load-without-entry-register.md (decompdecomp PR 3579).",
+  "by": "manual-d52de911be6641da",
+  "created_at": 1795638322.568386,
+  "score_before": 160,
+  "score_after": 160
  },
  {
   "function": "func_80082990",
@@ -12586,83 +12664,5 @@
   "created_at": 1795699301.6797109,
   "score_before": 0,
   "score_after": 0
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "op64: best 90 under per-function -mfp32 (compiler_experiments trial c40b049cbeb6346856d3; 240 on the current fp64 profile; saved as best). Source: plain rewrite. Keys: func_800242A8 gets a 4th arg D_800B83B0+1 ($a3 live): id = D_800B83B0; ...; D_800B83B0 = id + 1; func_800242A8(arg0->unk6C, 0xDAA, 0, id + 1). Second loop reuses the first object local o (s2). Floats 20,1281,-5818,181,500,2000,45,365 are li.s literals (lui $at); the two doubles must be named f64 D_80009138/D_80009140 (literal doubles get padded to 8 in our pool, the target pool starts 4 mod 8). One row left: lui $t0,%hi(D_800B83B0) must sit at the block top (after move a2,zero); ours lands after the D_800B3978 store. Tried: move-one-line hill climb and all 720 orders of the first six statements, ++D_800B83B0 / assignment inside the call / reread as arg (all 90 or worse). cc1n64 -dS shows sched1 places the lui after the x90 store, so it is a scheduler priority question.",
-  "by": "manual-7740c92ed85f4923",
-  "created_at": 1795573086.564497,
-  "score_before": 4540,
-  "score_after": 240,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "near-match 90 with -mfp32; see note",
-  "by": "manual-7740c92ed85f4923",
-  "created_at": 1795573087.666498,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "op68: best 15 under -mfp32 (G0 default flags + -mfp32), saved revision f32d3a2b25cc8713a15c (165 on fp64). Edits: id = D_800B83B0 as the first statement, arg0->unk7C = 1 before D_800B3978 = 0, and the loop counter i used for id. Only rows left: id in s3 (i crosses calls) instead of a3. Mechanism: sched1 birthing_insn_p bumps a set-once pseudo (the lw of D_800B83B0) next to its consumers and drags lui t0 down; with a multi-set variable (REG_N_SETS>1) the lw is not bumped, sched1 keeps lui+lw at the top, sched2 moves only the lw down as in the target. Need a multi-set id variable that does not cross calls. Tried: own id 90; id++ then store 560-730; angle var a 90/210; id reused for func_80023D58 result or D_800BD06C->unk10 arg 210; for D_800BD68C - 500 top matches but tail 630; s32 *q = &D_800B83B0 90.",
-  "by": "manual-b6b12924c41b4c9e",
-  "created_at": 1795606937.954571,
-  "score_before": 240,
-  "score_after": 165,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "op70: best 10 under -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32 (160 on fp64, saved). Edit: a NEW local id (not i) also used for the entry test: `id = arg0->unk7C; if (id == 0) { id = D_800B83B0; ...}`. That makes id multi-set (a set combine cannot fold away), so the lui/lw schedule is the target one and id/id+1 are a3. Only rows left: the entry `lw/bnez` uses a3 (id is one global pseudo) where the target uses v0. Same 10 with the second set in the else branch (`id = arg0->unk7C; if (id == 3)`: v1 in target). Mechanism: sched1 birthing_insn_p needs REG_N_SETS(id)>1 after combine; second sets that feed an argument (id = o->z before func_800232B4, id = 0 args, unused 4th parameter, s32 id = 0 init) are folded/deleted and give 210. Also 210-640: id += 1 / ++id / D_800B83B0++ spellings (560), volatile read (210/2130), -G8 flag sets (4745). Needs: a second live set of id in a place where the target already holds it in a3 that survives combine; none found.",
-  "by": "manual-30d0b17e5a18415e",
-  "created_at": 1795607915.340204,
-  "score_before": 165,
-  "score_after": 160,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "best 10 under -mfp32 trial flags, see note",
-  "by": "manual-30d0b17e5a18415e",
-  "created_at": 1795607916.187573,
-  "score_before": null,
-  "score_after": null,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "ap13: unchanged 160 (10 under -mfp32; only the entry lw/bnez a3 vs v0). New: separate temp t for the entry test and id = D_800B83B0 inside, with id++; D_800B83B0 = id; call(.., id) (the target's addiu a3,a3,1 in a3): entry test lands in v0 as in the target but the schedule moves (560); exhaustive 5040-order search of the 7 leading store units in that shape: best 410. id + 1 passed twice (210). Needs a second set of id that is not the entry test and keeps the sched1 shape.",
-  "by": "manual-d8adb74680f54138",
-  "created_at": 1795626553.6606731,
-  "score_before": 160,
-  "score_after": 160,
-  "handoff_inputs": "43fb81bda737667eec4bd103f1adc155a94f9ae124b9712e8b3ec72557d02d35:fca3b8b96ccce2f8063728cec9db934beb173180661afb8d33ea31fafbc44956:d32db9d5fb617bd2d151b33dbc69c1fbb14346db65ae0a9ef005bc210a148986"
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "[Released without compiling it once; notes not checked by a compile.] ap22: full compiler_experiments sweep on saved best (SN 2.7.2 0001/0001-as0004/0004/0006/970404 x -G0/-G8 x -mips2/-mips3 x fp default/-mfp32/-mfp64; KMC 2.7.2; sn-n64-281 -G0/-G8 fp32/fp64): best '10 30920cb81f5465c05987 sn-n64-281 -G0 -mips3 -O2 -mgas -meb -mcpu=VR4300 -mhard-float -mfp32'; no exact profile. (Released after the sweep only; no source edits tried by ap22.)",
-  "by": "manual-fa253f9ceee84c1b",
-  "created_at": 1795635817.53502,
-  "score_before": 160,
-  "score_after": 160
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "op86 (in progress, claim kept for return): mechanism read from 2.8.1 sched.c: birthing_insn_p boosts a set-once live pseudo; the 10 form works because id has 2 sets (entry test + D_800B83B0 load) so the lw is not boosted and the lui t0 stays at the block top; that makes id one global pseudo so the entry test lands in a3. Separate entry var + T = id + 1: 210 (lw boosted, lui dragged). id++/++id/D=++id/id+=1 in the call argument: 560 (in-place inc not birthing, move a0 picked first at T-1 by luid). A second set of id as the loop call converted arg (id = o->z; func(1,x,y,id)): folded by combine (REG_N_SETS-- in try_combine), 210. Needed: a second set of id that survives flow and combine and sits where the target already uses a3.",
-  "by": "manual-d52de911be6641da",
-  "created_at": 1795637855.275591,
-  "score_before": 160,
-  "score_after": 160
- },
- {
-  "function": "cameraRigUpdate",
-  "text": "[Released without compiling it once; notes not checked by a compile.] op86: unchanged 160 saved (10 under -G0 -mips3 -O2 -mfp32; not applied, not exact). Mechanism (2.8.1 sched.c birthing_insn_p + local-alloc): the 10 form needs REG_N_SETS(id)==2 so the lw of D_800B83B0 is not boosted (lui t0 stays at the block top); the entry test as id gives that but makes id one global pseudo in a3 (target v0). Separate entry var + T=id+1 (birthing): 210. In-place increment (id++, ++id, id+=1, D=++id, in or out of the call arg): regs right but the inc loses T-1 to the a0 move by INSN_LUID, 560. Second sets that feed only a call arg (id=o->z, id=0 args, unused 4th param) are folded by combine (try_combine decrements REG_N_SETS): 210. Volatile load with the separate entry: 210 / 560. Identical-arm tricks n/a. Needed: a second set of id that survives flow and combine where the target already uses a3. Full write-up: docs/learnings/experiment/multi-set-load-without-entry-register.md (decompdecomp PR 3579).",
-  "by": "manual-d52de911be6641da",
-  "created_at": 1795638322.568386,
-  "score_before": 160,
-  "score_after": 160
  }
 ]

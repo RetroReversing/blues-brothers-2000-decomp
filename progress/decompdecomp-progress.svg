@@ -962,7 +962,7 @@
 <g><title>func_8001CB68: {&#x27;matched&#x27;: 1}</title>
 <rect x="760.000" y="190" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8001CC2C: {&#x27;matched&#x27;: 1}</title>
+<g><title>gateActorUpdate: {&#x27;matched&#x27;: 1}</title>
 <rect x="770.000" y="190" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8001CF9C: {&#x27;matched&#x27;: 1}</title>
@@ -4640,7 +4640,7 @@
 <g><title>func_8007C780: {&#x27;matched&#x27;: 1}</title>
 <rect x="220.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
-<g><title>func_8007C80C: {&#x27;matched&#x27;: 1}</title>
+<g><title>drawMeterPips: {&#x27;matched&#x27;: 1}</title>
 <rect x="230.000" y="350" width="8.000" height="8" fill="#238636"/>
 </g>
 <g><title>func_8007CB84: {&#x27;matched&#x27;: 1}</title>
