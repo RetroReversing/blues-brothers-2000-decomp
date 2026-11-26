@@ -16,7 +16,7 @@ s32 tickActorTimer();                                /* extern */
 M2C_UNK func_800393F4(void *);                      /* extern */
 extern s32 D_80107040;
 extern s32 gPadPressed;
-extern s32 D_801073B0;
+extern s32 gStickX;
 extern s32 gStickY;
 
 void func_8000EB34(void *arg0) {
@@ -25,7 +25,7 @@ void func_8000EB34(void *arg0) {
         return;
     }
     gStickY = 0;
-    D_801073B0 = 0;
+    gStickX = 0;
     D_80107040 = 0;
     gPadPressed = 0;
     func_800393F4(arg0);

@@ -7,7 +7,7 @@ typedef struct Entry {
 
 extern Entry D_800B8230[8];
 extern s32 D_80107040;
-extern s32 D_801073B0;
+extern s32 gStickX;
 extern s32 gStickY;
 
 s32 func_8006DAE8(s32 arg0) {
@@ -19,10 +19,10 @@ s32 func_8006DAE8(s32 arg0) {
             if (D_80107040 & D_800B8230[i].flags) {
                 r |= D_800B8230[i].bit;
             }
-            if (D_800B8230[i].x > 0 && D_800B8230[i].x < D_801073B0) {
+            if (D_800B8230[i].x > 0 && D_800B8230[i].x < gStickX) {
                 r |= D_800B8230[i].bit;
             }
-            if (D_800B8230[i].x < 0 && D_801073B0 < D_800B8230[i].x) {
+            if (D_800B8230[i].x < 0 && gStickX < D_800B8230[i].x) {
                 r |= D_800B8230[i].bit;
             }
             if (D_800B8230[i].y > 0 && D_800B8230[i].y < gStickY) {

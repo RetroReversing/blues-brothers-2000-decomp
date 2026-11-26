@@ -19,7 +19,7 @@ M2C_UNK func_80043328(void *, M2C_UNK, M2C_UNK);    /* extern */
 M2C_UNK actorSetAnim(void *, M2C_UNK, M2C_UNK);    /* extern */
 s16 sins(u16);                                      /* extern */
 extern void *gCameraTarget;
-extern M2C_UNK func_80066764;
+extern M2C_UNK wardenChase;
 extern M2C_UNK func_800672A0;
 
 void func_80067150(void *arg0) {
@@ -44,6 +44,6 @@ void func_80067150(void *arg0) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0xD2);
         M2C_FIELD(arg0, s32 *, 0x7C) = 0;
-        M2C_FIELD(arg0, M2C_UNK **, 0xD8) = &func_80066764;
+        M2C_FIELD(arg0, M2C_UNK **, 0xD8) = &wardenChase;
     }
 }

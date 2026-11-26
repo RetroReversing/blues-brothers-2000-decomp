@@ -25,7 +25,7 @@ void func_80047824(s32, s32, s32, s32, s32);
 void func_80047864(s32, s32, s32, s32, s32);
 extern Vec3 D_800B9B60[];
 extern s32 gPadPressed[];
-extern s32 D_801073B0[];
+extern s32 gStickX[];
 extern Obj87B68 *D_80171A80[];
 
 void func_80087B68(Obj87B68 *arg0) {
@@ -34,7 +34,7 @@ void func_80087B68(Obj87B68 *arg0) {
     Obj87B68 *p;
 
     if (arg0->unkC0 == 0) {
-        v = D_801073B0[arg0->unkBC];
+        v = gStickX[arg0->unkBC];
         if (v < 0) {
             v = -v;
         }
@@ -43,7 +43,7 @@ void func_80087B68(Obj87B68 *arg0) {
         }
         if (tickActorTimer(arg0) != 0) {
             arg0->unk64 = 0;
-            if ((gPadPressed[arg0->unkBC] & 0x200) || D_801073B0[arg0->unkBC] < -30) {
+            if ((gPadPressed[arg0->unkBC] & 0x200) || gStickX[arg0->unkBC] < -30) {
             dec:
                 arg0->unk84 = (arg0->unk84 - 1) & 3;
                 if (arg0->unkA8->unk84 == arg0->unk84) {
@@ -53,7 +53,7 @@ void func_80087B68(Obj87B68 *arg0) {
                 func_8002A360(12, 0x80);
                 func_8002A360(8, 0x9F);
             }
-            if ((gPadPressed[arg0->unkBC] & 0x100) || D_801073B0[arg0->unkBC] >= 31) {
+            if ((gPadPressed[arg0->unkBC] & 0x100) || gStickX[arg0->unkBC] >= 31) {
             inc:
                 arg0->unk84 = (arg0->unk84 + 1) & 3;
                 if (arg0->unkA8->unk84 == arg0->unk84) {

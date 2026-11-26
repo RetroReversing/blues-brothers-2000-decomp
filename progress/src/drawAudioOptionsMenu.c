@@ -20,7 +20,7 @@ extern u8 D_800B5DDC[];
 extern s32 gAudioVolume[];
 extern s32 gCamSpeedScale[];
 extern s32 gPadPressed[];
-extern s32 D_801073B0[];
+extern s32 gStickX[];
 extern s32 gTextWaveTime[];
 
 /* Draws the audio options screen: music and sound-effect volume bars that the d-pad adjusts while selected, and the back entry. */
@@ -75,11 +75,11 @@ void drawAudioOptionsMenu(ObjE278 *menu) {
                     changed = 1;
                     gAudioVolume[0] += 20;
                 }
-                if (D_801073B0[0] < -20) {
+                if (gStickX[0] < -20) {
                     changed = 1;
                     gAudioVolume[0] -= gCamSpeedScale[0] << changed;
                 }
-                if (D_801073B0[0] > 20) {
+                if (gStickX[0] > 20) {
                     changed = 1;
                     gAudioVolume[0] += gCamSpeedScale[0] << changed;
                 }
@@ -129,11 +129,11 @@ void drawAudioOptionsMenu(ObjE278 *menu) {
                     changed = 1;
                     gAudioVolume[1] += 20;
                 }
-                if (D_801073B0[0] < -20) {
+                if (gStickX[0] < -20) {
                     changed = 1;
                     gAudioVolume[1] -= gCamSpeedScale[0] << changed;
                 }
-                if (D_801073B0[0] > 20) {
+                if (gStickX[0] > 20) {
                     changed = 1;
                     gAudioVolume[1] += gCamSpeedScale[0] << changed;
                 }

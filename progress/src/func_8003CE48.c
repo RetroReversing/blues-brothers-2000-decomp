@@ -44,7 +44,7 @@ extern State3CE48 D_800BD0E0;
 extern s32 D_800BD274;
 extern s32 D_80107040[];
 extern s32 gPadPressed[];
-extern s32 D_801073B0[];
+extern s32 gStickX[];
 extern s32 gStickY[];
 extern s32 D_80140228;
 
@@ -58,7 +58,7 @@ void func_8003CE48(Obj3CE48 *arg0) {
     arg0->unk70 = approachS32(0xFF, arg0->unk70, gCamSpeedScale * 8);
     D_80140228 = 0;
     D_800B5DD4 = 0;
-    if (abs(D_801073B0[0]) < 20) {
+    if (abs(gStickX[0]) < 20) {
         if (abs(gStickY[0]) < 20) {
             arg0->unk64 = 0;
         }

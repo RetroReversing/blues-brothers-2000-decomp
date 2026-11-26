@@ -17,7 +17,7 @@ s32 func_80024AE8(s32, M2C_UNK);                    /* extern */
 s32 func_8002D260(s32);                             /* extern */
 extern void *gCameraTarget;
 extern s32 gPadPressed;
-extern s32 D_801073B0;
+extern s32 gStickX;
 extern s32 gStickY;
 extern s32 D_8013FFA0;
 extern s32 D_8013FFCC;
@@ -40,7 +40,7 @@ void func_80033F6C(void *arg0) {
         M2C_FIELD(arg0, M2C_UNK **, 0x9C) = &func_800340B4;
         return;
     }
-    do { M2C_FIELD(arg0, s32 *, 0x10) = (s32) (M2C_FIELD(arg0, s32 *, 0x10) + (func_80024AE8(D_801073B0, 3) * 0x50)); } while (0);
+    do { M2C_FIELD(arg0, s32 *, 0x10) = (s32) (M2C_FIELD(arg0, s32 *, 0x10) + (func_80024AE8(gStickX, 3) * 0x50)); } while (0);
     temp_a0 = M2C_FIELD(arg0, s32 *, 0x14) - (func_80024AE8(gStickY, 3) * 0x50);
     M2C_FIELD(arg0, s32 *, 0x14) = temp_a0;
     temp_v0 = func_8002D260(temp_a0);

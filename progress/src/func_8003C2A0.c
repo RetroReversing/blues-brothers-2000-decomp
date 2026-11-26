@@ -7,14 +7,14 @@ extern void animStepKeys();
 extern void actorSetAnim(Obj *, s32, s32);
 extern Ctx *D_800B3960;
 extern s32 gPadPressed[];
-extern s32 D_801073B0[];
+extern s32 gStickX[];
 extern s32 gStickY[];
 extern s32 D_80140240;
 extern void func_800393F4(void);
 
 void func_8003C2A0(Obj *arg0) {
     animStepKeys();
-    arg0->f10 = func_8002D1C4(D_800B3960->f10 + atan2S16(D_801073B0[arg0->fBC], gStickY[arg0->fBC]), arg0->f10, 1);
+    arg0->f10 = func_8002D1C4(D_800B3960->f10 + atan2S16(gStickX[arg0->fBC], gStickY[arg0->fBC]), arg0->f10, 1);
     if (gPadPressed[arg0->fBC] & 0x8000) {
         arg0->f50 = (f32) D_80140240;
         arg0->f8 = arg0->f8 + 1.0f;

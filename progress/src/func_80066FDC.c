@@ -19,7 +19,7 @@ s32 func_80043328();
 s32 actorSetAnim();
 s16 sins();
 extern void *gCameraTarget;
-extern s32 func_80066764;
+extern s32 wardenChase;
 extern s32 func_800672A0;
 
 typedef struct { unsigned char pad_0[18]; unsigned short field_12; unsigned char pad_14[92]; int field_70; int field_74; unsigned char pad_78[4]; int field_7C; unsigned char pad_80[64]; int field_C0; unsigned char pad_C4[20]; void * field_D8; } __repair_record_arg0;
@@ -53,7 +53,7 @@ char *__repair_addr;
     if (((__repair_record_arg0*)arg0)->field_70 != 0) {
         func_8002A360(0xC, 0x80);
         func_8002A360(8, 0xD2);
-        ((__repair_record_arg0*)arg0)->field_D8 = &func_80066764;
+        ((__repair_record_arg0*)arg0)->field_D8 = &wardenChase;
         ((__repair_record_arg0*)arg0)->field_7C = 0;
     }
 }

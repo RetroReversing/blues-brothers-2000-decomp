@@ -25,7 +25,7 @@ extern s32 D_800B81D4;
 extern s32 gAudioVolume;
 extern s32 gTextWaveTime;
 extern s32 gPadPressed;
-extern s32 D_801073B0;
+extern s32 gStickX;
 extern s32 D_80140228;
 extern s32 D_80140250;
 extern u8 func_80023078[];
@@ -99,10 +99,10 @@ void func_8003D854(Obj *arg0) {
             break;
         }
     }
-    if ((gPadPressed & 0x200) || (D_801073B0 < -30)) {
+    if ((gPadPressed & 0x200) || (gStickX < -30)) {
         arg0->unk7C--;
     }
-    if ((gPadPressed & 0x100) || (D_801073B0 >= 31)) {
+    if ((gPadPressed & 0x100) || (gStickX >= 31)) {
         arg0->unk7C++;
     }
     if (gPadPressed & 0x1000) {

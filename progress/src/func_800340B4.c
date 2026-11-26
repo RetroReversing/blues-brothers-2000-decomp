@@ -64,7 +64,7 @@ extern s32 gCamSpeedScale;
 extern Player *gCameraTarget;
 extern u32 D_80107040[];
 extern u32 gPadPressed;
-extern s32 D_801073B0;
+extern s32 gStickX;
 extern s32 gStickY[];
 extern s32 D_8013FFA0;
 extern s32 D_8013FFA4;
@@ -123,7 +123,7 @@ void func_800340B4(Camera *arg0) {
                 gCameraTarget->unk68 = -1;
             }
             if (arg0->state == 1) {
-                arg0->yaw += func_80024AE8(D_801073B0, 3) * 80;
+                arg0->yaw += func_80024AE8(gStickX, 3) * 80;
                 arg0->pitch -= func_80024AE8(gStickY[0], 3) * 80;
                 arg0->pitch = func_8002D260(arg0->pitch);
                 if (arg0->pitch < -7000) {
@@ -242,7 +242,7 @@ void func_800340B4(Camera *arg0) {
         if (D_80107040[0] != 0) {
             D_800B4BFC = 0;
         }
-        if (func_80024AE8(D_801073B0, 3) != 0) {
+        if (func_80024AE8(gStickX, 3) != 0) {
             D_800B4BFC = 0;
         }
         if (func_80024AE8(gStickY[0], 3) != 0) {

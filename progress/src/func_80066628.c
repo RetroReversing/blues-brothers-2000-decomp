@@ -9,7 +9,7 @@ s32 func_80052A68(s32, char *);
 void *func_80052B24(s32, char *, void *);
 extern Player *gCameraTarget;
 extern s32 D_800BD0F4;
-void *func_80066764(void *);
+void *wardenChase(void *);
 
 void *func_80066628(u8 *obj) {
     char *name = "warden_intro";
@@ -21,7 +21,7 @@ void *func_80066628(u8 *obj) {
     }
     if (*(void **) (obj + 0x7C) == 0) {
         if (func_80052A68(id, name) != 0) {
-            return *(void **) (obj + 0xD8) = func_80066764;
+            return *(void **) (obj + 0xD8) = wardenChase;
         }
     }
     gCameraTarget->state = 3;
@@ -34,7 +34,7 @@ void *func_80066628(u8 *obj) {
                 *(void **) (obj + 0x7C) = func_80052B24(id, name, obj);
                 goto fail;
             } else {
-                *(void **) (obj + 0xD8) = func_80066764;
+                *(void **) (obj + 0xD8) = wardenChase;
                 *(void **) (obj + 0x7C) = 0;
                 return 0;
             }
@@ -49,7 +49,7 @@ void *func_80066628(u8 *obj) {
             return 0;
         }
         *(void **) (obj + 0x7C) = 0;
-        ret = func_80066764;
+        ret = wardenChase;
         *(void **) (obj + 0xD8) = ret;
     }
     return ret;

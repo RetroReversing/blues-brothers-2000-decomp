@@ -17,7 +17,7 @@ typedef s32 M2C_UNK32;
 s32 tickActorTimer(void *);                          /* extern */
 extern s32 gTextWaveTime;
 extern s32 gPadPressed;
-extern s32 D_801073B0;
+extern s32 gStickX;
 extern s32 gStickY;
 
 typedef struct { unsigned char pad[120]; int value; } __repair_field_78;
@@ -25,7 +25,7 @@ void updateMenuScroll(void *arg0, s32 arg1) {
     s32 var_v0;
     s32 temp;
 
-    temp = (D_801073B0 >= 0) ? D_801073B0 : -D_801073B0;
+    temp = (gStickX >= 0) ? gStickX : -gStickX;
     if (temp < 0x14) {
         s32 var_v0_2_a1;
         var_v0_2_a1 = gStickY;
