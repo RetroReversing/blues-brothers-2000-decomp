@@ -13,7 +13,7 @@ typedef s32 M2C_UNK32;
 #endif
 
 M2C_UNK func_80067B50();                            /* extern */
-M2C_UNK func_80067C6C();                            /* extern */
+M2C_UNK collideActorWithTarget();                            /* extern */
 
 void func_80067FB4(void *arg0) {
     M2C_FIELD(arg0, s32 *, 0xC0) = 0;
@@ -21,5 +21,5 @@ void func_80067FB4(void *arg0) {
         func_80067B50();
         return;
     }
-    func_80067C6C();
+    collideActorWithTarget();
 }

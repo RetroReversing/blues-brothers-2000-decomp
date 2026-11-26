@@ -111120,7 +111120,7 @@
    "unit": "local_source_158913791162",
    "mode": "rom"
   },
-  "func_80067C6C": {
+  "collideActorWithTarget": {
    "format": 1,
    "verdict": "exact",
    "abi": {
@@ -111130,10 +111130,10 @@
     "platform": "n64",
     "rom_sha1": "ed0fe7c9a2e8015bdf8262d35065f53c6fcea60f"
    },
-   "symbols_sha256": "17a15bdc7a6cfa4d0fce0f1b2a5566714c405d33c827b82c277389528f20c776",
-   "recorded_at": 1795571573.37412,
-   "attempt_id": 158913845016,
-   "source_sha256": "e380935600c434a778e5e89afa17f4c9f8f79687f03cd4b025afd578b3bd6b01",
+   "symbols_sha256": "81974992e2f77e4f1f57ccf80a11540e351b0415f23e83b33276e1448e6e8e06",
+   "recorded_at": 1795699923.222795,
+   "attempt_id": 158913862047,
+   "source_sha256": "012ca6a926e82f3bed370e7cd3ac76f69092c2f08ea40a505e93dc6ab95fa9fd",
    "header_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b",
    "context_version": 814,
    "compiler": {
@@ -111152,7 +111152,7 @@
    },
    "compiler_identity": {
     "toolchain": "sn-n64-281",
-    "registry_sha256": "14e28e8f96d57fb28d493fc5d8ff869e8cf1dc291e1c8adaf0233952948aed40",
+    "registry_sha256": "8eb23176b1932cb664777fba69b2915c713b60c625fc11f9ad0c22d12f3e9115",
     "install_sha256": "d949422c5b7c39402c79d468bd890710d5bd3eb8ba3929116a8a5543a4a7191f",
     "executables": {
      "cc1n64.exe": "d90df1028c46d826e37146dbcc3e3385f78c59e05a9ddd952daa94c9ad379d9c"
@@ -111175,7 +111175,7 @@
      ],
      "timeout": 20
     },
-    "settings_source": "compile invocation snapshot",
+    "settings_source": "project configuration at recording; temporary compile overrides may differ",
     "gp": 0,
     "big_endian": true,
     "rom": {
@@ -111184,32 +111184,6 @@
      "region": "North America",
      "byte_order": "z64"
     },
-    "effective_command": [
-     "/Users/a/Documents/GitHub/decompdecomp-rr/.venv/bin/python",
-     "/Users/a/Documents/GitHub/decompdecomp-rr/src/decompnet/consoles/n64/sn64.py",
-     "--cc",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cc1n64.exe",
-     "--cpp",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/cppn64.exe",
-     "--assembler",
-     "/Users/a/Library/Application Support/decompnet/toolchains/sn-n64-281/asn64.exe",
-     "--converter",
-     "/Users/a/Library/Application Support/decompnet/toolchains/psyq-obj-parser/psyq-obj-parser",
-     "--runner",
-     "/Users/a/Library/Application Support/decompnet/toolchains/wibo/wibo",
-     "{src}",
-     "{obj}",
-     "{include}",
-     "-G0",
-     "-mips3",
-     "-O2",
-     "-mgas",
-     "-meb",
-     "-mcpu=VR4300",
-     "-mhard-float",
-     "-mfp32"
-    ],
-    "language": "c",
     "context_unit": "local_source_158913791163",
     "scoring_revision": "9835c8773906c8725fcef722842f7ddd24a6a79e80a28cb23ae8c66e5967d6e4",
     "context_sha256": "611b7aa17de2b4b021ea74bec886af654c4419f4e3ce5ce779e70a1474f3621b"
@@ -199016,7 +198990,7 @@
   "d39bfaa60631fb16565c0b62969e05422c1416c900e2e2c684cc298e28b1dba2": "/* machine draft (m2c) for sn-n64-281 -G8 -mips2 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\ns32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */\nM2C_UNK func_8002DA80();                            /* extern */\nextern f32 D_80008D24;\n\nvoid func_800677F8(void *arg0) {\n    f32 temp_fv1;\n\n    func_8002DA80();\n    M2C_FIELD(arg0, f32 *, 8) = (f32) (M2C_FIELD(arg0, f32 *, 8) + D_80008D24);\n    temp_fv1 = M2C_FIELD(arg0, f32 *, 4) + (f32) func_80024394(-5, 5);\n    M2C_FIELD(arg0, s32 *, 0x5C) = (s32) (M2C_FIELD(arg0, s32 *, 0x5C) - 8);\n    M2C_FIELD(arg0, f32 *, 4) = temp_fv1;\n    if (M2C_FIELD(arg0, s32 *, 0x90) != 0) {\n        M2C_FIELD(arg0, s32 *, 0x70) = (s32) (M2C_FIELD(arg0, s32 *, 0x70) + 5);\n    }\n    if (M2C_FIELD(arg0, s32 *, 0x5C) < 4) {\n        M2C_FIELD(arg0, M2C_UNK (**)(void *), 0xA0)(arg0);\n    }\n}\n",
   "7674bb0e4ef8d2e3cb596238d6b1fc89a92100b70a7bfc0e2141b9116b83dcc4": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (((struct { __typeof__(*(type_ptr)0) v; } *)((s8 *)(expr) + (offset)))->v)\n#define M2C_FIELD_PTR(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\ns16 coss(u16);                                      /* extern */\ns32 func_800221C0(M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, s32, s32, s32, s32); /* extern */\nvoid *func_800232B4(M2C_UNK, s32, s32, s32);        /* extern */\ns32 func_80024394(M2C_UNK, M2C_UNK);                /* extern */\nM2C_UNK func_8002ADFC(M2C_UNK, M2C_UNK, void *);    /* extern */\ns16 sins(u16);                                      /* extern */\nextern s32 *D_800BD06C;\nextern s32 D_8014AB3C;\nextern s32 D_8014AB44;\nextern M2C_UNK func_8002F8D0;\nextern M2C_UNK func_800677F8;\ntypedef struct Obj {\n    s32 id;\n    f32 x;\n    f32 y;\n    f32 z;\n    s32 f10;\n    s32 f14;\n    s32 f18;\n    char pad1C[0x30];\n    f32 f4C;\n    s32 f50;\n    f32 f54;\n    s32 f58;\n    s32 f5C;\n    s32 f60;\n    s32 f64;\n    s32 f68;\n    s32 pad6C;\n    s32 f70;\n    s32 f74;\n    s32 f78;\n    s32 f7C;\n    s32 f80;\n    s32 f84;\n    s32 pad88;\n    struct Obj *f8C;\n    s32 f90;\n    s32 pad94;\n    void *f98;\n    void *f9C;\n} Obj;\n#define ANG (*(u16 *)((char *)arg0 + 0x12))\ntypedef struct Src {\n    char pad0[0x30];\n    f32 x;\n    f32 y;\n    f32 z;\n} Src;\n\nvoid *func_8006788C(Obj *arg0, s32 arg1) {\n    s32 sp20[3];\n    s32 sp30[3];\n    Obj *o;\n    Src *p;\n\n    o = func_800232B4(1, (s32) arg0->x, (s32) (arg0->y + 250.0f), (s32) arg0->z);\n    o->f64 = 0x3E8;\n    o->f98 = &func_8002F8D0;\n    p = (Src *) arg0->f8C;\n    sp20[0] = (s32) p->x;\n    sp20[1] = (s32) p->y;\n    sp20[2] = (s32) (p->z + 150.0f);\n    sp30[0] = ((sp20[0] * coss(ANG)) >> 15) + ((sp20[2] * sins(ANG)) >> 15);\n    sp30[2] = -((sp20[0] * sins(ANG)) >> 15) + ((sp20[2] * coss(ANG)) >> 15);\n    sp30[1] = sp20[1];\n    o->x = arg0->x + (f32) sp30[0];\n    o->y = arg0->y + (f32) sp30[1];\n    o->z = arg0->z + (f32) sp30[2];\n    o->f9C = &func_800677F8;\n    o->f70 = 0x64;\n    o->f74 = 0;\n    o->f78 = 0xFFFFFF;\n    o->f7C = 1;\n    o->f58 = func_800221C0(0, 1, 1, 3, 0, 0, 2, 0);\n    o->f68 = 0xA;\n    o->f5C = 0xFF;\n    o->f18 = 0xC000;\n    o->f64 = 0xC8;\n    o->f10 = arg0->f10 + 0x8000;\n    o->f84 = 3;\n    o->f80 = -func_80024394(0, 3);\n    o->f4C = arg0->f4C;\n    o->f54 = arg0->f54;\n    if (arg1 != 0) {\n        o->id = 0x11F;\n        o->f90 = 1;\n        o->f60 = D_8014AB44;\n        o->f70 = o->f70 + 0x2D;\n        *D_800BD06C = 3;\n    } else {\n        o->f90 = 0;\n        o->f70 = 0x4B;\n        o->f60 = D_8014AB3C;\n    }\n    func_8002ADFC(0xD5, 0x3E8, o);\n    return o;\n}\n",
   "8e1efca0a9c49afab9a7b9b0e5bbad702382acefa0d9fade36447586ac7ebdec": "typedef struct Obj {\n    u8 pad0[4];\n    f32 x4;\n    f32 x8;\n    f32 xC;\n    u8 pad10[0x90 - 0x10];\n    s32 x90;\n    u8 pad94[0xC0 - 0x94];\n    s32 xC0;\n} Obj;\n\nextern f32 func_8002D66C(Obj *, f32, s32 *);\nextern s32 func_80013654(Obj *);\nextern s32 func_800137E0(Obj *);\nextern Obj *D_800BD06C;\n\ns32 func_80067B50(Obj *o) {\n    f32 d;\n    f32 t;\n    f32 x;\n    f32 z;\n    Obj *p;\n\n    d = func_8002D66C(o, 400.0f, NULL);\n    o->x90 = d;\n    if (d == 0.0f) {\n        return 0;\n    }\n    if (360.0f <= d) {\n        return 0;\n    }\n    if (d < 350.0f) {\n        p = D_800BD06C;\n        t = 350.0f - d;\n        x = (o->x4 - p->x4) * t / d;\n        z = (o->xC - p->xC) * t / d;\n        p->x4 -= x;\n        p->xC -= z;\n        o->xC0 |= 1;\n    }\n    if (func_80013654(D_800BD06C) != 0) {\n        o->xC0 |= 2;\n    }\n    if (func_800137E0(D_800BD06C) != 0) {\n        o->xC0 |= 8;\n    }\n    return 0;\n}\n",
-  "e380935600c434a778e5e89afa17f4c9f8f79687f03cd4b025afd578b3bd6b01": "typedef struct Obj67C6C {\n    s32 kind;\n    f32 x, y, z;\n    u8 pad10[2];\n    u16 angle;\n    u8 pad14[0x50 - 0x14];\n    f32 unk50;\n    u8 pad54[0xC0 - 0x54];\n    s32 unkC0;\n    u8 padC4[0xD0 - 0xC4];\n    s32 unkD0;\n} Obj67C6C;\n\ns16 sins(u16);\ns16 coss(u16);\ns32 func_80024B0C(s32);\nvoid func_8002A360(s32, s32);\nvoid func_800433A8(Obj67C6C *, s32, s32);\nf32 sqrtf(f32);\nextern Obj67C6C *D_800BD06C;\nextern s32 D_80140240;\n\ns32 func_80067C6C(Obj67C6C *arg0) {\n    s32 dy;\n    s32 x;\n    s32 z;\n    s32 dx2;\n    s32 dz2;\n    f32 t;\n    f32 fx;\n    f32 fz;\n    f32 d;\n\n    dy = D_800BD06C->y - arg0->y;\n    if (dy > 0) {\n        if (arg0->unkD0 == 0xF7 || arg0->unkD0 == 0xF8) {\n            x = arg0->x + (f32)(-(sins(arg0->angle) * 250) >> 15);\n            z = arg0->z + (f32)(-(coss(arg0->angle) * 250) >> 15);\n            dx2 = D_800BD06C->x - (f32)x;\n            dz2 = D_800BD06C->z - (f32)z;\n            if (func_80024B0C(dx2 * dx2 + dz2 * dz2) < 251) {\n                if (D_800BD06C->unkD0 >= 43) {\n                    arg0->unkC0 |= 4;\n                }\n                if (D_800BD06C->unk50 < 0.0f && dy < 150) {\n                    D_800BD06C->unk50 = (D_80140240 * 3) / 2;\n                    t = arg0->y + 75.0f;\n                    if (D_800BD06C->y < t) {\n                        D_800BD06C->y = t;\n                    }\n                    D_800BD06C->y += 1.0f;\n                    func_800433A8(D_800BD06C, 5, 0x100);\n                    func_8002A360(12, 0x80);\n                    func_8002A360(8, 2);\n                    return 0;\n                }\n            }\n        }\n        return 0;\n    }\n    fx = (arg0->x - D_800BD06C->x) + (f32)(-(sins(arg0->angle) * 150) >> 15);\n    fz = (arg0->z - D_800BD06C->z) + (f32)(-(coss(arg0->angle) * 150) >> 15);\n    d = sqrtf(fx * fx + fz * fz);\n    if (d <= 400.0f) {\n        D_800BD06C->x += fx * (d - 400.0f) / d;\n        D_800BD06C->z += fz * (d - 400.0f) / d;\n    }\n    return 0;\n}\n",
+  "012ca6a926e82f3bed370e7cd3ac76f69092c2f08ea40a505e93dc6ab95fa9fd": "typedef struct Obj67C6C {\n    s32 kind;\n    f32 x, y, z;\n    u8 pad10[2];\n    u16 angle;\n    u8 pad14[0x50 - 0x14];\n    f32 unk50;\n    u8 pad54[0xC0 - 0x54];\n    s32 unkC0;\n    u8 padC4[0xD0 - 0xC4];\n    s32 unkD0;\n} Obj67C6C;\n\ns16 sins(u16);\ns16 coss(u16);\ns32 isqrtS32(s32);\nvoid func_8002A360(s32, s32);\nvoid actorSetAnim(Obj67C6C *, s32, s32);\nf32 sqrtf(f32);\nextern Obj67C6C *gCameraTarget;\nextern s32 D_80140240;\n\n/* Collision between an actor and the camera target. If the target is above the actor,\n * a close hit on a flagged actor (kind 0xF7/0xF8) launches the target upward with a\n * bounce animation and sound. Otherwise the target is pushed out to a 400-unit radius\n * around the actor's offset point. */\n/* Collision between an actor and the camera target. If the target is above the actor and close to a flagged actor (state 0xF7/0xF8), it bounces the target upward and plays the bounce animation. Otherwise it pushes the target out to a 400-unit radius around the actor. */ s32 collideActorWithTarget(Obj67C6C *actor) {\n    s32 dy;\n    s32 x;\n    s32 z;\n    s32 dx2;\n    s32 dz2;\n    f32 t;\n    f32 fx;\n    f32 fz;\n    f32 d;\n\n    dy = gCameraTarget->y - actor->y;\n    if (dy > 0) {\n        if (actor->unkD0 == 0xF7 || actor->unkD0 == 0xF8) {\n            x = actor->x + (f32)(-(sins(actor->angle) * 250) >> 15);\n            z = actor->z + (f32)(-(coss(actor->angle) * 250) >> 15);\n            dx2 = gCameraTarget->x - (f32)x;\n            dz2 = gCameraTarget->z - (f32)z;\n            if (isqrtS32(dx2 * dx2 + dz2 * dz2) < 251) {\n                if (gCameraTarget->unkD0 >= 43) {\n                    actor->unkC0 |= 4;\n                }\n                if (gCameraTarget->unk50 < 0.0f && dy < 150) {\n                    gCameraTarget->unk50 = (D_80140240 * 3) / 2;\n                    t = actor->y + 75.0f;\n                    if (gCameraTarget->y < t) {\n                        gCameraTarget->y = t;\n                    }\n                    gCameraTarget->y += 1.0f;\n                    actorSetAnim(gCameraTarget, 5, 0x100);\n                    func_8002A360(12, 0x80);\n                    func_8002A360(8, 2);\n                    return 0;\n                }\n            }\n        }\n        return 0;\n    }\n    fx = (actor->x - gCameraTarget->x) + (f32)(-(sins(actor->angle) * 150) >> 15);\n    fz = (actor->z - gCameraTarget->z) + (f32)(-(coss(actor->angle) * 150) >> 15);\n    d = sqrtf(fx * fx + fz * fz);\n    if (d <= 400.0f) {\n        gCameraTarget->x += fx * (d - 400.0f) / d;\n        gCameraTarget->z += fz * (d - 400.0f) / d;\n    }\n    return 0;\n}",
   "62048d4ec1e4cc3ae4ea4194bd90bceef1fe14d2e4c22d98d7f42484eda0e438": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\nM2C_UNK func_80067B50();                            /* extern */\nM2C_UNK func_80067C6C();                            /* extern */\n\nvoid func_80067FB4(void *arg0) {\n    M2C_FIELD(arg0, s32 *, 0xC0) = 0;\n    if ((u32) (M2C_FIELD(arg0, s32 *, 0xD0) - 0xF7) >= 2U) {\n        func_80067B50();\n        return;\n    }\n    func_80067C6C();\n}\n",
   "4a3808ea9c124625adb95a608fe560c25899ce8dec1e2793e41b97af799711ba": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\ns32 func_80023874(M2C_UNK, M2C_UNK);                /* extern */\ns32 func_80023E18(s32);                             /* extern */\nM2C_UNK func_8002710C(M2C_UNK, M2C_UNK, M2C_UNK, s32); /* extern */\nM2C_UNK func_800272E0(s32, s32, M2C_UNK, M2C_UNK);  /* extern */\nextern s32 D_8014AB30;\nextern M2C_UNK func_80066628;\n\nvoid func_80067FF4(void *arg0) {\n    void *temp_v0;\n\n    if (func_80023874(0x800, 0) == 0) {\n        temp_v0 = M2C_FIELD(arg0, void **, 0xA4);\n        if ((temp_v0 != NULL) && (M2C_FIELD(temp_v0, s32 *, 0xD8) != &func_80066628)) {\n            func_8002710C(0xFF, 0xFF, 0xFF, M2C_FIELD(arg0, s32 *, 0x8C));\n            func_800272E0(func_80023E18(D_8014AB30), ((4 - M2C_FIELD(arg0, s32 *, 0x90)) << 5) + 0x96, 0x1E, 0);\n        }\n    }\n}\n",
   "e971205f408fc5592969cefe95285f97e6728f68e198524d6a641f85c854438e": "/* machine draft (m2c) for gcc-2.7.2-kmc -G0 -mips3 -mgp32 -mfp32 -O2, tried by autopilot */\n#ifndef M2C_DEFINES\n#define M2C_DEFINES\ntypedef s32 M2C_UNK;\ntypedef s8 M2C_UNK8;\ntypedef s16 M2C_UNK16;\ntypedef s32 M2C_UNK32;\n#define M2C_FIELD(expr, type_ptr, offset) (*(type_ptr)((s8 *)(expr) + (offset)))\n#define M2C_BITWISE(type, expr) ((type)(expr))\n#define M2C_ERROR(desc) (0)\n#define M2C_CARRY 0\n#define M2C_OVERFLOW(a) (0)\n#endif\n\ns32 func_8002D298(M2C_UNK, s32, s32);               /* extern */\nextern s32 D_800B9ECC;\nvoid func_80067FF4(void *);\n\nvoid func_8006808C(void *arg0) {\n    void *p;\n\n    p = M2C_FIELD(arg0, void **, 0xA4);\n    if (p == NULL) {\n        M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);\n        return;\n    }\n    if (M2C_FIELD(arg0, s32 *, 0x7C) == 0) {\n        M2C_FIELD(arg0, s32 *, 0x7C) = 1;\n        M2C_FIELD(arg0, s32 *, 0x8C) = 0xFF;\n        M2C_FIELD(arg0, void **, 0x98) = func_80067FF4;\n        M2C_FIELD(arg0, s32 *, 0x68) = 0xD;\n        M2C_FIELD(arg0, s32 *, 0xF4) = 0;\n    }\n    if (M2C_FIELD(p, s32 *, 0x78) < M2C_FIELD(arg0, s32 *, 0x90)) {\n        M2C_FIELD(arg0, s32 *, 0x8C) = func_8002D298(0, M2C_FIELD(arg0, s32 *, 0x8C), D_800B9ECC * 4);\n        if (M2C_FIELD(arg0, s32 *, 0x8C) == 0) {\n            M2C_FIELD(arg0, void (**)(void *), 0xA0)(arg0);\n        }\n    }\n}\n",

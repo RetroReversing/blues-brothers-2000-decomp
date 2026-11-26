@@ -20,7 +20,11 @@ f32 sqrtf(f32);
 extern Obj67C6C *gCameraTarget;
 extern s32 D_80140240;
 
-s32 func_80067C6C(Obj67C6C *arg0) {
+/* Collision between an actor and the camera target. If the target is above the actor,
+ * a close hit on a flagged actor (kind 0xF7/0xF8) launches the target upward with a
+ * bounce animation and sound. Otherwise the target is pushed out to a 400-unit radius
+ * around the actor's offset point. */
+/* Collision between an actor and the camera target. If the target is above the actor and close to a flagged actor (state 0xF7/0xF8), it bounces the target upward and plays the bounce animation. Otherwise it pushes the target out to a 400-unit radius around the actor. */ s32 collideActorWithTarget(Obj67C6C *actor) {
     s32 dy;
     s32 x;
     s32 z;
@@ -31,20 +35,20 @@ s32 func_80067C6C(Obj67C6C *arg0) {
     f32 fz;
     f32 d;
 
-    dy = gCameraTarget->y - arg0->y;
+    dy = gCameraTarget->y - actor->y;
     if (dy > 0) {
-        if (arg0->unkD0 == 0xF7 || arg0->unkD0 == 0xF8) {
-            x = arg0->x + (f32)(-(sins(arg0->angle) * 250) >> 15);
-            z = arg0->z + (f32)(-(coss(arg0->angle) * 250) >> 15);
+        if (actor->unkD0 == 0xF7 || actor->unkD0 == 0xF8) {
+            x = actor->x + (f32)(-(sins(actor->angle) * 250) >> 15);
+            z = actor->z + (f32)(-(coss(actor->angle) * 250) >> 15);
             dx2 = gCameraTarget->x - (f32)x;
             dz2 = gCameraTarget->z - (f32)z;
             if (isqrtS32(dx2 * dx2 + dz2 * dz2) < 251) {
                 if (gCameraTarget->unkD0 >= 43) {
-                    arg0->unkC0 |= 4;
+                    actor->unkC0 |= 4;
                 }
                 if (gCameraTarget->unk50 < 0.0f && dy < 150) {
                     gCameraTarget->unk50 = (D_80140240 * 3) / 2;
-                    t = arg0->y + 75.0f;
+                    t = actor->y + 75.0f;
                     if (gCameraTarget->y < t) {
                         gCameraTarget->y = t;
                     }
@@ -58,8 +62,8 @@ s32 func_80067C6C(Obj67C6C *arg0) {
         }
         return 0;
     }
-    fx = (arg0->x - gCameraTarget->x) + (f32)(-(sins(arg0->angle) * 150) >> 15);
-    fz = (arg0->z - gCameraTarget->z) + (f32)(-(coss(arg0->angle) * 150) >> 15);
+    fx = (actor->x - gCameraTarget->x) + (f32)(-(sins(actor->angle) * 150) >> 15);
+    fz = (actor->z - gCameraTarget->z) + (f32)(-(coss(actor->angle) * 150) >> 15);
     d = sqrtf(fx * fx + fz * fz);
     if (d <= 400.0f) {
         gCameraTarget->x += fx * (d - 400.0f) / d;
